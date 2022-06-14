@@ -8,7 +8,7 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import * as React from "react";
+import React from "react";
 import {
   Data,
   Default,
