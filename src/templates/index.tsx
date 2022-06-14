@@ -9,15 +9,6 @@
  */
 
 import * as React from "react";
-import Banner from "../components/banner";
-import Header, { Link } from "../components/header";
-import Footer from "../components/footer";
-import Cta from "../components/cta";
-import Contact from "../components/contact";
-import List from "../components/list";
-import Hours from "../components/hours";
-import StaticMap from "../components/static-map";
-import "../index.css";
 import {
   Data,
   Default,
@@ -25,6 +16,7 @@ import {
   TemplateConfig,
   GetHeadConfig,
 } from "@yext/yext-sites-scripts";
+import "../index.css";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -104,71 +96,11 @@ const Index: Default<Data> = (data) => {
   const { document } = data;
   const { streamOutput } = document;
   const {
-    name,
-    address,
-    openTime,
-    hours,
-    mainPhone,
-    geocodedCoordinate,
-    services,
+    name
   } = streamOutput;
 
-  const links: Link[] = [
-    {
-      label: "Home",
-      url: "/",
-    },
-    {
-      label: "About",
-      url: "/about.html",
-    },
-    {
-      label: "CatJam GIF",
-      url: "https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif",
-    },
-  ];
-
   return (
-    <>
-      <div className="centered-container">
-        <Header
-          logo="https://cdn.fs.brandfolder.com/cache=expiry:604800/deY3VGFpSjC761Abjbfc"
-          links={links}
-        ></Header>
-      </div>
-      <Banner name={name} address={address} openTime={openTime}>
-        <div className="bg-white h-40 w-1/5 flex items-center justify-center text-center flex-col space-y-4 rounded-lg">
-          <div className="text-black text-base">Visit Us Today!</div>
-          <Cta
-            buttonText="Get Directions"
-            url="http://google.com"
-            style="primary-cta"
-          />
-        </div>
-      </Banner>
-      <div className="centered-container">
-        <div className="section">
-          <div className="grid grid-cols-3 gap-x-10 gap-y-10">
-            <div className="bg-gray-100 p-5 space-y-12">
-              <Contact address={address} phone={mainPhone}></Contact>
-              {services && <List list={services}></List>}
-            </div>
-            <div className="col-span-2 pt-5 space-y-10">
-              <div>
-                {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
-              </div>
-              {geocodedCoordinate && (
-                <StaticMap
-                  latitude={geocodedCoordinate.latitude}
-                  longitude={geocodedCoordinate.longitude}
-                ></StaticMap>
-              )}
-            </div>
-          </div>
-        </div>
-        <Footer></Footer>
-      </div>
-    </>
+    <div>Hello {name}!</div>
   );
 };
 
