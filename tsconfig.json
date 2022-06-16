@@ -4,6 +4,7 @@
     "strict": true,
     "moduleResolution": "Node",
     "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "outDir": "./dist"
   },
