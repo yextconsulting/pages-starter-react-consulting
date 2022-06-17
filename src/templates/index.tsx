@@ -17,6 +17,7 @@ import {
   GetHeadConfig,
 } from "@yext/yext-sites-scripts";
 import "../index.css";
+import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -100,7 +101,9 @@ const Index: Default<Data> = (data) => {
   } = streamOutput;
 
   return (
-    <div>Hello {name}!</div>
+    <CustomFieldDebuggerReactProvider component={Index} {...data}>
+      <div>Hello {name}!</div>
+    </CustomFieldDebuggerReactProvider>
   );
 };
 
