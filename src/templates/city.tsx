@@ -80,8 +80,7 @@ import { defaultHeadConfig } from "../common/head";
 	* them in the src/templates folder as this is specific for true template files).
 	*/
  const City: Default<Data> = (data) => {
-	 const { document } = data;
-	 const { streamOutput } = document;
+  const { streamOutput } = data.document;
 	 const {
 		 name
 	 } = streamOutput;
