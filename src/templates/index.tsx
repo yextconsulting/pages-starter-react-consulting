@@ -58,7 +58,7 @@ export const config: TemplateConfig = {
  * take on the form: featureName/entityId
  */
 export const getPath: GetPath<Data> = (data) => {
-  return `index/${data.document.streamOutput.id.toString()}`;
+  return data.document.streamOutput.slug;
 };
 
 /**
