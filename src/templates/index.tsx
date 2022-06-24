@@ -10,7 +10,7 @@
 
 import * as React from "react";
 import {
-  Data,
+  TemplateProps,
   Default,
   GetPath,
   TemplateConfig,
@@ -57,7 +57,7 @@ export const config: TemplateConfig = {
  * NOTE: This currently has no impact on the local dev path. Local dev urls currently
  * take on the form: featureName/entityId
  */
-export const getPath: GetPath<Data> = (data) => {
+export const getPath: GetPath<TemplateProps> = (data) => {
   return `index/${data.document.streamOutput.id.toString()}`;
 };
 
@@ -67,9 +67,9 @@ export const getPath: GetPath<Data> = (data) => {
  * will be used to generate the inner contents of the HTML document's <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
-export const getHeadConfig: GetHeadConfig<Data> = (data) => {
+export const getHeadConfig: GetHeadConfig<TemplateProps> = (data) => {
   return {
-    title: data.document.streamOutput.name,
+    title: data.document.name,
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
     tags: [
@@ -92,12 +92,11 @@ export const getHeadConfig: GetHeadConfig<Data> = (data) => {
  * components any way you'd like as long as it lives in the src folder (though you should not put
  * them in the src/templates folder as this is specific for true template files).
  */
-const Index: Default<Data> = (data) => {
+const Index: Default<TemplateProps> = (data) => {
   const { document } = data;
-  const { streamOutput } = document;
   const {
     name
-  } = streamOutput;
+  } = document;
 
   return (
     <div>Hello {name}!</div>
