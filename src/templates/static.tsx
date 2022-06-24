@@ -2,7 +2,7 @@
  * This is an example of how to create a static template that uses getStaticProps to retrieve data.
  */
 
-import * as React from "react";
+import React from "react";
 import { useState } from "react";
 import fetch from "fetch-everywhere";
 import { Pokemon } from "pokenode-ts";

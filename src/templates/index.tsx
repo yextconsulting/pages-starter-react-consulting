@@ -8,7 +8,7 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import * as React from "react";
+import React from "react";
 import {
   TemplateProps,
   Default,
@@ -57,8 +57,8 @@ export const config: TemplateConfig = {
  * NOTE: This currently has no impact on the local dev path. Local dev urls currently
  * take on the form: featureName/entityId
  */
-export const getPath: GetPath<TemplateProps> = (data) => {
-  return `index/${data.document.streamOutput.id.toString()}`;
+export const getPath: GetPath<Data> = (data) => {
+  return data.document.slug;
 };
 
 /**
