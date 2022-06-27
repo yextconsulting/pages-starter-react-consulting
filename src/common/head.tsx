@@ -1,4 +1,4 @@
-import { Data, HeadConfig, Tag } from "@yext/yext-sites-scripts";
+import { TemplateProps, HeadConfig, Tag } from "@yext/yext-sites-scripts";
 
 const dnsPrefetchTags: Tag[] = [
 	{type: "meta", attributes: {rel: "dns-prefetch", href: "//www.yext-pixel.com"}},
@@ -56,44 +56,44 @@ const defaultHeadTags: Tag[] = [
 	// TODO: alternate language links - we don't have this data yet
 ]
 
-export function defaultHeadConfig(data: Data, additionalTags?: Tag[]): HeadConfig {
-	const logoTags: Tag[] = data.document?.streamOutput?.logo
+export function defaultHeadConfig(data: TemplateProps, additionalTags?: Tag[]): HeadConfig {
+	const logoTags: Tag[] = data.document?.logo
 		? [
 			{
         type: "meta",
         attributes: {
           property: "og:image",
-          content: data.document.streamOutput.logo,
+          content: data.document.logo,
         }
 			}
 		]
 		: [];
 
-	const geoTags: Tag[] = data.document?.streamOutput?.yextDisplayCoordinate
+	const geoTags: Tag[] = data.document?.yextDisplayCoordinate
 		? [
 			{
         type: "meta",
         attributes: {
           name: "geo.position",
-          content: `${data.document.streamOutput.yextDisplayCoordinate.lat},${data.document.streamOutput.yextDisplayCoordinate.long}`,
+          content: `${data.document.yextDisplayCoordinate.lat},${data.document.yextDisplayCoordinate.long}`,
         }
 			}
 		]
 		: [];
-	const addressTags: Tag[] = data.document.streamOutput.address
+	const addressTags: Tag[] = data.document.address
 		? [
 			{
         type: "meta",
         attributes: {
           name: "geo.placename",
-          content: `${data.document.streamOutput.address.city},${data.document.streamOutput.address.region}`, // TODO: dono't use abbreviated form here when it's available
+          content: `${data.document.address.city},${data.document.address.region}`, // TODO: dono't use abbreviated form here when it's available
         }
 			},
 			{
         type: "meta",
         attributes: {
           name: "geo.region",
-          content: `${data.document.streamOutput.address.countryCode}-${data.document.streamOutput.address.region}`,
+          content: `${data.document.address.countryCode}-${data.document.address.region}`,
         }
 			}
 		]
@@ -134,31 +134,31 @@ export function defaultHeadConfig(data: Data, additionalTags?: Tag[]): HeadConfi
   };
 }
 
-function metaTitle(data: Data): string {
+function metaTitle(data: TemplateProps): string {
 	// 1. Check for meta field on the entity
-	let { c_meta: entityMeta } = data.document.streamOutput;
+	const { c_meta: entityMeta } = data.document;
 	if (entityMeta && entityMeta.title) return entityMeta.title;
 
 	// 2. Check for meta field on the site entity
 	//    resolve any field embeddings
-	let { c_meta: siteMeta } = data.document.streamOutput;
+	const { c_meta: siteMeta } = data.document;
 	if (siteMeta && siteMeta.title) return hydrateEmbeddedFields(siteMeta.title, data);
 
 	return ""
 }
 
-function metaDescription(data: Data): string {
+function metaDescription(data: TemplateProps): string {
 	// 1. Check for meta field on the entity
-	let { c_meta: entityMeta } = data.document.streamOutput;
+	const { c_meta: entityMeta } = data.document;
 	if (entityMeta && entityMeta.description) return entityMeta.description;
 
 	// 2. Check for meta field on the site entity
 	//    resolve any field embeddings
-	let { c_meta: siteMeta } = data.document.streamOutput;
+	const { c_meta: siteMeta } = data.document;
 	if (siteMeta && siteMeta.description) return hydrateEmbeddedFields(siteMeta.description, data);
 
 	// 3. Check for breadcrumbs
-	let { dm_directoryParents } = data.document.streamOutput;
+	const { dm_directoryParents } = data.document;
 	if (dm_directoryParents) {
 		return `${dm_directoryParents.map((crumb: {name: string}) => crumb.name).join(', ')}.`
 	}
@@ -166,8 +166,8 @@ function metaDescription(data: Data): string {
 	return ""
 }
 
-function hydrateEmbeddedFields(template: string, data: Data) {
-	return template.replace(/\[\[([a-zA-Z0-9_\-\.]*)\]\]/g, (_, fieldName) => getFieldAsString(data.document.streamOutput, fieldName.split(".")))
+function hydrateEmbeddedFields(template: string, data: TemplateProps) {
+	return template.replace(/\[\[([a-zA-Z0-9_\-\.]*)\]\]/g, (_, fieldName) => getFieldAsString(data.document, fieldName.split(".")))
 }
 
 function getFieldAsString(data: any, path: string[]): string {
