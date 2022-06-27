@@ -1,0 +1,34 @@
+{
+  "$id": "c_meta",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "description": "Contains meta title / description information for entity pages.",
+  "displayName": "Meta",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "title",
+          "displayName": "Title",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "displayName": "Description",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "MULTILINE"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
