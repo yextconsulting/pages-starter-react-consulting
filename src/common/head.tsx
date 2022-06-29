@@ -1,4 +1,5 @@
 import { TemplateProps, HeadConfig, Tag } from "@yext/yext-sites-scripts";
+import { SchemaWrapper } from "./jsonld";
 
 const dnsPrefetchTags: Tag[] = [
 	{type: "meta", attributes: {rel: "dns-prefetch", href: "//www.yext-pixel.com"}},
@@ -131,6 +132,7 @@ export function defaultHeadConfig(data: TemplateProps, additionalTags?: Tag[]): 
 			...addressTags,
 			...(additionalTags || [])
     ],
+		other: SchemaWrapper(data),
   };
 }
 
