@@ -24,7 +24,7 @@ import { defaultHeadConfig } from "../common/head";
  */
 export const config: TemplateConfig = {
 	stream: {
-		$id: "my-stream-id-2",
+		$id: "directory-region",
 		// Specifies the exact data that each generated document will contain. This data is passed in
 		// directly as props to the default exported function.
 		fields: [
@@ -37,7 +37,7 @@ export const config: TemplateConfig = {
 		],
 		// Defines the scope of entities that qualify for this stream.
 		filter: {
-			entityTypes: ["ce_city"],
+			entityTypes: ["ce_region"],
 			// TODO: use the auto-generated saved filter instead of entity type
 			// 			 streams doesn't currently support namespaced ("dm_") filters
 			//  savedFilterIds: ["dm_locationDirectory_address_region"],
