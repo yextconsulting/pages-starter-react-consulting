@@ -37,10 +37,7 @@ export const config: TemplateConfig = {
 		],
 		// Defines the scope of entities that qualify for this stream.
 		filter: {
-			entityTypes: ["ce_region"],
-			// TODO: use the auto-generated saved filter instead of entity type
-			// 			 streams doesn't currently support namespaced ("dm_") filters
-			//  savedFilterIds: ["dm_locationDirectory_address_region"],
+			 savedFilterIds: ["dm_defaultDirectory_address_region"],
 		},
 		// The entity language profiles that documents will be generated for.
 		localization: {
