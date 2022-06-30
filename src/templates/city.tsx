@@ -8,14 +8,13 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import React from "react";
+import * as React from "react";
 import {
-  TemplateProps,
-  Default,
-  GetPath,
-  TemplateConfig,
-  GetHeadConfig,
-  HeadConfig,
+	Data,
+	Default,
+	GetPath,
+	TemplateConfig,
+	GetHeadConfig,
 } from "@yext/yext-sites-scripts";
 import "../index.css";
 import { defaultHeadConfig } from "../common/head";
@@ -24,36 +23,28 @@ import { defaultHeadConfig } from "../common/head";
  * Required when Knowledge Graph data is used for a template.
  */
 export const config: TemplateConfig = {
-  stream: {
-    $id: "locations",
-    // Specifies the exact data that each generated document will contain. This data is passed in
-    // directly as props to the default exported function.
-    fields: [
-      "id",
-      "uid",
-      "logo",
-      "meta",
-      "name",
-      "address",
-      "mainPhone",
-      "description",
-      "hours",
-      "slug",
-      "geocodedCoordinate",
-      "services",
-      "dm_directoryParents.name",
-      "dm_directoryParents.slug",
-    ],
-    // Defines the scope of entities that qualify for this stream.
-    filter: {
-      entityTypes: ["location"],
-    },
-    // The entity language profiles that documents will be generated for.
-    localization: {
-      locales: ["en"],
-      primary: false,
-    },
-  },
+	stream: {
+		$id: "directory-city",
+		// Specifies the exact data that each generated document will contain. This data is passed in
+		// directly as props to the default exported function.
+		fields: [
+			"id",
+			"uid",
+			"meta",
+			"name",
+			"slug",
+			"c_meta",
+		],
+		// Defines the scope of entities that qualify for this stream.
+		filter: {
+			 savedFilterIds: ["dm_defaultDirectory_address_city"],
+		},
+		// The entity language profiles that documents will be generated for.
+		localization: {
+			locales: ["en"],
+			primary: false,
+		},
+	},
 };
 
 /**
@@ -62,8 +53,8 @@ export const config: TemplateConfig = {
  * NOTE: This currently has no impact on the local dev path. Local dev urls currently
  * take on the form: featureName/entityId
  */
-export const getPath: GetPath<TemplateProps> = (data) => {
-  return data.document.slug;
+export const getPath: GetPath<Data> = (data) => {
+	return data.document.streamOutput.slug;
 };
 
 /**
@@ -72,8 +63,8 @@ export const getPath: GetPath<TemplateProps> = (data) => {
  * will be used to generate the inner contents of the HTML document's <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
-export const getHeadConfig: GetHeadConfig<TemplateProps> = (data: TemplateProps): HeadConfig => {
-  return defaultHeadConfig(data);
+export const getHeadConfig: GetHeadConfig<Data> = (data) => {
+	return defaultHeadConfig(data);
 };
 
 /**
@@ -85,15 +76,15 @@ export const getHeadConfig: GetHeadConfig<TemplateProps> = (data: TemplateProps)
  * components any way you'd like as long as it lives in the src folder (though you should not put
  * them in the src/templates folder as this is specific for true template files).
  */
-const Index: Default<TemplateProps> = (data) => {
-  const { document } = data;
-  const {
-    name
-  } = document;
+const City: Default<Data> = (data) => {
+	const { streamOutput } = data.document;
+	const {
+		name
+	} = streamOutput;
 
-  return (
-    <div>Hello {name}!</div>
-  );
+	return (
+		<div>Hello {name}!</div>
+	);
 };
 
-export default Index;
+export default City;

@@ -1,0 +1,7 @@
+{
+  "$id": "ce_region",
+  "$schema": "https://schema.yext.com/config/km/entity-type/v2",
+  "description": "Directory Region Entity",
+  "displayName": "Region",
+  "pluralDisplayName": "Regions"
+}
