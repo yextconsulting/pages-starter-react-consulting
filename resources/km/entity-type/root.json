@@ -1,0 +1,7 @@
+{
+  "$id": "ce_root",
+  "$schema": "https://schema.yext.com/config/km/entity-type/v2",
+  "description": "Directory Root Entity",
+  "displayName": "Root",
+  "pluralDisplayName": ""
+}
