@@ -35,6 +35,9 @@ export const config: TemplateConfig = {
 			"name",
 			"slug",
 			"c_meta",
+			"dm_directoryChildren.slug",
+			"dm_directoryChildren.name",
+			"dm_directoryChildren.dm_directoryChildren"
 		],
 		// Defines the scope of entities that qualify for this stream.
 		filter: {
@@ -81,7 +84,13 @@ const Region: Template<TemplateRenderProps> = (data) => {
 	const { name } = data.document;
 
 	return (
-		<div>Hello {name}!</div>
+		<div>
+			<AceList
+				name={name}
+				showNumLocs={true}
+				count={dm_directoryChildren.length}
+				directoryChildren={dm_directoryChildren} />
+ 		</div>
 	);
 };
 
