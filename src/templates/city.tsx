@@ -35,6 +35,10 @@ export const config: TemplateConfig = {
 			"name",
 			"slug",
 			"c_meta",
+			"dm_directoryChildren.slug",
+			"dm_directoryChildren.name",
+			"dm_directoryChildren.address",
+			"dm_directoryChildren.hours",
 		],
 		// Defines the scope of entities that qualify for this stream.
 		filter: {
@@ -78,10 +82,15 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data) => {
  * them in the src/templates folder as this is specific for true template files).
  */
 const City: Template<TemplateRenderProps> = (data) => {
-	const { name } = data.document;
+	const { name, dm_directoryChildren } = data.document;
 
 	return (
-		<div>Hello {name}!</div>
+		<div>
+			<AceGrid
+				name={name}
+				count={dm_directoryChildren.length}
+				directoryChildren={dm_directoryChildren} />
+ 		</div>
 	);
 };
 
