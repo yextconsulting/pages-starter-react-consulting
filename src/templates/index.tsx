@@ -32,6 +32,7 @@ import Footer from "src/components/Footer";
 import { About } from "src/components/About/About";
 import Header from "src/components/Header";
 import Banner from "src/components/Banner/Banner";
+import { Main } from 'src/layouts/main';
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -123,46 +124,48 @@ const Index: Template<TemplateRenderProps> = (data) => {
   } = document;
 
   return (
-    <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      <Header 
-        logo={_site?.c_header?.logo}
-        links={_site?.c_header?.links || []}
-      />
-      <Banner text='e.g. "This location is temporarily closed due to inclement weather."' />
-      {/* TODO(aganesh) : use Reviews component when available */}
-      <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
-      <Core profile={document} address={address}/>
-      {c_promo && c_promo.title && <Promo 
-        title={c_promo.title}
-        description={c_promo.description}
-        image={c_promo?.image}
-        cta={c_promo?.cta}
-        appStoreLink={c_promo.appStoreUrl}
-        googlePlayLink={c_promo.googlePlayUrl}
-      />}
-      <FeaturedProduct title={c_featuredProducts?.title || 'Featured Products'} products={c_featuredProducts?.products || []}/>
-      <About 
-        title="About Business Geomodifier"
-        description={description}
-        image={c_hero?.background}
-        cta={{
-          link: "https://www.yext.com",
-          label: "yext.com",
-        }}
-      />
-      {c_team && (
-        <Team team={c_team} initialSize={3}/>
-      )}
-      <Footer
-        copyrightMessage={_site.c_copyrightMessage || ""}
-        facebook={_site.c_facebook}
-        instagram={_site.c_instagram}
-        youtube={_site.c_youtube}
-        twitter={_site.c_twitter}
-        linkedIn={_site.c_linkedIn}
-        footerLinks={_site.c_footerLinks || []}
-      />
-    </CustomFieldDebuggerReactProvider>
+    <Main>
+      <CustomFieldDebuggerReactProvider component={Index} {...data}>
+        <Header 
+          logo={_site?.c_header?.logo}
+          links={_site?.c_header?.links || []}
+        />
+        <Banner text='e.g. "This location is temporarily closed due to inclement weather."' />
+        {/* TODO(aganesh) : use Reviews component when available */}
+        <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
+        <Core profile={document} address={address}/>
+        {c_promo && c_promo.title && <Promo 
+          title={c_promo.title}
+          description={c_promo.description}
+          image={c_promo?.image}
+          cta={c_promo?.cta}
+          appStoreLink={c_promo.appStoreUrl}
+          googlePlayLink={c_promo.googlePlayUrl}
+        />}
+        <FeaturedProduct title={c_featuredProducts?.title || 'Featured Products'} products={c_featuredProducts?.products || []}/>
+        <About 
+          title="About Business Geomodifier"
+          description={description}
+          image={c_hero?.background}
+          cta={{
+            link: "https://www.yext.com",
+            label: "yext.com",
+          }}
+        />
+        {c_team && (
+          <Team team={c_team} initialSize={3}/>
+        )}
+        <Footer
+          copyrightMessage={_site.c_copyrightMessage || ""}
+          facebook={_site.c_facebook}
+          instagram={_site.c_instagram}
+          youtube={_site.c_youtube}
+          twitter={_site.c_twitter}
+          linkedIn={_site.c_linkedIn}
+          footerLinks={_site.c_footerLinks || []}
+        />
+      </CustomFieldDebuggerReactProvider>
+    </Main>
   );
 };
 
