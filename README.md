@@ -61,6 +61,9 @@ root
 │   │
 │   └───components
 │   │
+│   └───layouts
+│       │   main.tsx
+│   │
 │   └───templates
 │       │   index.tsx
 │       │   static.tsx
@@ -85,6 +88,12 @@ NOTE: A `features.json` file will automatically be generated during CI build for
 #### components
 
 This is where all of your custom components _may_ live. This folder is not required and you can set up your own custom folder structure for your own components in any way you'd like, as long as it lives in the `src` directory.
+
+#### layouts
+
+This where top level components are declared to be reused across multiple templates. A top level
+component can be a header, footer, react context, or anything else you'd like to preserve across
+multiple templates.
 
 #### templates
 
