@@ -68,7 +68,6 @@ const Static: Template<PokemonData> = (data) => {
   return (
     <Main>
       <div>Hello {name}!</div>
-      <div>Hello from {name}</div>
       <button onClick={() => setNum(num + 1)}>Click me</button>
       Num: {num}
     </Main>

@@ -91,9 +91,7 @@ This is where all of your custom components _may_ live. This folder is not requi
 
 #### layouts
 
-This where top level components are declared to be reused across multiple templates. A top level
-component can be a header, footer, react context, or anything else you'd like to preserve across
-multiple templates.
+This is where wrapper components _may_ live. Like `/components` this folder is not required, and only serves organizational benefits. Layouts help encapsulate top level components across templates. A top level component can be a header, footer, react context, or anything else you'd like to preserve across multiple templates.
 
 #### templates
 
