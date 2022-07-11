@@ -18,6 +18,7 @@ import {
   HeadConfig,
 } from "@yext/yext-sites-scripts";
 import "../index.css";
+import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "../common/head";
 
 /**
@@ -92,7 +93,9 @@ const Index: Default<TemplateProps> = (data) => {
   } = document;
 
   return (
-    <div>Hello {name}!</div>
+    <CustomFieldDebuggerReactProvider component={Index} {...data}>
+      <div>Hello {name}!</div>
+    </CustomFieldDebuggerReactProvider>
   );
 };
 
