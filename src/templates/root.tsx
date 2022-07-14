@@ -37,7 +37,8 @@ export const config: TemplateConfig = {
 			"c_meta",
 			"dm_directoryChildren.slug",
 			"dm_directoryChildren.name",
-			"dm_directoryChildren.dm_directoryChildren"
+			"dm_directoryChildren.dm_directoryChildren",
+			"dm_directoryChildren.dm_directoryChildrenCount",
 		],
 		// Defines the scope of entities that qualify for this stream.
 		filter: {
@@ -85,11 +86,12 @@ const Root: Template<TemplateRenderProps> = (data) => {
 
 	return (
 		<div>
-			<AceList
+			<ChildList
 				name={name}
 				showNumLocs={true}
-				count={dm_directoryChildren.length}
-				directoryChildren={dm_directoryChildren} />
+				count={dm_directoryChildrenCount}
+				directoryChildren={dm_directoryChildren}
+			/>
  		</div>
 	);
 };
