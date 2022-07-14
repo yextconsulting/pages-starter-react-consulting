@@ -9,6 +9,7 @@
  */
 
 import * as React from "react";
+import DirectoryCard from "../components/cards/DirectoryCard"
 import {
 	TemplateRenderProps,
 	Template,
@@ -35,10 +36,11 @@ export const config: TemplateConfig = {
 			"name",
 			"slug",
 			"c_meta",
+			"dm_directoryParents",
 			"dm_directoryChildren.slug",
 			"dm_directoryChildren.name",
 			"dm_directoryChildren.address",
-			"dm_directoryChildren.hours",
+			"dm_directoryChildren.hours"
 		],
 		// Defines the scope of entities that qualify for this stream.
 		filter: {
@@ -85,12 +87,12 @@ const City: Template<TemplateRenderProps> = (data) => {
 	const { name, dm_directoryChildren } = data.document;
 
 	return (
-		<div>
-			<AceGrid
-				name={name}
-				count={dm_directoryChildren.length}
-				directoryChildren={dm_directoryChildren} />
- 		</div>
+		<TeaserGrid
+			name={name}
+			CardComponent={DirectoryCard}
+			count={dm_directoryChildren.length}
+			directoryChildren={dm_directoryChildren}
+		/>
 	);
 };
 

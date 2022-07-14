@@ -46,6 +46,7 @@ export const config: TemplateConfig = {
       "services",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
+      "dm_directoryChildrenCount"
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -65,8 +66,8 @@ export const config: TemplateConfig = {
  * NOTE: This currently has no impact on the local dev path. Local dev urls currently
  * take on the form: featureName/entityId
  */
-export const getPath: GetPath<TemplateProps> = (data) => {
-  return data.document.slug;
+export const getPath: GetPath<Data> = (data) => {
+  return data.document.streamOutput.slug;
 };
 
 /**

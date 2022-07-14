@@ -1,7 +1,9 @@
 import * as React from "react";
 import { Link } from "@yext/sites-react-components";
 import DirectoryCard from "../cards/DirectoryCard"
+import { DirectoryCardContent, CardComponent } from "../../models/cardComponent";
 import "../../styles/Directory.css";
+import { Address } from "@yext/types"
 
 interface DirectoryListProps {
   name: string;
@@ -13,28 +15,21 @@ interface DirectoryListProps {
 interface DirectoryGridProps {
   name: string;
   count: number;
+  CardComponent: CardComponent;
   directoryChildren: { 
     slug: string; 
     name: string;
     dm_directoryChildren: number[];
-    address: {
-      city: string;
-      countryCode: string;
-      line1: string;
-      line2: string;
-      localizedCountryName: string;
-      localizedRegionName: string;
-      postalCode: string;
-      region: string;
-    }; 
+    address: Address;
   }[];
 }
 
-export function AceList(props: DirectoryListProps) {
+export function ChildList(props: DirectoryListProps) {
   const { name, count, showNumLocs, directoryChildren } = props;
   return (
     <div className="container my-8">
       <h1 className="mb-6">
+        {/* TODO (cblair): Pull from profile field when it exists */}
         {count} locations in {name}
       </h1>
       <ul className="flex flex-wrap">
@@ -43,9 +38,9 @@ export function AceList(props: DirectoryListProps) {
             <Link
               className="Directory-listLink Link m-6"
               // TODO (cblair): baseUrl isn't available yet so links don't work
-              link={child.slug ? child.slug : ''}
-              linkType={"URL"}
-              data-count={showNumLocs ? child.dm_directoryChildren.length : ''}
+              link={child.slug ? '../' + child.slug : ''}
+              linkType="URL"
+              data-count={showNumLocs ? child.dm_directoryChildrenCount : ''}
             >
               {child.name}
             </Link>
@@ -56,26 +51,31 @@ export function AceList(props: DirectoryListProps) {
   )
 }
 
-export function AceGrid(props: DirectoryGridProps) {
-  const { name, count, directoryChildren } = props;
+export function TeaserGrid(props: DirectoryGridProps) {
+  const { name, count, directoryChildren, CardComponent = DirectoryCard } = props;
   return (
     <div>
       <h1 className="mb-6">
+        {/* TODO (cblair): Pull from profile field when it exists */}
         {count} locations in {name}
       </h1>
       <ul className="flex flex-wrap">
         {directoryChildren.map((child: any, idx: number) => (
-          <li className="Directory-listItem" key={idx}>
-            {/* TODO (cblair): Use render prop to allow user to pass in specific teaser cards */}
-            <DirectoryCard
-              // TODO (cblair): baseUrl isn't available yet so links don't work
-              slug={child.slug ? child.slug : ''}
-              address={child.address}
-              name={child.name}
-            />
-          </li>
+          renderCard(CardComponent, child, idx)
         ))}
       </ul>
     </div>
+  )
+}
+
+function renderCard(
+  CardComponent: CardComponent,
+  childContent: DirectoryCardContent,
+  index: number
+): JSX.Element {
+  return (
+    <li className="Directory-listItem" key={index}>
+      <CardComponent content={childContent}/>
+    </li>
   )
 }

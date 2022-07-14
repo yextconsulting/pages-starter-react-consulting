@@ -1,34 +1,20 @@
 
 import React from "react";
 import { Link } from "@yext/sites-react-components";
+import { CardProps } from "../../models/cardComponent";
 
-interface DirectoryCardProps {
-  address: {
-	  city: string;
-	  countryCode: string;
-	  line1: string;
-	  line2: string;
-	  localizedCountryName: string;
-	  localizedRegionName: string;
-	  postalCode: string;
-	  region: string;
-	};
-  name: string;
-  slug: string;
-}
-
-export default function DirectoryCard(props: DirectoryCardProps) {
-  const { name, slug, address } = props;
+export default function DirectoryCard(props: CardProps): JSX.Element {
+  const { content } = props;
 
   return (
     <div className="Directorycard u-dropShadowActive bg-white px-6 py-8 border">
       <h3 className="mb-4">
-        {slug ? (
-          <Link className="Link" link={slug} linkType={"URL"}>
-            {name}
+        {content.slug ? (
+          <Link className="Link" link={content.slug} linkType={"URL"}>
+            {content.name}
           </Link>
         ) : (
-          { name }
+          content.name
         )}
       </h3>
 
@@ -40,8 +26,8 @@ export default function DirectoryCard(props: DirectoryCardProps) {
       {/* TODO(bhaines): use address component when it exists */}
       <div className="mb-4">
         <div>
-          {address.line1} <span>{address.city}</span>,{" "}
-          <span>{address.region}</span> {address.postalCode}
+          {content.address.line1} <span>{content.address.city}</span>,{" "}
+          <span>{content.address.region}</span> {content.address.postalCode}
         </div>
       </div>
     </div>
