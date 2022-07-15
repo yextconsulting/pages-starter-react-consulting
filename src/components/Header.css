@@ -10,16 +10,13 @@
     }
     
     &-logo {
-        width: 140px;
-        margin-right: 12px;
+        margin-right: theme("spacing.1");
     }
 
     &-link {
-        @apply text-sky-600 hover:text-sky-500;
-        font-size: 16px;
-        line-height: 24px;
-        font-weight: 700;
-        margin-left: 16px;
-        margin-right: 16px;
+        font-size: theme("fontSize.base");
+        font-weight: theme("fontWeight.bold");
+        margin-left: theme("spacing.6");
+        margin-right: theme("spacing.6");
     }
 }

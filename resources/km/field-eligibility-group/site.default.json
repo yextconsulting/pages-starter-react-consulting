@@ -5,8 +5,8 @@
   "entityType": "ce_site",
   "fields": [
     "c_meta",
-    "header",
-    "logo"
+    "c_header",
+    "c_logo"
   ],
   "required": []
 }
