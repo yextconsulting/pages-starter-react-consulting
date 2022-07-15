@@ -1,0 +1,25 @@
+.Header {
+    padding: theme("spacing.4");
+
+    &-logoContainer {
+        width: 30%;
+    }
+
+    &-content {
+        width: 70%;
+    }
+    
+    &-logo {
+        width: 140px;
+        margin-right: 12px;
+    }
+
+    &-link {
+        @apply text-sky-600 hover:text-sky-500;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 700;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+}
