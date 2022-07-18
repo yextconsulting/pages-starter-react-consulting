@@ -9,6 +9,7 @@
  */
 
 import React from "react";
+import Hero from "../components/Hero";
 import {
   TemplateProps,
   Default,
@@ -42,6 +43,7 @@ export const config: TemplateConfig = {
       "slug",
       "geocodedCoordinate",
       "services",
+      "c_hero",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
     ],
@@ -89,12 +91,15 @@ export const getHeadConfig: GetHeadConfig<TemplateProps> = (data: TemplateProps)
 const Index: Default<TemplateProps> = (data) => {
   const { document } = data;
   const {
-    name
+    name,
+    c_hero
   } = document;
 
+  console.log(document);
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
       <div>Hello {name}!</div>
+      <Hero />
     </CustomFieldDebuggerReactProvider>
   );
 };
