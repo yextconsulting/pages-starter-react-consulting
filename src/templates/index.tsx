@@ -21,6 +21,7 @@ import {
 import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
+import Footer from "../components/Footer"; 
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -94,9 +95,12 @@ const Index: Template<TemplateRenderProps> = (data) => {
   } = document;
 
   return (
-    <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      <div>Hello {name}!</div>
-    </CustomFieldDebuggerReactProvider>
+    <>
+      <CustomFieldDebuggerReactProvider component={Index} {...data}>
+        <div>Hello {name}!</div>
+      </CustomFieldDebuggerReactProvider>
+      <Footer />
+    </>
   );
 };
 
