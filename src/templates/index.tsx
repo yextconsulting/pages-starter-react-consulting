@@ -17,9 +17,9 @@ import {
   GetHeadConfig,
   HeadConfig,
 } from "@yext/yext-sites-scripts";
-import "../index.css";
+import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
-import { defaultHeadConfig } from "../common/head";
+import { defaultHeadConfig } from "src/common/head";
 
 /**
  * Required when Knowledge Graph data is used for a template.
