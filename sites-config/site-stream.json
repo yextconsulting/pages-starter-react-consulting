@@ -1,0 +1,21 @@
+{
+  "filter": {
+    "entityIds": ["site-entity"]
+  },
+  "fields": [
+    "id",
+    "meta",
+    "name",
+    "c_facebook",
+    "c_youtube",
+    "c_twitter",
+    "c_linkedIn",
+    "c_instagram",
+    "c_copyrightMessage",
+    "c_footerLinks"
+  ],
+  "localization": {
+    "locales": ["en"],
+    "primary": false
+  }
+}
