@@ -706,25 +706,12 @@
   dependencies:
     vue-demi "*"
 
-"@yext/components-tsx-geo@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@yext/components-tsx-geo/-/components-tsx-geo-1.0.1.tgz#011ad2e217b09d40becf04a10afd73d9d10ba2fc"
-  integrity sha512-OkN7GWGLyk+Ybgl/bxQLa6NXjIqt7i+OKWHCTtaYtR81lc2jVMWbSX6ZjfiLfZM9CvPohT4y/kuDgfCJhUNgEw==
-
-"@yext/components-tsx-maps@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@yext/components-tsx-maps/-/components-tsx-maps-1.0.5.tgz#8389c52a3fbcc183897703c9ac16cfbeebe1c81e"
-  integrity sha512-DWbptuj+vVwqSjpF/bCyFlKm/n2mlVrJdjaYBivOI2aCyajz2Tnx8S2AYTDFrKG2eEdKW/bl4cfJQ9x+Uq/QIw==
+"@yext/custom-field-debugger@2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@yext/custom-field-debugger/-/custom-field-debugger-2.0.5.tgz#2ffc16064db0c2ee35b643d37375e496f2289865"
+  integrity sha512-/3i5g5AHep59ql8Rl/pLS4DavFbeD5//vFBIGq9veeHgIr5uMGbIjGUvHQwlwCB0j4coTC4Hl/uwjs19Yl2NOQ==
   dependencies:
-    "@yext/components-tsx-geo" "^1.0.1"
-    typescript "^4.7.3"
-
-"@yext/custom-field-debugger@2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@yext/custom-field-debugger/-/custom-field-debugger-2.0.4.tgz#ffc7e9860dace3340c54560b58d5a558b18851b4"
-  integrity sha512-iNRySlQgPMV38G/5yej8Gu4FqOhx/Usvl/AOmv73c1ZJEWvlAw2qiry9F3DtJRKMCocUET8dsaJwXWB20FVDZw==
-  dependencies:
-    "@yext/yext-sites-scripts" "0.0.22"
+    "@yext/yext-sites-scripts" "0.0.23"
     classnames "^2.3.1"
     esbuild "^0.14.45"
     glob "^8.0.3"
@@ -732,12 +719,11 @@
     react-dom "^17.0.2"
     typescript "^4.7.3"
 
-"@yext/sites-react-components@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@yext/sites-react-components/-/sites-react-components-0.1.4.tgz#29f04fd56b25904f5225ba5b681fe2bdcd43cc8f"
-  integrity sha512-ArkEtqJmCOFCzMmXW9TtuQhzi5JhJv1e6p70xpvWqd4rf/dg1UvjenaqKLu7ae7WBu05N7MLhcujOed5vlSY4Q==
+"@yext/sites-react-components@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@yext/sites-react-components/-/sites-react-components-0.1.3.tgz#6ec8a9383497f653394147ae3d574feca5a8dda3"
+  integrity sha512-iSUc0LVxrUOPiVjxcB2+IyZJLsXKP+9xEfJgHxstBaUYyMY16/Cimz38vgQuwqRzR5Gwjed4yVda4YDKcJMMQw==
   dependencies:
-    "@yext/components-tsx-maps" "^1.0.5"
     awesome-phonenumber "^2.70.0"
     classnames "^2.3.1"
     rollup-plugin-import-css "^3.0.3"
@@ -746,20 +732,6 @@
   version "0.1.6-alpha"
   resolved "https://registry.yarnpkg.com/@yext/types/-/types-0.1.6-alpha.tgz#e46d394c08e522829add322bdef269cfde9c4269"
   integrity sha512-L75i/MHAZxb4JKiYTrpIVdqCTK/ZSnO5INfN9Zv2VM5VjkIY7/29XfyMf5aAaegNuw3xO/OhHSm2yco5a21u2A==
-
-"@yext/vite-plugin-yext-sites-ssg@0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@yext/vite-plugin-yext-sites-ssg/-/vite-plugin-yext-sites-ssg-0.0.11.tgz#d01f1e93bcfd9af5bc3722ec3e06b64e1da5f9ff"
-  integrity sha512-OVOi1+Y8dmFJufzjThjlgOPdLisZ2DWTjwIuKBpyYods1G8QV7dISzHttx4Bs/1lXZZIkmpzZfDotU41lp30sQ==
-  dependencies:
-    chalk "^5.0.0"
-    fs-extra "^10.0.1"
-    glob "^7.2.0"
-    handlebars "^4.7.7"
-    lodash "^4.17.21"
-    ora "^6.1.0"
-    pretty-ms "^7.0.1"
-    rollup "^2.72.1"
 
 "@yext/vite-plugin-yext-sites-ssg@0.0.12":
   version "0.0.12"
@@ -774,24 +746,6 @@
     ora "^6.1.0"
     pretty-ms "^7.0.1"
     rollup "^2.72.1"
-
-"@yext/yext-sites-scripts@0.0.22":
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/@yext/yext-sites-scripts/-/yext-sites-scripts-0.0.22.tgz#b82e1a0e51703029526e3aab1dcd78721750595c"
-  integrity sha512-oc/XKGZfe0rbvjVodmmUs+amVZUymFjiIT/JnJ32K0TrjscXGLroWVS37rbJBUULRnO7KFrlTajuxTMMuH4thg==
-  dependencies:
-    "@yext/vite-plugin-yext-sites-ssg" "0.0.11"
-    ansi-to-html "^0.7.2"
-    cli-spinners "^2.6.1"
-    commander "^9.1.0"
-    cross-fetch "^3.1.5"
-    escape-html "^1.0.3"
-    esm-module-paths "^1.1.1"
-    express "^4.17.3"
-    ink "^3.2.0"
-    open "^8.4.0"
-    shelljs "^0.8.5"
-    typescript "^4.6.2"
 
 "@yext/yext-sites-scripts@0.0.23":
   version "0.0.23"
