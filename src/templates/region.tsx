@@ -16,8 +16,8 @@ import {
 	TemplateConfig,
 	GetHeadConfig,
 } from "@yext/yext-sites-scripts";
-import "../index.css";
-import { defaultHeadConfig } from "../common/head";
+import "src/index.css";
+import { defaultHeadConfig } from "src/common/head";
 
 /**
  * Required when Knowledge Graph data is used for a template.

@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "target": "ESNext",
     "strict": true,
     "moduleResolution": "Node",
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
+    "paths": {
+      "src/*": ["./src/*"]
+    },
     "outDir": "./dist"
   },
   "include": ["src"]
