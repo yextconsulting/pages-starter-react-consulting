@@ -721,7 +721,7 @@
 
 "@yext/custom-field-debugger@2.0.5":
   version "2.0.5"
-  resolved "https://registry.npmjs.org/@yext/custom-field-debugger/-/custom-field-debugger-2.0.5.tgz"
+  resolved "https://registry.yarnpkg.com/@yext/custom-field-debugger/-/custom-field-debugger-2.0.5.tgz#2ffc16064db0c2ee35b643d37375e496f2289865"
   integrity sha512-/3i5g5AHep59ql8Rl/pLS4DavFbeD5//vFBIGq9veeHgIr5uMGbIjGUvHQwlwCB0j4coTC4Hl/uwjs19Yl2NOQ==
   dependencies:
     "@yext/yext-sites-scripts" "0.0.23"
@@ -734,7 +734,7 @@
 
 "@yext/sites-react-components@0.1.3":
   version "0.1.3"
-  resolved "https://registry.npmjs.org/@yext/sites-react-components/-/sites-react-components-0.1.3.tgz"
+  resolved "https://registry.yarnpkg.com/@yext/sites-react-components/-/sites-react-components-0.1.3.tgz#6ec8a9383497f653394147ae3d574feca5a8dda3"
   integrity sha512-iSUc0LVxrUOPiVjxcB2+IyZJLsXKP+9xEfJgHxstBaUYyMY16/Cimz38vgQuwqRzR5Gwjed4yVda4YDKcJMMQw==
   dependencies:
     awesome-phonenumber "^2.70.0"
