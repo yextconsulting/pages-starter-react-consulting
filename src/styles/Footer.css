@@ -2,15 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-body
-{
-  overflow: scroll;
+@screen md {
+  .Footer
+  {
+    height: 92px;
+    background-color: antiquewhite;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
+
+@screen sm {
+  .Footer
+  {
+    height: 92px;
+    background-color: green;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
 }
 
 .Footer
 {
-  position: absolute;
-  bottom: 0;
+  height: 92px;
+  background-color: green;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .Footer-SocialContainer
