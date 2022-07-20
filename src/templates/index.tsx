@@ -96,10 +96,17 @@ const Index: Template<TemplateRenderProps> = (data) => {
 
   return (
     <>
+
       <CustomFieldDebuggerReactProvider component={Index} {...data}>
         <div>Hello {name}!</div>
       </CustomFieldDebuggerReactProvider>
-      <Footer />
+      <Footer
+        facebook={new URL('https://www.facebook.com')}
+        instagram={new URL('https://www.instagram.com')}
+        youtube={new URL('https://www.youtube.com')}
+        linkedIn={new URL('https://www.linkedin.com')}
+        pinterest={new URL('https://www.pinterest.com')}
+      />
     </>
   );
 };

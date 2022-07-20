@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body
+{
+  overflow: scroll;
+}
+
+.Footer
+{
+  position: absolute;
+  bottom: 0;
+}
+
+.Footer-SocialContainer
+{
+  display: flex;
+}
+
+.Footer-SocialLink
+{
+  color: blue;
+  margin-right: 24px;
+}

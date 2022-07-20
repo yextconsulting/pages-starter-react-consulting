@@ -8,6 +8,7 @@ import {
   FaPinterest,
   FaYoutube,
 } from "react-icons/fa";
+import "../styles/Footer.css";
 
 interface FooterProps {
   instagram: URL;
@@ -15,29 +16,33 @@ interface FooterProps {
   linkedIn: URL;
   pinterest: URL;
   facebook: URL;
-  links: CTA[];
 }
 
 function currentYear() {
   return new Date().getFullYear();
 }
 
- const Footer = (props: FooterProps) => {
+const Footer = (props: FooterProps) => {
    const socialLinks = [
-    {link: props.facebook, label: <FaFacebook size={28} color="white" />},
-    {link: props.pinterest, label: <FaPinterest size={28} color="white" />},
-    {link: props.youtube, label: <FaYoutube size={28} color="white" />},
-    {link: props.instagram, label: <FaInstagram size={28} color="white" />},
-    {link: props.linkedIn, label: <FaLinkedinIn size={28} color="white" />},
+    {link: props.facebook, label: <FaFacebook />},
+    {link: props.pinterest, label: <FaPinterest />},
+    {link: props.youtube, label: <FaYoutube />},
+    {link: props.instagram, label: <FaInstagram />},
+    {link: props.linkedIn, label: <FaLinkedinIn />},
   ].filter(x => x.link) 
 
   return (
     <footer className="Footer">
-      {socialLinks.map((link) => (
-        <Link className="Footer-Link" key={link.link} link={link}>
-          {link.label}
-        </Link>
-      ))}
+      <div className="Footer-SocialContainer">
+        {socialLinks.map((link) => (
+          <Link className="Footer-SocialLink" key={link.link} link={link}>
+            {link.label}
+          </Link>
+        ))}
+      </div>
+      <div className="Footer-Copyright">
+      © 2021 Cobalt Design System. All Rights Reserved.
+      </div>
     </footer>
   );
 };
