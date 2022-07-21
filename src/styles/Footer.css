@@ -16,10 +16,36 @@ body
 .Footer-SocialContainer
 {
   display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  height: fit-content;
+
+  @screen md
+  {
+    flex-direction: row;
+    width: 25%;
+    justify-content: flex-end;
+    margin-bottom: auto;
+  }
 }
 
-.Footer-SocialLink
+.Footer-SocialLink:not(:last-child)
 {
-  color: blue;
   margin-right: 24px;
+}
+
+.Footer-SocialLink svg 
+{
+  width: 32px;
+  height: 32px;
+}
+
+.Footer-Copyright
+{
+  font-family: 'Inter', 'Arial';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
 }

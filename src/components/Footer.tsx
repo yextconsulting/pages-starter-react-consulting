@@ -15,7 +15,13 @@ interface FooterProps {
   youtube: URL;
   linkedIn: URL;
   pinterest: URL;
-  facebook: URL;
+  facebook: URL; */
+  instagram: string;
+  youtube: string;
+  linkedIn: string;
+  pinterest: string;
+  facebook: string;
+  links: string[];
 }
 
 function currentYear() {
@@ -23,7 +29,7 @@ function currentYear() {
 }
 
 const Footer = (props: FooterProps) => {
-   const socialLinks = [
+  const socialLinks = [
     {link: props.facebook, label: <FaFacebook />},
     {link: props.pinterest, label: <FaPinterest />},
     {link: props.youtube, label: <FaYoutube />},
@@ -42,6 +48,13 @@ const Footer = (props: FooterProps) => {
 
   return (
     <footer className="Footer">
+            <div className="Footer-LinksContainer">
+        {footerLinks.map((link) => (
+          <Link className="Footer-Link" key={link.link} link={link}>
+            {link.label}
+          </Link>
+        ))}
+      </div>
       <div className="Footer-SocialContainer">
         {socialLinks.map((link) => (
           <Link className="Footer-SocialLink" key={link.link} link={link}>
