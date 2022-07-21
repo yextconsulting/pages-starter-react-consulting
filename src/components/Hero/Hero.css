@@ -1,0 +1,80 @@
+.Hero
+{
+    &-container
+    {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 32px;
+        padding-top: 64px;
+        padding-bottom: 64px;
+
+        @screen sm
+        {
+            grid-template-rows: 1fr 1fr;
+        }
+    }
+
+
+    &-content
+    {
+        padding-left: 32px;
+        padding-top: 32px;
+    }
+
+    &-title
+    {
+        font-weight: theme(font_weights.bold);
+        font-size: 24px;
+        line-height: 30px;
+        padding-bottom: 4px;
+    }
+
+    &-geo
+    {
+        font-weight: theme(font_weights.bold);
+        font-size: 48px;
+        line-height: 64px;
+        padding-bottom: 16px;
+    }
+
+    &-hours
+    {
+        padding-bottom: 16px;
+    }
+
+    &-reviews
+    {
+        padding-bottom: 24px;
+    }
+
+    &-rating
+    {
+        font-weight: theme(font_weights.bold);
+    }
+
+    &-linkWrapper
+    {
+        display: flex;
+        gap: 16px;
+    }
+
+    &-cta
+    {
+        background-color: theme(colors.main-blue);
+        line-height: 24px;
+        font-size: 16px;
+        border-radius: 50px;
+        display: flex;
+        padding: 8px 24px;
+        justify-content: center;
+        color: theme(colors.white);
+        font-weight: theme(font_weights.bold);
+
+        &--border
+        {
+            background-color: theme(colors.white);
+            border: 2px solid theme(colors.main-blue);
+            color: theme(colors.main-blue);
+        }
+    }
+}

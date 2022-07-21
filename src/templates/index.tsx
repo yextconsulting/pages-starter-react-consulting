@@ -90,18 +90,16 @@ export const getHeadConfig: GetHeadConfig<TemplateProps> = (data: TemplateProps)
  */
 const Index: Default<TemplateProps> = (data) => {
   const { document } = data;
-  console.log(document);
   const {
     name,
     address,
     hours,
     c_hero
   } = document;
-
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
       {/* <div>Hello {name}!</div> */}
-      <Hero name={name} address={address} background={c_hero.background} cTA1={c_hero.cTA1} cTA2={c_hero.cTA2} hours={hours} numReviews={21} rating={4.5} />
+      <Hero name={name} background={c_hero.background} address={address} cTA1={c_hero.cTA1} cTA2={c_hero.cTA2} hours={hours} numReviews={21} rating={4.5} />
     </CustomFieldDebuggerReactProvider>
   );
 };
