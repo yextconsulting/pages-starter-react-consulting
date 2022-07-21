@@ -2,7 +2,7 @@
   "features": [
     {
       "name": "index",
-      "streamId": "my-stream-id",
+      "streamId": "manager-tree",
       "templateType": "JS",
       "entityPageSet": {
         "plugin": {}
@@ -18,12 +18,11 @@
   ],
   "streams": [
     {
-      "$id": "my-stream-id",
-      "source": "knowledgeGraph",
-      "destination": "pages",
+      "$id": "manager-tree",
       "fields": [
         "id",
         "uid",
+        "logo",
         "meta",
         "name",
         "address",
@@ -32,13 +31,18 @@
         "hours",
         "slug",
         "geocodedCoordinate",
-        "services"
+        "services",
+        "c_manager.name"
       ],
       "filter": {
-        "entityTypes": ["location"]
+        "savedFilterIds": [
+          "1183498593"
+        ]
       },
       "localization": {
-        "locales": ["en"],
+        "locales": [
+          "en"
+        ],
         "primary": false
       }
     }

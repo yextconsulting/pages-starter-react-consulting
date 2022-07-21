@@ -20,6 +20,8 @@ import {
 import "../index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "../common/head";
+import YextTree from "../components/YextTree";
+import Tree from "react-d3-tree";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -42,10 +44,11 @@ export const config: TemplateConfig = {
       "slug",
       "geocodedCoordinate",
       "services",
+      "c_manager.name",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
-      entityTypes: ["location"],
+      savedFilterIds: ["1183498593"],
     },
     // The entity language profiles that documents will be generated for.
     localization: {
@@ -85,15 +88,51 @@ export const getHeadConfig: GetHeadConfig<TemplateProps> = (data: TemplateProps)
  * them in the src/templates folder as this is specific for true template files).
  */
 const Index: Default<TemplateProps> = (data) => {
+  const people = 
+    {
+      name: "Person One",
+      yourUnderlings: [{
+        name: "Person Two",
+        yourUnderlings: [{
+          name: "Person Four",
+          yourUnderlings: [{
+            name: "Person Six",
+            yourUnderlings: [],
+          }]
+        }, 
+        {
+          name: "Person Five",
+          yourUnderlings: [],
+        }],
+      },
+      {
+        name: "Person Three",
+        yourUnderlings: [{
+          name: "Person Seven",
+          yourUnderlings: []
+        }, 
+        {
+          name: "Person Eight",
+          yourUnderlings: []
+        }],
+      }],
+    }
+
   const { document } = data;
   const {
-    name
+    name,
+    c_manager
   } = document;
 
   return (
-    <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      <div>Hello {name}!</div>
-    </CustomFieldDebuggerReactProvider>
+    <div>
+      <div>
+        {name},
+        {c_manager[0].name}
+      </div>
+      <YextTree data={people}/>
+    </div>
+    
   );
 };
 
