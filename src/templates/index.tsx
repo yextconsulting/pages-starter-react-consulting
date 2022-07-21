@@ -101,11 +101,17 @@ const Index: Template<TemplateRenderProps> = (data) => {
         <div>Hello {name}!</div>
       </CustomFieldDebuggerReactProvider>
       <Footer
-        facebook={new URL('https://www.facebook.com')}
+/*         facebook={new URL('https://www.facebook.com')}
         instagram={new URL('https://www.instagram.com')}
         youtube={new URL('https://www.youtube.com')}
         linkedIn={new URL('https://www.linkedin.com')}
-        pinterest={new URL('https://www.pinterest.com')}
+        pinterest={new URL('https://www.pinterest.com')} */
+        facebook='https://www.facebook.com'
+        instagram='https://www.instagram.com'
+        youtube='https://www.youtube.com'
+        linkedIn='https://www.linkedin.com'
+        pinterest='https://www.pinterest.com'
+        links={['https://www.yext.com/', 'https://www.yext.com/', 'https://www.yext.com/', 'https://www.yext.com/', 'https://www.yext.com/', 'https://www.yext.com/']}
       />
     </>
   );

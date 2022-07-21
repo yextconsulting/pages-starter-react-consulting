@@ -11,11 +11,17 @@ import {
 import "../styles/Footer.css";
 
 interface FooterProps {
-  instagram: URL;
+/*   instagram: URL;
   youtube: URL;
   linkedIn: URL;
   pinterest: URL;
-  facebook: URL;
+  facebook: URL; */
+  instagram: string;
+  youtube: string;
+  linkedIn: string;
+  pinterest: string;
+  facebook: string;
+  links: string[];
 }
 
 function currentYear() {
@@ -23,7 +29,7 @@ function currentYear() {
 }
 
 const Footer = (props: FooterProps) => {
-   const socialLinks = [
+  const socialLinks = [
     {link: props.facebook, label: <FaFacebook />},
     {link: props.pinterest, label: <FaPinterest />},
     {link: props.youtube, label: <FaYoutube />},
@@ -31,8 +37,24 @@ const Footer = (props: FooterProps) => {
     {link: props.linkedIn, label: <FaLinkedinIn />},
   ].filter(x => x.link) 
 
+  const footerLinks = [    
+    {link: props.links[0], label: 'Footer Link'},
+    {link: props.links[1], label: 'Footer Link'},
+    {link: props.links[2], label: 'Footer Link'},
+    {link: props.links[3], label: 'Footer Link'},
+    {link: props.links[4], label: 'Footer Link'},
+    {link: props.links[5], label: 'Footer Link'},
+  ].filter(x => x.link)
+
   return (
     <footer className="Footer">
+            <div className="Footer-LinksContainer">
+        {footerLinks.map((link) => (
+          <Link className="Footer-Link" key={link.link} link={link}>
+            {link.label}
+          </Link>
+        ))}
+      </div>
       <div className="Footer-SocialContainer">
         {socialLinks.map((link) => (
           <Link className="Footer-SocialLink" key={link.link} link={link}>

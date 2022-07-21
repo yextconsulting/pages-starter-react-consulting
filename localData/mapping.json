@@ -5,11 +5,11 @@
 		"directory-city__5fb526ef74efd8ffaa1f7196b19f7498.json"
 	],
 	"index": [
-		"locations__cee5e59f2d49a66fe6e0a9e53874f9ba.json",
 		"locations__0a041ce04c3004fb5ee74a2b6fe794e0.json",
 		"locations__835922d0639ce87268bab33e3c942bb5.json",
 		"locations__e5070c52a72877689437d0d324acb02f.json",
-		"locations__98c794f38e80385ef2b6497286969541.json"
+		"locations__98c794f38e80385ef2b6497286969541.json",
+		"locations__cee5e59f2d49a66fe6e0a9e53874f9ba.json"
 	],
 	"region": [
 		"directory-region__727165cd0f4817a125107aad9d4874ec.json"
