@@ -1,40 +1,59 @@
 .Hero
 {
+    display: flex;
+    justify-content: center;
+
     &-container
     {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 32px;
-        padding-top: 64px;
-        padding-bottom: 64px;
+        padding: 32px 16px;
 
-        @screen sm
+        @screen lg
         {
-            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 64px;
+            padding-bottom: 64px;
+            grid-gap: 64px;
         }
     }
 
 
     &-content
     {
-        padding-left: 32px;
-        padding-top: 32px;
+        @screen lg
+        {
+            padding-left: 150px;
+            padding-left: 32px;
+            padding-top: 32px;
+        }
     }
 
     &-title
     {
         font-weight: theme(font_weights.bold);
-        font-size: 24px;
-        line-height: 30px;
+        font-size: 20px;
+        line-height: 28px;
         padding-bottom: 4px;
+
+        @screen md
+        {
+            font-size: 24px;
+            line-height: 30px;
+        }
     }
 
     &-geo
     {
         font-weight: theme(font_weights.bold);
-        font-size: 48px;
-        line-height: 64px;
+        font-size: 28px;
+        line-height: 32px;
         padding-bottom: 16px;
+
+        @screen md
+        {
+            font-size: 48px;
+            line-height: 64px;
+        }
     }
 
     &-hours
@@ -54,8 +73,13 @@
 
     &-linkWrapper
     {
-        display: flex;
+        display: block;
         gap: 16px;
+
+        @screen lg
+        {
+            display: flex;
+        }
     }
 
     &-cta
@@ -69,6 +93,7 @@
         justify-content: center;
         color: theme(colors.white);
         font-weight: theme(font_weights.bold);
+        margin-bottom: 16px;
 
         &--border
         {
@@ -76,5 +101,38 @@
             border: 2px solid theme(colors.main-blue);
             color: theme(colors.main-blue);
         }
+
+        @screen lg
+        {
+            margin-bottom: 0;
+        }
+
+    }
+
+    &-imageWrapper
+    {
+        padding-top: 8px;
+
+        @screen lg
+        {
+            padding-top: 0;
+        }
+    }
+
+    &-image
+    {
+        @screen lg
+        {
+            width: 554px;
+        }
+    }
+    .HoursStatus-dayOfWeek
+    {
+        display: none;
+    }
+
+    .HoursStatus-current
+    {
+        font-weight: theme(font_weights.bold);
     }
 }
