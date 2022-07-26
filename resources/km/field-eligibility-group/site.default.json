@@ -4,7 +4,9 @@
   "name": "Site-default",
   "entityType": "ce_site",
   "fields": [
-    "c_meta"
+    "c_meta",
+    "c_header",
+    "c_logo"
   ],
   "required": []
 }

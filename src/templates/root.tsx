@@ -10,14 +10,14 @@
 
 import * as React from "react";
 import {
-	Data,
+	TemplateProps,
 	Default,
 	GetPath,
 	TemplateConfig,
 	GetHeadConfig,
 } from "@yext/yext-sites-scripts";
-import "../index.css";
-import { defaultHeadConfig } from "../common/head";
+import "src/index.css";
+import { defaultHeadConfig } from "src/common/head";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -53,8 +53,8 @@ export const config: TemplateConfig = {
  * NOTE: This currently has no impact on the local dev path. Local dev urls currently
  * take on the form: featureName/entityId
  */
-export const getPath: GetPath<Data> = (data) => {
-	return data.document.streamOutput.slug;
+export const getPath: GetPath<TemplateProps> = (data) => {
+	return data.document.slug;
 };
 
 /**
@@ -63,7 +63,7 @@ export const getPath: GetPath<Data> = (data) => {
  * will be used to generate the inner contents of the HTML document's <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
-export const getHeadConfig: GetHeadConfig<Data> = (data) => {
+export const getHeadConfig: GetHeadConfig<TemplateProps> = (data) => {
 	return defaultHeadConfig(data);
 };
 
@@ -76,11 +76,8 @@ export const getHeadConfig: GetHeadConfig<Data> = (data) => {
  * components any way you'd like as long as it lives in the src folder (though you should not put
  * them in the src/templates folder as this is specific for true template files).
  */
-const Root: Default<Data> = (data) => {
-	const { streamOutput } = data.document;
-	const {
-		name
-	} = streamOutput;
+const Root: Default<TemplateProps> = (data) => {
+	const { name } = data.document;
 
 	return (
 		<div>Hello {name}!</div>
