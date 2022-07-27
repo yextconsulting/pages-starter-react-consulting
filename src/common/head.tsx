@@ -1,4 +1,4 @@
-import { TemplateProps, HeadConfig, Tag } from "@yext/yext-sites-scripts";
+import { TemplateRenderProps, HeadConfig, Tag } from "@yext/pages";
 import { SchemaBuilder } from 'src/common/schema';
 
 const dnsPrefetchTags: Tag[] = [
@@ -57,7 +57,7 @@ const defaultHeadTags: Tag[] = [
 	// TODO: alternate language links - we don't have this data yet
 ]
 
-export function defaultHeadConfig(data: TemplateProps, additionalTags?: Tag[]): HeadConfig {
+export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Tag[]): HeadConfig {
 	const logoTags: Tag[] = data.document?.logo
 		? [
 			{
@@ -136,7 +136,7 @@ export function defaultHeadConfig(data: TemplateProps, additionalTags?: Tag[]): 
 	};
 }
 
-function metaTitle(data: TemplateProps): string {
+function metaTitle(data: TemplateRenderProps): string {
 	// 1. Check for meta field on the entity
 	const { c_meta: entityMeta } = data.document;
 	if (entityMeta && entityMeta.title) return entityMeta.title;
@@ -149,7 +149,7 @@ function metaTitle(data: TemplateProps): string {
 	return ""
 }
 
-function metaDescription(data: TemplateProps): string {
+function metaDescription(data: TemplateRenderProps): string {
 	// 1. Check for meta field on the entity
 	const { c_meta: entityMeta } = data.document;
 	if (entityMeta && entityMeta.description) return entityMeta.description;
@@ -168,7 +168,7 @@ function metaDescription(data: TemplateProps): string {
 	return ""
 }
 
-function hydrateEmbeddedFields(template: string, data: TemplateProps) {
+function hydrateEmbeddedFields(template: string, data: TemplateRenderProps) {
 	return template.replace(/\[\[([a-zA-Z0-9_\-\.]*)\]\]/g, (_, fieldName) => getFieldAsString(data.document, fieldName.split(".")))
 }
 

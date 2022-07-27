@@ -11,12 +11,13 @@
 import React from "react";
 import {
   TemplateProps,
-  Default,
+  TemplateRenderProps,
+  Template,
   GetPath,
   TemplateConfig,
   GetHeadConfig,
   HeadConfig,
-} from "@yext/yext-sites-scripts";
+} from "@yext/pages";
 import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
@@ -73,7 +74,7 @@ export const getPath: GetPath<TemplateProps> = (data) => {
  * will be used to generate the inner contents of the HTML document's <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
-export const getHeadConfig: GetHeadConfig<TemplateProps> = (data: TemplateProps): HeadConfig => {
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data: TemplateProps): HeadConfig => {
   return defaultHeadConfig(data);
 };
 
@@ -86,7 +87,7 @@ export const getHeadConfig: GetHeadConfig<TemplateProps> = (data: TemplateProps)
  * components any way you'd like as long as it lives in the src folder (though you should not put
  * them in the src/templates folder as this is specific for true template files).
  */
-const Index: Default<TemplateProps> = (data) => {
+const Index: Template<TemplateRenderProps> = (data) => {
   const { document } = data;
   const {
     name
