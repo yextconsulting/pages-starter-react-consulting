@@ -9,7 +9,6 @@
  */
 
 import * as React from "react";
-import DirectoryCard from "../components/cards/DirectoryCard"
 import {
 	TemplateRenderProps,
 	Template,
@@ -20,6 +19,8 @@ import {
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
+import DirectoryCard from "src/components/cards/DirectoryCard"
+import { DirectoryGrid, DirectoryGridFields } from "src/components/Directory/DirectoryGrid"
 
 /**
  * Required when Knowledge Graph data is used for a template.

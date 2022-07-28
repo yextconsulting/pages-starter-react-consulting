@@ -19,6 +19,7 @@ import {
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
+import { DirectoryList, DirectoryListFields } from "src/components/Directory/DirectoryList"
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -79,7 +80,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data) => {
  * them in the src/templates folder as this is specific for true template files).
  */
 const Region: Template<TemplateRenderProps> = (data) => {
-	const { name } = data.document;
+	const { name, dm_directoryChildren, dm_directoryChildrenCount } = data.document;
 
 	return (
 		<DirectoryList
