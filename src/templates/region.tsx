@@ -35,11 +35,7 @@ export const config: TemplateConfig = {
 			"name",
 			"slug",
 			"c_meta",
-			"dm_directoryParents",
-			"dm_directoryChildren.slug",
-			"dm_directoryChildren.name",
-			"dm_directoryChildren.dm_directoryChildren",
-			"dm_directoryChildren.dm_directoryChildrenCount",
+			...DirectoryListFields
 		],
 		// Defines the scope of entities that qualify for this stream.
 		filter: {
@@ -86,7 +82,7 @@ const Region: Template<TemplateRenderProps> = (data) => {
 	const { name } = data.document;
 
 	return (
-		<ChildList
+		<DirectoryList
 			name={name}
 			showNumLocs={true}
 			count={dm_directoryChildrenCount}

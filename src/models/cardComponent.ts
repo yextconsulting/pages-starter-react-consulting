@@ -1,14 +1,7 @@
+import { Address } from "@yext/types"
+
 export declare interface DirectoryCardContent {
-  address: {
-	  city: string;
-	  countryCode: string;
-	  line1: string;
-	  line2: string;
-	  localizedCountryName: string;
-	  localizedRegionName: string;
-	  postalCode: string;
-	  region: string;
-	};
+  address: Address,
   name: string;
   slug: string;
 }

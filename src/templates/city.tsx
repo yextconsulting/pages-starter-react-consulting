@@ -36,11 +36,7 @@ export const config: TemplateConfig = {
 			"name",
 			"slug",
 			"c_meta",
-			"dm_directoryParents",
-			"dm_directoryChildren.slug",
-			"dm_directoryChildren.name",
-			"dm_directoryChildren.address",
-			"dm_directoryChildren.hours"
+			...DirectoryGridFields,
 		],
 		// Defines the scope of entities that qualify for this stream.
 		filter: {
@@ -87,7 +83,7 @@ const City: Template<TemplateRenderProps> = (data) => {
 	const { name, dm_directoryChildren } = data.document;
 
 	return (
-		<TeaserGrid
+		<DirectoryGrid
 			name={name}
 			CardComponent={DirectoryCard}
 			count={dm_directoryChildren.length}
