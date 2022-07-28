@@ -2,9 +2,6 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      test: {
-        name: 'primary',
-      },
       colors: {
         "brand-primary": "var(--brand-primary)",
         "brand-secondary": "var(--brand-secondary)",
