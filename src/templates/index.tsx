@@ -92,7 +92,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   const { document } = data;
   const {
     name
-  } = streamOutput;
+  } = document;
 
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
