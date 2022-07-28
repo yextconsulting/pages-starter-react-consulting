@@ -10,7 +10,7 @@ export default function DirectoryCard(props: CardProps): JSX.Element {
     <div className="Directorycard u-dropShadowActive bg-white px-6 py-8 border">
       <h3 className="mb-4">
         {content.slug ? (
-          <Link className="Link" link={content.slug} linkType={"URL"}>
+          <Link className="Link" href={content.slug} linkType={"URL"}>
             {content.name}
           </Link>
         ) : (
