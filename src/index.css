@@ -1,3 +1,8 @@
+@import "src/styles/Button.css";
+@import "src/styles/Heading.css";
+@import "src/styles/Link.css";
+@import "src/styles/variables.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

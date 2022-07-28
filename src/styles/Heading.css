@@ -1,0 +1,42 @@
+@define-mixin Heading {
+	font-family: theme(fontFamily.secondary);
+	font-weight: theme(fontWeight.bold);
+}
+
+@define-mixin heading-variant-helper $variant {
+	font-size: theme(headings.$(variant)Mobile.0);
+	line-height: theme(headings.$(variant)Mobile.1.lineHeight);
+
+	@media screen(sm) {
+		font-size: theme(headings.$(variant).0);
+		line-height: theme(headings.$(variant).1.lineHeight);
+	}
+}
+
+@define-mixin Heading--lead {
+	@mixin heading-variant-helper lead;
+}
+
+@define-mixin Heading--head {
+	@mixin heading-variant-helper head;
+}
+
+@define-mixin Heading--sub {
+	@mixin heading-variant-helper sub;
+}
+
+.Heading {
+	@mixin Heading;
+}
+
+.Heading--lead {
+	@mixin Heading--lead;
+}
+
+.Heading--head {
+	@mixin Heading--head;
+}
+
+.Heading--sub {
+	@mixin Heading--sub;
+}
