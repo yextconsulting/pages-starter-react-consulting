@@ -74,7 +74,7 @@ export const getPath: GetPath<TemplateProps> = (data) => {
  * will be used to generate the inner contents of the HTML document's <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
-export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data: TemplateProps): HeadConfig => {
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadConfig => {
   return defaultHeadConfig(data);
 };
 
