@@ -1,22 +1,19 @@
 This is where most custom development work should be done. 
 
-For each custom component, a subdirectory should be added to this directory named after the component. That directory should contain an index.tsx file and an index.css file for the React and CSS respectively.
+Create subfolders that correspond to your features, so that components can be grouped by usage. For example, for a typical location directory you might have subfolders named `common`, `directory`, `location`. 
 
-For organizational benefits, you may want to further nest components by the feature that they're associated with. 
+Within those subfolders, components should be implemented in a file named after the component. For example a Core component would be implemented in `location/Core.tsx`. When appropriate, css should be written in a css file in the same directory as the tsx (`location/Core.css`) for example.
 
 For example, a project in progress might look something like this:
 
 ```
 components/
 ├── common/
-│   └── Header/
-│       ├── index.tsx
-│       └── index.css
+│   ├── Header.tsx
+│   └── Header.css
 └── location/
-    ├── About/
-    │   ├── index.tsx
-    │   └── index.css
-    └── Hero/
-        ├── index.tsx
-        └── index.css
+    ├── About.tsx
+    ├── About.css
+    ├── Hero.tsx
+    └── Hero.css
 ```
