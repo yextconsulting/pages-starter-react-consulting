@@ -45,6 +45,11 @@ export const config: TemplateConfig = {
       "geocodedCoordinate",
       "services",
       "c_manager.name",
+      "c_manages.name",
+      "c_manages.c_manages.name",
+      "c_manages.c_manages.c_manages.name",
+      "c_manages.c_manages.c_manages.c_manages.name",
+      "c_manages.c_manages.c_manages.c_manages.c_manages.name",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -88,6 +93,18 @@ export const getHeadConfig: GetHeadConfig<TemplateProps> = (data: TemplateProps)
  * them in the src/templates folder as this is specific for true template files).
  */
 const Index: Default<TemplateProps> = (data) => {
+  // c_manages will be a list structured like
+  // [{
+  //   name: "Hupman",
+  //   c_manages: [
+  //     {name: "Mcgin", c_manages: [...]},
+  //     {name: "Ari", c_manages: [...]}
+  //   ]
+  // }]
+  // with as many levels of nesting as are specified in the stream config above
+
+  const { c_manages } = data.document;
+
   const people = 
     {
       name: "Person One",
