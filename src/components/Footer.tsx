@@ -2,9 +2,20 @@ import { Link } from "@yext/sites-react-components";
 import { CTA } from "@yext/types";
 import React from "react";
 import "../styles/Footer.css";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
 
 interface FooterProps {
-  socialLinks: CTA[];
+  youtube?: string;
+  linkedIn?: string;
+  twitter?: string;
+  facebook?: string;
+  instagram?:string;
   footerLinks: CTA[];
 }
 
@@ -13,23 +24,32 @@ function currentYear() {
 }
 
 const Footer = (props: FooterProps) => {
-  const socialLinks = props.socialLinks;
+
+  const socialLinks = 
+  [{link: props.facebook, label: <FaFacebook />}, 
+   {link: props.instagram, label: <FaInstagram />},
+   {link: props.youtube, label: <FaYoutube />},
+   {link: props.linkedIn, label:<FaLinkedinIn />},
+   {link: props.twitter, label:<FaTwitter />}]
+
   const footerLinks = props.footerLinks;
 
+
+
   return (
-    <footer className="Footer">
-            <div className="Footer-linksContainer flex flex-col">
-        {footerLinks.map((item: CTA) => (
-          <Link className={'Footer-link'} key={item.label} cta={item} />
+    <footer className="Footer centered-container">
+      <div className="Footer-linksContainer flex flex-col">
+        {footerLinks.map((link: CTA) => (
+          <Link className={'Footer-link'} key={link.label} cta={link} />
         ))}
       </div>
-{/*       <div className="Footer-socialContainer flex">
-        {socialLinks.map((item: CTA) => (
-          <Link className={'Footer-link'} cta={item} />
+       <div className="Footer-socialContainer flex">
+       {socialLinks.map((socialLink: CTA) => (
+          <Link className={'Footer-socialLink'} key={socialLink.label} cta={socialLink} />
         ))}
-      </div> */}
+      </div>
       <div className="Footer-copyright">
-      © {currentYear()} Cobalt Design System. All Rights Reserved.
+      © {currentYear()} Company Name. All Rights Reserved.
       </div>
     </footer>
   );

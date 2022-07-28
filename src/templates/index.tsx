@@ -22,13 +22,6 @@ import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
 import Footer from "src/components/Footer"; 
-import {
-  FaFacebook,
-  FaInstagram,
-  FaLinkedinIn,
-  FaPinterest,
-  FaYoutube,
-} from "react-icons/fa";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -97,22 +90,22 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
  */
 const Index: Template<TemplateRenderProps> = (data) => {
   const { document } = data;
+  const { _site } = document;
   const {
     name
   } = document;
 
   return (
     <>
-
       <CustomFieldDebuggerReactProvider component={Index} {...data}>
         <div>Hello {name}!</div>
       </CustomFieldDebuggerReactProvider>
       <Footer
-/*         facebook={link: 'https://www.facebook.com', label: 'facebook'}
-        instagram={link: 'https://www.facebook.com', label: 'facebook'}
-        youtube={link: 'https://www.facebook.com', label: 'facebook'}
-        linkedIn={link: 'https://www.facebook.com', label: 'facebook'}
-        pinterest={link: 'https://www.facebook.com', label: 'facebook'} */
+        facebook={_site.c_facebook}
+        instagram={_site.c_instagram}
+        youtube={_site.c_youtube}
+        twitter={_site.c_twitter}
+        linkedIn={_site.c_linkedIn}
         footerLinks={[{link: 'https://www.yext.com', label: 'Footer Link'}, 
                       {link: 'https://www.yext.com', label: 'Footer Link'}, 
                       {link: 'https://www.yext.com', label: 'Footer Link'}, 

@@ -4,22 +4,23 @@
 
 .Footer
 {
-  background-color: aquamarine;
-  padding-top: theme(spacing.5);
+/*   padding-top: theme(spacing.5);
   padding-bottom: theme(spacing.5);
   padding-left: theme(spacing.3);
-  padding-right: theme(spacing.3);
+  padding-right: theme(spacing.3); */
   width: 100%;
 
   @screen md
   {
-    min-height: 92px;
     padding-top: theme(spacing.3);
     padding-bottom: theme(spacing.3);
-    padding-left: 150px;
-    padding-right: 150px;
     display: flex;
     flex-wrap: wrap;
+  }
+
+  &-link 
+  {
+
   }
 }
 
@@ -39,11 +40,9 @@
 .Footer-link
 {
   margin-bottom: theme(spacing.4);
-  font-family: theme(fontFamily.sans[7]);
   font-style: normal;
   font-size: theme(fontSize.sm);
   font-weight: theme(fontWeight.normal);
-  line-height: 20px;
   color: #1B78D0;
 
   @screen md 
@@ -80,7 +79,6 @@
 
 .Footer-copyright
 {
-  font-family: theme(fontFamily.sans[7]);
   font-style: normal;
   font-size: theme(fontSize.sm);
   font-weight: theme(fontWeight.normal);
