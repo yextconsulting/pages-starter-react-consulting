@@ -141,11 +141,6 @@ function metaTitle(data: TemplateRenderProps): string {
 	const { c_meta: entityMeta } = data.document;
 	if (entityMeta && entityMeta.title) return entityMeta.title;
 
-	// 2. Check for meta field on the site entity
-	//    resolve any field embeddings
-	const { c_meta: siteMeta } = data.document;
-	if (siteMeta && siteMeta.title) return hydrateEmbeddedFields(siteMeta.title, data);
-
 	return ""
 }
 
@@ -154,27 +149,11 @@ function metaDescription(data: TemplateRenderProps): string {
 	const { c_meta: entityMeta } = data.document;
 	if (entityMeta && entityMeta.description) return entityMeta.description;
 
-	// 2. Check for meta field on the site entity
-	//    resolve any field embeddings
-	const { c_meta: siteMeta } = data.document;
-	if (siteMeta && siteMeta.description) return hydrateEmbeddedFields(siteMeta.description, data);
-
-	// 3. Check for breadcrumbs
+	// 2. Check for breadcrumbs
 	const { dm_directoryParents } = data.document;
 	if (dm_directoryParents) {
 		return `${dm_directoryParents.map((crumb: { name: string }) => crumb.name).join(', ')}.`
 	}
 
 	return ""
-}
-
-function hydrateEmbeddedFields(template: string, data: TemplateRenderProps) {
-	return template.replace(/\[\[([a-zA-Z0-9_\-\.]*)\]\]/g, (_, fieldName) => getFieldAsString(data.document, fieldName.split(".")))
-}
-
-function getFieldAsString(data: any, path: string[]): string {
-	if (!data) return "";
-	const nextSelector = path[0];
-	if (path.length === 1) return data[nextSelector] || '';
-	return getFieldAsString(data[nextSelector], path.slice(1))
 }
