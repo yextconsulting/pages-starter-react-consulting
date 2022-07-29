@@ -6,7 +6,6 @@ export const directoryListFields = [
   "dm_directoryParents",
   "dm_directoryChildren.slug",
   "dm_directoryChildren.name",
-  "dm_directoryChildren.dm_directoryChildren",
   "dm_directoryChildren.dm_directoryChildrenCount",
 ]
 
