@@ -19,7 +19,7 @@ import {
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
-import { DirectoryList, DirectoryListFields } from "src/components/Directory/DirectoryList"
+import { DirectoryList, directoryListFields } from "src/components/Directory/DirectoryList"
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -36,7 +36,7 @@ export const config: TemplateConfig = {
 			"name",
 			"slug",
 			"c_meta",
-			...DirectoryListFields
+			...directoryListFields
 		],
 		// Defines the scope of entities that qualify for this stream.
 		filter: {
@@ -83,12 +83,13 @@ const Region: Template<TemplateRenderProps> = (data) => {
 	const { name, dm_directoryChildren, dm_directoryChildrenCount } = data.document;
 
 	return (
-		<DirectoryList
-			name={name}
-			showNumLocs={true}
-			count={dm_directoryChildrenCount}
-			directoryChildren={dm_directoryChildren}
-		/>
+			<DirectoryList
+				name={name}
+				showNumLocs={true}
+				count={dm_directoryChildrenCount}
+				directoryChildren={dm_directoryChildren}
+				relativePrefixToRoot={data.relativePrefixToRoot}
+			/>
 	);
 };
 

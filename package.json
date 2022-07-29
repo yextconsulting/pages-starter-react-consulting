@@ -17,7 +17,7 @@
     "@yext/custom-field-debugger": "2.0.6",
     "@yext/pages": "1.0.0-beta.0",
     "@yext/schema-wrapper": "1.0.1",
-    "@yext/sites-react-components": "^0.1.8",
+    "@yext/sites-react-components": "^0.1.9",
     "@yext/types": "^0.1.6-alpha",
     "fetch-everywhere": "^1.0.5",
     "react": "^17.0.2",
