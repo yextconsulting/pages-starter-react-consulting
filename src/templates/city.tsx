@@ -20,7 +20,7 @@ import {
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import DirectoryCard from "src/components/cards/DirectoryCard"
-import { DirectoryGrid, DirectoryGridFields } from "src/components/Directory/DirectoryGrid"
+import { DirectoryGrid, directoryGridFields } from "src/components/Directory/DirectoryGrid"
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -37,7 +37,7 @@ export const config: TemplateConfig = {
 			"name",
 			"slug",
 			"c_meta",
-			...DirectoryGridFields,
+			...directoryGridFields,
 		],
 		// Defines the scope of entities that qualify for this stream.
 		filter: {
@@ -89,6 +89,7 @@ const City: Template<TemplateRenderProps> = (data) => {
 			CardComponent={DirectoryCard}
 			count={dm_directoryChildren.length}
 			directoryChildren={dm_directoryChildren}
+			relativePrefixToRoot={data.relativePrefixToRoot}
 		/>
 	);
 };

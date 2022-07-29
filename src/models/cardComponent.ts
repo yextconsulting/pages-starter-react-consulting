@@ -1,9 +1,10 @@
-import { Address } from "@yext/types"
+import { Address, Hours } from "@yext/types"
 
 export declare interface DirectoryCardContent {
-  address: Address,
+  address: Address;
   name: string;
   slug: string;
+  hours: Hours;
 }
 
 /**
@@ -14,6 +15,7 @@ export declare interface DirectoryCardContent {
 export interface CardProps {
   /** The result data provided to the card for rendering. */
   content: DirectoryCardContent
+  relativePrefixToRoot: string;
 }
 
 /**
