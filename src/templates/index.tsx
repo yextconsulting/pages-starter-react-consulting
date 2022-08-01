@@ -9,7 +9,7 @@
  */
 
 import React from "react";
-import Hero from "../components/Hero/Hero";
+import Hero from "src/components/Hero/Hero";
 import {
   TemplateProps,
   TemplateRenderProps,
@@ -99,7 +99,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   } = document;
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      {/* <div>Hello {name}!</div> */}
+      {/* TODO(aganesh) : use Reviews component when available */}
       <Hero name={name} background={c_hero.background} address={address} cTA1={c_hero.cTA1} cTA2={c_hero.cTA2} hours={hours} numReviews={21} rating={4.5} />
     </CustomFieldDebuggerReactProvider>
   );

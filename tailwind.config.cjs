@@ -3,11 +3,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "main-blue": '#1b7bd0',
-        "white": '#fff'
-      },
-      font_weights: {
-        "bold": 700,
+        "brand-primary": '#1b7bd0',
       }
     },
   },

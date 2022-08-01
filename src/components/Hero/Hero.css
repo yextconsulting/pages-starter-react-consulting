@@ -1,8 +1,5 @@
 .Hero
 {
-    display: flex;
-    justify-content: center;
-
     &-container
     {
         display: grid;
@@ -22,7 +19,6 @@
     {
         @screen lg
         {
-            padding-left: 150px;
             padding-left: 32px;
             padding-top: 32px;
         }
@@ -30,7 +26,7 @@
 
     &-title
     {
-        font-weight: theme(font_weights.bold);
+        font-weight: theme(fontWeight.bold);
         font-size: 20px;
         line-height: 28px;
         padding-bottom: 4px;
@@ -44,7 +40,7 @@
 
     &-geo
     {
-        font-weight: theme(font_weights.bold);
+        font-weight: theme(fontWeight.bold);
         font-size: 28px;
         line-height: 32px;
         padding-bottom: 16px;
@@ -68,12 +64,11 @@
 
     &-rating
     {
-        font-weight: theme(font_weights.bold);
+        font-weight: theme(fontWeight.bold);
     }
 
     &-linkWrapper
     {
-        display: block;
         gap: 16px;
 
         @screen lg
@@ -84,7 +79,7 @@
 
     &-cta
     {
-        background-color: theme(colors.main-blue);
+        background-color: theme(colors.brand-primary);
         line-height: 24px;
         font-size: 16px;
         border-radius: 50px;
@@ -92,14 +87,14 @@
         padding: 8px 24px;
         justify-content: center;
         color: theme(colors.white);
-        font-weight: theme(font_weights.bold);
+        font-weight: theme(fontWeight.bold);
         margin-bottom: 16px;
 
         &--border
         {
             background-color: theme(colors.white);
-            border: 2px solid theme(colors.main-blue);
-            color: theme(colors.main-blue);
+            border: 2px solid theme(colors.brand-primary);
+            color: theme(colors.brand-primary);
         }
 
         @screen lg
@@ -125,14 +120,5 @@
         {
             width: 554px;
         }
-    }
-    .HoursStatus-dayOfWeek
-    {
-        display: none;
-    }
-
-    .HoursStatus-current
-    {
-        font-weight: theme(font_weights.bold);
     }
 }

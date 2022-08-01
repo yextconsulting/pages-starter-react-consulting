@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Image, HoursStatus } from "@yext/sites-react-components";
 import {Address, Hours, CTA, Image as ImageType} from "@yext/types";
-import "./Hero.css";
+import "src/components/Hero/Hero.css";
 
 type HeroProps = {
     name: string;
@@ -17,13 +17,13 @@ type HeroProps = {
 const Hero = (props: HeroProps) => {
     return (
         <div className="Hero">
-            <div className="Hero-container">
+            <div className="Hero-container centered-container">
                 <div className="Hero-content">  
                     <div className="Hero-title">
                         {props.name}
                     </div>
                     <div className="Hero-geo">
-                        {props.address.line1 ? (<div>{props.address.line1}</div>) : (<div>{props.address.city}</div>)}
+                        {props.address.line1}
                     </div>
                     <div className="Hero-hours">
                         <HoursStatus hours={props.hours} />
