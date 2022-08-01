@@ -26,10 +26,6 @@
   &-link 
   {
     margin-bottom: theme(spacing.4);
-    font-style: normal;
-    font-size: theme(fontSize.sm);
-    font-weight: theme(fontWeight.normal);
-    color: #1B78D0;
   
     @screen md 
     {
