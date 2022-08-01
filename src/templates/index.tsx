@@ -22,7 +22,6 @@ import {
 import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
-import { Link } from "@yext/sites-react-components";
 
 /**
  * Required when Knowledge Graph data is used for a template.
