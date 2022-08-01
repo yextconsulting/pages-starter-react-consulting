@@ -1,0 +1,9 @@
+/* TODO (cblair): Add more default directory styling */
+.Directory-listLink {
+  display: inline-block;
+}
+
+.Directory-listLink::after {
+  content: attr(data-count);
+  margin-left: 1ch;
+}

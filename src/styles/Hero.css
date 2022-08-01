@@ -26,29 +26,21 @@
 
     &-title
     {
-        font-weight: theme(fontWeight.bold);
-        font-size: 22px;
-        line-height: 28px;
+        padding-left: 0;
+        padding-right: 0;
         padding-bottom: theme(spacing.1);
 
-        @screen md
+        @screen sm
         {
-            font-size: theme(fontSize.2xl);
+            padding-bottom: 0;
         }
     }
 
     &-geo
     {
-        font-weight: theme(fontWeight.bold);
-        font-size: 28px;
-        line-height: 32px;
+        padding-left: 0;
+        padding-right: 0;
         padding-bottom: theme(spacing.4);
-
-        @screen md
-        {
-            font-size: theme(fontSize.5xl);
-            line-height: 64px;
-        }
     }
 
     &-hours
@@ -56,50 +48,30 @@
         padding-bottom: theme(spacing.4);
     }
 
-    &-reviews
-    {
-        padding-bottom: theme(spacing.6);
-    }
-
     &-rating
     {
         font-weight: theme(fontWeight.bold);
     }
 
+    &-reviews
+    {
+        padding-bottom: theme(spacing.6);
+
+        @screen lg
+        {
+            padding-bottom: theme(spacing.8);
+        }
+    }
+
     &-linkWrapper
     {
         gap: theme(spacing.4);
+        display: grid;
 
         @screen lg
         {
             display: flex;
         }
-    }
-
-    &-cta
-    {
-        background-color: theme(colors.brand-primary);
-        font-size: theme(fontSize.base);
-        border-radius: 50px;
-        display: flex;
-        padding: 8px 24px;
-        justify-content: center;
-        color: theme(colors.white);
-        font-weight: theme(fontWeight.bold);
-        margin-bottom: 16px;
-
-        &--border
-        {
-            background-color: theme(colors.white);
-            border: 2px solid theme(colors.brand-primary);
-            color: theme(colors.brand-primary);
-        }
-
-        @screen lg
-        {
-            margin-bottom: 0;
-        }
-
     }
 
     &-imageWrapper
@@ -118,5 +90,10 @@
         {
             width: 554px;
         }
+    }
+
+    .Link:hover
+    {
+        text-decoration: none;
     }
 }

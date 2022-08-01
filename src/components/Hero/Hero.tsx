@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Image, HoursStatus } from "@yext/sites-react-components";
 import {Address, Hours, CTA, Image as ImageType} from "@yext/types";
-import "src/components/Hero/Hero.css";
+import "src/styles/Hero.css";
 
 type HeroProps = {
     name: string;
@@ -19,10 +19,10 @@ const Hero = (props: HeroProps) => {
         <div className="Hero">
             <div className="Hero-container centered-container">
                 <div className="Hero-content">  
-                    <div className="Hero-title">
+                    <div className="Hero-title Heading Heading--sub">
                         {props.name}
                     </div>
-                    <div className="Hero-geo">
+                    <div className="Hero-geo Heading Heading--lead">
                         {props.address.line1}
                     </div>
                     <div className="Hero-hours">
@@ -36,8 +36,8 @@ const Hero = (props: HeroProps) => {
                         </div>
                     )}
                     <div className="Hero-linkWrapper">
-                        {props.cTA1 && (<Link className="Hero-cta" cta={props.cTA1} />)}
-                        {props.cTA2 && (<Link className="Hero-cta Hero-cta--border" cta={props.cTA2} />)}
+                        {props.cTA1 && (<Link className="Hero-cta Button Button--primary" cta={props.cTA1} />)}
+                        {props.cTA2 && (<Link className="Hero-cta Button Button--secondary" cta={props.cTA2} />)}
                     </div>
                 </div>
                 <div className="Hero-imageWrapper">

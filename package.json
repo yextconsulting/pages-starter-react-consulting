@@ -14,15 +14,17 @@
     "node": ">=17"
   },
   "dependencies": {
+    "classnames": "2.3.1",
     "@yext/custom-field-debugger": "2.0.6",
     "@yext/pages": "1.0.0-beta.0",
     "@yext/schema-wrapper": "1.0.1",
-    "@yext/sites-react-components": "^0.1.5",
+    "@yext/sites-react-components": "0.1.9",
+    "@yext/types": "0.1.6-alpha",
     "fetch-everywhere": "^1.0.5",
     "react": "^17.0.2",
     "react-collapsed": "^3.3.1",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.3.1",
+    "react-icons": "4.3.1",
     "typescript": "^4.6.2",
     "vite": "3.0.3"
   },

@@ -1,0 +1,46 @@
+@define-mixin Link {
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+@define-mixin Link--primary {
+	color: theme(links.primary.color);
+
+	&:hover {
+		color: theme(links.primary.hoverColor);
+	}
+}
+
+@define-mixin Link--secondary {
+	color: theme(links.secondary.color);
+
+	&:hover {
+		color: theme(links.secondary.hoverColor);
+	}
+}
+
+@define-mixin Link--underline {
+	text-decoration: underline;
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.Link {
+	@mixin Link;
+}
+
+.Link--primary {
+	@mixin Link--primary;
+}
+
+.Link--secondary {
+	@mixin Link--secondary;
+}
+
+.Link--underline {
+	@mixin Link--underline;
+}
+

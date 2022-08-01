@@ -22,6 +22,7 @@ import {
 import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
+import { Link } from "@yext/sites-react-components";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -47,6 +48,7 @@ export const config: TemplateConfig = {
       "c_hero",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
+      "dm_directoryChildrenCount"
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -66,7 +68,7 @@ export const config: TemplateConfig = {
  * NOTE: This currently has no impact on the local dev path. Local dev urls currently
  * take on the form: featureName/entityId
  */
-export const getPath: GetPath<TemplateProps> = (data) => {
+ export const getPath: GetPath<TemplateProps> = (data) => {
   return data.document.slug;
 };
 
@@ -76,7 +78,7 @@ export const getPath: GetPath<TemplateProps> = (data) => {
  * will be used to generate the inner contents of the HTML document's <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
-export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data: TemplateProps): HeadConfig => {
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadConfig => {
   return defaultHeadConfig(data);
 };
 
