@@ -3,14 +3,14 @@
     &-container
     {
         display: grid;
-        padding: 32px 16px;
+        padding: theme(spacing.8) theme(spacing.4);
 
         @screen lg
         {
             grid-template-columns: 1fr 1fr;
-            padding-top: 64px;
-            padding-bottom: 64px;
-            grid-gap: 64px;
+            padding-top: theme(spacing.16);
+            padding-bottom: theme(spacing.16);
+            grid-gap: theme(spacing.16);
         }
     }
 
@@ -19,22 +19,21 @@
     {
         @screen lg
         {
-            padding-left: 32px;
-            padding-top: 32px;
+            padding-left: theme(spacing.8);
+            padding-top: theme(spacing.8);
         }
     }
 
     &-title
     {
         font-weight: theme(fontWeight.bold);
-        font-size: 20px;
+        font-size: 22px;
         line-height: 28px;
-        padding-bottom: 4px;
+        padding-bottom: theme(spacing.1);
 
         @screen md
         {
-            font-size: 24px;
-            line-height: 30px;
+            font-size: theme(fontSize.2xl);
         }
     }
 
@@ -43,23 +42,23 @@
         font-weight: theme(fontWeight.bold);
         font-size: 28px;
         line-height: 32px;
-        padding-bottom: 16px;
+        padding-bottom: theme(spacing.4);
 
         @screen md
         {
-            font-size: 48px;
+            font-size: theme(fontSize.5xl);
             line-height: 64px;
         }
     }
 
     &-hours
     {
-        padding-bottom: 16px;
+        padding-bottom: theme(spacing.4);
     }
 
     &-reviews
     {
-        padding-bottom: 24px;
+        padding-bottom: theme(spacing.6);
     }
 
     &-rating
@@ -69,7 +68,7 @@
 
     &-linkWrapper
     {
-        gap: 16px;
+        gap: theme(spacing.4);
 
         @screen lg
         {
@@ -80,8 +79,7 @@
     &-cta
     {
         background-color: theme(colors.brand-primary);
-        line-height: 24px;
-        font-size: 16px;
+        font-size: theme(fontSize.base);
         border-radius: 50px;
         display: flex;
         padding: 8px 24px;
@@ -106,7 +104,7 @@
 
     &-imageWrapper
     {
-        padding-top: 8px;
+        padding-top: theme(spacing.2);
 
         @screen lg
         {
