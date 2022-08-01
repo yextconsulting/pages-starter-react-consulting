@@ -6,11 +6,18 @@
     padding-right: 16px;
   }
 
+  &-titleAndRating
+  {
+    margin-top: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #cccccc;
+    text-align: center;
+    
+  }
+
   &-title
   {
-    text-align: center;
-    margin-top: 32px;
-    margin-bottom: 32px;
+    margin-bottom: 12px;
     font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
@@ -19,8 +26,6 @@
 
     @screen lg
     {
-      margin-top: 64px;
-      margin-bottom: 48px;
       font-size: 34px;
       line-height: 40px;
     }
@@ -28,122 +33,14 @@
 
   &-review
   {
-    margin-bottom: 24px;
+    padding-top: 24px;
+    border-bottom: 1px solid #cccccc;
     display: flex;
     flex-direction: column;
-
-    @screen lg
-    {
-      flex-direction: row;
-      margin-bottom: 32px;
-    }
-  }
-
-  &-reviewText
-  {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #cccccc;
-    margin-bottom: 24px;
-
-  }
-
-  &-reviewContainer
-  {
-    background-color: white;
-    padding: 24px;
-    border-top: 1px solid #1b78d0;
-    border-left: 1px solid #1b78d0;
-    border-right: 1px solid #1b78d0;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-
-    @screen lg
-    {
-      padding: 32px;
-      border-right: none;
-      border-bottom: 1px solid #1b78d0;
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
-      border-top-right-radius: 0;
-    }
-  }
-
-  &-qna
-  {
+    
     @screen lg 
     {
-      width: 50%;
-      padding-right: 8px;
-    }
-    
-    &:not(:last-child) 
-    {
-      margin-bottom: 16px;
-
-      @screen lg
-      {
-        margin-bottom: 8px;
-      }
-    }
-
-    &Container 
-    {
-      display: flex;
-      flex-direction: column;
-  
-      @screen lg
-      {
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-    }
-
-    &Question
-    {
-      font-family: 'Arial';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 22px;
-    }
-
-    &Answer
-    {
-      font-family: 'Arial';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 22px;
-    }
-  }
-
-  &-reviewerContainer
-  {
-    background-color: #1b78d0;
-    color: white;
-    padding: 24px;
-    border-left: 1px solid #1b78d0;
-    border-right: 1px solid #1b78d0;
-    border-bottom: 1px solid #1b78d0;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-
-    @screen lg
-    {
-      width: 640px;
-      padding: 32px;
-      border-top: 1px solid #1b78d0;
-      border-left: none;
-      border-right: 1px solid #1b78d0;
-      border-bottom: 1px solid #1b78d0;
-      border-top-right-radius: 8px;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 8px;
+      flex-direction: row;
     }
   }
 
@@ -152,13 +49,16 @@
     font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
-    font-size: 22px;
-    line-height: 28px;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 8px;
 
-    @screen lg
+    &AndDate
     {
-      font-size: 24px;
-      line-height: 30px;
+      @screen lg 
+      {
+        width: 50%;
+      }
     }
   }
 
@@ -167,25 +67,64 @@
     font-family: 'Arial';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 16px;
+    line-height: 24px;
     margin-bottom: 16px;
   }
 
-  &-verifiedClient
+  &-rating
   {
-    &::before
-    {
-      content: url("src/assets/check-circle.svg");
-      margin-right: 5px;
-      height: 14px;
-      width: 14px;
-    }
+    margin-bottom: 8px;
+  }
 
+  &-reviewText
+  {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 24px;
+  }
+
+/*   &-businessResponse
+  {
+    display: none;
+  } */
+
+  &-businessName
+  {
     font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
     line-height: 24px;
+    margin-bottom: 8px;
   }
+
+  &-responseDate
+  {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 16px;
+
+    @screen lg 
+    {
+      margin-bottom: 8px;
+    }
+  }
+
+  &-responseText
+  {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 24px;
+  }
+
 }

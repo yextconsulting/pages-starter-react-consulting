@@ -135,7 +135,7 @@
 
     @screen lg
     {
-      width: 640px;
+      width: 50%;
       padding: 32px;
       border-top: 1px solid #1b78d0;
       border-left: none;
