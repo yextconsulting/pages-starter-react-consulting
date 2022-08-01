@@ -1,13 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .Footer
 {
-/*   padding-top: theme(spacing.5);
-  padding-bottom: theme(spacing.5);
-  padding-left: theme(spacing.3);
-  padding-right: theme(spacing.3); */
   width: 100%;
 
   @screen md
@@ -18,69 +10,67 @@
     flex-wrap: wrap;
   }
 
+  &-linksContainer
+  {
+    align-items: center;
+    margin-right: auto;
+    height: fit-content;
+  
+    @screen md
+    {
+      flex-direction: row;
+      width: 75%;
+    }
+  }
+
   &-link 
   {
-
+    margin-bottom: theme(spacing.4);
+    font-style: normal;
+    font-size: theme(fontSize.sm);
+    font-weight: theme(fontWeight.normal);
+    color: #1B78D0;
+  
+    @screen md 
+    {
+      margin-right: theme(spacing.5);
+    }
   }
-}
 
-.Footer-linksContainer
-{
-  align-items: center;
-  margin-right: auto;
-  height: fit-content;
-
-  @screen md
+  &-socialContainer
   {
-    flex-direction: row;
-    width: 75%;
+    justify-content: center;
+    margin-bottom: theme(spacing.4);
+    height: fit-content;
+  
+    @screen md
+    {
+      flex-direction: row;
+      width: 25%;
+      justify-content: flex-end;
+      margin-bottom: auto;
+    }
   }
-}
 
-.Footer-link
-{
-  margin-bottom: theme(spacing.4);
-  font-style: normal;
-  font-size: theme(fontSize.sm);
-  font-weight: theme(fontWeight.normal);
-  color: #1B78D0;
-
-  @screen md 
+  &-socialLink
   {
-    margin-right: theme(spacing.5);
+    &:not(:last-child)
+    {
+      margin-right: theme(spacing.4);
+    }
+
+    svg
+    {
+      width: theme(spacing.5);
+      height: theme(spacing.5);
+    }
   }
-}
 
-.Footer-socialContainer
-{
-  justify-content: center;
-  margin-bottom: theme(spacing.4);
-  height: fit-content;
-
-  @screen md
+  &-copyright
   {
-    flex-direction: row;
-    width: 25%;
-    justify-content: flex-end;
-    margin-bottom: auto;
+    font-style: normal;
+    font-size: theme(fontSize.sm);
+    text-align: center;
   }
 }
 
-.Footer-socialLink:not(:last-child)
-{
-  margin-right: theme(spacing.4);
-}
-
-.Footer-socialLink svg 
-{
-  width: theme(spacing.5);
-  height: theme(spacing.5);
-}
-
-.Footer-copyright
-{
-  font-style: normal;
-  font-size: theme(fontSize.sm);
-  font-weight: theme(fontWeight.normal);
-  text-align: center;
-}

@@ -90,28 +90,22 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
  */
 const Index: Template<TemplateRenderProps> = (data) => {
   const { document } = data;
-  const { _site } = document;
-  const {
-    name
-  } = document;
+  const { _site, name} = document;
 
   return (
     <>
       <CustomFieldDebuggerReactProvider component={Index} {...data}>
         <div>Hello {name}!</div>
-      </CustomFieldDebuggerReactProvider>
-      <Footer
+        <Footer
+        companyName={name}
         facebook={_site.c_facebook}
         instagram={_site.c_instagram}
         youtube={_site.c_youtube}
         twitter={_site.c_twitter}
         linkedIn={_site.c_linkedIn}
-        footerLinks={[{link: 'https://www.yext.com', label: 'Footer Link'}, 
-                      {link: 'https://www.yext.com', label: 'Footer Link'}, 
-                      {link: 'https://www.yext.com', label: 'Footer Link'}, 
-                      {link: 'https://www.yext.com', label: 'Footer Link'}, 
-                      {link: 'https://www.yext.com', label: 'Footer Link'}]}
-      />
+        footerLinks={_site.c_footerLinks1}
+        />
+      </CustomFieldDebuggerReactProvider>
     </>
   );
 };

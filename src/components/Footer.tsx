@@ -1,7 +1,7 @@
 import { Link } from "@yext/sites-react-components";
 import { CTA } from "@yext/types";
 import React from "react";
-import "../styles/Footer.css";
+import "src/styles/Footer.css";
 import {
   FaFacebook,
   FaInstagram,
@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 
 interface FooterProps {
+  companyName: string;
   youtube?: string;
   linkedIn?: string;
   twitter?: string;
@@ -24,6 +25,8 @@ function currentYear() {
 }
 
 const Footer = (props: FooterProps) => {
+
+  const companyName = props.companyName;
 
   const socialLinks = 
   [{link: props.facebook, label: <FaFacebook />}, 
@@ -40,7 +43,7 @@ const Footer = (props: FooterProps) => {
     <footer className="Footer centered-container">
       <div className="Footer-linksContainer flex flex-col">
         {footerLinks.map((link: CTA) => (
-          <Link className={'Footer-link'} key={link.label} cta={link} />
+          <Link className={'Footer-link Link Link--primary'} key={link.label} cta={link} />
         ))}
       </div>
        <div className="Footer-socialContainer flex">
@@ -49,7 +52,7 @@ const Footer = (props: FooterProps) => {
         ))}
       </div>
       <div className="Footer-copyright">
-      © {currentYear()} Company Name. All Rights Reserved.
+      © {currentYear()} {companyName}. All Rights Reserved.
       </div>
     </footer>
   );
