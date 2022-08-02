@@ -1,8 +1,4 @@
-@define-mixin Link {
-	&:hover {
-		text-decoration: underline;
-	}
-}
+@define-mixin Link {}
 
 @define-mixin Link--primary {
 	color: theme(links.primary.color);
@@ -28,6 +24,14 @@
 	}
 }
 
+@define-mixin Link--underlineInverse {
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 .Link {
 	@mixin Link;
 }
@@ -42,5 +46,9 @@
 
 .Link--underline {
 	@mixin Link--underline;
+}
+
+.Link--underlineInverse {
+	@mixin Link--underlineInverse;
 }
 
