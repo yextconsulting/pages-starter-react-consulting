@@ -7,8 +7,8 @@ type HeroProps = {
     name: string;
     address: Address;
     background?: ImageType;
-    cTA1?: CTA;
-    cTA2?: CTA;
+    cta1?: CTA;
+    cta2?: CTA;
     hours?: Hours;
     numReviews?: number;
     rating?:  number;
@@ -36,8 +36,8 @@ const Hero = (props: HeroProps) => {
                         </div>
                     )}
                     <div className="Hero-linkWrapper">
-                        {props.cTA1 && (<Link className="Hero-cta Button Button--primary" cta={props.cTA1} />)}
-                        {props.cTA2 && (<Link className="Hero-cta Button Button--secondary" cta={props.cTA2} />)}
+                        {props.cta1 && (<Link className="Hero-cta Button Button--primary" cta={props.cta1} />)}
+                        {props.cta2 && (<Link className="Hero-cta Button Button--secondary" cta={props.cta2} />)}
                     </div>
                 </div>
                 <div className="Hero-imageWrapper">

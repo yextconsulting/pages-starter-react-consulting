@@ -23,13 +23,13 @@
           }
         },
         {
-          "name": "cTA1",
+          "name": "cta1",
           "displayName": "CTA 1",
           "isRequired": false,
           "typeId": "cta"
         },
         {
-          "name": "cTA2",
+          "name": "cta2",
           "displayName": "CTA 2",
           "isRequired": false,
           "typeId": "cta"

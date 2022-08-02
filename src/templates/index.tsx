@@ -101,7 +101,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
       {/* TODO(aganesh) : use Reviews component when available */}
-      <Hero name={name} background={c_hero.background} address={address} cTA1={c_hero.cTA1} cTA2={c_hero.cTA2} hours={hours} numReviews={21} rating={4.5} />
+      <Hero name={name} background={c_hero.background} address={address} cta1={c_hero.cta1} cta2={c_hero.cta2} hours={hours} numReviews={21} rating={4.5} />
     </CustomFieldDebuggerReactProvider>
   );
 };

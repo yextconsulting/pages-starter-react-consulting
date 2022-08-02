@@ -26,8 +26,6 @@
 
     &-title
     {
-        padding-left: 0;
-        padding-right: 0;
         padding-bottom: theme(spacing.1);
 
         @screen sm
@@ -38,8 +36,6 @@
 
     &-geo
     {
-        padding-left: 0;
-        padding-right: 0;
         padding-bottom: theme(spacing.4);
     }
 
@@ -65,12 +61,13 @@
 
     &-linkWrapper
     {
+        display: flex;
+        flex-direction: column;
         gap: theme(spacing.4);
-        display: grid;
 
         @screen lg
         {
-            display: flex;
+            flex-direction: row;
         }
     }
 
@@ -90,10 +87,5 @@
         {
             width: 554px;
         }
-    }
-
-    .Link:hover
-    {
-        text-decoration: none;
     }
 }
