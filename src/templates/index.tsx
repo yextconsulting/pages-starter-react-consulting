@@ -9,6 +9,7 @@
  */
 
 import React from "react";
+import Team from "src/components/Team/Team";
 import {
   TemplateProps,
   TemplateRenderProps,
@@ -38,6 +39,7 @@ export const config: TemplateConfig = {
       "logo",
       "meta",
       "name",
+      "c_team",
       "address",
       "mainPhone",
       "description",
@@ -93,13 +95,14 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
 const Index: Template<TemplateRenderProps> = (data) => {
   const document = data.document as LocationProfile;
   const {
-    name
+    name,
+    c_team
   } = document;
-
+  console.log(c_team[0]);
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
       <div>Hello {name}!</div>
-
+      <Team title='' team={c_team} />
       {/* TODO(bhaines): delete before merging pr, these are just examples for anyone
       who wants to pull the code to test it out */}
       <div className="m-6 text-4xl">Buttons</div>

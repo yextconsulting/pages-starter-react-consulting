@@ -32,7 +32,8 @@
         "hours",
         "slug",
         "geocodedCoordinate",
-        "services"
+        "services",
+        "c_team"
       ],
       "filter": {
         "entityTypes": ["location"]
