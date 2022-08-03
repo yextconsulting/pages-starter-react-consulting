@@ -3,8 +3,15 @@
   &-header
   {
     display: flex;
+    align-items: center;
     border-bottom: 1px solid #CCCCCC;
-    padding: 32px;
+    padding: theme(spacing.8);
+    min-height: 128px;
+
+    @screen lg
+    {
+      min-height: 144px;
+    }
   }
 
   &-imageWrapper
@@ -14,26 +21,27 @@
 
   &-headshot
   {
-    border-radius: 100%;
+    border-radius: theme(borderRadius.full);
   }
 
   &-about
   {
-    margin-left: 24px;
+    margin-left: theme(spacing.6);
   }
 
   &-details
   {
-    padding: 32px;
+    padding: theme(spacing.8);
   }
 
   &-name
   {
     font-weight: theme(fontWeight.bold);
-    margin-bottom: 4px;
+    margin-bottom: theme(spacing.1);
   }
 
-  &-phone
+  &-phoneDisplay,
+  &-phoneLink
   {
     display: flex;
     align-items: center;
@@ -46,13 +54,37 @@
       display: inline-block;
       width: 16px;
       height: 16px;
-      margin-right: 16px;
+      margin-right: theme(spacing.4);
+    }
+  }
+
+  &-phoneDisplay
+  {
+    display: none;
+    
+    @screen lg
+    {
+      display: flex;
+    }
+  }
+
+  &-phoneLink
+  {
+    display: flex;
+    font-weight: theme(fontWeight.bold);
+
+    @screen lg
+    {
+      display: none;
     }
   }
 
   &-email
   {
-    margin-top: 16px;
+    margin-top: theme(spacing.4);
+    display: flex;
+    align-items: center;
+    font-weight: theme(fontWeight.bold);
 
     &::before
     {
@@ -62,7 +94,31 @@
       display: inline-block;
       width: 16px;
       height: 16px;
-      margin-right: 16px;
+      margin-right: theme(spacing.4);
+      margin-top: theme(spacing.1);
+    }
+  }
+
+  &-linkWrapper
+  {
+    margin-top: theme(spacing.6);
+  }
+
+  &-link
+  {
+    font-weight: theme(fontWeight.bold);
+    display: flex;
+    align-items: center;
+
+    &::after
+    {
+      content: '';
+      background-image: url(src/assets/images/arrow.svg);
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 7px;
+      height: 12px;
+      margin-left: theme(spacing[2.5]);
     }
   }
 

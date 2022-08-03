@@ -9,12 +9,28 @@ type TeamProps = {
 
 const Team = (props: TeamProps) => {
   const { team = [] } = props;
-  let [visible, setVisible] = useState([ team[0] ]);
   if (!props.team) return null;
-  console.log(team);
+
+  let viewMore = team.length > 6;
+  let teamLength = team.length;
+
+  let [visible, setVisible] = useState(() => {
+    if (viewMore)
+      return team.slice(0,6);
+    else
+      return team;
+  });
+
+  let [load, setLoad] = useState(() => {
+    if (visible.length == teamLength)
+      return false;
+    else
+      return true;
+  })
+
   return (
     <div className="Team-container centered-container">
-      <div className="Team-title Heading--head"> Meet the Team </div>
+      <div className="Team-title Heading--head"> Meet Our Team </div>
       <ul className="Team-list">
         {visible.map((member) => (
           <li className="Team-listItem" key={member.name}> 
@@ -22,7 +38,9 @@ const Team = (props: TeamProps) => {
           </li>
         ))}
       </ul>
-      <button onClick={() => setVisible(team)}> Load More </button>
+      {load && (
+      <button className="Team-loadBtn Button Button--secondary" onClick={() => {setVisible(team); setLoad(false)}}> Load More </button>
+      )}
     </div>
   )
 }

@@ -40,11 +40,11 @@ export const config: TemplateConfig = {
       "meta",
       "name",
       "c_team.name",
-      "c_team.address",
       "c_team.headshot",
       "c_team.mainPhone",
       "c_team.c_occupation",
       "c_team.emails",
+      "c_team.websiteUrl",
       "address",
       "mainPhone",
       "description",
@@ -110,7 +110,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
       <Team title='' team={c_team} />
       {/* TODO(bhaines): delete before merging pr, these are just examples for anyone
       who wants to pull the code to test it out */}
-      <div className="m-6 text-4xl">Buttons</div>
+      {/* <div className="m-6 text-4xl">Buttons</div>
       <button className="m-4 Button Button--primary">Click Me</button>
       <button className="m-4 Button Button--secondary">Click Me</button>
 
@@ -125,7 +125,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
       <div className="m-6 text-4xl">Headings</div>
       <h1 className="m-4 Heading Heading--lead">Section Heading</h1>
       <h3 className="m-4 Heading Heading--head">Section Heading</h3>
-      <h6 className="m-4 Heading Heading--sub">Section Heading</h6>
+      <h6 className="m-4 Heading Heading--sub">Section Heading</h6> */}
     </CustomFieldDebuggerReactProvider>
   );
 };
