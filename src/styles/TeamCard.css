@@ -1,0 +1,69 @@
+.TeamCard
+{
+  &-header
+  {
+    display: flex;
+    border-bottom: 1px solid #CCCCCC;
+    padding: 32px;
+  }
+
+  &-imageWrapper
+  {
+    width: 80px;
+  }
+
+  &-headshot
+  {
+    border-radius: 100%;
+  }
+
+  &-about
+  {
+    margin-left: 24px;
+  }
+
+  &-details
+  {
+    padding: 32px;
+  }
+
+  &-name
+  {
+    font-weight: theme(fontWeight.bold);
+    margin-bottom: 4px;
+  }
+
+  &-phone
+  {
+    display: flex;
+    align-items: center;
+
+    &::before
+    {
+      content: '';
+      background-image: url(src/assets/images/phone.svg);
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 16px;
+    }
+  }
+
+  &-email
+  {
+    margin-top: 16px;
+
+    &::before
+    {
+      content: '';
+      background-image: url(src/assets/images/mail.svg);
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 16px;
+    }
+  }
+
+}

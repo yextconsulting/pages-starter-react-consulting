@@ -1,45 +1,53 @@
 import React from "react";
-import {Image as ImageType} from "@yext/types";
+import {Image as ImageType, Address} from "@yext/types";
 import {Image} from "@yext/sites-react-components";
+import "src/styles/TeamCard.css";
 
 export interface financialProfessional {
   name: string;
+  address?: Address;
   headshot?: ImageType;
   mainPhone?: string;
-}
-
-type TeamCardProps = {
-  name: string;
-  headshot?: ImageType;
-  mainPhone?: string;
+  c_occupation?: string;
   emails?: string[];
 }
 
+type TeamCardProps = {
+  profile: financialProfessional;
+}
+
 const TeamCard = (props: TeamCardProps) => {
-  console.log(props);
+  const { profile } = props;
   return(
-    <div>
+    <div className="TeamCard-container">
       <div className="TeamCard-header">
-        {props.headshot && ( 
+        {profile.headshot && ( 
           <div className="TeamCard-imageWrapper">
-            <Image className="TeamCard-headshot" imageField={props.headshot} />
+            <Image className="TeamCard-headshot" imageField={profile.headshot} />
           </div>
         )}
-        <div className="TeamCard-name">
-          {props.name}
+        <div className="TeamCard-about">
+          <div className="TeamCard-name Heading--sub">
+            {profile.name}
+          </div>
+          {profile.c_occupation && (
+            <div className="TeamCard-occupation">
+              {profile.c_occupation}
+            </div>
+          )}
         </div>
       </div>
       <div className="TeamCard-details">
-        {props.mainPhone && (
+        {profile.mainPhone && (
           //add svg icon for phone as ::before
           <div className="TeamCard-phone">
-            {props.mainPhone}
+            {profile.mainPhone}
           </div>
         )}
-        {props.emails && (
+        {profile.emails && (
           //add svg icon for email as ::before
           <div className="TeamCard-email">
-            {props.emails[0]}
+            {profile.emails[0]}
           </div>
         )}
       </div>

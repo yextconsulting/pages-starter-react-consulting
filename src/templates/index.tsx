@@ -39,7 +39,12 @@ export const config: TemplateConfig = {
       "logo",
       "meta",
       "name",
-      "c_team",
+      "c_team.name",
+      "c_team.address",
+      "c_team.headshot",
+      "c_team.mainPhone",
+      "c_team.c_occupation",
+      "c_team.emails",
       "address",
       "mainPhone",
       "description",
@@ -101,7 +106,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   console.log(c_team[0]);
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      <div>Hello {name}!</div>
+      {/* <div>Hello {name}!</div> */}
       <Team title='' team={c_team} />
       {/* TODO(bhaines): delete before merging pr, these are just examples for anyone
       who wants to pull the code to test it out */}

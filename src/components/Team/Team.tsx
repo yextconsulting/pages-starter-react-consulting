@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import TeamCard, { financialProfessional } from "src/components/Team/TeamCard";
+import "src/styles/Team.css";
 
 type TeamProps = {
   title?: string;
@@ -8,18 +9,20 @@ type TeamProps = {
 
 const Team = (props: TeamProps) => {
   const { team = [] } = props;
+  let [visible, setVisible] = useState([ team[0] ]);
   if (!props.team) return null;
   console.log(team);
   return (
-    <div>
-      <div> Meet the Team </div>
-      <ul>
-        {team.map((member) => (
-          <li key={member.name}> 
-            <TeamCard name={member.name} headshot={member.headshot} mainPhone={member.mainPhone}/>
+    <div className="Team-container centered-container">
+      <div className="Team-title Heading--head"> Meet the Team </div>
+      <ul className="Team-list">
+        {visible.map((member) => (
+          <li className="Team-listItem" key={member.name}> 
+            <TeamCard profile={member}/>
           </li>
         ))}
       </ul>
+      <button onClick={() => setVisible(team)}> Load More </button>
     </div>
   )
 }

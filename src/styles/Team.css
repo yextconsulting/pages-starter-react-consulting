@@ -1,0 +1,14 @@
+.Team
+{
+    &-list
+    {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+    }
+
+    &-listItem
+    {
+        box-shadow: 2px 2px 6px 2px rgb(0 0 0 / 20%)
+    }
+}
