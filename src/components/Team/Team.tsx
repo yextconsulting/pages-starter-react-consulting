@@ -8,22 +8,11 @@ type TeamProps = {
 }
 
 const Team = (props: TeamProps) => {
-  const { team = [] } = props;
+  const { team = [], initialSize } = props;
   if (!team) return null;
 
-  let teamLength = team.length;
-  let size = props.initialSize ?? teamLength;
-
-  let viewMore = teamLength > size;
-
-  let [visible, setVisible] = useState(() => {
-    if (viewMore)
-      return team.slice(0,size);
-    else
-      return team;
-  });
-
-  let [load, setLoad] = useState(!(visible.length === teamLength));
+  let [visible, setVisible] = useState(initialSize ? team.slice(0, Math.min(initialSize, team.length)) : team);
+  let [load, setLoad] = useState(!(visible.length === team.length));
 
   return (
     <div className="Team-container centered-container">
