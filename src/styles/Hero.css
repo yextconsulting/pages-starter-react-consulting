@@ -30,7 +30,7 @@
 
         @screen sm
         {
-            padding-bottom: 0;
+            padding-bottom: theme(spacing.0);
         }
     }
 
@@ -73,11 +73,11 @@
 
     &-imageWrapper
     {
-        padding-top: theme(spacing.2);
+        padding-top: theme(spacing.6);
 
         @screen lg
         {
-            padding-top: 0;
+            padding-top: theme(spacing.0);
         }
     }
 
@@ -87,5 +87,16 @@
         {
             width: 554px;
         }
+    }
+
+    &-hourSeparator
+    {
+        display: inline-flex;
+        padding: theme(spacing.0) theme(spacing.3);
+    }
+
+    .HoursStatus-current
+    {
+        font-weight: theme(fontWeight.bold);
     }
 }
