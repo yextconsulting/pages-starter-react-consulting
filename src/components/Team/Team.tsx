@@ -4,21 +4,21 @@ import "src/styles/Team.css";
 
 type TeamProps = {
   team?: financialProfessional[];
-  numMembers?: number;
+  initialSize?: number;
 }
 
 const Team = (props: TeamProps) => {
   const { team = [] } = props;
   if (!team) return null;
 
-  let numMembers = props.numMembers ?? 6;
-
-  let viewMore = team.length > numMembers;
   let teamLength = team.length;
+  let size = props.initialSize ?? teamLength;
+
+  let viewMore = teamLength > size;
 
   let [visible, setVisible] = useState(() => {
     if (viewMore)
-      return team.slice(0,numMembers);
+      return team.slice(0,size);
     else
       return team;
   });
@@ -30,7 +30,7 @@ const Team = (props: TeamProps) => {
       <h2 className="Team-title Heading--head">Meet Our Team</h2>
       <ul className="Team-list">
         {visible.map((member) => (
-          <li className="Team-listItem" key={member.name}> 
+          <li className="Team-listItem" key={member.id}> 
             <TeamCard profile={member}/>
           </li>
         ))}

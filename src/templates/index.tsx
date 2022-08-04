@@ -39,6 +39,7 @@ export const config: TemplateConfig = {
       "logo",
       "meta",
       "name",
+      "c_team.id",
       "c_team.name",
       "c_team.headshot",
       "c_team.mainPhone",
@@ -105,7 +106,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
 
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      <Team team={c_team} numMembers={3} />
+      <Team team={c_team} initialSize={3}/>
     </CustomFieldDebuggerReactProvider>
   );
 };

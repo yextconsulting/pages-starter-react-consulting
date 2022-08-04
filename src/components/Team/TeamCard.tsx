@@ -4,6 +4,7 @@ import {Image, Link} from "@yext/sites-react-components";
 import "src/styles/TeamCard.css";
 
 export interface financialProfessional {
+  id: string;
   name: string;
   headshot?: ImageType;
   mainPhone?: string;
