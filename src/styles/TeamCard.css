@@ -4,7 +4,7 @@
   {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #cccccc;
     padding: theme(spacing.8);
     min-height: 128px;
 
@@ -14,14 +14,10 @@
     }
   }
 
-  &-imageWrapper
-  {
-    width: 80px;
-  }
-
   &-headshot
   {
     border-radius: theme(borderRadius.full);
+    width: 80px;
   }
 
   &-about

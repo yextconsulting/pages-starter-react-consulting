@@ -8,28 +8,25 @@ type TeamProps = {
 
 const Team = (props: TeamProps) => {
   const { team = [] } = props;
-  if (!props.team) return null;
+  if (!team) return null;
 
-  let viewMore = team.length > 6;
+  let numMembers = 6;
+
+  let viewMore = team.length > numMembers;
   let teamLength = team.length;
 
   let [visible, setVisible] = useState(() => {
     if (viewMore)
-      return team.slice(0,6);
+      return team.slice(0,numMembers);
     else
       return team;
   });
 
-  let [load, setLoad] = useState(() => {
-    if (visible.length == teamLength)
-      return false;
-    else
-      return true;
-  })
+  let [load, setLoad] = useState(!(visible.length === teamLength));
 
   return (
     <div className="Team-container centered-container">
-      <div className="Team-title Heading--head">Meet Our Team</div>
+      <h2 className="Team-title Heading--head">Meet Our Team</h2>
       <ul className="Team-list">
         {visible.map((member) => (
           <li className="Team-listItem" key={member.name}> 

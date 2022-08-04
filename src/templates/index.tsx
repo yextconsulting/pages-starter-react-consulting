@@ -102,7 +102,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   const {
     c_team
   } = document;
-  console.log(c_team[0]);
+
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
       <Team team={c_team} />

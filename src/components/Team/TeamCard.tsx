@@ -22,9 +22,7 @@ const TeamCard = (props: TeamCardProps) => {
     <div className="TeamCard-container">
       <div className="TeamCard-header">
         {profile.headshot && ( 
-          <div className="TeamCard-imageWrapper">
-            <Image className="TeamCard-headshot" imageField={profile.headshot} />
-          </div>
+          <Image className="TeamCard-headshot" imageField={profile.headshot} />
         )}
         <div className="TeamCard-about">
           <div className="TeamCard-name Heading--sub">
@@ -37,8 +35,9 @@ const TeamCard = (props: TeamCardProps) => {
           )}
         </div>
       </div>
+      {/* TODO (GENERATOR): use Icon component when available */}
       <div className="TeamCard-details">
-        {/* TODO (aganesh): use Phone component when available */}
+        {/* TODO (GENERATOR): use Phone component when available */}
         {profile.mainPhone && (
           <div>
             <div className="TeamCard-phoneDisplay">
