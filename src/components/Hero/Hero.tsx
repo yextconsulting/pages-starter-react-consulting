@@ -20,9 +20,9 @@ const Hero = (props: HeroProps) => {
         <div className="Hero">
             <div className="Hero-container centered-container">
                 <div className="Hero-content">  
-                    <div className="Hero-title Heading Heading--sub">
+                    <h1 className="Hero-title Heading Heading--sub">
                         {props.name}
-                    </div>
+                    </h1>
                     <div className="Hero-geo Heading Heading--lead">
                         {props.address.line1}
                     </div>
