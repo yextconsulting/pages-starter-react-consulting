@@ -4,7 +4,7 @@ export declare interface DirectoryCardContent {
   address: Address;
   name: string;
   slug: string;
-  hours: Hours;
+  hours?: Hours;
 }
 
 /**

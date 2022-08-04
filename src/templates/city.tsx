@@ -21,6 +21,7 @@ import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import DirectoryCard from "src/components/cards/DirectoryCard"
 import { DirectoryGrid, directoryGridFields } from "src/components/Directory/DirectoryGrid"
+import { DirectoryProfile, LocationProfile } from "src/types/entities";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -81,14 +82,15 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data) => {
  * them in the src/templates folder as this is specific for true template files).
  */
 const City: Template<TemplateRenderProps> = (data) => {
-	const { name, dm_directoryChildren } = data.document;
+	const document = data.document as DirectoryProfile<LocationProfile>;
+	const { name, dm_directoryChildren, dm_directoryChildrenCount } = document;
 
 	return (
 		<DirectoryGrid
 			name={name}
 			CardComponent={DirectoryCard}
-			count={dm_directoryChildren.length}
-			directoryChildren={dm_directoryChildren}
+			count={dm_directoryChildrenCount}
+			directoryChildren={dm_directoryChildren || []}
 			relativePrefixToRoot={data.relativePrefixToRoot}
 		/>
 	);

@@ -20,6 +20,7 @@ import {
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import { DirectoryList, directoryListFields } from "src/components/Directory/DirectoryList"
+import { DirectoryProfile } from "src/types/entities";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -80,14 +81,15 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data) => {
  * them in the src/templates folder as this is specific for true template files).
  */
 const Region: Template<TemplateRenderProps> = (data) => {
-	const { name, dm_directoryChildren, dm_directoryChildrenCount } = data.document;
+	const document = data.document as DirectoryProfile<DirectoryProfile<never>>;
+	const { name, dm_directoryChildren, dm_directoryChildrenCount } = document;
 
 	return (
 			<DirectoryList
 				name={name}
 				showNumLocs={true}
 				count={dm_directoryChildrenCount}
-				directoryChildren={dm_directoryChildren}
+				directoryChildren={dm_directoryChildren || []}
 				relativePrefixToRoot={data.relativePrefixToRoot}
 			/>
 	);

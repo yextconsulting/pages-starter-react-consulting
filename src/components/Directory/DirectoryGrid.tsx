@@ -1,9 +1,8 @@
-import * as React from "react";
-import { Link } from "@yext/sites-react-components";
+import React from "react";
 import DirectoryCard from "src/components/cards/DirectoryCard"
 import { DirectoryCardContent, CardComponent } from "src/models/cardComponent";
 import "src/styles/Directory.css";
-import { Address, Hours } from "@yext/types"
+import { LocationProfile } from "src/types/entities";
 
 export const directoryGridFields = [
   "dm_directoryParents",
@@ -14,17 +13,11 @@ export const directoryGridFields = [
 ]
 
 interface DirectoryGridProps {
-  name: string;
-  count: number;
-  CardComponent: CardComponent;
-  directoryChildren: { 
-    slug: string;
-    name: string;
-    dm_directoryChildren: number[];
-    address: Address;
-    hours: Hours;
-  }[];
-  relativePrefixToRoot: string;
+  name: string
+  count: number
+  CardComponent: CardComponent
+  directoryChildren: LocationProfile[]
+  relativePrefixToRoot: string
 }
 
 export function DirectoryGrid(props: DirectoryGridProps) {
@@ -36,7 +29,7 @@ export function DirectoryGrid(props: DirectoryGridProps) {
         {count} locations in {name}
       </h1>
       <ul className="flex flex-wrap">
-        {directoryChildren.map((child: any, idx: number) => (
+        {directoryChildren.map((child, idx) => (
           renderCard(CardComponent, child, relativePrefixToRoot, idx)
         ))}
       </ul>

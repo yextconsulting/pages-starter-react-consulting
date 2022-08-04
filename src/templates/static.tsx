@@ -4,7 +4,6 @@
 
 import React from "react";
 import { useState } from "react";
-import fetch from "fetch-everywhere";
 import { Pokemon } from "pokenode-ts";
 import {
   TemplateProps,
@@ -52,7 +51,6 @@ type PokemonData = TemplateRenderProps & { pokemon: Pokemon };
 export const transformProps: TransformProps<PokemonData> = async (data) => {
   const url = `https://pokeapi.co/api/v2/pokemon/1`;
   const pokemon = (await fetch(url).then((res: any) => res.json())) as Pokemon;
-  console.log("pokemon: ", pokemon)
 
   return { ...data, pokemon };
 };
