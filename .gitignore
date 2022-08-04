@@ -6,4 +6,6 @@ dist/
 .artifact-output
 sites-config/features.json
 
+.env
+
 .DS_Store
