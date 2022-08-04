@@ -4,13 +4,14 @@ import "src/styles/Team.css";
 
 type TeamProps = {
   team?: financialProfessional[];
+  numMembers?: number;
 }
 
 const Team = (props: TeamProps) => {
   const { team = [] } = props;
   if (!team) return null;
 
-  let numMembers = 6;
+  let numMembers = props.numMembers ?? 6;
 
   let viewMore = team.length > numMembers;
   let teamLength = team.length;

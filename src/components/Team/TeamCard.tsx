@@ -1,6 +1,6 @@
 import React from "react";
 import {Image as ImageType} from "@yext/types";
-import {Image} from "@yext/sites-react-components";
+import {Image, Link} from "@yext/sites-react-components";
 import "src/styles/TeamCard.css";
 
 export interface financialProfessional {
@@ -43,9 +43,9 @@ const TeamCard = (props: TeamCardProps) => {
             <div className="TeamCard-phoneDisplay">
               {profile.mainPhone}
             </div>
-            <a className="TeamCard-phoneLink Link--primary Link--underline" href="tel:{profile.mainPhone}">
+            <Link className="TeamCard-phoneLink Link--primary Link--underline" href="tel:{profile.mainPhone}">
               {profile.mainPhone}
-            </a>
+            </Link>
           </div>
         )}
 
@@ -57,7 +57,7 @@ const TeamCard = (props: TeamCardProps) => {
 
         {profile.websiteUrl && profile.websiteUrl.url && (
           <div className="TeamCard-linkWrapper">
-            <a className="TeamCard-link Link--primary" href={profile.websiteUrl.url}>Visit Profile</a>
+            <Link className="TeamCard-link Link--primary" href={profile.websiteUrl.url}>Visit Profile</Link>
           </div>
         )}
       </div>
