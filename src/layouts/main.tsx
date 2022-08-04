@@ -1,5 +1,5 @@
 import React from 'react';
-import { YextProvider } from '@yext/sites-react-components';
+import { ConfigurationProvider } from '@yext/sites-react-components';
 import config from '../config';
 
 interface MainProps {
@@ -10,9 +10,9 @@ const Main = (props: MainProps) => {
   const { children } = props;
 
   return (
-    <YextProvider value={config}>
+    <ConfigurationProvider value={config}>
       {children}
-    </YextProvider>
+    </ConfigurationProvider>
   )
 }
 
