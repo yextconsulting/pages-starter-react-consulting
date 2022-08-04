@@ -100,32 +100,12 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
 const Index: Template<TemplateRenderProps> = (data) => {
   const document = data.document as LocationProfile;
   const {
-    name,
     c_team
   } = document;
   console.log(c_team[0]);
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      {/* <div>Hello {name}!</div> */}
-      <Team title='' team={c_team} />
-      {/* TODO(bhaines): delete before merging pr, these are just examples for anyone
-      who wants to pull the code to test it out */}
-      {/* <div className="m-6 text-4xl">Buttons</div>
-      <button className="m-4 Button Button--primary">Click Me</button>
-      <button className="m-4 Button Button--secondary">Click Me</button>
-
-      <div className="m-6 text-4xl">Links</div>
-      <Link href="https://www.yext.com" className="m-4 Link">Click Me</Link>
-      <Link href="https://www.yext.com" className="m-4 Link">Click Me</Link>
-      <Link href="https://www.yext.com" className="m-4 Link Link--primary">Click Me</Link>
-      <Link href="https://www.yext.com" className="m-4 Link Link--secondary">Click Me</Link>
-      <Link href="https://www.yext.com" className="m-4 Link Link--underline">Click Me</Link>
-      <Link href="https://www.yext.com" className="m-4 Link Link--primary Link--underline">Click Me</Link>
-
-      <div className="m-6 text-4xl">Headings</div>
-      <h1 className="m-4 Heading Heading--lead">Section Heading</h1>
-      <h3 className="m-4 Heading Heading--head">Section Heading</h3>
-      <h6 className="m-4 Heading Heading--sub">Section Heading</h6> */}
+      <Team team={c_team} />
     </CustomFieldDebuggerReactProvider>
   );
 };

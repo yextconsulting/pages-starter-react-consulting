@@ -3,7 +3,6 @@ import TeamCard, { financialProfessional } from "src/components/Team/TeamCard";
 import "src/styles/Team.css";
 
 type TeamProps = {
-  title?: string;
   team?: financialProfessional[];
 }
 
@@ -30,7 +29,7 @@ const Team = (props: TeamProps) => {
 
   return (
     <div className="Team-container centered-container">
-      <div className="Team-title Heading--head"> Meet Our Team </div>
+      <div className="Team-title Heading--head">Meet Our Team</div>
       <ul className="Team-list">
         {visible.map((member) => (
           <li className="Team-listItem" key={member.name}> 
