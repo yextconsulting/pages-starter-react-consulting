@@ -22,6 +22,7 @@ import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
 import { Link } from "@yext/sites-react-components";
+import { LocationProfile } from "src/types/entities";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -90,7 +91,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
  * them in the src/templates folder as this is specific for true template files).
  */
 const Index: Template<TemplateRenderProps> = (data) => {
-  const { document } = data;
+  const document = data.document as LocationProfile;
   const {
     name
   } = document;
