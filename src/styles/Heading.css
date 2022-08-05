@@ -7,7 +7,7 @@
 	font-size: theme(headings.$(variant)Mobile.0);
 	line-height: theme(headings.$(variant)Mobile.1.lineHeight);
 
-	@media screen(sm) {
+	@screen sm {
 		font-size: theme(headings.$(variant).0);
 		line-height: theme(headings.$(variant).1.lineHeight);
 	}
@@ -23,6 +23,10 @@
 
 @define-mixin Heading--sub {
 	@mixin heading-variant-helper sub;
+}
+
+@define-mixin Heading--flag {
+	@mixin heading-variant-helper flag;
 }
 
 .Heading {

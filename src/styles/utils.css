@@ -1,0 +1,10 @@
+.bullet {
+  content: "\A";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: black;
+  margin: 0 theme(spacing.3);
+  vertical-align: middle;
+}

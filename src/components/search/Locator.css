@@ -1,0 +1,39 @@
+.Locator {
+  position: relative;
+  display: flex;
+  flex: 1;
+  overflow: auto;
+
+  &-content {
+    width: 100%;
+    overflow-y: auto;
+    position: relative;
+
+    @screen sm {
+      flex-basis: 350px;
+    }
+
+    @screen md {
+      flex-basis: 450px;
+    }
+  }
+
+  &-map {
+    flex: 1;
+    height: 100%;
+  }
+
+  &-searchWrapper {
+    padding: theme(spacing.6);
+    box-shadow: theme(boxShadow.brand-shadow);
+  }
+
+  &-title {
+    padding-bottom: theme(spacing.4);
+  }
+
+  &-searchTitle {
+    padding-bottom: theme(spacing.2);
+  }
+}
+

@@ -1,0 +1,73 @@
+import {
+  TemplateProps,
+  TemplateRenderProps,
+  Template,
+  GetPath,
+  TemplateConfig,
+  GetHeadConfig,
+  HeadConfig,
+} from "@yext/pages";
+import "src/index.css";
+import "src/styles/search.css";
+import { defaultHeadConfig } from "src/common/head";
+import { SearchHeadlessProvider } from "@yext/search-headless-react";
+import Locator from "src/components/search/Locator";
+
+/**
+ * Not required depending on your use case.
+ */
+export const config: TemplateConfig = {
+  // The name of the feature. If not set the name of this file will be used (without extension).
+  // Use this when you need to override the feature name.
+  name: "search",
+};
+
+/**
+ * Defines the path that the generated file will live at for production.
+ *
+ * NOTE: This currently has no impact on the local dev path. Local dev urls currently
+ * take on the form: featureName/entityId
+ */
+export const getPath: GetPath<TemplateProps> = () => {
+  return "search";
+};
+
+/**
+ * This allows the user to define a function which will take in their template
+ * data and procude a HeadConfig object. When the site is generated, the HeadConfig
+ * will be used to generate the inner contents of the HTML document"s <head> tag.
+ * This can include the title, meta tags, script tags, etc.
+ */
+ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadConfig => {
+  return defaultHeadConfig(data);
+};
+
+
+/**
+ * This is the main template. It can have any name as long as it"s the default export.
+ * The props passed in here are the direct result from `getStaticProps`.
+ */
+const Search: Template<TemplateRenderProps> = (data) => {
+  const { document } = data;
+  return (
+    <div className="flex flex-col h-screen">
+      <div className="h-[116px] w-screen bg-blue-200">Todo: Replace with Header Component</div>
+      <SearchHeadlessProvider
+        apiKey="e12fdae56a046c51cd2cd61f11de17a2"
+        experienceKey="answers-locator-test"
+        locale={document.meta.locale}
+        verticalKey="locations"
+      >
+        {/* TODO: load these from site entity */}
+        <Locator
+          title="Find a Location"
+          searchTitle="Search by city and state or ZIP code"
+          placeholderText="Search by city and state or ZIP code"
+        />
+      </SearchHeadlessProvider>
+      <div className="h-[92px] w-screen bg-blue-200">Todo: Replace with Footer Component</div>
+    </div>
+  );
+};
+
+export default Search;
