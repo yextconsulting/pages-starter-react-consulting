@@ -21,6 +21,7 @@ import {
 import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
+import Footer from "src/components/Footer"; 
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -45,6 +46,7 @@ export const config: TemplateConfig = {
       "services",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
+      "dm_directoryChildrenCount"
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -64,7 +66,7 @@ export const config: TemplateConfig = {
  * NOTE: This currently has no impact on the local dev path. Local dev urls currently
  * take on the form: featureName/entityId
  */
-export const getPath: GetPath<TemplateProps> = (data) => {
+ export const getPath: GetPath<TemplateProps> = (data) => {
   return data.document.slug;
 };
 
@@ -89,14 +91,23 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
  */
 const Index: Template<TemplateRenderProps> = (data) => {
   const { document } = data;
-  const {
-    name
-  } = document;
+  const { _site, name} = document;
 
   return (
-    <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      <div>Hello {name}!</div>
-    </CustomFieldDebuggerReactProvider>
+    <>
+      <CustomFieldDebuggerReactProvider component={Index} {...data}>
+        <div>Hello {name}!</div>
+        <Footer
+          copyrightMessage={_site.c_copyrightMessage}
+          facebook={_site.c_facebook}
+          instagram={_site.c_instagram}
+          youtube={_site.c_youtube}
+          twitter={_site.c_twitter}
+          linkedIn={_site.c_linkedIn}
+          footerLinks={_site.c_footerLinks}
+        />
+      </CustomFieldDebuggerReactProvider>
+    </>
   );
 };
 
