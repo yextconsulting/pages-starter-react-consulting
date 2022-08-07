@@ -1,6 +1,4 @@
 .LocatorCard {
-  position: relative;
-
   &-topRow {
     display: flex;
     justify-content: space-between;

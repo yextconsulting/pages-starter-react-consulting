@@ -22,18 +22,5 @@
     flex: 1;
     height: 100%;
   }
-
-  &-searchWrapper {
-    padding: theme(spacing.6);
-    box-shadow: theme(boxShadow.brand-shadow);
-  }
-
-  &-title {
-    padding-bottom: theme(spacing.4);
-  }
-
-  &-searchTitle {
-    padding-bottom: theme(spacing.2);
-  }
 }
 

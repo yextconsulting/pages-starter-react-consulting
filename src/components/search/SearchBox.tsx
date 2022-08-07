@@ -13,19 +13,24 @@ type SearchBoxProps = {
 export default function SearchBox(props: SearchBoxProps) {
 	const { title, searchTitle, placeholderText } = props;
 	return (
-		<div className="Locator-searchWrapper">
-			<h1 className="Locator-title Heading--lead">
+		<div className="shadow-brand-shadow p-6 ">
+			<h1 className="Heading--lead mb-4">
 				{ title }
 			</h1>
-			<div className="Locator-searchTitle">
+			<div className="mb-2">
 				{ searchTitle }
 			</div>
-			<FilterSearch
-				label=""
-				placeholder={ placeholderText }
-				searchFields={ searchFields }
-				searchOnSelect={ true }
-			/>
+			<div className="relative mb-8">
+				<FilterSearch
+					customCssClasses={{
+						filterSearchContainer: "absolute w-full"
+					}}
+					label=""
+					placeholder={ placeholderText }
+					searchFields={ searchFields }
+					searchOnSelect={ true }
+				/>
+			</div>
 		</div>
 	)
 }

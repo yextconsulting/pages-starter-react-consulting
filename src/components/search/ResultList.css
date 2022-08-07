@@ -18,12 +18,14 @@
       border-radius: 50%;
     }
 
-    &.is-hovered {
-      background-color: theme(colors.brand-gray.200);
-    }
-
-    &.is-selected {
-      background-color: theme(colors.brand-gray.300);
+    @screen sm {
+      &.is-hovered {
+        background-color: theme(colors.brand-gray.200);
+      }
+  
+      &.is-selected {
+        background-color: theme(colors.brand-gray.300);
+      }
     }
   }
 }
