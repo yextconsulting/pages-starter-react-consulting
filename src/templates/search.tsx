@@ -17,31 +17,29 @@ import Locator from "src/components/search/Locator";
  * Not required depending on your use case.
  */
 export const config: TemplateConfig = {
-  // The name of the feature. If not set the name of this file will be used (without extension).
-  // Use this when you need to override the feature name.
   stream: {
-		$id: "search-page",
-		// Specifies the exact data that each generated document will contain. This data is passed in
-		// directly as props to the default exported function.
-		fields: [
-			"id",
-			"uid",
-			"meta",
-			"name",
-			"c_searchTitle",
+    $id: "search-page",
+    // Specifies the exact data that each generated document will contain. This data is passed in
+    // directly as props to the default exported function.
+    fields: [
+      "id",
+      "uid",
+      "meta",
+      "name",
+      "c_searchTitle",
       "c_searchSubTitle",
       "c_searchPlaceholderText"
-		],
-		// Defines the scope of entities that qualify for this stream.
-		filter: {
-			 entityIds: ["search-page"],
-		},
-		// The entity language profiles that documents will be generated for.
-		localization: {
-			locales: ["en"],
-			primary: false,
-		},
-	},
+    ],
+    // Defines the scope of entities that qualify for this stream.
+    filter: {
+      entityIds: ["search-page"],
+    },
+    // The entity language profiles that documents will be generated for.
+    localization: {
+      locales: ["en"],
+      primary: false,
+    },
+  },
 };
 
 /**

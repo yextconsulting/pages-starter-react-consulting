@@ -14,14 +14,14 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
   const hours = profile.hours as Hours;
   const geomodifier = address.line1 ? address.line1 : address.city;
 
-  const renderTitle = () => <h3 className="LocatorCard-title Heading Heading--sub">{ geomodifier }</h3>;
+  const renderTitle = () => <h3 className="Heading Heading--sub pb-2 sm:pb-4">{ geomodifier }</h3>;
 
   // TODO: convert to use useBreakpoint for conditional rendering instead of modifier
   const renderDistance = (modifier?: string) => distanceFromFilter ? <div className={`LocatorCard-distance${modifier ? " LocatorCard-distance--" + modifier : ""}`}>{getDistance(distanceFromFilter, useKilometers)} {useKilometers ? 'km' : 'mi'}</div> : null;
 
   return (
     <div className="LocatorCard">
-      <div className="LocatorCard-topRow">
+      <div className="flex justify-between">
         {link ? (
           <Link href={ link } className="LocatorCard-visitpage Link--underlineInverse text-brand-primary">
             { renderTitle() }
@@ -29,7 +29,7 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
         ) : renderTitle()}
         { renderDistance("desktop") }
       </div>
-      <div className="LocatorCard-hours">
+      <div className="pb-2 sm:pb-4">
         <HoursStatus
           currentTemplate={ (params: StatusParams) => <span className="HoursStatus-current--search">{ params.isOpen ? 'Open Now' : 'Closed' }</span> }
           dayOfWeekTemplate={ () => null }
@@ -37,7 +37,7 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
           separatorTemplate={ () => <span className="bullet" /> }
         />
       </div>
-      <div className="LocatorCard-address">{address.line1}</div>
+      <div>{address.line1}</div>
       { renderDistance("mobile") }
     </div>
   )

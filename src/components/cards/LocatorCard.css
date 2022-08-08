@@ -1,26 +1,4 @@
 .LocatorCard {
-  &-topRow {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &-title {
-    color: theme(colors.brand-primary);
-    padding-bottom: theme(spacing.2);
-
-    @screen sm {
-      padding-bottom: theme(spacing.4);
-    }
-  }
-
-  &-hours {
-    padding-bottom: theme(spacing.2);
-
-    @screen sm {
-      padding-bottom: theme(spacing.4);
-    }
-  }
-
   &-distance {
     white-space: nowrap;
 

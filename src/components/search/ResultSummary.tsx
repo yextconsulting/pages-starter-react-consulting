@@ -2,6 +2,7 @@ import { useSearchState } from "@yext/search-headless-react";
 import "src/components/search/ResultSummary.css";
 
 export default function ResultSummary() {
+  // TODO: need to link to directory
   const ititialSummaryText = "Use our locator to find a location near you or browse our directory."
   // Check if search has been made and if not render the initial text
   const query = useSearchState(state => state.query?.queryId);
