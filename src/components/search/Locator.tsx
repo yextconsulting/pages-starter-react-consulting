@@ -33,12 +33,12 @@ export const [useLocatorContext, LocatorProvider] = createCtx<LocatorContextType
 type LocatorProps = {
   displayAllOnNoResults?: boolean,
   placeholderText?: string,
-  searchTitle: string,
+  subTitle: string,
   title: string,
 }
 
 export default function Locator(props: LocatorProps) {
-  const { displayAllOnNoResults = false, placeholderText, searchTitle, title } = props;
+  const { displayAllOnNoResults = false, placeholderText, subTitle, title } = props;
   const [selectedEntityId, setSelectedEntityId] = useState("");
   const [focusedEntityId, setFocusedEntityId] = useState("");
   const [hoveredEntityId, setHoveredEntityId] = useState("");
@@ -83,7 +83,7 @@ export default function Locator(props: LocatorProps) {
         <div className="Locator-content">
           <SearchBox
             title={ title }
-            searchTitle={ searchTitle }
+            subTitle={ subTitle }
             placeholderText={ placeholderText }
           />
           <div className="Locator-resultsWrapper">

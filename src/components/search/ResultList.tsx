@@ -34,6 +34,7 @@ export default function ResultList(props: ResultListProps) {
     </div>
   )
 }
+
 interface ResultListItemProps {
   CardComponent: CardComponent,
   result: Result,
@@ -51,7 +52,7 @@ function ResultListItem(props: ResultListItemProps) {
   }  = useLocatorContext();
   const listItemRef = useRef<HTMLDivElement | null>(null);
 
-  // When the selectedId is updated from a marker or card click scroll the ResultList to show the current LocatorCard
+  // When the selectedId is updated from a marker click scroll the ResultList to show the current LocatorCard
   useEffect(() => {
     if (selectedId === result.id) {
       listItemRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest"});

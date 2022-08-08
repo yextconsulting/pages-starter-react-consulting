@@ -19,7 +19,7 @@ function useResultsCount() {
   let searchPlace = "";
   let resultsCount = 0;
 
-  // Get search term
+  // TODO: Like in searchbox this should pull from the same config/ stream definition if possible.
   if (state.filters.static?.length) {
     state.filters.static.forEach(filter => {
       if (filter.fieldId === "builtin.location" && filter.displayName) {

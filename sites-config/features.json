@@ -34,8 +34,9 @@
     },
     {
       "name": "search",
+      "streamId": "search-page",
       "templateType": "JS",
-      "staticPage": {
+      "entityPageSet": {
         "plugin": {}
       }
     },
@@ -149,6 +150,29 @@
       "filter": {
         "savedFilterIds": [
           "dm_defaultDirectory"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    },
+    {
+      "$id": "search-page",
+      "fields": [
+        "id",
+        "uid",
+        "meta",
+        "name",
+        "c_searchTitle",
+        "c_searchSubTitle",
+        "c_searchPlaceholderText"
+      ],
+      "filter": {
+        "entityIds": [
+          "search-page"
         ]
       },
       "localization": {
