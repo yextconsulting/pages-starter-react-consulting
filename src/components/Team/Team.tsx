@@ -2,17 +2,29 @@ import React, {useState} from "react";
 import TeamCard, { financialProfessional } from "src/components/Team/TeamCard";
 import "src/styles/Team.css";
 
+export const teamFields = [
+  "c_team.id",
+  "c_team.name",
+  "c_team.headshot",
+  "c_team.mainPhone",
+  "c_team.c_occupation",
+  "c_team.emails",
+  "c_team.websiteUrl",
+]
+
 type TeamProps = {
-  team?: financialProfessional[];
+  team: financialProfessional[];
   initialSize?: number;
 }
 
 const Team = (props: TeamProps) => {
-  const { team = [], initialSize } = props;
+  const { team, initialSize } = props;
   if (!team) return null;
 
-  let [visible, setVisible] = useState(initialSize ? team.slice(0, Math.min(initialSize, team.length)) : team);
-  let [load, setLoad] = useState(!(visible.length === team.length));
+  const [numberVisible, setNumberVisible] = useState(initialSize ? Math.min(initialSize, team.length) : team.length);
+  const visible = team.slice(0, numberVisible);
+  const load = numberVisible !== team.length;
+
 
   return (
     <div className="Team-container centered-container">
@@ -25,7 +37,7 @@ const Team = (props: TeamProps) => {
         ))}
       </ul>
       {load && (
-      <button className="Team-loadBtn Button Button--secondary" onClick={() => {setVisible(team); setLoad(false)}}> Load More </button>
+      <button className="m-auto Button Button--secondary" onClick={() => {setNumberVisible(team.length)}}> Load More </button>
       )}
     </div>
   )

@@ -24,6 +24,7 @@ import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
 import { Link } from "@yext/sites-react-components";
 import { LocationProfile } from "src/types/entities";
+import { teamFields } from "src/components/Team/Team";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -39,13 +40,6 @@ export const config: TemplateConfig = {
       "logo",
       "meta",
       "name",
-      "c_team.id",
-      "c_team.name",
-      "c_team.headshot",
-      "c_team.mainPhone",
-      "c_team.c_occupation",
-      "c_team.emails",
-      "c_team.websiteUrl",
       "address",
       "mainPhone",
       "description",
@@ -55,7 +49,14 @@ export const config: TemplateConfig = {
       "services",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
-      "dm_directoryChildrenCount"
+      "dm_directoryChildrenCount",
+      teamFields[0],
+      teamFields[1],
+      teamFields[2],
+      teamFields[3],
+      teamFields[4],
+      teamFields[5],
+      teamFields[6],
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {

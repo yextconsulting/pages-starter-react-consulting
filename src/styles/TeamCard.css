@@ -4,8 +4,6 @@
   {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #cccccc;
-    padding: theme(spacing.8);
     min-height: 128px;
 
     @screen lg
@@ -18,22 +16,6 @@
   {
     border-radius: theme(borderRadius.full);
     width: 80px;
-  }
-
-  &-about
-  {
-    margin-left: theme(spacing.6);
-  }
-
-  &-details
-  {
-    padding: theme(spacing.8);
-  }
-
-  &-name
-  {
-    font-weight: theme(fontWeight.bold);
-    margin-bottom: theme(spacing.1);
   }
 
   &-phoneDisplay,
@@ -77,7 +59,6 @@
 
   &-email
   {
-    margin-top: theme(spacing.4);
     display: flex;
     align-items: center;
     font-weight: theme(fontWeight.bold);
@@ -93,11 +74,6 @@
       margin-right: theme(spacing.4);
       margin-top: theme(spacing.1);
     }
-  }
-
-  &-linkWrapper
-  {
-    margin-top: theme(spacing.6);
   }
 
   &-link

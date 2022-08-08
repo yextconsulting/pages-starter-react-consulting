@@ -41,12 +41,7 @@
 
     &-listItem
     {
-        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+        box-shadow: theme(boxShadow.lg);
         border-radius: theme(borderRadius.lg);
-    }
-
-    &-loadBtn
-    {
-        margin: theme(margin.auto);
     }
 }
