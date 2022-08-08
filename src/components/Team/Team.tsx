@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import TeamCard, { financialProfessional } from "src/components/Team/TeamCard";
+import TeamCard from "src/components/Team/TeamCard";
+import { financialProfessional } from "src/types/entities";
 import "src/styles/Team.css";
 
 export const teamFields = [

@@ -1,17 +1,7 @@
 import React from "react";
-import {Image as ImageType} from "@yext/types";
 import {Image, Link} from "@yext/sites-react-components";
+import { financialProfessional } from "src/types/entities";
 import "src/styles/TeamCard.css";
-
-export interface financialProfessional {
-  id: string;
-  name: string;
-  headshot?: ImageType;
-  mainPhone?: string;
-  c_occupation?: string;
-  emails?: string[];
-  websiteUrl?: Object[];
-}
 
 type TeamCardProps = {
   profile: financialProfessional;

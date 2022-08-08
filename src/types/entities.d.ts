@@ -1,4 +1,4 @@
-import { Address, Hours } from "@yext/types"
+import { Address, Hours, Image, WebsiteUrl } from "@yext/types"
 
 // TODO: potentially move this to @yext/types
 // Also we should probably move @yext/types into @yext/pages
@@ -40,3 +40,13 @@ export type DirectoryProfile<T> = BaseProfile & {
 	dm_directoryParents?: DirectoryProfile<DirectoryProfile<T>>[]
 	slug: string
 }
+
+export interface financialProfessional {
+	id: string;
+	name: string;
+	headshot?: Image;
+	mainPhone?: string;
+	c_occupation?: string;
+	emails?: string[];
+	websiteUrl?: WebsiteUrl;
+  }
