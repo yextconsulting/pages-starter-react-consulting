@@ -77,7 +77,7 @@ const Search: Template<TemplateRenderProps> = (data) => {
 
   return (
     <div className="flex flex-col h-screen">
-      <div className="h-[116px] w-screen bg-blue-200">Todo: Replace with Header Component</div>
+      {/* TODO: add header */}
       <SearchHeadlessProvider
         apiKey="e12fdae56a046c51cd2cd61f11de17a2"
         experienceKey="answers-locator-test"
@@ -90,7 +90,7 @@ const Search: Template<TemplateRenderProps> = (data) => {
           placeholderText={ c_searchPlaceholderText }
         />
       </SearchHeadlessProvider>
-      <div className="h-[92px] w-screen bg-blue-200">Todo: Replace with Footer Component</div>
+      {/* TODO: add footer */}
     </div>
   );
 };
