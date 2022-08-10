@@ -22,7 +22,7 @@ import {
   HeadConfig,
 } from "@yext/pages";
 import "src/index.css";
-//import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
+import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
 import { LocationProfile } from "src/types/entities";
 import { teamFields } from "src/components/Team/Team";

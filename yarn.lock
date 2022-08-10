@@ -452,7 +452,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@rollup/pluginutils@^4.2.1":
+"@rollup/pluginutils@^4.2.0", "@rollup/pluginutils@^4.2.1":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-4.2.1.tgz#e6c6c3aba0744edce3fb2074922d3776c0af2a6d"
   integrity sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==
@@ -676,6 +676,32 @@
   dependencies:
     vue-demi "*"
 
+"@yext/components-tsx-geo@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@yext/components-tsx-geo/-/components-tsx-geo-1.0.3.tgz#e0233445833fba329d749ab6249269f46d2305ab"
+  integrity sha512-dcxvyEBo4b0yKuiummdDh6J+FP6lXK2wsBYyNxBGeLXYrjUZYXarQn6knHyRNClVHNEZ0jjKKW7QN7JwFd+LlQ==
+
+"@yext/components-tsx-maps@^1.0.5":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@yext/components-tsx-maps/-/components-tsx-maps-1.0.7.tgz#f1f813b5fd6143be4669f4f66e19b4e2a06f9f62"
+  integrity sha512-NIByvQCUNMmWqX7b4yJ1z2LO8s5lk38OIuQ46ufi5tez9Zb4RpL2f+uGujE7II5EYquAE7h1McsLkNGZIFpXDw==
+  dependencies:
+    "@yext/components-tsx-geo" "^1.0.3"
+    typescript "^4.7.3"
+
+"@yext/custom-field-debugger@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@yext/custom-field-debugger/-/custom-field-debugger-2.0.6.tgz#f2107e6eb7768bd4c312c28fb2bea18f3a0ff391"
+  integrity sha512-tbaDE46+yNNKVuMooPYZ2zb/iOsJVSYNJZtCHBN/jrlxXCJF0kjO5wNGIDugSxI2ld+TeXNfcxJXHDvoLHK+WQ==
+  dependencies:
+    "@yext/pages" "1.0.0-beta.0"
+    classnames "^2.3.1"
+    esbuild "^0.14.45"
+    glob "^8.0.3"
+    react "^17.0.2"
+    react-dom "^17.0.2"
+    typescript "^4.7.3"
+
 "@yext/pages@1.0.0-beta.0":
   version "1.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/@yext/pages/-/pages-1.0.0-beta.0.tgz#5d3315e3b3671d716dd7d0468cd07dae37799447"
@@ -702,6 +728,45 @@
     shelljs "^0.8.5"
     typescript "^4.7.4"
     vite "^3.0.0"
+    vitepress "1.0.0-alpha.2"
+
+"@yext/schema-wrapper@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@yext/schema-wrapper/-/schema-wrapper-1.0.1.tgz#44d62d2f0b9d598bfd58ae379fe4baed727eb0e3"
+  integrity sha512-RDssdPIQYXSKhMjrkp3HMSLxI/DfqjtbsyV6Una2zXBXG/ogQ1WZbMS4ViTEK2yAUF6A3xhXjKTGdaSkWXhkgg==
+
+"@yext/sites-react-components@^0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@yext/sites-react-components/-/sites-react-components-0.1.13.tgz#b3019249ebbf8b462f0a682b603f66f219ba5f24"
+  integrity sha512-PqxWcIrkPebQm4jIIwKqc54cXU4AQPpCSh0LNAWtVpl9YlXCNfWZW9jew8s1HNdFJW1XcyOFckj1XeiX6y38gw==
+  dependencies:
+    "@yext/components-tsx-maps" "^1.0.5"
+    awesome-phonenumber "^2.70.0"
+    classnames "^2.3.1"
+    rollup-plugin-import-css "^3.0.3"
+
+"@yext/types@^0.1.8-alpha":
+  version "0.1.8-alpha"
+  resolved "https://registry.yarnpkg.com/@yext/types/-/types-0.1.8-alpha.tgz#8f2b7e81531f6d534ee3441afb560aa0ea8e2192"
+  integrity sha512-m8+f1QHvSfv3GgPoJ2xnRvPu6cujqqBxzOEAm71U+vIvDgVoH1g09ec+lZKN7igXT+HCstEgiFba+RQ/LrxdiA==
+
+"@yext/yext-sites-scripts@^0.0.23":
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/@yext/yext-sites-scripts/-/yext-sites-scripts-0.0.23.tgz#f5bb88fb940a49371a57d237cf7b1022a14e359c"
+  integrity sha512-qIfKJuMlPF5EfSWBmS6P+Bc6kx62xsVobCiEW87s1dI/71E7lMrV/sPAw86tR8cyRpZWsp17Y3aZxIqzDrI/FA==
+  dependencies:
+    ansi-to-html "^0.7.2"
+    chalk "^5.0.1"
+    cli-spinners "^2.6.1"
+    commander "^9.1.0"
+    cross-fetch "^3.1.5"
+    escape-html "^1.0.3"
+    esm-module-paths "^1.1.1"
+    express "^4.17.3"
+    ink "^3.2.0"
+    open "^8.4.0"
+    shelljs "^0.8.5"
+    typescript "^4.6.2"
     vitepress "1.0.0-alpha.2"
 
 abort-controller@^3.0.0:
@@ -871,6 +936,11 @@ autoprefixer@^10.4.4:
     normalize-range "^0.1.2"
     picocolors "^1.0.0"
     postcss-value-parser "^4.2.0"
+
+awesome-phonenumber@^2.70.0:
+  version "2.73.0"
+  resolved "https://registry.yarnpkg.com/awesome-phonenumber/-/awesome-phonenumber-2.73.0.tgz#c921f47450ba10bb2e4a6305cc85d802f57a96cf"
+  integrity sha512-zirkzWFUheNnnPY1QE05PQd+5drn+5kVy76gZ3WyXnLwzXOguw6sqksyZGO1qyNnYj3Y/SDITXnS/TCk/hJXpQ==
 
 axios-cache-adapter@^2.7.3:
   version "2.7.3"
@@ -1054,6 +1124,11 @@ ci-info@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
   integrity sha512-5tK7EtrZ0N+OLFMthtqOj4fI2Jeb88C4CAZPu25LDVUgXJ0A3Js4PMGqrn0JU1W0Mh1/Z8wZzYPxqUrXeBboCQ==
+
+classnames@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
 
 cli-boxes@^2.2.0:
   version "2.2.1"
@@ -1517,7 +1592,7 @@ esbuild-windows-arm64@0.14.54:
   resolved "https://registry.yarnpkg.com/esbuild-windows-arm64/-/esbuild-windows-arm64-0.14.54.tgz#937d15675a15e4b0e4fafdbaa3a01a776a2be982"
   integrity sha512-M0kuUvXhot1zOISQGXwWn6YtS+Y/1RT9WrVIOywZnJHo3jCDyewAc79aKNQWFCQm+xNHVTq9h8dZKvygoXQQRg==
 
-esbuild@^0.14.27, esbuild@^0.14.47:
+esbuild@^0.14.27, esbuild@^0.14.45, esbuild@^0.14.47:
   version "0.14.54"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.14.54.tgz#8b44dcf2b0f1a66fc22459943dccf477535e9aa2"
   integrity sha512-Cy9llcy8DvET5uznocPyqL3BFRrFXSVqbgpMJ9Wz8oVjZlh/zUSNbPRbov0VX7VxN2JH1Oa0uNxZ7eLRb62pJA==
@@ -1840,7 +1915,7 @@ glob@^7.0.0, glob@^7.2.0:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^8.0.0:
+glob@^8.0.0, glob@^8.0.3:
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/glob/-/glob-8.0.3.tgz#415c6eb2deed9e502c68fa44a272e6da6eeca42e"
   integrity sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==
@@ -2828,6 +2903,11 @@ react-dom@^17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
+react-icons@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.4.0.tgz#a13a8a20c254854e1ec9aecef28a95cdf24ef703"
+  integrity sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==
+
 react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -2944,6 +3024,13 @@ reusify@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
   integrity sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
+
+rollup-plugin-import-css@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-import-css/-/rollup-plugin-import-css-3.0.3.tgz#603c96e5ca55a8b1a1fda94221189f3224532fcf"
+  integrity sha512-0JE1UVigYqhbbbwNalxcYCnYAD70JgJIqnaSYeBgCOO60ASx9hpJubfA8toxEv6ceZrRPnLF1cnr0vsskH1Uiw==
+  dependencies:
+    "@rollup/pluginutils" "^4.2.0"
 
 rollup@^2.59.0, rollup@^2.72.1, rollup@^2.75.6:
   version "2.77.2"
@@ -3311,7 +3398,7 @@ type-is@~1.6.18:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typescript@^4.6.2, typescript@^4.7.4:
+typescript@^4.6.2, typescript@^4.7.3, typescript@^4.7.4:
   version "4.7.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
   integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
