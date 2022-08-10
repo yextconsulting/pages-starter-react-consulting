@@ -38,7 +38,7 @@ const FAQ = (props: FAQProps) => {
                                 {faq.question}
                             </div>
                             <div>
-                                {faqsOpen[index] ? (<GoChevronUp size="1.5em" />) : (<GoChevronDown size="1.5em" />)}
+                                {faqsOpen[index] ? (<GoChevronUp color="#1B78D0" size="1.5em" />) : (<GoChevronDown color="#1B78D0" size="1.5em" />)}
                             </div>
                         </div>
                         <div ref={(el) => {faqRefs.current[index] = el!}} className="FAQ-answer js-faq-answer font-normal text-base overflow-y-hidden duration-500 h-0 transition-[height]">
