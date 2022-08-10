@@ -1,0 +1,14 @@
+{
+  "filter": {
+    "entityIds": ["site-entity"]
+  },
+  "fields": [
+    "id",
+    "meta",
+    "name"
+  ],
+  "localization": {
+    "locales": ["en"],
+    "primary": false
+  }
+}
