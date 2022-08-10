@@ -22,7 +22,8 @@ import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
 import { Link } from "@yext/sites-react-components";
-import { LocationProfile } from "src/types/entities";
+import { LocationProfile, FAQItem } from "src/types/entities";
+import FAQ from "src/components/FAQ/FAQ";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -96,28 +97,28 @@ const Index: Template<TemplateRenderProps> = (data) => {
     name
   } = document;
 
+  const faqList: FAQItem[] = [
+    {
+      "question": "Question Lorem ipsum dolor sit amet?",
+      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "question": "Question Lorem ipsum dolor sit amet?",
+      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "question": "Question Lorem ipsum dolor sit amet?",
+      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "question": "Question Lorem ipsum dolor sit amet?",
+      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    }
+  ]
+
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      <div>Hello {name}!</div>
-
-      {/* TODO(bhaines): delete before merging pr, these are just examples for anyone
-      who wants to pull the code to test it out */}
-      <div className="m-6 text-4xl">Buttons</div>
-      <button className="m-4 Button Button--primary">Click Me</button>
-      <button className="m-4 Button Button--secondary">Click Me</button>
-
-      <div className="m-6 text-4xl">Links</div>
-      <Link href="https://www.yext.com" className="m-4 Link">Click Me</Link>
-      <Link href="https://www.yext.com" className="m-4 Link">Click Me</Link>
-      <Link href="https://www.yext.com" className="m-4 Link Link--primary">Click Me</Link>
-      <Link href="https://www.yext.com" className="m-4 Link Link--secondary">Click Me</Link>
-      <Link href="https://www.yext.com" className="m-4 Link Link--underline">Click Me</Link>
-      <Link href="https://www.yext.com" className="m-4 Link Link--primary Link--underline">Click Me</Link>
-
-      <div className="m-6 text-4xl">Headings</div>
-      <h1 className="m-4 Heading Heading--lead">Section Heading</h1>
-      <h3 className="m-4 Heading Heading--head">Section Heading</h3>
-      <h6 className="m-4 Heading Heading--sub">Section Heading</h6>
+      <FAQ heading="Frequently Asked Questions" fAQs={faqList} />
     </CustomFieldDebuggerReactProvider>
   );
 };

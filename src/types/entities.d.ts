@@ -40,3 +40,8 @@ export type DirectoryProfile<T> = BaseProfile & {
 	dm_directoryParents?: DirectoryProfile<DirectoryProfile<T>>[]
 	slug: string
 }
+
+export interface FAQItem {
+	question: string;
+	answer: string;
+}
