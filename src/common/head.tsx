@@ -1,5 +1,5 @@
 import { TemplateRenderProps, HeadConfig, Tag } from "@yext/pages";
-import { SchemaBuilder } from 'src/common/schema';
+//import { SchemaBuilder } from 'src/common/schema';
 
 const dnsPrefetchTags: Tag[] = [
 	{ type: "meta", attributes: { rel: "dns-prefetch", href: "//www.yext-pixel.com" } },
@@ -132,7 +132,7 @@ export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Ta
 			...addressTags,
 			...(additionalTags || [])
 		],
-		other: SchemaBuilder(data),
+		//other: SchemaBuilder(data),
 	};
 }
 

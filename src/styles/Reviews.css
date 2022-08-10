@@ -15,6 +15,37 @@
     
   }
 
+  &-overallRating
+  {
+    justify-content: center;
+  }
+
+  &-overallRatingNumber
+  {
+    margin-right: 12px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &-overallStar
+  {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  &-overallRatingCount
+  {
+    margin-left: 12px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
   &-title
   {
     margin-bottom: 12px;
