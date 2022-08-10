@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FAQItem } from "src/types/entities";
 import { GoChevronUp, GoChevronDown } from "react-icons/go";
-import "src/styles/FAQ.css";
 
 type FAQProps = {
     heading: string;
@@ -26,7 +25,7 @@ const FAQ = (props: FAQProps) => {
     }
 
     return (
-        <div className="FAQ container">
+        <div className="FAQ container my-8">
             <h2 className="FAQ-heading font-bold text-4xl mb-8">
                 {heading}
             </h2>
