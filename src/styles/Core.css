@@ -1,0 +1,94 @@
+.Core
+{
+    background-color: theme(colors.background-gray);
+
+    &-container
+    {
+        padding-top: theme(spacing.8);
+        padding-bottom: theme(spacing.8);
+
+        @screen sm
+        {
+            padding-top: theme(spacing.16);
+            padding-bottom: theme(spacing.16);
+        }
+    }
+
+    &-infoSection
+    {
+        display: grid;
+
+        @screen sm
+        {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+    &-email,
+    &-directionsCta
+    {
+        display: block;
+    }
+
+    &-serviceList
+    {
+        list-style: inside;
+    }
+
+    &-phoneWrapper
+    {
+        &::before
+        {
+            content: '';
+            background-image: url(src/assets/images/phoneOutline.svg);
+            background-repeat: no-repeat;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: theme(spacing.4);
+        }
+    }
+
+    &-email
+    {
+        display: flex;
+        align-items: flex-end;
+
+        &::before
+        {
+          content: '';
+          background-image: url(src/assets/images/mailOutline.svg);
+          background-repeat: no-repeat;
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          margin-right: theme(spacing.4);
+        }
+    }
+
+    &-map
+    {
+        display: none;
+
+        @screen sm
+        {
+            display: block;
+        }
+    }
+}
+
+.HoursTable-row
+{
+    margin-bottom: 4px;
+
+    &.is-today
+    {
+        font-weight: theme(fontWeight.bold);
+    }
+}
+
+
+.dir-map
+{
+    height: 300px;
+}
