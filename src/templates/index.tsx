@@ -28,6 +28,9 @@ import { LocationProfile } from "src/types/entities";
 import { teamFields } from "src/components/Team/Team";
 import Footer from "src/components/Footer"; 
 
+import Header from "src/components/Header";
+import { useState } from "react";
+
 /**
  * Required when Knowledge Graph data is used for a template.
  */
@@ -109,28 +112,39 @@ const Index: Template<TemplateRenderProps> = (data) => {
     c_hero,
     _site
   } = document;
+
+  const [open, setOpen] = useState(false);
+  const handleHeaderToggle = (isOpen: boolean) => {
+    setOpen(isOpen);
+  }
+
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      {c_team && (
-        <Team team={c_team} initialSize={3}/>
-      )}
-      {/* TODO(aganesh) : use Reviews component when available */}
-      <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
-      <Core profile={document} address={address}/>
-      {c_team && (
-        <Team team={c_team} initialSize={3}/>
-      )}
-      <Footer
-        copyrightMessage={_site.c_copyrightMessage}
-        facebook={_site.c_facebook}
-        instagram={_site.c_instagram}
-        youtube={_site.c_youtube}
-        twitter={_site.c_twitter}
-        linkedIn={_site.c_linkedIn}
-        footerLinks={_site.c_footerLinks}
-      />
+      <div className="Main">
+        <Header onToggle={handleHeaderToggle} className="Main-header" logo={_site.logo.image} links={_site.c_header} />
+        <div className={`Main-content${open ? ' hidden md:block' : ''}`}>
+          {c_team && (
+            <Team team={c_team} initialSize={3}/>
+          )}
+          {/* TODO(aganesh) : use Reviews component when available */}
+          <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
+          <Core profile={document} address={address}/>
+          {c_team && (
+            <Team team={c_team} initialSize={3}/>
+          )}
+          <Footer
+            copyrightMessage={_site.c_copyrightMessage}
+            facebook={_site.c_facebook}
+            instagram={_site.c_instagram}
+            youtube={_site.c_youtube}
+            twitter={_site.c_twitter}
+            linkedIn={_site.c_linkedIn}
+            footerLinks={_site.c_footerLinks}
+          />
+        </div>
+      </div>
     </CustomFieldDebuggerReactProvider>
-  );
+  )
 };
 
 export default Index;

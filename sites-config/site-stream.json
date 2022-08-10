@@ -6,13 +6,15 @@
     "id",
     "meta",
     "name",
+    "logo",
     "c_facebook",
     "c_youtube",
     "c_twitter",
     "c_linkedIn",
     "c_instagram",
     "c_copyrightMessage",
-    "c_footerLinks"
+    "c_footerLinks",
+    "c_header"
   ],
   "localization": {
     "locales": ["en"],

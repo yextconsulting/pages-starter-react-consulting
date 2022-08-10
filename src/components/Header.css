@@ -1,20 +1,19 @@
 .Header {
-    padding: theme("spacing.4");
-
-    &-logoContainer {
-        width: 30%;
-    }
-
-    &-content {
-        width: 70%;
-    }
-    
     &-logo {
         margin-right: theme("spacing.1");
+        width: 140px;
+    }
+
+    &-links {
+        display: flex;
+        flex-direction: column;
+
+        @screen md {
+            flex-direction: row;
+        }
     }
 
     &-link {
-        font-size: theme("fontSize.base");
         font-weight: theme("fontWeight.bold");
         margin-left: theme("spacing.6");
         margin-right: theme("spacing.6");

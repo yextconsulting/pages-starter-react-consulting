@@ -8,10 +8,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.centered-container {
-  @apply mx-auto px-5 md:px-14 max-w-screen-xl;
-}
-
 .section {
   @apply mt-8 mb-16;
 }
@@ -22,4 +18,23 @@
 
 .secondary-cta {
   @apply bg-sky-700 hover:bg-sky-800;
+}
+
+.Main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: 
+    'header'
+    'main';
+  height: 100vh;
+}
+
+.Main-header {
+  grid-area: header;
+}
+
+.Main-content {
+  grid-area: main;
+  overflow: auto;
 }
