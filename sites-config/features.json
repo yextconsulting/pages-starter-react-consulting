@@ -93,7 +93,11 @@
         "services",
         "dm_directoryParents.name",
         "dm_directoryParents.slug",
-        "dm_directoryChildrenCount"
+        "dm_directoryChildrenCount",
+        "c_featuredProducts.products.name",
+        "c_featuredProducts.products.richTextDescription",
+        "c_featuredProducts.products.primaryPhoto",
+        "c_featuredProducts.products.c_primaryCTA"
       ],
       "filter": {
         "entityTypes": [

@@ -1,0 +1,53 @@
+.FeaturedProduct
+{
+  background-color: theme(colors.brand-gray.100);
+
+  &-container
+  {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    max-width: 1140px;
+  }
+
+  &-heading
+  {
+    padding-bottom: 4px;
+  }
+
+  &-card
+  {
+    background-color: white;
+    flex-direction: column;
+    text-align: left;
+    max-width: 360px;
+    margin-left: theme("spacing.6");
+    margin-right: theme("spacing.6");
+  }
+
+  &-content
+  {
+    flex-direction: column;
+    @screen sm
+    {
+      flex-direction: row;
+    }
+  }
+
+  &-image
+  {
+    height: 187px;
+  }
+
+  &-imageWrapper
+  {
+    justify-content: center;
+  }
+
+  &-title
+  {
+    font-family: theme(fontFamily.primary);
+    font-weight: theme(fontWeight.bold);
+    font-size: 24px;
+  }
+}

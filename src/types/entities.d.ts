@@ -29,6 +29,7 @@ export interface LocationProfile extends BaseProfile {
 	hours?: Hours
 	mainPhone?: string
 	description?: string
+	c_featuredProducts: any
 	// Add custom fields here
 	// c_myStringField: string
 }
