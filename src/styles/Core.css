@@ -1,6 +1,6 @@
 .Core
 {
-    background-color: theme(colors.background-gray);
+    background-color: "f7f7f7";
 
     &-container
     {

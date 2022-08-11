@@ -2,6 +2,7 @@ import React from "react";
 import { Link, HoursTable, Address, LocationMap } from "@yext/sites-react-components";
 import { Address as AddressType, Hours, Coordinate } from "@yext/types";
 import { GoogleMaps } from "@yext/components-tsx-maps";
+import { getDirections } from "@yext/sites-react-components";
 import { mapPin } from "src/assets/images/mapPin.svg"
 import "src/styles/Core.css";
 
@@ -28,16 +29,16 @@ type CoreProps = {
 }
 
 const Core = (props: CoreProps) => {
+    console.log(getDirections(props.address, GoogleMaps, true));
     return(
         <div className="Core">
             <div className="Core-container centered-container">
                 <div className="Core-infoSection">
                     <div className="Core-subSection mb-8">
                         <div className="Heading--sub mb-4 font-bold"> Information </div>
-                        <Address className="pb-2" address={props.address} lines={[["line1"], ["line2"], ["city", "regionCode", "postalCode"]]} />
+                        <Address address={props.address} lines={[["line1"], ["line2"], ["city", "regionCode", "postalCode"]]} />
                         {/* TOOD: add getDirections */}
-                        <Link className="Core-directionsCta Link--primary Link--underline mt-2" href=""> Get Directions </Link>
-
+                        <Link className="Core-directionsCta Link--primary Link--underline mt-2" href={`${getDirections(props.address)}`}> Get Directions </Link>
                         {props.mainPhone && (
                             <div className="Core-phoneWrapper mt-4">
                                 <span className="Core-label mr-2 font-bold">Phone</span>
