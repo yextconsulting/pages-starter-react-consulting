@@ -21,7 +21,7 @@ const FAQ = (props: FAQItem) => {
 
     return (
         <div className="FAQ-qa">
-            <div className="FAQ-question justify-between flex py-4 cursor-pointer font-bold text-lg" onClick={() => faqToggle()}>
+            <div className="FAQ-question justify-between flex py-4 cursor-pointer font-bold text-lg" onClick={faqToggle}>
                 <div>
                     {question}
                 </div>

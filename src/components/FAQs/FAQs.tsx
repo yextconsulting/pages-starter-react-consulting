@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FAQItem } from "src/types/entities";
 import FAQ from "src/components/FAQs/FAQ";
-import { GoChevronUp, GoChevronDown } from "react-icons/go";
 
 type FAQsProps = {
     heading: string;
