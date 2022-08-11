@@ -23,7 +23,7 @@ import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
 import { Link } from "@yext/sites-react-components";
 import { LocationProfile, FAQItem } from "src/types/entities";
-import FAQ from "src/components/FAQ/FAQ";
+import FAQs from "src/components/FAQs/FAQs";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -118,7 +118,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
 
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      <FAQ heading="Frequently Asked Questions" fAQs={faqList} />
+      <FAQs heading="Frequently Asked Questions" fAQs={faqList} />
     </CustomFieldDebuggerReactProvider>
   );
 };
