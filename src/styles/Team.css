@@ -1,0 +1,47 @@
+.Team
+{
+    &-container
+    {
+        padding: theme(container.padding.DEFAULT);
+
+        @screen lg
+        {
+            padding: theme(container.padding.lg) 0;
+        }
+    }
+
+    &-title
+    {
+        font-weight: theme(fontWeight.bold);
+        padding-bottom: theme(spacing.8);
+
+        @screen md
+        {
+            text-align: center;
+        }
+    }
+
+    &-list
+    {
+        display: grid;
+        gap: theme(gap.4);
+        padding-bottom: 30px;
+
+        @screen md
+        {
+            grid-template-columns: theme(gridTemplateColumns.2);
+            gap: theme(gap.8);
+        }
+
+        @screen lg
+        {
+            grid-template-columns: theme(gridTemplateColumns.3);
+        }
+    }
+
+    &-listItem
+    {
+        box-shadow: theme(boxShadow.lg);
+        border-radius: theme(borderRadius.lg);
+    }
+}

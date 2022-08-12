@@ -5,6 +5,7 @@
   "entityType": "location",
   "fields": [
     "c_meta",
+    "c_team",
     "c_hero"
   ],
   "required": []

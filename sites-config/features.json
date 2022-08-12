@@ -91,6 +91,7 @@
         "slug",
         "geocodedCoordinate",
         "services",
+        "c_team"
         "dm_directoryParents.name",
         "dm_directoryParents.slug",
         "dm_directoryChildrenCount"

@@ -9,6 +9,7 @@
  */
 
 import React from "react";
+import Team from "src/components/Team/Team";
 import Hero from "src/components/Hero/Hero";
 import {
   TemplateProps,
@@ -24,6 +25,7 @@ import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
 import { Link } from "@yext/sites-react-components";
 import { LocationProfile } from "src/types/entities";
+import { teamFields } from "src/components/Team/Team";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -49,7 +51,8 @@ export const config: TemplateConfig = {
       "c_hero",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
-      "dm_directoryChildrenCount"
+      "dm_directoryChildrenCount",
+      ...teamFields,
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -98,10 +101,14 @@ const Index: Template<TemplateRenderProps> = (data) => {
     name,
     address,
     hours,
+    c_team,
     c_hero
   } = document;
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
+      {c_team && (
+        <Team team={c_team} initialSize={3}/>
+      )}
       {/* TODO(aganesh) : use Reviews component when available */}
       <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
     </CustomFieldDebuggerReactProvider>

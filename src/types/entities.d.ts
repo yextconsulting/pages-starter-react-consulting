@@ -1,4 +1,4 @@
-import { Address, CTA, Hours, Image } from "@yext/types"
+import { Address, CTA, Hours, Image, WebsiteUrl } from "@yext/types"
 
 // TODO: potentially move this to @yext/types
 // Also we should probably move @yext/types into @yext/pages
@@ -20,6 +20,15 @@ interface BaseProfile {
 	}
 }
 
+export interface financialProfessional {
+	id: string;
+	name: string;
+	headshot?: Image;
+	mainPhone?: string;
+	c_occupation?: string;
+	emails?: string[];
+	websiteUrl?: WebsiteUrl;
+}
 
 // TODO: generate these automatically from stream definitions
 export interface LocationProfile extends BaseProfile {
@@ -31,6 +40,7 @@ export interface LocationProfile extends BaseProfile {
 	description?: string
 	// Add custom fields here
 	// c_myStringField: string
+	c_team?: financialProfessional[];
 	c_hero?: {
 		background: Image,
 		cta1: CTA,
