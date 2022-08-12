@@ -1,0 +1,74 @@
+.Core
+{
+    background-color: theme(colors.brand-gray.100);
+
+    &-container
+    {
+        padding-top: theme(spacing.8);
+        padding-bottom: theme(spacing.8);
+
+        @screen sm
+        {
+            padding-top: theme(spacing.16);
+            padding-bottom: theme(spacing.16);
+        }
+    }
+
+    &-infoSection
+    {
+        display: grid;
+
+        @screen sm
+        {
+            grid-template-columns: 1fr 1fr ;
+        }
+
+        @screen lg
+        {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+    &-email,
+    &-directionsCta
+    {
+        display: block;
+    }
+
+    &-serviceList
+    {
+        list-style: inside;
+    }
+
+    &-bulleted
+    {
+        display: flex;
+        align-items: center;
+    }
+
+    &-map
+    {
+        display: none;
+
+        @screen sm
+        {
+            display: block;
+        }
+    }
+}
+
+.HoursTable-row
+{
+    margin-bottom: 4px;
+
+    &.is-today
+    {
+        font-weight: theme(fontWeight.bold);
+    }
+}
+
+
+.dir-map
+{
+    height: 300px;
+}

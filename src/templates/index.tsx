@@ -9,6 +9,7 @@
  */
 
 import React from "react";
+import Core from "src/components/Core/Core";
 import Team from "src/components/Team/Team";
 import Hero from "src/components/Hero/Hero";
 import {
@@ -43,15 +44,18 @@ export const config: TemplateConfig = {
       "name",
       "address",
       "mainPhone",
+      "tollFreePhone",
+      "emails",
+      "geocodedCoordinate",
       "description",
       "hours",
-      "slug",
-      "geocodedCoordinate",
+      "additionalHoursText",
       "services",
-      "c_hero",
+      "slug",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
+      "c_hero",
       ...teamFields,
     ],
     // Defines the scope of entities that qualify for this stream.
@@ -106,11 +110,12 @@ const Index: Template<TemplateRenderProps> = (data) => {
   } = document;
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
+      {/* TODO(aganesh) : use Reviews component when available */}
+      <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
+      <Core profile={document} address={address}/>
       {c_team && (
         <Team team={c_team} initialSize={3}/>
       )}
-      {/* TODO(aganesh) : use Reviews component when available */}
-      <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
     </CustomFieldDebuggerReactProvider>
   );
 };
