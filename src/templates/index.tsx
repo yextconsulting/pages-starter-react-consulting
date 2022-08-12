@@ -98,11 +98,9 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
 const Index: Template<TemplateRenderProps> = (data) => {
   const document = data.document as LocationProfile;
   const {
-    name
+    name,
+    c_featuredProducts
   } = document;
-
-  const featuredProducts = document.c_featuredProducts;
-  console.log(featuredProducts);
 
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>

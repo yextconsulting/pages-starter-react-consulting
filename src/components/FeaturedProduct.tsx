@@ -13,13 +13,13 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
   return (
     <div className="FeaturedProduct">
       <div className="FeaturedProduct-container centered-container">
-        <div className="FeaturedProduct-heading m-4 Heading Heading--head">
+        <div className="pb-2 FeaturedProduct-heading m-4 Heading Heading--head">
           {title}
         </div>
         <div className="flex FeaturedProduct-content">
           {products.map((item: any) => (
               <ul key={item.title}>
-                <div className="flex FeaturedProduct-card">
+                <div className="flex mb-8 FeaturedProduct-card">
                   <div className="flex FeaturedProduct-imageWrapper">
                     {item.primaryPhoto && (<Image className="FeaturedProduct-image" imageField={item.primaryPhoto?.image}/>)}
                   </div>
