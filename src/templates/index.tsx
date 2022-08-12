@@ -10,6 +10,7 @@
 
 import React from "react";
 import Team from "src/components/Team/Team";
+import Hero from "src/components/Hero/Hero";
 import {
   TemplateProps,
   TemplateRenderProps,
@@ -47,6 +48,7 @@ export const config: TemplateConfig = {
       "slug",
       "geocodedCoordinate",
       "services",
+      "c_hero",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
@@ -96,14 +98,19 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
 const Index: Template<TemplateRenderProps> = (data) => {
   const document = data.document as LocationProfile;
   const {
-    c_team
+    name,
+    address,
+    hours,
+    c_team,
+    c_hero
   } = document;
-
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
       {c_team && (
         <Team team={c_team} initialSize={3}/>
       )}
+      {/* TODO(aganesh) : use Reviews component when available */}
+      <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
     </CustomFieldDebuggerReactProvider>
   );
 };
