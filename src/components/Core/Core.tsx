@@ -3,8 +3,9 @@ import { Link, HoursTable, Address, LocationMap } from "@yext/sites-react-compon
 import { Address as AddressType, Hours, Coordinate } from "@yext/types";
 import { GoogleMaps } from "@yext/components-tsx-maps";
 import { getDirections } from "@yext/sites-react-components";
-import "src/styles/Core.css";
 import { LocationProfile } from "src/types/entities";
+import { FaPhone, FaEnvelope } from "react-icons/fa";
+import "src/styles/Core.css";
 
 type CoreProps = {
     profile: LocationProfile;
@@ -22,19 +23,24 @@ const Core = (props: CoreProps) => {
                         <Address address={address} lines={[["line1"], ["line2"], ["city", "regionCode", "postalCode"]]} />
                         <Link className="Core-directionsCta Link--primary Link--underline font-bold mt-2" href={`${getDirections(profile, GoogleMaps)}`}> Get Directions </Link>
                         {profile.mainPhone && (
-                            <div className="Core-phoneWrapper mt-4">
+                            <div className="Core-bulleted mt-4">
+                                <FaPhone className="text-blue-500 mr-2" />
                                 <span className="Core-label mr-2 font-bold">Phone</span>
                                 <span>{profile.mainPhone}</span>
                             </div>
                         )}
                         {profile.tollFreePhone && (
-                            <div className="Core-phoneWrapper mt-4">
+                            <div className="Core-bulleted mt-4">
+                                <FaPhone className="text-blue-500 mr-2" />
                                 <span className="Core-label mr-2 font-bold">Toll-free</span>
                                 <span>{profile.tollFreePhone}</span>
                             </div>
                         )}
                         {profile.emails && (
-                            <Link className="Core-email Link--primary Link--underline font-bold mt-4" href={`mailto:${profile.emails[0]}`}>{profile.emails[0]}</Link>
+                            <div className="Core-bulleted mt-4">
+                                <FaEnvelope className="text-blue-500 mr-2" />
+                                <Link className="Core-email Link--primary Link--underline font-bold" href={`mailto:${profile.emails[0]}`}>{profile.emails[0]}</Link>
+                            </div>
                         )}
                     </div>
                 {(profile.hours || profile.additionalHoursText) && (

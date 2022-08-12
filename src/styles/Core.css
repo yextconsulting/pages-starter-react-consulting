@@ -40,21 +40,10 @@
         list-style: inside;
     }
 
-    &-email
+    &-bulleted
     {
         display: flex;
-        align-items: flex-end;
-
-        &::before
-        {
-          content: '';
-          background-image: url(src/assets/images/mailOutline.svg);
-          background-repeat: no-repeat;
-          display: inline-block;
-          width: 16px;
-          height: 16px;
-          margin-right: theme(spacing.4);
-        }
+        align-items: center;
     }
 
     &-map
