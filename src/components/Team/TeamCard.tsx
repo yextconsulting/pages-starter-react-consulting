@@ -1,6 +1,7 @@
 import React from "react";
-import {Image, Link} from "@yext/sites-react-components";
+import { Image, Link } from "@yext/sites-react-components";
 import { financialProfessional } from "src/types/entities";
+import { FaPhone, FaEnvelope, FaChevronRight } from "react-icons/fa";
 import "src/styles/TeamCard.css";
 
 type TeamCardProps = {
@@ -30,7 +31,8 @@ const TeamCard = (props: TeamCardProps) => {
       <div className="TeamCard-details p-8">
         {/* TODO (GENERATOR): use Phone component when available */}
         {profile.mainPhone && (
-          <div>
+          <div className="TeamCard-bulleted">
+            <FaPhone className="text-blue-500 mr-2" />
             <div className="TeamCard-phoneDisplay">
               {profile.mainPhone}
             </div>
@@ -41,14 +43,16 @@ const TeamCard = (props: TeamCardProps) => {
         )}
 
         {profile.emails && (
-          <div className="TeamCard-email mt-4">
+          <div className="TeamCard-bulleted font-bold mt-4">
+            <FaEnvelope className="text-blue-500 mr-2" />
             <a className="Link--primary Link--underline" href={`mailto:${profile.emails[0]}`}>{profile.emails[0]}</a>
           </div>
         )}
 
         {profile.websiteUrl && profile.websiteUrl.url && (
-          <div className="TeamCard-linkWrapper mt-6">
+          <div className="TeamCard-bulleted mt-6">
             <Link className="TeamCard-link Link--primary" href={profile.websiteUrl.url}>Visit Profile</Link>
+            <FaChevronRight className="text-blue-500 ml-2" />
           </div>
         )}
       </div>

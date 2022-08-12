@@ -23,17 +23,6 @@
   {
     display: flex;
     align-items: center;
-
-    &::before
-    {
-      content: '';
-      background-image: url(src/assets/images/phone.svg);
-      background-repeat: no-repeat;
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      margin-right: theme(spacing.4);
-    }
   }
 
   &-phoneDisplay
@@ -57,23 +46,10 @@
     }
   }
 
-  &-email
+  &-bulleted
   {
     display: flex;
     align-items: center;
-    font-weight: theme(fontWeight.bold);
-
-    &::before
-    {
-      content: '';
-      background-image: url(src/assets/images/mail.svg);
-      background-repeat: no-repeat;
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      margin-right: theme(spacing.4);
-      margin-top: theme(spacing.1);
-    }
   }
 
   &-link
@@ -81,17 +57,6 @@
     font-weight: theme(fontWeight.bold);
     display: flex;
     align-items: center;
-
-    &::after
-    {
-      content: '';
-      background-image: url(src/assets/images/arrow.svg);
-      background-repeat: no-repeat;
-      display: inline-block;
-      width: 7px;
-      height: 12px;
-      margin-left: theme(spacing[2.5]);
-    }
   }
 
 }

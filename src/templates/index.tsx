@@ -110,6 +110,9 @@ const Index: Template<TemplateRenderProps> = (data) => {
   } = document;
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
+      {c_team && (
+        <Team team={c_team} initialSize={3}/>
+      )}
       {/* TODO(aganesh) : use Reviews component when available */}
       <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={document} address={address}/>
