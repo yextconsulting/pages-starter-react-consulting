@@ -33,17 +33,6 @@ const Footer = (props: FooterProps) => {
 
   const footerLinks = props.footerLinks || [];
 
-
-
-  const footerLinks = [    
-    {link: props.links[0], label: 'Footer Link'},
-    {link: props.links[1], label: 'Footer Link'},
-    {link: props.links[2], label: 'Footer Link'},
-    {link: props.links[3], label: 'Footer Link'},
-    {link: props.links[4], label: 'Footer Link'},
-    {link: props.links[5], label: 'Footer Link'},
-  ].filter(x => x.link)
-
   return (
     <footer className="Footer container">
       <div className="Footer-linksContainer flex flex-col">
