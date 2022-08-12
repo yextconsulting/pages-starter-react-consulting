@@ -10,6 +10,7 @@ html {
   --brand-primary: #1B78D0;
   --brand-secondary: #073866;
   --text-color-primary: black;
+  --background-gray: #f7f7f7;
 
   /* Links */
   --link-primary-color: var(--brand-primary);

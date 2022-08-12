@@ -1,4 +1,4 @@
-import { Address, CTA, Hours, Image, WebsiteUrl } from "@yext/types"
+import { Address, Coordinate, CTA, Hours, Image, WebsiteUrl } from "@yext/types"
 
 // TODO: potentially move this to @yext/types
 // Also we should probably move @yext/types into @yext/pages
@@ -34,13 +34,18 @@ export interface financialProfessional {
 export interface LocationProfile extends BaseProfile {
 	name: string
 	address: Address
+	geocodedCoordinate: Coordinate
 	slug: string
 	hours?: Hours
+	additionalHoursText?: string
 	mainPhone?: string
+	tollFreePhone?: string
 	description?: string
+	emails?: string[]
+	services: string[]
 	// Add custom fields here
 	// c_myStringField: string
-	c_team?: financialProfessional[];
+	c_team?: financialProfessional[]
 	c_hero?: {
 		background: Image,
 		cta1: CTA,
