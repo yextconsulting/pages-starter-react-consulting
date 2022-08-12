@@ -20,8 +20,9 @@ const Core = (props: CoreProps) => {
                 <div className="Core-infoSection">
                     <div className="Core-subSection mb-8">
                         <div className="Heading--sub mb-4 font-bold"> Information </div>
-                        <Address address={address} lines={[["line1"], ["line2"], ["city", "regionCode", "postalCode"]]} />
+                        <Address address={address} />
                         <Link className="Core-directionsCta Link--primary Link--underline font-bold mt-2" href={`${getDirections(profile, GoogleMaps)}`}> Get Directions </Link>
+                        {/* TODO(GENERATOR): use Phone component */}
                         {profile.mainPhone && (
                             <div className="Core-bulleted mt-4">
                                 <FaPhone className="text-blue-500 mr-2" />
@@ -39,7 +40,7 @@ const Core = (props: CoreProps) => {
                         {profile.emails && (
                             <div className="Core-bulleted mt-4">
                                 <FaEnvelope className="text-blue-500 mr-2" />
-                                <Link className="Core-email Link--primary Link--underline font-bold" href={`mailto:${profile.emails[0]}`}>{profile.emails[0]}</Link>
+                                <Link className="Core-email Link--primary Link--underline font-bold" cta={{ link: profile.emails[0], linkType: 'Email' }} />
                             </div>
                         )}
                     </div>
