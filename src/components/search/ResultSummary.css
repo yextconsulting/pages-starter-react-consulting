@@ -1,0 +1,4 @@
+.ResultSummary {
+  padding: theme(spacing.4) theme(spacing.6);
+  box-shadow: theme(boxShadow.brand-shadow);
+}

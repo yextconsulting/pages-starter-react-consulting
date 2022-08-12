@@ -10,4 +10,7 @@ export default defineConfig({
     }
   },
   plugins: [react(), yextSSG()],
+  optimizeDeps: {
+    include: ['@yext/components-tsx-maps', '@yext/components-tsx-geo'],
+  },
 });
