@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "@yext/sites-react-components";
+import { DirectoryProfile } from "src/types/entities";
 import "src/styles/Directory.css";
 
 export const directoryListFields = [
@@ -13,9 +14,10 @@ interface DirectoryListProps {
   name: string;
   count: number;
   showNumLocs: boolean;
-  directoryChildren: { slug: string; name: string, dm_directoryChildren: number[] }[];
+  directoryChildren: DirectoryProfile<never>[];
   relativePrefixToRoot: string;
 }
+
 
 export function DirectoryList(props: DirectoryListProps) {
   const { name, count, showNumLocs, directoryChildren, relativePrefixToRoot } = props;
@@ -26,7 +28,7 @@ export function DirectoryList(props: DirectoryListProps) {
         {count} locations in {name}
       </h1>
       <ul className="flex flex-wrap">
-        {directoryChildren.map((child: any, idx: number) => (
+        {directoryChildren.map((child, idx) => (
           <li className="Directory-listItem" key={idx}>
             <Link
               className="Directory-listLink m-6"

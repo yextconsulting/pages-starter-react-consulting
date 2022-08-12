@@ -10,6 +10,8 @@
 
 import React from "react";
 import Core from "src/components/Core/Core";
+import Team from "src/components/Team/Team";
+import Hero from "src/components/Hero/Hero";
 import {
   TemplateProps,
   TemplateRenderProps,
@@ -22,7 +24,9 @@ import {
 import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
-import { coreFields } from "src/components/Core/Core";
+import { Link } from "@yext/sites-react-components";
+import { LocationProfile } from "src/types/entities";
+import { teamFields } from "src/components/Team/Team";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -38,12 +42,21 @@ export const config: TemplateConfig = {
       "logo",
       "meta",
       "name",
+      "address",
+      "mainPhone",
+      "tollFreePhone",
+      "emails",
+      "geocodedCoordinate",
       "description",
+      "hours",
+      "additionalHoursText",
+      "services",
       "slug",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
-      ...coreFields,
+      "c_hero",
+      ...teamFields,
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -87,14 +100,22 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
  * them in the src/templates folder as this is specific for true template files).
  */
 const Index: Template<TemplateRenderProps> = (data) => {
-  const { document } = data;
+  const document = data.document as LocationProfile;
   const {
+    name,
     address,
+    hours,
+    c_team,
+    c_hero
   } = document;
-
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
+      {/* TODO(aganesh) : use Reviews component when available */}
+      <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={document} address={address}/>
+      {c_team && (
+        <Team team={c_team} initialSize={3}/>
+      )}
     </CustomFieldDebuggerReactProvider>
   );
 };

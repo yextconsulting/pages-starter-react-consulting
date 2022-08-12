@@ -6,7 +6,8 @@
     "moduleResolution": "Node",
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "react",
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
     "paths": {
       "src/*": ["./src/*"]
     },

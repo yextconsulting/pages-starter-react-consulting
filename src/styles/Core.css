@@ -40,20 +40,6 @@
         list-style: inside;
     }
 
-    &-phoneWrapper
-    {
-        &::before
-        {
-            content: '';
-            background-image: url(src/assets/images/phoneOutline.svg);
-            background-repeat: no-repeat;
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            margin-right: theme(spacing.4);
-        }
-    }
-
     &-email
     {
         display: flex;
