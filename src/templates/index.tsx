@@ -50,13 +50,7 @@ export const config: TemplateConfig = {
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
-      teamFields[0],
-      teamFields[1],
-      teamFields[2],
-      teamFields[3],
-      teamFields[4],
-      teamFields[5],
-      teamFields[6],
+      ...teamFields,
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -107,7 +101,9 @@ const Index: Template<TemplateRenderProps> = (data) => {
 
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      <Team team={c_team} initialSize={3}/>
+      {c_team && (
+        <Team team={c_team} initialSize={3}/>
+      )}
     </CustomFieldDebuggerReactProvider>
   );
 };

@@ -20,6 +20,15 @@ interface BaseProfile {
 	}
 }
 
+export interface financialProfessional {
+	id: string;
+	name: string;
+	headshot?: Image;
+	mainPhone?: string;
+	c_occupation?: string;
+	emails?: string[];
+	websiteUrl?: WebsiteUrl;
+}
 
 // TODO: generate these automatically from stream definitions
 export interface LocationProfile extends BaseProfile {
@@ -31,6 +40,7 @@ export interface LocationProfile extends BaseProfile {
 	description?: string
 	// Add custom fields here
 	// c_myStringField: string
+	c_team?: financialProfessional[];
 }
 
 export type DirectoryProfile<T> = BaseProfile & {
@@ -40,13 +50,3 @@ export type DirectoryProfile<T> = BaseProfile & {
 	dm_directoryParents?: DirectoryProfile<DirectoryProfile<T>>[]
 	slug: string
 }
-
-export interface financialProfessional {
-	id: string;
-	name: string;
-	headshot?: Image;
-	mainPhone?: string;
-	c_occupation?: string;
-	emails?: string[];
-	websiteUrl?: WebsiteUrl;
-  }
