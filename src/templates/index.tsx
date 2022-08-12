@@ -22,6 +22,8 @@ import {
 import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
+import { Link } from "@yext/sites-react-components";
+import { LocationProfile } from "src/types/entities";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -91,7 +93,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
  * them in the src/templates folder as this is specific for true template files).
  */
 const Index: Template<TemplateRenderProps> = (data) => {
-  const { document } = data;
+  const document = data.document as LocationProfile;
   const {
     name,
     address,
@@ -101,7 +103,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
       {/* TODO(aganesh) : use Reviews component when available */}
-      <Hero name={name} background={c_hero.background} address={address} cta1={c_hero.cta1} cta2={c_hero.cta2} hours={hours} numReviews={21} rating={4.5} />
+      <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
     </CustomFieldDebuggerReactProvider>
   );
 };

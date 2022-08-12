@@ -1,0 +1,7 @@
+.dir-map {
+  height: 100%;
+}
+
+.HoursStatus-current--search {
+  font-weight: theme(fontWeight.bold);
+}
