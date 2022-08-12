@@ -1,4 +1,4 @@
-import { Address, Hours } from "@yext/types"
+import { Address, CTA, Hours, Image } from "@yext/types"
 
 // TODO: potentially move this to @yext/types
 // Also we should probably move @yext/types into @yext/pages
@@ -31,6 +31,11 @@ export interface LocationProfile extends BaseProfile {
 	description?: string
 	// Add custom fields here
 	// c_myStringField: string
+	c_hero?: {
+		background: Image,
+		cta1: CTA,
+		cta2: CTA
+	}
 }
 
 export type DirectoryProfile<T> = BaseProfile & {
