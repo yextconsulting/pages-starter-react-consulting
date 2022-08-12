@@ -22,7 +22,6 @@ import {
 import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
-import { Link } from "@yext/sites-react-components";
 import { coreFields } from "src/components/Core/Core";
 
 /**
@@ -90,20 +89,12 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
 const Index: Template<TemplateRenderProps> = (data) => {
   const { document } = data;
   const {
-    name,
     address,
-    hours,
-    mainPhone,
-    tollFreePhone,
-    services,
-    emails,
-    geocodedCoordinate,
-    additionalHoursText
   } = document;
 
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      <Core address={address} mainPhone={mainPhone} tollFreePhone={tollFreePhone} emails={emails} hours={hours} services={services} coordinates={geocodedCoordinate} additionalHoursText={additionalHoursText}/>
+      <Core profile={document} address={address}/>
     </CustomFieldDebuggerReactProvider>
   );
 };

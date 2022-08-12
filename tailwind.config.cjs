@@ -1,10 +1,16 @@
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{html,js,jsx,ts,tsx}", "./node_modules/@yext/search-ui-react/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
         "brand-primary": "var(--brand-primary)",
         "brand-secondary": "var(--brand-secondary)",
+        "brand-gray": {
+          100: "#F7F7F7",
+          200: "#EDEDED",
+          300: "#CCC",
+          400: "#767676",
+        }
       },
       fontFamily: {
         primary: "var(--font-family-primary)",
@@ -56,6 +62,9 @@ module.exports = {
           xl: "5rem",
         },
       },
+      boxShadow: {
+        "brand-shadow": "0 -1px 0 0 #CCC inset",
+      }
     },
   },
   plugins: [],

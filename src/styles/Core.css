@@ -1,6 +1,6 @@
 .Core
 {
-    background-color: "f7f7f7";
+    background-color: theme(colors.brand-gray.100);
 
     &-container
     {
@@ -19,6 +19,11 @@
         display: grid;
 
         @screen sm
+        {
+            grid-template-columns: 1fr 1fr ;
+        }
+
+        @screen lg
         {
             grid-template-columns: 1fr 1fr 1fr;
         }
