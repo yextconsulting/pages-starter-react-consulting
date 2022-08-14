@@ -1,0 +1,15 @@
+.Promo
+{
+  &-content
+  {
+    margin-top: 32px;
+    padding-top: 0;
+
+    @screen md
+    {
+      padding-top: 32px;
+      margin-top: 0;
+      margin-left: 64px;
+    }
+  }
+}

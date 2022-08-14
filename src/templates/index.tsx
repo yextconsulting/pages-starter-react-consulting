@@ -27,6 +27,7 @@ import { defaultHeadConfig } from "src/common/head";
 import { Link } from "@yext/sites-react-components";
 import { LocationProfile } from "src/types/entities";
 import { teamFields } from "src/components/Team/Team";
+import { Promo } from "src/components/Promo/Promo";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -118,7 +119,14 @@ const Index: Template<TemplateRenderProps> = (data) => {
       <Core profile={document} address={address}/>
       {c_team && (
         <Team team={c_team} initialSize={3}/>
-      )}
+      <Promo 
+        title="Featured Promotion"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing. Maecenas finibus placerat justo. 100 characters"
+        image={c_hero?.background}
+        cta={c_hero?.cta1}
+        appStoreLink="https://google.com"
+        googlePlayLink="https://google.com"
+      />
     </CustomFieldDebuggerReactProvider>
   );
 };
