@@ -24,7 +24,6 @@ import {
 import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
-import { Link } from "@yext/sites-react-components";
 import { LocationProfile } from "src/types/entities";
 import { teamFields } from "src/components/Team/Team";
 
