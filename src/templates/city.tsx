@@ -8,7 +8,7 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import * as React from "react";
+import React from "react";
 import {
 	TemplateRenderProps,
 	Template,
@@ -42,7 +42,7 @@ export const config: TemplateConfig = {
 		],
 		// Defines the scope of entities that qualify for this stream.
 		filter: {
-			 savedFilterIds: ["dm_defaultDirectory_address_city"],
+			savedFilterIds: ["dm_defaultDirectory_address_city"],
 		},
 		// The entity language profiles that documents will be generated for.
 		localization: {

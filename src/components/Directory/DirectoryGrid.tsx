@@ -3,6 +3,7 @@ import DirectoryCard from "src/components/cards/DirectoryCard"
 import { DirectoryCardContent, CardComponent } from "src/models/cardComponent";
 import "src/styles/Directory.css";
 import { LocationProfile } from "src/types/entities";
+import "src/styles/Directory.css";
 
 export const directoryGridFields = [
   "dm_directoryParents",
@@ -29,7 +30,7 @@ export function DirectoryGrid(props: DirectoryGridProps) {
         {count} locations in {name}
       </h1>
       <ul className="flex flex-wrap">
-        {directoryChildren.map((child, idx) => (
+        {directoryChildren.map((child: any, idx: number) => (
           renderCard(CardComponent, child, relativePrefixToRoot, idx)
         ))}
       </ul>
