@@ -1,60 +1,44 @@
 .Reviews
 {
-  &-container
-  {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
   &-titleAndRating
   {
-    margin-top: 32px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid #cccccc;
-    text-align: center;
-    
+    border-bottom: 1px solid #cccccc;    
   }
 
-  &-overallRating
+  &-overallRatingNumber,
+  &-ratingNumber,
+  &-overallRatingCount,
+  &-title,
+  &-reviewerName,
+  &-reviewDate,
+  &-reviewText,
+  &-businessName,
+  &-responseDate,
+  &-responseText,
+  &-pageNumberLink,
+  &-break
   {
-    justify-content: center;
-  }
-
-  &-overallRatingNumber
-  {
-    margin-right: 12px;
     font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
   }
 
-  &-overallStar
+  &-overallStar,
+  &-ratingStar
   {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
+    color: #1B78D0;
 
-  &-overallRatingCount
-  {
-    margin-left: 12px;
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    &Filled
+    {
+      color: #073866;
+    }
+
+    &Half
+    {
+      color: #1B78D0;
+    }
   }
 
   &-title
   {
-    margin-bottom: 12px;
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
-
     @screen lg
     {
       font-size: 34px;
@@ -64,98 +48,44 @@
 
   &-review
   {
-    padding-top: 24px;
-    border-bottom: 1px solid #cccccc;
-    display: flex;
-    flex-direction: column;
-    
-    @screen lg 
-    {
-      flex-direction: row;
+    &:not(:last-child){
+      border-bottom: 1px solid #cccccc;
     }
   }
 
-  &-reviewerName
+  &-activePageNumber
   {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 8px;
+    background-color: #F7F7F7;
+  }
 
-    &AndDate
+  &-activePageNumberLink
+  {
+    color: #1B78D0;
+  }
+
+  &-pageNumberLink,
+  &-breakLink
+  {
+    pointer-events: none;
+  }
+
+  &-previousButtonLink
+  {
+    content: url("src/assets/previous-arrow.svg");
+
+    &:hover
     {
-      @screen lg 
-      {
-        width: 50%;
-      }
+      content: url("src/assets/previous-arrow-blue.svg");
     }
   }
 
-  &-reviewDate
+  &-nextButtonLink
   {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 16px;
-  }
+    content: url("src/assets/next-arrow.svg");
 
-  &-rating
-  {
-    margin-bottom: 8px;
-  }
-
-  &-reviewText
-  {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 24px;
-  }
-
-/*   &-businessResponse
-  {
-    display: none;
-  } */
-
-  &-businessName
-  {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 8px;
-  }
-
-  &-responseDate
-  {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 16px;
-
-    @screen lg 
+    &:hover
     {
-      margin-bottom: 8px;
+      content: url("src/assets/next-arrow-blue.svg");
     }
   }
-
-  &-responseText
-  {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 24px;
-  }
-
 }

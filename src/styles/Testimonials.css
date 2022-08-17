@@ -1,74 +1,45 @@
 .Testimonials
 {
-  &-container
+  &-title,
+  &-reviewText,
+  &-qnaQuestion,
+  &-qnaAnswer,
+  &-reviewerName,
+  &-reviewDate,
+  &-verifiedClient
   {
-    padding-left: 16px;
-    padding-right: 16px;
+    font-family: 'Arial';
   }
 
   &-title
   {
-    text-align: center;
-    margin-top: 32px;
-    margin-bottom: 32px;
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
-
     @screen lg
     {
-      margin-top: 64px;
-      margin-bottom: 48px;
       font-size: 34px;
       line-height: 40px;
     }
   }
 
-  &-review
-  {
-    margin-bottom: 24px;
-    display: flex;
-    flex-direction: column;
-
-    @screen lg
-    {
-      flex-direction: row;
-      margin-bottom: 32px;
-    }
-  }
-
   &-reviewText
   {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
-    padding-bottom: 24px;
     border-bottom: 1px solid #cccccc;
-    margin-bottom: 24px;
-
   }
 
   &-reviewContainer
   {
     background-color: white;
-    padding: 24px;
     border-top: 1px solid #1b78d0;
     border-left: 1px solid #1b78d0;
     border-right: 1px solid #1b78d0;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-top-left-radius: theme(spacing.2);
+    border-top-right-radius: theme(spacing.2);
 
     @screen lg
     {
-      padding: 32px;
       border-right: none;
       border-bottom: 1px solid #1b78d0;
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
+      border-top-left-radius: theme(spacing.2);
+      border-bottom-left-radius: theme(spacing.2);
       border-top-right-radius: 0;
     }
   }
@@ -78,47 +49,16 @@
     @screen lg 
     {
       width: 50%;
-      padding-right: 8px;
     }
     
     &:not(:last-child) 
     {
-      margin-bottom: 16px;
+      margin-bottom: theme(spacing.4);
 
       @screen lg
       {
-        margin-bottom: 8px;
+        margin-bottom: theme(spacing.2);
       }
-    }
-
-    &Container 
-    {
-      display: flex;
-      flex-direction: column;
-  
-      @screen lg
-      {
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-    }
-
-    &Question
-    {
-      font-family: 'Arial';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 22px;
-    }
-
-    &Answer
-    {
-      font-family: 'Arial';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 22px;
     }
   }
 
@@ -126,32 +66,27 @@
   {
     background-color: #1b78d0;
     color: white;
-    padding: 24px;
     border-left: 1px solid #1b78d0;
     border-right: 1px solid #1b78d0;
     border-bottom: 1px solid #1b78d0;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: theme(spacing.2);
+    border-bottom-right-radius: theme(spacing.2);
 
     @screen lg
     {
       width: 50%;
-      padding: 32px;
       border-top: 1px solid #1b78d0;
       border-left: none;
       border-right: 1px solid #1b78d0;
       border-bottom: 1px solid #1b78d0;
-      border-top-right-radius: 8px;
+      border-top-right-radius: theme(spacing.2);
       border-bottom-left-radius: 0;
-      border-bottom-right-radius: 8px;
+      border-bottom-right-radius: theme(spacing.2);
     }
   }
 
   &-reviewerName
   {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
     font-size: 22px;
     line-height: 28px;
 
@@ -160,16 +95,6 @@
       font-size: 24px;
       line-height: 30px;
     }
-  }
-
-  &-reviewDate
-  {
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
-    margin-bottom: 16px;
   }
 
   &-verifiedClient
@@ -181,11 +106,5 @@
       height: 14px;
       width: 14px;
     }
-
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 24px;
   }
 }
