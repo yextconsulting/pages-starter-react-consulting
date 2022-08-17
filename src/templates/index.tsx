@@ -27,6 +27,8 @@ import { defaultHeadConfig } from "src/common/head";
 import { LocationProfile } from "src/types/entities";
 import { teamFields } from "src/components/Team/Team";
 import Footer from "src/components/Footer"; 
+import Testimonials from "src/components/Testimonials";
+import Reviews from "src/components/Reviews";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -120,6 +122,8 @@ const Index: Template<TemplateRenderProps> = (data) => {
       {c_team && (
         <Team team={c_team} initialSize={3}/>
       )}
+      <Reviews />
+      <Testimonials />
       <Footer
         copyrightMessage={_site.c_copyrightMessage}
         facebook={_site.c_facebook}
