@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "src/components/Header.css";
 import { Image, Link } from "@yext/sites-react-components";
 import { CTA, Image as ImageType } from "@yext/types";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import classNames from "classnames";
+import "src/components/Header.css";
 
 type HeaderProps = {
     logo: ImageType;
@@ -19,7 +19,7 @@ const Header = (props: HeaderProps) => {
     const isDesktop = useBreakpoint('md');
 
     const renderLinks = () => (
-        <ul className="Header-links">
+        <ul className="flex flex-col md:flex-row">
             {links.map((item: CTA, i) => (
                 <li className="flex" key={i}>
                     <Link className={`py-4 w-full Header-link Link Link--${linkModifier || 'primary'}`} cta={item} />
