@@ -121,7 +121,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
       <div className="Main">
-        <Header onToggle={handleHeaderToggle} className="Main-header" logo={_site.logo.image} links={_site.c_header} />
+        <Header onToggle={handleHeaderToggle} className="Main-header" logo={_site.c_header.logo} links={_site.c_header.links} />
         <div className={`Main-content${open ? ' hidden md:block' : ''}`}>
           {c_team && (
             <Team team={c_team} initialSize={3}/>
