@@ -20,7 +20,7 @@
   @apply bg-sky-700 hover:bg-sky-800;
 }
 
-// TODO(bhaines): extract into component when shared layout pr is merged
+/* TODO(bhaines): extract into component when shared layout pr is merged */
 .Main {
   display: grid;
   grid-template-columns: 1fr;
