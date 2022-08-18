@@ -4,15 +4,6 @@
         width: 140px;
     }
 
-    &-links {
-        display: flex;
-        flex-direction: column;
-
-        @screen md {
-            flex-direction: row;
-        }
-    }
-
     &-link {
         font-weight: theme("fontWeight.bold");
         margin-left: theme("spacing.6");
