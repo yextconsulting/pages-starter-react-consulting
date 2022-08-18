@@ -19,9 +19,9 @@ const Header = (props: HeaderProps) => {
     const isDesktop = useBreakpoint('md');
 
     const renderLinks = () => (
-        <ul className="flex flex-col md:flex-row">
+        <ul className="flex flex-col md:flex-row xs:w-full">
             {links.map((item: CTA, i) => (
-                <li className="flex" key={i}>
+                <li className="flex w-full" key={i}>
                     <Link className={`py-4 w-full Header-link Link Link--${linkModifier || 'primary'}`} cta={item} />
                 </li>
             ))}
