@@ -2,14 +2,13 @@
 {
   &-content
   {
-    margin-top: 32px;
-    padding-top: 0;
+    margin-top: theme(spacing.8);
 
     @screen md
     {
-      padding-top: 32px;
+      padding-top: theme(spacing.8);
       margin-top: 0;
-      margin-left: 64px;
+      margin-left: theme(spacing.16);
     }
   }
 }

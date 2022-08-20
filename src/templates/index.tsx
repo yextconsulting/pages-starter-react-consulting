@@ -119,6 +119,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
       <Core profile={document} address={address}/>
       {c_team && (
         <Team team={c_team} initialSize={3}/>
+      )}
       <Promo 
         title="Featured Promotion"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing. Maecenas finibus placerat justo. 100 characters"
