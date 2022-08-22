@@ -1,7 +1,7 @@
 import { CardProps } from "@yext/search-ui-react";
 import { Link, HoursStatus, StatusParams } from "@yext/sites-react-components";
 import type { Address, Hours } from "@yext/types";
-import 'src/components/cards/LocatorCard.css';
+import { useBreakpoint } from "src/common/useBreakpoints";
 
 export interface LocatorCardProps {
   useKilometers?: boolean;
@@ -13,11 +13,10 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
   const address = profile.address as Address;
   const hours = profile.hours as Hours;
   const geomodifier = address.line1 ? address.line1 : address.city;
+  const isDesktopBreakpoint = useBreakpoint("sm");
 
   const renderTitle = () => <h3 className="Heading Heading--sub pb-2 sm:pb-4">{ geomodifier }</h3>;
-
-  // TODO: convert to use useBreakpoint for conditional rendering instead of modifier
-  const renderDistance = (modifier?: string) => distanceFromFilter ? <div className={`LocatorCard-distance${modifier ? " LocatorCard-distance--" + modifier : ""}`}>{getDistance(distanceFromFilter, useKilometers)} {useKilometers ? 'km' : 'mi'}</div> : null;
+  const renderDistance = () => distanceFromFilter ? <div className={"LocatorCard-distance whitespace-nowrap pt-2 sm:pt-0"}>{getDistance(distanceFromFilter, useKilometers)} {useKilometers ? 'km' : 'mi'}</div> : null;
 
   return (
     <div className="LocatorCard">
@@ -27,7 +26,7 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
             { renderTitle() }
           </Link>
         ) : renderTitle()}
-        { renderDistance("desktop") }
+        { isDesktopBreakpoint && renderDistance() }
       </div>
       <div className="pb-2 sm:pb-4">
         <HoursStatus
@@ -38,7 +37,7 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
         />
       </div>
       <div>{address.line1}</div>
-      { renderDistance("mobile") }
+      { !isDesktopBreakpoint && renderDistance() }
     </div>
   )
 }
