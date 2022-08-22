@@ -144,7 +144,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
         }}
       />
       {c_team && (
-        <Team team={c_team} initialSize={3}/>
+        <Team team={c_team} title="Meet our team" initialSize={3}/>
       )}
     </Main>
   );

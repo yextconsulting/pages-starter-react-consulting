@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import TeamCard from "src/components/Team/TeamCard";
 import { financialProfessional } from "src/types/entities";
-import "src/styles/Team.css";
 
 export const teamFields = [
   "c_team.id",
@@ -14,13 +13,13 @@ export const teamFields = [
 ]
 
 type TeamProps = {
+  title: string;
   team: financialProfessional[];
   initialSize?: number;
 }
 
 const Team = (props: TeamProps) => {
-  const { team, initialSize } = props;
-  if (!team) return null;
+  const { title, team, initialSize } = props;
 
   const [numberVisible, setNumberVisible] = useState(initialSize ? Math.min(initialSize, team.length) : team.length);
   const visible = team.slice(0, numberVisible);
@@ -28,18 +27,20 @@ const Team = (props: TeamProps) => {
 
 
   return (
-    <div className="Team-container container">
-      <h2 className="Team-title Heading--head">Meet Our Team</h2>
-      <ul className="Team-list">
-        {visible.map((member, i) => (
-          <li className="Team-listItem" key={i}> 
-            <TeamCard profile={member}/>
-          </li>
-        ))}
-      </ul>
-      {load && (
-      <button className="m-auto Button Button--secondary" onClick={() => {setNumberVisible(team.length)}}> Load More </button>
-      )}
+    <div className="Team py-8 sm:py-16">
+      <div className="container">
+        <h2 className="Heading Heading--head mb-8 md:text-center">{title}</h2>
+        <ul className="grid grid-cols-3 gap-8">
+          {visible.map((member, i) => (
+            <li key={i}> 
+              <TeamCard profile={member}/>
+            </li>
+          ))}
+        </ul>
+        {load && (
+          <button className="Button Button--secondary m-auto mt-8" onClick={() => {setNumberVisible(team.length)}}>Load More</button>
+        )}
+      </div>
     </div>
   )
 }
