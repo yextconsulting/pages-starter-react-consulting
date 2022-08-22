@@ -3,7 +3,6 @@ import { Image } from "@yext/sites-react-components";
 import { Link } from "@yext/pages/components";
 import { financialProfessional } from "src/types/entities";
 import { FaPhone, FaEnvelope, FaChevronRight } from "react-icons/fa";
-import "src/styles/TeamCard.css";
 
 type TeamCardProps = {
   profile: financialProfessional;
@@ -12,49 +11,47 @@ type TeamCardProps = {
 const TeamCard = (props: TeamCardProps) => {
   const { profile } = props;
   return(
-    <div className="TeamCard-container">
-      <div className="TeamCard-header border-b-2 p-8">
+    <div className="TeamCard h-full rounded-lg shadow-lg">
+      <div className="border-b-2 p-8 flex items-center">
         {profile.headshot && ( 
-          <Image className="TeamCard-headshot" imageField={profile.headshot} />
+          <Image className="rounded-full w-20 mr-6" imageField={profile.headshot} />
         )}
-        <div className="TeamCard-about p-6">
-          <div className="TeamCard-name Heading--sub mb-1 font-bold">
+        <div>
+          <h3 className="Heading Heading--sub mb-1 font-bold">
             {profile.name}
-          </div>
+          </h3>
           {profile.c_occupation && (
-            <div className="TeamCard-occupation">
-              {profile.c_occupation}
-            </div>
+            <div>{profile.c_occupation}</div>
           )}
         </div>
       </div>
       {/* TODO (GENERATOR): use Icon component when available */}
-      <div className="TeamCard-details p-8">
+      <div className="p-8">
         {/* TODO (GENERATOR): use Phone component when available */}
         {profile.mainPhone && (
-          <div className="TeamCard-bulleted">
-            <FaPhone className="text-blue-500 mr-2" />
-            <div className="TeamCard-phoneDisplay">
+          <div className="flex items-center">
+            <FaPhone className="text-blue-500 mr-2 flex items-center" />
+            <div className="hidden lg:flex">
               {profile.mainPhone}
             </div>
-            <Link className="TeamCard-phoneLink Link--primary Link--underline" href={`tel:${profile.mainPhone}`}>
+            <Link className="Link--primary Link--underline flex lg:hidden font-bold" href={`tel:${profile.mainPhone}`}>
               {profile.mainPhone}
             </Link>
           </div>
         )}
 
         {profile.emails && (
-          <div className="TeamCard-bulleted font-bold mt-4">
+          <div className="font-bold mt-4 flex items-center">
             <FaEnvelope className="text-blue-500 mr-2" />
             <a className="Link--primary Link--underline" href={`mailto:${profile.emails[0]}`}>{profile.emails[0]}</a>
           </div>
         )}
 
         {profile.websiteUrl && profile.websiteUrl.url && (
-          <div className="TeamCard-bulleted mt-6">
-            <Link className="TeamCard-link Link--primary" href={profile.websiteUrl.url}>Visit Profile</Link>
+          <Link className="Link--primary mt-6 flex items-center font-bold" href={profile.websiteUrl.url}>
+            Visit Profile
             <FaChevronRight className="text-blue-500 ml-2" />
-          </div>
+          </Link>
         )}
       </div>
     </div>
