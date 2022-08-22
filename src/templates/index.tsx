@@ -45,6 +45,7 @@ export const config: TemplateConfig = {
       "slug",
       "geocodedCoordinate",
       "services",
+      "c_complexPhoto",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
@@ -104,7 +105,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
 
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      <FeaturedProduct title={document.c_featuredProducts.title} products={document.c_featuredProducts.products}/>
+      <FeaturedProduct title={c_featuredProducts.title} products={c_featuredProducts.products}/>
     </CustomFieldDebuggerReactProvider>
   );
 };

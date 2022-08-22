@@ -2,17 +2,9 @@
 {
   background-color: theme(colors.brand-gray.100);
 
-  &-container
-  {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-  }
-
   &-card
   {
     background-color: white;
-    flex-direction: column;
     text-align: left;
     display: grid;
     margin-left: theme("spacing.6");
@@ -21,21 +13,23 @@
 
   &-content
   {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+
     @screen sm
     {
-      flex-direction: row;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @screen lg
+    {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
   &-image
   {
     height: 187px;
-  }
-
-  &-imageWrapper
-  {
-    justify-content: center;
   }
 
   &-title

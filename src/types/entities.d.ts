@@ -1,4 +1,4 @@
-import { Address, Hours } from "@yext/types"
+import { Address, CTA, Hours, Image } from "@yext/types"
 
 // TODO: potentially move this to @yext/types
 // Also we should probably move @yext/types into @yext/pages
@@ -20,6 +20,15 @@ interface BaseProfile {
 	}
 }
 
+export interface ProductProfile extends BaseProfile {
+	name: string
+	primaryPhoto: { // TODO(bhaines): update to compleximage when that type is defined
+		image: Image
+	}
+	richTextDescription: string
+	c_primaryCTA: CTA
+}
+
 
 // TODO: generate these automatically from stream definitions
 export interface LocationProfile extends BaseProfile {
@@ -29,9 +38,12 @@ export interface LocationProfile extends BaseProfile {
 	hours?: Hours
 	mainPhone?: string
 	description?: string
-	c_featuredProducts: any
 	// Add custom fields here
 	// c_myStringField: string
+	c_featuredProducts: {
+		title: string
+		products: ProductProfile[]
+	}
 }
 
 export type DirectoryProfile<T> = BaseProfile & {
