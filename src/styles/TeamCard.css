@@ -1,0 +1,62 @@
+.TeamCard
+{
+  &-header
+  {
+    display: flex;
+    align-items: center;
+    min-height: 128px;
+
+    @screen lg
+    {
+      min-height: 144px;
+    }
+  }
+
+  &-headshot
+  {
+    border-radius: theme(borderRadius.full);
+    width: 80px;
+  }
+
+  &-phoneDisplay,
+  &-phoneLink
+  {
+    display: flex;
+    align-items: center;
+  }
+
+  &-phoneDisplay
+  {
+    display: none;
+    
+    @screen lg
+    {
+      display: flex;
+    }
+  }
+
+  &-phoneLink
+  {
+    display: flex;
+    font-weight: theme(fontWeight.bold);
+
+    @screen lg
+    {
+      display: none;
+    }
+  }
+
+  &-bulleted
+  {
+    display: flex;
+    align-items: center;
+  }
+
+  &-link
+  {
+    font-weight: theme(fontWeight.bold);
+    display: flex;
+    align-items: center;
+  }
+
+}

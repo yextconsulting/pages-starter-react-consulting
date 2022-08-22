@@ -9,6 +9,9 @@
  */
 
 import React from "react";
+import Core from "src/components/Core/Core";
+import Team from "src/components/Team/Team";
+import Hero from "src/components/Hero/Hero";
 import {
   TemplateProps,
   TemplateRenderProps,
@@ -21,9 +24,11 @@ import {
 import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
-import { Link } from "@yext/sites-react-components";
 import { LocationProfile } from "src/types/entities";
 import FeaturedProduct, { fields as featuredProductFields } from "src/components/FeaturedProduct";
+import { teamFields } from "src/components/Team/Team";
+import Footer from "src/components/Footer"; 
+
 /**
  * Required when Knowledge Graph data is used for a template.
  */
@@ -40,16 +45,21 @@ export const config: TemplateConfig = {
       "name",
       "address",
       "mainPhone",
+      "tollFreePhone",
+      "emails",
+      "geocodedCoordinate",
       "description",
       "hours",
-      "slug",
-      "geocodedCoordinate",
+      "additionalHoursText",
       "services",
       "c_complexPhoto",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
+      "slug",
+      "c_hero",
       ...featuredProductFields,
+      ...teamFields,
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -96,12 +106,34 @@ const Index: Template<TemplateRenderProps> = (data) => {
   const document = data.document as LocationProfile;
   const {
     name,
-    c_featuredProducts
+    c_featuredProducts,
+    address,
+    hours,
+    c_team,
+    c_hero,
+    _site
   } = document;
-
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
       <FeaturedProduct title={c_featuredProducts.title} products={c_featuredProducts.products}/>
+      {c_team && (
+        <Team team={c_team} initialSize={3}/>
+      )}
+      {/* TODO(aganesh) : use Reviews component when available */}
+      <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
+      <Core profile={document} address={address}/>
+      {c_team && (
+        <Team team={c_team} initialSize={3}/>
+      )}
+      <Footer
+        copyrightMessage={_site.c_copyrightMessage}
+        facebook={_site.c_facebook}
+        instagram={_site.c_instagram}
+        youtube={_site.c_youtube}
+        twitter={_site.c_twitter}
+        linkedIn={_site.c_linkedIn}
+        footerLinks={_site.c_footerLinks}
+      />
     </CustomFieldDebuggerReactProvider>
   );
 };

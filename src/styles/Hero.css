@@ -1,0 +1,102 @@
+.Hero
+{
+    &-container
+    {
+        display: grid;
+        padding: theme(spacing.8) theme(spacing.4);
+
+        @screen lg
+        {
+            grid-template-columns: 1fr 1fr;
+            padding-top: theme(spacing.16);
+            padding-bottom: theme(spacing.16);
+            grid-gap: theme(spacing.16);
+        }
+    }
+
+
+    &-content
+    {
+        @screen lg
+        {
+            padding-left: theme(spacing.8);
+            padding-top: theme(spacing.8);
+        }
+    }
+
+    &-title
+    {
+        padding-bottom: theme(spacing.1);
+
+        @screen sm
+        {
+            padding-bottom: theme(spacing.0);
+        }
+    }
+
+    &-geo
+    {
+        padding-bottom: theme(spacing.4);
+    }
+
+    &-hours
+    {
+        padding-bottom: theme(spacing.4);
+    }
+
+    &-rating
+    {
+        font-weight: theme(fontWeight.bold);
+    }
+
+    &-reviews
+    {
+        padding-bottom: theme(spacing.6);
+
+        @screen lg
+        {
+            padding-bottom: theme(spacing.8);
+        }
+    }
+
+    &-linkWrapper
+    {
+        display: flex;
+        flex-direction: column;
+        gap: theme(spacing.4);
+
+        @screen lg
+        {
+            flex-direction: row;
+        }
+    }
+
+    &-imageWrapper
+    {
+        padding-top: theme(spacing.6);
+
+        @screen lg
+        {
+            padding-top: theme(spacing.0);
+        }
+    }
+
+    &-image
+    {
+        @screen lg
+        {
+            width: 554px;
+        }
+    }
+
+    &-hourSeparator
+    {
+        display: inline-flex;
+        padding: theme(spacing.0) theme(spacing.3);
+    }
+
+    .HoursStatus-current
+    {
+        font-weight: theme(fontWeight.bold);
+    }
+}

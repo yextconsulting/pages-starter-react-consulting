@@ -1,7 +1,0 @@
-{
-  "$id": "ce_city",
-  "$schema": "https://schema.yext.com/config/km/entity-type/v2",
-  "description": "Directory City Entity",
-  "displayName": "City",
-  "pluralDisplayName": "Cities"
-}
