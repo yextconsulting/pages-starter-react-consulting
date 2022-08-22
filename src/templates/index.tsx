@@ -25,6 +25,7 @@ import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
 import { LocationProfile } from "src/types/entities";
+import FeaturedProduct, { fields as featuredProductFields } from "src/components/FeaturedProduct";
 import { teamFields } from "src/components/Team/Team";
 import Footer from "src/components/Footer"; 
 
@@ -51,11 +52,13 @@ export const config: TemplateConfig = {
       "hours",
       "additionalHoursText",
       "services",
-      "slug",
+      "c_complexPhoto",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
+      "slug",
       "c_hero",
+      ...featuredProductFields,
       ...teamFields,
     ],
     // Defines the scope of entities that qualify for this stream.
@@ -103,6 +106,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   const document = data.document as LocationProfile;
   const {
     name,
+    c_featuredProducts,
     address,
     hours,
     c_team,
@@ -111,6 +115,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   } = document;
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
+      <FeaturedProduct title={c_featuredProducts.title} products={c_featuredProducts.products}/>
       {c_team && (
         <Team team={c_team} initialSize={3}/>
       )}

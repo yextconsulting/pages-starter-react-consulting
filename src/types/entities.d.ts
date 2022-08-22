@@ -20,6 +20,15 @@ interface BaseProfile {
 	}
 }
 
+export interface ProductProfile extends BaseProfile {
+	name: string
+	primaryPhoto: { // TODO(bhaines): update to compleximage when that type is defined
+		image: Image
+	}
+	richTextDescription: string
+	c_primaryCTA: CTA
+}
+
 export interface financialProfessional {
 	id: string;
 	name: string;
@@ -45,6 +54,10 @@ export interface LocationProfile extends BaseProfile {
 	services: string[]
 	// Add custom fields here
 	// c_myStringField: string
+	c_featuredProducts: {
+		title: string
+		products: ProductProfile[]
+  }
 	c_team?: financialProfessional[]
 	c_hero?: {
 		background: Image,
