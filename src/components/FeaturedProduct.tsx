@@ -48,5 +48,3 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
 };
 
 export default FeaturedProduct;
-
-export { featuredProductFields }
