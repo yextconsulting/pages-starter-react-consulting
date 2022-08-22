@@ -8,6 +8,14 @@ interface FeaturedProductProps {
   products: ProductProfile[];
 }
 
+export const fields = [
+  "c_featuredProducts.title",
+  "c_featuredProducts.products.name",
+  "c_featuredProducts.products.richTextDescription",
+  "c_featuredProducts.products.primaryPhoto",
+  "c_featuredProducts.products.c_primaryCTA"
+];
+
 const FeaturedProduct = (props: FeaturedProductProps) => {
   const { title, products } = props;
   return (
@@ -40,3 +48,5 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
 };
 
 export default FeaturedProduct;
+
+export { featuredProductFields }

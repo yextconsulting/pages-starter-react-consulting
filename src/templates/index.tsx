@@ -23,7 +23,7 @@ import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
 import { Link } from "@yext/sites-react-components";
 import { LocationProfile } from "src/types/entities";
-import FeaturedProduct from "src/components/FeaturedProduct";
+import FeaturedProduct, { fields as featuredProductFields } from "src/components/FeaturedProduct";
 /**
  * Required when Knowledge Graph data is used for a template.
  */
@@ -49,11 +49,7 @@ export const config: TemplateConfig = {
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
-      "c_featuredProducts.title",
-      "c_featuredProducts.products.name",
-      "c_featuredProducts.products.richTextDescription",
-      "c_featuredProducts.products.primaryPhoto",
-      "c_featuredProducts.products.c_primaryCTA"
+      ...featuredProductFields,
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
