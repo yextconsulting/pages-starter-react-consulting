@@ -24,10 +24,10 @@ import {
 import "src/index.css";
 import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
-import { Link } from "@yext/sites-react-components";
 import { LocationProfile } from "src/types/entities";
 import { teamFields } from "src/components/Team/Team";
 import { Promo } from "src/components/Promo/Promo";
+import Footer from "src/components/Footer"; 
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -107,7 +107,8 @@ const Index: Template<TemplateRenderProps> = (data) => {
     address,
     hours,
     c_team,
-    c_hero
+    c_hero,
+    _site
   } = document;
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
@@ -127,6 +128,15 @@ const Index: Template<TemplateRenderProps> = (data) => {
         cta={c_hero?.cta1}
         appStoreLink="https://google.com"
         googlePlayLink="https://google.com"
+      />
+      <Footer
+        copyrightMessage={_site.c_copyrightMessage}
+        facebook={_site.c_facebook}
+        instagram={_site.c_instagram}
+        youtube={_site.c_youtube}
+        twitter={_site.c_twitter}
+        linkedIn={_site.c_linkedIn}
+        footerLinks={_site.c_footerLinks}
       />
     </CustomFieldDebuggerReactProvider>
   );

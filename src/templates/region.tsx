@@ -8,7 +8,7 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import * as React from "react";
+import React from "react";
 import {
 	TemplateProps,
 	TemplateRenderProps,
@@ -85,13 +85,13 @@ const Region: Template<TemplateRenderProps> = (data) => {
 	const { name, dm_directoryChildren, dm_directoryChildrenCount } = document;
 
 	return (
-			<DirectoryList
-				name={name}
-				showNumLocs={true}
-				count={dm_directoryChildrenCount}
-				directoryChildren={dm_directoryChildren || []}
-				relativePrefixToRoot={data.relativePrefixToRoot}
-			/>
+		<DirectoryList
+			name={name}
+			showNumLocs={true}
+			count={dm_directoryChildrenCount}
+			directoryChildren={dm_directoryChildren || []}
+			relativePrefixToRoot={data.relativePrefixToRoot}
+		/>
 	);
 };
 
