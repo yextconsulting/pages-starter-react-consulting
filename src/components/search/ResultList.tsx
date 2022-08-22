@@ -52,12 +52,10 @@ function ResultListItem(props: ResultListItemProps) {
     setFocusedId,
   }  = useLocatorContext();
   const listItemRef = useRef<HTMLDivElement | null>(null);
-  const isDesktopBreakpoint = useBreakpoint("sm");
 
   // When the selectedId is updated from a marker click scroll the ResultList to show the current LocatorCard
-  // Only need to scroll on desktop since Map isn't rendered on mobile
   useEffect(() => {
-    if (isDesktopBreakpoint && selectedId === result.id) {
+    if (selectedId === result.id) {
       listItemRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest"});
     }
   }, [selectedId]);
