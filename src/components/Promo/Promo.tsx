@@ -4,7 +4,6 @@ import {
   CTA as CTAType
 } from "@yext/types";
 import { Image, Link } from '@yext/sites-react-components';
-import "./Promo.css";
 import appStoreIcon from "src/assets/images/appstore.svg";
 import playStoreIcon from "src/assets/images/playstore.svg";
 
@@ -19,31 +18,31 @@ type PromoProps = {
 
 const Promo = (props: PromoProps) => {
   return (
-    <div className="Promo">
+    <div className="Promo py-8 sm:py-16">
       <div className="container flex flex-col md:flex-row">
         {props.image && (
           <div className="w-full md:w-1/2">
-            <Image className="Promo-image" imageField={props.image} />
+            <Image imageField={props.image} />
           </div>
         )}
 
-        <div className="Promo-content w-full md:w-1/2 space-y-8">
-          <h2 className="Promo-title Heading Heading--head">
+        <div className="w-full md:w-1/2 flex flex-col gap-8 mt-8 md:ml-16">
+          <h2 className="Heading Heading--head">
             {props.title}
           </h2>
 
           {props.description && (
-            <div className="Promo-description">
+            <div>
               {props.description}
             </div>
           )}
 
           {props.cta && (
-            <Link className="Promo-cta inline-flex Button Button--primary" cta={props.cta} />
+            <Link className="Button Button--primary inline-flex self-start" cta={props.cta} />
           )}
 
           {(props.appStoreLink || props.googlePlayLink) && (
-            <div className="Promo-apps flex space-x-4">
+            <div className="flex gap-4">
               {props.appStoreLink && (
                 <Link href={props.appStoreLink}>
                   <img src={appStoreIcon} alt="Download on the App Store"/>
