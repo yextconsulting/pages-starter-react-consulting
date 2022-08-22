@@ -11,6 +11,7 @@ import ResultList from "src/components/search/ResultList";
 import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import mapStyles from "./defaultMapStyles.json";
+import { useBreakpoint } from "src/common/useBreakpoints";
 import "src/components/search/Locator.css";
 
 type LocatorSearchResultType = {
@@ -58,16 +59,7 @@ export default function Locator(props: LocatorProps) {
     return dataToRender;
   });
   const isLoading = useSearchState(state => state.searchStatus.isLoading);
-
-  // Get screen size to use for conditionally rendering the Map
-  // TODO: update to use useBreakpoint currently defined in full branch
-  const [width, setWidth] = useState(0);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setWidth(window.innerWidth);
-    }
-  }, []);
-  const shouldRenderMap = width > 639; // TODO: breakpoint should be set from tailwind value
+  const isDesktopBreakpoint = useBreakpoint("sm");
 
   return (
     <LocatorProvider value={{
@@ -91,7 +83,7 @@ export default function Locator(props: LocatorProps) {
             <ResultList CardComponent={ LocatorCard } displayAllOnNoResults={ displayAllOnNoResults } />
           </div>
         </div>
-        {shouldRenderMap && (
+        {isDesktopBreakpoint && (
           <div className="Locator-map">
             <Map
               provider={ GoogleMaps }
