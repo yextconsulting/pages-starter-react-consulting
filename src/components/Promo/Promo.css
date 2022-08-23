@@ -1,0 +1,14 @@
+.Promo
+{
+  &-content
+  {
+    margin-top: theme(spacing.8);
+
+    @screen md
+    {
+      padding-top: theme(spacing.8);
+      margin-top: 0;
+      margin-left: theme(spacing.16);
+    }
+  }
+}

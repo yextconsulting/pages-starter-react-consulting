@@ -27,6 +27,7 @@ import { defaultHeadConfig } from "src/common/head";
 import { LocationProfile } from "src/types/entities";
 import FeaturedProduct, { fields as featuredProductFields } from "src/components/FeaturedProduct";
 import { teamFields } from "src/components/Team/Team";
+import { Promo } from "src/components/Promo/Promo";
 import Footer from "src/components/Footer"; 
 
 /**
@@ -125,6 +126,14 @@ const Index: Template<TemplateRenderProps> = (data) => {
       {c_team && (
         <Team team={c_team} initialSize={3}/>
       )}
+      <Promo 
+        title="Featured Promotion"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing. Maecenas finibus placerat justo. 100 characters"
+        image={c_hero?.background}
+        cta={c_hero?.cta1}
+        appStoreLink="https://google.com"
+        googlePlayLink="https://google.com"
+      />
       <Footer
         copyrightMessage={_site.c_copyrightMessage}
         facebook={_site.c_facebook}
