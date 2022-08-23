@@ -9,12 +9,12 @@
 
 @define-mixin button-variant-helper $variant {
 	background-color: theme(buttons.$variant.background);
-	color: theme(buttons.$variant.text);
+	color: theme(buttons.$variant.color);
 	border: theme(buttons.$variant.border);
 
 	&:hover {
 		background-color: theme(buttons.$variant.hoverBackground);
-		color: theme(buttons.$variant.hoverText);
+		color: theme(buttons.$variant.hoverColor);
 		border: theme(buttons.$variant.hoverBorder);
 	}
 }
