@@ -1,40 +1,6 @@
-/* Note: These css properties can be edited, and are useful for debugging in the browser, 
-         but shouldn't be referenced directly from other css. Instead, you should reference
-         the corresponding property in the tailwind theme.  */
+/* 
+  Use this file to create custom CSS properties, or override the default values
+  provided by imported components.
+*/
 html {
-  /* Fonts */
-  --font-family-primary: "Arial","Helvetica","sans-serif","system";
-  --font-family-secondary: "Arial","Helvetica","sans-serif","system";
-
-  /* Colors */
-  --brand-primary: #1B78D0;
-  --brand-secondary: #073866;
-  --text-color-primary: black;
-  --background-gray: #f7f7f7;
-
-  /* Links */
-  --link-primary-color: var(--brand-primary);
-  --link-primary-color-hover: var(--brand-secondary);
-  --link-secondary-color: var(--brand-secondary);
-  --link-secondary-color-hover: var(--brand-primary);
-
-  /* Buttons */
-  /* Buttons - general */
-  --button-border-radius: 50px;
-
-  /* Buttons - primary */
-  --button-primary-background-color: var(--brand-primary);
-  --button-primary-background-color-hover: var(--brand-secondary);
-  --button-primary-color: white;
-  --button-primary-color-hover: white;
-  --button-primary-border: none;
-  --button-primary-border-hover: none;
-
-  /* Buttons - secondary */
-  --button-secondary-background-color: white;
-  --button-secondary-background-color-hover: var(--brand-secondary);
-  --button-secondary-color: var(--brand-primary);
-  --button-secondary-color-hover: white;
-  --button-secondary-border: 2px solid var(--brand-primary);
-  --button-secondary-border-hover: 2px solid var(--brand-primary);
 }

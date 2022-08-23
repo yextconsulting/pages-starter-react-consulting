@@ -3,8 +3,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "brand-primary": "var(--brand-primary)",
-        "brand-secondary": "var(--brand-secondary)",
+        "text": "black",
+        "brand-primary": "#1B78D0",
+        "brand-secondary": "#073866",
         "brand-gray": {
           100: "#F7F7F7",
           200: "#EDEDED",
@@ -13,38 +14,38 @@ module.exports = {
         }
       },
       fontFamily: {
-        primary: "var(--font-family-primary)",
-        secondary: "var(--font-family-secondary)",
+        primary: "'Arial','Helvetica','sans-serif','system'",
+        secondary: "'Arial','Helvetica','sans-serif','system'",
       },
-      links: {
+      links: ({ theme }) => ({
         primary: {
-          color: "var(--link-primary-color)",
-          hoverColor: "var(--link-primary-color-hover)",
+          color: theme('colors.brand-primary'),
+          hoverColor: theme('colors.brand-secondary'),
         },
         secondary: {
-          color: "var(--link-secondary-color)",
-          hoverColor: "var(--link-secondary-color-hover)",
+          color: theme('colors.brand-secondary'),
+          hoverColor: theme('colors.brand-primary'),
         }
-      },
-      buttons: {
-        borderRadius: "var(--button-border-radius)",
+      }),
+      buttons: ({ theme }) => ({
+        borderRadius: "50px",
         primary: {
-          background: "var(--button-primary-background-color)",
-          text: "var(--button-primary-color)",
-          border: "var(--button-primary-border)",
-          hoverBackground: "var(--button-primary-background-color-hover)",
-          hoverText: "var(--button-primary-color-hover)",
-          hoverBorder: "var(--button-primary-border-hover)",
+          background: theme('colors.brand-primary'),
+          color: "white",
+          border: "none",
+          hoverBackground: theme('colors.brand-secondary'),
+          hoverColor: "white",
+          hoverBorder: "none",
         },
         secondary: {
-          background: "var(--button-secondary-background-color)",
-          text: "var(--button-secondary-color)",
-          border: "var(--button-secondary-border)",
-          hoverBackground: "var(--button-secondary-background-color-hover)",
-          hoverText: "var(--button-secondary-color-hover)",
-          hoverBorder: "var(--button-secondary-border-hover)",
+          background: "white",
+          color: theme('colors.brand-secondary'),
+          border: `2px solid ${theme('colors.brand-primary')}`,
+          hoverBackground: theme('colors.brand-secondary'),
+          hoverColor: "white",
+          hoverBorder: `2px solid ${theme('colors.brand-primary')}`,
         }
-      },
+      }),
       headings: {
         sub: ['1.5rem', { lineHeight: '1.25' }],
         subMobile: ['1.375rem', { lineHeight: '1.27' }],
