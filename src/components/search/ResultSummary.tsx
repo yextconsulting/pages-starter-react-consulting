@@ -1,5 +1,4 @@
-import { useSearchState, useSearchActions } from "@yext/search-headless-react";
-import { useEffect, useState } from "react";
+import { useSearchState } from "@yext/search-headless-react";
 import "src/components/search/ResultSummary.css";
 
 export default function ResultSummary() {
