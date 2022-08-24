@@ -34,7 +34,7 @@ export default function GeolocateButton({ className }: GeolocateButtonProps) {
         fieldId: "builtin.location",
         matcher: Matcher.Near,
         selected: true,
-        value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * 500 },
+        value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * 50 },
       }]);
 
       executeSearch(searchActions);
