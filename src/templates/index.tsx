@@ -29,6 +29,7 @@ import FeaturedProduct, { fields as featuredProductFields } from "src/components
 import { teamFields } from "src/components/Team/Team";
 import { Promo } from "src/components/Promo/Promo";
 import Footer from "src/components/Footer"; 
+import { About } from "src/components/About/About";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -133,6 +134,15 @@ const Index: Template<TemplateRenderProps> = (data) => {
         cta={c_hero?.cta1}
         appStoreLink="https://google.com"
         googlePlayLink="https://google.com"
+      />
+      <About 
+        title="About Business Geomodifier"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus placerat justo a viverra. Quisque ut congue tellus, vitae fermentum velit. Suspendisse sed gravida libero. Etiam pulvinar tincidunt augue vitae fermentum. Maecenas tortor nunc, ullamcorper eu tortor sed, vestibulum suscipit libero. \nPraesent sit amet pulvinar massa. Proin mattis tellus tristique neque ullamcorper, vel vestibulum lorem dapibus. Vivamus et magna in justo posuere imperdiet sit amet amour tellus. 500 characters"
+        image={c_hero?.background}
+        cta={{
+          buttonText: "brandsite.com",
+          url: "brandsite.com",
+        }}
       />
       <Footer
         copyrightMessage={_site.c_copyrightMessage}
