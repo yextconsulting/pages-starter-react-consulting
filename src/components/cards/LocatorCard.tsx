@@ -28,14 +28,16 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
         ) : renderTitle()}
         { isDesktopBreakpoint && renderDistance() }
       </div>
-      <div className="pb-2 sm:pb-4">
-        <HoursStatus
-          currentTemplate={ (params: StatusParams) => <span className="HoursStatus-current--search">{ params.isOpen ? 'Open Now' : 'Closed' }</span> }
-          dayOfWeekTemplate={ () => null }
-          hours={ hours }
-          separatorTemplate={ () => <span className="bullet" /> }
-        />
-      </div>
+      {hours && (
+        <div className="pb-2 sm:pb-4">
+          <HoursStatus
+            currentTemplate={ (params: StatusParams) => <span className="HoursStatus-current--search">{ params.isOpen ? 'Open Now' : 'Closed' }</span> }
+            dayOfWeekTemplate={ () => null }
+            hours={ hours }
+            separatorTemplate={ () => <span className="bullet" /> }
+          />
+        </div>
+      )}
       <div>{address.line1}</div>
       { !isDesktopBreakpoint && renderDistance() }
     </div>

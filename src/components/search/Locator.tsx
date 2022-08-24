@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createCtx } from "src/types/data";
 import { useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/sites-react-components";
