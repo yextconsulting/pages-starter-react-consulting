@@ -29,6 +29,7 @@ import FeaturedProduct, { fields as featuredProductFields } from "src/components
 import { teamFields } from "src/components/Team/Team";
 import { Promo } from "src/components/Promo/Promo";
 import Footer from "src/components/Footer"; 
+import Header from "src/components/Header";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -53,12 +54,12 @@ export const config: TemplateConfig = {
       "hours",
       "additionalHoursText",
       "services",
-      "c_complexPhoto",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
       "slug",
       "c_hero",
+      "c_header",
       ...featuredProductFields,
       ...teamFields,
     ],
@@ -112,10 +113,16 @@ const Index: Template<TemplateRenderProps> = (data) => {
     hours,
     c_team,
     c_hero,
+    logo,
     _site
   } = document;
+  console.log(document);
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
+      <Header 
+        logo={_site?.c_header?.logo}
+        links={_site?.c_header?.links || []}
+      />
       <FeaturedProduct title={c_featuredProducts.title} products={c_featuredProducts.products}/>
       {c_team && (
         <Team team={c_team} initialSize={3}/>
@@ -135,13 +142,13 @@ const Index: Template<TemplateRenderProps> = (data) => {
         googlePlayLink="https://google.com"
       />
       <Footer
-        copyrightMessage={_site.c_copyrightMessage}
+        copyrightMessage={_site.c_copyrightMessage || ""}
         facebook={_site.c_facebook}
         instagram={_site.c_instagram}
         youtube={_site.c_youtube}
         twitter={_site.c_twitter}
         linkedIn={_site.c_linkedIn}
-        footerLinks={_site.c_footerLinks}
+        footerLinks={_site.c_footerLinks || []}
       />
     </CustomFieldDebuggerReactProvider>
   );

@@ -26,7 +26,7 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
         </div>
         <ul className="flex FeaturedProduct-content">
           {products.map((item, i) => (
-            <div className="FeaturedProduct-card mb-8">
+            <div key={i} className="FeaturedProduct-card mb-8">
               <div className="flex justify-center">
                 {item.primaryPhoto && (<Image className="FeaturedProduct-image" imageField={item.primaryPhoto.image}/>)}
               </div>
