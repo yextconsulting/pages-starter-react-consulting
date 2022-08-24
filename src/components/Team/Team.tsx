@@ -28,7 +28,7 @@ const Team = (props: TeamProps) => {
 
 
   return (
-    <div className="Team-container centered-container">
+    <div className="Team-container container">
       <h2 className="Team-title Heading--head">Meet Our Team</h2>
       <ul className="Team-list">
         {visible.map((member) => (
