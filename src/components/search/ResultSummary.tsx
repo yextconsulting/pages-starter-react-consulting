@@ -1,4 +1,5 @@
-import { useSearchState } from "@yext/search-headless-react";
+import { useSearchState, useSearchActions } from "@yext/search-headless-react";
+import { useEffect, useState } from "react";
 import "src/components/search/ResultSummary.css";
 
 export default function ResultSummary() {
@@ -21,10 +22,11 @@ function useResultsCount() {
   let resultsCount = 0;
 
   // TODO: Like in searchbox this should pull from the same config/ stream definition if possible.
+  // TODO: make sure this works as expected when the new Geolocate component is added
   if (state.filters.static?.length) {
-    const activeFilter = state.filters.static.filter(filter => filter.selected && filter.fieldId === "builtin.location")[0];
-    if (activeFilter && activeFilter.displayName) {
-      searchPlace = activeFilter.displayName;
+    const activeFilter = state.filters.static.filter(filter => filter.selected && filter.fieldId === "builtin.location");
+    if (activeFilter.length && activeFilter[0].displayName) {
+      searchPlace = activeFilter[0].displayName;
     }
   }
 

@@ -1,6 +1,5 @@
 import { FilterSearch } from "@yext/search-ui-react";
 import GeolocateButton from "./GeolocateButton";
-import SearchButton from "./SearchButton";
 
 // TODO: Where should config like this go and if possible get from streams definition?
 const searchFields = [
@@ -25,7 +24,7 @@ export default function SearchBox(props: SearchBoxProps) {
         { subTitle }
       </div>
       <div className="flex items-center">
-        <div className="relative mb-8 w-full">
+        <div className="relative w-full h-9">
           <FilterSearch
             customCssClasses={{
               filterSearchContainer: "absolute w-full",
@@ -35,7 +34,6 @@ export default function SearchBox(props: SearchBoxProps) {
             searchFields={ searchFields }
             searchOnSelect={ true }
           />
-          <SearchButton className="absolute right-4 translate-y-1/2" />
         </div>
         <GeolocateButton className="ml-4" />
       </div>

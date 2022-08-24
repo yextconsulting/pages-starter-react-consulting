@@ -4,9 +4,7 @@ import { executeSearch, getUserLocation } from '@yext/search-ui-react';
 import LoadingSpinner from 'src/components/common/LoadingSpinner';
 
 /**
- * - TODO(jhood): Need to update the FilterSearch option to the users location. From the searchState.location.locationBias
- * we can get the builtin.location autocomplete term for the users current location so if the FilterSearch input could
- * somehow be set it could be updated to the actual location
+ * - TODO(jhood): Replace with search-ui-react component when available: https://yext.slack.com/archives/C016ZKY42CF/p1661356424437289
  */
 
 interface GeolocateButtonProps {
@@ -30,7 +28,7 @@ export default function GeolocateButton({ className }: GeolocateButtonProps) {
 
       // Get builtin.location static filter to 50 mile radius on users position
       searchActions.setStaticFilters([{
-        displayName: `${position.coords.latitude},${position.coords.longitude}`,
+        displayName: "My Location",
         fieldId: "builtin.location",
         matcher: Matcher.Near,
         selected: true,
