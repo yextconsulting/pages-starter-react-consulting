@@ -20,7 +20,7 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
   const { title, products } = props;
   return (
     <div className="FeaturedProduct">
-      <div className="centered-container">
+      <div className="container">
         <div className="FeaturedProduct-heading pb-2 m-4 Heading Heading--head">
           {title}
         </div>

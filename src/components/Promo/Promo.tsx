@@ -20,7 +20,7 @@ type PromoProps = {
 const Promo = (props: PromoProps) => {
   return (
     <div className="Promo">
-      <div className="centered-container flex flex-col md:flex-row">
+      <div className="container flex flex-col md:flex-row">
         {props.image && (
           <div className="w-full md:w-1/2">
             <Image className="Promo-image" imageField={props.image} />

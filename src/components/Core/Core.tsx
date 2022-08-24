@@ -16,7 +16,7 @@ const Core = (props: CoreProps) => {
     const { profile, address } = props;
     return(
         <div className="Core">
-            <div className="Core-container centered-container">
+            <div className="Core-container container">
                 <div className="Core-infoSection">
                     <div className="Core-subSection mb-8">
                         <div className="Heading--sub mb-4 font-bold"> Information </div>
