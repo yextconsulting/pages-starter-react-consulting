@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createCtx } from "src/types/data";
 import { useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/sites-react-components";
@@ -47,6 +47,7 @@ export default function Locator(props: LocatorProps) {
   // Get search results from searchState and map to required fields for the Map and Marker components
   // If displayAllOnNoResults = true, the search will use the 20 locations closest to the users location by default
   const results = useSearchState((state) => {
+    console.log(state);
     const searchResults = state.vertical.results || [];
     const allResults= useSearchState(state => state.vertical?.noResults?.allResultsForVertical.results) || [];
     const resultsToMap = (searchResults.length === 0 && displayAllOnNoResults) ? allResults : searchResults;

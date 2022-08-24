@@ -22,11 +22,10 @@ function useResultsCount() {
 
   // TODO: Like in searchbox this should pull from the same config/ stream definition if possible.
   if (state.filters.static?.length) {
-    state.filters.static.forEach(filter => {
-      if (filter.fieldId === "builtin.location" && filter.displayName) {
-        searchPlace = filter.displayName;
-      }
-    })
+    const activeFilter = state.filters.static.filter(filter => filter.selected && filter.fieldId === "builtin.location")[0];
+    if (activeFilter && activeFilter.displayName && activeFilter.fieldId === "builtin.location") {
+      searchPlace = activeFilter.displayName;
+    }
   }
 
   if (state.vertical) {
