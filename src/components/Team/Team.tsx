@@ -28,11 +28,11 @@ const Team = (props: TeamProps) => {
 
 
   return (
-    <div className="Team-container centered-container">
+    <div className="Team-container container">
       <h2 className="Team-title Heading--head">Meet Our Team</h2>
       <ul className="Team-list">
-        {visible.map((member) => (
-          <li className="Team-listItem" key={member.id}> 
+        {visible.map((member, i) => (
+          <li className="Team-listItem" key={i}> 
             <TeamCard profile={member}/>
           </li>
         ))}

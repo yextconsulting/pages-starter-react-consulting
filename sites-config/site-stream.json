@@ -12,7 +12,8 @@
     "c_linkedIn",
     "c_instagram",
     "c_copyrightMessage",
-    "c_footerLinks"
+    "c_footerLinks",
+    "c_header"
   ],
   "localization": {
     "locales": ["en"],

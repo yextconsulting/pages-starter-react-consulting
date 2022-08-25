@@ -20,13 +20,13 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
   const { title, products } = props;
   return (
     <div className="FeaturedProduct">
-      <div className="centered-container">
+      <div className="container">
         <div className="FeaturedProduct-heading pb-2 m-4 Heading Heading--head">
           {title}
         </div>
         <ul className="flex FeaturedProduct-content">
           {products.map((item, i) => (
-            <div className="FeaturedProduct-card mb-8">
+            <div key={i} className="FeaturedProduct-card mb-8">
               <div className="flex justify-center">
                 {item.primaryPhoto && (<Image className="FeaturedProduct-image" imageField={item.primaryPhoto.image}/>)}
               </div>

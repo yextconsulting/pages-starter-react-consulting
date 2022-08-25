@@ -4,24 +4,23 @@ import { Image, Link } from "@yext/sites-react-components";
 import { CTA, Image as ImageType } from "@yext/types";
 
 type HeaderProps = {
-    logo: ImageType;
     links: CTA[];
-    linkModifier: string;
+    logo?: ImageType;
 }
 
 const Header = (props: HeaderProps) => {
-    const { logo, links, linkModifier} = props;
+    const { logo, links } = props;
     return (
         <div className="Header flex">
-            <div className="Header-logoContainer flex justify-center">
+            {logo && <div className="Header-logoContainer flex justify-center">
                 {/* TODO(dkianersi): include bpSizes prop */}
                 <Image className="Header-logo" imageField={logo} />
-            </div>
-            <div className="Header-content flex justify-center">
+            </div>}
+            <div className="Header-content flex items-center justify-center">
                 <ul className="flex">
                     {links.map((item: CTA) => (
                         <li key={item.label}>
-                            <Link className={`Header-link Link Link--${linkModifier || 'primary'}`} cta={item} />
+                            <Link className="Header-link Link Link--primary" cta={item} />
                         </li>
                     ))}
                 </ul>

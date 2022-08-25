@@ -21,12 +21,12 @@ function useResultsCount() {
   let resultsCount = 0;
 
   // TODO: Like in searchbox this should pull from the same config/ stream definition if possible.
+  // TODO: make sure this works as expected when the new Geolocate component is added
   if (state.filters.static?.length) {
-    state.filters.static.forEach(filter => {
-      if (filter.fieldId === "builtin.location" && filter.displayName) {
-        searchPlace = filter.displayName;
-      }
-    })
+    const activeFilter = state.filters.static.filter(filter => filter.selected && filter.fieldId === "builtin.location");
+    if (activeFilter.length && activeFilter[0].displayName) {
+      searchPlace = activeFilter[0].displayName;
+    }
   }
 
   if (state.vertical) {

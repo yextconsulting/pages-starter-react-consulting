@@ -5,7 +5,6 @@ import type { CardComponent } from "@yext/search-ui-react";
 import { Result } from "@yext/search-headless-react";
 import { useLocatorContext } from "src/components/search/Locator";
 import type { LocatorCardProps } from "src/components/cards/LocatorCard";
-import { useBreakpoint } from "src/common/useBreakpoints";
 import "src/components/search/ResultList.css";
 
 interface ResultListProps extends LocatorCardProps {

@@ -18,7 +18,7 @@ type HeroProps = {
 const Hero = (props: HeroProps) => {
     return (
         <div className="Hero">
-            <div className="Hero-container centered-container">
+            <div className="Hero-container container">
                 <div className="Hero-content">  
                     <h1 className="Hero-title Heading Heading--sub">
                         {props.name}
