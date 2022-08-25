@@ -1,4 +1,4 @@
-import { Address, Coordinate, CTA, Hours, Image, WebsiteUrl } from "@yext/types"
+import { Address, Coordinate, CTA, Hours, Image, ComplexImage, WebsiteUrl } from "@yext/types"
 
 // TODO: potentially move this to @yext/types
 // Also we should probably move @yext/types into @yext/pages
@@ -20,11 +20,25 @@ interface BaseProfile {
 	}
 }
 
+export interface SiteProfile {
+	id: string
+	name: string
+	c_copyrightMessage?: string
+	c_facebook?: string
+	c_instagram?: string
+	c_youtube?: string
+	c_twitter?: string
+	c_linkedIn?: string
+	c_footerLinks?: CTA[]
+	c_header?: {
+		logo?: Image
+		links?: CTA[]
+	}
+}
+
 export interface ProductProfile extends BaseProfile {
 	name: string
-	primaryPhoto: { // TODO(bhaines): update to compleximage when that type is defined
-		image: Image
-	}
+	primaryPhoto: ComplexImage
 	richTextDescription: string
 	c_primaryCTA: CTA
 }
@@ -52,6 +66,7 @@ export interface LocationProfile extends BaseProfile {
 	description?: string
 	emails?: string[]
 	services: string[]
+	logo?: Image
 	// Add custom fields here
 	// c_myStringField: string
 	c_featuredProducts: {
@@ -64,6 +79,7 @@ export interface LocationProfile extends BaseProfile {
 		cta1: CTA,
 		cta2: CTA
 	}
+	_site: SiteProfile
 }
 
 export type DirectoryProfile<T> = BaseProfile & {

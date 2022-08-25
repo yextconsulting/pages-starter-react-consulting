@@ -1,6 +1,6 @@
+import React from "react";
 import { Link } from "@yext/sites-react-components";
 import { CTA } from "@yext/types";
-import React from "react";
 import "src/styles/Footer.css";
 import {
   FaFacebook,
@@ -36,13 +36,13 @@ const Footer = (props: FooterProps) => {
   return (
     <footer className="Footer container">
       <div className="Footer-linksContainer flex flex-col">
-        {footerLinks.map((link: CTA) => (
-          <Link className={'Footer-link Link Link--primary'} key={link.label} cta={link} />
+        {footerLinks.map((link, i) => (
+          <Link className={'Footer-link Link Link--primary'} key={i} cta={link} />
         ))}
       </div>
       <div className="Footer-socialContainer flex">
-        {socialLinks.map((socialLink: CTA) => (
-            <Link className={'Footer-socialLink Link Link--primary'} key={socialLink.link} href={socialLink.link}>
+        {socialLinks.map((socialLink, i) => (
+            <Link className={'Footer-socialLink Link Link--primary'} key={i} href={socialLink.link}>
               {socialLink.label}
             </Link>
           ))}
