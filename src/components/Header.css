@@ -1,14 +1,4 @@
 .Header {
-    padding: theme("spacing.4");
-
-    &-logoContainer {
-        width: 30%;
-    }
-
-    &-content {
-        width: 70%;
-    }
-    
     &-logo {
         margin-right: theme("spacing.1");
     }

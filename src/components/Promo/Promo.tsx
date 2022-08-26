@@ -7,6 +7,10 @@ import { Image, Link } from '@yext/sites-react-components';
 import appStoreIcon from "src/assets/images/appstore.svg";
 import playStoreIcon from "src/assets/images/playstore.svg";
 
+export const defaultFields = [
+  'c_promo'
+]
+
 type PromoProps = {
   image?: ImageType,
   title: string,

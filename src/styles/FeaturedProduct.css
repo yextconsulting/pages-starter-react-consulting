@@ -7,8 +7,6 @@
     background-color: white;
     text-align: left;
     display: grid;
-    margin-left: theme("spacing.6");
-    margin-right: theme("spacing.6");
   }
 
   &-content
