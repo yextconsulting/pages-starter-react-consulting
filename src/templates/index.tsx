@@ -123,6 +123,9 @@ const Index: Template<TemplateRenderProps> = (data) => {
 
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
+      <a href="#" className="Button Button--primary">HELLO</a>
+      <br />
+      <a href="#" className="Button Button--secondary">HELLO</a>
       <Header 
         logo={_site?.c_header?.logo}
         links={_site?.c_header?.links || []}

@@ -1,21 +1,27 @@
 {
 	"city": [
+		"directory-city__397f42c1d08a54ba721715329f02a80f.json",
 		"directory-city__2f6e55c572e053558fcaf6abd57d69d0.json",
-		"directory-city__5fb526ef74efd8ffaa1f7196b19f7498.json",
-		"directory-city__397f42c1d08a54ba721715329f02a80f.json"
+		"directory-city__5fb526ef74efd8ffaa1f7196b19f7498.json"
 	],
 	"index": [
+		"locations__e5070c52a72877689437d0d324acb02f.json",
 		"locations__98c794f38e80385ef2b6497286969541.json",
 		"locations__cee5e59f2d49a66fe6e0a9e53874f9ba.json",
+		"locations__73e789210dc9214ca426800ac6a409dd.json",
+		"locations__1e78d260c9cc70b8f6d43545a09dd0bf.json",
+		"locations__598c4b04a66ad42363ad50d61ae54add.json",
 		"locations__0a041ce04c3004fb5ee74a2b6fe794e0.json",
-		"locations__835922d0639ce87268bab33e3c942bb5.json",
-		"locations__e5070c52a72877689437d0d324acb02f.json"
+		"locations__835922d0639ce87268bab33e3c942bb5.json"
 	],
 	"region": [
 		"directory-region__727165cd0f4817a125107aad9d4874ec.json"
 	],
 	"root": [
 		"directory-root__a9fa1e4cf93eef625458f98cd0334abb.json"
+	],
+	"search": [
+		"search-page__5144edf2da85eed30cd593c2915b74ff.json"
 	],
 	"static": [
 		"cog-internal-feature-static-file-generation-static__cfcd208495d565ef66e7dff9f98764da.json"
