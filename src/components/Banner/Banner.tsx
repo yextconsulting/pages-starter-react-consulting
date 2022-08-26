@@ -1,22 +1,21 @@
 import React from "react";
-import { Image } from "@yext/sites-react-components";
+import { Image } from "@yext/pages/components";
 import { Image as ImageType } from  "@yext/types";
-import "src/styles/Banner.css";
 
 type BannerProps = {
   image?: ImageType;
-  text?: string;
+  text: string;
 };
 
 const Banner = (props: BannerProps) => {
   return (
     <>
-    <div className="Banner">
-      <div className="Banner-container container flex">
+    <div className="Banner bg-brand-secondary text-white py-4">
+      <div className="container flex">
           {props.image && <div className="Banner-logoContainer flex">
               <Image className="Banner-image" imageField={props.image} />
           </div>}
-          <div className="Header-content flex">
+          <div className="flex">
             {props.text}
           </div>
         </div>
