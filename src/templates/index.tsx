@@ -31,7 +31,6 @@ import { defaultFields, Promo } from "src/components/Promo/Promo";
 import Footer from "src/components/Footer"; 
 import { About } from "src/components/About/About";
 import Header from "src/components/Header";
-import { Link } from "@yext/sites-react-components";
 import classNames from "classnames";
 import { ButtonClass } from "src/styleguide";
 

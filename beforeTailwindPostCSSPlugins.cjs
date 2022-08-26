@@ -7,7 +7,6 @@ module.exports = {
 	postcssPlugin: 'yext-grouped',
 	Once(root, { result }) {
 		return postcss([
-			require('postcss-each'),
 			require('postcss-mixins'),
 		]).process(root, result.opts)
 	},
