@@ -9,7 +9,6 @@ type BannerProps = {
 
 const Banner = (props: BannerProps) => {
   return (
-    <>
     <div className="Banner bg-brand-secondary text-white py-4">
       <div className="container flex">
           {props.image && <div className="Banner-logoContainer flex">
@@ -20,7 +19,6 @@ const Banner = (props: BannerProps) => {
           </div>
         </div>
     </div>
-    </>
   );
 };
 
