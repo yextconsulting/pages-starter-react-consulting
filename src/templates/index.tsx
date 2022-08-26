@@ -31,6 +31,9 @@ import { defaultFields, Promo } from "src/components/Promo/Promo";
 import Footer from "src/components/Footer"; 
 import { About } from "src/components/About/About";
 import Header from "src/components/Header";
+import { Link } from "@yext/sites-react-components";
+import classNames from "classnames";
+import { ButtonClass } from "src/styleguide";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -123,9 +126,14 @@ const Index: Template<TemplateRenderProps> = (data) => {
 
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      <a href="#" className="Button Button--primary">HELLO</a>
-      <br />
-      <a href="#" className="Button Button--secondary">HELLO</a>
+      {/* Button variant */}
+      <a className={classNames(ButtonClass("primary"))} href="https://www.yext.com">Hi</a>
+      {/* Button variant + custom class */}
+      <a className={classNames(ButtonClass("primary"), "Index-button")} href="https://www.yext.com">Hi</a>
+      {/* Multiple variants */}
+      <a className={classNames(ButtonClass("primary", "secondary"))} href="https://www.yext.com">Hi</a>
+      {/* This will yell at you for using an invalid variant */}
+      {/* <a className={classNames(ButtonClass("custom"))} href="https://www.yext.com">Hi</a> */}
       <Header 
         logo={_site?.c_header?.logo}
         links={_site?.c_header?.links || []}
