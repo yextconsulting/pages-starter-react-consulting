@@ -7,3 +7,16 @@
   content: attr(data-count);
   margin-left: 1ch;
 }
+
+.search-input {
+  width: 100%;
+
+  @screen sm
+  {
+    width: 400px;
+  }
+}
+
+.HoursStatus-current {
+  font-weight: theme("fontWeight.bold");
+}

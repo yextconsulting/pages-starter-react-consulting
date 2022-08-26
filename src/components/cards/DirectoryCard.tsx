@@ -8,10 +8,10 @@ export default function DirectoryCard(props: CardProps): JSX.Element {
   const { content, relativePrefixToRoot } = props;
 
   return (
-    <div className="Directorycard drop-shadow bg-white px-6 py-8 border">
-      <h3 className="mb-4">
+    <div className="Directorycard bg-white px-6 py-8 border h-full">
+      <h3 className="mb-4 text-lg font-medium">
         {content.slug ? (
-          <Link href={relativePrefixToRoot + content.slug}>
+          <Link href={relativePrefixToRoot + content.slug} className="text-brand-primary hover:underline">
             {content.name}
           </Link>
         ) : (
@@ -20,13 +20,13 @@ export default function DirectoryCard(props: CardProps): JSX.Element {
       </h3>
       
       {content.hours && (
-        <div className="mb-4">
+        <div className="mb-4 text-sm">
           <HoursStatus hours={content.hours} />
         </div>
       )}
 
       {/* TODO(cblair): use address component when we figure out ExtendedAddress typing error */}
-      <div className="mb-4">
+      <div className="text-sm">
         <div>
           {content.address.line1} <span>{content.address.city}</span>,{" "}
           <span>{content.address.region}</span> {content.address.postalCode}

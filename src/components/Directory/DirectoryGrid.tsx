@@ -1,7 +1,7 @@
 import React from "react";
 import DirectoryCard from "src/components/cards/DirectoryCard"
 import { DirectoryCardContent, CardComponent } from "src/models/cardComponent";
-import "src/styles/Directory.css";
+import { DirectoryHero } from "src/components/Directory/DirectoryHero";
 import { LocationProfile } from "src/types/entities";
 import "src/styles/Directory.css";
 
@@ -24,16 +24,16 @@ interface DirectoryGridProps {
 export function DirectoryGrid(props: DirectoryGridProps) {
   const { name, count, directoryChildren, relativePrefixToRoot, CardComponent = DirectoryCard } = props;
   return (
-    <div>
-      <h1 className="mb-6">
-        {/* TODO (cblair): Pull full title from custom field when it exists on directory entities */}
-        {count} locations in {name}
-      </h1>
-      <ul className="flex flex-wrap">
-        {directoryChildren.map((child: any, idx: number) => (
-          renderCard(CardComponent, child, relativePrefixToRoot, idx)
-        ))}
-      </ul>
+    <div className="my-8">
+      {/* TODO: change subtitle with custom field when created */}
+      <DirectoryHero title={name} subtitle={"Business Name"} relativePrefixToRoot={relativePrefixToRoot} />
+      <div className="container my-8">
+        <ul className="flex flex-wrap">
+          {directoryChildren.map((child: any, idx: number) => (
+            renderCard(CardComponent, child, relativePrefixToRoot, idx)
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }
@@ -45,7 +45,7 @@ function renderCard(
   index: number
 ): JSX.Element {
   return (
-    <li className="Directory-listItem" key={index}>
+    <li className="Directory-listItem p-4 w-full md:w-1/2 lg:w-1/3" key={index}>
       <CardComponent content={childContent} relativePrefixToRoot={relativePrefixToRoot} />
     </li>
   )
