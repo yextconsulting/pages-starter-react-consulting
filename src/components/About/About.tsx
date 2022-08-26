@@ -4,7 +4,6 @@ import {
   CTA as CTAType
 } from "@yext/types";
 import { Image, Link } from '@yext/sites-react-components';
-import "./About.css";
 
 type AboutProps = {
   image?: ImageType,
@@ -16,7 +15,7 @@ type AboutProps = {
 const About = (props: AboutProps) => {
   return (
     <div className="About py-8 sm:py-16">
-      <div className="About-container centered-container flex flex-col md:flex-row">
+      <div className="About-container container flex flex-col md:flex-row">
         {props.image && (
           <div className="About-imageWrapper w-full md:w-1/2">
             <Image className="About-image" imageField={props.image} />

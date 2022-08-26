@@ -31,6 +31,7 @@ import { Promo } from "src/components/Promo/Promo";
 import Footer from "src/components/Footer"; 
 import { About } from "src/components/About/About";
 import Header from "src/components/Header";
+import Banner from "src/components/Banner/Banner";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -124,7 +125,8 @@ const Index: Template<TemplateRenderProps> = (data) => {
         logo={_site?.c_header?.logo}
         links={_site?.c_header?.links || []}
       />
-      <FeaturedProduct title={c_featuredProducts.title} products={c_featuredProducts.products}/>
+      <Banner text='e.g. "This location is temporarily closed due to inclement weather."' />
+      <FeaturedProduct title={c_featuredProducts?.title} products={c_featuredProducts?.products}/>
       {c_team && (
         <Team team={c_team} initialSize={3}/>
       )}
@@ -147,8 +149,8 @@ const Index: Template<TemplateRenderProps> = (data) => {
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus placerat justo a viverra. Quisque ut congue tellus, vitae fermentum velit. Suspendisse sed gravida libero. Etiam pulvinar tincidunt augue vitae fermentum. Maecenas tortor nunc, ullamcorper eu tortor sed, vestibulum suscipit libero. \nPraesent sit amet pulvinar massa. Proin mattis tellus tristique neque ullamcorper, vel vestibulum lorem dapibus. Vivamus et magna in justo posuere imperdiet sit amet amour tellus. 500 characters"
         image={c_hero?.background}
         cta={{
-          buttonText: "brandsite.com",
-          url: "brandsite.com",
+          label: "brandsite.com",
+          link: "brandsite.com",
         }}
       />
       <Footer
