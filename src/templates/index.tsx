@@ -27,7 +27,7 @@ import { defaultHeadConfig } from "src/common/head";
 import { LocationProfile } from "src/types/entities";
 import FeaturedProduct, { fields as featuredProductFields } from "src/components/FeaturedProduct";
 import { teamFields } from "src/components/Team/Team";
-import { Promo } from "src/components/Promo/Promo";
+import { defaultFields, Promo } from "src/components/Promo/Promo";
 import Footer from "src/components/Footer"; 
 import { About } from "src/components/About/About";
 import Header from "src/components/Header";
@@ -62,6 +62,8 @@ export const config: TemplateConfig = {
       "slug",
       "c_hero",
       "c_header",
+      "c_complexPhoto",
+      ...defaultFields,
       ...featuredProductFields,
       ...teamFields,
     ],
@@ -111,14 +113,15 @@ const Index: Template<TemplateRenderProps> = (data) => {
   const {
     name,
     c_featuredProducts,
+    description,
     address,
     hours,
     c_team,
     c_hero,
-    logo,
+    c_promo,
     _site
   } = document;
-  console.log(document);
+
   return (
     <CustomFieldDebuggerReactProvider component={Index} {...data}>
       <Header 
@@ -126,33 +129,30 @@ const Index: Template<TemplateRenderProps> = (data) => {
         links={_site?.c_header?.links || []}
       />
       <Banner text='e.g. "This location is temporarily closed due to inclement weather."' />
-      <FeaturedProduct title={c_featuredProducts?.title} products={c_featuredProducts?.products}/>
-      {c_team && (
-        <Team team={c_team} initialSize={3}/>
-      )}
       {/* TODO(aganesh) : use Reviews component when available */}
       <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={document} address={address}/>
+      {c_promo && c_promo.title && <Promo 
+        title={c_promo.title}
+        description={c_promo.description}
+        image={c_promo?.image}
+        cta={c_promo?.cta}
+        appStoreLink={c_promo.appStoreUrl}
+        googlePlayLink={c_promo.googlePlayUrl}
+      />}
+      <FeaturedProduct title={c_featuredProducts.title} products={c_featuredProducts.products}/>
+      <About 
+        title="About Business Geomodifier"
+        description={description}
+        image={c_hero?.background}
+        cta={{
+          link: "https://www.yext.com",
+          label: "yext.com",
+        }}
+      />
       {c_team && (
         <Team team={c_team} initialSize={3}/>
       )}
-      <Promo 
-        title="Featured Promotion"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing. Maecenas finibus placerat justo. 100 characters"
-        image={c_hero?.background}
-        cta={c_hero?.cta1}
-        appStoreLink="https://google.com"
-        googlePlayLink="https://google.com"
-      />
-      <About 
-        title="About Business Geomodifier"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus placerat justo a viverra. Quisque ut congue tellus, vitae fermentum velit. Suspendisse sed gravida libero. Etiam pulvinar tincidunt augue vitae fermentum. Maecenas tortor nunc, ullamcorper eu tortor sed, vestibulum suscipit libero. \nPraesent sit amet pulvinar massa. Proin mattis tellus tristique neque ullamcorper, vel vestibulum lorem dapibus. Vivamus et magna in justo posuere imperdiet sit amet amour tellus. 500 characters"
-        image={c_hero?.background}
-        cta={{
-          label: "brandsite.com",
-          link: "brandsite.com",
-        }}
-      />
       <Footer
         copyrightMessage={_site.c_copyrightMessage || ""}
         facebook={_site.c_facebook}

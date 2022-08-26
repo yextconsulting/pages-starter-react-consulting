@@ -15,14 +15,14 @@ type AboutProps = {
 const About = (props: AboutProps) => {
   return (
     <div className="About py-8 sm:py-16">
-      <div className="About-container container flex flex-col md:flex-row">
+      <div className="About-container container flex flex-col md:flex-row gap-8 md:gap-16">
         {props.image && (
           <div className="About-imageWrapper w-full md:w-1/2">
             <Image className="About-image" imageField={props.image} />
           </div>
         )}
 
-        <div className="About-content w-full md:w-1/2 flex flex-col gap-8 mt-8 md:ml-16">
+        <div className="About-content w-full md:w-1/2 flex flex-col gap-8">
           <h2 className="About-title Heading Heading--head">
             {props.title}
           </h2>

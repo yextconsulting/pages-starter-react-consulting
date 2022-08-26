@@ -79,6 +79,14 @@ export interface LocationProfile extends BaseProfile {
 		cta1: CTA,
 		cta2: CTA
 	}
+	c_promo?: {
+		title?: string
+		description?: string
+		image?: Image
+		cta?: CTA
+		googlePlayUrl?: string
+		appStoreUrl?: string
+	}
 	_site: SiteProfile
 }
 

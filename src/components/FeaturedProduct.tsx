@@ -24,7 +24,7 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
         <div className="FeaturedProduct-heading pb-2 m-4 Heading Heading--head">
           {title}
         </div>
-        <ul className="flex FeaturedProduct-content">
+        <ul className="flex FeaturedProduct-content gap-6">
           {products?.map((item, i) => (
             <div key={i} className="FeaturedProduct-card mb-8">
               <div className="flex justify-center">
