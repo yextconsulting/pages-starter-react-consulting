@@ -11,12 +11,12 @@ type HeaderProps = {
 const Header = (props: HeaderProps) => {
     const { logo, links } = props;
     return (
-        <div className="Header flex">
+        <div className="Header py-4 container flex justify-between">
             {logo && <div className="Header-logoContainer flex justify-center">
                 {/* TODO(dkianersi): include bpSizes prop */}
                 <Image className="Header-logo" imageField={logo} />
             </div>}
-            <div className="Header-content flex items-center justify-center">
+            <div className="Header-content flex items-center">
                 <ul className="flex">
                     {links.map((item: CTA) => (
                         <li key={item.label}>
