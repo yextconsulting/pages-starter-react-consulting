@@ -3,7 +3,8 @@ import {
   Image as ImageType,
   CTA as CTAType
 } from "@yext/types";
-import { Image, Link } from '@yext/sites-react-components';
+import { Image } from '@yext/sites-react-components';
+import { Link } from '@yext/pages/components';
 import appStoreIcon from "src/assets/images/appstore.svg";
 import playStoreIcon from "src/assets/images/playstore.svg";
 

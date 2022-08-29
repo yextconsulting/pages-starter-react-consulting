@@ -1,5 +1,6 @@
 import React from "react";
-import { Image, Link } from "@yext/sites-react-components";
+import { Image } from "@yext/sites-react-components";
+import { Link } from "@yext/pages/components";
 import { financialProfessional } from "src/types/entities";
 import { FaPhone, FaEnvelope, FaChevronRight } from "react-icons/fa";
 import "src/styles/TeamCard.css";

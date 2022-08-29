@@ -1,5 +1,6 @@
 import React from "react";
-import { Image, Link } from "@yext/sites-react-components";
+import { Image } from "@yext/sites-react-components";
+import { Link } from "@yext/pages/components";
 import { ProductProfile } from "src/types/entities";
 import "src/styles/FeaturedProduct.css";
 
