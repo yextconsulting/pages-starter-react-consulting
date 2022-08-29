@@ -1,4 +1,4 @@
-import { FilterSearch } from "@yext/search-ui-react";
+import { FilterSearch, StandardFacets } from "@yext/search-ui-react";
 import GeolocateButton from "./GeolocateButton";
 
 // TODO: Where should config like this go and if possible get from streams definition?
@@ -37,6 +37,20 @@ export default function SearchBox(props: SearchBoxProps) {
         </div>
         <GeolocateButton className="ml-4" />
       </div>
+      <StandardFacets
+        collapsible={false}
+        showOptionCounts={true}
+        customCssClasses={{
+          standardFacetsContainer: "absolute bottom-8 left-[480px] z-[100] bg-white",
+          optionsContainer: "flex p-2 max-w-2xl overflow-x-auto pb-3",
+					option: "bg-brand-gray-200 py-2 px-4 mx-2 rounded-3xl",
+					optionInput: "",
+					optionLabel: "text-brand-primary ml-0 whitespace-pre"
+        }}
+        searchOnChange={true}
+      />
     </div>
   )
 }
+
+//https://liveapi-sandbox.yext.com/v2/accounts/me/answers/filtersearch?input=travel&experienceKey=locator&api_key=b7930d2fa7b5b106371224158c5854d2&v=20220511&locale=en&search_parameters=%7B%22sectioned%22%3Afalse%2C%22fields%22%3A%5B%7B%22fieldId%22%3A%22paymentOptions%22%2C%22entityTypeId%22%3A%22location%22%2C%22shouldFetchEntities%22%3Afalse%7D%5D%7D&verticalKey=locations&sessionTrackingEnabled=true

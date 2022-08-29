@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { createCtx } from "src/types/data";
 import { useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/sites-react-components";
@@ -60,6 +61,8 @@ export default function Locator(props: LocatorProps) {
   });
   const isLoading = useSearchState(state => state.searchStatus.isLoading);
   const isDesktopBreakpoint = useBreakpoint("sm");
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   return (
     <LocatorProvider value={{
