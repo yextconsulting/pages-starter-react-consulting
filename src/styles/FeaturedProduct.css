@@ -25,11 +25,6 @@
     }
   }
 
-  &-image
-  {
-    height: 187px;
-  }
-
   &-title
   {
     font-family: theme(fontFamily.primary);

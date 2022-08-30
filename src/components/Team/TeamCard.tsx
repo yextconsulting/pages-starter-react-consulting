@@ -14,7 +14,9 @@ const TeamCard = (props: TeamCardProps) => {
     <div className="TeamCard-container">
       <div className="TeamCard-header border-b-2 p-8">
         {profile.headshot && ( 
-          <Image className="TeamCard-headshot" image={profile.headshot} />
+          // @ts-ignore: the image component types currently don't allow users to specify a height alone
+          // this is a bug reported here: https://github.com/yext/pages/issues/195
+          <Image className="TeamCard-headshot" layout="fixed" width={80} image={profile.headshot} />
         )}
         <div className="TeamCard-about p-6">
           <div className="TeamCard-name Heading--sub mb-1 font-bold">

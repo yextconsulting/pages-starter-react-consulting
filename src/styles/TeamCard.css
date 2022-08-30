@@ -15,7 +15,6 @@
   &-headshot
   {
     border-radius: theme(borderRadius.full);
-    width: 80px;
   }
 
   &-phoneDisplay,
@@ -58,5 +57,4 @@
     display: flex;
     align-items: center;
   }
-
 }

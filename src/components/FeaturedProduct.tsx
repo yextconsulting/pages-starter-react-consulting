@@ -30,7 +30,11 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
           {products?.map((item, i) => (
             <div key={i} className="FeaturedProduct-card mb-8">
               <div className="flex justify-center">
-                {item.primaryPhoto && (<Image className="FeaturedProduct-image" image={item.primaryPhoto.image}/>)}
+                {item.primaryPhoto && (
+                  // @ts-ignore: the image component types currently don't allow users to specify a height alone
+                  // this is a bug reported here: https://github.com/yext/pages/issues/195
+                  <Image className="FeaturedProduct-image" layout="fixed" height={187} image={item.primaryPhoto.image}/>
+                )}
               </div>
               <div className="mx-8 mt-8 FeaturedProduct-title">
                 {item.name}
