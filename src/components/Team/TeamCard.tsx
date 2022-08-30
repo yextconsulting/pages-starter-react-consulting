@@ -1,6 +1,5 @@
 import React from "react";
-import { Image } from "@yext/sites-react-components";
-import { Link } from "@yext/pages/components";
+import { Image, Link } from "@yext/pages/components";
 import { financialProfessional } from "src/types/entities";
 import { FaPhone, FaEnvelope, FaChevronRight } from "react-icons/fa";
 import "src/styles/TeamCard.css";
@@ -15,7 +14,7 @@ const TeamCard = (props: TeamCardProps) => {
     <div className="TeamCard-container">
       <div className="TeamCard-header border-b-2 p-8">
         {profile.headshot && ( 
-          <Image className="TeamCard-headshot" imageField={profile.headshot} />
+          <Image className="TeamCard-headshot" image={profile.headshot} />
         )}
         <div className="TeamCard-about p-6">
           <div className="TeamCard-name Heading--sub mb-1 font-bold">

@@ -140,7 +140,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
         appStoreLink={c_promo.appStoreUrl}
         googlePlayLink={c_promo.googlePlayUrl}
       />}
-      <FeaturedProduct title={c_featuredProducts.title} products={c_featuredProducts.products}/>
+      <FeaturedProduct title={c_featuredProducts?.title || 'Featured Products'} products={c_featuredProducts?.products || []}/>
       <About 
         title="About Business Geomodifier"
         description={description}

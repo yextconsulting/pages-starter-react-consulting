@@ -12,7 +12,7 @@ const Banner = (props: BannerProps) => {
     <div className="Banner bg-brand-secondary text-white py-4">
       <div className="container flex">
           {props.image && <div className="Banner-logoContainer flex">
-              <Image className="Banner-image" imageField={props.image} />
+              <Image className="Banner-image" image={props.image} />
           </div>}
           <div className="flex">
             {props.text}
