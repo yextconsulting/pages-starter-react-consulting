@@ -30,7 +30,7 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
           {products?.map((item, i) => (
             <div key={i} className="FeaturedProduct-card mb-8">
               <div className="flex justify-center">
-                {item.primaryPhoto && (<Image aspectRatio={1.5} layout="aspect" className="FeaturedProduct-image" image={item.primaryPhoto.image}/>)}
+                {item.primaryPhoto && (<Image className="FeaturedProduct-image" image={item.primaryPhoto.image}/>)}
               </div>
               <div className="mx-8 mt-8 FeaturedProduct-title">
                 {item.name}
