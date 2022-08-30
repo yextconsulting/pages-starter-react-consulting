@@ -13,7 +13,7 @@ import {
   TransformProps,
   TemplateConfig,
 } from "@yext/pages";
-import { Main } from '../layouts/main';
+import { Main } from 'src/layouts/main';
 
 /**
  * Not required depending on your use case.
