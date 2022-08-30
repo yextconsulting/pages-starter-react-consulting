@@ -19,6 +19,8 @@ export const fields = [
 
 const FeaturedProduct = (props: FeaturedProductProps) => {
   const { title, products } = props;
+  if (!products.length) return null;
+
   return (
     <div className="FeaturedProduct">
       <div className="container">
