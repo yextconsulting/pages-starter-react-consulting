@@ -12,7 +12,8 @@ const fullConfig = resolveConfig(tailwindConfig);
 const screens: KeyValuePair<string, string> = (fullConfig.theme?.screens || defaultScreens) as KeyValuePair<string, string>;
 
 const runtime = getRuntime();
-const useIsomorphicEffect = runtime.name === "node" ? useEffect : useLayoutEffect;
+// TODO(bhaines): move to isServerSide helper when that's released in future pagesJS version
+const useIsomorphicEffect = (runtime.name === "node" || runtime.name === "deno") ? useEffect : useLayoutEffect;
 
 export function useBreakpoint(
   // TODO: this should be `keyof typeof screens`, but because types don't exist for the imported file that breaks
