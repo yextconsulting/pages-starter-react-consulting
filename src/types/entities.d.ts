@@ -69,15 +69,15 @@ export interface LocationProfile extends BaseProfile {
 	logo?: Image
 	// Add custom fields here
 	// c_myStringField: string
-	c_featuredProducts: {
-		title: string
-		products: ProductProfile[]
+	c_featuredProducts?: {
+		title?: string
+		products?: ProductProfile[]
   }
 	c_team?: financialProfessional[]
 	c_hero?: {
-		background: Image,
-		cta1: CTA,
-		cta2: CTA
+		background?: Image,
+		cta1?: CTA,
+		cta2?: CTA
 	}
 	c_promo?: {
 		title?: string
