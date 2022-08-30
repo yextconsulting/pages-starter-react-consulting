@@ -1,5 +1,6 @@
 import React from "react";
-import { Image, Link } from "@yext/sites-react-components";
+import { Image } from "@yext/sites-react-components";
+import { Link } from "@yext/pages/components";
 import { ProductProfile } from "src/types/entities";
 import "src/styles/FeaturedProduct.css";
 
@@ -18,6 +19,8 @@ export const fields = [
 
 const FeaturedProduct = (props: FeaturedProductProps) => {
   const { title, products } = props;
+  if (!products.length) return null;
+
   return (
     <div className="FeaturedProduct">
       <div className="container">
@@ -25,7 +28,7 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
           {title}
         </div>
         <ul className="flex FeaturedProduct-content gap-6">
-          {products.map((item, i) => (
+          {products?.map((item, i) => (
             <div key={i} className="FeaturedProduct-card mb-8">
               <div className="flex justify-center">
                 {item.primaryPhoto && (<Image className="FeaturedProduct-image" imageField={item.primaryPhoto.image}/>)}

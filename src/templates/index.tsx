@@ -33,6 +33,7 @@ import { About } from "src/components/About/About";
 import Header from "src/components/Header";
 import classNames from "classnames";
 import { ButtonClass } from "src/styleguide";
+import Banner from "src/components/Banner/Banner";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -137,6 +138,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
         logo={_site?.c_header?.logo}
         links={_site?.c_header?.links || []}
       />
+      <Banner text='e.g. "This location is temporarily closed due to inclement weather."' />
       {/* TODO(aganesh) : use Reviews component when available */}
       <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={document} address={address}/>
@@ -148,7 +150,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
         appStoreLink={c_promo.appStoreUrl}
         googlePlayLink={c_promo.googlePlayUrl}
       />}
-      <FeaturedProduct title={c_featuredProducts.title} products={c_featuredProducts.products}/>
+      <FeaturedProduct title={c_featuredProducts?.title || 'Featured Products'} products={c_featuredProducts?.products || []}/>
       <About 
         title="About Business Geomodifier"
         description={description}

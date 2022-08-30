@@ -1,9 +1,8 @@
 import React from "react";
-import { Link, HoursTable, LocationMap } from "@yext/sites-react-components";
+import { HoursTable, LocationMap, getDirections } from "@yext/sites-react-components";
 import { Address as AddressType } from "@yext/types";
-import { Address } from "@yext/pages/components";
+import { Link, Address } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
-import { getDirections } from "@yext/sites-react-components";
 import { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import "src/styles/Core.css";

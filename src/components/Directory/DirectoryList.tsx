@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "@yext/sites-react-components";
+import { Link } from "@yext/pages/components";
 import { DirectoryProfile } from "src/types/entities";
 import "src/styles/Directory.css";
 
