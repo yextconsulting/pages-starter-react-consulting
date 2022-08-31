@@ -27,9 +27,7 @@ import { LocationProfile } from "src/types/entities";
 import FeaturedProduct, { fields as featuredProductFields } from "src/components/FeaturedProduct";
 import { teamFields } from "src/components/Team/Team";
 import { defaultFields, Promo } from "src/components/Promo/Promo";
-import Footer from "src/components/Footer"; 
 import { About } from "src/components/About/About";
-import Header from "src/components/Header";
 import Banner from "src/components/Banner/Banner";
 import { Main } from 'src/layouts/main';
 
@@ -62,7 +60,6 @@ export const config: TemplateConfig = {
       "slug",
       "c_hero",
       "c_header",
-      "c_complexPhoto",
       ...defaultFields,
       ...featuredProductFields,
       ...teamFields,
