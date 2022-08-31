@@ -7,3 +7,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+	height: 100%;
+}
+
+#root {
+	display: grid;
+	height: 100%;
+	grid-template-rows: auto 1fr auto;
+}
