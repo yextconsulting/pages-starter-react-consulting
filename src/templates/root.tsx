@@ -86,7 +86,7 @@ const Root: Template<TemplateRenderProps> = (data) => {
 	const { name, dm_directoryChildren, dm_directoryChildrenCount } = document;
 
 	return (
-		<Main>
+		<Main data={data}>
 			<DirectoryList
 				name={name}
 				showNumLocs={true}

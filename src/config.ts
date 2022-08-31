@@ -1,6 +1,6 @@
-import { YextProviderContextType } from '@yext/sites-react-components';
+import { ConfigurationProviderContextType } from '@yext/sites-react-components';
 
-const config: YextProviderContextType = {
+const config: ConfigurationProviderContextType = {
   components: {},
 };
 

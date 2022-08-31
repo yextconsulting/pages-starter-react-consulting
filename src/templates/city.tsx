@@ -87,7 +87,7 @@ const City: Template<TemplateRenderProps> = (data) => {
 	const { name, dm_directoryChildren, dm_directoryChildrenCount } = document;
 
 	return (
-		<Main>
+		<Main data={data}>
 			<DirectoryGrid
 				name={name}
 				CardComponent={DirectoryCard}
