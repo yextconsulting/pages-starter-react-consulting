@@ -18,6 +18,7 @@ interface BaseProfile {
 		}
 		locale: string
 	}
+	_site: SiteProfile
 }
 
 export interface SiteProfile {
@@ -87,7 +88,6 @@ export interface LocationProfile extends BaseProfile {
 		googlePlayUrl?: string
 		appStoreUrl?: string
 	}
-	_site: SiteProfile
 }
 
 export type DirectoryProfile<T> = BaseProfile & {

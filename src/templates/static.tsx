@@ -13,6 +13,7 @@ import {
   TransformProps,
   TemplateConfig,
 } from "@yext/pages";
+import { Main } from 'src/layouts/main';
 
 /**
  * Not required depending on your use case.
@@ -65,11 +66,11 @@ const Static: Template<PokemonData> = (data) => {
   const [num, setNum] = useState<number>(0);
 
   return (
-    <>
-      <div>Hello from {name}</div>
+    <Main data={data}>
+      <div>Hello {name}!</div>
       <button onClick={() => setNum(num + 1)}>Click me</button>
       Num: {num}
-    </>
+    </Main>
   );
 };
 
