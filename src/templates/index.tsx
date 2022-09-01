@@ -22,18 +22,14 @@ import {
   HeadConfig,
 } from "@yext/pages";
 import "src/index.css";
-import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
 import { defaultHeadConfig } from "src/common/head";
 import { LocationProfile } from "src/types/entities";
 import FeaturedProduct, { fields as featuredProductFields } from "src/components/FeaturedProduct";
 import { teamFields } from "src/components/Team/Team";
 import { defaultFields, Promo } from "src/components/Promo/Promo";
-import Footer from "src/components/Footer"; 
 import { About } from "src/components/About/About";
-import Header from "src/components/Header";
-import classNames from "classnames";
-import { ButtonClass } from "src/styleguide";
 import Banner from "src/components/Banner/Banner";
+import { Main } from 'src/layouts/main';
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -64,7 +60,6 @@ export const config: TemplateConfig = {
       "slug",
       "c_hero",
       "c_header",
-      "c_complexPhoto",
       ...defaultFields,
       ...featuredProductFields,
       ...teamFields,
@@ -125,19 +120,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   } = document;
 
   return (
-    <CustomFieldDebuggerReactProvider component={Index} {...data}>
-      {/* Button variant */}
-      <a className={classNames(ButtonClass("primary"))} href="https://www.yext.com">Hi</a>
-      {/* Button variant + custom class */}
-      <a className={classNames(ButtonClass("primary"), "Index-button")} href="https://www.yext.com">Hi</a>
-      {/* Multiple variants */}
-      <a className={classNames(ButtonClass("primary", "secondary"))} href="https://www.yext.com">Hi</a>
-      {/* This will yell at you for using an invalid variant */}
-      {/* <a className={classNames(ButtonClass("custom"))} href="https://www.yext.com">Hi</a> */}
-      <Header 
-        logo={_site?.c_header?.logo}
-        links={_site?.c_header?.links || []}
-      />
+    <Main data={data}>
       <Banner text='e.g. "This location is temporarily closed due to inclement weather."' />
       {/* TODO(aganesh) : use Reviews component when available */}
       <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
@@ -163,16 +146,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
       {c_team && (
         <Team team={c_team} initialSize={3}/>
       )}
-      <Footer
-        copyrightMessage={_site.c_copyrightMessage || ""}
-        facebook={_site.c_facebook}
-        instagram={_site.c_instagram}
-        youtube={_site.c_youtube}
-        twitter={_site.c_twitter}
-        linkedIn={_site.c_linkedIn}
-        footerLinks={_site.c_footerLinks || []}
-      />
-    </CustomFieldDebuggerReactProvider>
+    </Main>
   );
 };
 

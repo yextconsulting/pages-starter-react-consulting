@@ -13,6 +13,7 @@ import { defaultHeadConfig } from "src/common/head";
 import { SearchHeadlessProvider } from "@yext/search-headless-react";
 import Locator from "src/components/search/Locator";
 import { SandboxEndpoints } from "@yext/search-headless-react"; // TODO: remove if not using sandbox account
+import { Main } from "src/layouts/main";
 
 /**
  * Not required depending on your use case.
@@ -77,23 +78,25 @@ const Search: Template<TemplateRenderProps> = (data) => {
   } = document;
 
   return (
-    <div className="flex flex-col h-screen">
-      {/* TODO: add header */}
-      <SearchHeadlessProvider
-        apiKey="b7930d2fa7b5b106371224158c5854d2"
-        experienceKey="locator"
-        locale={document.meta.locale}
-        verticalKey="locations"
-        endpoints={SandboxEndpoints} // TODO: remove if not using sandbox account
-      >
-        <Locator
-          title={ c_searchTitle }
-          subTitle={ c_searchSubTitle }
-          placeholderText={ c_searchPlaceholderText }
-        />
-      </SearchHeadlessProvider>
-      {/* TODO: add footer */}
-    </div>
+    <Main data={data}>
+      <div className="flex flex-col">
+        {/* TODO: add header */}
+        <SearchHeadlessProvider
+          apiKey="b7930d2fa7b5b106371224158c5854d2"
+          experienceKey="locator"
+          locale={document.meta.locale}
+          verticalKey="locations"
+          endpoints={SandboxEndpoints} // TODO: remove if not using sandbox account
+        >
+          <Locator
+            title={ c_searchTitle }
+            subTitle={ c_searchSubTitle }
+            placeholderText={ c_searchPlaceholderText }
+          />
+        </SearchHeadlessProvider>
+        {/* TODO: add footer */}
+      </div>
+    </Main>
   );
 };
 
