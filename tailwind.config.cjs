@@ -1,3 +1,8 @@
+//@ts-check
+
+const styleguidePlugin = require('./tailwindPlugin.cjs');
+
+/** @type {import('tailwindcss/types/config').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}", "./node_modules/@yext/search-ui-react/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
@@ -13,6 +18,40 @@ module.exports = {
           400: "#767676",
         }
       },
+      buttons: ({ theme }) => {
+        /** @type {import('./tailwind').ButtonConfig} */
+        const buttonStyles = {
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: `${theme('spacing.2')} ${theme('spacing.6')}`,
+          fontWeight: theme('fontWeight.bold'),
+          borderRadius: '50px',
+          variants: {
+            primary: {
+              backgroundColor: theme('colors.brand-primary'),
+              color: "white",
+              border: "none",
+              '&:hover': {
+                backgroundColor: theme('colors.brand-secondary'),
+                color: "white",
+                border: "none",
+              }
+            },
+            secondary: {
+              backgroundColor: "white",
+              color: theme('colors.brand-secondary'),
+              border: `2px solid ${theme('colors.brand-primary')}`,
+              '&:hover': {
+                backgroundColor: theme('colors.brand-secondary'),
+                color: "white",
+                border: `2px solid ${theme('colors.brand-primary')}`,
+              }
+            }
+          }
+        }
+        return buttonStyles;
+      },
       fontFamily: {
         primary: "'Arial','Helvetica','sans-serif','system'",
         secondary: "'Arial','Helvetica','sans-serif','system'",
@@ -25,26 +64,7 @@ module.exports = {
         secondary: {
           color: theme('colors.brand-secondary'),
           hoverColor: theme('colors.brand-primary'),
-        }
-      }),
-      buttons: ({ theme }) => ({
-        borderRadius: "50px",
-        primary: {
-          background: theme('colors.brand-primary'),
-          color: "white",
-          border: "none",
-          hoverBackground: theme('colors.brand-secondary'),
-          hoverColor: "white",
-          hoverBorder: "none",
         },
-        secondary: {
-          background: "white",
-          color: theme('colors.brand-secondary'),
-          border: `2px solid ${theme('colors.brand-primary')}`,
-          hoverBackground: theme('colors.brand-secondary'),
-          hoverColor: "white",
-          hoverBorder: `2px solid ${theme('colors.brand-primary')}`,
-        }
       }),
       headings: {
         sub: ['1.5rem', { lineHeight: '1.25' }],
@@ -68,5 +88,7 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    styleguidePlugin(),
+  ],
 };
