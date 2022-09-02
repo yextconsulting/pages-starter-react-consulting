@@ -41,7 +41,7 @@ export default function SearchBox(props: SearchBoxProps) {
         collapsible={false}
         showOptionCounts={true}
         customCssClasses={{
-          standardFacetsContainer: "absolute bottom-8 left-[480px] z-[100] bg-white",
+          standardFacetsContainer: "sm:absolute bottom-8 left-[480px] z-[100] bg-white",
           optionsContainer: "flex p-2 max-w-2xl overflow-x-auto pb-3",
 					option: "bg-brand-gray-200 py-2 px-4 mx-2 rounded-3xl",
 					optionInput: "",

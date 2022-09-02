@@ -1,22 +1,43 @@
-import { useSearchState } from "@yext/search-headless-react";
+import { useSearchState, useSearchActions } from "@yext/search-headless-react";
+import { useEffect, useState } from "react";
+import type { State } from "@yext/search-headless-react";
 import "src/components/search/ResultSummary.css";
 
 export default function ResultSummary() {
+  const searchActions = useSearchActions();
+  const searchState = useSearchState(state => state);
+
   // TODO: need to link to directory
   const ititialSummaryText = "Use our locator to find a location near you or browse our directory."
   // Check if search has been made and if not render the initial text
-  const query = useSearchState(state => state.query?.queryId);
-  const resultsCountText = useResultsCount();
+  const [initialSearchMade, setInitialSearchMade] = useState(false);
+  const [newSearchMade, setNewSearchMade] = useState(false);
+  const [resultsCountText, setResultCountText] = useState<string | JSX.Element>("");
+
+  searchActions.addListener({
+    valueAccessor: state => state.vertical.results,
+    callback: () => {
+      setInitialSearchMade(true);
+      setNewSearchMade(true);
+    },
+  });
+
+  // Only update the resultsCountText after a search is made
+  useEffect(() => {
+    if (newSearchMade) {
+      setNewSearchMade(false);
+      setResultCountText(useResultsCount(searchState));
+    }
+  }, [newSearchMade]);
 
   return (
     <div className="ResultSummary">
-      { query ? resultsCountText : ititialSummaryText }
+      { initialSearchMade ? resultsCountText : ititialSummaryText }
     </div>
   );
 }
 
-function useResultsCount() {
-  const state = useSearchState(state => state);
+function useResultsCount(state: State) {
   let searchPlace = "";
   let resultsCount = 0;
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { createCtx } from "src/types/data";
 import { useSearchState } from "@yext/search-headless-react";
@@ -61,8 +61,16 @@ export default function Locator(props: LocatorProps) {
   });
   const isLoading = useSearchState(state => state.searchStatus.isLoading);
   const isDesktopBreakpoint = useBreakpoint("sm");
+  useSearchState(s => console.log(s));
 
   const [searchParams, setSearchParams] = useSearchParams();
+
+  // Unset any selected, hovered, or focused markers on a new search
+  useEffect(() => {
+    setSelectedEntityId("");
+    setFocusedEntityId("");
+    setHoveredEntityId("");
+  }, [JSON.stringify(results)]);
 
   return (
     <LocatorProvider value={{
