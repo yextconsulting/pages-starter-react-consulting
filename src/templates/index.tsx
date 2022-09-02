@@ -30,6 +30,7 @@ import Hero from "src/components/entity/Hero";
 import { About } from "src/components/entity/About";
 import Banner from "src/components/entity/Banner";
 import { Main } from 'src/layouts/main';
+import Gallery from "src/components/Carousel/Gallery";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -123,6 +124,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   return (
     <Main data={data}>
       <Banner text='e.g. "This location is temporarily closed due to inclement weather."' />
+      <Gallery title="Gallery Title" images={[c_promo?.image, c_promo?.image, c_promo?.image, c_promo?.image, c_promo?.image, c_promo?.image]}/>
       {/* TODO(aganesh) : use Reviews component when available */}
       <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={document} />
