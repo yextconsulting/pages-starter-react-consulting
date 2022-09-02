@@ -27,6 +27,7 @@ export function DirectoryHero(props: DirectoryHeroProps) {
         queryParameter="q"
         inputId="q"
         formId="directory-search"
+        // TODO: Pull searcher path from directory hero
         searcherPath={relativePrefixToRoot + "search/search-page"}
       />
     </div>

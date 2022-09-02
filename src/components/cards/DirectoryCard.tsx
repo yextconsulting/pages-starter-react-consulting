@@ -1,6 +1,6 @@
 
 import React from "react";
-import { HoursStatus } from "@yext/sites-react-components";
+import { Address, HoursStatus } from "@yext/sites-react-components";
 import { Link } from "@yext/pages/components";
 import { CardProps } from "src/models/cardComponent";
 
@@ -11,7 +11,7 @@ export default function DirectoryCard(props: CardProps): JSX.Element {
     <div className="Directorycard bg-white px-6 py-8 border h-full">
       <h3 className="mb-4 text-lg font-medium">
         {content.slug ? (
-          <Link href={relativePrefixToRoot + content.slug} className="text-brand-primary hover:underline">
+          <Link href={relativePrefixToRoot + content.slug} className="Link Link--primary hover:underline">
             {content.name}
           </Link>
         ) : (
@@ -25,13 +25,11 @@ export default function DirectoryCard(props: CardProps): JSX.Element {
         </div>
       )}
 
-      {/* TODO(cblair): use address component when we figure out ExtendedAddress typing error */}
-      <div className="text-sm">
-        <div>
-          {content.address.line1} <span>{content.address.city}</span>,{" "}
-          <span>{content.address.region}</span> {content.address.postalCode}
+      {content.address && (
+        <div className="text-sm">
+            <Address address={content.address} lines={[["line1"]]}/>
         </div>
-      </div>
+      )}
     </div>
   )
 }
