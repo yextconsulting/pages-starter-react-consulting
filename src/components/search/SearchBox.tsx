@@ -1,5 +1,6 @@
 import { FilterSearch, StandardFacets } from "@yext/search-ui-react";
 import GeolocateButton from "./GeolocateButton";
+import { useLocatorContext } from "./Locator";
 
 // TODO: Where should config like this go and if possible get from streams definition?
 const searchFields = [
@@ -11,10 +12,12 @@ type SearchBoxProps = {
   subTitle: string,
   placeholderText?: string,
 }
-// TODO: add filters
+
 // TODO: look into selecting first autocomplete option on enter
 export default function SearchBox(props: SearchBoxProps) {
   const { title, subTitle, placeholderText } = props;
+  const { initialParamsLoaded } = useLocatorContext();
+
   return (
     <div className="shadow-brand-shadow p-6">
       <h1 className="Heading--lead mb-4">
@@ -37,18 +40,20 @@ export default function SearchBox(props: SearchBoxProps) {
         </div>
         <GeolocateButton className="ml-4" />
       </div>
-      <StandardFacets
-        collapsible={false}
-        showOptionCounts={true}
-        customCssClasses={{
-          standardFacetsContainer: "sm:absolute bottom-8 left-[480px] z-[100] bg-white",
-          optionsContainer: "flex p-2 max-w-2xl overflow-x-auto pb-3",
-					option: "bg-brand-gray-200 py-2 px-4 mx-2 rounded-3xl",
-					optionInput: "",
-					optionLabel: "text-brand-primary ml-0 whitespace-pre"
-        }}
-        searchOnChange={true}
-      />
+      {initialParamsLoaded && (
+        <StandardFacets
+          collapsible={false}
+          showOptionCounts={true}
+          customCssClasses={{
+            standardFacetsContainer: "sm:absolute bottom-8 left-[480px] z-[100] bg-white w-[400px]",
+            optionsContainer: "flex p-2 max-w-2xl overflow-x-auto pb-3",
+            option: "bg-brand-gray-200 py-2 px-4 mx-2 rounded-3xl",
+            optionInput: "",
+            optionLabel: "text-brand-primary ml-0 whitespace-pre"
+          }}
+          searchOnChange={true}
+        />
+      )}
     </div>
   )
 }

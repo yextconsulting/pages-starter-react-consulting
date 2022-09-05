@@ -14,13 +14,14 @@ export default function ResultSummary() {
   const [newSearchMade, setNewSearchMade] = useState(false);
   const [resultsCountText, setResultCountText] = useState<string | JSX.Element>("");
 
-  searchActions.addListener({
-    valueAccessor: state => state.vertical.results,
-    callback: () => {
-      setInitialSearchMade(true);
+  useEffect(() => {
+    if (!searchState.searchStatus.isLoading && searchState.vertical.results) {
+      if (!initialSearchMade) {
+        setInitialSearchMade(true);
+      }
       setNewSearchMade(true);
-    },
-  });
+    }
+  }, [searchState.searchStatus.isLoading, searchState.vertical.results]);
 
   // Only update the resultsCountText after a search is made
   useEffect(() => {
@@ -28,7 +29,7 @@ export default function ResultSummary() {
       setNewSearchMade(false);
       setResultCountText(useResultsCount(searchState));
     }
-  }, [newSearchMade]);
+  }, [newSearchMade, searchState.query.queryId]);
 
   return (
     <div className="ResultSummary">
@@ -44,7 +45,7 @@ function useResultsCount(state: State) {
   // TODO: Like in searchbox this should pull from the same config/ stream definition if possible.
   // TODO: make sure this works as expected when the new Geolocate component is added
   if (state.filters.static?.length) {
-    const activeFilter = state.filters.static.filter(filter => filter.selected && filter.fieldId === "builtin.location");
+    const activeFilter = state.filters.static.filter(filter => filter.selected && filter.fieldId === "builtin.location" && filter.displayName);
     if (activeFilter.length && activeFilter[0].displayName) {
       searchPlace = activeFilter[0].displayName;
     }
