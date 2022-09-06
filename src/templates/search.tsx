@@ -82,8 +82,7 @@ const Search: Template<TemplateRenderProps> = (data) => {
   const runtime = getRuntime();
 
   return (
-    <div className="flex flex-col h-screen">
-      {/* TODO: add header */}
+    <Main data={data}>
       <SearchHeadlessProvider
         apiKey="b7930d2fa7b5b106371224158c5854d2"
         experienceKey="locator"
@@ -102,8 +101,7 @@ const Search: Template<TemplateRenderProps> = (data) => {
           </BrowserRouter>
         )}
       </SearchHeadlessProvider>
-      {/* TODO: add footer */}
-    </div>
+    </Main>
   );
 };
 

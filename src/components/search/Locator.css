@@ -3,6 +3,8 @@
   display: flex;
   flex: 1;
   overflow: auto;
+  padding-bottom: 1px;
+  box-shadow: theme(boxShadow.brand-shadow);
 
   &-content {
     width: 100%;
