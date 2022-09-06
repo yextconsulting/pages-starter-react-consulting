@@ -41,12 +41,13 @@ export default function SearchBox(props: SearchBoxProps) {
         <GeolocateButton className="ml-4" />
       </div>
       {initialParamsLoaded && (
+        // TODO: update facet designs once available from design team.
         <StandardFacets
           collapsible={false}
           showOptionCounts={true}
           customCssClasses={{
-            standardFacetsContainer: "sm:absolute bottom-8 left-[480px] z-[100] bg-white w-[400px]",
-            optionsContainer: "flex p-2 max-w-2xl overflow-x-auto pb-3",
+            standardFacetsContainer: "md:absolute md:bottom-8 md:left-[480px] z-[100] bg-white md:max-w-[calc(100%-510px)]",
+            optionsContainer: "flex max-w-2xl overflow-x-auto",
             option: "bg-brand-gray-200 py-2 px-4 mx-2 rounded-3xl",
             optionInput: "",
             optionLabel: "text-brand-primary ml-0 whitespace-pre"
