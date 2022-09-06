@@ -1,9 +1,17 @@
 import React from "react";
 import { HoursStatus } from "@yext/sites-react-components";
-import { Link, Image } from "@yext/pages/components";
+import { Link, Image } from '@yext/pages/components';
 import {Address, Hours, CTA, Image as ImageType} from "@yext/types";
-import "./Hero.css";
+import "src/components/entity/Hero.css";
 import ellipse from "src/assets/images/ellipse.svg";
+
+const defaultFields: string[] = [
+  'c_heroSection',
+  'name',
+  'address',
+  'hours',
+  // TODO: add reviews fields
+];
 
 type HeroProps = {
   name: string;
@@ -56,4 +64,7 @@ const Hero = (props: HeroProps) => {
   )
 };
 
-export default Hero;
+export {
+  Hero,
+  defaultFields,
+};

@@ -7,6 +7,19 @@ import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import "src/components/entity/Core.css";
 
+const defaultFields: string[] = [
+  'address',
+  'mainPhone',
+  'ref_listings',
+  'googlePlaceId',
+  'tollFreePhone',
+  'emails',
+  'hours',
+  'additionalHoursText',
+  'services',
+  'geocodedCoordinate',
+];
+
 type CoreProps = {
   profile: LocationProfile;
 }
@@ -30,7 +43,7 @@ const Core = (props: CoreProps) => {
   );
 
   return(
-    <div className="Core py-8 sm:py-16">
+    <div className="Core py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
         <div className="flex flex-row flex-wrap">
           <CoreSection>
@@ -93,4 +106,7 @@ const Core = (props: CoreProps) => {
   );
 }
 
-export default Core;
+export {
+  Core,
+  defaultFields,
+};

@@ -1,46 +1,51 @@
 import React from "react";
 import { Image, Link } from "@yext/pages/components";
 import { ProductProfile } from "src/types/entities";
-import "src/styles/FeaturedProduct.css";
+
+const defaultFields: string[] = [
+  'c_featuredProductsSection.title',
+  'c_featuredProductsSection.products.name',
+  'c_featuredProductsSection.products.richTextDescription',
+  'c_featuredProductsSection.products.primaryPhoto',
+  'c_featuredProductsSection.products.c_primaryCTA'
+];
 
 interface FeaturedProductProps {
   title: string;
   products: ProductProfile[];
 }
 
-export const fields = [
-  "c_featuredProducts.title",
-  "c_featuredProducts.products.name",
-  "c_featuredProducts.products.richTextDescription",
-  "c_featuredProducts.products.primaryPhoto",
-  "c_featuredProducts.products.c_primaryCTA"
-];
-
 const FeaturedProduct = (props: FeaturedProductProps) => {
   const { title, products } = props;
   if (!products.length) return null;
 
   return (
-    <div className="FeaturedProduct">
+    <div className="FeaturedProduct py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
-        <div className="FeaturedProduct-heading pb-2 m-4 Heading Heading--head">
+        <div className="pb-2 m-4 Heading Heading--head">
           {title}
         </div>
-        <ul className="flex FeaturedProduct-content gap-6">
+        <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {products?.map((item, i) => (
-            <div key={i} className="FeaturedProduct-card mb-8">
-              <div className="flex justify-center">
-                {item.primaryPhoto && (<Image className="FeaturedProduct-image" image={item.primaryPhoto.image}/>)}
-              </div>
-              <div className="mx-8 mt-8 FeaturedProduct-title">
+            <div key={i} className="bg-white">
+              {item.primaryPhoto && (
+                <div className="flex justify-center h-[187px] mb-8">
+                  <Image image={item.primaryPhoto.image}/>
+                </div>
+              )}
+              <div className="Heading Heading--sub mx-8">
                 {item.name}
               </div>
-              <div className="mx-8 mt-4 mb-8 FeaturedProduct-description">
-                {item.richTextDescription}
-              </div>
-              <div className="mx-4 FeaturedProduct-ctaWrapper">
-                {item.c_primaryCTA && (<Link className="m-4 Button Button--secondary" cta={item.c_primaryCTA} />)}
-              </div>
+              {item.richTextDescription && (
+                <div className="mx-8 mt-4">
+                  {item.richTextDescription}
+                </div>
+              )}
+              {item.c_primaryCTA && (
+                <div className="mx-8 mt-8 mb-4">
+                  <Link className="Button Button--secondary" cta={item.c_primaryCTA} />
+                </div>
+              )}
             </div>
           ))}
         </ul>
@@ -49,4 +54,7 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
   );
 };
 
-export default FeaturedProduct;
+export {
+  FeaturedProduct,
+  defaultFields,
+};

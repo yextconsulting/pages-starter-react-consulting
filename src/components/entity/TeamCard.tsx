@@ -1,6 +1,5 @@
 import React from "react";
-import { Image } from "@yext/sites-react-components";
-import { Link } from "@yext/pages/components";
+import { Link, Image } from "@yext/pages/components";
 import { financialProfessional } from "src/types/entities";
 import { FaPhone, FaEnvelope, FaChevronRight } from "react-icons/fa";
 
@@ -14,7 +13,7 @@ const TeamCard = (props: TeamCardProps) => {
     <div className="TeamCard h-full rounded-lg shadow-lg">
       <div className="border-b-2 p-8 flex items-center">
         {profile.headshot && ( 
-          <Image className="rounded-full w-20 mr-6" imageField={profile.headshot} />
+          <Image className="rounded-full mr-6" image={profile.headshot} layout="fixed" width={80} height={80}/>
         )}
         <div>
           <h3 className="Heading Heading--sub mb-1 font-bold">

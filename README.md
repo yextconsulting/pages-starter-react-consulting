@@ -19,10 +19,17 @@ This repository provides a basic example of how to start developing a React site
 ### Clone this repo and install dependencies
 
 ```shell
-git clone git@github.com:yext/site-starter-react-basic.git
-cd site-starter-react-basic
+git clone git@github.com:yextconsulting/site-starter-react-consulting.git
+cd site-starter-react-consulting
 npm install
 ```
+
+### Dev workflow
+
+Making changes to this repo:
+1. Testing data comes from this account: https://sandbox.yext.com/admin2/customers/3160439.
+2. To update localData, `yext init -u sandbox` and use the account id `3160439`.
+3. `npm run dev` will run the webserver locally to view changes.
 
 ### Useful commands
 

@@ -21,16 +21,18 @@ import {
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import { LocationProfile } from "src/types/entities";
-import FeaturedProduct, { fields as featuredProductFields } from "src/components/entity/FeaturedProduct";
-import { teamFields } from "src/components/entity/Team";
-import { defaultFields, Promo } from "src/components/entity/Promo";
-import Core from "src/components/entity/Core";
-import Team from "src/components/entity/Team";
-import Hero from "src/components/entity/Hero";
-import { About } from "src/components/entity/About";
-import Banner from "src/components/entity/Banner";
+import { dedupeStreamFields } from "src/common/helpers";
 import { Main } from 'src/layouts/main';
-import Gallery from "src/components/Carousel/Gallery";
+
+import { Banner, defaultFields as bannerFields } from "src/components/entity/Banner";
+import { Hero, defaultFields as heroFields } from "src/components/entity/Hero";
+import { Core, defaultFields as coreFields } from "src/components/entity/Core";
+import { Promo, defaultFields as promoFields } from "src/components/entity/Promo";
+import { FeaturedProduct, defaultFields as featuredProductFields } from "src/components/entity/FeaturedProduct";
+import { Gallery, defaultFields as galleryFields } from "src/components/entity/Gallery";
+import { About, defaultFields as aboutFields } from "src/components/entity/About";
+import { Team, defaultFields as teamFields } from "src/components/entity/Team";
+import { FAQs, defaultFields as FAQsFields } from "src/components/entity/FAQs";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -40,7 +42,7 @@ export const config: TemplateConfig = {
     $id: "locations",
     // Specifies the exact data that each generated document will contain. This data is passed in
     // directly as props to the default exported function.
-    fields: [
+    fields: dedupeStreamFields([
       "id",
       "uid",
       "logo",
@@ -62,12 +64,17 @@ export const config: TemplateConfig = {
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
       "slug",
-      "c_hero",
       "c_header",
-      ...defaultFields,
+      ...bannerFields,
+      ...heroFields,
+      ...coreFields,
+      ...promoFields,
       ...featuredProductFields,
+      ...galleryFields,
+      ...aboutFields,
       ...teamFields,
-    ],
+      ...FAQsFields,
+    ]),
     // Defines the scope of entities that qualify for this stream.
     filter: {
       entityTypes: ["location"],
@@ -113,44 +120,52 @@ const Index: Template<TemplateRenderProps> = (data) => {
   const document = data.document as LocationProfile;
   const {
     name,
-    c_featuredProducts,
-    description,
     address,
     hours,
-    c_team,
-    c_hero,
-    c_promo,
+    description,
     photoGallery,
+    c_bannerSection: banner,
+    c_heroSection: hero,
+    c_promoSection: promo,
+    c_featuredProductsSection: products,
+    c_aboutSection: about,
+    c_gallerySection: gallery,
+    c_teamSection: team,
+    c_fAQSection: faq,
   } = document;
+
+  const { text: bannerText } = banner || {};
+  const showBanner = banner && bannerText;
+
+  const { title: promoTitle } = promo || {};
+  const showPromo = promo && promoTitle;
+
+  const { title: productsTitle, products: productsList} = products || {};
+  const showProducts = products && productsTitle && productsList;
+
+  const { title: aboutTitle } = about || {};
+  const showAbout = about && aboutTitle;
+
+  const { images: galleryImages } = gallery || { images: photoGallery };
+  const showGallery = gallery && galleryImages;
+
+  const { title: teamTitle, team: teamList } = team || {};
+  const showTeam = team && teamTitle && teamList;
+
+  const { title: faqTitle, faqs: faqs } = faq || {};
+  const showFAQ = faq && faqTitle && faqs;
 
   return (
     <Main data={data}>
-      <Banner text='e.g. "This location is temporarily closed due to inclement weather."' />
-      {/* TODO(aganesh) : use Reviews component when available */}
-      <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
+      {showBanner && <Banner text={bannerText} {...banner} />}
+      <Hero name={name} address={address} hours={hours} numReviews={21} rating={4.5} {...hero} />
       <Core profile={document} />
-      {c_promo && c_promo.title && <Promo 
-        title={c_promo.title}
-        description={c_promo.description}
-        image={c_promo?.image}
-        cta={c_promo?.cta}
-        appStoreLink={c_promo.appStoreUrl}
-        googlePlayLink={c_promo.googlePlayUrl}
-      />}
-      <FeaturedProduct title={c_featuredProducts?.title || 'Featured Products'} products={c_featuredProducts?.products || []}/>
-      <About 
-        title="About Business Geomodifier"
-        description={description}
-        image={c_hero?.background}
-        cta={{
-          link: "https://www.yext.com",
-          label: "yext.com",
-        }}
-      />
-      {c_team && (
-        <Team team={c_team} title="Meet our team" initialSize={3}/>
-      )}
-      {photoGallery && <Gallery title="Gallery Title" images={photoGallery}/>}
+      {showPromo && <Promo title={promoTitle} {...promo} />}
+      {showProducts && <FeaturedProduct title={productsTitle} products={productsList} {...products} />}
+      {showAbout && <About title={aboutTitle} description={description} {...about} />}
+      {showGallery && <Gallery images={galleryImages} {...gallery} />}
+      {showTeam && <Team title={teamTitle} team={teamList} initialSize={3} {...team} />}
+      {showFAQ && <FAQs title={faqTitle} faqs={faqs} {...faq} />}
     </Main>
   );
 };

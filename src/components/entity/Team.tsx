@@ -2,15 +2,16 @@ import React, {useState} from "react";
 import TeamCard from "src/components/entity/TeamCard";
 import { financialProfessional } from "src/types/entities";
 
-export const teamFields = [
-  "c_team.id",
-  "c_team.name",
-  "c_team.headshot",
-  "c_team.mainPhone",
-  "c_team.c_occupation",
-  "c_team.emails",
-  "c_team.websiteUrl",
-]
+const defaultFields: string[] = [
+  'c_teamSection.title',
+  'c_teamSection.team.id',
+  'c_teamSection.team.name',
+  'c_teamSection.team.headshot',
+  'c_teamSection.team.mainPhone',
+  'c_teamSection.team.c_occupation',
+  'c_teamSection.team.emails',
+  'c_teamSection.team.websiteUrl',
+];
 
 type TeamProps = {
   title: string;
@@ -30,7 +31,7 @@ const Team = (props: TeamProps) => {
     <div className="Team py-8 sm:py-16">
       <div className="container">
         <h2 className="Heading Heading--head mb-8 md:text-center">{title}</h2>
-        <ul className="grid grid-cols-3 gap-8">
+        <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((member, i) => (
             <li key={i}> 
               <TeamCard profile={member}/>
@@ -45,5 +46,8 @@ const Team = (props: TeamProps) => {
   )
 }
 
-export default Team;
+export {
+  Team,
+  defaultFields,
+};
   

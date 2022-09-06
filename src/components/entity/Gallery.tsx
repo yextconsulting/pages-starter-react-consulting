@@ -5,6 +5,11 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Dot } from 'pu
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import c from "classnames";
 
+const defaultFields: string[] = [
+  'c_gallerySection',
+  'photoGallery',
+];
+
 type GalleryProps = {
   images: (ImageType | ComplexImageType)[];
   title?: string;
@@ -79,4 +84,7 @@ const Gallery = (props: GalleryProps) => {
   );
 };
 
-export default Gallery;
+export {
+  Gallery,
+  defaultFields,
+};

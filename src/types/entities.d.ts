@@ -72,25 +72,47 @@ export interface LocationProfile extends BaseProfile {
 	googlePlaceId?: string
 	ref_listings?: ListingType[]
 	logo?: Image
+	photoGallery?: Image[]
 	// Add custom fields here
 	// c_myStringField: string
-	c_featuredProducts?: {
-		title?: string
-		products?: ProductProfile[]
-  }
-	c_team?: financialProfessional[]
-	c_hero?: {
-		background?: Image,
-		cta1?: CTA,
-		cta2?: CTA
+	c_bannerSection?: {
+		readonly text?: string
+		readonly image?: Image
 	}
-	c_promo?: {
-		title?: string
-		description?: string
-		image?: Image
-		cta?: CTA
-		googlePlayUrl?: string
-		appStoreUrl?: string
+	c_heroSection?: {
+		readonly background?: Image
+		readonly cta1?: CTA
+		readonly cta2?: CTA
+	}
+	c_featuredProductsSection?: {
+		readonly title?: string
+		readonly products?: ProductProfile[]
+	}
+	c_promoSection?: {
+		readonly title?: string
+		readonly description?: string
+		readonly image?: Image
+		readonly cta?: CTA
+		readonly googlePlayUrl?: string
+		readonly appStoreUrl?: string
+	}
+	c_gallerySection?: {
+		readonly title?: string
+		readonly images?: Image[]
+	}
+	c_aboutSection?: {
+		readonly title?: string
+		readonly description?: string
+		readonly image?: Image
+		readonly cta?: CTA
+	}
+	c_teamSection?: {
+		readonly title?: string
+		readonly team?: financialProfessional[]
+	}
+	c_fAQSection?: {
+		readonly title?: string
+		readonly faqs?: FAQItem[]
 	}
 }
 

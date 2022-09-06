@@ -3,21 +3,21 @@ import {
   Image as ImageType,
   CTA as CTAType
 } from "@yext/types";
-import { Image, Link } from '@yext/pages/components';
+import { Link, Image } from '@yext/pages/components';
 import appStoreIcon from "src/assets/images/appstore.svg";
 import playStoreIcon from "src/assets/images/playstore.svg";
 
-export const defaultFields = [
-  'c_promo'
-]
+const defaultFields: string[] = [
+  'c_promoSection',
+];
 
 type PromoProps = {
   image?: ImageType,
   title: string,
   description?: string,
   cta?: CTAType,
-  appStoreLink?: string,
-  googlePlayLink?: string,
+  appStoreUrl?: string,
+  googlePlayUrl?: string,
 };
 
 const Promo = (props: PromoProps) => {
@@ -45,15 +45,15 @@ const Promo = (props: PromoProps) => {
             <Link className="Button Button--primary inline-flex self-start" cta={props.cta} />
           )}
 
-          {(props.appStoreLink || props.googlePlayLink) && (
+          {(props.appStoreUrl || props.googlePlayUrl) && (
             <div className="flex gap-4">
-              {props.appStoreLink && (
-                <Link href={props.appStoreLink}>
+              {props.appStoreUrl && (
+                <Link href={props.appStoreUrl}>
                   <img src={appStoreIcon} alt="Download on the App Store"/>
                 </Link>
               )}
-              {props.googlePlayLink && (
-                <Link href={props.googlePlayLink}>
+              {props.googlePlayUrl && (
+                <Link href={props.googlePlayUrl}>
                   <img src={playStoreIcon} alt="Download on the Play Store"/>
                 </Link>
               )}
@@ -67,4 +67,5 @@ const Promo = (props: PromoProps) => {
 
 export {
   Promo,
+  defaultFields,
 };
