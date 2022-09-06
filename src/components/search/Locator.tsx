@@ -13,6 +13,7 @@ import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import mapStyles from "./defaultMapStyles.json";
 import { useBreakpoint } from "src/common/useBreakpoints";
+import { loadInitialSearchParams } from "./utils/handleSearchParams";
 import "src/components/search/Locator.css";
 
 type LocatorSearchResultType = {
@@ -62,35 +63,31 @@ export default function Locator(props: LocatorProps) {
   });
 
   const isLoading = useSearchState(state => state.searchStatus.isLoading);
-  // To load any initial facets set with URLParams we need to run an initial search with just the builtin.location static filter to retrive the facet schema.
   const [initialParamsLoaded, setInitialParamsLoaded] = useState(false);
   const isDesktopBreakpoint = useBreakpoint("sm");
   const searchActions = useSearchActions();
   const [searchParams, setSearchParams] = useSearchParams();
-  const staticFilters = useSearchState(s => s.filters.static);
-  const facetFilters = useSearchState(s => s.filters.facets);
 
   /**
-   * TODO: FilterSearch doesn't account for builtin.location being set already so when this is active it creates
-   * two separate builtin.location filters that OR together surfacing more results than expected.
-   * Looks like decorated actions are in the works, which can potentially be used passed to the filtersearch component
-   * to unselect any current "builtin.locations" filters that are set
-   * 
-   * Need to unselect existing builtin.location once another search is made
+   * TODO: FilterSearch doesn't account for builtin.location being set already so when there is a saved locationId in the URLSearchParams
+   * two separate builtin.location filters are selected on the next FilterSearch and are combined to show results from both locations.
+   * Looks like decorated actions are in the works, which can be used passed to the filtersearch component
+   * to unselect any current "builtin.locations" filters that are selected.
+   * Also the potential to set an initialFilterState would be useful here as well since otherwise the FilterSearch input won't be
+   * populated.
+   *
    * https://yext.slack.com/archives/C032CKFARGS/p1656075200100409
    */
 
   // Load location filter and facets on page load
   useEffect(() => {
-    // Load builtin.location
     const loadUrlParams = async () => {
-      const entries = searchParams.entries();
-      const locationFilterValue = searchParams.get('q');
-      const locationFilterDisplayNane = searchParams.get('qp');
-      if (locationFilterValue) {
+      const locationPlaceId = searchParams.get('q');
+      const locationDisplayNane = searchParams.get('qp');
+      if (locationPlaceId) {
         searchActions.setStaticFilters([{
-          displayName: locationFilterDisplayNane ?? '',
-          value: locationFilterValue,
+          displayName: locationDisplayNane ?? '',
+          value: locationPlaceId,
           matcher: Matcher.Equals,
           fieldId: 'builtin.location',
           selected: true,
@@ -98,53 +95,51 @@ export default function Locator(props: LocatorProps) {
         // Run search with just builtin.location to load available facets in state.filters.facets
         await searchActions.executeVerticalQuery();
 
-        // Load facets TODO: check if facet key and option are valud before setting
-        // Don't run another search if no facets
-        // and then just setInitialParamsLoaded to true right away 
-        for(const [key, values] of entries) {
-          if (key !== 'q' && key !== 'qp') {
-            const valueOptions = values.split(',');
-            valueOptions.forEach(option => {
-              searchActions.setFacetOption(key, { matcher: Matcher.Equals, value: option }, true);
-            });
+        const facetParams = Array.from(searchParams.entries()).filter(([fieldId, options]) => fieldId !== 'q' && fieldId !== 'qp');
+        if (facetParams.length) {
+          for (const [fieldId, options] of facetParams) {
+            // Check if facet from params is available to set in the search state
+            if (searchActions.state.filters.facets?.find(f => f.fieldId === fieldId)) {
+              const optionsArray = options.split(',');
+              optionsArray.forEach(option => {
+                searchActions.setFacetOption(fieldId, { matcher: Matcher.Equals, value: option }, true);
+              });
+            }
           }
+         await searchActions.executeVerticalQuery();
         }
-        await searchActions.executeVerticalQuery();
       }
       setInitialParamsLoaded(true);
     }
     loadUrlParams();
   }, []);
 
-  // Update URLParams on new search
-  // TODO: look into using a different package than React Router since we don't need to do any routing
-  // TODO: Unselect builtin.location filter from URLParams if already set
-  //  - how do I know which one should be the active filter????s
-  // setInitialState would fix this
-  // https://github.com/sindresorhus/query-string#api
-  // https://www.npmjs.com/package/use-query-params#usequeryparams-1
-  // TODO: This also doesn't work with geolocation at the moment since that uses {lat, long} instead of a Mapbox place id as the filter value
+  /**
+   * TODO: Update to use decorated actions and the filtersearch geolocate features are added by product.
+   * TODO: This also doesn't work with geolocation at the moment since that uses {lat, long} instead of a Mapbox place id as the filter value
+   */
+
+  // Update URLSearchParams on new search
   useEffect(() => {
     if (!initialParamsLoaded) return;
-    if (staticFilters) {
-      const selectedFilters = staticFilters.filter(f => f.selected);
-      const locationFilter = selectedFilters.find(f => f.fieldId === 'builtin.location') ?? null;
 
-      // Prevent setting URLParam from geolocation search
-      // TODO: make sure this works when adding the geolocation component currently being built by product
+    const staticFilters = searchActions.state.filters.static;
+    const facetFilters = searchActions.state.filters.facets;
+
+    if (staticFilters) {
+      // TODO: There are multiple filters that are valid here for the above reasons. Make sure this looks good after adding geolocate and decorated actions.
+      const locationFilter = staticFilters.filter(f => f.selected).find(f => f.fieldId === 'builtin.location') ?? null;
+
+      // Prevent setting URLParam from geolocation search for now
       if (locationFilter?.value && typeof(locationFilter.value) === "string") {
         let searchParamsObject: {[key: string]: string} = {};
-        searchParamsObject["q"] = locationFilter?.value
-
+        searchParamsObject["q"] = locationFilter.value
         if (locationFilter.displayName) {
           searchParamsObject["qp"] = locationFilter.displayName;
         }
 
         if (facetFilters) {
-          const activeFacets = facetFilters.filter((facet) => {
-            return facet.options.filter(f => f.selected).length;
-          });
-
+          const activeFacets = facetFilters.filter(facet => facet.options.filter(f => f.selected).length);
           activeFacets.forEach(facet => {
             const fieldId = facet.fieldId;
             const activeOptions = facet.options.filter(f => f.selected).map(f => f.value).join(',');
@@ -182,14 +177,12 @@ export default function Locator(props: LocatorProps) {
             subTitle={ subTitle }
             placeholderText={ placeholderText }
           />
-          <div className="Locator-resultsWrapper">
-            {initialParamsLoaded && (
-              <>
-                <ResultSummary />
-                <ResultList CardComponent={ LocatorCard } displayAllOnNoResults={ displayAllOnNoResults } />
-              </>
-            )}
-          </div>
+          {initialParamsLoaded && (
+            <div className="Locator-resultsWrapper">
+              <ResultSummary />
+              <ResultList CardComponent={ LocatorCard } displayAllOnNoResults={ displayAllOnNoResults } />
+            </div>
+          )}
         </div>
         {isDesktopBreakpoint && (
           <div className="Locator-map">

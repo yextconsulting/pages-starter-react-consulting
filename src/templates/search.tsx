@@ -82,29 +82,28 @@ const Search: Template<TemplateRenderProps> = (data) => {
   const runtime = getRuntime();
 
   return (
-    <Main data={data}>
-      <div className="flex flex-col h-screen">
-        {/* TODO: add header */}
-        <SearchHeadlessProvider
-          apiKey="b7930d2fa7b5b106371224158c5854d2"
-          experienceKey="locator"
-          locale={document.meta.locale}
-          verticalKey="locations"
-          endpoints={SandboxEndpoints} // TODO: remove if not using sandbox account
-        >
-          { runtime.name === "browser" && "document" in window && (
-            <BrowserRouter>
-              <Locator
-                title={ c_searchTitle }
-                subTitle={ c_searchSubTitle }
-                placeholderText={ c_searchPlaceholderText }
-              />
-            </BrowserRouter>
-          )}
-        </SearchHeadlessProvider>
-        {/* TODO: add footer */}
-      </div>
-    </Main>
+    <div className="flex flex-col h-screen">
+      {/* TODO: add header */}
+      <SearchHeadlessProvider
+        apiKey="b7930d2fa7b5b106371224158c5854d2"
+        experienceKey="locator"
+        locale={document.meta.locale}
+        verticalKey="locations"
+        endpoints={SandboxEndpoints} // TODO: remove if not using sandbox account
+      >
+        {/* document needs to be defined in order to call useSearchParams() within BrowserRouter */}
+        { runtime.name === "browser" && (
+          <BrowserRouter>
+            <Locator
+              title={ c_searchTitle }
+              subTitle={ c_searchSubTitle }
+              placeholderText={ c_searchPlaceholderText }
+            />
+          </BrowserRouter>
+        )}
+      </SearchHeadlessProvider>
+      {/* TODO: add footer */}
+    </div>
   );
 };
 
