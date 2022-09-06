@@ -113,7 +113,7 @@ export default function Locator(props: LocatorProps) {
               providerOptions={ {styles: mapStyles} }
               clientKey="gme-yextinc"
               bounds={ results.map(data => data.coordinate) }
-              padding={ {top: 100, bottom: 50, left: 50, right: 50} }
+              padding={ {top: 100, bottom: 200, left: 50, right: 50} }
             >
               {initialParamsLoaded && results.map((data, index) => (
                 <CustomMarker
