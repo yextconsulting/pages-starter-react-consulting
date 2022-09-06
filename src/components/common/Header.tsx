@@ -1,5 +1,5 @@
 import React from "react";
-import "src/components/Header.css";
+import "src/components/common/Header.css";
 import { Image, Link } from "@yext/sites-react-components";
 import { CTA, Image as ImageType } from "@yext/types";
 

@@ -6,7 +6,7 @@ import { GoogleMaps } from "@yext/components-tsx-maps";
 import { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import "src/components/Core/Core.css";
+import "src/components/entity/Core.css";
 
 type CoreProps = {
   profile: LocationProfile;

@@ -9,9 +9,6 @@
  */
 
 import React from "react";
-import Core from "src/components/Core/Core";
-import Team from "src/components/Team/Team";
-import Hero from "src/components/Hero/Hero";
 import {
   TemplateProps,
   TemplateRenderProps,
@@ -24,11 +21,14 @@ import {
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import { LocationProfile } from "src/types/entities";
-import FeaturedProduct, { fields as featuredProductFields } from "src/components/FeaturedProduct";
-import { teamFields } from "src/components/Team/Team";
-import { defaultFields, Promo } from "src/components/Promo/Promo";
-import { About } from "src/components/About/About";
-import Banner from "src/components/Banner/Banner";
+import FeaturedProduct, { fields as featuredProductFields } from "src/components/entity/FeaturedProduct";
+import { teamFields } from "src/components/entity/Team";
+import { defaultFields, Promo } from "src/components/entity/Promo";
+import Core from "src/components/entity/Core";
+import Team from "src/components/entity/Team";
+import Hero from "src/components/entity/Hero";
+import { About } from "src/components/entity/About";
+import Banner from "src/components/entity/Banner";
 import { Main } from 'src/layouts/main';
 
 /**

@@ -1,6 +1,6 @@
 import React from "react";
 import { FAQItem } from "src/types/entities";
-import FAQ from "src/components/FAQs/FAQ";
+import FAQ from "src/components/entity/FAQ";
 
 type FAQsProps = {
     heading: string;
