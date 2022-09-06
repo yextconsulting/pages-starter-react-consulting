@@ -17,7 +17,7 @@ import type { URLSearchParamsInit } from "react-router-dom";
 export function loadInitialSearchParams(
   searchActions: SearchHeadless,
   searchParams: URLSearchParams,
-  callback: () => void,
+  callback?: () => void,
 ) {
   useEffect(() => {
     const loadUrlParams = async () => {

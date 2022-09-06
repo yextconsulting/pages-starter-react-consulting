@@ -1,10 +1,9 @@
-import { useSearchState, useSearchActions } from "@yext/search-headless-react";
+import { useSearchState } from "@yext/search-headless-react";
 import { useEffect, useState } from "react";
 import type { State } from "@yext/search-headless-react";
 import "src/components/search/ResultSummary.css";
 
 export default function ResultSummary() {
-  const searchActions = useSearchActions();
   const searchState = useSearchState(state => state);
 
   // TODO: need to link to directory
@@ -14,6 +13,7 @@ export default function ResultSummary() {
   const [newSearchMade, setNewSearchMade] = useState(false);
   const [resultsCountText, setResultCountText] = useState<string | JSX.Element>("");
 
+  // Wait for state loading to finish and the vertical results to exist
   useEffect(() => {
     if (!searchState.searchStatus.isLoading && searchState.vertical.results) {
       if (!initialSearchMade) {

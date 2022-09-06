@@ -13,7 +13,7 @@ import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import mapStyles from "./defaultMapStyles.json";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import { loadInitialSearchParams, updateSearchParams } from "./utils/handleSearchParams";
+import { loadInitialSearchParams, updateSearchParams } from "src/components/search/utils/handleSearchParams";
 import "src/components/search/Locator.css";
 
 type LocatorSearchResultType = {
@@ -74,7 +74,7 @@ export default function Locator(props: LocatorProps) {
   // Update URLSearchParams on new search
   updateSearchParams(searchActions, setSearchParams, initialParamsLoaded);
 
-  // Unset any selected, hovered, or focused markers on search
+  // Unset any selected, hovered, or focused markers on new search
   useEffect(() => {
     setSelectedEntityId("");
     setFocusedEntityId("");

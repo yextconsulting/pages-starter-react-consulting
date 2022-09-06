@@ -58,5 +58,3 @@ export default function SearchBox(props: SearchBoxProps) {
     </div>
   )
 }
-
-//https://liveapi-sandbox.yext.com/v2/accounts/me/answers/filtersearch?input=travel&experienceKey=locator&api_key=b7930d2fa7b5b106371224158c5854d2&v=20220511&locale=en&search_parameters=%7B%22sectioned%22%3Afalse%2C%22fields%22%3A%5B%7B%22fieldId%22%3A%22paymentOptions%22%2C%22entityTypeId%22%3A%22location%22%2C%22shouldFetchEntities%22%3Afalse%7D%5D%7D&verticalKey=locations&sessionTrackingEnabled=true
