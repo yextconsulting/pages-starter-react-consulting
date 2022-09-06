@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@yext/pages/components";
 import { DirectoryProfile } from "src/types/entities";
+import { DirectoryHero } from "src/components/Directory/DirectoryHero";
 import "src/styles/Directory.css";
 
 export const directoryListFields = [
@@ -21,24 +22,26 @@ interface DirectoryListProps {
 export function DirectoryList(props: DirectoryListProps) {
   const { name, count, showNumLocs, directoryChildren, relativePrefixToRoot } = props;
   return (
-    <div className="container my-8">
-      <h1 className="mb-6">
-        {/* TODO (cblair): Pull from profile field when it exists */}
-        {count} locations in {name}
-      </h1>
-      <ul className="flex flex-wrap">
-        {directoryChildren.map((child: any, idx: number) => (
-          <li className="Directory-listItem" key={idx}>
-            <Link
-              className="Directory-listLink m-6"
-              href={relativePrefixToRoot + child.slug}
-              data-count={showNumLocs ? child.dm_directoryChildrenCount : ''}
-            >
-              {child.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div className="my-8">
+      {/* TODO: change subtitle with custom field when created */}
+      <DirectoryHero title={name} subtitle={"Business Name"} relativePrefixToRoot={relativePrefixToRoot} />
+      <div className="container my-8">
+        <ul className="lg:columns-4 md:columns-3 sm:columns-2 columns-1">
+          {directoryChildren.map((child: any, idx: number) => (
+            <li className="Directory-listItem" key={idx}>
+              <Link
+                className="Directory-listLink m-3"
+                href={relativePrefixToRoot + child.slug}
+                data-count={showNumLocs ? '(' + child.dm_directoryChildrenCount + ')' : ''}
+              >
+                <span className="text-brand-primary hover:underline">
+                  {child.name}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }
