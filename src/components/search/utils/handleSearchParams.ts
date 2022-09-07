@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Matcher } from "@yext/search-headless-react";
+import { DisplayableFacetOption, Matcher } from "@yext/search-headless-react";
 import type { SearchHeadless } from "@yext/search-headless-react";
 import type { URLSearchParamsInit } from "react-router-dom";
 
@@ -23,6 +23,9 @@ export function loadInitialSearchParams(
     const loadUrlParams = async () => {
       const locationPlaceId = searchParams.get('q');
       const locationDisplayName = searchParams.get('qp');
+      const facetParams = Array.from(searchParams.entries()).filter(([fieldId, options]) => fieldId !== 'q' && fieldId !== 'qp');
+
+      // If the Mapbox place id is present then the static filter can be immediately set
       if (locationPlaceId) {
         searchActions.setStaticFilters([{
           displayName: locationDisplayName ?? '',
@@ -31,22 +34,64 @@ export function loadInitialSearchParams(
           fieldId: 'builtin.location',
           selected: true,
         }]);
-        // Run vertical search with just builtin.location to load available facets in state.filters.facets
-        await searchActions.executeVerticalQuery();
+      }
 
-        const facetParams = Array.from(searchParams.entries()).filter(([fieldId, options]) => fieldId !== 'q' && fieldId !== 'qp');
+      // If only the displayName is given, such as from a redirect from a client site, calculate the most likely
+      // autocomplete option on the builtin.location filter. Then set the static filter from that option.
+      else if (locationDisplayName) {
+        // Get autocomplete options
+        const filterSearchResponse = await searchActions.executeFilterSearch(
+          locationDisplayName,
+          false,
+          [{ fieldApiName: "builtin.location", entityType: "location", fetchEntities: true }]
+        );
+
+        // Use first autocomplete result as static filter
+        const topAutocompleteSuggestionFilter = filterSearchResponse?.sections[0].results[0];
+        if (topAutocompleteSuggestionFilter?.filter?.value) {
+          searchActions.setStaticFilters([{
+            displayName: topAutocompleteSuggestionFilter?.value,
+            value: topAutocompleteSuggestionFilter?.filter?.value,
+            matcher: Matcher.Equals,
+            fieldId: 'builtin.location',
+            selected: true,
+          }]);
+        }
+      }
+
+      if (locationPlaceId || locationDisplayName) {
+        // Add facets
+        // See here for context on the unnecessary, but required parameters: https://yext.slack.com/archives/C032CKFARGS/p1662485143150619?thread_ts=1662479875.900099&cid=C032CKFARGS
         if (facetParams.length) {
           for (const [fieldId, options] of facetParams) {
-            // Check if facet from params is available to set in the search state
-            if (searchActions.state.filters.facets?.find(f => f.fieldId === fieldId)) {
-              const optionsArray = options.split(',');
-              optionsArray.forEach(option => {
-                searchActions.setFacetOption(fieldId, { matcher: Matcher.Equals, value: option }, true);
-              });
+            const optionsArray = options.split(',');
+            if (optionsArray.length) {
+              let optionsToAdd: DisplayableFacetOption[] = [];
+              for (const option of optionsArray) {
+                // Add facet option
+                // Note that count and displayName are required parameters, but are not required for the api call.
+                optionsToAdd.push({
+                  count: 0,
+                  displayName: '',
+                  matcher: Matcher.Equals,
+                  value: option,
+                  selected: true,
+                });
+              }
+
+              // Set facet with above options
+              // Note that displayName is a required parameter, but is not required for the api call.
+              searchActions.setFacets([{
+                displayName: '',
+                fieldId: fieldId,
+                options: optionsToAdd
+              }, ...(searchActions.state.filters.facets?.length ? searchActions.state.filters.facets : [])]);
             }
           }
-         await searchActions.executeVerticalQuery();
         }
+
+        // Finally run vertical search with all the static and facet filters set from the URLSearchParams
+        await searchActions.executeVerticalQuery();
       }
       if (callback) {
         callback();

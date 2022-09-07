@@ -1,6 +1,5 @@
 import { FilterSearch, StandardFacets } from "@yext/search-ui-react";
 import GeolocateButton from "./GeolocateButton";
-import { useLocatorContext } from "./Locator";
 
 // TODO: Where should config like this go and if possible get from streams definition?
 const searchFields = [
@@ -16,7 +15,6 @@ type SearchBoxProps = {
 // TODO: look into selecting first autocomplete option on enter
 export default function SearchBox(props: SearchBoxProps) {
   const { title, subTitle, placeholderText } = props;
-  const { initialParamsLoaded } = useLocatorContext();
 
   return (
     <div className="shadow-brand-shadow p-6">
@@ -40,17 +38,15 @@ export default function SearchBox(props: SearchBoxProps) {
         </div>
         <GeolocateButton className="ml-4" />
       </div>
-      {initialParamsLoaded && (
-        <StandardFacets
-          collapsible={true}
-          showOptionCounts={true}
-          customCssClasses={{
-            standardFacetsContainer: "pt-2",
-            divider: "w-full h-px bg-gray-200 my-2"
-          }}
-          searchOnChange={true}
-        />
-      )}
+      <StandardFacets
+        collapsible={true}
+        showOptionCounts={true}
+        customCssClasses={{
+          standardFacetsContainer: "pt-2",
+          divider: "w-full h-px bg-gray-200 my-2"
+        }}
+        searchOnChange={true}
+      />
     </div>
   )
 }
