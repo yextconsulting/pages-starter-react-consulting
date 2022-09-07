@@ -14,6 +14,8 @@ import { SearchHeadlessProvider } from "@yext/search-headless-react";
 import Locator from "src/components/search/Locator";
 import { SandboxEndpoints } from "@yext/search-headless-react"; // TODO: remove if not using sandbox account
 import { Main } from "src/layouts/main";
+import { BrowserRouter } from "react-router-dom";
+import { getRuntime } from "@yext/pages/util";
 
 /**
  * Not required depending on your use case.
@@ -77,25 +79,27 @@ const Search: Template<TemplateRenderProps> = (data) => {
     c_searchPlaceholderText,
   } = document;
 
+  const runtime = getRuntime();
+
   return (
     <Main data={data}>
-      <div className="flex flex-col">
-        {/* TODO: add header */}
-        <SearchHeadlessProvider
-          apiKey="b7930d2fa7b5b106371224158c5854d2"
-          experienceKey="locator"
-          locale={document.meta.locale}
-          verticalKey="locations"
-          endpoints={SandboxEndpoints} // TODO: remove if not using sandbox account
-        >
-          <Locator
-            title={ c_searchTitle }
-            subTitle={ c_searchSubTitle }
-            placeholderText={ c_searchPlaceholderText }
-          />
-        </SearchHeadlessProvider>
-        {/* TODO: add footer */}
-      </div>
+      <SearchHeadlessProvider
+        apiKey="b7930d2fa7b5b106371224158c5854d2"
+        experienceKey="locator"
+        locale={document.meta.locale}
+        verticalKey="locations"
+        endpoints={SandboxEndpoints} // TODO: remove if not using sandbox account
+      >
+        {runtime.name === 'browser' && (
+          <BrowserRouter>
+            <Locator
+              title={ c_searchTitle }
+              subTitle={ c_searchSubTitle }
+              placeholderText={ c_searchPlaceholderText }
+            />
+          </BrowserRouter>
+        )}
+      </SearchHeadlessProvider>
     </Main>
   );
 };

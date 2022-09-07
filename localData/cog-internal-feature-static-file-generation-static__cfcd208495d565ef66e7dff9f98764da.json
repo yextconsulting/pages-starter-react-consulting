@@ -36,6 +36,62 @@
 				"linkType": "OTHER"
 			}
 		],
+		"c_header": {
+			"links": [
+				{
+					"label": "Link1",
+					"link": "https://www.yext.com",
+					"linkType": "URL"
+				},
+				{
+					"label": "Link2",
+					"link": "https://www.yext.com",
+					"linkType": "URL"
+				},
+				{
+					"label": "Link3",
+					"link": "https://www.yext.com",
+					"linkType": "URL"
+				},
+				{
+					"label": "Link4",
+					"link": "https://www.yext.com",
+					"linkType": "URL"
+				},
+				{
+					"label": "Link5",
+					"link": "https://www.yext.com",
+					"linkType": "URL"
+				}
+			],
+			"logo": {
+				"height": 1051,
+				"thumbnails": [
+					{
+						"height": 1051,
+						"url": "https://a.mktgcdn.com/p-sandbox/J4P725ByAW8XGp_myBw82qE4AA4e_XZSekskmyqYYPg/1051x1051.jpg",
+						"width": 1051
+					},
+					{
+						"height": 619,
+						"url": "https://a.mktgcdn.com/p-sandbox/J4P725ByAW8XGp_myBw82qE4AA4e_XZSekskmyqYYPg/619x619.jpg",
+						"width": 619
+					},
+					{
+						"height": 450,
+						"url": "https://a.mktgcdn.com/p-sandbox/J4P725ByAW8XGp_myBw82qE4AA4e_XZSekskmyqYYPg/450x450.jpg",
+						"width": 450
+					},
+					{
+						"height": 196,
+						"url": "https://a.mktgcdn.com/p-sandbox/J4P725ByAW8XGp_myBw82qE4AA4e_XZSekskmyqYYPg/196x196.jpg",
+						"width": 196
+					}
+				],
+				"url": "https://a.mktgcdn.com/p-sandbox/J4P725ByAW8XGp_myBw82qE4AA4e_XZSekskmyqYYPg/1051x1051.jpg",
+				"width": 1051
+			}
+		},
 		"c_instagram": "https://www.instagram.com/",
 		"c_linkedIn": "https://www.linkedin.com/",
 		"c_twitter": "https://www.twitter.com/",
@@ -47,7 +103,7 @@
 				"uid": 90179
 			},
 			"locale": "en",
-			"updateTimestamp": "2022-08-01T18:26:39Z"
+			"updateTimestamp": "2022-08-31T14:51:38Z"
 		},
 		"name": "Site Entity",
 		"uid": 23539088

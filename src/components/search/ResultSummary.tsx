@@ -1,29 +1,42 @@
 import { useSearchState } from "@yext/search-headless-react";
+import { useEffect, useState } from "react";
+import type { State } from "@yext/search-headless-react";
 import "src/components/search/ResultSummary.css";
 
 export default function ResultSummary() {
+  const searchState = useSearchState(state => state);
+
   // TODO: need to link to directory
   const ititialSummaryText = "Use our locator to find a location near you or browse our directory."
   // Check if search has been made and if not render the initial text
-  const query = useSearchState(state => state.query?.queryId);
-  const resultsCountText = useResultsCount();
+  const [initialSearchMade, setInitialSearchMade] = useState(false);
+  const [resultsCountText, setResultCountText] = useState<string | JSX.Element>("");
+
+  // Only update the resultsCountText after a search is made
+  useEffect(() => {
+    if (!searchState.searchStatus.isLoading && searchState.vertical.results) {
+      if (!initialSearchMade) {
+        setInitialSearchMade(true);
+      }
+      setResultCountText(useResultsCount(searchState));
+    }
+  }, [searchState.searchStatus.isLoading, searchState.vertical.results]);
 
   return (
     <div className="ResultSummary">
-      { query ? resultsCountText : ititialSummaryText }
+      { initialSearchMade ? resultsCountText : ititialSummaryText }
     </div>
   );
 }
 
-function useResultsCount() {
-  const state = useSearchState(state => state);
+function useResultsCount(state: State) {
   let searchPlace = "";
   let resultsCount = 0;
 
   // TODO: Like in searchbox this should pull from the same config/ stream definition if possible.
   // TODO: make sure this works as expected when the new Geolocate component is added
   if (state.filters.static?.length) {
-    const activeFilter = state.filters.static.filter(filter => filter.selected && filter.fieldId === "builtin.location");
+    const activeFilter = state.filters.static.filter(filter => filter.selected && filter.fieldId === "builtin.location" && filter.displayName);
     if (activeFilter.length && activeFilter[0].displayName) {
       searchPlace = activeFilter[0].displayName;
     }

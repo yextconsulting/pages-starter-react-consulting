@@ -21,7 +21,7 @@ const Main = (props: MainProps) => {
 
   return (
     <ConfigurationProvider value={config}>
-      <Header 
+      <Header
         logo={_site?.c_header?.logo}
         links={_site?.c_header?.links || []}
       />

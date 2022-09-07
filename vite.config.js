@@ -14,7 +14,4 @@ export default defineConfig({
     viteCommonjs(), // this plugin is needed so that we can import tailwind.config.cjs
     react(),
     yextSSG()],
-  optimizeDeps: {
-    include: ['@yext/components-tsx-maps', '@yext/components-tsx-geo'],
-  },
 });

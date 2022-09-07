@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { createCtx } from "src/types/data";
-import { useSearchState } from "@yext/search-headless-react";
+import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/sites-react-components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
 import type { Coordinate } from "@yext/types";
@@ -12,6 +13,7 @@ import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import mapStyles from "./defaultMapStyles.json";
 import { useBreakpoint } from "src/common/useBreakpoints";
+import { loadInitialSearchParams, updateSearchParams } from "src/components/search/utils/handleSearchParams";
 import "src/components/search/Locator.css";
 
 type LocatorSearchResultType = {
@@ -26,6 +28,7 @@ export type LocatorContextType = {
   setFocusedId: (id: string) => void,
   hoveredId: string,
   setHoveredId: (id: string) => void,
+  initialParamsLoaded: boolean,
 }
 
 // Setup LocatorProvider to pass the [selected, hovered, focused]Ids between Marker interactions and LocatorCard interactions
@@ -58,8 +61,26 @@ export default function Locator(props: LocatorProps) {
     });
     return dataToRender;
   });
+
+  const searchActions = useSearchActions();
   const isLoading = useSearchState(state => state.searchStatus.isLoading);
   const isDesktopBreakpoint = useBreakpoint("sm");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [initialParamsLoaded, setInitialParamsLoaded] = useState(false);
+
+
+  // Load location filter and facets on page load
+  loadInitialSearchParams(searchActions, searchParams, () => setInitialParamsLoaded(true));
+  // Update URLSearchParams on new search
+  updateSearchParams(searchActions, setSearchParams, initialParamsLoaded);
+
+  // Unset any selected, hovered, or focused markers on new search
+  useEffect(() => {
+    setSelectedEntityId("");
+    setFocusedEntityId("");
+    setHoveredEntityId("");
+  }, [searchActions.state.query.queryId]);
+
 
   return (
     <LocatorProvider value={{
@@ -69,6 +90,7 @@ export default function Locator(props: LocatorProps) {
       setFocusedId: setFocusedEntityId,
       hoveredId: hoveredEntityId,
       setHoveredId: setHoveredEntityId,
+      initialParamsLoaded: initialParamsLoaded,
     }}>
       <div className="Locator">
         {isLoading && <LoadingSpinner />}
@@ -78,10 +100,13 @@ export default function Locator(props: LocatorProps) {
             subTitle={ subTitle }
             placeholderText={ placeholderText }
           />
-          <div className="Locator-resultsWrapper">
-            <ResultSummary />
-            <ResultList CardComponent={ LocatorCard } displayAllOnNoResults={ displayAllOnNoResults } />
-          </div>
+          {/* TODO: Remove check if loadInitialSearchParams() doesn't require two searches */}
+          {initialParamsLoaded && (
+            <div className="Locator-resultsWrapper">
+              <ResultSummary />
+              <ResultList CardComponent={ LocatorCard } displayAllOnNoResults={ displayAllOnNoResults } />
+            </div>
+          )}
         </div>
         {isDesktopBreakpoint && (
           <div className="Locator-map">
@@ -90,9 +115,10 @@ export default function Locator(props: LocatorProps) {
               providerOptions={ {styles: mapStyles} }
               clientKey="gme-yextinc"
               bounds={ results.map(data => data.coordinate) }
-              padding={ {top: 100, bottom: 50, left: 50, right: 50} }
+              padding={ {top: 100, bottom: 200, left: 50, right: 50} }
             >
-              {results.map((data, index) => (
+              {/* TODO: Remove check if loadInitialSearchParams() doesn't require two searches */}
+              {initialParamsLoaded && results.map((data, index) => (
                 <CustomMarker
                   key={ data.id }
                   coordinate={ data.coordinate }

@@ -12,7 +12,7 @@ const Header = (props: HeaderProps) => {
     const { logo, links } = props;
     return (
         <div className="Header py-4 container flex justify-between">
-            {logo && <div className="Header-logoContainer flex justify-center">
+            {logo && <div className="Header-logoContainer flex justify-center h-16">
                 {/* TODO(dkianersi): include bpSizes prop */}
                 <Image className="Header-logo" imageField={logo} />
             </div>}
