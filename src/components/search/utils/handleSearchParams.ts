@@ -22,10 +22,10 @@ export function loadInitialSearchParams(
   useEffect(() => {
     const loadUrlParams = async () => {
       const locationPlaceId = searchParams.get('q');
-      const locationDisplayNane = searchParams.get('qp');
+      const locationDisplayName = searchParams.get('qp');
       if (locationPlaceId) {
         searchActions.setStaticFilters([{
-          displayName: locationDisplayNane ?? '',
+          displayName: locationDisplayName ?? '',
           value: locationPlaceId,
           matcher: Matcher.Equals,
           fieldId: 'builtin.location',

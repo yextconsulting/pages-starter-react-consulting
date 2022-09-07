@@ -79,7 +79,8 @@ export default function Locator(props: LocatorProps) {
     setSelectedEntityId("");
     setFocusedEntityId("");
     setHoveredEntityId("");
-  }, [JSON.stringify(results)]);
+  }, [searchActions.state.query.queryId]);
+
 
   return (
     <LocatorProvider value={{
@@ -99,6 +100,7 @@ export default function Locator(props: LocatorProps) {
             subTitle={ subTitle }
             placeholderText={ placeholderText }
           />
+          {/* TODO: Remove check if loadInitialSearchParams() doesn't require two searches */}
           {initialParamsLoaded && (
             <div className="Locator-resultsWrapper">
               <ResultSummary />
@@ -115,6 +117,7 @@ export default function Locator(props: LocatorProps) {
               bounds={ results.map(data => data.coordinate) }
               padding={ {top: 100, bottom: 200, left: 50, right: 50} }
             >
+              {/* TODO: Remove check if loadInitialSearchParams() doesn't require two searches */}
               {initialParamsLoaded && results.map((data, index) => (
                 <CustomMarker
                   key={ data.id }

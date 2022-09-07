@@ -10,26 +10,17 @@ export default function ResultSummary() {
   const ititialSummaryText = "Use our locator to find a location near you or browse our directory."
   // Check if search has been made and if not render the initial text
   const [initialSearchMade, setInitialSearchMade] = useState(false);
-  const [newSearchMade, setNewSearchMade] = useState(false);
   const [resultsCountText, setResultCountText] = useState<string | JSX.Element>("");
 
-  // Wait for state loading to finish and the vertical results to exist
+  // Only update the resultsCountText after a search is made
   useEffect(() => {
     if (!searchState.searchStatus.isLoading && searchState.vertical.results) {
       if (!initialSearchMade) {
         setInitialSearchMade(true);
       }
-      setNewSearchMade(true);
-    }
-  }, [searchState.searchStatus.isLoading, searchState.vertical.results]);
-
-  // Only update the resultsCountText after a search is made
-  useEffect(() => {
-    if (newSearchMade) {
-      setNewSearchMade(false);
       setResultCountText(useResultsCount(searchState));
     }
-  }, [newSearchMade, searchState.query.queryId]);
+  }, [searchState.searchStatus.isLoading, searchState.vertical.results]);
 
   return (
     <div className="ResultSummary">
