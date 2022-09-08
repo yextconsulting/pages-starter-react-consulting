@@ -13,7 +13,7 @@ import LoadingSpinner from "src/components/common/LoadingSpinner";
 import mapStyles from "./defaultMapStyles.json";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { loadInitialSearchParams, updateSearchParams, handleInitialLocationFilter } from "src/components/search/utils/handleSearchParams";
-import { getSearchResults } from "./utils/getSearchResults";
+import { getSearchResults } from "src/components/search/utils/getSearchResults";
 import "src/components/search/Locator.css";
 
 export type LocatorContextType = {
