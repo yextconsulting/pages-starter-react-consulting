@@ -1,6 +1,6 @@
 import React from "react";
 import "src/components/common/Header.css";
-import { Image, Link } from "@yext/sites-react-components";
+import { Image, Link } from "@yext/pages/components";
 import { CTA, Image as ImageType } from "@yext/types";
 
 type HeaderProps = {
@@ -12,9 +12,9 @@ const Header = (props: HeaderProps) => {
     const { logo, links } = props;
     return (
         <div className="Header py-4 container flex justify-between">
-            {logo && <div className="Header-logoContainer flex justify-center h-16">
+            {logo && <div className="Header-logoContainer flex h-16">
                 {/* TODO(dkianersi): include bpSizes prop */}
-                <Image className="Header-logo" imageField={logo} />
+                <Image className="Header-logo" layout="aspect" aspectRatio={1} image={logo} />
             </div>}
             <div className="Header-content flex items-center">
                 <ul className="flex">

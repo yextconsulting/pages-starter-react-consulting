@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@yext/pages/components";
 import { CTA } from "@yext/types";
-import "src/styles/Footer.css";
+import "src/components/common/Footer.css";
 import {
   FaFacebook,
   FaInstagram,

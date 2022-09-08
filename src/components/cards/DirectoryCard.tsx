@@ -1,7 +1,7 @@
 
 import React from "react";
-import { Address, HoursStatus } from "@yext/sites-react-components";
-import { Link } from "@yext/pages/components";
+import { HoursStatus } from "@yext/sites-react-components";
+import { Link, Address } from "@yext/pages/components";
 import { CardProps } from "src/models/cardComponent";
 
 export default function DirectoryCard(props: CardProps): JSX.Element {
