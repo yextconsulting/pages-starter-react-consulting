@@ -6,21 +6,19 @@ type LocatorSearchResultType = {
   id: string,
 }
 
-// Get search results from searchState and map to required fields for the Map and Marker components
+// Custom hook to get search results from search state and map them to the required fields for the Map and Marker components
 // If displayAllOnNoResults = true, the search will use the 20 locations closest to the users location by default
-export function getSearchResults(displayAllOnNoResults: boolean) {
-  const results = useSearchState((state) => {
-    const searchResults = state.vertical.results || [];
-    const allResults= useSearchState(state => state.vertical?.noResults?.allResultsForVertical.results) || [];
-    const resultsToMap = (searchResults.length === 0 && displayAllOnNoResults) ? allResults : searchResults;
-    const dataToRender = resultsToMap.map((result) => {
-      return {
-        coordinate: result.rawData.yextDisplayCoordinate,
-        id: result.id,
-      } as LocatorSearchResultType;
-    });
-    return dataToRender;
+export function useGetSearchResults(displayAllOnNoResults: boolean) {
+  const state = useSearchState(state => state);
+  const searchResults = state.vertical.results || [];
+  const allResults = state.vertical.noResults?.allResultsForVertical.results || [];
+  const resultsToMap = (!searchResults.length && displayAllOnNoResults) ? allResults : searchResults;
+  const dataToRender = resultsToMap.map((result) => {
+    return {
+      coordinate: result.rawData.yextDisplayCoordinate,
+      id: result.id,
+    } as LocatorSearchResultType;
   });
 
-  return results;
+  return dataToRender;
 }

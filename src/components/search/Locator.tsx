@@ -12,8 +12,8 @@ import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import mapStyles from "./defaultMapStyles.json";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import { loadInitialSearchParams, updateSearchParams, handleInitialLocationFilter } from "src/components/search/utils/handleSearchParams";
-import { getSearchResults } from "src/components/search/utils/getSearchResults";
+import { loadInitialSearchParams, updateSearchParams, useHandleInitialLocationFilter } from "src/components/search/utils/handleSearchParams";
+import { useGetSearchResults } from "src/components/search/utils/getSearchResults";
 import "src/components/search/Locator.css";
 
 export type LocatorContextType = {
@@ -53,7 +53,7 @@ export default function Locator(props: LocatorProps) {
   updateSearchParams(searchActions, setSearchParams, initialParamsLoaded);
   // Unset initial location filter from URLSearchParams on new user search
   // TODO: Remove if product allows a way to set the initial state
-  handleInitialLocationFilter(searchActions, initialParamsLoaded);
+  useHandleInitialLocationFilter(searchActions, initialParamsLoaded);
 
   // Unset any selected, hovered, or focused markers on new search
   useEffect(() => {
@@ -62,7 +62,7 @@ export default function Locator(props: LocatorProps) {
     setHoveredEntityId("");
   }, [searchActions.state.query.queryId]);
 
-  const results = getSearchResults(displayAllOnNoResults);
+  const results = useGetSearchResults(displayAllOnNoResults);
 
   return (
     <LocatorProvider value={{

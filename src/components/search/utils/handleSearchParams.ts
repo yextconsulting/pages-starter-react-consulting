@@ -85,7 +85,7 @@ export function loadInitialSearchParams(
                 displayName: '',
                 fieldId: fieldId,
                 options: optionsToAdd
-              }, ...(searchActions.state.filters.facets?.length ? searchActions.state.filters.facets : [])]);
+              }, ...(searchActions.state.filters.facets || [])]);
             }
           }
         }
@@ -147,9 +147,9 @@ export function updateSearchParams(
   }, [searchActions.state.query.queryId]);
 }
 
-// Unset location filter set from URLSearchParams on user filter search
+// Custom hook to unset the location filter set from URLSearchParams on user filter search
 // Currently necessary since FilterSearch component doesn't have a way to set its initial state
-export function handleInitialLocationFilter(
+export function useHandleInitialLocationFilter(
   searchActions: SearchHeadless,
   initialParamsLoaded: boolean
 ) {
