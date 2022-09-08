@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { DisplayableFacetOption, Matcher } from "@yext/search-headless-react";
 import type { SearchHeadless } from "@yext/search-headless-react";
 import type { URLSearchParamsInit } from "react-router-dom";
@@ -145,4 +145,40 @@ export function updateSearchParams(
       }
     }
   }, [searchActions.state.query.queryId]);
+}
+
+// Unset location filter set from URLSearchParams on user filter search
+// Currently necessary since FilterSearch component doesn't have a way to set its initial state
+export function handleInitialLocationFilter(
+  searchActions: SearchHeadless,
+  initialParamsLoaded: boolean
+) {
+  const [userSearchRun, setUserSearchRun] = useState(false);
+  const [initialSearchValue, setInitialSearchValue] = useState("");
+  useEffect(() => {
+    const staticFilters = searchActions.state.filters.static;
+
+    // Get value of initial filter to save for removing later
+    if (staticFilters && !initialSearchValue) {
+      const initialFilter = staticFilters.find(f => f.fieldId === 'builtin.location');
+      if (initialFilter?.value && typeof initialFilter.value === 'string') {
+        setInitialSearchValue(initialFilter.value);
+      }
+    }
+
+    // After the initial searches are made initialParamsLoaded will be true so this will trigger on the next search.
+    // Unset initialFilter and rerun search so only one filter is active.
+    // A new search needs to be run since there's currently no reliable way to update the filter state before the previos filter search is initiated.
+    if (initialParamsLoaded && !userSearchRun) {
+      const activeLocationFilter = staticFilters?.find(f => f.value === initialSearchValue);
+      if (activeLocationFilter) {
+        searchActions.setFilterOption({
+          ...activeLocationFilter,
+          selected: false,
+        });
+        searchActions.executeVerticalQuery();
+      }
+      setUserSearchRun(true);
+    }
+  }, [searchActions.state.filters.static]);
 }
