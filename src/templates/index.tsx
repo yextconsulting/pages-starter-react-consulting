@@ -52,6 +52,8 @@ export const config: TemplateConfig = {
       "geocodedCoordinate",
       "description",
       "hours",
+      "googlePlaceId",
+      "ref_listings",
       "additionalHoursText",
       "services",
       "dm_directoryParents.name",
@@ -116,7 +118,6 @@ const Index: Template<TemplateRenderProps> = (data) => {
     c_team,
     c_hero,
     c_promo,
-    _site
   } = document;
 
   return (
@@ -124,7 +125,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
       <Banner text='e.g. "This location is temporarily closed due to inclement weather."' />
       {/* TODO(aganesh) : use Reviews component when available */}
       <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
-      <Core profile={document} address={address}/>
+      <Core profile={document} />
       {c_promo && c_promo.title && <Promo 
         title={c_promo.title}
         description={c_promo.description}

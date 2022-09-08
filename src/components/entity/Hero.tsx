@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, Image, HoursStatus } from "@yext/sites-react-components";
+import { HoursStatus } from "@yext/sites-react-components";
+import { Link, Image } from "@yext/pages/components";
 import {Address, Hours, CTA, Image as ImageType} from "@yext/types";
 import "./Hero.css";
 import ellipse from "src/assets/images/ellipse.svg";
@@ -47,7 +48,7 @@ const Hero = (props: HeroProps) => {
         </div>
         {props.background && (
           <div className="w-full lg:w-1/2">
-            <Image className="w-full h-full object-cover" imageField={props.background}/>
+            <Image className="w-full h-full object-cover" image={props.background}/>
           </div>
         )}
       </div>

@@ -1,3 +1,4 @@
+import { ListingType } from "@yext/pages/components"
 import { Address, Coordinate, CTA, Hours, Image, ComplexImage, WebsiteUrl } from "@yext/types"
 
 // TODO: potentially move this to @yext/types
@@ -67,6 +68,8 @@ export interface LocationProfile extends BaseProfile {
 	description?: string
 	emails?: string[]
 	services: string[]
+	googlePlaceId?: string
+	ref_listings?: ListingType[]
 	logo?: Image
 	// Add custom fields here
 	// c_myStringField: string
