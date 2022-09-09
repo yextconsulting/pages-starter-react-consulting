@@ -1,3 +1,3 @@
 export default async (plop) => {
-  await plop.load("@yext/sites-react-starters");
+  await plop.load("@yext/cobalt/src/plopfile.mjs");
 };
