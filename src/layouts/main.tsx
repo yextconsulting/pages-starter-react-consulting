@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ConfigurationProvider } from '@yext/sites-react-components';
 import { TemplateRenderProps } from "@yext/pages";
 import config from '../config';

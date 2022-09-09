@@ -33,8 +33,6 @@ import { Main } from 'src/layouts/main';
 import Gallery from "src/components/Carousel/Gallery";
 
 import { Trans, useTranslation } from 'react-i18next'
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
 
 /**
  * Required when Knowledge Graph data is used for a template.
