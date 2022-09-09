@@ -2,6 +2,8 @@ import React from "react";
 import "src/components/common/Header.css";
 import { Image, Link } from "@yext/pages/components";
 import { CTA, Image as ImageType } from "@yext/types";
+import { Trans, useTranslation } from 'react-i18next'
+
 
 type HeaderProps = {
     links: CTA[];
@@ -9,7 +11,9 @@ type HeaderProps = {
 }
 
 const Header = (props: HeaderProps) => {
+    const { t, i18n } = useTranslation();
     const { logo, links } = props;
+
     return (
         <div className="Header py-4 container flex justify-between">
             {logo && <div className="Header-logoContainer flex h-16">
@@ -17,6 +21,7 @@ const Header = (props: HeaderProps) => {
                 <Image className="Header-logo" layout="aspect" aspectRatio={1} image={logo} />
             </div>}
             <div className="Header-content flex items-center">
+                tfunc: {t('hello world')}
                 <ul className="flex">
                     {links.map((item: CTA) => (
                         <li key={item.label}>

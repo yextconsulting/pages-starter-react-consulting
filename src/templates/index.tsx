@@ -8,7 +8,7 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import React from "react";
+import React, { useState } from "react";
 import {
   TemplateProps,
   TemplateRenderProps,
@@ -31,6 +31,10 @@ import { About } from "src/components/entity/About";
 import Banner from "src/components/entity/Banner";
 import { Main } from 'src/layouts/main';
 import Gallery from "src/components/Carousel/Gallery";
+
+import { Trans, useTranslation } from 'react-i18next'
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -111,6 +115,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
 const Index: Template<TemplateRenderProps> = (data) => {
   const document = data.document as LocationProfile;
   const {
+    locale,
     name,
     c_featuredProducts,
     description,
@@ -120,9 +125,12 @@ const Index: Template<TemplateRenderProps> = (data) => {
     c_hero,
     c_promo,
   } = document;
+  const { t, i18n } = useTranslation();
 
   return (
-    <Main data={data}>
+    <>
+      <Trans>hello world</Trans>
+      t function: {t('hello world')}
       <Banner text='e.g. "This location is temporarily closed due to inclement weather."' />
       <Gallery title="Gallery Title" images={[c_promo?.image, c_promo?.image, c_promo?.image, c_promo?.image, c_promo?.image, c_promo?.image]}/>
       {/* TODO(aganesh) : use Reviews component when available */}
@@ -149,8 +157,20 @@ const Index: Template<TemplateRenderProps> = (data) => {
       {c_team && (
         <Team team={c_team} title="Meet our team" initialSize={3}/>
       )}
+    </>
+  );
+}
+
+const IndexWrapper: Template<TemplateRenderProps> = (data) => {
+  const [translationsLoaded, setTranslationsLoaded] = useState(false);
+
+  return (
+    <Main data={data} i18nCallback={() => setTranslationsLoaded(true)}>
+      {translationsLoaded && (
+        <Index {...data} />
+      )}
     </Main>
   );
 };
 
-export default Index;
+export default IndexWrapper;
