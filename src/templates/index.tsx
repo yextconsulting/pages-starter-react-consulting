@@ -8,7 +8,7 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import React from "react";
+import React, { useState } from "react";
 import type {
   TemplateProps,
   TemplateRenderProps,
@@ -34,6 +34,8 @@ import { Gallery, defaultFields as galleryFields } from "src/components/entity/G
 import { About, defaultFields as aboutFields } from "src/components/entity/About";
 import { Team, defaultFields as teamFields } from "src/components/entity/Team";
 import { FAQs, defaultFields as FAQsFields } from "src/components/entity/FAQs";
+
+import { Trans, useTranslation } from 'react-i18next'
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -120,6 +122,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
 const Index: Template<TemplateRenderProps> = (data) => {
   const document = data.document as LocationProfile;
   const {
+    locale,
     name,
     address,
     description,
@@ -134,6 +137,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
     c_teamSection: team,
     c_faqSection: faq,
   } = document;
+  const { t, i18n } = useTranslation();
 
   const showBanner = banner?.text && banner?.image;
   const showPromo = promo?.title && promo?.image;
@@ -144,7 +148,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   const showFAQ = faq?.title && faq?.faqs;
 
   return (
-    <Main data={data}>
+    <>
       {showBanner && <Banner text={banner.text} image={banner.image} />}
       <Hero name={name} cta1={hero?.cta1} cta2={hero?.cta2} address={address} background={hero?.background} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={document} />
@@ -154,8 +158,20 @@ const Index: Template<TemplateRenderProps> = (data) => {
       {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
       {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
       {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
+    </>
+  );
+};
+
+const IndexWrapper: Template<TemplateRenderProps> = (data) => {
+  const [translationsLoaded, setTranslationsLoaded] = useState(false);
+
+  return (
+    <Main data={data} i18nCallback={() => setTranslationsLoaded(true)}>
+      {translationsLoaded && (
+        <Index {...data} />
+      )}
     </Main>
   );
 };
 
-export default Index;
+export default IndexWrapper;

@@ -6,11 +6,14 @@
   "scripts": {
     "dev": "pages dev",
     "features": "pages generate features",
-    "build": "vite build",
+    "build": "npm run i18npull && vite build",
     "fmt": "prettier -w .",
     "lint": "eslint .",
     "clean": "rm -rf .artifact-output .yext/ dist/ localData sites-rendered-output",
-    "generate": "plop"
+    "generate": "plop",
+    "i18npull": "node i18n/smartling/index.js pull",
+    "i18npush": "node i18n/smartling/index.js push",
+    "i18nscan": "node i18n/smartling/index.js scan"
   },
   "engines": {
     "node": ">=17"
@@ -25,12 +28,17 @@
     "@yext/sites-react-starters": "^0.0.1",
     "@yext/types": "^0.1.9-alpha",
     "classnames": "2.3.1",
+    "i18next": "^21.9.1",
+    "i18next-conv": "^13.1.0",
+    "i18next-parser": "^6.5.0",
     "postcss-mixins": "^9.0.3",
     "pure-react-carousel": "1.29.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-i18next": "^11.18.5",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
+    "smartling-api-sdk-nodejs": "^1.2.7",
     "typescript": "^4.6.2",
     "vite": "3.0.3"
   },
