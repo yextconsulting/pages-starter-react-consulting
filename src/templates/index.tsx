@@ -25,6 +25,7 @@ import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import { LocationProfile } from "src/types/entities";
 import FeaturedProduct, { fields as featuredProductFields } from "src/components/FeaturedProduct";
+import {fields as eventFields} from "src/components/Events/Events";
 import { teamFields } from "src/components/Team/Team";
 import { defaultFields, Promo } from "src/components/Promo/Promo";
 import { About } from "src/components/About/About";
@@ -63,6 +64,7 @@ export const config: TemplateConfig = {
       ...defaultFields,
       ...featuredProductFields,
       ...teamFields,
+      ...eventFields
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
