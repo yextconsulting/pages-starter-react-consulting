@@ -46,11 +46,11 @@ Making changes to this repo:
 
 `yext sites generate-test-data` - pull an example set of `localData` from your account
 
-`yext sites build` - Runs a production build against your `localData`
+`yext sites generate` - Runs a production build against your `localData`
 
 `yext sites serve` - Runs a local server against your production-built files
 
-- It's recommended to `yext sites build` followed by `yext sites serve` before committing in order to test that a real production build won't have any issues. In practice, development builds (via `npm run dev`) and production builds compile and bundle assets differently. For local development, ES Modules are loaded directly by the browser, allowing fast iteration during local development and also allows for hot module replacement (HMR). Other things like CSS are also loaded directly by the browser, including linking to sourcemaps. During a production build all of the different files are compiled (via ESBuild for jsx/tsx) and minified, creating assets as small as possible so that the final html files load quickly when served to a user.
+- It's recommended to `yext sites generate` followed by `yext sites serve` before committing in order to test that a real production build won't have any issues. In practice, development builds (via `npm run dev`) and production builds compile and bundle assets differently. For local development, ES Modules are loaded directly by the browser, allowing fast iteration during local development and also allows for hot module replacement (HMR). Other things like CSS are also loaded directly by the browser, including linking to sourcemaps. During a production build all of the different files are compiled (via ESBuild for jsx/tsx) and minified, creating assets as small as possible so that the final html files load quickly when served to a user.
 
 `npm run fmt` - Automatically formats all code
 
@@ -86,9 +86,9 @@ NOTE: You normally wouldn't want to check in the localData folder as it's only u
 
 ### sites-config
 
-Contains a single `ci.json` file. This file defines how the Yext CI system will build your project. It is not used during local dev. However, it is used when running a local production build (i.e. `yext sites build`).
+Contains a single `ci.json` file. This file defines how the Yext CI system will build your project. It is not used during local dev. However, it is used when running a local production build (i.e. `yext sites generate`).
 
-NOTE: A `features.json` file will automatically be generated during CI build for you based on the `config`s defined in your templates. One has been checked in to this repo so that `yext sites generate-test-data` works out of the box (assuming you've `yext init`'ed with your Yext account). If this file doesn't exist then `yext sites build` will implicitly generate a new one when it calls `npm run directbuild` (defined in `sites-config/ci.json`).
+NOTE: A `features.json` file will automatically be generated during CI build for you based on the `config`s defined in your templates. One has been checked in to this repo so that `yext sites generate-test-data` works out of the box (assuming you've `yext init`'ed with your Yext account). If this file doesn't exist then `yext sites generate` will implicitly generate a new one when it calls `npm run directbuild` (defined in `sites-config/ci.json`).
 
 ### src
 

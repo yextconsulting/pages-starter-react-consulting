@@ -8,7 +8,7 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import React from "react";
+import React, { useState } from "react";
 import type {
   Template,
   GetPath,
@@ -37,6 +37,8 @@ import { Products, defaultFields as featuredProductFields } from "src/components
 import { Events, defaultFields as eventFields } from "src/components/entity/Events";
 import { Insights, defaultFields as InsightsFields } from 'src/components/entity/Insights';
 import { formatPhone } from 'src/common/helpers'
+
+import { Trans, useTranslation } from 'react-i18next'
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -166,6 +168,7 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
   const {
     id,
     geocodedCoordinate,
+    locale,
     name,
     address,
     description,
@@ -195,7 +198,7 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
   const showInsights = insights?.title && insights?.insights
 
   return (
-    <Main data={data}>
+    <>
       {showBanner && <Banner text={banner.text} image={banner.image} />}
       <Hero name={name} cta1={hero?.cta1} cta2={hero?.cta2} address={address} background={hero?.background} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={data.document} />
@@ -216,8 +219,20 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
         id={id}
         relativePrefixToRoot={data.relativePrefixToRoot}
       />
+    </>
+  );
+};
+
+const IndexWrapper: Template<TemplateRenderProps> = (data) => {
+  const [translationsLoaded, setTranslationsLoaded] = useState(false);
+
+  return (
+    <Main data={data} i18nCallback={() => setTranslationsLoaded(true)}>
+      {translationsLoaded && (
+        <Index {...data} />
+      )}
     </Main>
   );
 };
 
-export default Index;
+export default IndexWrapper;

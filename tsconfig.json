@@ -3,6 +3,7 @@
     "baseUrl": "./",
     "target": "ESNext",
     "strict": true,
+    "module": "ESNext",
     "moduleResolution": "Node",
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
