@@ -15,18 +15,17 @@ export const directoryGridFields = [
 
 interface DirectoryGridProps {
   name: string
-  count: number
+  brand: string
   CardComponent: CardComponent
   directoryChildren: LocationProfile[]
   relativePrefixToRoot: string
 }
 
 export function DirectoryGrid(props: DirectoryGridProps) {
-  const { name, count, directoryChildren, relativePrefixToRoot, CardComponent = DirectoryCard } = props;
+  const { name, brand, directoryChildren, relativePrefixToRoot, CardComponent = DirectoryCard } = props;
   return (
     <div className="my-8">
-      {/* TODO: change subtitle with custom field when created */}
-      <DirectoryHero title={name} subtitle={"Business Name"} relativePrefixToRoot={relativePrefixToRoot} />
+      <DirectoryHero title={name} subtitle={brand} relativePrefixToRoot={relativePrefixToRoot} />
       <div className="container my-8">
         <ul className="flex flex-wrap">
           {directoryChildren.map((child: any, idx: number) => (

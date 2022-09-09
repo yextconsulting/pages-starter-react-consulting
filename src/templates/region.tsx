@@ -38,6 +38,7 @@ export const config: TemplateConfig = {
 			"name",
 			"slug",
 			"c_meta",
+			"c_brand",
 			...directoryListFields
 		],
 		// Defines the scope of entities that qualify for this stream.
@@ -83,14 +84,14 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data) => {
  */
 const Region: Template<TemplateRenderProps> = (data) => {
 	const document = data.document as DirectoryProfile<DirectoryProfile<never>>;
-	const { name, dm_directoryChildren, dm_directoryChildrenCount } = document;
+	const { name, c_brand, dm_directoryChildren } = document;
 
 	return (
 		<Main data={data}>
 			<DirectoryList
 				name={name}
+				brand={c_brand}
 				showNumLocs={true}
-				count={dm_directoryChildrenCount}
 				directoryChildren={dm_directoryChildren || []}
 				relativePrefixToRoot={data.relativePrefixToRoot}
 			/>

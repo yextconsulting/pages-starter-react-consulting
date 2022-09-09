@@ -92,6 +92,7 @@ export interface LocationProfile extends BaseProfile {
 
 export type DirectoryProfile<T> = BaseProfile & {
 	name: string
+	c_brand: string
 	dm_directoryChildrenCount: number
 	dm_directoryChildren?: T[]
 	dm_directoryParents?: DirectoryProfile<DirectoryProfile<T>>[]
