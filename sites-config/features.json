@@ -91,6 +91,8 @@
         "geocodedCoordinate",
         "description",
         "hours",
+        "googlePlaceId",
+        "ref_listings",
         "additionalHoursText",
         "services",
         "dm_directoryParents.name",
