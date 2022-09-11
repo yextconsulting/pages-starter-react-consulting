@@ -1,12 +1,12 @@
 import React from "react";
-import { Image } from '@yext/sites-react-components';
-import { Image as ImageType } from  "@yext/types";
+import { Image } from '@yext/pages/components';
+import { Image as ImageType, ComplexImage as ComplexImageType } from  "@yext/types";
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Dot } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import c from "classnames";
 
 type GalleryProps = {
-  images: ImageType[];
+  images: (ImageType | ComplexImageType)[];
   title?: string;
   hideArrows?: boolean;
   hideNav?: boolean;
@@ -39,7 +39,7 @@ const Gallery = (props: GalleryProps) => {
           <Slider className={c({'sm:mx-16': !props.hideArrows})}>
             {props.images.map((image, idx) => (
               <Slide index={idx} key={idx}>
-                <Image className="w-full h-full object-cover" imageField={image} />
+                <Image className="m-auto w-full h-full object-cover" image={image} />
               </Slide>
             ))}
           </Slider>
@@ -61,10 +61,12 @@ const Gallery = (props: GalleryProps) => {
               {!props.hideNav && (
                 <div className={c("flex justify-center items-center w-full", {'mx-7 sm:mx-0': !props.hideArrows})}>
                   {props.images.map((_, idx) => {
-                    const width = `1/${props.images.length}`;
+                    // These can't be dynamic because tailwind doesn't support dynamic classnames
+                    const classes = ['w-1/1', 'w-1/2', 'w-1/3', 'w-1/4', 'w-1/5', 'w-1/6', 'w-1/7', 'w-1/8', 'w-1/9', 'w-1/10'];
+                    const width = classes[props.images.length - 1];
                     const afterStyles = "after:content-[' '] after:py-2 after:block after:relative after:-top-1";
                     return (
-                      <Dot slide={idx} key={idx} className={`mx-2 w-${width} max-w-[theme(spacing.16)] h-1 rounded-full bg-brand-gray-300 disabled:bg-brand-primary disabled:cursor-default ${afterStyles}`}></Dot>
+                      <Dot slide={idx} key={idx} className={`mx-2 ${width} max-w-[theme(spacing.16)] h-1 rounded-full bg-brand-gray-300 disabled:bg-brand-primary disabled:cursor-default ${afterStyles}`}></Dot>
                     );
                   })}
                 </div>
