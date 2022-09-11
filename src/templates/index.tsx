@@ -123,11 +123,13 @@ const Index: Template<TemplateRenderProps> = (data) => {
     c_hero,
     c_promo,
   } = document;
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <>
       <Trans>hello world</Trans>
+      <br />
+      <br />
       t function: {t('hello world')}
       <Banner text='e.g. "This location is temporarily closed due to inclement weather."' />
       <Gallery title="Gallery Title" images={[c_promo?.image, c_promo?.image, c_promo?.image, c_promo?.image, c_promo?.image, c_promo?.image]}/>
@@ -160,13 +162,10 @@ const Index: Template<TemplateRenderProps> = (data) => {
 }
 
 const IndexWrapper: Template<TemplateRenderProps> = (data) => {
-  const [translationsLoaded, setTranslationsLoaded] = useState(false);
-
+  // data.document.locale = "fr"
   return (
-    <Main data={data} i18nCallback={() => setTranslationsLoaded(true)}>
-      {translationsLoaded && (
-        <Index {...data} />
-      )}
+    <Main data={data}>
+      <Index {...data} />
     </Main>
   );
 };

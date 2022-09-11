@@ -28,8 +28,9 @@ const i18nOptions = {
   debug: true,
 }
 
-function i18nInstanceBuilder(locale: string, callback: Function): typeof i18n | undefined {
-  i18n.use(initReactI18next).init(i18nOptions, () => callback());
+function i18nInstanceBuilder(locale: string) {
+  i18nOptions.lng = locale;
+  i18n.use(initReactI18next).init(i18nOptions);
   return i18n;
 }
 
