@@ -122,7 +122,6 @@ const Index: Template<TemplateRenderProps> = (data) => {
     name,
     address,
     hours,
-    description,
     photoGallery,
     c_bannerSection: banner,
     c_heroSection: hero,
@@ -131,41 +130,28 @@ const Index: Template<TemplateRenderProps> = (data) => {
     c_aboutSection: about,
     c_gallerySection: gallery,
     c_teamSection: team,
-    c_fAQSection: faq,
+    c_faqSection: faq,
   } = document;
 
-  const { text: bannerText } = banner || {};
-  const showBanner = banner && bannerText;
-
-  const { title: promoTitle } = promo || {};
-  const showPromo = promo && promoTitle;
-
-  const { title: productsTitle, products: productsList} = products || {};
-  const showProducts = products && productsTitle && productsList;
-
-  const { title: aboutTitle } = about || {};
-  const showAbout = about && aboutTitle;
-
-  const { images: galleryImages } = gallery || { images: photoGallery };
-  const showGallery = gallery && galleryImages;
-
-  const { title: teamTitle, team: teamList } = team || {};
-  const showTeam = team && teamTitle && teamList;
-
-  const { title: faqTitle, faqs: faqs } = faq || {};
-  const showFAQ = faq && faqTitle && faqs;
+  const showBanner = banner?.text && banner?.image;
+  const showPromo = promo?.title && promo?.image;
+  const showProducts = products?.title && products?.products;
+  const showAbout = about?.title && about.description;
+  const showGallery = gallery?.images || photoGallery;
+  const showTeam = team?.title && team?.team;
+  const showFAQ = faq?.title && faq?.faqs;
 
   return (
     <Main data={data}>
-      {showBanner && <Banner text={bannerText} {...banner} />}
-      <Hero name={name} address={address} hours={hours} numReviews={21} rating={4.5} {...hero} />
+      {showBanner && <Banner text={banner.text} image={banner.image} />}
+      <Hero name={name} cta1={hero?.cta1} cta2={hero?.cta2} address={address} background={hero?.background} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={document} />
-      {showPromo && <Promo title={promoTitle} {...promo} />}
-      {showProducts && <FeaturedProduct title={productsTitle} products={productsList} {...products} />}
-      {showAbout && <About title={aboutTitle} description={description} {...about} />}
-      {showGallery && <Gallery images={galleryImages} {...gallery} />}
-      {showTeam && <Team title={teamTitle} team={teamList} initialSize={3} {...team} />}
-      {showFAQ && <FAQs title={faqTitle} faqs={faqs} {...faq} />}
+      {showPromo && <Promo title={promo.title} description={promo.description} image={promo.image} cta={promo.cta} googlePlayUrl={promo.googlePlayUrl} appStoreUrl={promo.appStoreUrl} />}
+      {showProducts && <FeaturedProduct title={products.title} products={products.products} />}
+      {showAbout && <About title={about.title} image={about.image} description={about.description} cta={about.cta} />}
+      {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
+      {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
+      {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
     </Main>
   );
 };

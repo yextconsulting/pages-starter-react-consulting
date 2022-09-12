@@ -26,7 +26,7 @@ const Gallery = (props: GalleryProps) => {
   const showControls = !props.hideArrows || !props.hideNav;
 
   return (
-    <div className="Gallery py-8 sm:py-16">
+    <div className="Gallery bg-brand-gray-100 py-8 sm:py-16">
       <div className="container">
         {props.title && (
           <h2 className="Heading Heading--head text-center mb-8">
