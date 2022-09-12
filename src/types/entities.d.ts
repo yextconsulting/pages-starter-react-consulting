@@ -68,6 +68,7 @@ export interface LocationProfile extends BaseProfile {
 	description?: string
 	emails?: string[]
 	services: string[]
+	photoGallery: ComplexImage[]
 	googlePlaceId?: string
 	ref_listings?: ListingType[]
 	logo?: Image

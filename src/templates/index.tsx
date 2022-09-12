@@ -54,6 +54,7 @@ export const config: TemplateConfig = {
       "description",
       "hours",
       "googlePlaceId",
+      "photoGallery",
       "ref_listings",
       "additionalHoursText",
       "services",
@@ -119,12 +120,12 @@ const Index: Template<TemplateRenderProps> = (data) => {
     c_team,
     c_hero,
     c_promo,
+    photoGallery,
   } = document;
 
   return (
     <Main data={data}>
       <Banner text='e.g. "This location is temporarily closed due to inclement weather."' />
-      <Gallery title="Gallery Title" images={[c_promo?.image, c_promo?.image, c_promo?.image, c_promo?.image, c_promo?.image, c_promo?.image]}/>
       {/* TODO(aganesh) : use Reviews component when available */}
       <Hero name={name} background={c_hero?.background} address={address} cta1={c_hero?.cta1} cta2={c_hero?.cta2} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={document} />
@@ -149,6 +150,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
       {c_team && (
         <Team team={c_team} title="Meet our team" initialSize={3}/>
       )}
+      {photoGallery && <Gallery title="Gallery Title" images={photoGallery}/>}
     </Main>
   );
 };
