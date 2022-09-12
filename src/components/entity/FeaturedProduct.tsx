@@ -30,7 +30,7 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
             <div key={i} className="bg-white">
               {item.primaryPhoto && (
                 <div className="flex justify-center h-[187px] mb-8">
-                  <Image image={item.primaryPhoto.image}/>
+                  <Image layout="fill" image={item.primaryPhoto.image}/>
                 </div>
               )}
               <div className="Heading Heading--sub mx-8">
@@ -42,8 +42,8 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
                 </div>
               )}
               {item.c_primaryCTA && (
-                <div className="mx-8 mt-8 mb-4">
-                  <Link className="Button Button--secondary" cta={item.c_primaryCTA} />
+                <div className="flex mx-8 mt-8 mb-4">
+                  <Link className="self-start Button Button--secondary" cta={item.c_primaryCTA} />
                 </div>
               )}
             </div>

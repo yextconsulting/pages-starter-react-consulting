@@ -57,38 +57,37 @@ export interface financialProfessional {
 
 // TODO: generate these automatically from stream definitions
 export interface LocationProfile extends BaseProfile {
-	name: string
-	address: Address
-	geocodedCoordinate: Coordinate
-	slug: string
-	hours?: Hours
-	additionalHoursText?: string
-	mainPhone?: string
-	tollFreePhone?: string
-	description?: string
-	emails?: string[]
-	services: string[]
-	photoGallery: ComplexImage[]
-	googlePlaceId?: string
-	ref_listings?: ListingType[]
-	logo?: Image
-	photoGallery?: Image[]
+	readonly name: string
+	readonly address: Address
+	readonly geocodedCoordinate: Coordinate
+	readonly slug: string
+	readonly hours?: Hours
+	readonly additionalHoursText?: string
+	readonly mainPhone?: string
+	readonly tollFreePhone?: string
+	readonly description?: string
+	readonly emails?: string[]
+	readonly services: string[]
+	readonly photoGallery: ComplexImage[]
+	readonly googlePlaceId?: string
+	readonly ref_listings?: ListingType[]
+	readonly logo?: Image
 	// Add custom fields here
 	// c_myStringField: string
 	c_bannerSection?: {
 		readonly text?: string
 		readonly image?: Image
 	}
-	c_heroSection?: {
+	readonly c_heroSection?: {
 		readonly background?: Image
 		readonly cta1?: CTA
 		readonly cta2?: CTA
 	}
-	c_featuredProductsSection?: {
+	readonly c_featuredProductsSection?: {
 		readonly title?: string
 		readonly products?: ProductProfile[]
 	}
-	c_promoSection?: {
+	readonly c_promoSection?: {
 		readonly title?: string
 		readonly description?: string
 		readonly image?: Image
@@ -96,21 +95,21 @@ export interface LocationProfile extends BaseProfile {
 		readonly googlePlayUrl?: string
 		readonly appStoreUrl?: string
 	}
-	c_gallerySection?: {
+	readonly c_gallerySection?: {
 		readonly title?: string
 		readonly images?: Image[]
 	}
-	c_aboutSection?: {
+	readonly c_aboutSection?: {
 		readonly title?: string
 		readonly description?: string
 		readonly image?: Image
 		readonly cta?: CTA
 	}
-	c_teamSection?: {
+	readonly c_teamSection?: {
 		readonly title?: string
 		readonly team?: financialProfessional[]
 	}
-	c_fAQSection?: {
+	readonly c_faqSection?: {
 		readonly title?: string
 		readonly faqs?: FAQItem[]
 	}
