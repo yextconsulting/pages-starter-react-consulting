@@ -121,6 +121,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   const {
     name,
     address,
+    description,
     hours,
     photoGallery,
     c_bannerSection: banner,
@@ -136,7 +137,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   const showBanner = banner?.text && banner?.image;
   const showPromo = promo?.title && promo?.image;
   const showProducts = products?.title && products?.products;
-  const showAbout = about?.title && about.description;
+  const showAbout = about?.title && (about.description || description);
   const showGallery = gallery?.images || photoGallery;
   const showTeam = team?.title && team?.team;
   const showFAQ = faq?.title && faq?.faqs;
@@ -148,7 +149,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
       <Core profile={document} />
       {showPromo && <Promo title={promo.title} description={promo.description} image={promo.image} cta={promo.cta} googlePlayUrl={promo.googlePlayUrl} appStoreUrl={promo.appStoreUrl} />}
       {showProducts && <FeaturedProduct title={products.title} products={products.products} />}
-      {showAbout && <About title={about.title} image={about.image} description={about.description} cta={about.cta} />}
+      {showAbout && <About title={about.title} image={about.image} description={about.description || description} cta={about.cta} />}
       {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
       {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
       {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
