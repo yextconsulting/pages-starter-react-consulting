@@ -5,6 +5,7 @@
 import React from "react";
 import { useState } from "react";
 import { Pokemon } from "pokenode-ts";
+import { fetch } from "@yext/pages/util";
 import {
   TemplateProps,
   TemplateRenderProps,
@@ -14,6 +15,7 @@ import {
   TemplateConfig,
 } from "@yext/pages";
 import { Main } from 'src/layouts/main';
+import "src/index.css";
 
 /**
  * Not required depending on your use case.
