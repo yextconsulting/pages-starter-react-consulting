@@ -1,9 +1,9 @@
 import React from 'react';
 import { ConfigurationProvider } from '@yext/sites-react-components';
-import { TemplateRenderProps } from "@yext/pages";
+import type { TemplateRenderProps } from "@yext/pages";
 import config from '../config';
 import Header from 'src/components/common/Header';
-import { BaseProfile } from 'src/types/entities';
+import type { BaseProfile } from 'src/types/entities';
 import Footer from 'src/components/common/Footer';
 
 interface MainProps {

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import classNames from "classnames";
 import { useSearchState } from "@yext/search-headless-react";
 import type { CardComponent } from "@yext/search-ui-react";
-import { Result } from "@yext/search-headless-react";
+import type { Result } from "@yext/search-headless-react";
 import { useLocatorContext } from "src/components/search/Locator";
 import type { LocatorCardProps } from "src/components/cards/LocatorCard";
 import "src/components/search/ResultList.css";

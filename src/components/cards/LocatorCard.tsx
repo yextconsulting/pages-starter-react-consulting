@@ -1,5 +1,6 @@
-import { CardProps } from "@yext/search-ui-react";
-import { HoursStatus, StatusParams } from "@yext/sites-react-components";
+import type { CardProps } from "@yext/search-ui-react";
+import { HoursStatus } from "@yext/sites-react-components";
+import type { StatusParams } from "@yext/sites-react-components";
 import { Link } from "@yext/pages/components";
 import type { Address, Hours } from "@yext/types";
 import { useBreakpoint } from "src/common/useBreakpoints";

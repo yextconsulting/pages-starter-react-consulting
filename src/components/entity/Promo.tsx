@@ -1,5 +1,5 @@
 import React from "react";
-import {
+import type {
   Image as ImageType,
   CTA as CTAType
 } from "@yext/types";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@yext/pages/components";
-import { DirectoryProfile } from "src/types/entities";
+import type { DirectoryProfile } from "src/types/entities";
 import { DirectoryHero } from "src/components/Directory/DirectoryHero";
 import "src/styles/Directory.css";
 

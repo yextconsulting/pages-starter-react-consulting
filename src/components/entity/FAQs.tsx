@@ -1,5 +1,5 @@
 import React from "react";
-import { FAQItem } from "src/types/entities";
+import type { FAQItem } from "src/types/entities";
 import { FAQ } from "src/components/entity/FAQ";
 
 const defaultFields: string[] = [

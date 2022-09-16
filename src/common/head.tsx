@@ -1,4 +1,4 @@
-import { TemplateRenderProps, HeadConfig, Tag } from "@yext/pages";
+import type { TemplateRenderProps, HeadConfig, Tag } from "@yext/pages";
 import { SchemaBuilder } from 'src/common/schema';
 
 const dnsPrefetchTags: Tag[] = [

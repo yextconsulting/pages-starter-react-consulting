@@ -9,7 +9,7 @@
  */
 
 import React from "react";
-import {
+import type {
 	Template,
 	TemplateProps,
 	TemplateRenderProps,
@@ -20,7 +20,7 @@ import {
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import { DirectoryList, directoryListFields } from "src/components/Directory/DirectoryList"
-import { DirectoryProfile } from "src/types/entities";
+import type { DirectoryProfile } from "src/types/entities";
 import { Main } from 'src/layouts/main';
 
 /**

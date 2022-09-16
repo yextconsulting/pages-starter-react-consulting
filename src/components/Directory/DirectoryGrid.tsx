@@ -1,8 +1,8 @@
 import React from "react";
 import DirectoryCard from "src/components/cards/DirectoryCard"
-import { DirectoryCardContent, CardComponent } from "src/models/cardComponent";
+import type { DirectoryCardContent, CardComponent } from "src/models/cardComponent";
 import { DirectoryHero } from "src/components/Directory/DirectoryHero";
-import { LocationProfile } from "src/types/entities";
+import type { LocationProfile } from "src/types/entities";
 import "src/styles/Directory.css";
 
 export const directoryGridFields = [

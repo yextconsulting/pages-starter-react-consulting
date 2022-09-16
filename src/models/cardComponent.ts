@@ -1,4 +1,4 @@
-import { Address, Hours } from "@yext/types"
+import type { Address, Hours } from "@yext/types"
 
 export declare interface DirectoryCardContent {
   address: Address;

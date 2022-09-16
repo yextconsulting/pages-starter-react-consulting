@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@yext/pages/components";
-import { CTA } from "@yext/types";
+import type { CTA } from "@yext/types";
 import "src/components/common/Footer.css";
 import {
   FaFacebook,

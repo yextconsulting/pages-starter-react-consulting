@@ -9,7 +9,7 @@
  */
 
 import React from "react";
-import {
+import type {
 	TemplateProps,
 	TemplateRenderProps,
 	Template,
@@ -20,7 +20,7 @@ import {
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import { DirectoryList, directoryListFields } from "src/components/Directory/DirectoryList"
-import { DirectoryProfile } from "src/types/entities";
+import type { DirectoryProfile } from "src/types/entities";
 import { Main } from 'src/layouts/main';
 
 /**
@@ -42,7 +42,7 @@ export const config: TemplateConfig = {
 		],
 		// Defines the scope of entities that qualify for this stream.
 		filter: {
-			 savedFilterIds: ["dm_defaultDirectory_address_region"],
+			savedFilterIds: ["dm_defaultDirectory_address_region"],
 		},
 		// The entity language profiles that documents will be generated for.
 		localization: {
