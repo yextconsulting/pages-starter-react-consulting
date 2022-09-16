@@ -4,9 +4,9 @@
 
 import React from "react";
 import { useState } from "react";
-import { Pokemon } from "pokenode-ts";
+import type { Pokemon } from "pokenode-ts";
 import { fetch } from "@yext/pages/util";
-import {
+import type {
   TemplateProps,
   TemplateRenderProps,
   Template,

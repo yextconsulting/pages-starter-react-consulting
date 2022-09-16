@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { FAQItem } from "src/types/entities";
+import type { FAQItem } from "src/types/entities";
 import { GoChevronDown } from "react-icons/go";
 
 const FAQ = (props: FAQItem) => {

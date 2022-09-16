@@ -5,7 +5,7 @@ import { getRuntime } from "@yext/pages/util"
 import { screens as defaultScreens } from "tailwindcss/defaultTheme"
 //@ts-ignore: figure out how to use Tailwind's provided config type for this
 import * as tailwindConfig from '../../tailwind.config.cjs';
-import { KeyValuePair } from "tailwindcss/types/config.js";
+import type { KeyValuePair } from "tailwindcss/types/config.js";
 
 const fullConfig = resolveConfig(tailwindConfig);
 // TODO: get rid of this type cast. The possible types for screens are very flexible, which makes this complicated

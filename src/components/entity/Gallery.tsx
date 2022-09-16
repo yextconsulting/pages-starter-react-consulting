@@ -1,6 +1,6 @@
 import React from "react";
 import { Image } from '@yext/pages/components';
-import { Image as ImageType, ComplexImage as ComplexImageType } from  "@yext/types";
+import type { Image as ImageType, ComplexImage as ComplexImageType } from  "@yext/types";
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Dot } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import c from "classnames";

@@ -1,7 +1,7 @@
 import React from "react";
 import "src/components/common/Header.css";
 import { Image, Link } from "@yext/pages/components";
-import { CTA, Image as ImageType } from "@yext/types";
+import type { CTA, Image as ImageType } from "@yext/types";
 
 type HeaderProps = {
     links: CTA[];

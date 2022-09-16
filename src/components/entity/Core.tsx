@@ -2,7 +2,7 @@ import React from "react";
 import { HoursTable, LocationMap } from "@yext/sites-react-components";
 import { Link, Address, getDirections } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
-import { LocationProfile } from "src/types/entities";
+import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import "src/components/entity/Core.css";

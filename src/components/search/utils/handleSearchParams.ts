@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { DisplayableFacetOption, Matcher } from "@yext/search-headless-react";
+import type { DisplayableFacetOption } from "@yext/search-headless-react";
+import { Matcher } from "@yext/search-headless-react";
 import type { SearchHeadless } from "@yext/search-headless-react";
 import type { URLSearchParamsInit } from "react-router-dom";
 

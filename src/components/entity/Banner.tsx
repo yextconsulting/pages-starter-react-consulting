@@ -1,6 +1,6 @@
 import React from "react";
 import { Image } from "@yext/pages/components";
-import { Image as ImageType } from  "@yext/types";
+import type { Image as ImageType } from  "@yext/types";
 
 const defaultFields: string[] = [
   'c_bannerSection',

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import TeamCard from "src/components/entity/TeamCard";
-import { financialProfessional } from "src/types/entities";
+import type { financialProfessional } from "src/types/entities";
 
 const defaultFields: string[] = [
   'c_teamSection.title',

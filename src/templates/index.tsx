@@ -9,7 +9,7 @@
  */
 
 import React from "react";
-import {
+import type {
   TemplateProps,
   TemplateRenderProps,
   Template,
@@ -20,7 +20,7 @@ import {
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
-import { LocationProfile } from "src/types/entities";
+import type { LocationProfile } from "src/types/entities";
 import { dedupeStreamFields } from "src/common/helpers";
 import { Main } from 'src/layouts/main';
 

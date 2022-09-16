@@ -9,7 +9,7 @@
  */
 
 import React from "react";
-import {
+import type {
 	TemplateRenderProps,
 	Template,
 	TemplateProps,
@@ -21,7 +21,7 @@ import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import DirectoryCard from "src/components/cards/DirectoryCard"
 import { DirectoryGrid, directoryGridFields } from "src/components/Directory/DirectoryGrid"
-import { DirectoryProfile, LocationProfile } from "src/types/entities";
+import type { DirectoryProfile, LocationProfile } from "src/types/entities";
 import { Main } from 'src/layouts/main';
 
 /**

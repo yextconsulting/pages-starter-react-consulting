@@ -1,5 +1,5 @@
-import { ListingType } from "@yext/pages/components"
-import { Address, Coordinate, CTA, Hours, Image, ComplexImage, WebsiteUrl } from "@yext/types"
+import type { ListingType } from "@yext/pages/components"
+import type { Address, Coordinate, CTA, Hours, Image, ComplexImage, WebsiteUrl } from "@yext/types"
 
 // TODO: potentially move this to @yext/types
 // Also we should probably move @yext/types into @yext/pages
