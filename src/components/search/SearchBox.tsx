@@ -12,7 +12,6 @@ type SearchBoxProps = {
   placeholderText?: string,
 }
 
-// TODO: look into selecting first autocomplete option on enter
 export default function SearchBox(props: SearchBoxProps) {
   const { title, subTitle, placeholderText } = props;
 
