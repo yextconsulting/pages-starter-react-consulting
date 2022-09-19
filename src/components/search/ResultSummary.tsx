@@ -1,4 +1,4 @@
-import { FieldValueStaticFilter, StaticFilter, useSearchState } from "@yext/search-headless-react";
+import { useSearchState } from "@yext/search-headless-react";
 import { useEffect, useState } from "react";
 import type { State } from "@yext/search-headless-react";
 import "src/components/search/ResultSummary.css";
