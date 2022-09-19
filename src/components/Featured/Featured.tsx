@@ -1,15 +1,17 @@
 import React from "react";
 import { ProductProfile } from "src/types/entities";
+import { FeaturedCardContent, FeaturedCardComponent } from "src/models/cardComponent";
 import ProductCard from "src/components/cards/ProductCard"
 import "src/styles/FeaturedProduct.css";
 
 interface FeaturedProps {
   title: string;
   items: ProductProfile[];
+  FeaturedCardComponent: FeaturedCardComponent;
 }
 
 const Featured = (props: FeaturedProps) => {
-  const { title, items } = props;
+  const { title, items, FeaturedCardComponent = ProductCard } = props;
   if (!items.length) return null;
 
   return (
@@ -20,7 +22,7 @@ const Featured = (props: FeaturedProps) => {
         </div>
         <ul className="flex FeaturedProduct-content gap-6">
           {items?.map((item, i) => (
-             renderCard(ProductCard, item, i)
+             renderCard(FeaturedCardComponent, {profile: item}, i)
           ))}
         </ul>
       </div>
@@ -29,13 +31,13 @@ const Featured = (props: FeaturedProps) => {
 };
 
 function renderCard(
-  CardComponent: typeof ProductCard,
-  childContent: ProductProfile,
+  FeaturedCardComponent: FeaturedCardComponent,
+  childContent: FeaturedCardContent,
   index: number
 ): JSX.Element {
   return (
     <li className="FeaturedProduct-card mb-8" key={index}>
-      <CardComponent profile={childContent} />
+      <FeaturedCardComponent content={childContent} />
     </li>
   )
 }
