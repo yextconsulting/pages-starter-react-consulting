@@ -25,6 +25,8 @@ import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import { LocationProfile } from "src/types/entities";
 import FeaturedProduct, { fields as featuredProductFields } from "src/components/FeaturedProduct";
+import Featured from "src/components/Featured/Featured"
+import ProductCard from "src/components/cards/ProductCard";
 import {fields as eventFields} from "src/components/Events/Events";
 import { teamFields } from "src/components/Team/Team";
 import { defaultFields, Promo } from "src/components/Promo/Promo";
@@ -136,6 +138,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
         googlePlayLink={c_promo.googlePlayUrl}
       />}
       <FeaturedProduct title={c_featuredProducts?.title || 'Featured Products'} products={c_featuredProducts?.products || []}/>
+      <Featured title={c_featuredProducts?.title || 'Featured Products'} items={c_featuredProducts?.products || []} FeaturedCardComponent={ProductCard}/>
       <About 
         title="About Business Geomodifier"
         description={description}
