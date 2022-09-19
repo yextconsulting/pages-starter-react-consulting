@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Matcher } from "@yext/search-headless-react";
-import type { DisplayableFacetOption, FieldValueStaticFilter, FieldValueFilter, SearchHeadless, StaticFilter } from "@yext/search-headless-react";
+import type { DisplayableFacetOption, FieldValueStaticFilter, SearchHeadless, StaticFilter } from "@yext/search-headless-react";
 import type { URLSearchParamsInit } from "react-router-dom";
 
 /**
@@ -59,7 +59,7 @@ export function loadInitialSearchParams(
               fieldId: 'builtin.location',
               kind: 'fieldValue',
               matcher: Matcher.Equals,
-              value: topAutocompleteSuggestionFilter?.filter?.value,
+              value: topAutocompleteSuggestionFilter.filter.value,
             }
           }]);
         }
