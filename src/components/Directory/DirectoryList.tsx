@@ -13,18 +13,17 @@ export const directoryListFields = [
 
 interface DirectoryListProps {
   name: string;
-  count: number;
+  brand: string;
   showNumLocs: boolean;
   directoryChildren: DirectoryProfile<never>[];
   relativePrefixToRoot: string;
 }
 
 export function DirectoryList(props: DirectoryListProps) {
-  const { name, count, showNumLocs, directoryChildren, relativePrefixToRoot } = props;
+  const { name, brand, showNumLocs, directoryChildren, relativePrefixToRoot } = props;
   return (
     <div className="my-8">
-      {/* TODO: change subtitle with custom field when created */}
-      <DirectoryHero title={name} subtitle={"Business Name"} relativePrefixToRoot={relativePrefixToRoot} />
+      <DirectoryHero title={name} subtitle={brand} relativePrefixToRoot={relativePrefixToRoot} />
       <div className="container my-8">
         <ul className="lg:columns-4 md:columns-3 sm:columns-2 columns-1">
           {directoryChildren.map((child: any, idx: number) => (
