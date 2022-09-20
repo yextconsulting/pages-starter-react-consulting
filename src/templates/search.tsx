@@ -1,4 +1,4 @@
-import type {
+import {
   TemplateProps,
   TemplateRenderProps,
   Template,
@@ -10,7 +10,7 @@ import type {
 import "src/index.css";
 import "src/styles/search.css";
 import { defaultHeadConfig } from "src/common/head";
-import { SearchHeadlessProvider } from "@yext/search-headless-react";
+import { provideHeadless, SearchHeadlessProvider } from "@yext/search-headless-react";
 import Locator from "src/components/search/Locator";
 import { SandboxEndpoints } from "@yext/search-headless-react"; // TODO: remove if not using sandbox account
 import { Main } from "src/layouts/main";
@@ -80,16 +80,17 @@ const Search: Template<TemplateRenderProps> = (data) => {
   } = document;
 
   const runtime = getRuntime();
+  const searcher = provideHeadless({
+    apiKey: "b7930d2fa7b5b106371224158c5854d2",
+    experienceKey: "locator",
+    locale: document.meta.locale,
+    verticalKey: "locations",
+    endpoints: SandboxEndpoints, // TODO: remove if not using sandbox account
+  });
 
   return (
     <Main data={data}>
-      <SearchHeadlessProvider
-        apiKey="b7930d2fa7b5b106371224158c5854d2"
-        experienceKey="locator"
-        locale={document.meta.locale}
-        verticalKey="locations"
-        endpoints={SandboxEndpoints} // TODO: remove if not using sandbox account
-      >
+      <SearchHeadlessProvider searcher={searcher}>
         {runtime.name === 'browser' && (
           <BrowserRouter>
             <Locator

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import type { DisplayableFacetOption } from "@yext/search-headless-react";
 import { Matcher } from "@yext/search-headless-react";
-import type { SearchHeadless } from "@yext/search-headless-react";
+import type { DisplayableFacetOption, FieldValueStaticFilter, SearchHeadless, StaticFilter } from "@yext/search-headless-react";
 import type { URLSearchParamsInit } from "react-router-dom";
 
 /**
@@ -30,10 +29,13 @@ export function loadInitialSearchParams(
       if (locationPlaceId) {
         searchActions.setStaticFilters([{
           displayName: locationDisplayName ?? '',
-          value: locationPlaceId,
-          matcher: Matcher.Equals,
-          fieldId: 'builtin.location',
           selected: true,
+          filter: {
+            fieldId: 'builtin.location',
+            kind: 'fieldValue',
+            matcher: Matcher.Equals,
+            value: locationPlaceId,
+          }
         }]);
       }
 
@@ -52,10 +54,13 @@ export function loadInitialSearchParams(
         if (topAutocompleteSuggestionFilter?.filter?.value) {
           searchActions.setStaticFilters([{
             displayName: topAutocompleteSuggestionFilter?.value,
-            value: topAutocompleteSuggestionFilter?.filter?.value,
-            matcher: Matcher.Equals,
-            fieldId: 'builtin.location',
             selected: true,
+            filter: {
+              fieldId: 'builtin.location',
+              kind: 'fieldValue',
+              matcher: Matcher.Equals,
+              value: topAutocompleteSuggestionFilter.filter.value,
+            }
           }]);
         }
       }
@@ -102,6 +107,18 @@ export function loadInitialSearchParams(
   }, []);
 }
 
+// Function to ensure all the static filters are field value static filters
+const getFieldValueFilters = (staticFilters: StaticFilter[]): FieldValueStaticFilter[] => {
+  const newFilters = staticFilters.reduce((fieldValueFilters: FieldValueStaticFilter[], filter) => {
+    if (filter.kind === "fieldValue") {
+      fieldValueFilters.push(filter);
+    }
+    return fieldValueFilters;
+  }, []);
+  return newFilters;
+};
+
+
 /**
  * TODO: Update to use decorated actions and the filtersearch geolocate features are added by product.
  * TODO: This also doesn't work with geolocation at the moment since that uses {lat, long} instead of a Mapbox place id as the filter value
@@ -123,14 +140,16 @@ export function updateSearchParams(
 
     if (staticFilters) {
       // TODO: There are multiple filters that are valid here for the above reasons. Make sure this looks good after adding geolocate and decorated actions.
-      const locationFilter = staticFilters.filter(f => f.selected).find(f => f.fieldId === 'builtin.location') ?? null;
+      const allSelectedFilters = staticFilters.filter(f => f.selected);
+      const locationFilter = getFieldValueFilters(allSelectedFilters.map(f => f.filter)).find(f => f.fieldId === 'builtin.location');
+      const selectedFilter = allSelectedFilters.find(f => f.filter  === locationFilter);
 
       // Prevent setting URLParam from geolocation search for now
-      if (locationFilter?.value && typeof(locationFilter.value) === "string") {
+      if (selectedFilter && locationFilter && typeof(locationFilter.value) === "string") {
         let searchParamsObject: {[key: string]: string} = {};
         searchParamsObject["q"] = locationFilter.value
-        if (locationFilter.displayName) {
-          searchParamsObject["qp"] = locationFilter.displayName;
+        if (selectedFilter.displayName) {
+          searchParamsObject["qp"] = selectedFilter.displayName;
         }
 
         if (facetFilters) {
@@ -161,8 +180,8 @@ export function useHandleInitialLocationFilter(
 
     // Get value of initial filter to save for removing later
     if (staticFilters && !initialSearchValue) {
-      const initialFilter = staticFilters.find(f => f.fieldId === 'builtin.location');
-      if (initialFilter?.value && typeof initialFilter.value === 'string') {
+      const initialFilter = getFieldValueFilters(staticFilters.map(f => f.filter)).find(f => f.fieldId === 'builtin.location');
+      if (initialFilter && typeof initialFilter.value === 'string') {
         setInitialSearchValue(initialFilter.value);
       }
     }
@@ -171,7 +190,7 @@ export function useHandleInitialLocationFilter(
     // Unset initialFilter and rerun search so only one filter is active.
     // A new search needs to be run since there's currently no reliable way to update the filter state before the previos filter search is initiated.
     if (initialParamsLoaded && !userSearchRun) {
-      const activeLocationFilter = staticFilters?.find(f => f.value === initialSearchValue);
+      const activeLocationFilter = staticFilters?.find(f => f.filter.kind === 'fieldValue' && f.filter.value === initialSearchValue);
       if (activeLocationFilter) {
         searchActions.setFilterOption({
           ...activeLocationFilter,
