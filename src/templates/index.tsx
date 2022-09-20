@@ -23,6 +23,7 @@ import { defaultHeadConfig } from "src/common/head";
 import type { LocationProfile } from "src/types/entities";
 import { dedupeStreamFields } from "src/common/helpers";
 import { Main } from 'src/layouts/main';
+import { FeaturedCardComponent } from "src/models/cardComponent";
 
 import { defaultFields as headerFields } from "src/components/common/Header";
 import { Banner, defaultFields as bannerFields } from "src/components/entity/Banner";
@@ -109,6 +110,23 @@ export const config: TemplateConfig = {
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadConfig => {
   return defaultHeadConfig(data);
 };
+
+// TESTING STUFF
+interface EventProfile {
+  name: string
+  whatever: string
+}
+const eventData: EventProfile[] = [
+  {name: "ben", whatever: "hi"},
+  {name: "john smith", whatever: "ok"},
+]
+
+const EventCard: FeaturedCardComponent<EventProfile> = function eventCard(props) {
+  const { content } = props;
+  return (
+    <div>Hello {content.profile.name}, {content.profile.whatever}</div>
+  )
+}
 
 /**
  * This is the main template. It can have any name as long as it's the default export.

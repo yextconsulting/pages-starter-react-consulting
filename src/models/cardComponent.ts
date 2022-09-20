@@ -8,8 +8,8 @@ export declare interface DirectoryCardContent {
   hours?: Hours;
 }
 
-export declare interface FeaturedCardContent {
-  profile: ProductProfile
+export declare interface FeaturedCardContent<ProfileType> {
+  profile: ProfileType
 }
 
 /**
@@ -28,9 +28,9 @@ export interface CardProps {
  *
  * @public
  */
- export interface FeaturedCardProps {
+ export interface FeaturedCardProps<ProfileType> {
   /** The result data provided to the card for rendering. */
-  content: FeaturedCardContent
+  content: FeaturedCardContent<ProfileType>
 }
 
 /**
@@ -45,4 +45,4 @@ export type CardComponent = (props: CardProps) => JSX.Element;
  *
  * @public
  */
- export type FeaturedCardComponent = (props: FeaturedCardProps) => JSX.Element;
+ export type FeaturedCardComponent<ProfileType> = (props: FeaturedCardProps<ProfileType>) => JSX.Element;
