@@ -8,7 +8,7 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import React from "react";
+import React, { Profiler } from "react";
 import Core from "src/components/Core/Core";
 import Team from "src/components/Team/Team";
 import Hero from "src/components/Hero/Hero";
@@ -33,6 +33,7 @@ import { defaultFields, Promo } from "src/components/Promo/Promo";
 import { About } from "src/components/About/About";
 import Banner from "src/components/Banner/Banner";
 import { Main } from 'src/layouts/main';
+import { FeaturedCardComponent } from "src/models/cardComponent";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -66,7 +67,7 @@ export const config: TemplateConfig = {
       ...defaultFields,
       ...featuredProductFields,
       ...teamFields,
-      ...eventFields
+      // ...eventFields
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -99,6 +100,23 @@ export const config: TemplateConfig = {
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadConfig => {
   return defaultHeadConfig(data);
 };
+
+// TESTING STUFF
+interface EventProfile {
+  name: string
+  whatever: string
+}
+const eventData: EventProfile[] = [
+  {name: "ben", whatever: "hi"},
+  {name: "john smith", whatever: "ok"},
+]
+
+const EventCard: FeaturedCardComponent<EventProfile> = function eventCard(props) {
+  const { content } = props;
+  return (
+    <div>Hello {content.profile.name}, {content.profile.whatever}</div>
+  )
+}
 
 /**
  * This is the main template. It can have any name as long as it's the default export.
@@ -139,6 +157,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
       />}
       <FeaturedProduct title={c_featuredProducts?.title || 'Featured Products'} products={c_featuredProducts?.products || []}/>
       <Featured title={c_featuredProducts?.title || 'Featured Products'} items={c_featuredProducts?.products || []} FeaturedCardComponent={ProductCard}/>
+      <Featured title={"Featured Events"} items={eventData} FeaturedCardComponent={EventCard}/>
       <About 
         title="About Business Geomodifier"
         description={description}
