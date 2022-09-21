@@ -33,6 +33,7 @@ import { Gallery, defaultFields as galleryFields } from "src/components/entity/G
 import { About, defaultFields as aboutFields } from "src/components/entity/About";
 import { Team, defaultFields as teamFields } from "src/components/entity/Team";
 import { FAQs, defaultFields as FAQsFields } from "src/components/entity/FAQs";
+import RichText from "src/components/common/RichText";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -65,6 +66,7 @@ export const config: TemplateConfig = {
       "dm_directoryChildrenCount",
       "slug",
       "c_header",
+      "c_richText",
       ...bannerFields,
       ...heroFields,
       ...coreFields,
@@ -132,6 +134,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
     c_gallerySection: gallery,
     c_teamSection: team,
     c_faqSection: faq,
+    c_richText
   } = document;
 
   const showBanner = banner?.text && banner?.image;
@@ -153,6 +156,9 @@ const Index: Template<TemplateRenderProps> = (data) => {
       {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
       {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
       {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
+      {c_richText && (
+        <RichText content={c_richText} className="Main-richText" />
+      )}
     </Main>
   );
 };

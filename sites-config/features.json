@@ -101,6 +101,7 @@
         "dm_directoryChildrenCount",
         "slug",
         "c_header",
+        "c_richText",
         "c_bannerSection",
         "c_heroSection",
         "c_promoSection",

@@ -113,6 +113,7 @@ export interface LocationProfile extends BaseProfile {
 		readonly title?: string
 		readonly faqs?: FAQItem[]
 	}
+	c_richText?: string
 }
 
 export type DirectoryProfile<T> = BaseProfile & {
