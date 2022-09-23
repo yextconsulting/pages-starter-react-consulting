@@ -34,6 +34,7 @@ export interface SiteProfile {
 	c_footerLinks?: CTA[]
 	c_header?: {
 		logo?: Image
+		logoLink?: string
 		links?: CTA[]
 	}
 }
