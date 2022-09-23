@@ -24,6 +24,7 @@ import type { LocationProfile } from "src/types/entities";
 import { dedupeStreamFields } from "src/common/helpers";
 import { Main } from 'src/layouts/main';
 
+import { defaultFields as headerFields } from "src/components/common/Header";
 import { Banner, defaultFields as bannerFields } from "src/components/entity/Banner";
 import { Hero, defaultFields as heroFields } from "src/components/entity/Hero";
 import { Core, defaultFields as coreFields } from "src/components/entity/Core";
@@ -64,7 +65,7 @@ export const config: TemplateConfig = {
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
       "slug",
-      "c_header",
+      ...headerFields,
       ...bannerFields,
       ...heroFields,
       ...coreFields,
