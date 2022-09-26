@@ -23,6 +23,7 @@ import { defaultHeadConfig } from "src/common/head";
 import type { LocationProfile } from "src/types/entities";
 import { dedupeStreamFields } from "src/common/helpers";
 import { Main } from 'src/layouts/main';
+import { Layout } from "src/layouts/layout";
 
 import { defaultFields as headerFields } from "src/components/common/Header";
 import { Banner, defaultFields as bannerFields } from "src/components/entity/Banner";
@@ -148,7 +149,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   const showFAQ = faq?.title && faq?.faqs;
 
   return (
-    <>
+    <Layout data={data}>
       {showBanner && <Banner text={banner.text} image={banner.image} />}
       <Hero name={name} cta1={hero?.cta1} cta2={hero?.cta2} address={address} background={hero?.background} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={document} />
@@ -158,7 +159,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
       {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
       {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
       {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
-    </>
+    </Layout>
   );
 };
 
@@ -166,7 +167,7 @@ const IndexWrapper: Template<TemplateRenderProps> = (data) => {
   const [translationsLoaded, setTranslationsLoaded] = useState(false);
 
   return (
-    <Main data={data} i18nCallback={() => setTranslationsLoaded(true)}>
+    <Main template={Index} data={data} i18nCallback={() => setTranslationsLoaded(true)}>
       {translationsLoaded && (
         <Index {...data} />
       )}

@@ -10,17 +10,19 @@ import { I18nextProvider } from 'react-i18next';
 import { i18nInstanceBuilder } from "src/common/i18n";
 import i18n from 'i18next';
 
+import { CustomFieldDebuggerReactProvider } from '@yext/custom-field-debugger';
+
 interface MainProps {
   data: TemplateRenderProps;
   children?: React.ReactNode;
-  i18nCallback: Function;
+  i18nCallback?: Function;
+  template: React.FC<TemplateRenderProps>;
 }
 
 const Main = (props: MainProps) => {
   const [i18nInstance, setI18nInstance] = useState<typeof i18n | undefined>(undefined);
   const document = props.data.document as BaseProfile;
   const {
-    _site,
     locale,
   } = document;
 
@@ -38,32 +40,20 @@ const Main = (props: MainProps) => {
   }, []);
 
   useEffect(() => {
-    if (i18nInstance) {
+    if (i18nInstance && props.i18nCallback) {
       props.i18nCallback();
     }
   }, [i18nInstance]);
 
-
   return (
     <ConfigurationProvider value={config}>
-      {i18nInstance && (
-        <I18nextProvider i18n={i18nInstance}>
-          <Header
-            logo={_site?.c_header?.logo}
-            links={_site?.c_header?.links || []}
-          />
-          {children}
-          <Footer
-            copyrightMessage={_site.c_copyrightMessage || ""}
-            facebook={_site.c_facebook}
-            instagram={_site.c_instagram}
-            youtube={_site.c_youtube}
-            twitter={_site.c_twitter}
-            linkedIn={_site.c_linkedIn}
-            footerLinks={_site.c_footerLinks || []}
-          />
-        </I18nextProvider>
-      )}
+      <CustomFieldDebuggerReactProvider component={props.template} {...props.data} debug={true} >
+        {i18nInstance && (
+          <I18nextProvider i18n={i18nInstance}>
+            {children}
+          </I18nextProvider>
+        )}
+      </CustomFieldDebuggerReactProvider>
     </ConfigurationProvider>
   )
 }

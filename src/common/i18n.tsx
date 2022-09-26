@@ -9,13 +9,16 @@ const i18nDefaultOptions = {
   react: {
     useSuspense: false,
   },
-  debug: true,
+  // debug: true,
   saveMissing: true,
 }
 
 async function i18nInstanceBuilder(locale: string): Promise<typeof i18n | undefined> {
-  const json = await import(`../../i18n/${locale}/translation.json`);
-  const { default: translation } = json;
+  let translation = {};
+  const json = await import(`../../i18n/${locale}/translation.json`).catch(e => {
+    console.warn('Error loading translation strings: ' + e);
+  });
+  if (json) { translation = json.default; }
 
   const i18nOptions = {
     ...i18nDefaultOptions,
