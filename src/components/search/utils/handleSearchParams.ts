@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Matcher } from "@yext/search-headless-react";
+import { FieldValueFilter, Matcher, SelectableStaticFilter } from "@yext/search-headless-react";
 import type { DisplayableFacetOption, FieldValueStaticFilter, SearchHeadless, StaticFilter } from "@yext/search-headless-react";
 import type { URLSearchParamsInit } from "react-router-dom";
+import { getUserLocation } from "@yext/search-ui-react";
 
 /**
  * TODO: FilterSearch doesn't account for builtin.location being set already so when there is a saved locationId in the URLSearchParams
@@ -27,16 +28,56 @@ export function loadInitialSearchParams(
 
       // If the Mapbox place id is present then the static filter can be immediately set
       if (locationPlaceId) {
-        searchActions.setStaticFilters([{
-          displayName: locationDisplayName ?? '',
-          selected: true,
-          filter: {
-            fieldId: 'builtin.location',
-            kind: 'fieldValue',
-            matcher: Matcher.Equals,
-            value: locationPlaceId,
-          }
-        }]);
+        // If using Near filter from GeolocateButton
+        if (locationDisplayName === 'My Location') {
+          searchActions.setStaticFilters([{
+            displayName: locationDisplayName,
+            selected: true,
+            filter: {
+              fieldId: 'builtin.location',
+              kind: 'fieldValue',
+              matcher: Matcher.Near,
+              value: JSON.parse(locationPlaceId),
+            }
+          }]);
+        } else {
+          searchActions.setStaticFilters([{
+            displayName: locationDisplayName ?? '',
+            selected: true,
+            filter: {
+              fieldId: 'builtin.location',
+              kind: 'fieldValue',
+              matcher: Matcher.Equals,
+              value: locationPlaceId,
+            }
+          }]);
+        }
+      }
+
+      // If only 'My Location' is passed in then run a geolocation search
+      else if (locationDisplayName === 'My Location') {
+        try {
+          const position = await getUserLocation();
+
+          // Set userlocation bias
+          searchActions.setUserLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+
+          searchActions.setStaticFilters([{
+            displayName: locationDisplayName,
+            selected: true,
+            filter: {
+              fieldId: 'builtin.location',
+              kind: 'fieldValue',
+              matcher: Matcher.Near,
+              value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * 1000 },
+            }
+          }]);
+        } catch (e) {
+          console.error(e);
+        }
       }
 
       // If only the displayName is given, such as from a redirect from a client site, calculate the most likely
@@ -144,10 +185,10 @@ export function updateSearchParams(
       const locationFilter = getFieldValueFilters(allSelectedFilters.map(f => f.filter)).find(f => f.fieldId === 'builtin.location');
       const selectedFilter = allSelectedFilters.find(f => f.filter  === locationFilter);
 
-      // Prevent setting URLParam from geolocation search for now
-      if (selectedFilter && locationFilter && typeof(locationFilter.value) === "string") {
+      if (selectedFilter && locationFilter) {
         let searchParamsObject: {[key: string]: string} = {};
-        searchParamsObject["q"] = locationFilter.value
+        // stringify the geolocation filter value if present
+        searchParamsObject["q"] = typeof(locationFilter.value) === "string" ? locationFilter.value : JSON.stringify(locationFilter.value);
         if (selectedFilter.displayName) {
           searchParamsObject["qp"] = selectedFilter.displayName;
         }
@@ -174,14 +215,14 @@ export function useHandleInitialLocationFilter(
   initialParamsLoaded: boolean
 ) {
   const [userSearchRun, setUserSearchRun] = useState(false);
-  const [initialSearchValue, setInitialSearchValue] = useState("");
+  const [initialSearchValue, setInitialSearchValue] = useState<FieldValueFilter["value"]>();
   useEffect(() => {
     const staticFilters = searchActions.state.filters.static;
 
     // Get value of initial filter to save for removing later
     if (staticFilters && !initialSearchValue) {
       const initialFilter = getFieldValueFilters(staticFilters.map(f => f.filter)).find(f => f.fieldId === 'builtin.location');
-      if (initialFilter && typeof initialFilter.value === 'string') {
+      if (initialFilter) {
         setInitialSearchValue(initialFilter.value);
       }
     }
@@ -201,4 +242,36 @@ export function useHandleInitialLocationFilter(
       setUserSearchRun(true);
     }
   }, [searchActions.state.filters.static]);
+}
+
+// Listen to filter state.filters.static changes for geolocate filters and remove them the next time
+// a filter search is made.
+export function useHandleGeolocateFilter(
+  searchActions: SearchHeadless,
+  initialParamsLoaded: boolean
+) {
+  const [geoSearchMade, setGeoSearchMade] = useState(false);
+  const [geoFilter, setGeofilter] = useState<SelectableStaticFilter|null>(null);
+
+  useEffect(() => {
+    const staticFilters = searchActions.state.filters.static;
+    const activeGeoFilter = staticFilters?.find(f => f.selected && f.displayName === 'My Location' && f.filter.kind === 'fieldValue' && f.filter.matcher === Matcher.Near);
+    
+    if (activeGeoFilter && initialParamsLoaded && !geoSearchMade) {
+      setGeoSearchMade(true);
+      setGeofilter(activeGeoFilter);
+    }
+
+    // Only reset filter when a new search has been made
+    // Checking staticFilters length ensures the geolocate filter isn't reset if the user clicks the button twice
+    if (geoSearchMade && geoFilter && staticFilters && staticFilters.length > 1) {
+      searchActions.setFilterOption({
+        ...geoFilter,
+        selected: false,
+      });
+      searchActions.executeVerticalQuery();
+      setGeofilter(null);
+      setGeoSearchMade(false);
+    }
+  }, [searchActions.state.filters.static])
 }
