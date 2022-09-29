@@ -1,7 +1,5 @@
 import React from "react";
-import { ProductProfile } from "src/types/entities";
 import { FeaturedCardContent, FeaturedCardComponent } from "src/models/cardComponent";
-import ProductCard from "src/components/cards/ProductCard"
 import "src/styles/FeaturedProduct.css";
 
 interface FeaturedProps<ProfileType> {
@@ -11,8 +9,10 @@ interface FeaturedProps<ProfileType> {
 }
 
 const Featured = <ProfileType,>(props: FeaturedProps<ProfileType>) => {
-  const { title, items, FeaturedCardComponent = ProductCard } = props;
-  if (!items.length) return null;
+  const { title, items, FeaturedCardComponent } = props;
+  if (!items.length) {
+    return null;
+  }
 
   return (
     <div className="FeaturedProduct">

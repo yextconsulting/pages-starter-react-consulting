@@ -1,12 +1,11 @@
 
 import React from "react";
-import { Address, HoursStatus } from "@yext/sites-react-components";
 import { Image } from "@yext/sites-react-components";
 import { Link } from "@yext/pages/components";
 import { ProductProfile } from "src/types/entities";
-import { FeaturedCardProps } from "src/models/cardComponent";
+import { FeaturedCardComponent } from "src/models/cardComponent";
 
-export default function ProductCard(props: FeaturedCardProps): JSX.Element {
+export const ProductCard: FeaturedCardComponent<ProductProfile> = function productCard(props): JSX.Element {
   const { content } = props;
 
   return (
