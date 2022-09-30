@@ -16,8 +16,8 @@ async function main() {
   const commandName = process.argv[2];
 
   const commands = {
-    'pull': pull,   // Push translations to smartling
-    'push': push,   // Pull translations from smartling
+    'pull': pull,   // Pull translations to smartling
+    'push': push,   // Push translations from smartling
     'scan': scan,   // Scan files for new translation strings to add to json files
   };
 

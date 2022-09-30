@@ -10,7 +10,6 @@ const i18nDefaultOptions = {
     useSuspense: false,
   },
   debug: true,
-  saveMissing: true,
 }
 
 async function i18nInstanceBuilder(locale: string): Promise<typeof i18n | undefined> {
