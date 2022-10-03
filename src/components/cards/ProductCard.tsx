@@ -1,7 +1,6 @@
 
 import React from "react";
-import { Image } from "@yext/sites-react-components";
-import { Link } from "@yext/pages/components";
+import { Image, Link } from "@yext/pages/components";
 import { ProductProfile } from "src/types/entities";
 import { FeaturedCardComponent } from "src/models/cardComponent";
 
@@ -10,18 +9,24 @@ export const ProductCard: FeaturedCardComponent<ProductProfile> = function produ
 
   return (
       <>
-        <div className="flex justify-center">
-          {content.profile.primaryPhoto && (<Image className="FeaturedProduct-image" imageField={content.profile.primaryPhoto.image}/>)}
-        </div>
-        <div className="mx-8 mt-8 FeaturedProduct-title">
+       {content.profile.primaryPhoto && (
+          <div className="flex justify-center h-[187px] mb-8">
+            <Image layout="fill" image={content.profile.primaryPhoto.image}/>
+          </div>
+        )}
+        <div className="Heading Heading--sub mx-8">
           {content.profile.name}
         </div>
-        <div className="mx-8 mt-4 mb-8 FeaturedProduct-description">
-          {content.profile.richTextDescription}
-        </div>
-        <div className="mx-4 FeaturedProduct-ctaWrapper">
-          {content.profile.c_primaryCTA && (<Link className="m-4 Button Button--secondary" cta={content.profile.c_primaryCTA} />)}
-        </div>
+        {content.profile.richTextDescription && (
+          <div className="mx-8 mt-4">
+            {content.profile.richTextDescription}
+          </div>
+        )}
+        {content.profile.c_primaryCTA && (
+            <div className="flex mx-8 mt-8 mb-4">
+              <Link className="self-start Button Button--secondary" cta={content.profile.c_primaryCTA} />
+            </div>
+          )}
       </>
   )
 }

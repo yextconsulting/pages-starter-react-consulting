@@ -1,6 +1,5 @@
 import React from "react";
 import { FeaturedCardContent, FeaturedCardComponent } from "src/models/cardComponent";
-import "src/styles/FeaturedProduct.css";
 
 interface FeaturedProps<ProfileType> {
   title: string;
@@ -15,14 +14,16 @@ const Featured = <ProfileType,>(props: FeaturedProps<ProfileType>) => {
   }
 
   return (
-    <div className="FeaturedProduct">
+    <div className="FeaturedProduct py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
-        <div className="FeaturedProduct-heading pb-2 m-4 Heading Heading--head">
+        <div className="pb-2 m-4 Heading Heading--head">
           {title}
         </div>
-        <ul className="flex FeaturedProduct-content gap-6">
+        <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {items?.map((item, i) => (
-             renderCard<ProfileType>(FeaturedCardComponent, {profile: item}, i)
+            <li className="bg-white" key={i}>
+             {renderCard<ProfileType>(FeaturedCardComponent, {profile: item})}
+            </li>
           ))}
         </ul>
       </div>
@@ -33,13 +34,13 @@ const Featured = <ProfileType,>(props: FeaturedProps<ProfileType>) => {
 function renderCard<T>(
   FeaturedCardComponent: FeaturedCardComponent<T>,
   childContent: FeaturedCardContent<T>,
-  index: number
 ): JSX.Element {
   return (
-    <li className="FeaturedProduct-card mb-8" key={index}>
-      <FeaturedCardComponent content={childContent} />
-    </li>
+    <FeaturedCardComponent content={childContent} />
   )
 }
 
-export default Featured;
+export {
+  Featured,
+  FeaturedProps,
+}

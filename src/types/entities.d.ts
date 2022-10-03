@@ -46,6 +46,19 @@ export interface ProductProfile extends BaseProfile {
 	c_primaryCTA: CTA
 }
 
+export interface EventDate {
+	end: string
+	start: string
+}
+
+export interface EventProfile extends BaseProfile {
+	name: string
+  time: EventDate
+  description: string
+  c_primaryCTA: CTA
+  photoGallery: ComplexImage[]
+}
+
 export interface financialProfessional {
 	id: string;
 	name: string;
@@ -75,6 +88,10 @@ export interface LocationProfile extends BaseProfile {
 	readonly logo?: Image
 	// Add custom fields here
 	// c_myStringField: string
+	readonly c_eventsSection?: {
+		readonly title?: string
+		readonly events?: EventProfile[]
+	}
 	c_bannerSection?: {
 		readonly text?: string
 		readonly image?: Image
