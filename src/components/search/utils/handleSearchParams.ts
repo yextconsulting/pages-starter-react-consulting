@@ -72,7 +72,7 @@ export function loadInitialSearchParams(
               fieldId: 'builtin.location',
               kind: 'fieldValue',
               matcher: Matcher.Near,
-              value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * 1000 },
+              value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * 50 },
             }
           }]);
         } catch (e) {
@@ -138,7 +138,9 @@ export function loadInitialSearchParams(
         }
 
         // Finally run vertical search with all the static and facet filters set from the URLSearchParams
-        await searchActions.executeVerticalQuery();
+        if (searchActions.state.filters.static) {
+          await searchActions.executeVerticalQuery();
+        }
       }
       if (callback) {
         callback();
