@@ -20,8 +20,5 @@ export function useGetSearchResults(displayAllOnNoResults: boolean) {
     } as LocatorSearchResultType;
   });
 
-  console.log(dataToRender);
-  console.log(state);
-
   return dataToRender;
 }
