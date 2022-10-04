@@ -12,7 +12,7 @@ import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import mapStyles from "./defaultMapStyles.json";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import { loadInitialSearchParams, updateSearchParams, useHandleInitialLocationFilter } from "src/components/search/utils/handleSearchParams";
+import { loadInitialSearchParams, updateSearchParams, useHandleInitialLocationFilter, useHandleGeolocateFilter } from "src/components/search/utils/handleSearchParams";
 import { useGetSearchResults } from "src/components/search/utils/getSearchResults";
 import "src/components/search/Locator.css";
 
@@ -54,6 +54,9 @@ export default function Locator(props: LocatorProps) {
   // Unset initial location filter from URLSearchParams on new user search
   // TODO: Remove if product allows a way to set the initial state
   useHandleInitialLocationFilter(searchActions, initialParamsLoaded);
+  // Unset geolocate filter the next time a filter search is made
+  // TODO: Remove when product updates filter modal
+  useHandleGeolocateFilter(searchActions, initialParamsLoaded);
 
   // Unset any selected, hovered, or focused markers on new search
   useEffect(() => {
@@ -74,7 +77,7 @@ export default function Locator(props: LocatorProps) {
       setHoveredId: setHoveredEntityId,
     }}>
       <div className="Locator">
-        {isLoading && <LoadingSpinner />}
+        {(!initialParamsLoaded || isLoading) && <LoadingSpinner />}
         <div className="Locator-content">
           <SearchBox
             title={ title }

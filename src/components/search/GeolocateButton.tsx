@@ -29,10 +29,13 @@ export default function GeolocateButton({ className }: GeolocateButtonProps) {
       // Get builtin.location static filter to 50 mile radius on users position
       searchActions.setStaticFilters([{
         displayName: "My Location",
-        fieldId: "builtin.location",
-        matcher: Matcher.Near,
         selected: true,
-        value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * 50 },
+        filter: {
+          kind: 'fieldValue',
+          fieldId: "builtin.location",
+          matcher: Matcher.Near,
+          value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * 50 },
+        }
       }]);
 
       executeSearch(searchActions);
