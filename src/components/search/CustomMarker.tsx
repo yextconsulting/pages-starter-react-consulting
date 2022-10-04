@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import type { Coordinate } from "@yext/types";
 import { Coordinate as CoordinateClass } from "@yext/components-tsx-geo";
-import { Marker, useMapContext } from "@yext/sites-react-components";
+import { Marker, useMapContext } from "@yext/pages/components";
 import { useLocatorContext } from "src/components/search/Locator";
 
 type CustomMarkerProps = {
@@ -39,9 +39,9 @@ export default function CustomMarker(props: CustomMarkerProps) {
     <Marker
       coordinate={ coordinate }
       id={ id }
-      markerClickHandler={ setSelectedId }
-      markerFocusHandler={ (focused, id) => setFocusedId(focused ? id : "") }
-      markerHoverHandler={ (hovered, id) => setHoveredId(hovered ? id : "") }
+      onClick={ setSelectedId }
+      onFocus={ (focused, id) => setFocusedId(focused ? id : "") }
+      onHover={ (hovered, id) => setHoveredId(hovered ? id : "") }
       zIndex={ selected ? 1 : hovered || focused ? 2 : 0}
     >
       <MapPin

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { createCtx } from "src/types/data";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
-import { Map } from "@yext/sites-react-components";
+import { Map } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
 import SearchBox from "src/components/search/SearchBox"
 import LocatorCard from "src/components/cards/LocatorCard";
@@ -97,6 +97,7 @@ export default function Locator(props: LocatorProps) {
               clientKey="gme-yextinc"
               bounds={ results.map(data => data.coordinate) }
               padding={ {top: 100, bottom: 200, left: 50, right: 50} }
+              className="h-full"
             >
               {results.map((data, index) => (
                 <CustomMarker
