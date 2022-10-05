@@ -162,8 +162,8 @@ const Index: Template<TemplateRenderProps> = (data) => {
       <Nearby
         title={nearby?.title}
         linkToLocator={nearby?.linkToLocator}
-        buttonText={nearby?.cTATitle}
-        buttonLink={nearby?.cTALink}
+        buttonText={nearby?.cta?.label}
+        buttonLink={nearby?.cta?.link}
         geocodedCoordinate={geocodedCoordinate}
         id={id}
         relativePrefixToRoot={data.relativePrefixToRoot}

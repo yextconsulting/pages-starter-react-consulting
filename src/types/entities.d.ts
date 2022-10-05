@@ -117,8 +117,7 @@ export interface LocationProfile extends BaseProfile {
 	readonly c_nearbySection?: {
 		readonly title?: string
 		readonly linkToLocator?: boolean
-		readonly cTATitle?: string
-		readonly cTALink?: string
+		readonly cta?: CTA
 	}
 }
 

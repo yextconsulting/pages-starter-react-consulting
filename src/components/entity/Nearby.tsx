@@ -7,13 +7,10 @@ import { getPath as searchPath } from 'src/templates/search';
 import { projectConfig } from 'src/config';
 
 const defaultFields: string[] = [
-  'c_nearbySection.title',
-  'c_nearbySection.cTATitle',
-  'c_nearbySection.cTALink',
-  'c_nearbySection.linkToLocator',
+  'c_nearbySection',
 ];
 
-interface NearbyProps {
+type NearbyProps = {
   title?: string;
   linkToLocator?: boolean;
   buttonText?: string;
@@ -53,22 +50,26 @@ const Nearby = (props: NearbyProps) => {
   
   const renderLocatorLink = () => {
     return linkToLocator ? (
-      <Link href={buttonLink ?? relativePrefixToRoot + searchPath()} className="Link Button Button--primary hover:underline mt-8 sm:mt-0">
+      // TODO: using searchPath() has some drawbacks see here: https://github.com/yextconsulting/site-starter-react-consulting/pull/82#discussion_r987318173
+      <Link href={buttonLink ?? relativePrefixToRoot + searchPath()} className="Button Button--primary mt-8 sm:mt-0">
         {buttonText}
       </Link>
     ) : null;
   };
 
+  if (!nearbyLocations.length) {
+    return null;
+  }
+
   return (
     <div className='py-8 sm:py-16'>
       <div className='container'>
         <div className='flex justify-between items-center mb-8'>
-          <h2 className="text-4xl">
+          <h2 className="Heading Heading--head">
             {title}
           </h2>
           {isDesktopBreakpoint && renderLocatorLink()}
         </div>
-        {nearbyLocations.length > 0 && (
           <ul className='flex flex-wrap -m-4'>
             {nearbyLocations.map(location => (
               // TODO(jhood): make standard Teaser card
@@ -77,7 +78,6 @@ const Nearby = (props: NearbyProps) => {
               </li>
             ))}
           </ul>
-        )}
         {!isDesktopBreakpoint && renderLocatorLink()}
       </div>
     </div>
