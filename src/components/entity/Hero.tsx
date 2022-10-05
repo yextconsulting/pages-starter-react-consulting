@@ -37,7 +37,7 @@ const Hero = (props: HeroProps) => {
           </div>
           {props.hours && (
             <div className="mb-4">
-              <HoursStatus hours={props.hours} separatorTemplate={() => <img className="Hero-hourSeparator" src={ellipse} />} dayOfWeekTemplate={()=> null } /> 
+              <HoursStatus hours={props.hours} separatorTemplate={() => ' • '} dayOfWeekTemplate={()=> null } /> 
             </div>
           )}
           {/* TODO(aganesh) : use Reviews component when available */}
