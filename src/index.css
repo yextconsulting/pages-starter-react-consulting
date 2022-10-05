@@ -1,6 +1,4 @@
 @import "src/styles/variables.css";
-@import "src/styles/Heading.css";
-@import "src/styles/Link.css";
 @import "src/styles/utils.css";
 
 @tailwind base;

@@ -7,6 +7,10 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}", "./node_modules/@yext/search-ui-react/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        primary: "'Arial','Helvetica','sans-serif','system'",
+        secondary: "'Arial','Helvetica','sans-serif','system'",
+      },
       colors: {
         "text": "black",
         "brand-primary": "#1B78D0",
@@ -18,8 +22,8 @@ module.exports = {
           400: "#767676",
         }
       },
-      buttons: ({ theme }) => {
-        /** @type {import('./tailwind').ButtonConfig} */
+      /** @type {(theme: any) => import('./tailwind').HoverComponentConfig} */
+      buttons: theme => {
         const buttonStyles = {
           display: 'flex',
           justifyContent: 'center',
@@ -32,7 +36,7 @@ module.exports = {
               backgroundColor: theme('colors.brand-primary'),
               color: "white",
               border: "none",
-              '&:hover': {
+              "&:hover": {
                 backgroundColor: theme('colors.brand-secondary'),
                 color: "white",
                 border: "none",
@@ -42,7 +46,7 @@ module.exports = {
               backgroundColor: "white",
               color: theme('colors.brand-secondary'),
               border: `2px solid ${theme('colors.brand-primary')}`,
-              '&:hover': {
+              "&:hover": {
                 backgroundColor: theme('colors.brand-secondary'),
                 color: "white",
                 border: `2px solid ${theme('colors.brand-primary')}`,
@@ -52,27 +56,69 @@ module.exports = {
         }
         return buttonStyles;
       },
-      fontFamily: {
-        primary: "'Arial','Helvetica','sans-serif','system'",
-        secondary: "'Arial','Helvetica','sans-serif','system'",
+      /** @type {(theme: any) => import('./tailwind').HoverComponentConfig} */
+      links: theme => {
+        const linkStyles = {
+          variants: {
+            primary: {
+              color: theme('colors.brand-primary'),
+              "&:hover": {
+                color: theme('colors.brand-secondary'),
+              }
+            },
+            secondary: {
+              color: theme('colors.brand-secondary'),
+              "&:hover": {
+                color: theme('colors.brand-primary'),
+              }
+            },
+            underline: {
+              textDecoration: "underline",
+              "&:hover": {
+                textDecoration: "none"
+              }
+            },
+            underlineInverse: {
+              textDecoration: "none",
+              "&:hover": {
+                textDecoration: "underline"
+              }
+            }
+          }
+        }
+        return linkStyles;
       },
-      links: ({ theme }) => ({
-        primary: {
-          color: theme('colors.brand-primary'),
-          hoverColor: theme('colors.brand-secondary'),
-        },
-        secondary: {
-          color: theme('colors.brand-secondary'),
-          hoverColor: theme('colors.brand-primary'),
-        },
-      }),
-      headings: {
-        sub: ['1.5rem', { lineHeight: '1.25' }],
-        subMobile: ['1.375rem', { lineHeight: '1.27' }],
-        head: ['2.125rem', { lineHeight: '1.18' }],
-        headMobile: ['1.5rem', { lineHeight: '1.33' }],
-        lead: ['3rem', { lineHeight: '1.33' }],
-        leadMobile: ['1.75rem', { lineHeight: '1.14' }],
+      /** @type {(theme: any) => import('./tailwind').ResponsiveComponentConfig} */
+      headings: theme => {
+        const headingStyles = {
+          variants: {
+            sub: {
+              fontSize: '1.375rem',
+              lineHeight: '1.27',
+              '@screen sm': {
+                fontSize: '2.125rem',
+                lineHeight: '1.18',
+              }
+            },
+            head: {
+              fontSize: '1.5rem',
+              lineHeight: '1.33',
+              '@screen sm': {
+                fontSize: '2.125rem',
+                lineHeight: '1.18',
+              }
+            },
+            lead: {
+              fontSize: '1.75rem',
+              lineHeight: '1.14',
+              '@screen sm': {
+                fontSize: '3rem',
+                lineHeight: '1.33',
+              }
+            },
+          }
+        }
+        return headingStyles;
       },
       container: {
         center: true,
