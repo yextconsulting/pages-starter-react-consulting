@@ -23,7 +23,7 @@ const Header = (props: HeaderProps) => {
     <header className="Header relative">
       <div className="container py-5 flex justify-start md:justify-between">
         {logo && (
-          <MaybeLink className="Header-logoLink Link--secondary" linkUrl={logoLink}>
+          <MaybeLink className="Header-logoLink" linkUrl={logoLink}>
             <div className="flex w-[144px] mr-2">
               <Image image={logo} layout="fill" />
             </div>
