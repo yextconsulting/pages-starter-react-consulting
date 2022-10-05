@@ -16,6 +16,7 @@ import { SandboxEndpoints } from "@yext/search-headless-react"; // TODO: remove 
 import { Main } from "src/layouts/main";
 import { BrowserRouter } from "react-router-dom";
 import { getRuntime } from "@yext/pages/util";
+import { projectConfig } from "src/config";
 
 /**
  * Not required depending on your use case.
@@ -52,7 +53,7 @@ export const config: TemplateConfig = {
  * NOTE: This currently has no impact on the local dev path. Local dev urls currently
  * take on the form: featureName/entityId
  */
-export const getPath: GetPath<TemplateProps> = () => {
+export const getPath = (): string => {
   return "search";
 };
 
@@ -81,10 +82,8 @@ const Search: Template<TemplateRenderProps> = (data) => {
 
   const runtime = getRuntime();
   const searcher = provideHeadless({
-    apiKey: "b7930d2fa7b5b106371224158c5854d2",
-    experienceKey: "locator",
+    ...projectConfig.search,
     locale: document.meta.locale,
-    verticalKey: "locations",
     endpoints: SandboxEndpoints, // TODO: remove if not using sandbox account
   });
 

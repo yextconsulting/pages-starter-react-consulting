@@ -113,6 +113,11 @@ export interface LocationProfile extends BaseProfile {
 	readonly c_faqSection?: {
 		readonly title?: string
 		readonly faqs?: FAQItem[]
+	},
+	readonly c_nearbySection?: {
+		readonly title?: string
+		readonly linkToLocator?: boolean
+		readonly cta?: CTA
 	}
 }
 

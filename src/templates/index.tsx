@@ -34,6 +34,7 @@ import { Gallery, defaultFields as galleryFields } from "src/components/entity/G
 import { About, defaultFields as aboutFields } from "src/components/entity/About";
 import { Team, defaultFields as teamFields } from "src/components/entity/Team";
 import { FAQs, defaultFields as FAQsFields } from "src/components/entity/FAQs";
+import { Nearby, defaultFields as NearbyFields } from "src/components/entity/Nearby";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -75,6 +76,7 @@ export const config: TemplateConfig = {
       ...aboutFields,
       ...teamFields,
       ...FAQsFields,
+      ...NearbyFields,
     ]),
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -120,6 +122,8 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
 const Index: Template<TemplateRenderProps> = (data) => {
   const document = data.document as LocationProfile;
   const {
+    id,
+    geocodedCoordinate,
     name,
     address,
     description,
@@ -133,6 +137,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
     c_gallerySection: gallery,
     c_teamSection: team,
     c_faqSection: faq,
+    c_nearbySection: nearby,
   } = document;
 
   const showBanner = banner?.text && banner?.image;
@@ -154,6 +159,15 @@ const Index: Template<TemplateRenderProps> = (data) => {
       {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
       {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
       {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
+      <Nearby
+        title={nearby?.title}
+        linkToLocator={nearby?.linkToLocator}
+        buttonText={nearby?.cta?.label}
+        buttonLink={nearby?.cta?.link}
+        geocodedCoordinate={geocodedCoordinate}
+        id={id}
+        relativePrefixToRoot={data.relativePrefixToRoot}
+      />
     </Main>
   );
 };
