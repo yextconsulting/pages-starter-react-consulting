@@ -33,7 +33,7 @@ import { Gallery, defaultFields as galleryFields } from "src/components/entity/G
 import { About, defaultFields as aboutFields } from "src/components/entity/About";
 import { Team, defaultFields as teamFields } from "src/components/entity/Team";
 import { FAQs, defaultFields as FAQsFields } from "src/components/entity/FAQs";
-import RichText from "src/components/common/RichText";
+import RTF from "src/components/common/RTF";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -157,7 +157,9 @@ const Index: Template<TemplateRenderProps> = (data) => {
       {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
       {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
       {c_richText && (
-        <RichText content={c_richText} className="Main-richText" />
+        <RTF>
+          {c_richText}
+        </RTF>
       )}
     </Main>
   );
