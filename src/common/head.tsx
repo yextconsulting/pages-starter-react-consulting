@@ -36,25 +36,10 @@ const defaultHeadTags: Tag[] = [
   {
     type: "meta",
     attributes: {
-      property: "og:url",
-      content: "" // TODO: update when siteDomain is available - https://yextops.slack.com/archives/C02LLE9BW2K/p1655239903694849
-    },
-  },
-  {
-    type: "meta",
-    attributes: {
       property: "twitter:card",
       content: "summary"
     },
   },
-  {
-    type: "link",
-    attributes: {
-      rel: "canonical",
-      href: "" // TODO: update when siteDomain is available - https://yextops.slack.com/archives/C02LLE9BW2K/p1655239903694849
-    },
-  },
-  // TODO: alternate language links - we don't have this data yet
 ]
 
 export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Tag[]): HeadConfig {
@@ -126,6 +111,20 @@ export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Ta
           content: metaDescription(data),
         }
       },
+			{
+				type: "meta",
+				attributes: {
+					property: "og:url",
+					content: cannonicalURL(data),
+				},
+			},
+			{
+				type: "link",
+				attributes: {
+					rel: "canonical",
+					href: cannonicalURL(data),
+				},
+			},
       ...logoTags,
       ...defaultHeadTags,
       ...geoTags,
@@ -156,4 +155,29 @@ function metaDescription(data: TemplateRenderProps): string {
   }
 
   return ""
+}
+
+function cannonicalURL(data: TemplateRenderProps, locale?: string): string {
+	const defaultLocale = 'en'; // TODO @aliang: how to determine this?
+	const thisLocale = locale || data.document.locale;
+
+	const localePath = thisLocale === defaultLocale ? '' : `/${thisLocale}`;
+	const pagePath = `${data.path}`;
+	return `https://${data.document.siteDomain}${localePath}${pagePath}`;
+}
+
+function alternateLanguageFields(data: TemplateRenderProps): string {
+	const thisLocale = data.document.locale;
+	const alternateLocales: string[] = Object.keys(data.document?.alternateLanguageFields || {});
+	
+	if (!alternateLocales || alternateLocales.length === 0) { return ''; }
+
+	let elString = '';
+	alternateLocales.forEach(loc => {
+		if (loc !== thisLocale) {
+			elString += `<link rel="alternate" hreflang="${loc}" href="${cannonicalURL(data, loc)}">`
+		}
+	});
+
+	return elString;
 }
