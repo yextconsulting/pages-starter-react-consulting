@@ -6,7 +6,7 @@ const OPTIONS: IntersectionObserverInit = {
   threshold: 0,
 };
 
-export default function runIfVisible(ref: React.MutableRefObject<HTMLInputElement>, options = OPTIONS) {
+export default function useIfVisible(ref: React.RefObject<HTMLElement>, options = OPTIONS) {
   const [isVisibleOnce, setIsVisibleOnce] = useState(false);
 
   useEffect(() => {
@@ -15,11 +15,15 @@ export default function runIfVisible(ref: React.MutableRefObject<HTMLInputElemen
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisibleOnce(true);
+            if (!ref.current) return;
             observer.unobserve(ref.current);
           }
         });
       }, options);
       observer.observe(ref.current);
+      return () => {
+        observer.disconnect();
+      };
     }
   }, [ref]);
 
