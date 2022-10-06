@@ -158,12 +158,15 @@ function metaDescription(data: TemplateRenderProps): string {
 }
 
 function cannonicalURL(data: TemplateRenderProps, locale?: string): string {
-	const defaultLocale = 'en'; // TODO @aliang: how to determine this?
-	const thisLocale = locale || data.document.locale;
+	let pagePath = data.path;
+	
+	const alfs = data.document?.alternateLanguageFields;
+	if (alfs && locale) {
+		const altLocalePath = alfs[locale]?.slug;
+		if (altLocalePath) { pagePath = altLocalePath; }
+	}
 
-	const localePath = thisLocale === defaultLocale ? '' : `/${thisLocale}`;
-	const pagePath = `${data.path}`;
-	return `https://${data.document.siteDomain}${localePath}${pagePath}`;
+	return `https://${data.document.siteDomain}${pagePath}`;
 }
 
 function alternateLanguageFields(data: TemplateRenderProps): string {

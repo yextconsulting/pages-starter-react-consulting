@@ -94,6 +94,7 @@ export const config: TemplateConfig = {
   },
   alternateLanguageFields: [
     "name",
+    "slug"
   ],
 };
 
