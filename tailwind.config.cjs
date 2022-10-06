@@ -1,12 +1,16 @@
 //@ts-check
 
-const styleguidePlugin = require('./tailwindPlugin.cjs');
+const { styleguidePlugin, fontSizes} = require('./tailwindPlugin.cjs');
 
 /** @type {import('tailwindcss/types/config').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}", "./node_modules/@yext/search-ui-react/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        primary: "'Arial','Helvetica','sans-serif','system'",
+        secondary: "'Arial','Helvetica','sans-serif','system'",
+      },
       colors: {
         "text": "black",
         "brand-primary": "#1B78D0",
@@ -18,62 +22,90 @@ module.exports = {
           400: "#767676",
         }
       },
-      buttons: ({ theme }) => {
-        /** @type {import('./tailwind').ButtonConfig} */
-        const buttonStyles = {
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: `${theme('spacing.2')} ${theme('spacing.6')}`,
-          fontWeight: theme('fontWeight.bold'),
-          borderRadius: '50px',
-          variants: {
-            primary: {
-              backgroundColor: theme('colors.brand-primary'),
+      /** @type {(theme: any) => import('./tailwind').ButtonConfig} */
+      buttons: theme => ({
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: `${theme('spacing.2')} ${theme('spacing.6')}`,
+        fontWeight: theme('fontWeight.bold'),
+        borderRadius: '50px',
+        variants: {
+          primary: {
+            backgroundColor: theme('colors.brand-primary'),
+            color: "white",
+            border: "none",
+          },
+          secondary: {
+            backgroundColor: "white",
+            color: theme('colors.brand-secondary'),
+            border: `2px solid ${theme('colors.brand-primary')}`,
+            "&:hover": {
+              backgroundColor: theme('colors.brand-secondary'),
               color: "white",
-              border: "none",
-              '&:hover': {
-                backgroundColor: theme('colors.brand-secondary'),
-                color: "white",
-                border: "none",
-              }
-            },
-            secondary: {
-              backgroundColor: "white",
-              color: theme('colors.brand-secondary'),
               border: `2px solid ${theme('colors.brand-primary')}`,
-              '&:hover': {
-                backgroundColor: theme('colors.brand-secondary'),
-                color: "white",
-                border: `2px solid ${theme('colors.brand-primary')}`,
-              }
             }
           }
         }
-        return buttonStyles;
-      },
-      fontFamily: {
-        primary: "'Arial','Helvetica','sans-serif','system'",
-        secondary: "'Arial','Helvetica','sans-serif','system'",
-      },
-      links: ({ theme }) => ({
-        primary: {
-          color: theme('colors.brand-primary'),
-          hoverColor: theme('colors.brand-secondary'),
-        },
-        secondary: {
-          color: theme('colors.brand-secondary'),
-          hoverColor: theme('colors.brand-primary'),
-        },
       }),
-      headings: {
-        sub: ['1.5rem', { lineHeight: '1.25' }],
-        subMobile: ['1.375rem', { lineHeight: '1.27' }],
-        head: ['2.125rem', { lineHeight: '1.18' }],
-        headMobile: ['1.5rem', { lineHeight: '1.33' }],
-        lead: ['3rem', { lineHeight: '1.33' }],
-        leadMobile: ['1.75rem', { lineHeight: '1.14' }],
-      },
+      /** @type {(theme: any) => import('./tailwind').LinkConfig} */
+      links: ({ theme }) => ({
+        variants: {
+          primary: {
+            color: theme('colors.brand-primary'),
+            "&:hover": {
+              color: theme('colors.brand-secondary'),
+            }
+          },
+          secondary: {
+            color: theme('colors.brand-secondary'),
+            "&:hover": {
+              color: theme('colors.brand-primary'),
+            }
+          },
+          underline: {
+            textDecoration: "underline",
+            "&:hover": {
+              textDecoration: "none"
+            }
+          },
+          underlineInverse: {
+            textDecoration: "none",
+            "&:hover": {
+              textDecoration: "underline"
+            }
+          }
+        }
+      }),
+      /** @type {(theme: any) => import('./tailwind').HeadingConfig} */
+      headings: ({ theme }) => ({
+        variants: {
+          sub: {
+            fontSize: '1.375rem',
+            lineHeight: '1.27',
+            '@screen sm': {
+              fontSize: '2.125rem',
+              lineHeight: '1.18',
+            },
+          },
+          head: {
+            fontSize: '1.5rem',
+            lineHeight: '1.33',
+            '@screen sm': {
+              fontSize: '2.125rem',
+              lineHeight: '1.18',
+            }
+          },
+          lead: {
+            fontSize: '1.75rem',
+            lineHeight: '1.14',
+            '@screen sm': {
+              fontSize: '3rem',
+              lineHeight: '1.33',
+            }
+          },
+        }
+      }),
       container: {
         center: true,
         padding: {
@@ -90,5 +122,6 @@ module.exports = {
   },
   plugins: [
     styleguidePlugin(),
+    fontSizes(),
   ],
 };
