@@ -1,12 +1,12 @@
 import React from "react";
-import { HoursTable, LocationMap } from "@yext/sites-react-components";
+import { HoursTable } from "@yext/sites-react-components";
 import { Link, Address, getDirections } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
 import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { useRef } from "react";
-import useIfVisible from "src/components/util/LazyLoad";
+import LocationMapWrapper from "src/components/common/LocationMapWrapper";
 import "src/components/entity/Core.css";
 
 const defaultFields: string[] = [
@@ -44,10 +44,8 @@ const Core = (props: CoreProps) => {
     </svg>
   );
   const mapRef = useRef<HTMLDivElement>(null);
-  const isVisible = useIfVisible(mapRef);
-
   return(
-    <div ref={mapRef} className="Core py-8 sm:py-16 bg-brand-gray-100">
+    <div className="Core py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
         <div className="flex flex-row flex-wrap">
           <CoreSection>
@@ -98,11 +96,11 @@ const Core = (props: CoreProps) => {
             </CoreSection>
           )}
         </div>
-        {(isVisible && isDesktopBreakpoint && profile.geocodedCoordinate) && (
-          <div className="hidden sm:block mt-16">
-            <LocationMap clientKey={'gme-yextinc'} coordinate={profile.geocodedCoordinate} provider={GoogleMaps}>
+        {(isDesktopBreakpoint && profile.geocodedCoordinate) && (
+          <div ref={mapRef} className="hidden sm:block mt-16">
+            <LocationMapWrapper mapRef={mapRef} clientKey={'gme-yextinc'} coordinate={profile.geocodedCoordinate} provider={GoogleMaps}>
               {mappinSVG}
-            </LocationMap>
+            </LocationMapWrapper>
           </div>
         )}
       </div>
