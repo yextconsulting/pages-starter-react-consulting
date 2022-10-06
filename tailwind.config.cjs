@@ -1,6 +1,6 @@
 //@ts-check
 
-const styleguidePlugin = require('./tailwindPlugin.cjs');
+const { styleguidePlugin, fontSizes} = require('./tailwindPlugin.cjs');
 
 /** @type {import('tailwindcss/types/config').Config} */
 module.exports = {
@@ -22,104 +22,90 @@ module.exports = {
           400: "#767676",
         }
       },
-      /** @type {(theme: any) => import('./tailwind').HoverComponentConfig} */
-      buttons: theme => {
-        const buttonStyles = {
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: `${theme('spacing.2')} ${theme('spacing.6')}`,
-          fontWeight: theme('fontWeight.bold'),
-          borderRadius: '50px',
-          variants: {
-            primary: {
-              backgroundColor: theme('colors.brand-primary'),
+      /** @type {(theme: any) => import('./tailwind').ButtonConfig} */
+      buttons: theme => ({
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: `${theme('spacing.2')} ${theme('spacing.6')}`,
+        fontWeight: theme('fontWeight.bold'),
+        borderRadius: '50px',
+        variants: {
+          primary: {
+            backgroundColor: theme('colors.brand-primary'),
+            color: "white",
+            border: "none",
+          },
+          secondary: {
+            backgroundColor: "white",
+            color: theme('colors.brand-secondary'),
+            border: `2px solid ${theme('colors.brand-primary')}`,
+            "&:hover": {
+              backgroundColor: theme('colors.brand-secondary'),
               color: "white",
-              border: "none",
-              "&:hover": {
-                backgroundColor: theme('colors.brand-secondary'),
-                color: "white",
-                border: "none",
-              }
-            },
-            secondary: {
-              backgroundColor: "white",
-              color: theme('colors.brand-secondary'),
               border: `2px solid ${theme('colors.brand-primary')}`,
-              "&:hover": {
-                backgroundColor: theme('colors.brand-secondary'),
-                color: "white",
-                border: `2px solid ${theme('colors.brand-primary')}`,
-              }
             }
           }
         }
-        return buttonStyles;
-      },
-      /** @type {(theme: any) => import('./tailwind').HoverComponentConfig} */
-      links: theme => {
-        const linkStyles = {
-          variants: {
-            primary: {
-              color: theme('colors.brand-primary'),
-              "&:hover": {
-                color: theme('colors.brand-secondary'),
-              }
-            },
-            secondary: {
+      }),
+      /** @type {(theme: any) => import('./tailwind').LinkConfig} */
+      links: ({ theme }) => ({
+        variants: {
+          primary: {
+            color: theme('colors.brand-primary'),
+            "&:hover": {
               color: theme('colors.brand-secondary'),
-              "&:hover": {
-                color: theme('colors.brand-primary'),
-              }
-            },
-            underline: {
-              textDecoration: "underline",
-              "&:hover": {
-                textDecoration: "none"
-              }
-            },
-            underlineInverse: {
-              textDecoration: "none",
-              "&:hover": {
-                textDecoration: "underline"
-              }
+            }
+          },
+          secondary: {
+            color: theme('colors.brand-secondary'),
+            "&:hover": {
+              color: theme('colors.brand-primary'),
+            }
+          },
+          underline: {
+            textDecoration: "underline",
+            "&:hover": {
+              textDecoration: "none"
+            }
+          },
+          underlineInverse: {
+            textDecoration: "none",
+            "&:hover": {
+              textDecoration: "underline"
             }
           }
         }
-        return linkStyles;
-      },
-      /** @type {(theme: any) => import('./tailwind').ResponsiveComponentConfig} */
-      headings: theme => {
-        const headingStyles = {
-          variants: {
-            sub: {
-              fontSize: '1.375rem',
-              lineHeight: '1.27',
-              '@screen sm': {
-                fontSize: '2.125rem',
-                lineHeight: '1.18',
-              }
+      }),
+      /** @type {(theme: any) => import('./tailwind').HeadingConfig} */
+      headings: ({ theme }) => ({
+        variants: {
+          sub: {
+            fontSize: '1.375rem',
+            lineHeight: '1.27',
+            '@screen sm': {
+              fontSize: '2.125rem',
+              lineHeight: '1.18',
             },
-            head: {
-              fontSize: '1.5rem',
+          },
+          head: {
+            fontSize: '1.5rem',
+            lineHeight: '1.33',
+            '@screen sm': {
+              fontSize: '2.125rem',
+              lineHeight: '1.18',
+            }
+          },
+          lead: {
+            fontSize: '1.75rem',
+            lineHeight: '1.14',
+            '@screen sm': {
+              fontSize: '3rem',
               lineHeight: '1.33',
-              '@screen sm': {
-                fontSize: '2.125rem',
-                lineHeight: '1.18',
-              }
-            },
-            lead: {
-              fontSize: '1.75rem',
-              lineHeight: '1.14',
-              '@screen sm': {
-                fontSize: '3rem',
-                lineHeight: '1.33',
-              }
-            },
-          }
+            }
+          },
         }
-        return headingStyles;
-      },
+      }),
       container: {
         center: true,
         padding: {
@@ -136,5 +122,6 @@ module.exports = {
   },
   plugins: [
     styleguidePlugin(),
+    fontSizes(),
   ],
 };

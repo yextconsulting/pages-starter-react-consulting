@@ -2,7 +2,7 @@ const plugin = require('tailwindcss/plugin');
 
 // Plugin to generate tailwind components from the buttons, links, and headings keys in tailwind.config.cjs
 // Components will be available as tailwind class ex: <button className="Button Button--primary">
-module.exports = function styleguidePlugin() {
+function styleguidePlugin () {
   return plugin(({ addComponents, theme }) => {
     const components = Object.assign({}, {'.Button': JSON.parse(JSON.stringify(theme('buttons') || {}))});
     delete components['.Button'].variants;
@@ -24,4 +24,31 @@ module.exports = function styleguidePlugin() {
 
     addComponents(components);
   })
+}
+
+// Create the utility class font-sizes that accepts 4 values for mobile and desktop font styling.
+// Example usage: font-sizes-[20px,30px,16px,24px]
+function fontSizes() {
+  return plugin(function({ matchUtilities }) {
+    matchUtilities({
+      'font-sizes': (value) => {
+        const values = value.split(',');
+        return {
+          ...(values.length === 4 ? {
+            fontSize: values[2],
+            lineHeight: values[3],
+            '@screen sm': {
+              fontSize: values[0],
+              lineHeight: values[1],
+            }
+          } : {})
+        }
+      }
+    });
+  });
+}
+
+module.exports = {
+  styleguidePlugin,
+  fontSizes,
 }
