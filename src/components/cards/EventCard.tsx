@@ -5,37 +5,40 @@ import { EventProfile } from "src/types/entities";
 import { FeaturedCardComponent } from "src/models/cardComponent";
 
 export const EventCard: FeaturedCardComponent<EventProfile> = function EventCard(props): JSX.Element {
-  const { content } = props;
+  const { profile } = props;
 
   return (
       <>
-       {content.profile.photoGallery[0] && (
+       {profile.photoGallery && profile.photoGallery[0] && (
           <div className="flex justify-center h-[187px] mb-8">
-            <Image layout="fill" image={content.profile.photoGallery[0].image}/>
+            <Image layout="fill" image={profile.photoGallery[0].image}/>
           </div>
         )}
         <div className="Heading Heading--sub mx-8">
-          {content.profile.name}
+          {profile.name}
         </div>
-        {content.profile.time && (
+        {profile.time && (
           <div className="mx-8 mt-4">
-            {formatEventDate(content.profile.time.start, content.profile.time.end)}
+            {formatEventDate(profile.time.start, profile.time.end)}
           </div>
         )}
-        {content.profile.description && (
+        {profile.description && (
           <div className="mx-8 mt-4">
-            {content.profile.description}
+            {profile.description}
           </div>
         )}
-        {content.profile.c_primaryCTA && (
+        {profile.c_primaryCTA && (
             <div className="flex mx-8 mt-8 mb-4">
-              <Link className="self-start Button Button--secondary" cta={content.profile.c_primaryCTA} />
+              <Link className="self-start Button Button--secondary" cta={profile.c_primaryCTA} />
             </div>
           )}
       </>
   )
 }
 
+// TODO (cblair): Currently this is only set up to handle events that take place on a single day.
+// Need to potentially figure out if we want to customizeable logic in here
+// to handle multi-day events and different edge cases
 function formatEventDate(startTime: string, endTime: string) {
   const startDate = new Date(startTime);
   const endDate = new Date(endTime);

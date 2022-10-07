@@ -1,14 +1,15 @@
 import React from "react";
-import { FeaturedCardContent, FeaturedCardComponent } from "src/models/cardComponent";
+import { FeaturedCardComponent } from "src/models/cardComponent";
 
 interface FeaturedProps<ProfileType> {
   title: string;
   items: ProfileType[];
   FeaturedCardComponent: FeaturedCardComponent<ProfileType>;
+  itemsToShow?: number;
 }
 
 const Featured = <ProfileType,>(props: FeaturedProps<ProfileType>) => {
-  const { title, items, FeaturedCardComponent } = props;
+  const { title, items, FeaturedCardComponent, itemsToShow = 3} = props;
   if (!items.length) {
     return null;
   }
@@ -20,25 +21,20 @@ const Featured = <ProfileType,>(props: FeaturedProps<ProfileType>) => {
           {title}
         </div>
         <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {items?.map((item, i) => (
-            <li className="bg-white" key={i}>
-             {renderCard<ProfileType>(FeaturedCardComponent, {profile: item})}
-            </li>
+          {items.map((item, i) => (
+            <>
+            {i < itemsToShow && (
+              <li className="bg-white" key={i}>
+                <FeaturedCardComponent profile={item} />
+              </li>
+            )}
+            </>
           ))}
         </ul>
       </div>
     </div>
   );
 };
-
-function renderCard<T>(
-  FeaturedCardComponent: FeaturedCardComponent<T>,
-  childContent: FeaturedCardContent<T>,
-): JSX.Element {
-  return (
-    <FeaturedCardComponent content={childContent} />
-  )
-}
 
 export {
   Featured,

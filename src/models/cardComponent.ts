@@ -1,15 +1,10 @@
 import type { Address, Hours } from "@yext/types"
-import { ProductProfile } from "src/types/entities";
 
 export declare interface DirectoryCardContent {
   address: Address;
   name: string;
   slug: string;
   hours?: Hours;
-}
-
-export declare interface FeaturedCardContent<ProfileType> {
-  profile: ProfileType
 }
 
 /**
@@ -30,7 +25,7 @@ export interface CardProps {
  */
  export interface FeaturedCardProps<ProfileType> {
   /** The result data provided to the card for rendering. */
-  content: FeaturedCardContent<ProfileType>
+  profile: ProfileType
 }
 
 /**

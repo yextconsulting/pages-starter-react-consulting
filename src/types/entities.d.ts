@@ -52,11 +52,11 @@ export interface EventDate {
 }
 
 export interface EventProfile extends BaseProfile {
-	name: string
-  time: EventDate
-  description: string
-  c_primaryCTA: CTA
-  photoGallery: ComplexImage[]
+	readonly name: string
+	readonly time: EventDate
+	readonly description?: string
+	readonly c_primaryCTA?: CTA
+	readonly photoGallery?: ComplexImage[]
 }
 
 export interface financialProfessional {

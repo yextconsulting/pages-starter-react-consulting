@@ -18,7 +18,7 @@ interface ProductProps {
 const Products = (props: ProductProps) => {
   const { title, items } = props;
   return (
-    <Featured title={title} items={items} FeaturedCardComponent={ProductCard}/>
+    <Featured title={title} items={items} FeaturedCardComponent={ProductCard} itemsToShow={3}/>
   )
 }
 

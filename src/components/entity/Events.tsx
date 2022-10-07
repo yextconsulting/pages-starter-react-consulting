@@ -11,15 +11,25 @@ const defaultFields: string[] = [
   "c_eventsSection.events.photoGallery"
 ];
 
-interface ProductProps {
+interface EventProps {
   title: string;
   items: EventProfile[];
+  hidePastEvents?: boolean;
 }
 
-const Events = (props: ProductProps) => {
-  const { title, items } = props;
+const Events = (props: EventProps) => {
+  const { title, items, hidePastEvents = true } = props;
+  const today = new Date();
+  const validEvents = items.filter(event => {
+    if (hidePastEvents && event.time.end) {
+      const eventEndDate = new Date(event.time.end);
+      return (eventEndDate >= today)
+    }
+    return true;
+  });
+
   return (
-    <Featured title={title} items={items} FeaturedCardComponent={EventCard}/>
+    <Featured title={title} items={validEvents} FeaturedCardComponent={EventCard}/>
   )
 }
 
