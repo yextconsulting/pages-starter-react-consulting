@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    // TODO: what is this is it allowed? What value do we want? 
+    "module": "NodeNext",
     "target": "ESNext",
     "strict": true,
     "moduleResolution": "Node",
