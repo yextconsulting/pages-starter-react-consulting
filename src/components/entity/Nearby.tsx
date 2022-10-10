@@ -3,8 +3,34 @@ import type { Coordinate } from "@yext/types";
 import { DirectoryCard } from 'src/components/cards/DirectoryCard';
 import { useBreakpoint } from 'src/common/useBreakpoints';
 import { Link } from '@yext/pages/components';
-import { getPath as searchPath } from 'src/templates/search';
-import { projectConfig } from 'src/config';
+import { SEARCH_PATH } from 'src/common/consts';
+
+// Configure nearby locations section liveapi params and endpoint
+// See https://hitchhikers.yext.com/docs/liveapis/knowledgegraphliveapi/entities/entities/#operation/geoSearchEntities
+type NearbyAPIConfig = {
+  endpoint: 'https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch' | 'https://liveapi.yext.com/v2/accounts/me/entities/geosearch';
+  params: {
+    api_key: string;
+    entityTypes?: string;
+    limit?: string;
+    radius?: string;
+    savedFilterIds?: string;
+    v: string;
+  }
+}
+
+// TODO update to project's values
+const config: NearbyAPIConfig = {
+  endpoint: 'https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch', 
+  params: {
+    api_key: 'ae79e8eb05e10f03917d3f4836863ac7',
+    entityTypes: 'location',
+    limit: '4',
+    radius: '50',
+    savedFilterIds: '1003506731',
+    v: '20220927',
+  }
+}
 
 const defaultFields: string[] = [
   'c_nearbySection',
@@ -41,12 +67,12 @@ const Nearby = (props: NearbyProps) => {
     }
 
     const searchParams = new URLSearchParams({
-      ...projectConfig.nearby.params,
+      ...config.params,
       location: `${geocodedCoordinate.latitude},${geocodedCoordinate.longitude}`,
       filter: JSON.stringify({ "meta.id": { "!$eq": `${id}` } }),
     });
 
-    fetch(`${projectConfig.nearby.endpoint}?${searchParams.toString()}`)
+    fetch(`${config.endpoint}?${searchParams.toString()}`)
       .then(resp => resp.json())
       .then(data => setNearbyLocations(data.response.entities || []))
       .catch(error => console.error(error));
@@ -54,8 +80,7 @@ const Nearby = (props: NearbyProps) => {
 
   const renderLocatorLink = () => {
     return linkToLocator ? (
-      // TODO: using searchPath() has some drawbacks see here: https://github.com/yextconsulting/site-starter-react-consulting/pull/82#discussion_r987318173
-      <Link href={buttonLink ?? relativePrefixToRoot + searchPath()} className="Button Button--primary mt-8 sm:mt-0">
+      <Link href={buttonLink ?? relativePrefixToRoot + SEARCH_PATH} className="Button Button--primary mt-8 sm:mt-0">
         {buttonText}
       </Link>
     ) : null;

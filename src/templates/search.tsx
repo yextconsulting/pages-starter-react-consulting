@@ -14,8 +14,8 @@ import { SandboxEndpoints } from "@yext/search-headless-react"; // TODO: remove 
 import { Main } from "src/layouts/main";
 import { BrowserRouter } from "react-router-dom";
 import { getRuntime } from "@yext/pages/util";
-import { projectConfig } from "src/config";
 import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
+import { SEARCH_PATH, getSearchProviderConfig } from "src/common/consts";
 
 /**
  * Not required depending on your use case.
@@ -57,7 +57,7 @@ export const config: TemplateConfig = {
  * take on the form: featureName/entityId
  */
 export const getPath = (): string => {
-  return "search";
+  return SEARCH_PATH;
 };
 
 /**
@@ -85,9 +85,8 @@ const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
 
   const runtime = getRuntime();
   const searcher = provideHeadless({
-    ...projectConfig.search,
-    locale: document.meta.locale,
-    endpoints: SandboxEndpoints, // TODO: remove if not using sandbox account
+    ...getSearchProviderConfig(document.meta.locale),
+    endpoints: SandboxEndpoints // TODO: remove if not using a sandbox account
   });
 
   return (

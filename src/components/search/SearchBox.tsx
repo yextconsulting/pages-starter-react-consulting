@@ -1,9 +1,9 @@
 import { FilterSearch, StandardFacets } from "@yext/search-ui-react";
 import GeolocateButton from "./GeolocateButton";
+import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/common/consts";
 
-// TODO: Where should config like this go and if possible get from streams definition?
 const searchFields = [
-  { fieldApiName: "builtin.location", entityType: "location" },
+  { fieldApiName: LOCATOR_STATIC_FILTER_FIELD, entityType: LOCATOR_ENTITY_TYPE },
 ];
 
 type SearchBoxProps = {

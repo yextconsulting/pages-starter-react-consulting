@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSearchActions, Matcher } from '@yext/search-headless-react';
 import { executeSearch, getUserLocation } from '@yext/search-ui-react';
 import LoadingSpinner from 'src/components/common/LoadingSpinner';
+import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD } from 'src/common/consts';
 
 /**
  * - TODO(jhood): Replace with search-ui-react component when available: https://yext.slack.com/archives/C016ZKY42CF/p1661356424437289
@@ -26,15 +27,15 @@ export default function GeolocateButton({ className }: GeolocateButtonProps) {
         longitude: position.coords.longitude,
       });
 
-      // Get builtin.location static filter to 50 mile radius on users position
+      // Set static filter to radius around users position
       searchActions.setStaticFilters([{
         displayName: "My Location",
         selected: true,
         filter: {
           kind: 'fieldValue',
-          fieldId: "builtin.location",
+          fieldId: LOCATOR_STATIC_FILTER_FIELD,
           matcher: Matcher.Near,
-          value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * 50 },
+          value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * GEOLOCATE_RADIUS },
         }
       }]);
 

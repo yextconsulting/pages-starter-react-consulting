@@ -3,6 +3,7 @@ import { FieldValueFilter, Matcher, SelectableStaticFilter } from "@yext/search-
 import type { DisplayableFacetOption, FieldValueStaticFilter, SearchHeadless, StaticFilter } from "@yext/search-headless-react";
 import type { URLSearchParamsInit } from "react-router-dom";
 import { getUserLocation } from "@yext/search-ui-react";
+import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/common/consts";
 
 /**
  * TODO: FilterSearch doesn't account for builtin.location being set already so when there is a saved locationId in the URLSearchParams
@@ -34,7 +35,7 @@ export function loadInitialSearchParams(
             displayName: locationDisplayName,
             selected: true,
             filter: {
-              fieldId: 'builtin.location',
+              fieldId: LOCATOR_STATIC_FILTER_FIELD,
               kind: 'fieldValue',
               matcher: Matcher.Near,
               value: JSON.parse(locationPlaceId),
@@ -45,7 +46,7 @@ export function loadInitialSearchParams(
             displayName: locationDisplayName ?? '',
             selected: true,
             filter: {
-              fieldId: 'builtin.location',
+              fieldId: LOCATOR_STATIC_FILTER_FIELD,
               kind: 'fieldValue',
               matcher: Matcher.Equals,
               value: locationPlaceId,
@@ -69,10 +70,10 @@ export function loadInitialSearchParams(
             displayName: locationDisplayName,
             selected: true,
             filter: {
-              fieldId: 'builtin.location',
+              fieldId: LOCATOR_STATIC_FILTER_FIELD,
               kind: 'fieldValue',
               matcher: Matcher.Near,
-              value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * 50 },
+              value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * GEOLOCATE_RADIUS },
             }
           }]);
         } catch (e) {
@@ -87,7 +88,7 @@ export function loadInitialSearchParams(
         const filterSearchResponse = await searchActions.executeFilterSearch(
           locationDisplayName,
           false,
-          [{ fieldApiName: "builtin.location", entityType: "location", fetchEntities: true }]
+          [{ fieldApiName: LOCATOR_STATIC_FILTER_FIELD, entityType: LOCATOR_ENTITY_TYPE, fetchEntities: true }]
         );
 
         // Use first autocomplete result as static filter
@@ -97,7 +98,7 @@ export function loadInitialSearchParams(
             displayName: topAutocompleteSuggestionFilter?.value,
             selected: true,
             filter: {
-              fieldId: 'builtin.location',
+              fieldId: LOCATOR_STATIC_FILTER_FIELD,
               kind: 'fieldValue',
               matcher: Matcher.Equals,
               value: topAutocompleteSuggestionFilter.filter.value,
@@ -184,7 +185,7 @@ export function updateSearchParams(
     if (staticFilters) {
       // TODO: There are multiple filters that are valid here for the above reasons. Make sure this looks good after adding geolocate and decorated actions.
       const allSelectedFilters = staticFilters.filter(f => f.selected);
-      const locationFilter = getFieldValueFilters(allSelectedFilters.map(f => f.filter)).find(f => f.fieldId === 'builtin.location');
+      const locationFilter = getFieldValueFilters(allSelectedFilters.map(f => f.filter)).find(f => f.fieldId === LOCATOR_STATIC_FILTER_FIELD);
       const selectedFilter = allSelectedFilters.find(f => f.filter  === locationFilter);
 
       if (selectedFilter && locationFilter) {
@@ -223,7 +224,7 @@ export function useHandleInitialLocationFilter(
 
     // Get value of initial filter to save for removing later
     if (staticFilters && !initialSearchValue) {
-      const initialFilter = getFieldValueFilters(staticFilters.map(f => f.filter)).find(f => f.fieldId === 'builtin.location');
+      const initialFilter = getFieldValueFilters(staticFilters.map(f => f.filter)).find(f => f.fieldId === LOCATOR_STATIC_FILTER_FIELD);
       if (initialFilter) {
         setInitialSearchValue(initialFilter.value);
       }
