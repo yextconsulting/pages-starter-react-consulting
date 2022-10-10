@@ -1,10 +1,12 @@
 import React from "react";
-import { HoursTable, LocationMap } from "@yext/sites-react-components";
+import { HoursTable } from "@yext/sites-react-components";
 import { Link, Address, getDirections } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
 import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
+import { useRef } from "react";
+import LocationMapWrapper from "src/components/common/LocationMapWrapper";
 import "src/components/entity/Core.css";
 
 const defaultFields: string[] = [
@@ -41,7 +43,7 @@ const Core = (props: CoreProps) => {
       <path d="M28.095 27.2577C32.5571 27.2577 36.1743 23.6405 36.1743 19.1784C36.1743 14.7163 32.5571 11.0991 28.095 11.0991C23.633 11.0991 20.0157 14.7163 20.0157 19.1784C20.0157 23.6405 23.633 27.2577 28.095 27.2577Z" fill="white"/>
     </svg>
   );
-
+  const mapRef = useRef<HTMLDivElement>(null);
   return(
     <div className="Core py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
@@ -72,33 +74,33 @@ const Core = (props: CoreProps) => {
               </div>
             )}
           </CoreSection>
-        {(profile.hours || profile.additionalHoursText) && (
-          <CoreSection>
-            <CoreHeading>Hours</CoreHeading>
-            {profile.hours && (
-              <HoursTable hours={profile.hours} startOfWeek={"Monday"} />
-            )}
-            {profile.additionalHoursText && (
-              <div className="mt-4">{profile.additionalHoursText}</div>
-            )}
-          </CoreSection>
-        )}
-        {profile.services && (
-          <CoreSection>
-            <CoreHeading>Services</CoreHeading>
-            <ul className="list-inside">
-              {profile.services.map((service) => (
-                <li className="mb-2" key={service}>{service}</li>
-              ))}
-            </ul>
-          </CoreSection>
-        )}
+          {(profile.hours || profile.additionalHoursText) && (
+            <CoreSection>
+              <CoreHeading>Hours</CoreHeading>
+              {profile.hours && (
+                <HoursTable hours={profile.hours} startOfWeek={"Monday"} />
+              )}
+              {profile.additionalHoursText && (
+                <div className="mt-4">{profile.additionalHoursText}</div>
+              )}
+            </CoreSection>
+          )}
+          {profile.services && (
+            <CoreSection>
+              <CoreHeading>Services</CoreHeading>
+              <ul className="list-inside">
+                {profile.services.map((service) => (
+                  <li className="mb-2" key={service}>{service}</li>
+                ))}
+              </ul>
+            </CoreSection>
+          )}
         </div>
         {(isDesktopBreakpoint && profile.geocodedCoordinate) && (
-          <div className="hidden sm:block mt-16"> 
-            <LocationMap clientKey={'gme-yextinc'} coordinate={profile.geocodedCoordinate} provider={GoogleMaps}>
+          <div ref={mapRef} className="hidden sm:block mt-16">
+            <LocationMapWrapper mapRef={mapRef} clientKey={'gme-yextinc'} coordinate={profile.geocodedCoordinate} provider={GoogleMaps}>
               {mappinSVG}
-            </LocationMap>
+            </LocationMapWrapper>
           </div>
         )}
       </div>
