@@ -2,32 +2,33 @@
 import React from "react";
 import { HoursStatus } from "@yext/sites-react-components";
 import { Link, Address } from "@yext/pages/components";
-import type { CardProps } from "src/models/cardComponent";
+import { LocationProfile } from "src/types/entities";
+import { CardComponent } from "src/models/cardComponent";
 
-export default function DirectoryCard(props: CardProps): JSX.Element {
-  const { content, relativePrefixToRoot } = props;
+export const DirectoryCard: CardComponent<LocationProfile> = function DirectoryCard(props): JSX.Element {
+  const { profile, relativePrefixToRoot } = props;
 
   return (
     <div className="Directorycard bg-white px-6 py-8 border h-full">
       <h3 className="mb-4 text-lg font-medium">
-        {content.slug ? (
-          <Link href={relativePrefixToRoot + content.slug} className="Link Link--primary hover:underline">
-            {content.name}
+        {profile.slug ? (
+          <Link href={relativePrefixToRoot + profile.slug} className="Link Link--primary hover:underline">
+            {profile.name}
           </Link>
         ) : (
-          content.name
+          profile.name
         )}
       </h3>
       
-      {content.hours && (
+      {profile.hours && (
         <div className="mb-4 text-sm">
-          <HoursStatus hours={content.hours} />
+          <HoursStatus hours={profile.hours} />
         </div>
       )}
 
-      {content.address && (
+      {profile.address && (
         <div className="text-sm">
-            <Address address={content.address} lines={[["line1"]]}/>
+            <Address address={profile.address} lines={[["line1"]]}/>
         </div>
       )}
     </div>

@@ -23,7 +23,6 @@ import { defaultHeadConfig } from "src/common/head";
 import type { LocationProfile } from "src/types/entities";
 import { dedupeStreamFields } from "src/common/helpers";
 import { Main } from 'src/layouts/main';
-import { FeaturedCardComponent } from "src/models/cardComponent";
 
 import { defaultFields as headerFields } from "src/components/common/Header";
 import { Banner, defaultFields as bannerFields } from "src/components/entity/Banner";

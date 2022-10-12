@@ -14,14 +14,14 @@ const defaultFields: string[] = [
 interface EventProps {
   title: string;
   items: EventProfile[];
-  hidePastEvents?: boolean;
+  showPastEvents?: boolean;
 }
 
 const Events = (props: EventProps) => {
-  const { title, items, hidePastEvents = true } = props;
+  const { title, items, showPastEvents = false } = props;
   const today = new Date();
   const validEvents = items.filter(event => {
-    if (hidePastEvents && event.time.end) {
+    if (!showPastEvents && event.time.end) {
       const eventEndDate = new Date(event.time.end);
       return (eventEndDate >= today)
     }
@@ -29,7 +29,7 @@ const Events = (props: EventProps) => {
   });
 
   return (
-    <Featured title={title} items={validEvents} FeaturedCardComponent={EventCard}/>
+    <Featured title={title} items={validEvents} CardComponent={EventCard}/>
   )
 }
 

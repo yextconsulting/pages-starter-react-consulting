@@ -1,15 +1,15 @@
 import React from "react";
-import { FeaturedCardComponent } from "src/models/cardComponent";
+import { CardComponent } from "src/models/cardComponent";
 
 interface FeaturedProps<ProfileType> {
   title: string;
   items: ProfileType[];
-  FeaturedCardComponent: FeaturedCardComponent<ProfileType>;
+  CardComponent: CardComponent<ProfileType>;
   itemsToShow?: number;
 }
 
 const Featured = <ProfileType,>(props: FeaturedProps<ProfileType>) => {
-  const { title, items, FeaturedCardComponent, itemsToShow = 3} = props;
+  const { title, items, CardComponent, itemsToShow = 3} = props;
   if (!items.length) {
     return null;
   }
@@ -25,7 +25,7 @@ const Featured = <ProfileType,>(props: FeaturedProps<ProfileType>) => {
             <>
             {i < itemsToShow && (
               <li className="bg-white" key={i}>
-                <FeaturedCardComponent profile={item} />
+                <CardComponent profile={item} />
               </li>
             )}
             </>

@@ -2,9 +2,9 @@
 import React from "react";
 import { Image, Link } from "@yext/pages/components";
 import { EventProfile } from "src/types/entities";
-import { FeaturedCardComponent } from "src/models/cardComponent";
+import { CardComponent } from "src/models/cardComponent";
 
-export const EventCard: FeaturedCardComponent<EventProfile> = function EventCard(props): JSX.Element {
+export const EventCard: CardComponent<EventProfile> = function EventCard(props): JSX.Element {
   const { profile } = props;
 
   return (
