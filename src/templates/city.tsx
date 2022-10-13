@@ -19,7 +19,7 @@ import type {
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
-import DirectoryCard from "src/components/cards/DirectoryCard"
+import { DirectoryCard } from "src/components/cards/DirectoryCard"
 import { DirectoryGrid, directoryGridFields } from "src/components/Directory/DirectoryGrid"
 import type { DirectoryProfile, LocationProfile } from "src/types/entities";
 import { Main } from 'src/layouts/main';

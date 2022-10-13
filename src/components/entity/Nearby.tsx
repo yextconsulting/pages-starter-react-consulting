@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { Coordinate } from "@yext/types";
-import DirectoryCard from 'src/components/cards/DirectoryCard';
+import { DirectoryCard } from 'src/components/cards/DirectoryCard';
 import { useBreakpoint } from 'src/common/useBreakpoints';
 import { Link } from '@yext/pages/components';
 import { getPath as searchPath } from 'src/templates/search';
@@ -74,7 +74,7 @@ const Nearby = (props: NearbyProps) => {
             {nearbyLocations.map(location => (
               // TODO(jhood): make standard Teaser card
               <li key={location.meta.id} className='p-4 w-full sm:w-1/2 lg:w-1/4'>
-                <DirectoryCard relativePrefixToRoot={relativePrefixToRoot} content={location} />
+                <DirectoryCard relativePrefixToRoot={relativePrefixToRoot} profile={location} />
               </li>
             ))}
           </ul>

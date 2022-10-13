@@ -1,21 +1,12 @@
-import type { Address, Hours } from "@yext/types"
-
-export declare interface DirectoryCardContent {
-  address: Address;
-  name: string;
-  slug: string;
-  hours?: Hours;
-}
-
 /**
  * The props provided to every {@link CardComponent}.
  *
  * @public
  */
-export interface CardProps {
+export interface CardProps<ProfileType> {
   /** The result data provided to the card for rendering. */
-  content: DirectoryCardContent
-  relativePrefixToRoot: string;
+  profile: ProfileType
+  relativePrefixToRoot?: string;
 }
 
 /**
@@ -23,4 +14,4 @@ export interface CardProps {
  *
  * @public
  */
-export type CardComponent = (props: CardProps) => JSX.Element;
+ export type CardComponent<ProfileType> = (props: CardProps<ProfileType>) => JSX.Element;

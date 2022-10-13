@@ -29,13 +29,13 @@ import { Banner, defaultFields as bannerFields } from "src/components/entity/Ban
 import { Hero, defaultFields as heroFields } from "src/components/entity/Hero";
 import { Core, defaultFields as coreFields } from "src/components/entity/Core";
 import { Promo, defaultFields as promoFields } from "src/components/entity/Promo";
-import { FeaturedProduct, defaultFields as featuredProductFields } from "src/components/entity/FeaturedProduct";
 import { Gallery, defaultFields as galleryFields } from "src/components/entity/Gallery";
 import { About, defaultFields as aboutFields } from "src/components/entity/About";
 import { Team, defaultFields as teamFields } from "src/components/entity/Team";
 import { FAQs, defaultFields as FAQsFields } from "src/components/entity/FAQs";
 import { Nearby, defaultFields as NearbyFields } from "src/components/entity/Nearby";
-
+import { Products, defaultFields as featuredProductFields } from "src/components/entity/Products";
+import { Events, defaultFields as eventFields } from "src/components/entity/Events";
 /**
  * Required when Knowledge Graph data is used for a template.
  */
@@ -77,6 +77,7 @@ export const config: TemplateConfig = {
       ...teamFields,
       ...FAQsFields,
       ...NearbyFields,
+      ...eventFields,
     ]),
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -138,6 +139,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
     c_teamSection: team,
     c_faqSection: faq,
     c_nearbySection: nearby,
+    c_eventsSection: events,
   } = document;
 
   const showBanner = banner?.text && banner?.image;
@@ -147,6 +149,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   const showGallery = gallery?.images || photoGallery;
   const showTeam = team?.title && team?.team;
   const showFAQ = faq?.title && faq?.faqs;
+  const showEvents = events?.title && events.events;
 
   return (
     <Main data={data}>
@@ -154,7 +157,8 @@ const Index: Template<TemplateRenderProps> = (data) => {
       <Hero name={name} cta1={hero?.cta1} cta2={hero?.cta2} address={address} background={hero?.background} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={document} />
       {showPromo && <Promo title={promo.title} description={promo.description} image={promo.image} cta={promo.cta} googlePlayUrl={promo.googlePlayUrl} appStoreUrl={promo.appStoreUrl} />}
-      {showProducts && <FeaturedProduct title={products.title} products={products.products} />}
+      {showProducts && <Products title={products.title} items={products.products} />}
+      {showEvents && <Events title={events.title} items={events.events} />}
       {showAbout && <About title={about.title} image={about.image} description={about.description || description} cta={about.cta} />}
       {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
       {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
