@@ -5,50 +5,49 @@ import type { Address, Coordinate, CTA, Hours, Image, ComplexImage, WebsiteUrl }
 // Also we should probably move @yext/types into @yext/pages
 // since they're specific to pages streams, not generic kg types
 interface BaseProfile {
-  id: string
-  businessId: number
-  locale: string
-  siteDomain: string
-  siteId: number
-  siteInternalHostname: string
-  uid: number
-  meta: {
-    entityType: {
-      id: string
-      uid: number
+  readonly id: string
+  readonly businessId: number
+  readonly locale: string
+  readonly siteDomain: string
+  readonly siteId: number
+  readonly siteInternalHostname: string
+  readonly uid: number
+  readonly meta: {
+    readonly entityType: {
+      readonly id: string
+      readonly uid: number
     }
-    locale: string
+    readonly locale: string
   }
-  _site: SiteProfile
+  readonly _site: SiteProfile
 }
 
-export interface SiteProfile {
-  id: string
-  name: string
-  c_copyrightMessage?: string
-  c_facebook?: string
-  c_instagram?: string
-  c_youtube?: string
-  c_twitter?: string
-  c_linkedIn?: string
-  c_footerLinks?: CTA[]
-  c_header?: {
-    logo?: Image
-    logoLink?: string
-    links?: CTA[]
+export interface SiteProfile extends BaseProfile {
+  readonly name: string
+  readonly c_copyrightMessage?: string
+  readonly c_facebook?: string
+  readonly c_instagram?: string
+  readonly c_youtube?: string
+  readonly c_twitter?: string
+  readonly c_linkedIn?: string
+  readonly c_footerLinks?: CTA[]
+  readonly c_header?: {
+    readonly logo?: Image
+    readonly logoLink?: string
+    readonly links?: CTA[]
   }
 }
 
 export interface ProductProfile extends BaseProfile {
-  name: string
-  primaryPhoto: ComplexImage
-  richTextDescription: string
-  c_primaryCTA: CTA
+  readonly name: string
+  readonly primaryPhoto: ComplexImage
+  readonly richTextDescription: string
+  readonly c_primaryCTA: CTA
 }
 
 export interface EventDate {
-  end: string
-  start: string
+  readonly end: string
+  readonly start: string
 }
 
 export interface EventProfile extends BaseProfile {
@@ -59,24 +58,24 @@ export interface EventProfile extends BaseProfile {
   readonly photoGallery?: ComplexImage[]
 }
 
-export interface financialProfessional {
-  id: string;
-  name: string;
-  headshot?: Image;
-  mainPhone?: string;
-  c_occupation?: string;
-  emails?: string[];
-  websiteUrl?: WebsiteUrl;
+export interface FinancialProfessionalProfile extends BaseProfile {
+  readonly id: string;
+  readonly name: string;
+  readonly headshot?: Image;
+  readonly mainPhone?: string;
+  readonly c_occupation?: string;
+  readonly emails?: string[];
+  readonly websiteUrl?: WebsiteUrl;
 }
 
-export interface insight {
-  title: string,
-  category?: string,
-  image?: Image,
-  date?: string,
-  descriptionLong: string,
-  descriptionShort?: string,
-  cta: CTA,
+interface Insight {
+  readonly title: string,
+  readonly category?: string,
+  readonly image?: Image,
+  readonly date?: string,
+  readonly descriptionLong: string,
+  readonly descriptionShort?: string,
+  readonly cta: CTA,
 }
 
 // TODO: generate these automatically from stream definitions
@@ -102,7 +101,7 @@ export interface LocationProfile extends BaseProfile {
     readonly title?: string
     readonly events?: EventProfile[]
   }
-  c_bannerSection?: {
+  readonly c_bannerSection?: {
     readonly text?: string
     readonly image?: Image
   }
@@ -135,11 +134,11 @@ export interface LocationProfile extends BaseProfile {
   }
   readonly c_teamSection?: {
     readonly title?: string
-    readonly team?: financialProfessional[]
+    readonly team?: FinancialProfessionalProfile[]
   }
   readonly c_faqSection?: {
     readonly title?: string
-    readonly faqs?: FAQItem[]
+    readonly faqs?: FAQProfile[]
   },
   readonly c_nearbySection?: {
     readonly title?: string
@@ -149,20 +148,20 @@ export interface LocationProfile extends BaseProfile {
   readonly c_insightsSection?: {
     readonly title?: string
     readonly cta?: CTA
-    readonly insights?: insight[]
+    readonly insights?: Insight[]
   }
 }
 
 export type DirectoryProfile<T> = BaseProfile & {
-  name: string
-  c_brand: string
-  dm_directoryChildrenCount: number
-  dm_directoryChildren?: T[]
-  dm_directoryParents?: DirectoryProfile<DirectoryProfile<T>>[]
-  slug: string
+  readonly name: string
+  readonly c_brand: string
+  readonly dm_directoryChildrenCount: number
+  readonly dm_directoryChildren?: T[]
+  readonly dm_directoryParents?: DirectoryProfile<DirectoryProfile<T>>[]
+  readonly slug: string
 }
 
-export interface FAQItem {
-  question: string;
-  answer: string;
+export interface FAQProfile extends BaseProfile {
+  readonly question: string;
+  readonly answer: string;
 }
