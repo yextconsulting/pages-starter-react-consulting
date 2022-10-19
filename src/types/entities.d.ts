@@ -69,6 +69,16 @@ export interface financialProfessional {
 	websiteUrl?: WebsiteUrl;
 }
 
+export interface insight {
+	title: string,
+	category?: string,
+	image?: Image,
+	date?: string,
+	descriptionLong: string,
+	descriptionShort?: string,
+	cta: CTA,
+}
+
 // TODO: generate these automatically from stream definitions
 export interface LocationProfile extends BaseProfile {
 	readonly name: string
@@ -135,6 +145,11 @@ export interface LocationProfile extends BaseProfile {
 		readonly title?: string
 		readonly linkToLocator?: boolean
 		readonly cta?: CTA
+	}
+	readonly c_insightsSection?: {
+		readonly title?: string
+		readonly cta?: CTA
+		readonly insights?: insight[]
 	}
 }
 

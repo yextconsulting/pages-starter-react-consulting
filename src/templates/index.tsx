@@ -36,6 +36,8 @@ import { FAQs, defaultFields as FAQsFields } from "src/components/entity/FAQs";
 import { Nearby, defaultFields as NearbyFields } from "src/components/entity/Nearby";
 import { Products, defaultFields as featuredProductFields } from "src/components/entity/Products";
 import { Events, defaultFields as eventFields } from "src/components/entity/Events";
+import { Insights, defaultFields as InsightsFields } from 'src/components/entity/Insights';
+
 /**
  * Required when Knowledge Graph data is used for a template.
  */
@@ -78,6 +80,7 @@ export const config: TemplateConfig = {
       ...FAQsFields,
       ...NearbyFields,
       ...eventFields,
+      ...InsightsFields,
     ]),
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -140,6 +143,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
     c_faqSection: faq,
     c_nearbySection: nearby,
     c_eventsSection: events,
+    c_insightsSection: insights
   } = document;
 
   const showBanner = banner?.text && banner?.image;
@@ -150,6 +154,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
   const showTeam = team?.title && team?.team;
   const showFAQ = faq?.title && faq?.faqs;
   const showEvents = events?.title && events.events;
+  const showInsights = insights?.title && insights?.insights
 
   return (
     <Main data={data}>
@@ -160,6 +165,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
       {showProducts && <Products title={products.title} items={products.products} />}
       {showEvents && <Events title={events.title} items={events.events} />}
       {showAbout && <About title={about.title} image={about.image} description={about.description || description} cta={about.cta} />}
+      {showInsights && <Insights title={insights.title} cta={insights.cta} insights={insights.insights} />}
       {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
       {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
       {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
