@@ -165,7 +165,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
       {showProducts && <Products title={products.title} items={products.products} />}
       {showEvents && <Events title={events.title} items={events.events} />}
       {showAbout && <About title={about.title} image={about.image} description={about.description || description} cta={about.cta} />}
-      {showInsights && <Insights title={insights.title} cta={insights.cTA} insights={insights.insights} />}
+      {showInsights && <Insights title={insights.title} cta={insights.cta} insights={insights.insights} />}
       {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
       {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
       {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}

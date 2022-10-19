@@ -71,11 +71,11 @@ export interface financialProfessional {
 
 export interface insight {
 	title: string,
-  category: string,
-  image: Image,
-  date: string,
-  descriptionLong: string,
-  descriptionShort: string,
+	category?: string,
+	image?: Image,
+	date?: string,
+	descriptionLong: string,
+	descriptionShort?: string,
 	cta: CTA,
 }
 
@@ -148,7 +148,7 @@ export interface LocationProfile extends BaseProfile {
 	}
 	readonly c_insightsSection?: {
 		readonly title?: string
-		readonly cTA?: CTA
+		readonly cta?: CTA
 		readonly insights?: insight[]
 	}
 }

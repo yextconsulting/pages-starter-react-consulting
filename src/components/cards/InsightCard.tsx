@@ -5,8 +5,8 @@ import { FaChevronRight } from "react-icons/fa";
 
 export interface InsightCardProps {
   title: string
-  category: string
-  date: string
+  category?: string
+  date?: string
   descriptionShort?: string
   cta?: CTA
 }
@@ -21,11 +21,13 @@ export function InsightCard(props: InsightCardProps) {
 
   return (
     <div>
-      <div>
-        <span>{category}</span>
-        <span className="ml-5 mr-5">|</span>
-        <span>{date}</span>
-      </div>
+      {category && date && (
+        <div>
+          <span>{category}</span>
+          <span className="ml-5 mr-5">|</span>
+          <span>{date}</span>
+        </div>
+      )}
       <div className="Heading Heading--sub mt-4">
         {title}
       </div>

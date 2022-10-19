@@ -1,11 +1,11 @@
 import type { CTA, Image } from "@yext/types";
-import { InsightCard, InsightCardFeatured } from "src/components/cards/InsightsCard"
+import { InsightCard, InsightCardFeatured } from "src/components/cards/InsightCard"
 import { Link } from "@yext/pages/components";
 import "src/components/entity/Insights.css";
 
 const defaultFields: string[] = [
   'c_insightsSection.title',
-  'c_insightsSection.cTA',
+  'c_insightsSection.cta',
   'c_insightsSection.insights.title',
   'c_insightsSection.insights.category',
   'c_insightsSection.insights.photo',
@@ -52,7 +52,7 @@ const Insights = (props: InsightsProps) => {
                 image={featuredInsight.photo}/>
             </div>
           </div>
-          {listedInsights.length && (
+          {!!listedInsights.length && (
             <div className="md:w-1/2 md:ml-4 mt-6 md:mt-0">
               {listedInsights.map((item, i) => (
                 <div key={i} className="Insights-insightCard">
