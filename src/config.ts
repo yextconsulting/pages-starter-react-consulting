@@ -29,18 +29,19 @@ interface ProjectConfigType {
 // The projectConfig is used to maintain configuration for specific pages and sections in one place.
 export const projectConfig: ProjectConfigType = {
   search: {
-    apiKey: "b7930d2fa7b5b106371224158c5854d2",
+    apiKey: "<REPLACE-ME>",
     experienceKey: "locator",
     verticalKey: "locations",
   },
   nearby: {
-    endpoint: 'https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch',
+    endpoint: 'https://liveapi.yext.com/v2/accounts/me/entities/geosearch',
     params: {
-      api_key: 'ae79e8eb05e10f03917d3f4836863ac7',
+      api_key: '<REPLACE-ME>',
       entityTypes: 'location',
       limit: '4',
       radius: '50',
-      savedFilterIds: '1003506731',
+      // TODO: this could be predefined in the solution template
+      savedFilterIds: '<REPLACE-ME>',
       v: '20220927',
     }
   }
