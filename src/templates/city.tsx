@@ -48,7 +48,6 @@ export const config: TemplateConfig = {
       "name",
       "slug",
       "c_meta",
-      "c_brand",
       ...directoryGridFields,
     ],
     // Defines the scope of entities that qualify for this stream.
@@ -123,7 +122,7 @@ export const transformProps: TransformProps<
 const City: Template<TemplateRenderProps<DirectoryProfile<LocationProfile>>> = (
   data
 ) => {
-  const { name, c_brand, dm_directoryChildren, dm_directoryParents } =
+  const { name, dm_directoryChildren, dm_directoryParents, _site } =
     data.document;
 
   return (
@@ -139,7 +138,7 @@ const City: Template<TemplateRenderProps<DirectoryProfile<LocationProfile>>> = (
       <AnalyticsScopeProvider name="directory">
         <DirectoryGrid
           name={name}
-          brand={c_brand}
+          brand={_site?.c_brand ?? ""}
           CardComponent={DirectoryCard}
           directoryChildren={dm_directoryChildren || []}
         />

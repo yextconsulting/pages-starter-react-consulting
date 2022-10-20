@@ -17,7 +17,8 @@
     "c_header",
     "c_nearbySectionAPIKey",
     "c_searchExperienceAPIKey",
-    "c_reviewsAPIKey"
+    "c_reviewsAPIKey",
+    "c_brand"
   ],
   "localization": {
     "locales": ["en"],

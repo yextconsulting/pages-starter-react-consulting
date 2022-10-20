@@ -44,7 +44,6 @@ export const config: TemplateConfig = {
       "name",
       "slug",
       "c_meta",
-      "c_brand",
       ...directoryListFields,
     ],
     // Defines the scope of entities that qualify for this stream.
@@ -96,14 +95,14 @@ export const getHeadConfig: GetHeadConfig<
 const Root: Template<
   TemplateRenderProps<DirectoryProfile<DirectoryProfile<never>>>
 > = (data) => {
-  const { name, c_brand, dm_directoryChildren } = data.document;
+  const { name, dm_directoryChildren. _site } = data.document;
 
   return (
     <Main data={data}>
       <AnalyticsScopeProvider name="directory">
         <DirectoryList
           name={name}
-          brand={c_brand}
+          brand={_site?.c_brand ?? ""}
           showNumLocs={true}
           directoryChildren={dm_directoryChildren || []}
           relativePrefixToRoot={data.relativePrefixToRoot}
