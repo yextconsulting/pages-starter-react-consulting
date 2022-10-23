@@ -15,7 +15,7 @@ function styleguidePlugin () {
     for (const [variant, styles] of Object.entries(theme('links.variants'))) {
       components[`.Link--${variant}`] = styles;
     }
-    
+
     components['.Heading'] = JSON.parse(JSON.stringify(theme('headings') || {}));
     delete components['.Heading'].variants;
     for (const [variant, styles] of Object.entries(theme('headings.variants'))) {

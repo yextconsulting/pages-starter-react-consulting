@@ -33,7 +33,7 @@ const Team = (props: TeamProps) => {
         <h2 className="Heading Heading--head mb-8 md:text-center">{title}</h2>
         <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((member, i) => (
-            <li key={i}> 
+            <li key={i}>
               <TeamCard profile={member}/>
             </li>
           ))}
@@ -50,4 +50,3 @@ export {
   Team,
   defaultFields,
 };
-  

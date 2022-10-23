@@ -49,7 +49,7 @@ const Gallery = (props: GalleryProps) => {
             ))}
           </Slider>
 
-          
+
           {showControls && (
             <div className="flex align-center mt-8 h-6 sm:h-1">
               {!props.hideArrows && (

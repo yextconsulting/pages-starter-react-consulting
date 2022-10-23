@@ -23,8 +23,8 @@ const Footer = (props: FooterProps) => {
 
   const copyrightMessage = props.copyrightMessage;
 
-  const socialLinks = 
-  [{link: props.facebook, label: <FaFacebook className="w-5 h-5 mr-4" />}, 
+  const socialLinks =
+  [{link: props.facebook, label: <FaFacebook className="w-5 h-5 mr-4" />},
    {link: props.instagram, label: <FaInstagram className="w-5 h-5 mr-4" />},
    {link: props.youtube, label: <FaYoutube className="w-5 h-5 mr-4" />},
    {link: props.linkedIn, label:<FaLinkedinIn className="w-5 h-5 mr-4" />},

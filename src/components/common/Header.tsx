@@ -16,7 +16,7 @@ type HeaderProps = {
 }
 
 const Header = (props: HeaderProps) => {
-  const [ menuOpen, setMenuOpen ] = useState(false); 
+  const [ menuOpen, setMenuOpen ] = useState(false);
   const { logo, logoLink, links } = props;
 
   return (

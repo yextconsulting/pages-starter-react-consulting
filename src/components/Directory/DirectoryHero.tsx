@@ -21,7 +21,7 @@ export function DirectoryHero(props: DirectoryHeroProps) {
           {title}
         </span>
       </h1>
-      <DirectorySearchBar 
+      <DirectorySearchBar
         placeholder="Search by city and state or ZIP code"
         labelText="Search by city and state or ZIP code"
         queryParameter="q"

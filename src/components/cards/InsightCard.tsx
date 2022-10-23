@@ -46,7 +46,7 @@ export function InsightCard(props: InsightCardProps) {
         )}
     </div>
   )
-} 
+}
 
 export function InsightCardFeatured(props: InsightCardProps & InsightCardFeaturedProps) {
   const { title, category, date, cta, image, descriptionLong} = props;

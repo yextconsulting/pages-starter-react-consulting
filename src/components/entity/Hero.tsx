@@ -28,7 +28,7 @@ const Hero = (props: HeroProps) => {
   return (
     <div className="Hero py-8 sm:py-16">
       <div className="container flex flex-col lg:flex-row">
-        <div className="w-full lg:w-1/2 lg:mt-8 mb-6 lg:mb-0 lg:mr-8">  
+        <div className="w-full lg:w-1/2 lg:mt-8 mb-6 lg:mb-0 lg:mr-8">
           <h1 className="Heading Heading--sub mb-4 sm:mb-0">
             {props.name}
           </h1>
@@ -37,7 +37,7 @@ const Hero = (props: HeroProps) => {
           </div>
           {props.hours && (
             <div className="mb-4">
-              <HoursStatus hours={props.hours} separatorTemplate={() => <img className="Hero-hourSeparator" src={ellipse} />} dayOfWeekTemplate={()=> null } /> 
+              <HoursStatus hours={props.hours} separatorTemplate={() => <img className="Hero-hourSeparator" src={ellipse} />} dayOfWeekTemplate={()=> null } />
             </div>
           )}
           {/* TODO(aganesh) : use Reviews component when available */}

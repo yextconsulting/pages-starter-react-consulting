@@ -47,7 +47,7 @@ const Nearby = (props: NearbyProps) => {
       .then(data => setNearbyLocations(data.response.entities || []))
       .catch(error => console.error(error));
   }, []);
-  
+
   const renderLocatorLink = () => {
     return linkToLocator ? (
       // TODO: using searchPath() has some drawbacks see here: https://github.com/yextconsulting/site-starter-react-consulting/pull/82#discussion_r987318173

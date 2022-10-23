@@ -43,7 +43,7 @@ const Insights = (props: InsightsProps) => {
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/2 md:mr-4">
             <div className="border-b md:border-none">
-              <InsightCardFeatured 
+              <InsightCardFeatured
                 title={featuredInsight.title}
                 category={featuredInsight.category}
                 cta={featuredInsight.cta}

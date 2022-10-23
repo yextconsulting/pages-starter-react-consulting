@@ -16,7 +16,7 @@ type BannerProps = {
 const Banner = (props: BannerProps) => {
   const [ showBanner, setShowBanner ] = useState(true);
 
-  if (!showBanner) { 
+  if (!showBanner) {
     return null;
   }
 
