@@ -8,14 +8,14 @@
 
 html,
 body {
-	height: 100%;
+  height: 100%;
 }
 
 /* TODO(bhaines): remove, this is only necessary until
 https://github.com/yext/pages/issues/211 is resolved */
 #reactele,
 #root {
-	display: grid;
-	height: 100%;
-	grid-template-rows: auto 1fr auto;
+  display: grid;
+  height: 100%;
+  grid-template-rows: auto 1fr auto;
 }

@@ -22,7 +22,7 @@
       &.is-hovered {
         background-color: theme(colors.brand-gray.200);
       }
-  
+
       &.is-selected {
         background-color: theme(colors.brand-gray.300);
       }

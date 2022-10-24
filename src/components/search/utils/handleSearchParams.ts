@@ -258,7 +258,7 @@ export function useHandleGeolocateFilter(
   useEffect(() => {
     const staticFilters = searchActions.state.filters.static;
     const activeGeoFilter = staticFilters?.find(f => f.selected && f.displayName === 'My Location' && f.filter.kind === 'fieldValue' && f.filter.matcher === Matcher.Near);
-    
+
     if (activeGeoFilter && initialParamsLoaded && !geoSearchMade) {
       setGeoSearchMade(true);
       setGeofilter(activeGeoFilter);

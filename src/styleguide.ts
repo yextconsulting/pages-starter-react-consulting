@@ -1,10 +1,10 @@
 const variantBuilder = <T extends string>(base: string) => (...variants: T[]) => {
-	return ([base, ...variants.map((variant: T) => `${base}--${variant}`)])
+  return ([base, ...variants.map((variant: T) => `${base}--${variant}`)])
 }
 
 export const ButtonVariants = {
-	primary: "primary",
-	secondary: "secondary",
+  primary: "primary",
+  secondary: "secondary",
 } as const;
 
 /**

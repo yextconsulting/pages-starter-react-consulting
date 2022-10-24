@@ -10,12 +10,12 @@
 
 import React from "react";
 import type {
-	TemplateRenderProps,
-	Template,
-	TemplateProps,
-	GetPath,
-	TemplateConfig,
-	GetHeadConfig,
+  TemplateRenderProps,
+  Template,
+  TemplateProps,
+  GetPath,
+  TemplateConfig,
+  GetHeadConfig,
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
@@ -28,30 +28,30 @@ import { Main } from 'src/layouts/main';
  * Required when Knowledge Graph data is used for a template.
  */
 export const config: TemplateConfig = {
-	stream: {
-		$id: "directory-city",
-		// Specifies the exact data that each generated document will contain. This data is passed in
-		// directly as props to the default exported function.
-		fields: [
-			"id",
-			"uid",
-			"meta",
-			"name",
-			"slug",
-			"c_meta",
-			"c_brand",
-			...directoryGridFields,
-		],
-		// Defines the scope of entities that qualify for this stream.
-		filter: {
-			savedFilterIds: ["dm_defaultDirectory_address_city"],
-		},
-		// The entity language profiles that documents will be generated for.
-		localization: {
-			locales: ["en"],
-			primary: false,
-		},
-	},
+  stream: {
+    $id: "directory-city",
+    // Specifies the exact data that each generated document will contain. This data is passed in
+    // directly as props to the default exported function.
+    fields: [
+      "id",
+      "uid",
+      "meta",
+      "name",
+      "slug",
+      "c_meta",
+      "c_brand",
+      ...directoryGridFields,
+    ],
+    // Defines the scope of entities that qualify for this stream.
+    filter: {
+      savedFilterIds: ["dm_defaultDirectory_address_city"],
+    },
+    // The entity language profiles that documents will be generated for.
+    localization: {
+      locales: ["en"],
+      primary: false,
+    },
+  },
 };
 
 /**
@@ -61,7 +61,7 @@ export const config: TemplateConfig = {
  * take on the form: featureName/entityId
  */
 export const getPath: GetPath<TemplateProps> = (data) => {
-	return data.document.slug;
+  return data.document.slug;
 };
 
 /**
@@ -71,7 +71,7 @@ export const getPath: GetPath<TemplateProps> = (data) => {
  * This can include the title, meta tags, script tags, etc.
  */
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data) => {
-	return defaultHeadConfig(data);
+  return defaultHeadConfig(data);
 };
 
 /**
@@ -84,20 +84,20 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data) => {
  * them in the src/templates folder as this is specific for true template files).
  */
 const City: Template<TemplateRenderProps> = (data) => {
-	const document = data.document as DirectoryProfile<LocationProfile>;
-	const { name, c_brand, dm_directoryChildren } = document;
+  const document = data.document as DirectoryProfile<LocationProfile>;
+  const { name, c_brand, dm_directoryChildren } = document;
 
-	return (
-		<Main data={data}>
-			<DirectoryGrid
-				name={name}
-				brand={c_brand}
-				CardComponent={DirectoryCard}
-				directoryChildren={dm_directoryChildren || []}
-				relativePrefixToRoot={data.relativePrefixToRoot}
-			/>
+  return (
+    <Main data={data}>
+      <DirectoryGrid
+        name={name}
+        brand={c_brand}
+        CardComponent={DirectoryCard}
+        directoryChildren={dm_directoryChildren || []}
+        relativePrefixToRoot={data.relativePrefixToRoot}
+      />
     </Main>
-	);
+  );
 };
 
 export default City;

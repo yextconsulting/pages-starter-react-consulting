@@ -12,7 +12,7 @@ const TeamCard = (props: TeamCardProps) => {
   return(
     <div className="TeamCard h-full rounded-lg shadow-lg">
       <div className="border-b-2 p-8 flex items-center">
-        {profile.headshot && ( 
+        {profile.headshot && (
           <Image className="rounded-full mr-6" image={profile.headshot} layout="fixed" width={80} height={80}/>
         )}
         <div>
