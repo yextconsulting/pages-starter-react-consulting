@@ -1,12 +1,8 @@
+dist/
+localData/
 node_modules/
 sites-rendered-output/
-localData/
-dist/
-.yext
-.artifact-output
-sites-config/features.json
-.env
-
-.env
-
 .DS_Store
+.artifact-output
+.env
+.yext
