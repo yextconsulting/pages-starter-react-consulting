@@ -970,6 +970,14 @@
   dependencies:
     cross-fetch "^3.1.5"
 
+"@yext/cobalt@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@yext/cobalt/-/cobalt-0.0.1.tgz#1038acfd2f64640461c921a39ba4f9441fc31b8e"
+  integrity sha512-p+vTO3KvJKuR5+DF7ZpT7n3IVjsjZ0CaK1FiXuZYbVXv8yxBOUoR3a/YTuwEjyd9K9vakTYfUus1lS1Jhk2U+w==
+  dependencies:
+    react "^17.0.2"
+    react-dom "^17.0.2"
+
 "@yext/components-tsx-geo@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@yext/components-tsx-geo/-/components-tsx-geo-1.0.3.tgz#e0233445833fba329d749ab6249269f46d2305ab"
@@ -1032,10 +1040,10 @@
     vite "^3.0.0"
     vitepress "1.0.0-alpha.2"
 
-"@yext/pages@1.0.0-beta.8":
-  version "1.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@yext/pages/-/pages-1.0.0-beta.8.tgz#7ea9c57bacb2b832834502c11945295646b52c25"
-  integrity sha512-/f/fZwF+nwc8OqjzPqeWFadJe4omdCHQ65UICej5jyhH1YRrYpbAm9oIaLN+6aBvGWorGVaXcmYbanvTN+/+6A==
+"@yext/pages@1.0.0-beta.9":
+  version "1.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/@yext/pages/-/pages-1.0.0-beta.9.tgz#e54d198ef0410718dfc941c7f3fb88b4e9c9480f"
+  integrity sha512-dxhtf8qkqDXb7TJaVivARoZ0+VBb7IvQtjLVvnkhp94OODPtj3iCNkOKqkzu49rCzg2IEIC0jKle3aB7GqtnMA==
   dependencies:
     "@yext/analytics" "^0.2.2"
     "@yext/components-tsx-geo" "^1.0.3"
@@ -1123,11 +1131,6 @@
     awesome-phonenumber "^2.70.0"
     classnames "^2.3.1"
     rollup-plugin-import-css "^3.0.3"
-
-"@yext/sites-react-starters@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@yext/sites-react-starters/-/sites-react-starters-0.0.1.tgz#0dcec0b280e3772670e6c84746862653d529bca2"
-  integrity sha512-aKO3lSL/wZ+cSynoZhxT+3s+EjcUOPlqM5xs8224AFlEgTODXKWaT6cNr5WS230vhJtEME6/we8FYLqoawMFUg==
 
 "@yext/types@^0.1.9-alpha":
   version "0.1.9-alpha"
