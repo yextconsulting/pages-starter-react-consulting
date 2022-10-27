@@ -111,29 +111,29 @@ export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Ta
           content: metaDescription(data),
         }
       },
-			{
-				type: "meta",
-				attributes: {
-					property: "og:url",
-					content: canonicalUrl(data),
-				},
-			},
-			{
-				type: "link",
-				attributes: {
-					rel: "canonical",
-					href: canonicalUrl(data),
-				},
-			},
-			...logoTags,
-			...defaultHeadTags,
-			...geoTags,
-			...addressTags,
-			...alternates(data),
-			...(additionalTags || [])
-		],
-		other: `${SchemaBuilder(data)}`,
-	};
+      {
+        type: "meta",
+        attributes: {
+          property: "og:url",
+          content: canonicalUrl(data),
+        },
+      },
+      {
+        type: "link",
+        attributes: {
+          rel: "canonical",
+          href: canonicalUrl(data),
+        },
+      },
+      ...logoTags,
+      ...defaultHeadTags,
+      ...geoTags,
+      ...addressTags,
+      ...alternates(data),
+      ...(additionalTags || [])
+    ],
+    other: `${SchemaBuilder(data)}`,
+  };
 }
 
 function metaTitle(data: TemplateRenderProps): string {
@@ -159,27 +159,27 @@ function metaDescription(data: TemplateRenderProps): string {
 }
 
 function canonicalUrl(data: TemplateRenderProps, locale?: string): string {
-	let pagePath = data.path;
-	
-	const alfs = data.document?.alternateLanguageFields;
-	if (alfs && locale) {
-		const altLocalePath = alfs[locale]?.slug;
-		if (altLocalePath) { pagePath = altLocalePath; }
-	}
+  let pagePath = data.path;
+  
+  const alfs = data.document?.alternateLanguageFields;
+  if (alfs && locale) {
+    const altLocalePath = alfs[locale]?.slug;
+    if (altLocalePath) { pagePath = altLocalePath; }
+  }
 
-	return `https://${data.document.siteDomain}${pagePath}`;
+  return `https://${data.document.siteDomain}${pagePath}`;
 }
 
 function alternates(data: TemplateRenderProps): Tag[] {
-	const thisLocale = data.document.locale;
-	const alternateLocales: string[] = Object.keys(data.document?.alternateLanguageFields || {});
-	const alternateLinks: Tag[] = alternateLocales.filter(locale => locale !== thisLocale).map(locale => ({
-		type: 'link',
-		attributes: {
-			rel: 'alternate',
-			hreflang: locale,
-			href: canonicalUrl(data, locale)
-		}
-	}))
-	return alternateLinks;
+  const thisLocale = data.document.locale;
+  const alternateLocales: string[] = Object.keys(data.document?.alternateLanguageFields || {});
+  const alternateLinks: Tag[] = alternateLocales.filter(locale => locale !== thisLocale).map(locale => ({
+    type: 'link',
+    attributes: {
+      rel: 'alternate',
+      hreflang: locale,
+      href: canonicalUrl(data, locale)
+    }
+  }))
+  return alternateLinks;
 }
