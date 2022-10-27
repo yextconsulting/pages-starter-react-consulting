@@ -36,25 +36,10 @@ const defaultHeadTags: Tag[] = [
   {
     type: "meta",
     attributes: {
-      property: "og:url",
-      content: "" // TODO: update when siteDomain is available - https://yextops.slack.com/archives/C02LLE9BW2K/p1655239903694849
-    },
-  },
-  {
-    type: "meta",
-    attributes: {
       property: "twitter:card",
       content: "summary"
     },
   },
-  {
-    type: "link",
-    attributes: {
-      rel: "canonical",
-      href: "" // TODO: update when siteDomain is available - https://yextops.slack.com/archives/C02LLE9BW2K/p1655239903694849
-    },
-  },
-  // TODO: alternate language links - we don't have this data yet
 ]
 
 export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Tag[]): HeadConfig {
@@ -64,7 +49,7 @@ export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Ta
         type: "meta",
         attributes: {
           property: "og:image",
-          content: data.document.logo,
+          content: data.document.logo.image.url,
         }
       }
     ]
@@ -126,10 +111,25 @@ export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Ta
           content: metaDescription(data),
         }
       },
+      {
+        type: "meta",
+        attributes: {
+          property: "og:url",
+          content: canonicalUrl(data),
+        },
+      },
+      {
+        type: "link",
+        attributes: {
+          rel: "canonical",
+          href: canonicalUrl(data),
+        },
+      },
       ...logoTags,
       ...defaultHeadTags,
       ...geoTags,
       ...addressTags,
+      ...alternates(data),
       ...(additionalTags || [])
     ],
     other: SchemaBuilder(data),
@@ -156,4 +156,30 @@ function metaDescription(data: TemplateRenderProps): string {
   }
 
   return ""
+}
+
+function canonicalUrl(data: TemplateRenderProps, locale?: string): string {
+  let pagePath = data.path;
+  
+  const alfs = data.document?.alternateLanguageFields;
+  if (alfs && locale) {
+    const altLocalePath = alfs[locale]?.slug;
+    if (altLocalePath) { pagePath = altLocalePath; }
+  }
+
+  return `https://${data.document.siteDomain}${pagePath}`;
+}
+
+function alternates(data: TemplateRenderProps): Tag[] {
+  const thisLocale = data.document.locale;
+  const alternateLocales: string[] = Object.keys(data.document?.alternateLanguageFields || {});
+  const alternateLinks: Tag[] = alternateLocales.filter(locale => locale !== thisLocale).map(locale => ({
+    type: 'link',
+    attributes: {
+      rel: 'alternate',
+      hreflang: locale,
+      href: canonicalUrl(data, locale)
+    }
+  }))
+  return alternateLinks;
 }
