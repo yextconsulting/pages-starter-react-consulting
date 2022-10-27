@@ -1,6 +1,10 @@
 import React, { useState, useRef } from "react";
-import type { FAQItem } from "src/types/entities";
 import { GoChevronDown } from "react-icons/go";
+
+interface FAQItem {
+	question: string;
+	answer: string;
+}
 
 const FAQ = (props: FAQItem) => {
   const { question, answer } = props;

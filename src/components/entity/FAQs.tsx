@@ -1,5 +1,5 @@
 import React from "react";
-import type { FAQItem } from "src/types/entities";
+import type { FAQProfile } from "src/types/entities";
 import { FAQ } from "src/components/entity/FAQ";
 
 const defaultFields: string[] = [
@@ -10,7 +10,7 @@ const defaultFields: string[] = [
 
 type FAQsProps = {
   title: string;
-  faqs: FAQItem[];
+  faqs: FAQProfile[];
 }
 
 const FAQs = (props: FAQsProps) => {
