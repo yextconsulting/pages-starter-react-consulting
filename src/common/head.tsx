@@ -49,7 +49,7 @@ export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Ta
         type: "meta",
         attributes: {
           property: "og:image",
-          content: data.document.logo,
+          content: data.document.logo.image.url,
         }
       }
     ]
