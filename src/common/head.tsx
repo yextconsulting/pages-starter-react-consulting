@@ -115,24 +115,25 @@ export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Ta
 				type: "meta",
 				attributes: {
 					property: "og:url",
-					content: cannonicalURL(data),
+					content: canonicalUrl(data),
 				},
 			},
 			{
 				type: "link",
 				attributes: {
 					rel: "canonical",
-					href: cannonicalURL(data),
+					href: canonicalUrl(data),
 				},
 			},
-      ...logoTags,
-      ...defaultHeadTags,
-      ...geoTags,
-      ...addressTags,
-      ...(additionalTags || [])
-    ],
-    other: SchemaBuilder(data),
-  };
+			...logoTags,
+			...defaultHeadTags,
+			...geoTags,
+			...addressTags,
+			...alternates(data),
+			...(additionalTags || [])
+		],
+		other: `${SchemaBuilder(data)}`,
+	};
 }
 
 function metaTitle(data: TemplateRenderProps): string {
@@ -157,7 +158,7 @@ function metaDescription(data: TemplateRenderProps): string {
   return ""
 }
 
-function cannonicalURL(data: TemplateRenderProps, locale?: string): string {
+function canonicalUrl(data: TemplateRenderProps, locale?: string): string {
 	let pagePath = data.path;
 	
 	const alfs = data.document?.alternateLanguageFields;
@@ -169,18 +170,16 @@ function cannonicalURL(data: TemplateRenderProps, locale?: string): string {
 	return `https://${data.document.siteDomain}${pagePath}`;
 }
 
-function alternateLanguageFields(data: TemplateRenderProps): string {
+function alternates(data: TemplateRenderProps): Tag[] {
 	const thisLocale = data.document.locale;
 	const alternateLocales: string[] = Object.keys(data.document?.alternateLanguageFields || {});
-	
-	if (!alternateLocales || alternateLocales.length === 0) { return ''; }
-
-	let elString = '';
-	alternateLocales.forEach(loc => {
-		if (loc !== thisLocale) {
-			elString += `<link rel="alternate" hreflang="${loc}" href="${cannonicalURL(data, loc)}">`
+	const alternateLinks: Tag[] = alternateLocales.filter(locale => locale !== thisLocale).map(locale => ({
+		type: 'link',
+		attributes: {
+			rel: 'alternate',
+			hreflang: locale,
+			href: canonicalUrl(data, locale)
 		}
-	});
-
-	return elString;
+	}))
+	return alternateLinks;
 }
