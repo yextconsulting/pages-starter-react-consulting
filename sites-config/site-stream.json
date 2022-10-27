@@ -1,4 +1,5 @@
 {
+  "$id": "site-stream",
   "filter": {
     "entityIds": ["site-entity"]
   },
