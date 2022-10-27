@@ -132,7 +132,7 @@ export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Ta
       ...alternates(data),
       ...(additionalTags || [])
     ],
-    other: `${SchemaBuilder(data)}`,
+    other: SchemaBuilder(data),
   };
 }
 
