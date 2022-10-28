@@ -36,6 +36,10 @@ const Nearby = (props: NearbyProps) => {
   const isDesktopBreakpoint = useBreakpoint("sm");
 
   useEffect(() => {
+    if (!geocodedCoordinate) {
+      return;
+    }
+
     const searchParams = new URLSearchParams({
       ...projectConfig.nearby.params,
       location: `${geocodedCoordinate.latitude},${geocodedCoordinate.longitude}`,

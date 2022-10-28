@@ -1,0 +1,254 @@
+{
+  "features": [
+    {
+      "name": "city",
+      "streamId": "directory-city",
+      "templateType": "JS",
+      "alternateLanguageFields": [
+        "name",
+        "slug"
+      ],
+      "entityPageSet": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "index",
+      "streamId": "locations",
+      "templateType": "JS",
+      "alternateLanguageFields": [
+        "name",
+        "slug"
+      ],
+      "entityPageSet": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "region",
+      "streamId": "directory-region",
+      "templateType": "JS",
+      "alternateLanguageFields": [
+        "name",
+        "slug"
+      ],
+      "entityPageSet": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "robots",
+      "templateType": "JS",
+      "staticPage": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "root",
+      "streamId": "directory-root",
+      "templateType": "JS",
+      "alternateLanguageFields": [
+        "name",
+        "slug"
+      ],
+      "entityPageSet": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "search",
+      "streamId": "search-page",
+      "templateType": "JS",
+      "alternateLanguageFields": [
+        "name",
+        "slug"
+      ],
+      "entityPageSet": {
+        "plugin": {}
+      }
+    }
+  ],
+  "streams": [
+    {
+      "$id": "directory-city",
+      "fields": [
+        "id",
+        "uid",
+        "meta",
+        "name",
+        "slug",
+        "c_meta",
+        "c_brand",
+        "dm_directoryParents",
+        "dm_directoryChildren.slug",
+        "dm_directoryChildren.name",
+        "dm_directoryChildren.address",
+        "dm_directoryChildren.hours"
+      ],
+      "filter": {
+        "savedFilterIds": [
+          "dm_defaultDirectory_address_city"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    },
+    {
+      "$id": "locations",
+      "fields": [
+        "id",
+        "uid",
+        "logo",
+        "meta",
+        "name",
+        "address",
+        "mainPhone",
+        "tollFreePhone",
+        "emails",
+        "geocodedCoordinate",
+        "description",
+        "hours",
+        "googlePlaceId",
+        "photoGallery",
+        "ref_listings.listingUrl",
+        "ref_listings.publisher",
+        "additionalHoursText",
+        "services",
+        "dm_directoryParents.name",
+        "dm_directoryParents.slug",
+        "dm_directoryChildrenCount",
+        "slug",
+        "c_header",
+        "c_bannerSection",
+        "c_heroSection",
+        "c_promoSection",
+        "c_featuredProductsSection.title",
+        "c_featuredProductsSection.products.name",
+        "c_featuredProductsSection.products.richTextDescription",
+        "c_featuredProductsSection.products.primaryPhoto",
+        "c_featuredProductsSection.products.c_primaryCTA",
+        "c_gallerySection",
+        "c_aboutSection",
+        "c_teamSection.title",
+        "c_teamSection.team.id",
+        "c_teamSection.team.name",
+        "c_teamSection.team.headshot",
+        "c_teamSection.team.mainPhone",
+        "c_teamSection.team.c_occupation",
+        "c_teamSection.team.emails",
+        "c_teamSection.team.websiteUrl",
+        "c_faqSection.title",
+        "c_faqSection.faqs.question",
+        "c_faqSection.faqs.answer",
+        "c_nearbySection",
+        "c_eventsSection.title",
+        "c_eventsSection.events.name",
+        "c_eventsSection.events.time",
+        "c_eventsSection.events.description",
+        "c_eventsSection.events.c_primaryCTA",
+        "c_eventsSection.events.photoGallery",
+        "c_insightsSection.title",
+        "c_insightsSection.cta",
+        "c_insightsSection.insights.title",
+        "c_insightsSection.insights.category",
+        "c_insightsSection.insights.photo",
+        "c_insightsSection.insights.date",
+        "c_insightsSection.insights.descriptionLong",
+        "c_insightsSection.insights.descriptionShort",
+        "c_insightsSection.insights.cta"
+      ],
+      "filter": {
+        "entityTypes": [
+          "location"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    },
+    {
+      "$id": "directory-region",
+      "fields": [
+        "id",
+        "uid",
+        "meta",
+        "name",
+        "slug",
+        "c_meta",
+        "c_brand",
+        "dm_directoryParents",
+        "dm_directoryChildren.slug",
+        "dm_directoryChildren.name",
+        "dm_directoryChildren.dm_directoryChildrenCount"
+      ],
+      "filter": {
+        "savedFilterIds": [
+          "dm_defaultDirectory_address_region"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    },
+    {
+      "$id": "directory-root",
+      "fields": [
+        "id",
+        "uid",
+        "meta",
+        "name",
+        "slug",
+        "c_meta",
+        "c_brand",
+        "dm_directoryParents",
+        "dm_directoryChildren.slug",
+        "dm_directoryChildren.name",
+        "dm_directoryChildren.dm_directoryChildrenCount"
+      ],
+      "filter": {
+        "savedFilterIds": [
+          "dm_defaultDirectory"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    },
+    {
+      "$id": "search-page",
+      "fields": [
+        "id",
+        "uid",
+        "meta",
+        "name",
+        "c_searchTitle",
+        "c_searchSubTitle",
+        "c_searchPlaceholderText"
+      ],
+      "filter": {
+        "entityIds": [
+          "search-page"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    }
+  ]
+}
