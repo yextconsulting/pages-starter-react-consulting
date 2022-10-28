@@ -12,7 +12,6 @@ import "src/components/entity/Core.css";
 const defaultFields: string[] = [
   'address',
   'mainPhone',
-  'ref_listings',
   'googlePlaceId',
   'tollFreePhone',
   'emails',

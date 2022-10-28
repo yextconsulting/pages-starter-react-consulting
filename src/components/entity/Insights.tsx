@@ -1,4 +1,5 @@
 import type { CTA, Image } from "@yext/types";
+import type { Insight } from "src/types/entities";
 import { InsightCard, InsightCardFeatured } from "src/components/cards/InsightCard"
 import { Link } from "@yext/pages/components";
 import "src/components/entity/Insights.css";
@@ -18,17 +19,7 @@ const defaultFields: string[] = [
 interface InsightsProps {
   title: string;
   cta?: CTA,
-  insights: InsightProps[];
-}
-
-interface InsightProps {
-  title: string,
-  category: string,
-  photo?: Image,
-  date: string,
-  descriptionLong: string,
-  descriptionShort: string,
-  cta?: CTA
+  insights: Insight[];
 }
 
 const Insights = (props: InsightsProps) => {
@@ -49,7 +40,7 @@ const Insights = (props: InsightsProps) => {
                 cta={featuredInsight.cta}
                 date={featuredInsight.date}
                 descriptionLong={featuredInsight.descriptionLong}
-                image={featuredInsight.photo}/>
+                image={featuredInsight.image}/>
             </div>
           </div>
           {!!listedInsights.length && (
