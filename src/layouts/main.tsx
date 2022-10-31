@@ -1,6 +1,7 @@
 import React from 'react';
 import { ConfigurationProvider } from '@yext/sites-react-components';
 import type { TemplateRenderProps } from "@yext/pages";
+import { TemplateDataProvider } from 'src/common/useTemplateData';
 import config from '../config';
 import { Header } from 'src/components/common/Header';
 import type { BaseProfile } from 'src/types/entities';
@@ -21,20 +22,22 @@ const Main = (props: MainProps) => {
 
   return (
     <ConfigurationProvider value={config}>
-      <Header
-        logo={_site?.c_header?.logo}
-        links={_site?.c_header?.links || []}
-      />
-      {children}
-      <Footer
-        copyrightMessage={_site.c_copyrightMessage || ""}
-        facebook={_site.c_facebook}
-        instagram={_site.c_instagram}
-        youtube={_site.c_youtube}
-        twitter={_site.c_twitter}
-        linkedIn={_site.c_linkedIn}
-        footerLinks={_site.c_footerLinks || []}
-      />
+      <TemplateDataProvider value={props.data}>
+        <Header
+          logo={_site?.c_header?.logo}
+          links={_site?.c_header?.links || []}
+        />
+        {children}
+        <Footer
+          copyrightMessage={_site.c_copyrightMessage || ""}
+          facebook={_site.c_facebook}
+          instagram={_site.c_instagram}
+          youtube={_site.c_youtube}
+          twitter={_site.c_twitter}
+          linkedIn={_site.c_linkedIn}
+          footerLinks={_site.c_footerLinks || []}
+        />
+      </TemplateDataProvider>
     </ConfigurationProvider>
   )
 }

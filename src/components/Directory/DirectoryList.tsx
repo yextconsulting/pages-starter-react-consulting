@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "@yext/pages/components";
 import type { DirectoryProfile } from "src/types/entities";
 import { DirectoryHero } from "src/components/Directory/DirectoryHero";
@@ -23,7 +22,7 @@ export function DirectoryList(props: DirectoryListProps) {
   const { name, brand, showNumLocs, directoryChildren, relativePrefixToRoot } = props;
   return (
     <div className="my-8">
-      <DirectoryHero title={name} subtitle={brand} relativePrefixToRoot={relativePrefixToRoot} />
+      <DirectoryHero title={name} subtitle={brand} />
       <div className="container my-8">
         <ul className="lg:columns-4 md:columns-3 sm:columns-2 columns-1">
           {directoryChildren.map((child: any, idx: number) => (

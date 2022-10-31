@@ -95,7 +95,6 @@ const City: Template<TemplateRenderProps<DirectoryProfile<LocationProfile>>> = (
         brand={c_brand}
         CardComponent={DirectoryCard}
         directoryChildren={dm_directoryChildren || []}
-        relativePrefixToRoot={data.relativePrefixToRoot}
       />
     </Main>
   );

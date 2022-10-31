@@ -1,4 +1,3 @@
-import React from "react";
 import { DirectoryCard } from "src/components/cards/DirectoryCard"
 import type { CardComponent } from "src/models/cardComponent";
 import { DirectoryHero } from "src/components/Directory/DirectoryHero";
@@ -18,14 +17,13 @@ interface DirectoryGridProps {
   brand: string
   CardComponent: CardComponent<LocationProfile>
   directoryChildren: LocationProfile[]
-  relativePrefixToRoot: string
 }
 
 export function DirectoryGrid(props: DirectoryGridProps) {
-  const { name, brand, directoryChildren, relativePrefixToRoot, CardComponent = DirectoryCard } = props;
+  const { name, brand, directoryChildren, CardComponent = DirectoryCard } = props;
   return (
     <div className="my-8">
-      <DirectoryHero title={name} subtitle={brand} relativePrefixToRoot={relativePrefixToRoot} />
+      <DirectoryHero title={name} subtitle={brand} />
       <div className="container my-8">
         <ul className="flex flex-wrap">
           {directoryChildren.map((child: any, idx: number) => (
