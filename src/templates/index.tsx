@@ -10,8 +10,6 @@
 
 import React from "react";
 import type {
-  TemplateProps,
-  TemplateRenderProps,
   Template,
   GetPath,
   TemplateConfig,
@@ -20,7 +18,7 @@ import type {
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
-import type { LocationProfile } from "src/types/entities";
+import type { TemplateRenderProps, LocationProfile, TemplateProps } from "src/types/entities";
 import { dedupeStreamFields } from "src/common/helpers";
 import { Main } from 'src/layouts/main';
 
@@ -105,7 +103,7 @@ export const config: TemplateConfig = {
  * NOTE: This currently has no impact on the local dev path. Local dev urls currently
  * take on the form: featureName/entityId
  */
- export const getPath: GetPath<TemplateProps> = (data) => {
+ export const getPath: GetPath<TemplateProps<LocationProfile>> = (data) => {
   return data.document.slug;
 };
 
@@ -115,7 +113,7 @@ export const config: TemplateConfig = {
  * will be used to generate the inner contents of the HTML document's <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
-export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadConfig => {
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps<LocationProfile>> = (data): HeadConfig => {
   return defaultHeadConfig(data);
 };
 
@@ -128,8 +126,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadCon
  * components any way you'd like as long as it lives in the src folder (though you should not put
  * them in the src/templates folder as this is specific for true template files).
  */
-const Index: Template<TemplateRenderProps> = (data) => {
-  const document = data.document as LocationProfile;
+const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
   const {
     id,
     geocodedCoordinate,
@@ -149,7 +146,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
     c_nearbySection: nearby,
     c_eventsSection: events,
     c_insightsSection: insights
-  } = document;
+  } = data.document;
 
   const showBanner = banner?.text && banner?.image;
   const showPromo = promo?.title && promo?.image;
@@ -165,7 +162,7 @@ const Index: Template<TemplateRenderProps> = (data) => {
     <Main data={data}>
       {showBanner && <Banner text={banner.text} image={banner.image} />}
       <Hero name={name} cta1={hero?.cta1} cta2={hero?.cta2} address={address} background={hero?.background} hours={hours} numReviews={21} rating={4.5} />
-      <Core profile={document} />
+      <Core profile={data.document} />
       {showPromo && <Promo title={promo.title} description={promo.description} image={promo.image} cta={promo.cta} googlePlayUrl={promo.googlePlayUrl} appStoreUrl={promo.appStoreUrl} />}
       {showProducts && <Products title={products.title} items={products.products} />}
       {showEvents && <Events title={events.title} items={events.events} />}

@@ -1,6 +1,4 @@
 import {
-  TemplateProps,
-  TemplateRenderProps,
   Template,
   GetPath,
   TemplateConfig,
@@ -17,6 +15,7 @@ import { Main } from "src/layouts/main";
 import { BrowserRouter } from "react-router-dom";
 import { getRuntime } from "@yext/pages/util";
 import { projectConfig } from "src/config";
+import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
 
 /**
  * Not required depending on your use case.
@@ -67,7 +66,7 @@ export const getPath = (): string => {
  * will be used to generate the inner contents of the HTML document"s <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
- export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data): HeadConfig => {
+ export const getHeadConfig: GetHeadConfig<TemplateRenderProps<SearchPageProfile>> = (data): HeadConfig => {
   return defaultHeadConfig(data);
 };
 
@@ -76,7 +75,7 @@ export const getPath = (): string => {
  * This is the main template. It can have any name as long as it"s the default export.
  * The props passed in here are the direct result from `getStaticProps`.
  */
-const Search: Template<TemplateRenderProps> = (data) => {
+const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
   const { document } = data;
   const {
     c_searchTitle,

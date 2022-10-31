@@ -11,8 +11,6 @@
 import React from "react";
 import type {
   Template,
-  TemplateProps,
-  TemplateRenderProps,
   GetPath,
   TemplateConfig,
   GetHeadConfig,
@@ -20,7 +18,7 @@ import type {
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import { DirectoryList, directoryListFields } from "src/components/Directory/DirectoryList"
-import type { DirectoryProfile } from "src/types/entities";
+import type { DirectoryProfile, TemplateProps, TemplateRenderProps } from "src/types/entities";
 import { Main } from 'src/layouts/main';
 
 /**
@@ -63,7 +61,7 @@ export const config: TemplateConfig = {
  * NOTE: This currently has no impact on the local dev path. Local dev urls currently
  * take on the form: featureName/entityId
  */
-export const getPath: GetPath<TemplateProps> = (data) => {
+export const getPath: GetPath<TemplateProps<DirectoryProfile<never>>> = (data) => {
   return data.document.slug;
 };
 
@@ -73,7 +71,7 @@ export const getPath: GetPath<TemplateProps> = (data) => {
  * will be used to generate the inner contents of the HTML document's <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
-export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data) => {
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps<DirectoryProfile<never>>> = (data) => {
   return defaultHeadConfig(data);
 };
 
@@ -86,9 +84,8 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (data) => {
  * components any way you'd like as long as it lives in the src folder (though you should not put
  * them in the src/templates folder as this is specific for true template files).
  */
-const Root: Template<TemplateRenderProps> = (data) => {
-  const document = data.document as DirectoryProfile<DirectoryProfile<never>>;
-  const { name, c_brand, dm_directoryChildren } = document;
+const Root: Template<TemplateRenderProps<DirectoryProfile<DirectoryProfile<never>>>> = (data) => {
+  const { name, c_brand, dm_directoryChildren } = data.document;
 
   return (
     <Main data={data}>
