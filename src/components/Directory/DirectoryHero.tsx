@@ -1,5 +1,6 @@
 import { DirectorySearchBar } from "src/components/Directory/DirectorySearchBar";
 import { useTemplateData } from "src/common/useTemplateData";
+import { SEARCH_PATH } from "src/common/consts";
 
 interface DirectoryHeroProps {
   subtitle?: string
@@ -30,7 +31,7 @@ export function DirectoryHero(props: DirectoryHeroProps) {
         inputId="q"
         formId="directory-search"
         // TODO: Pull searcher path from directory hero
-        searcherPath={relativePrefixToRoot + "search"}
+        searcherPath={relativePrefixToRoot + SEARCH_PATH}
       />
     </div>
   )

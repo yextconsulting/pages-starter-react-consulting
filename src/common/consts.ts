@@ -11,7 +11,7 @@ export const GEOLOCATE_RADIUS = 50;
 
 // Search configuration used to initialize provider in search.tsx
 export const getSearchProviderConfig = (locale: string) => ({
-	apiKey: "b7930d2fa7b5b106371224158c5854d2",
+	apiKey: import.meta.env.YEXT_PUBLIC_SEARCH_API_KEY,
 	experienceKey: "locator",
 	locale: locale,
 	verticalKey: "locations",

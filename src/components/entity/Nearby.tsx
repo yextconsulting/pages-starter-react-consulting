@@ -23,7 +23,7 @@ type NearbyAPIConfig = {
 const config: NearbyAPIConfig = {
   endpoint: 'https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch', 
   params: {
-    api_key: 'ae79e8eb05e10f03917d3f4836863ac7',
+    api_key: import.meta.env.YEXT_PUBLIC_NEARBY_API_KEY,
     entityTypes: 'location',
     limit: '4',
     radius: '50',
