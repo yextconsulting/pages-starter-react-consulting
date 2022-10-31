@@ -89,6 +89,8 @@ const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
     endpoints: SandboxEndpoints // TODO(jhood): before merge remove. Add if using a sandbox account
   });
 
+  console.log(getSearchProviderConfig(document.meta.locale));
+
   return (
     <Main data={data}>
       <SearchHeadlessProvider searcher={searcher}>
