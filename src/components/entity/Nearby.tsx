@@ -21,13 +21,13 @@ type NearbyAPIConfig = {
 
 // TODO update to project's values
 const config: NearbyAPIConfig = {
-  endpoint: 'https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch', 
+  endpoint: 'https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch',  // TODO(jhood): before merge change to prod
   params: {
     api_key: import.meta.env.YEXT_PUBLIC_NEARBY_API_KEY,
     entityTypes: 'location',
     limit: '4',
     radius: '50',
-    savedFilterIds: '1003506731',
+    savedFilterIds: '1003506731', // TODO(jhood): before merge change to <REPLACE-ME>
     v: '20220927',
   }
 }

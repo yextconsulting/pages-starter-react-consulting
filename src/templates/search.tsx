@@ -10,7 +10,7 @@ import "src/styles/search.css";
 import { defaultHeadConfig } from "src/common/head";
 import { provideHeadless, SearchHeadlessProvider } from "@yext/search-headless-react";
 import Locator from "src/components/search/Locator";
-import { SandboxEndpoints } from "@yext/search-headless-react"; // TODO: remove if not using sandbox account
+import { SandboxEndpoints } from "@yext/search-headless-react"; // TODO(jhood): before merge remove add if using a sandbox account
 import { Main } from "src/layouts/main";
 import { BrowserRouter } from "react-router-dom";
 import { getRuntime } from "@yext/pages/util";
@@ -86,7 +86,7 @@ const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
   const runtime = getRuntime();
   const searcher = provideHeadless({
     ...getSearchProviderConfig(document.meta.locale),
-    endpoints: SandboxEndpoints // TODO: remove if not using a sandbox account
+    endpoints: SandboxEndpoints // TODO(jhood): before merge remove. Add if using a sandbox account
   });
 
   return (
