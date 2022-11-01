@@ -1,3 +1,4 @@
+import { TemplateProps as InternalTemplateProps, TemplateRenderProps as InternalTemplateRenderProps } from "@yext/pages/*"
 import type { ListingType } from "@yext/pages/components"
 import type { Address, Coordinate, CTA, Hours, Image, ComplexImage, WebsiteUrl } from "@yext/types"
 
@@ -43,6 +44,12 @@ export interface ProductProfile extends BaseProfile {
   readonly primaryPhoto: ComplexImage
   readonly richTextDescription: string
   readonly c_primaryCTA: CTA
+}
+
+export interface SearchPageProfile extends BaseProfile {
+  c_searchTitle: string
+  c_searchSubTitle: string
+  c_searchPlaceholderText: string
 }
 
 export interface EventDate {
@@ -165,3 +172,8 @@ export interface FAQProfile extends BaseProfile {
   readonly question: string;
   readonly answer: string;
 }
+
+export type TemplateProps<T = Record<string, unknown>> = Omit<InternalTemplateProps, 'document'> & {
+  document: T;
+}
+export type TemplateRenderProps<T = Record<string, unknown>> = Omit<InternalTemplateRenderProps, 'document'> & TemplateProps<T>;
