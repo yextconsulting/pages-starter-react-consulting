@@ -1,13 +1,15 @@
 import { DirectorySearchBar } from "src/components/Directory/DirectorySearchBar";
+import { useTemplateData } from "src/common/useTemplateData";
 
 interface DirectoryHeroProps {
   subtitle?: string
   title: string
-  relativePrefixToRoot: string
 }
 
 export function DirectoryHero(props: DirectoryHeroProps) {
-  const { subtitle, title, relativePrefixToRoot } = props;
+  const { subtitle, title } = props;
+  const { relativePrefixToRoot } = useTemplateData();
+
   return (
     <div className="DirectoryHero bg-brand-gray-100 py-8 md:py-20 px-4 md:px-0">
       <h1 className="mb-6 text-center">

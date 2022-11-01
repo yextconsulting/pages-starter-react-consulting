@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { createCtx } from "src/types/data";
+import { createCtx } from "src/common/createCtx";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
