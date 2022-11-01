@@ -173,6 +173,8 @@ export interface FAQProfile extends BaseProfile {
   readonly answer: string;
 }
 
+export type TemplateDataProviderProfile = Pick<BaseProfile, '_site'|'locale'>;
+
 export type TemplateProps<T = Record<string, unknown>> = Omit<InternalTemplateProps, 'document'> & {
   document: T;
 }
