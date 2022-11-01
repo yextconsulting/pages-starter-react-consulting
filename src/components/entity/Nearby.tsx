@@ -4,6 +4,7 @@ import { DirectoryCard } from 'src/components/cards/DirectoryCard';
 import { useBreakpoint } from 'src/common/useBreakpoints';
 import { Link } from '@yext/pages/components';
 import { SEARCH_PATH } from 'src/common/consts';
+import { useTemplateData } from 'src/common/useTemplateData';
 
 // Configure nearby locations section liveapi params and endpoint
 // See https://hitchhikers.yext.com/docs/liveapis/knowledgegraphliveapi/entities/entities/#operation/geoSearchEntities
@@ -19,16 +20,17 @@ type NearbyAPIConfig = {
   }
 }
 
-// TODO update to project's values
-const config: NearbyAPIConfig = {
-  endpoint: 'https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch',  // TODO(jhood): before merge change to prod
-  params: {
-    api_key: import.meta.env.YEXT_PUBLIC_NEARBY_API_KEY,
-    entityTypes: 'location',
-    limit: '4',
-    radius: '50',
-    savedFilterIds: '1003506731', // TODO(jhood): before merge change to <REPLACE-ME>
-    v: '20220927',
+const getConfig = (api_key: string): NearbyAPIConfig => {
+  return {
+    endpoint: 'https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch',  // TODO(jhood): before merge change to prod
+    params: {
+      api_key,
+      entityTypes: 'location',
+      limit: '4',
+      radius: '50',
+      savedFilterIds: '1003506731', // TODO(jhood): before merge change to <REPLACE-ME>
+      v: '20220927',
+    }
   }
 }
 
@@ -57,15 +59,19 @@ const Nearby = (props: NearbyProps) => {
     relativePrefixToRoot,
   } = props;
 
+  const templateData = useTemplateData();
+  const apiKey = templateData.document._site.c_nearbySectionAPIKey;
+
   // TODO(jhood): update type to match liveapi response
   const [nearbyLocations, setNearbyLocations] = useState<any[]>([]);
   const isDesktopBreakpoint = useBreakpoint("sm");
 
   useEffect(() => {
-    if (!geocodedCoordinate) {
+    if (!geocodedCoordinate || !apiKey) {
       return;
     }
 
+    const config = getConfig(apiKey);
     const searchParams = new URLSearchParams({
       ...config.params,
       location: `${geocodedCoordinate.latitude},${geocodedCoordinate.longitude}`,

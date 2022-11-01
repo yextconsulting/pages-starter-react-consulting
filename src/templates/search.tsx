@@ -81,15 +81,18 @@ const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
     c_searchTitle,
     c_searchSubTitle,
     c_searchPlaceholderText,
+    _site,
   } = document;
 
   const runtime = getRuntime();
   const searcher = provideHeadless({
-    ...getSearchProviderConfig(document.meta.locale),
+    ...getSearchProviderConfig(_site.c_searchExperienceAPIKey ?? '', document.meta.locale),
     endpoints: SandboxEndpoints // TODO(jhood): before merge remove. Add if using a sandbox account
   });
 
-  console.log(getSearchProviderConfig(document.meta.locale));
+  if (!_site.c_searchExperienceAPIKey) {
+    console.error("Add the search experience API key to the Site Entity");
+  }
 
   return (
     <Main data={data}>

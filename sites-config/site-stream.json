@@ -14,7 +14,9 @@
     "c_instagram",
     "c_copyrightMessage",
     "c_footerLinks",
-    "c_header"
+    "c_header",
+    "c_nearbySectionAPIKey",
+    "c_searchExperienceAPIKey"
   ],
   "localization": {
     "locales": ["en"],

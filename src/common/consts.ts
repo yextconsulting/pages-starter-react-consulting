@@ -10,10 +10,10 @@ export const LOCATOR_ENTITY_TYPE = "location";
 export const GEOLOCATE_RADIUS = 50;
 
 // Search configuration used to initialize provider in search.tsx
-export const getSearchProviderConfig = (locale: string) => ({
-	apiKey: import.meta.env.YEXT_PUBLIC_SEARCH_API_KEY,
+export const getSearchProviderConfig = (apiKey: string, locale: string) => ({
+	apiKey,
 	experienceKey: "locator",
-	locale: locale,
+	locale,
 	verticalKey: "locations",
 	experienceVersion: "STAGING",
 });
