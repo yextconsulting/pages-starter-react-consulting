@@ -1,22 +1,20 @@
 import React from 'react';
 import { ConfigurationProvider } from '@yext/sites-react-components';
-import type { TemplateRenderProps } from "@yext/pages";
 import { TemplateDataProvider } from 'src/common/useTemplateData';
 import config from '../config';
 import { Header } from 'src/components/common/Header';
-import type { BaseProfile } from 'src/types/entities';
+import type { TemplateRenderProps, BaseProfile } from 'src/types/entities';
 import Footer from 'src/components/common/Footer';
 
 interface MainProps {
-  data: TemplateRenderProps;
+  data: TemplateRenderProps<BaseProfile>;
   children?: React.ReactNode;
 }
 
 const Main = (props: MainProps) => {
-  const document = props.data.document as BaseProfile;
   const {
     _site
-  } = document;
+  } = props.data.document;
 
   const { children } = props;
 
