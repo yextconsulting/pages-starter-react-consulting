@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSearchActions, Matcher } from '@yext/search-headless-react';
 import { executeSearch, getUserLocation } from '@yext/search-ui-react';
 import LoadingSpinner from 'src/components/common/LoadingSpinner';
-import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD } from 'src/common/consts';
+import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD } from 'src/config';
 
 /**
  * - TODO(jhood): Replace with search-ui-react component when available: https://yext.slack.com/archives/C016ZKY42CF/p1661356424437289

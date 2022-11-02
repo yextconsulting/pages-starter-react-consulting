@@ -2,7 +2,7 @@ import { useSearchState } from "@yext/search-headless-react";
 import { useEffect, useState } from "react";
 import type { State } from "@yext/search-headless-react";
 import "src/components/search/ResultSummary.css";
-import { LOCATOR_STATIC_FILTER_FIELD } from "src/common/consts";
+import { LOCATOR_STATIC_FILTER_FIELD } from "src/config";
 
 export default function ResultSummary() {
   const searchState = useSearchState(state => state);

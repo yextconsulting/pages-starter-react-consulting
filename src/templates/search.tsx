@@ -15,7 +15,7 @@ import { Main } from "src/layouts/main";
 import { BrowserRouter } from "react-router-dom";
 import { getRuntime } from "@yext/pages/util";
 import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
-import { SEARCH_PATH, getSearchProviderConfig } from "src/common/consts";
+import { SEARCH_PATH, getSearchProviderConfig } from "src/config";
 
 /**
  * Not required depending on your use case.

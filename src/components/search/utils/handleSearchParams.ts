@@ -3,7 +3,7 @@ import { FieldValueFilter, Matcher, SelectableStaticFilter } from "@yext/search-
 import type { DisplayableFacetOption, FieldValueStaticFilter, SearchHeadless, StaticFilter } from "@yext/search-headless-react";
 import type { URLSearchParamsInit } from "react-router-dom";
 import { getUserLocation } from "@yext/search-ui-react";
-import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/common/consts";
+import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 
 /**
  * TODO: FilterSearch doesn't account for builtin.location being set already so when there is a saved locationId in the URLSearchParams

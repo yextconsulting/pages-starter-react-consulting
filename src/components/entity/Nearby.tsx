@@ -3,7 +3,7 @@ import type { Coordinate } from "@yext/types";
 import { DirectoryCard } from 'src/components/cards/DirectoryCard';
 import { useBreakpoint } from 'src/common/useBreakpoints';
 import { Link } from '@yext/pages/components';
-import { SEARCH_PATH } from 'src/common/consts';
+import { SEARCH_PATH } from 'src/config';
 import { useTemplateData } from 'src/common/useTemplateData';
 
 // Configure nearby locations section liveapi params and endpoint

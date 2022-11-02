@@ -1,6 +1,6 @@
 import { DirectorySearchBar } from "src/components/Directory/DirectorySearchBar";
 import { useTemplateData } from "src/common/useTemplateData";
-import { SEARCH_PATH } from "src/common/consts";
+import { SEARCH_PATH } from "src/config";
 
 interface DirectoryHeroProps {
   subtitle?: string
