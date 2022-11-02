@@ -44,9 +44,11 @@ const Footer = (props: FooterProps) => {
 
           <div className="my-4 md:my-0 flex flex-row items-center justify-center md:justify-end">
             {socialLinks.map((socialLink, i) => (
-              <Link className="Link Link--primary" key={i} href={socialLink.link}>
-                {socialLink.label}
-              </Link>
+              socialLink.link 
+                ?  <Link className="Link Link--primary" key={i} href={socialLink.link}>
+                    {socialLink.label}
+                  </Link>
+                : null
             ))}
           </div>
         </div>

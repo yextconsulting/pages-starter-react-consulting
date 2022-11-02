@@ -1132,10 +1132,10 @@
     classnames "^2.3.1"
     rollup-plugin-import-css "^3.0.3"
 
-"@yext/types@^0.1.9-alpha":
-  version "0.1.9-alpha"
-  resolved "https://registry.yarnpkg.com/@yext/types/-/types-0.1.9-alpha.tgz#2dc5b9d2421a2e3b68e7a0dc9ac7d1a672ab2db7"
-  integrity sha512-KVWiObb+CIOwTRsKUxYhUEzNQorOvnJ3BglHYS00jRyMA3CxCkKzr7tGOk12rlk96ypka3ySpISHGqHojdw+sA==
+"@yext/types@0.1.10-alpha":
+  version "0.1.10-alpha"
+  resolved "https://registry.yarnpkg.com/@yext/types/-/types-0.1.10-alpha.tgz#f0017366d663a284ceb565119e2ff99d8adabfcb"
+  integrity sha512-eWnNqrD+JAWEoTDWV22KWZExKv2BfF9nNLMhhbW/j5FVUdnhwswiHWPG0jD5TVAZGyKMul0aMT3H4OyJwEw2XA==
 
 abort-controller@^3.0.0:
   version "3.0.0"
