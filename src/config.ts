@@ -17,11 +17,10 @@ export const LOCATOR_ENTITY_TYPE = "location";
 export const GEOLOCATE_RADIUS = 50;
 
 // Search configuration used to initialize provider in search.tsx
-// TODO(jhood): before merge update to <REAPLCE-ME>
 export const getSearchProviderConfig = (apiKey: string, locale: string) => ({
 	apiKey,
-	experienceKey: "locator",
+	experienceKey: "<REPLACE-ME>",
 	locale,
-	verticalKey: "locations",
-	experienceVersion: "STAGING",
+	verticalKey: "<REPLACE-ME>",
+	experienceVersion: "<REPLACE-ME>",
 });

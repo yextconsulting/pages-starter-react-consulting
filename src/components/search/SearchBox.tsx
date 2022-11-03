@@ -3,7 +3,7 @@ import GeolocateButton from "./GeolocateButton";
 import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 
 const searchFields = [
-  { fieldApiName: LOCATOR_STATIC_FILTER_FIELD, entityType: LOCATOR_ENTITY_TYPE },
+  { fieldApiName: 'builtin.location', entityType: LOCATOR_ENTITY_TYPE },
 ];
 
 type SearchBoxProps = {
