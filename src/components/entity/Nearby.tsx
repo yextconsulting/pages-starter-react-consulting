@@ -3,8 +3,36 @@ import type { Coordinate } from "@yext/types";
 import { DirectoryCard } from 'src/components/cards/DirectoryCard';
 import { useBreakpoint } from 'src/common/useBreakpoints';
 import { Link } from '@yext/pages/components';
-import { getPath as searchPath } from 'src/templates/search';
-import { projectConfig } from 'src/config';
+import { SEARCH_PATH } from 'src/config';
+import { useTemplateData } from 'src/common/useTemplateData';
+
+// Configure nearby locations section liveapi params and endpoint
+// See https://hitchhikers.yext.com/docs/liveapis/knowledgegraphliveapi/entities/entities/#operation/geoSearchEntities
+type NearbyAPIConfig = {
+  endpoint: 'https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch' | 'https://liveapi.yext.com/v2/accounts/me/entities/geosearch';
+  params: {
+    api_key: string;
+    entityTypes?: string;
+    limit?: string;
+    radius?: string;
+    savedFilterIds?: string;
+    v: string;
+  }
+}
+
+const getConfig = (api_key: string): NearbyAPIConfig => {
+  return {
+    endpoint: 'https://liveapi.yext.com/v2/accounts/me/entities/geosearch',
+    params: {
+      api_key,
+      entityTypes: 'location',
+      limit: '4',
+      radius: '50',
+      savedFilterIds: ' <REPLACE-ME>',
+      v: '20220927',
+    }
+  }
+}
 
 const defaultFields: string[] = [
   'c_nearbySection',
@@ -31,22 +59,26 @@ const Nearby = (props: NearbyProps) => {
     relativePrefixToRoot,
   } = props;
 
+  const templateData = useTemplateData();
+  const apiKey = templateData.document._site.c_nearbySectionAPIKey;
+
   // TODO(jhood): update type to match liveapi response
   const [nearbyLocations, setNearbyLocations] = useState<any[]>([]);
   const isDesktopBreakpoint = useBreakpoint("sm");
 
   useEffect(() => {
-    if (!geocodedCoordinate) {
+    if (!geocodedCoordinate || !apiKey) {
       return;
     }
 
+    const config = getConfig(apiKey);
     const searchParams = new URLSearchParams({
-      ...projectConfig.nearby.params,
+      ...config.params,
       location: `${geocodedCoordinate.latitude},${geocodedCoordinate.longitude}`,
       filter: JSON.stringify({ "meta.id": { "!$eq": `${id}` } }),
     });
 
-    fetch(`${projectConfig.nearby.endpoint}?${searchParams.toString()}`)
+    fetch(`${config.endpoint}?${searchParams.toString()}`)
       .then(resp => resp.json())
       .then(data => setNearbyLocations(data.response.entities || []))
       .catch(error => console.error(error));
@@ -54,8 +86,7 @@ const Nearby = (props: NearbyProps) => {
 
   const renderLocatorLink = () => {
     return linkToLocator ? (
-      // TODO: using searchPath() has some drawbacks see here: https://github.com/yextconsulting/site-starter-react-consulting/pull/82#discussion_r987318173
-      <Link href={buttonLink ?? relativePrefixToRoot + searchPath()} className="Button Button--primary mt-8 sm:mt-0">
+      <Link href={buttonLink ?? relativePrefixToRoot + SEARCH_PATH} className="Button Button--primary mt-8 sm:mt-0">
         {buttonText}
       </Link>
     ) : null;

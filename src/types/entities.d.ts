@@ -36,7 +36,9 @@ export interface SiteProfile extends BaseProfile {
     readonly logo?: Image
     readonly logoLink?: string
     readonly links?: CTA[]
-  }
+  },
+  readonly c_nearbySectionAPIKey?: string;
+  readonly c_searchExperienceAPIKey?: string;
 }
 
 export interface ProductProfile extends BaseProfile {
