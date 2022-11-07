@@ -140,7 +140,11 @@ export function loadInitialSearchParams(
 
         // Finally run vertical search with all the static and facet filters set from the URLSearchParams
         if (searchActions.state.filters.static) {
-          await searchActions.executeVerticalQuery();
+          try {
+            await searchActions.executeVerticalQuery();
+          } catch(error) {
+            console.error(error);
+          }
         }
       }
       if (callback) {

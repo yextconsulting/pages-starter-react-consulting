@@ -26,10 +26,6 @@ export function DirectoryHero(props: DirectoryHeroProps) {
       </h1>
       <DirectorySearchBar
         placeholder="Search by city and state or ZIP code"
-        labelText="Search by city and state or ZIP code"
-        queryParameter="q"
-        inputId="q"
-        formId="directory-search"
         searcherPath={relativePrefixToRoot + SEARCH_PATH}
       />
     </div>

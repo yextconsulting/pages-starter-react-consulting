@@ -1,33 +1,77 @@
-import search from "src/assets/images/search.svg";
+import { getSearchProviderConfig, LOCATOR_ENTITY_TYPE, LOCATOR_STATIC_FILTER_FIELD } from "src/config";
+import { useTemplateData } from "src/common/useTemplateData";
+import { provideHeadless, SearchHeadlessProvider } from "@yext/search-headless-react";
+import { SandboxEndpoints, useSearchState } from "@yext/search-headless-react";
+import { FilterSearch } from "@yext/search-ui-react";
+import { useEffect } from "react";
+import GeolocateButton from "src/components/search/GeolocateButton";
+
+const searchFields = [
+  { fieldApiName: LOCATOR_STATIC_FILTER_FIELD, entityType: LOCATOR_ENTITY_TYPE },
+];
 
 interface DirectorySearchBarProps {
   placeholder: string
-  queryParameter: string
   searcherPath: string
-  formId: string
-  inputId: string
-  labelText: string
 }
 
 export function DirectorySearchBar(props: DirectorySearchBarProps) {
-  const { placeholder, searcherPath, queryParameter, formId, inputId, labelText } = props;
+  const { document } = useTemplateData();
+
+  const searcher = provideHeadless({
+    ...getSearchProviderConfig(document._site.c_searchExperienceAPIKey ?? '', document.meta.locale),
+    // endpoints: SandboxEndpoints // Add if using a sandbox account
+  });
+
   return (
-    <form className="Search text-center" method="get" id={formId} action={searcherPath}>
-      <div className="inline-flex bg-white border border-brand-gray-300 w-full sm:w-auto">
-        <label className="Search-label sr-only" htmlFor={inputId}>{labelText}</label>
-        <input placeholder={placeholder}
-              className="Search-input p-4 text-sm"
-              type={"text"}
-              name={queryParameter}
-              id={inputId}
-              >
-        </input>
-        <button className="Search-submit w-12 flex items-center justify-center" type="submit">
-          <img className="Search-submitbutton" src={search} alt=""></img>
-          <span className="sr-only">Search</span>
-        </button>
-        {/* // TODO: implement geolocation */}
+    <SearchHeadlessProvider searcher={searcher}>
+      <DirectorySearchBarInternal {...props}/>
+    </SearchHeadlessProvider>
+  );
+}
+
+function DirectorySearchBarInternal(props: DirectorySearchBarProps) {
+  const {
+    placeholder,
+    searcherPath,
+  } = props;
+
+  const searchState = useSearchState(s => s);
+
+  useEffect(() => {
+    const staticFilters = searchState.filters.static;
+
+    if (staticFilters) {
+      const selectedFilter = staticFilters.find(f => f.selected && f.filter.kind === "fieldValue");
+
+      if (selectedFilter && selectedFilter.filter.kind === "fieldValue") {
+        const urlParams = new URLSearchParams();
+        // stringify the geolocation filter value if present
+        urlParams.set('q', typeof(selectedFilter.filter.value) === "string" ? selectedFilter.filter.value : JSON.stringify(selectedFilter.filter.value));
+        if (selectedFilter.displayName) {
+          urlParams.set('qp', selectedFilter.displayName);
+        }
+        window.location.href = `${searcherPath}?${urlParams.toString()}`;
+      }
+    }
+  }, [searchState.query.queryId]);
+
+  return (
+    <div className="flex items-center justify-center">
+      <div className="relative w-[350px!important] justify-center h-[54px]">
+        <FilterSearch
+          customCssClasses={{
+            filterSearchContainer: "absolute w-full mb-0",
+            inputElement: 'p-4 text-sm h-auto',
+          }}
+          label=""
+          placeholder={ placeholder }
+          searchFields={ searchFields }
+          searchOnSelect={ true }
+          key="directory-search"
+        />
       </div>
-    </form>
-  )
+      <GeolocateButton className="ml-4" />
+    </div>
+  );
 }
