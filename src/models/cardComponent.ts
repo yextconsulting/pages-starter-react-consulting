@@ -6,7 +6,6 @@
 export interface CardProps<ProfileType> {
   /** The result data provided to the card for rendering. */
   profile: ProfileType
-  relativePrefixToRoot?: string;
 }
 
 /**
