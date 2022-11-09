@@ -109,7 +109,7 @@ const Nearby = (props: NearbyProps) => {
             {nearbyLocations.map(location => (
               // TODO(jhood): make standard Teaser card
               <li key={location.meta.id} className='p-4 w-full sm:w-1/2 lg:w-1/4'>
-                <DirectoryCard relativePrefixToRoot={relativePrefixToRoot} profile={location} />
+                <DirectoryCard profile={location} />
               </li>
             ))}
           </ul>
