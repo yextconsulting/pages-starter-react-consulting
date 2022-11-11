@@ -57,7 +57,7 @@ function ResultListItem(props: ResultListItemProps) {
     if (selectedId === result.id) {
       listItemRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest"});
     }
-  }, [selectedId]);
+  }, [selectedId, result.id]);
 
   return (
     <div

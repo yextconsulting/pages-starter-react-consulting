@@ -4,7 +4,7 @@ import { createContext, useContext } from "react";
  * A helper to create a Context and Provider with no upfront default value, and
  * without having to check for undefined all the time.
  */
-export function createCtx<A extends {} | null>() {
+export function createCtx<A extends unknown | null>() {
   const ctx = createContext<A | undefined>(undefined);
   function useCtx() {
     const c = useContext(ctx);

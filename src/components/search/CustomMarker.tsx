@@ -33,7 +33,7 @@ export default function CustomMarker(props: CustomMarkerProps) {
         map.setCenter(coordinate, true);
       }
     }
-  }, [selectedId]);
+  }, [selectedId, id, coordinate, map]);
 
   return (
     <Marker

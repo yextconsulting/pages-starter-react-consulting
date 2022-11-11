@@ -82,7 +82,7 @@ const Nearby = (props: NearbyProps) => {
       .then(resp => resp.json())
       .then(data => setNearbyLocations(data.response.entities || []))
       .catch(error => console.error(error));
-  }, []);
+  }, [geocodedCoordinate, id]);
 
   const renderLocatorLink = () => {
     return linkToLocator ? (

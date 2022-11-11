@@ -46,7 +46,7 @@ const TeamCard = (props: TeamCardProps) => {
           </div>
         )}
 
-        {profile.websiteUrl && profile.websiteUrl.url && (
+        {profile.websiteUrl?.url && (
           <Link className="Link--primary mt-6 flex items-center font-bold" href={profile.websiteUrl.url}>
             Visit Profile
             <FaChevronRight className="text-blue-500 ml-2" />

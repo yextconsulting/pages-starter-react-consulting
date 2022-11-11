@@ -1,6 +1,5 @@
 import {
   Template,
-  GetPath,
   TemplateConfig,
   GetHeadConfig,
   HeadConfig,
