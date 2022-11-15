@@ -1,4 +1,4 @@
-import { DirectorySearchBar } from "src/components/Directory/DirectorySearchBar";
+import { DirectorySearchBar } from "src/components/directory/DirectorySearchBar";
 import { useTemplateData } from "src/common/useTemplateData";
 import { SEARCH_PATH } from "src/config";
 

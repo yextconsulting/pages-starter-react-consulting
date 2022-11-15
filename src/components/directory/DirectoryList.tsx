@@ -1,6 +1,6 @@
 import { Link } from "@yext/pages/components";
 import type { DirectoryProfile } from "src/types/entities";
-import { DirectoryHero } from "src/components/Directory/DirectoryHero";
+import { DirectoryHero } from "src/components/directory/DirectoryHero";
 import "src/styles/Directory.css";
 
 export const directoryListFields = [
