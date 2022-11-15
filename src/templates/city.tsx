@@ -18,7 +18,7 @@ import type {
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import { DirectoryCard } from "src/components/cards/DirectoryCard"
-import { DirectoryGrid, directoryGridFields } from "src/components/Directory/DirectoryGrid"
+import { DirectoryGrid, directoryGridFields } from "src/components/directory/DirectoryGrid"
 import type { DirectoryProfile, LocationProfile, TemplateProps, TemplateRenderProps } from "src/types/entities";
 import { Main } from 'src/layouts/main';
 

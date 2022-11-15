@@ -17,7 +17,7 @@ import type {
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
-import { DirectoryList, directoryListFields } from "src/components/Directory/DirectoryList"
+import { DirectoryList, directoryListFields } from "src/components/directory/DirectoryList"
 import type { DirectoryProfile, TemplateProps, TemplateRenderProps } from "src/types/entities";
 import { Main } from 'src/layouts/main';
 

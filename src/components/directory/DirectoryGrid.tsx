@@ -1,6 +1,6 @@
 import { DirectoryCard } from "src/components/cards/DirectoryCard"
 import type { CardComponent } from "src/models/cardComponent";
-import { DirectoryHero } from "src/components/Directory/DirectoryHero";
+import { DirectoryHero } from "src/components/directory/DirectoryHero";
 import type { LocationProfile } from "src/types/entities";
 import "src/styles/Directory.css";
 
