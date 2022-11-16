@@ -167,7 +167,7 @@ function canonicalUrl(data: TemplateRenderProps, locale?: string): string {
     if (altLocalePath) { pagePath = altLocalePath; }
   }
 
-  return `https://${data.document.siteDomain}${pagePath}`;
+  return `https://${data.document.siteDomain}/${pagePath}`;
 }
 
 function alternates(data: TemplateRenderProps): Tag[] {
