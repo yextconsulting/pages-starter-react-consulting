@@ -4,6 +4,10 @@
       {
         "root": "dist",
         "pattern": "assets/**/*"
+      },
+      {
+        "root": "static",
+        "pattern": "*"
       }
     ],
     "features": "sites-config/features.json",
