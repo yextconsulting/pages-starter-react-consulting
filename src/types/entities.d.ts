@@ -96,7 +96,12 @@ export interface LocationProfile extends BaseProfile {
   readonly hours?: Hours
   readonly additionalHoursText?: string
   readonly mainPhone?: string
+  readonly fax?: string
   readonly tollFreePhone?: string
+  readonly mobilePhone?: string
+  readonly ttyPhone?: string
+  readonly localPhone?: string
+  readonly alternatePhone?: string
   readonly description?: string
   readonly emails?: string[]
   readonly services: string[]

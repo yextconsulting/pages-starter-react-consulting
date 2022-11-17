@@ -13,6 +13,7 @@ import type {
   Template,
   GetPath,
   TemplateConfig,
+  TransformProps,
   GetHeadConfig,
   HeadConfig,
 } from "@yext/pages";
@@ -35,6 +36,7 @@ import { Nearby, defaultFields as NearbyFields } from "src/components/entity/Nea
 import { Products, defaultFields as featuredProductFields } from "src/components/entity/Products";
 import { Events, defaultFields as eventFields } from "src/components/entity/Events";
 import { Insights, defaultFields as InsightsFields } from 'src/components/entity/Insights';
+import { formatPhone } from 'src/common/helpers'
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -95,6 +97,40 @@ export const config: TemplateConfig = {
     "name",
     "slug"
   ],
+};
+
+/**
+ * Required only when data needs to be retrieved from an external (non-Knowledge Graph) source.
+ * If the page is truly static this function is not necessary.
+ *
+ * This function will be run during generation and pass in directly as props to the default
+ * exported function.
+ */
+ export const transformProps: TransformProps<TemplateRenderProps> = async (data: any) => {
+  const {
+    mainPhone,
+    fax,
+    tollFreePhone,
+    mobilePhone,
+    ttyPhone,
+    localPhone,
+    alternatePhone,
+    address
+  } = data.document;
+
+  return {
+    ...data,
+    document: {
+      ...data.document,
+      mainPhone: formatPhone(mainPhone, address.countryCode),
+      fax: formatPhone(fax, address.countryCode),
+      tollFreePhone: formatPhone(tollFreePhone, address.countryCode),
+      mobilePhone: formatPhone(mobilePhone, address.countryCode),
+      ttyPhone: formatPhone(ttyPhone, address.countryCode),
+      localPhone: formatPhone(localPhone, address.countryCode),
+      alternatePhone: formatPhone(alternatePhone, address.countryCode),
+    }
+  };
 };
 
 /**
