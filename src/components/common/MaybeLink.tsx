@@ -1,17 +1,19 @@
 import React from "react";
+import { Link } from "@yext/pages/components";
 
 type maybeLinkProps = {
-  linkUrl?: string;
+  href?: string;
   children?: React.ReactNode;
   className?: string;
+  eventName?: string;
 }
 
 const MaybeLink = (props: maybeLinkProps) => {
-  if (props.linkUrl) {
+  if (props.href) {
     return (
-      <a className={props.className} href={props.linkUrl}>
+      <Link href={props.href} {...props}>
         {props.children}
-      </a>
+      </Link>
     );
   } else {
     return (<>{props.children}</>);

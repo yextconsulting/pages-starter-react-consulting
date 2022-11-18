@@ -50,7 +50,7 @@ export const config: TemplateConfig = {
       "id",
       "uid",
       "logo",
-      "meta",
+      "c_meta",
       "name",
       "address",
       "mainPhone",
