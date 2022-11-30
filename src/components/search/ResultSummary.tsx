@@ -1,74 +1,69 @@
+import { useMemo, useState } from "react";
 import { useSearchState } from "@yext/search-headless-react";
-import { useEffect, useState } from "react";
 import type { State } from "@yext/search-headless-react";
-import "src/components/search/ResultSummary.css";
 import { LOCATOR_STATIC_FILTER_FIELD } from "src/config";
+import { useTemplateData } from "src/common/useTemplateData";
+import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
 
 export default function ResultSummary() {
   const searchState = useSearchState(state => state);
+  const { relativePrefixToRoot } = useTemplateData();
+  const [searchMade, setSearchMade] = useState(false);
+  const resultsText = useMemo(() => getResultsCountText(searchState), [searchState]);
 
-  // TODO: need to link to directory
-  const ititialSummaryText = "Use our locator to find a location near you or browse our directory."
-  // Check if search has been made and if not render the initial text
-  const [initialSearchMade, setInitialSearchMade] = useState(false);
-  const [resultsCountText, setResultCountText] = useState<string | JSX.Element>("");
+  // Element to render for results summary when page is first loaded before a search is made.
+  const ititialSummaryText = (
+    <span>
+      Use our locator to find a location near you or <a href={relativePrefixToRoot + 'index.html'} className="underline hover:no-underline">browse our directory</a>.
+    </span>
+  );
 
-  // Only update the resultsCountText after a search is made
-  useEffect(() => {
-    if (!searchState.searchStatus.isLoading && searchState.vertical.results) {
-      if (!initialSearchMade) {
-        setInitialSearchMade(true);
-      }
-      setResultCountText(useResultsCount(searchState));
-    }
-  }, [searchState.searchStatus.isLoading, searchState.vertical.results]);
+  // Check if a search has been made in order to conditionally render ititialSummaryText.
+  if ( !searchMade && searchState.query.queryId && !searchState.searchStatus.isLoading) {
+    setSearchMade(true);
+  }
 
   return (
-    <div className="ResultSummary">
-      { initialSearchMade ? resultsCountText : ititialSummaryText }
+    <div className="py-4 px-6">
+      { searchMade ? resultsText : ititialSummaryText }
     </div>
   );
 }
 
-function useResultsCount(state: State) {
+function getResultsCountText(state: State) {
   let searchPlace = "";
-  let resultsCount = 0;
+  const resultsCount = state.vertical.results?.length ?? 0;
 
-  // TODO: Like in searchbox this should pull from the same config/ stream definition if possible.
-  // TODO: make sure this works as expected when the new Geolocate component is added
+  // Make sure to check the correct filter in case multiple are set.
   if (state.filters.static?.length) {
-    const activeFilter = state.filters.static.find(f => f.selected && f.filter.kind === 'fieldValue' && f.filter.fieldId === LOCATOR_STATIC_FILTER_FIELD && f.displayName) ?? null;
+    const activeFilter = state.filters.static.find(f =>
+      f.selected
+      && f.filter.kind === 'fieldValue'
+      // If the locator is searching on builtin.location, make sure the selected filter is also a location filter.
+      // Otherwise just match the locator filter fieldId to the selected filter fieldId
+      && (LOCATOR_STATIC_FILTER_FIELD === "builtin.location" ? checkIsLocationFilter(f.filter) : LOCATOR_STATIC_FILTER_FIELD === f.filter.fieldId)
+      && f.displayName
+    ) ?? null;
     if (activeFilter && activeFilter.displayName) {
       searchPlace = activeFilter.displayName;
     }
   }
 
-  if (state.vertical) {
-    resultsCount = state.vertical.results?.length ?? 0;
-  }
-
   if (searchPlace) {
-    const query = <span className="ResultSummary-query">{searchPlace}</span>
     if (resultsCount === 0) {
-      return (
-        <>No results found for "{query}"</>
-      );
+      return `No locations found near "${searchPlace}".`;
     }
     if (resultsCount === 1) {
-      return (
-        <>{resultsCount} location near "{query}"</>
-      );
+      return `${resultsCount} location near "${searchPlace}".`;
     }
-    return (
-      <>{resultsCount} locations near "{query}"</>
-    );
+    return `${resultsCount} locations near "${searchPlace}".`;
   }
 
   if (resultsCount === 0) {
-    return `No results found`;
+    return `No locations found.`;
   }
   if (resultsCount === 1) {
-    return `${resultsCount} location`
+    return `${resultsCount} location found.`
   }
-  return `${resultsCount} locations`;
+  return `${resultsCount} locations found.`;
 }

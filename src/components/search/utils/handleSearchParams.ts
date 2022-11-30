@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import { FieldValueFilter, Matcher, SelectableStaticFilter } from "@yext/search-headless-react";
+import { useEffect } from "react";
+import { Matcher } from "@yext/search-headless-react";
 import type { DisplayableFacetOption, FieldValueStaticFilter, SearchHeadless, StaticFilter } from "@yext/search-headless-react";
-import type { URLSearchParamsInit } from "react-router-dom";
 import { getUserLocation } from "@yext/search-ui-react";
 import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 
@@ -16,16 +15,18 @@ import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } fr
  * https://yext.slack.com/archives/C032CKFARGS/p1656075200100409
  */
 
-export function loadInitialSearchParams(
+export function useLoadInitialSearchParams(
   searchActions: SearchHeadless,
   searchParams: URLSearchParams,
   callback?: () => void,
 ) {
   useEffect(() => {
     const loadUrlParams = async () => {
+      // TODO: create filters_config to do this easier
       const locationPlaceId = searchParams.get('q');
       const locationDisplayName = searchParams.get('qp');
-      const facetParams = Array.from(searchParams.entries()).filter(([fieldId, options]) => fieldId !== 'q' && fieldId !== 'qp');
+      const filterType = searchParams.get('filter_type');
+      const facetParams = Array.from(searchParams.entries()).filter(([fieldId, _]) => !['q', 'qp', 'filter_type'].includes(fieldId));
 
       // If the Mapbox place id is present then the static filter can be immediately set
       if (locationPlaceId) {
@@ -42,11 +43,17 @@ export function loadInitialSearchParams(
             }
           }]);
         } else {
+          // TODO: this can be a function since it's inverse is used in SearchBox.tsx
+          const filterField =
+            filterType === "location" ? "builtin.location" :
+            filterType === "region" ? "builtin.region" :
+            "address.countryCode";
+
           searchActions.setStaticFilters([{
             displayName: locationDisplayName ?? '',
             selected: true,
             filter: {
-              fieldId: LOCATOR_STATIC_FILTER_FIELD,
+              fieldId: filterField,
               kind: 'fieldValue',
               matcher: Matcher.Equals,
               value: locationPlaceId,
@@ -77,6 +84,7 @@ export function loadInitialSearchParams(
             }
           }]);
         } catch (e) {
+          alert("User location could not be determined.");
           console.error(e);
         }
       }
@@ -165,120 +173,3 @@ const getFieldValueFilters = (staticFilters: StaticFilter[]): FieldValueStaticFi
   }, []);
   return newFilters;
 };
-
-
-/**
- * TODO: Update to use decorated actions and the filtersearch geolocate features are added by product.
- * TODO: This also doesn't work with geolocation at the moment since that uses {lat, long} instead of a Mapbox place id as the filter value
- */
-
-export function updateSearchParams(
-  searchActions: SearchHeadless,
-  setSearchParams: (nextInit: URLSearchParamsInit, navigateOptions?: {
-    replace?: boolean | undefined;
-    state?: any;
-  } | undefined) => void,
-  initialParamsLoaded: boolean,
-) {
-  useEffect(() => {
-    if (!initialParamsLoaded) return;
-
-    const staticFilters = searchActions.state.filters.static;
-    const facetFilters = searchActions.state.filters.facets;
-
-    if (staticFilters) {
-      // TODO: There are multiple filters that are valid here for the above reasons. Make sure this looks good after adding geolocate and decorated actions.
-      const allSelectedFilters = staticFilters.filter(f => f.selected);
-      const locationFilter = getFieldValueFilters(allSelectedFilters.map(f => f.filter)).find(f => f.fieldId === LOCATOR_STATIC_FILTER_FIELD);
-      const selectedFilter = allSelectedFilters.find(f => f.filter  === locationFilter);
-
-      if (selectedFilter && locationFilter) {
-        let searchParamsObject: {[key: string]: string} = {};
-        // stringify the geolocation filter value if present
-        searchParamsObject["q"] = typeof(locationFilter.value) === "string" ? locationFilter.value : JSON.stringify(locationFilter.value);
-        if (selectedFilter.displayName) {
-          searchParamsObject["qp"] = selectedFilter.displayName;
-        }
-
-        if (facetFilters) {
-          const activeFacets = facetFilters.filter(facet => facet.options.filter(f => f.selected).length);
-          activeFacets.forEach(facet => {
-            const fieldId = facet.fieldId;
-            const activeOptions = facet.options.filter(f => f.selected).map(f => f.value).join(',');
-            searchParamsObject[fieldId] = activeOptions;
-          });
-        }
-
-        setSearchParams(searchParamsObject);
-      }
-    }
-  }, [searchActions.state.query.queryId]);
-}
-
-// Custom hook to unset the location filter set from URLSearchParams on user filter search
-// Currently necessary since FilterSearch component doesn't have a way to set its initial state
-export function useHandleInitialLocationFilter(
-  searchActions: SearchHeadless,
-  initialParamsLoaded: boolean
-) {
-  const [userSearchRun, setUserSearchRun] = useState(false);
-  const [initialSearchValue, setInitialSearchValue] = useState<FieldValueFilter["value"]>();
-  useEffect(() => {
-    const staticFilters = searchActions.state.filters.static;
-
-    // Get value of initial filter to save for removing later
-    if (staticFilters && !initialSearchValue) {
-      const initialFilter = getFieldValueFilters(staticFilters.map(f => f.filter)).find(f => f.fieldId === LOCATOR_STATIC_FILTER_FIELD);
-      if (initialFilter) {
-        setInitialSearchValue(initialFilter.value);
-      }
-    }
-
-    // After the initial searches are made initialParamsLoaded will be true so this will trigger on the next search.
-    // Unset initialFilter and rerun search so only one filter is active.
-    // A new search needs to be run since there's currently no reliable way to update the filter state before the previos filter search is initiated.
-    if (initialParamsLoaded && !userSearchRun) {
-      const activeLocationFilter = staticFilters?.find(f => f.filter.kind === 'fieldValue' && f.filter.value === initialSearchValue);
-      if (activeLocationFilter) {
-        searchActions.setFilterOption({
-          ...activeLocationFilter,
-          selected: false,
-        });
-        searchActions.executeVerticalQuery();
-      }
-      setUserSearchRun(true);
-    }
-  }, [searchActions.state.filters.static]);
-}
-
-// Listen to filter state.filters.static changes for geolocate filters and remove them the next time
-// a filter search is made.
-export function useHandleGeolocateFilter(
-  searchActions: SearchHeadless,
-  initialParamsLoaded: boolean
-) {
-  const [geoSearchMade, setGeoSearchMade] = useState(false);
-  const [geoFilter, setGeofilter] = useState<SelectableStaticFilter|null>(null);
-
-  useEffect(() => {
-    const staticFilters = searchActions.state.filters.static;
-    const activeGeoFilter = staticFilters?.find(f => f.selected && f.displayName === 'My Location' && f.filter.kind === 'fieldValue' && f.filter.matcher === Matcher.Near);
-
-    if (activeGeoFilter && initialParamsLoaded && !geoSearchMade) {
-      setGeoSearchMade(true);
-      setGeofilter(activeGeoFilter);
-    }
-
-    // Only reset filter when a new search has been made
-    // Checking staticFilters length ensures the geolocate filter isn't reset if the user clicks the button twice
-    if (geoSearchMade && geoFilter && staticFilters && staticFilters.length > 1) {
-      searchActions.setFilterOption({
-        ...geoFilter,
-        selected: false,
-      });
-      searchActions.executeVerticalQuery();
-      setGeofilter(null);
-      setGeoSearchMade(false);
-    }
-  }, [searchActions.state.filters.static])
-}
