@@ -7,8 +7,10 @@ import type { URLSearchParamsInit } from "react-router-dom";
 
 interface GeolocateButtonProps {
   className?: string;
-  searchParams: URLSearchParams;
-  setSearchParams: (nextInit: URLSearchParamsInit, navigateOptions?: { // TODO: could this be moved to a separate type file
+  redirectToSearchPage?: boolean;
+  searcherPath?: string;
+  searchParams?: URLSearchParams;
+  setSearchParams?: (nextInit: URLSearchParamsInit, navigateOptions?: {
     replace?: boolean | undefined;
     state?: any;
   } | undefined) => void;
@@ -16,9 +18,11 @@ interface GeolocateButtonProps {
 
 export default function GeolocateButton(props: GeolocateButtonProps) {
   const {
-    searchParams,
-    setSearchParams,
     className,
+    redirectToSearchPage,
+    searcherPath,
+    searchParams = new URLSearchParams(),
+    setSearchParams,
   } = props;
 
   const searchActions = useSearchActions();
@@ -54,14 +58,21 @@ export default function GeolocateButton(props: GeolocateButtonProps) {
       // Update URLSearchParams
       // TODO: this can be improved to be q={lat,lng}, r=radius
       // TODO: add filters_config to parse these params
-      // TODO: add searchParams to context?
       searchParams.set('q', JSON.stringify({ lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * GEOLOCATE_RADIUS }));
       searchParams.set('qp', "My Location");
       if (LOCATOR_STATIC_FILTER_FIELD === "builtin.location") {
         searchParams.set('filter_type', "location");
       }
 
-      setSearchParams(searchParams);
+      // Redirect to another page with the url params filled out.
+      if (redirectToSearchPage && searcherPath) {
+        window.location.href = `${searcherPath}?${searchParams.toString()}`;
+      }
+
+      // Update the url params with the new values.
+      if (setSearchParams) {
+        setSearchParams(searchParams);
+      }
     } catch (e) {
       alert("User location could not be determined.");
       console.error(e);

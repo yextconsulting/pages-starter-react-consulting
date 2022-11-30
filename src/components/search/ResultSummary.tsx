@@ -14,7 +14,7 @@ export default function ResultSummary() {
   // Element to render for results summary when page is first loaded before a search is made.
   const ititialSummaryText = (
     <span>
-      Use our locator to find a location near you or <a href={relativePrefixToRoot + 'index.html'} className="underline hover:no-underline">browse our directory</a>.
+      Use our locator to find a location near you or <a href={relativePrefixToRoot + 'index.html'} className="Link--underline">browse our directory</a>.
     </span>
   );
 

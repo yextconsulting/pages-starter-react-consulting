@@ -49,7 +49,6 @@ export default function SearchBox(props: SearchBoxProps) {
             placeholder={ placeholderText }
             searchFields={ searchFields }
             onSelect={({
-              currentFilter,
               executeFilterSearch,
               newDisplayName,
               newFilter,
