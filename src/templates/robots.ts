@@ -21,10 +21,8 @@ export const getPath: GetPath<TemplateProps> = () => {
   return `robots.txt`;
 };
 
-export function render(data: TemplateRenderProps) {
+export const render = (data: TemplateRenderProps) => {
   return `User-agent: *
 Sitemap: https://${data.document.siteDomain}/sitemap.xml
 `;
 };
-
-export default render;
