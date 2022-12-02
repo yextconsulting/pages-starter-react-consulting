@@ -34,13 +34,13 @@ function getResultsCountText(state: State) {
   let searchPlace = "";
   const resultsCount = state.vertical.results?.length ?? 0;
 
-  // Make sure to check the correct filter in case multiple are set.
   if (state.filters.static?.length) {
+    // Make sure to get the match to the correct filter in case multiple are set.
     const activeFilter = state.filters.static.find(f =>
       f.selected
       && f.filter.kind === 'fieldValue'
-      // If the locator is searching on builtin.location, make sure the selected filter is also a location filter.
-      // Otherwise just match the locator filter fieldId to the selected filter fieldId
+      // If the locator is searching on "builtin.location", check if the selected filter is also a location filter.
+      // Otherwise just match the locator filter fieldId to the selected filter fieldId.
       && (LOCATOR_STATIC_FILTER_FIELD === "builtin.location" ? checkIsLocationFilter(f.filter) : LOCATOR_STATIC_FILTER_FIELD === f.filter.fieldId)
       && f.displayName
     ) ?? null;

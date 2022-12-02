@@ -47,7 +47,11 @@ export default function GeolocateButton(props: GeolocateButtonProps) {
           kind: 'fieldValue',
           fieldId: LOCATOR_STATIC_FILTER_FIELD,
           matcher: Matcher.Near,
-          value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * GEOLOCATE_RADIUS },
+          value: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            radius: 1609 * GEOLOCATE_RADIUS
+          },
         }
       }]);
 
@@ -55,13 +59,12 @@ export default function GeolocateButton(props: GeolocateButtonProps) {
       searchActions.resetFacets();
       await executeSearch(searchActions);
 
-      // Update URLSearchParams
-      // TODO: this can be improved to be q={lat,lng}, r=radius
-      // TODO: add filters_config to parse these params
-      searchParams.set('q', JSON.stringify({ lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * GEOLOCATE_RADIUS }));
+      // Update URLSearchParams.
+      searchParams.set('q', `${position.coords.latitude},${position.coords.longitude}`);
       searchParams.set('qp', "My Location");
+      searchParams.set('r', (GEOLOCATE_RADIUS).toString());
       if (LOCATOR_STATIC_FILTER_FIELD === "builtin.location") {
-        searchParams.set('filter_type', "location");
+        searchParams.set('location_type', LOCATOR_STATIC_FILTER_FIELD);
       }
 
       // Redirect to another page with the url params filled out.

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useParams } from "react-router-dom";
 import { createCtx } from "src/common/createCtx";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/pages/components";
@@ -12,7 +12,7 @@ import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import mapStyles from "./defaultMapStyles.json";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import { useLoadInitialSearchParams } from "src/components/search/utils/handleSearchParams";
+import { useLoadInitialSearchParams, useUpdateFacetParams } from "src/components/search/utils/handleSearchParams";
 import { useGetSearchResults } from "src/components/search/utils/useGetSearchResults";
 import "src/components/search/Locator.css";
 
@@ -48,8 +48,10 @@ export default function Locator(props: LocatorProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [initialParamsLoaded, setInitialParamsLoaded] = useState(false);
 
-  // Load location filter and facets on page load
-  useLoadInitialSearchParams(searchActions, searchParams, () => setInitialParamsLoaded(true));
+  // Load static and facet filters on page load.
+  useLoadInitialSearchParams(searchActions, searchParams, setSearchParams, () => setInitialParamsLoaded(true));
+  // Update the facet url params whenever the search state facets object updates.
+  useUpdateFacetParams(searchActions, searchParams, setSearchParams);
 
   // Unset any selected, hovered, or focused markers on new search
   useEffect(() => {

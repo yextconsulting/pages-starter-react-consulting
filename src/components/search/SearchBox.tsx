@@ -4,20 +4,21 @@ import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 import { useSearchActions } from "@yext/search-headless-react";
 import type { URLSearchParamsInit } from "react-router-dom";
 import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
+import { facet_config, locationFilterToType } from "src/components/search/utils/handleSearchParams";
 
 const searchFields = [
   { fieldApiName: LOCATOR_STATIC_FILTER_FIELD, entityType: LOCATOR_ENTITY_TYPE },
 ];
 
 type SearchBoxProps = {
-  title: string,
-  subTitle: string,
-  placeholderText?: string,
+  title: string;
+  subTitle: string;
+  placeholderText?: string;
   searchParams: URLSearchParams,
   setSearchParams: (nextInit: URLSearchParamsInit, navigateOptions?: {
     replace?: boolean | undefined;
     state?: any;
-  } | undefined) => void,
+  } | undefined) => void;
 }
 
 export default function SearchBox(props: SearchBoxProps) {
@@ -82,11 +83,8 @@ export default function SearchBox(props: SearchBoxProps) {
               // For builtin.location we need to also indicate the type of filter being used so it can be loaded in correctly.
               // TODO: When product updates the component check to make sure this isn't needed then.
               if (checkIsLocationFilter(newFilter)) {
-                const type =
-                  newFilter.fieldId === 'builtin.location' ? 'location'
-                  : newFilter.fieldId === 'builtin.region' ? 'region'
-                  : 'country';
-                searchParams.set('filter_type', type);
+                const locationType = locationFilterToType(newFilter.fieldId);
+                searchParams.set('location_type', locationType);
               }
 
               setSearchParams(searchParams);
@@ -112,6 +110,9 @@ export default function SearchBox(props: SearchBoxProps) {
           divider: "w-full h-px bg-gray-200 my-2"
         }}
         searchOnChange={true}
+        // Exclude all facets that aren't defined in the facet_config object.
+        // This will ensure that if a field is added to the search experience as a facet it won't unexpectedly show up on the locator.
+        excludedFieldIds={searchActions.state.filters.facets?.filter(facet => !Array.from(Object.keys(facet_config)).includes(facet.fieldId)).map(facet => facet.fieldId)}
       />
     </div>
   )
