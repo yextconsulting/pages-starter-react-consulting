@@ -19,8 +19,8 @@ export const GEOLOCATE_RADIUS = 50;
 // Search configuration used to initialize provider in search.tsx
 export const getSearchProviderConfig = (apiKey: string, locale: string) => ({
 	apiKey,
-	experienceKey: "locator",
+	experienceKey: "<REPLACE-ME>",
 	locale,
-	verticalKey: "locations",
-	experienceVersion: "STAGING",
+	verticalKey: "<REPLACE-ME>",
+	experienceVersion: "<REPLACE-ME>",
 });
