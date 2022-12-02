@@ -36,6 +36,7 @@ export const config: TemplateConfig = {
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
+      // savedFilterIds: ["1249026256"],
       entityIds: ["search-page"],
     },
     // The entity language profiles that documents will be generated for.
