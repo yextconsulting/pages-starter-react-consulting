@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Matcher } from "@yext/search-headless-react";
-import type { DisplayableFacetOption, FieldValueStaticFilter, SearchHeadless, StaticFilter } from "@yext/search-headless-react";
+import type { DisplayableFacetOption, SearchHeadless } from "@yext/search-headless-react";
 import { getUserLocation } from "@yext/search-ui-react";
 import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 import type { URLSearchParamsInit } from "react-router-dom";
@@ -14,10 +14,10 @@ export const static_config = {
 } as const;
 
 // URL Parameters used for facet filters.
-// TODO: remove before merging.
+// Add the facet field as a key to enable faceting on that field.
 export const facet_config =  {
-  'paymentOptions': 0,
-  'services': 1,
+  // 'paymentOptions': 0,
+  // 'services': 1,
 } as const;
 
 // Convert a static filter fieldId to a URL param to distinguish location filter types.
@@ -34,7 +34,6 @@ export function locationTypeToFilter(type: string) {
     : "address.countryCode";
 }
 
-// This might not even need the searchParams prop since it can just get them itself from window.location.search.
 export function useLoadInitialSearchParams(
   searchActions: SearchHeadless,
   searchParams: URLSearchParams,
