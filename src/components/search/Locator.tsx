@@ -12,8 +12,8 @@ import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import mapStyles from "./defaultMapStyles.json";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import { loadInitialSearchParams, updateSearchParams, useHandleInitialLocationFilter, useHandleGeolocateFilter } from "src/components/search/utils/handleSearchParams";
-import { useGetSearchResults } from "src/components/search/utils/getSearchResults";
+import { useLoadInitialSearchParams, useUpdateFacetParams } from "src/components/search/utils/handleSearchParams";
+import { useGetSearchResults } from "src/components/search/utils/useGetSearchResults";
 import "src/components/search/Locator.css";
 
 export type LocatorContextType = {
@@ -29,6 +29,7 @@ export type LocatorContextType = {
 export const [useLocatorContext, LocatorProvider] = createCtx<LocatorContextType>();
 
 type LocatorProps = {
+  // Will display results up to the verticalLimit (default 20, change with searchActions.setVerticalLimit(num))
   displayAllOnNoResults?: boolean,
   placeholderText?: string,
   subTitle: string,
@@ -47,16 +48,10 @@ export default function Locator(props: LocatorProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [initialParamsLoaded, setInitialParamsLoaded] = useState(false);
 
-  // Load location filter and facets on page load
-  loadInitialSearchParams(searchActions, searchParams, () => setInitialParamsLoaded(true));
-  // Update URLSearchParams on new search
-  updateSearchParams(searchActions, setSearchParams, initialParamsLoaded);
-  // Unset initial location filter from URLSearchParams on new user search
-  // TODO: Remove if product allows a way to set the initial state
-  useHandleInitialLocationFilter(searchActions, initialParamsLoaded);
-  // Unset geolocate filter the next time a filter search is made
-  // TODO: Remove when product updates filter modal
-  useHandleGeolocateFilter(searchActions, initialParamsLoaded);
+  // Load static and facet filters on page load.
+  useLoadInitialSearchParams(searchActions, searchParams, setSearchParams, () => setInitialParamsLoaded(true));
+  // Update the facet url params whenever the search state facets object updates.
+  useUpdateFacetParams(searchActions, searchParams, setSearchParams);
 
   // Unset any selected, hovered, or focused markers on new search
   useEffect(() => {
@@ -83,6 +78,8 @@ export default function Locator(props: LocatorProps) {
             title={ title }
             subTitle={ subTitle }
             placeholderText={ placeholderText }
+            searchParams={ searchParams }
+            setSearchParams={ setSearchParams }
           />
           <div className="Locator-resultsWrapper">
             <ResultSummary />

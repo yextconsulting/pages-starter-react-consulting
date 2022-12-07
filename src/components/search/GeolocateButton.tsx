@@ -3,16 +3,28 @@ import { useSearchActions, Matcher } from '@yext/search-headless-react';
 import { executeSearch, getUserLocation } from '@yext/search-ui-react';
 import LoadingSpinner from 'src/components/common/LoadingSpinner';
 import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD } from 'src/config';
-
-/**
- * - TODO(jhood): Replace with search-ui-react component when available: https://yext.slack.com/archives/C016ZKY42CF/p1661356424437289
- */
+import type { URLSearchParamsInit } from "react-router-dom";
 
 interface GeolocateButtonProps {
-  className?: string
+  className?: string;
+  redirectToSearchPage?: boolean;
+  searcherPath?: string;
+  searchParams?: URLSearchParams;
+  setSearchParams?: (nextInit: URLSearchParamsInit, navigateOptions?: {
+    replace?: boolean | undefined;
+    state?: any;
+  } | undefined) => void;
 }
 
-export default function GeolocateButton({ className }: GeolocateButtonProps) {
+export default function GeolocateButton(props: GeolocateButtonProps) {
+  const {
+    className,
+    redirectToSearchPage,
+    searcherPath,
+    searchParams = new URLSearchParams(),
+    setSearchParams,
+  } = props;
+
   const searchActions = useSearchActions();
   const [isFetchingLocation, setIsFetchingLocation] = useState<boolean>(false);
 
@@ -35,12 +47,37 @@ export default function GeolocateButton({ className }: GeolocateButtonProps) {
           kind: 'fieldValue',
           fieldId: LOCATOR_STATIC_FILTER_FIELD,
           matcher: Matcher.Near,
-          value: { lat: position.coords.latitude, lng: position.coords.longitude, radius: 1609 * GEOLOCATE_RADIUS },
+          value: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+            radius: 1609 * GEOLOCATE_RADIUS
+          },
         }
       }]);
 
-      executeSearch(searchActions);
+      searchActions.setOffset(0);
+      searchActions.resetFacets();
+      await executeSearch(searchActions);
+
+      // Update URLSearchParams.
+      searchParams.set('q', `${position.coords.latitude},${position.coords.longitude}`);
+      searchParams.set('qp', "My Location");
+      searchParams.set('r', (GEOLOCATE_RADIUS).toString());
+      if (LOCATOR_STATIC_FILTER_FIELD === "builtin.location") {
+        searchParams.set('location_type', LOCATOR_STATIC_FILTER_FIELD);
+      }
+
+      // Redirect to another page with the url params filled out.
+      if (redirectToSearchPage && searcherPath) {
+        window.location.href = `${searcherPath}?${searchParams.toString()}`;
+      }
+
+      // Update the url params with the new values.
+      if (setSearchParams) {
+        setSearchParams(searchParams);
+      }
     } catch (e) {
+      alert("User location could not be determined.");
       console.error(e);
     } finally {
       setIsFetchingLocation(false);
