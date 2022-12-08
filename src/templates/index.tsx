@@ -8,7 +8,7 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import type {
   Template,
   GetPath,
@@ -37,6 +37,7 @@ import { Products, defaultFields as featuredProductFields } from "src/components
 import { Events, defaultFields as eventFields } from "src/components/entity/Events";
 import { Insights, defaultFields as InsightsFields } from 'src/components/entity/Insights';
 import { formatPhone } from 'src/common/helpers'
+import { getRuntime } from "@yext/pages/util";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -184,40 +185,116 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
     c_insightsSection: insights
   } = data.document;
 
-  const showBanner = banner?.text && banner?.image;
-  const showPromo = promo?.title && promo?.image;
-  const showProducts = products?.title && products?.products;
-  const showAbout = about?.title && (about.description || description);
-  const showGallery = gallery?.images || photoGallery;
-  const showTeam = team?.title && team?.team;
-  const showFAQ = faq?.title && faq?.faqs;
-  const showEvents = events?.title && events.events;
-  const showInsights = insights?.title && insights?.insights
+
+  const sectionThreeRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    console.log("ref", sectionThreeRef)
+    if (sectionThreeRef.current) {
+      console.log("Scroll Position: ", sectionThreeRef.current.offsetHeight)
+    }
+  }, [sectionThreeRef])
+
+  const sections = [
+    {
+      heading: "Section One",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      heading: "Section Two",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      heading: "Section Three",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      heading: "Section Four",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      heading: "Section Five",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    }
+  ]
+
+  function isInViewport(el: any) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+
+    );
+  }
+
+  const [isHighlighted, setIsHighlighted] = useState(true)
 
   return (
-    <Main data={data}>
-      {showBanner && <Banner text={banner.text} image={banner.image} />}
-      <Hero name={name} cta1={hero?.cta1} cta2={hero?.cta2} address={address} background={hero?.background} hours={hours} numReviews={21} rating={4.5} />
-      <Core profile={data.document} />
-      {showPromo && <Promo title={promo.title} description={promo.description} image={promo.image} cta={promo.cta} googlePlayUrl={promo.googlePlayUrl} appStoreUrl={promo.appStoreUrl} />}
-      {showProducts && <Products title={products.title} items={products.products} />}
-      {showEvents && <Events title={events.title} items={events.events} />}
-      {showAbout && <About title={about.title} image={about.image} description={about.description || description} cta={about.cta} />}
-      {showInsights && <Insights title={insights.title} cta={insights.cta} insights={insights.insights} />}
-      {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
-      {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
-      {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
-      <Nearby
-        title={nearby?.title}
-        linkToLocator={nearby?.linkToLocator}
-        buttonText={nearby?.cta?.label}
-        buttonLink={nearby?.cta?.link}
-        geocodedCoordinate={geocodedCoordinate}
-        id={id}
-        relativePrefixToRoot={data.relativePrefixToRoot}
-      />
-    </Main>
+    <div className="flex flex-col">
+      <div className="flex">
+        <ul className="my-20 flex flex-col w-[350px] h-[100vh]">
+          {sections.map((section, i) => {
+            const liClass = (i == 2) && isHighlighted ? "bg-orange-100" : ''
+            return (
+              <li className={liClass}>
+                <a href={`#${section.heading}`} className="Link Link--primary my-4">{section.heading}</a>
+              </li>
+            )
+          })}
+        </ul>
+        <div onScroll={() => {
+          // if (sectionThreeRef.current) {
+          //   if (isInViewport(sectionThreeRef.current) && !isHighlighted) {
+          //     setIsHighlighted(true)
+          //   }
+
+          //   if (!isInViewport(sectionThreeRef.current) && isHighlighted) {
+          //     setIsHighlighted(false)
+          //   }
+          // }
+        }} className="flex flex-col overflow-scroll h-[100vh]">
+          {sections.map((section, i) => <Section key={i} {...section}/>)}
+        </div>
+      </div>
+    </div>
   );
 };
+
+interface SectionProps {
+  heading: string
+  content: string
+}
+
+function Section(props: SectionProps) {
+  const elRef = useRef<HTMLDivElement>(null)
+  let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+  };
+
+
+  const runtime = getRuntime()
+
+  useEffect(() => {
+    if (!runtime.isServerSide) {
+      let observer = new IntersectionObserver(() => {
+        console.log("Intersecting: ", props.heading)
+      }, options);
+      if (elRef.current) {
+        observer.observe(elRef.current);
+      }
+    }
+  }, [elRef]) 
+
+  return (
+    <div ref={elRef} className="my-[700px] border border-solid border-black">
+      <h2 id={props.heading} className="Heading Heading--head">{props.heading}</h2>
+      <div>{props.content}</div>
+    </div>
+  )
+
+}
 
 export default Index;
