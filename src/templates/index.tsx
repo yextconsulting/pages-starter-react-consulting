@@ -8,7 +8,7 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { Profiler, useEffect, useRef, useState } from "react";
 import type {
   Template,
   GetPath,
@@ -70,19 +70,19 @@ export const config: TemplateConfig = {
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
       "slug",
-      ...headerFields,
-      ...bannerFields,
-      ...heroFields,
-      ...coreFields,
-      ...promoFields,
-      ...featuredProductFields,
-      ...galleryFields,
-      ...aboutFields,
-      ...teamFields,
-      ...FAQsFields,
-      ...NearbyFields,
-      ...eventFields,
-      ...InsightsFields,
+      // ...headerFields,
+      // ...bannerFields,
+      // ...heroFields,
+      // ...coreFields,
+      // ...promoFields,
+      // ...featuredProductFields,
+      // ...galleryFields,
+      // ...aboutFields,
+      // ...teamFields,
+      // ...FAQsFields,
+      // ...NearbyFields,
+      // ...eventFields,
+      // ...InsightsFields,
     ]),
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -95,7 +95,6 @@ export const config: TemplateConfig = {
     },
   },
   alternateLanguageFields: [
-    "name",
     "slug"
   ],
 };
@@ -185,15 +184,6 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
     c_insightsSection: insights
   } = data.document;
 
-
-  const sectionThreeRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    console.log("ref", sectionThreeRef)
-    if (sectionThreeRef.current) {
-      console.log("Scroll Position: ", sectionThreeRef.current.offsetHeight)
-    }
-  }, [sectionThreeRef])
-
   const sections = [
     {
       heading: "Section One",
@@ -217,25 +207,16 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
     }
   ]
 
-  function isInViewport(el: any) {
-    const rect = el.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-
-    );
-  }
-
-  const [isHighlighted, setIsHighlighted] = useState(true)
+  // [false, false, false, false, false]
+  const [highlighted, setHighlighted] = useState(sections.map(section => false))
 
   return (
     <div className="flex flex-col">
+      NAME: {name}
       <div className="flex">
-        <ul className="my-20 flex flex-col w-[350px] h-[100vh]">
+        <ul className="py-20 flex flex-col w-[350px] h-[100vh]">
           {sections.map((section, i) => {
-            const liClass = (i == 2) && isHighlighted ? "bg-orange-100" : ''
+            const liClass = highlighted[i] ? "bg-orange-100" : ''
             return (
               <li className={liClass}>
                 <a href={`#${section.heading}`} className="Link Link--primary my-4">{section.heading}</a>
@@ -254,7 +235,14 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
           //   }
           // }
         }} className="flex flex-col overflow-scroll h-[100vh]">
-          {sections.map((section, i) => <Section key={i} {...section}/>)}
+          {sections.map((section, i) => <Section
+            handleIntersection={(isVisible) => {
+              if (!isVisible) return
+              const highlightedCopy = sections.map(section => false);
+              highlightedCopy[i] = isVisible;
+              setHighlighted(highlightedCopy);
+            }}
+            key={i} {...section}/>)}
         </div>
       </div>
     </div>
@@ -264,6 +252,7 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
 interface SectionProps {
   heading: string
   content: string
+  handleIntersection: (intersecting: boolean) => void
 }
 
 function Section(props: SectionProps) {
@@ -271,25 +260,26 @@ function Section(props: SectionProps) {
   let options = {
     root: null,
     rootMargin: "0px",
-    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+    threshold: 0.5,
   };
-
 
   const runtime = getRuntime()
 
   useEffect(() => {
     if (!runtime.isServerSide) {
-      let observer = new IntersectionObserver(() => {
-        console.log("Intersecting: ", props.heading)
+      let observer = new IntersectionObserver((e) => {
+        const isVisible = e[0].isIntersecting;
+        props.handleIntersection(isVisible);
       }, options);
       if (elRef.current) {
         observer.observe(elRef.current);
       }
+      () => observer.disconnect()
     }
   }, [elRef]) 
 
   return (
-    <div ref={elRef} className="my-[700px] border border-solid border-black">
+    <div ref={elRef} className="py-[700px] border border-solid border-black">
       <h2 id={props.heading} className="Heading Heading--head">{props.heading}</h2>
       <div>{props.content}</div>
     </div>

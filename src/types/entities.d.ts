@@ -109,6 +109,7 @@ export interface LocationProfile extends BaseProfile {
   readonly googlePlaceId?: string
   readonly ref_listings?: ListingType[]
   readonly logo?: Image
+  readonly c_madeUpFieldName: string
   // Add custom fields here
   // c_myStringField: string
   readonly c_eventsSection?: {
