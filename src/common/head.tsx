@@ -169,7 +169,7 @@ function canonicalUrl(data: TemplateRenderProps, locale?: string): string {
     if (altLocalePath) { pagePath = altLocalePath; }
   }
 
-  if (pagePath == 'index.html') {
+  if (pagePath === 'index.html') {
     pagePath = ''
   }
 

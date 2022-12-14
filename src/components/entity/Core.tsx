@@ -94,13 +94,13 @@ const Core = (props: CoreProps) => {
             </CoreSection>
           )}
         </div>
-        {(isDesktopBreakpoint && profile.geocodedCoordinate) && (
+        {(isDesktopBreakpoint && profile.geocodedCoordinate) && 
           <LazyLoadWrapper>
-            <LocationMap className="h-[300px] mt-16" clientKey={'gme-yextinc'} coordinate={profile.geocodedCoordinate} provider={GoogleMaps}>
+            <LocationMap className="h-[300px] mt-16" clientKey="gme-yextinc" coordinate={profile.geocodedCoordinate} provider={GoogleMaps}>
               {mappinSVG}
             </LocationMap>
           </LazyLoadWrapper>
-        )}
+        }
       </div>
     </div>
   );

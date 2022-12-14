@@ -44,7 +44,7 @@ function getResultsCountText(state: State) {
       && (LOCATOR_STATIC_FILTER_FIELD === "builtin.location" ? checkIsLocationFilter(f.filter) : LOCATOR_STATIC_FILTER_FIELD === f.filter.fieldId)
       && f.displayName
     ) ?? null;
-    if (activeFilter && activeFilter.displayName) {
+    if (activeFilter?.displayName) {
       searchPlace = activeFilter.displayName;
     }
   }

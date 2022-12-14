@@ -91,6 +91,7 @@ export function useLoadInitialSearchParams(
               selected: true,
             }]);
           } else {
+            // eslint-disable-next-line no-template-curly-in-string
             console.error("Invalid 'q' param, must be of form `${lat},${lng}`.");
           }
         }
