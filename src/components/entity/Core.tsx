@@ -1,12 +1,11 @@
 import React from "react";
 import { HoursTable } from "@yext/sites-react-components";
-import { Link, Address, getDirections } from "@yext/pages/components";
+import { Link, Address, getDirections, LocationMap } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
 import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import { useRef } from "react";
-import LocationMapWrapper from "src/components/common/LocationMapWrapper";
+import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
 import "src/components/entity/Core.css";
 
 const defaultFields: string[] = [
@@ -42,7 +41,7 @@ const Core = (props: CoreProps) => {
       <path d="M28.095 27.2577C32.5571 27.2577 36.1743 23.6405 36.1743 19.1784C36.1743 14.7163 32.5571 11.0991 28.095 11.0991C23.633 11.0991 20.0157 14.7163 20.0157 19.1784C20.0157 23.6405 23.633 27.2577 28.095 27.2577Z" fill="white"/>
     </svg>
   );
-  const mapRef = useRef<HTMLDivElement>(null);
+
   return(
     <div className="Core py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
@@ -96,11 +95,11 @@ const Core = (props: CoreProps) => {
           )}
         </div>
         {(isDesktopBreakpoint && profile.geocodedCoordinate) && (
-          <div ref={mapRef} className="hidden sm:block mt-16">
-            <LocationMapWrapper mapRef={mapRef} clientKey={'gme-yextinc'} coordinate={profile.geocodedCoordinate} provider={GoogleMaps}>
+          <LazyLoadWrapper>
+            <LocationMap className="h-[300px] mt-16" clientKey={'gme-yextinc'} coordinate={profile.geocodedCoordinate} provider={GoogleMaps}>
               {mappinSVG}
-            </LocationMapWrapper>
-          </div>
+            </LocationMap>
+          </LazyLoadWrapper>
         )}
       </div>
     </div>

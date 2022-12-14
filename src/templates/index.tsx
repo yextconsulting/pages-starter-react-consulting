@@ -8,7 +8,6 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import React from "react";
 import type {
   Template,
   GetPath,
@@ -37,6 +36,7 @@ import { Products, defaultFields as featuredProductFields } from "src/components
 import { Events, defaultFields as eventFields } from "src/components/entity/Events";
 import { Insights, defaultFields as InsightsFields } from 'src/components/entity/Insights';
 import { formatPhone } from 'src/common/helpers'
+import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -207,15 +207,17 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
       {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
       {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
       {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
-      <Nearby
-        title={nearby?.title}
-        linkToLocator={nearby?.linkToLocator}
-        buttonText={nearby?.cta?.label}
-        buttonLink={nearby?.cta?.link}
-        geocodedCoordinate={geocodedCoordinate}
-        id={id}
-        relativePrefixToRoot={data.relativePrefixToRoot}
-      />
+      <LazyLoadWrapper>
+        <Nearby
+          title={nearby?.title}
+          linkToLocator={nearby?.linkToLocator}
+          buttonText={nearby?.cta?.label}
+          buttonLink={nearby?.cta?.link}
+          geocodedCoordinate={geocodedCoordinate}
+          id={id}
+          relativePrefixToRoot={data.relativePrefixToRoot}
+        />
+      </LazyLoadWrapper>
     </Main>
   );
 };
