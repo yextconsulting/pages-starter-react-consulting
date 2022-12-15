@@ -18,7 +18,7 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
   const isDesktopBreakpoint = useBreakpoint("sm");
 
   const renderTitle = () => <h3 className="Heading Heading--sub pb-2 sm:pb-4">{ geomodifier }</h3>;
-  const renderDistance = () => distanceFromFilter ? <div className={"LocatorCard-distance whitespace-nowrap pt-2 sm:pt-0"}>{getDistance(distanceFromFilter, useKilometers)} {useKilometers ? 'km' : 'mi'}</div> : null;
+  const renderDistance = () => distanceFromFilter ? <div className="LocatorCard-distance whitespace-nowrap pt-2 sm:pt-0">{getDistance(distanceFromFilter, useKilometers)} {useKilometers ? 'km' : 'mi'}</div> : null;
 
   return (
     <div className="LocatorCard">

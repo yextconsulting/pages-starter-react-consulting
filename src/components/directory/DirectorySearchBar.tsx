@@ -1,11 +1,11 @@
 import { getSearchProviderConfig, LOCATOR_ENTITY_TYPE, LOCATOR_STATIC_FILTER_FIELD } from "src/config";
 import { useTemplateData } from "src/common/useTemplateData";
 import { provideHeadless, SearchHeadlessProvider } from "@yext/search-headless-react";
-import { SandboxEndpoints } from "@yext/search-headless-react";
 import { FilterSearch } from "@yext/search-ui-react";
 import GeolocateButton from "src/components/search/GeolocateButton";
 import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
 import { locationTypeToFilter } from "src/components/search/utils/handleSearchParams";
+// import { SandboxEndpoints } from "@yext/search-headless-react";
 
 const searchFields = [
   { fieldApiName: LOCATOR_STATIC_FILTER_FIELD, entityType: LOCATOR_ENTITY_TYPE },

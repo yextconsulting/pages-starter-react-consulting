@@ -141,7 +141,7 @@ export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Ta
 function metaTitle(data: TemplateRenderProps): string {
   // 1. Check for meta field on the entity
   const { c_meta: entityMeta } = data.document;
-  if (entityMeta && entityMeta.title) return entityMeta.title;
+  if (entityMeta?.title) return entityMeta.title;
 
   return ""
 }
@@ -149,7 +149,7 @@ function metaTitle(data: TemplateRenderProps): string {
 function metaDescription(data: TemplateRenderProps): string {
   // 1. Check for meta field on the entity
   const { c_meta: entityMeta } = data.document;
-  if (entityMeta && entityMeta.description) return entityMeta.description;
+  if (entityMeta?.description) return entityMeta.description;
 
   // 2. Check for breadcrumbs
   const { dm_directoryParents } = data.document;
@@ -169,7 +169,7 @@ function canonicalUrl(data: TemplateRenderProps, locale?: string): string {
     if (altLocalePath) { pagePath = altLocalePath; }
   }
 
-  if (pagePath == 'index.html') {
+  if (pagePath === 'index.html') {
     pagePath = ''
   }
 

@@ -25,7 +25,7 @@ export default function useIfVisible(ref: React.RefObject<HTMLElement>, options 
         observer.disconnect();
       };
     }
-  }, [ref]);
+  }, [ref, options]);
 
   return isVisibleOnce;
 }

@@ -80,7 +80,7 @@ export interface FinancialProfessionalProfile extends BaseProfile {
 interface Insight {
   readonly title: string,
   readonly category?: string,
-  readonly image?: Image,
+  readonly photo?: Image,
   readonly date?: string,
   readonly descriptionLong: string,
   readonly descriptionShort?: string,

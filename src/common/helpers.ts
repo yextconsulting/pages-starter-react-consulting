@@ -20,7 +20,7 @@ function formatPhone(s: string | undefined, countryCode: string): (string | unde
     try {
       const phone = parsePhoneNumberWithError(s, countryCode as CountryCode)
 
-      if (countryCode == "US") {
+      if (countryCode === "US") {
         return phone.formatNational() // (123) 555-6789
       } else {
         return phone.formatInternational() // +1 123 555 6789

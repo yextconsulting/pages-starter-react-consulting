@@ -9,7 +9,7 @@ export const EventCard: CardComponent<EventProfile> = function EventCard(props):
 
   return (
       <>
-       {profile.photoGallery && profile.photoGallery[0] && (
+       {profile.photoGallery?.[0] && (
           <div className="flex justify-center h-[187px] mb-8">
             <Image layout="fill" image={profile.photoGallery[0].image}/>
           </div>

@@ -1,4 +1,4 @@
-import type { CTA, Image } from "@yext/types";
+import type { CTA } from "@yext/types";
 import type { Insight } from "src/types/entities";
 import { InsightCard, InsightCardFeatured } from "src/components/cards/InsightCard"
 import { Link } from "@yext/pages/components";
@@ -40,7 +40,7 @@ const Insights = (props: InsightsProps) => {
                 cta={featuredInsight.cta}
                 date={featuredInsight.date}
                 descriptionLong={featuredInsight.descriptionLong}
-                image={featuredInsight.image}/>
+                image={featuredInsight.photo}/>
             </div>
           </div>
           {!!listedInsights.length && (

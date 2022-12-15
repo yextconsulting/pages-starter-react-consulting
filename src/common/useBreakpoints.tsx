@@ -3,7 +3,6 @@ import { useEffect, useLayoutEffect } from "react";
 import resolveConfig from 'tailwindcss/resolveConfig'
 import { getRuntime } from "@yext/pages/util"
 import { screens as defaultScreens } from "tailwindcss/defaultTheme"
-//@ts-ignore: figure out how to use Tailwind's provided config type for this
 import * as tailwindConfig from '../../tailwind.config.cjs';
 import type { KeyValuePair } from "tailwindcss/types/config.js";
 
@@ -30,7 +29,7 @@ export function useBreakpoint(
     const value = screens[breakpoint];
     const query = window.matchMedia(`(min-width: ${value})`);
     const handler = () => {
-      if (query.matches != match) {
+      if (query.matches !== match) {
         setMatch(query.matches);
       }
     };

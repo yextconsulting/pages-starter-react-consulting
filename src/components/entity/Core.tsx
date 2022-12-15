@@ -76,7 +76,7 @@ const Core = (props: CoreProps) => {
             <CoreSection>
               <CoreHeading>Hours</CoreHeading>
               {profile.hours && (
-                <HoursTable hours={profile.hours} startOfWeek={"Monday"} />
+                <HoursTable hours={profile.hours} startOfWeek="Monday" />
               )}
               {profile.additionalHoursText && (
                 <div className="mt-4">{profile.additionalHoursText}</div>
@@ -94,13 +94,13 @@ const Core = (props: CoreProps) => {
             </CoreSection>
           )}
         </div>
-        {(isDesktopBreakpoint && profile.geocodedCoordinate) && (
+        {(isDesktopBreakpoint && profile.geocodedCoordinate) && 
           <LazyLoadWrapper>
-            <LocationMap className="h-[300px] mt-16" clientKey={'gme-yextinc'} coordinate={profile.geocodedCoordinate} provider={GoogleMaps}>
+            <LocationMap className="h-[300px] mt-16" clientKey="gme-yextinc" coordinate={profile.geocodedCoordinate} provider={GoogleMaps}>
               {mappinSVG}
             </LocationMap>
           </LazyLoadWrapper>
-        )}
+        }
       </div>
     </div>
   );
