@@ -5,7 +5,7 @@ import { useBreakpoint } from 'src/common/useBreakpoints';
 import { Link } from '@yext/pages/components';
 import { SEARCH_PATH } from 'src/config';
 import { useTemplateData } from 'src/common/useTemplateData';
-import type { LiveAPILocationProfile } from 'src/types/entities';
+import type { LiveAPIProfile, LocationProfile } from 'src/types/entities';
 
 // Configure nearby locations section liveapi params and endpoint
 // See https://hitchhikers.yext.com/docs/liveapis/knowledgegraphliveapi/entities/entities/#operation/geoSearchEntities
@@ -29,8 +29,8 @@ const getConfig = (api_key: string): NearbyAPIConfig => {
       entityTypes: 'location',
       limit: '4',
       radius: '50',
-      savedFilterIds: '1246936843',
-      v: '<REPLACE-ME>',
+      savedFilterIds: '<REPLACE-ME>',
+      v: '20220927',
     }
   }
 }
@@ -63,7 +63,7 @@ const Nearby = (props: NearbyProps) => {
   const templateData = useTemplateData();
   const apiKey = templateData.document._site.c_nearbySectionAPIKey;
 
-  const [nearbyLocations, setNearbyLocations] = useState<LiveAPILocationProfile[]>([]);
+  const [nearbyLocations, setNearbyLocations] = useState<LiveAPIProfile<LocationProfile>[]>([]);
   const isDesktopBreakpoint = useBreakpoint("sm");
 
   useEffect(() => {

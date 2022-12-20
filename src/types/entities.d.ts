@@ -186,7 +186,7 @@ export type TemplateProps<T = Record<string, unknown>> = Omit<InternalTemplatePr
 export type TemplateRenderProps<T = Record<string, unknown>> = Omit<InternalTemplateRenderProps, 'document'> & TemplateProps<T>;
 
 // The data returned by liveAPI has a slightly different meta property.
-export interface LiveAPILocationProfile extends Omit<LocationProfile, 'meta'> {
+export type LiveAPIProfile<T = Record<string, unknown>> = Omit<BaseProfile, 'meta'> & T & {
   meta: {
     entityType: string;
     id: string;
