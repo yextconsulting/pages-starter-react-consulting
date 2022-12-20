@@ -3,17 +3,14 @@ import { useSearchActions, Matcher } from '@yext/search-headless-react';
 import { executeSearch, getUserLocation } from '@yext/search-ui-react';
 import LoadingSpinner from 'src/components/common/LoadingSpinner';
 import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD } from 'src/config';
-import type { URLSearchParamsInit } from "react-router-dom";
+import type { SetSearchParamsType } from "src/types/additional";
 
 interface GeolocateButtonProps {
   className?: string;
   redirectToSearchPage?: boolean;
   searcherPath?: string;
   searchParams?: URLSearchParams;
-  setSearchParams?: (nextInit: URLSearchParamsInit, navigateOptions?: {
-    replace?: boolean | undefined;
-    state?: any;
-  } | undefined) => void;
+  setSearchParams?: SetSearchParamsType;
 }
 
 export default function GeolocateButton(props: GeolocateButtonProps) {

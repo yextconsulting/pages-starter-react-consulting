@@ -25,7 +25,7 @@ export function DirectoryList(props: DirectoryListProps) {
       <DirectoryHero title={name} subtitle={brand} />
       <div className="container my-8">
         <ul className="lg:columns-4 md:columns-3 sm:columns-2 columns-1">
-          {directoryChildren.map((child: any, idx: number) => (
+          {directoryChildren.map((child, idx) => (
             <li className="Directory-listItem" key={idx}>
               <Link
                 className="Directory-listLink m-3"

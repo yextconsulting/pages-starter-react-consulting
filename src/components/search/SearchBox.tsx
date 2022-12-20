@@ -2,7 +2,7 @@ import { FilterSearch, StandardFacets, executeSearch } from "@yext/search-ui-rea
 import GeolocateButton from "./GeolocateButton";
 import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 import { useSearchActions } from "@yext/search-headless-react";
-import type { URLSearchParamsInit } from "react-router-dom";
+import type { SetSearchParamsType } from "src/types/additional";
 import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
 import { facet_config, locationFilterToType } from "src/components/search/utils/handleSearchParams";
 
@@ -14,11 +14,8 @@ type SearchBoxProps = {
   title: string;
   subTitle: string;
   placeholderText?: string;
-  searchParams: URLSearchParams,
-  setSearchParams: (nextInit: URLSearchParamsInit, navigateOptions?: {
-    replace?: boolean | undefined;
-    state?: any;
-  } | undefined) => void;
+  searchParams: URLSearchParams;
+  setSearchParams: SetSearchParamsType;
 }
 
 export default function SearchBox(props: SearchBoxProps) {
@@ -85,6 +82,12 @@ export default function SearchBox(props: SearchBoxProps) {
               if (checkIsLocationFilter(newFilter)) {
                 const locationType = locationFilterToType(newFilter.fieldId);
                 searchParams.set('location_type', locationType);
+              }
+
+              // Remove facets from url on new search
+              const facetParams = Array.from(Object.keys(facet_config));
+              for (const facet of facetParams) {
+                searchParams.delete(facet);
               }
 
               setSearchParams(searchParams);

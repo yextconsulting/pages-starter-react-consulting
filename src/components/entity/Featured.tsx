@@ -14,6 +14,8 @@ const Featured = <ProfileType,>(props: FeaturedProps<ProfileType>) => {
     return null;
   }
 
+  const itemsToRender = items.filter((_, idx) => idx < itemsToShow);
+
   return (
     <div className="FeaturedProduct py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
@@ -21,14 +23,10 @@ const Featured = <ProfileType,>(props: FeaturedProps<ProfileType>) => {
           {title}
         </div>
         <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item, i) => (
-            <>
-            {i < itemsToShow && (
-              <li className="bg-white" key={i}>
-                <CardComponent profile={item} />
-              </li>
-            )}
-            </>
+          {itemsToRender.map((item, i) => (
+            <li className="bg-white" key={i}>
+              <CardComponent profile={item} />
+            </li>
           ))}
         </ul>
       </div>
