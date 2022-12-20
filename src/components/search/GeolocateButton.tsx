@@ -10,7 +10,7 @@ interface GeolocateButtonProps {
   redirectToSearchPage?: boolean;
   searcherPath?: string;
   searchParams?: URLSearchParams;
-  setSearchParams: SetSearchParamsType;
+  setSearchParams?: SetSearchParamsType;
 }
 
 export default function GeolocateButton(props: GeolocateButtonProps) {
