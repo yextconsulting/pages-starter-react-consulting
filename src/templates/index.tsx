@@ -106,7 +106,7 @@ export const config: TemplateConfig = {
  * This function will be run during generation and pass in directly as props to the default
  * exported function.
  */
- export const transformProps: TransformProps<TemplateRenderProps> = async (data: any) => {
+ export const transformProps: TransformProps<TemplateRenderProps<LocationProfile>> = async (data) => {
   const {
     mainPhone,
     fax,

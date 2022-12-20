@@ -1,11 +1,11 @@
 
 import { HoursStatus } from "@yext/sites-react-components";
 import { Link, Address } from "@yext/pages/components";
-import { LocationProfile } from "src/types/entities";
+import { LiveAPILocationProfile, LocationProfile } from "src/types/entities";
 import { CardComponent } from "src/models/cardComponent";
 import { useTemplateData } from "src/common/useTemplateData";
 
-export const DirectoryCard: CardComponent<LocationProfile> = function DirectoryCard(props): JSX.Element {
+export const DirectoryCard: CardComponent<LocationProfile|LiveAPILocationProfile> = function DirectoryCard(props): JSX.Element {
   const { profile } = props;
   const { relativePrefixToRoot } = useTemplateData();
 

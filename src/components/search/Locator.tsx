@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { createCtx } from "src/common/createCtx";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
@@ -48,8 +48,10 @@ export default function Locator(props: LocatorProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [initialParamsLoaded, setInitialParamsLoaded] = useState(false);
 
+  const initialParamsLoadedCallback = useCallback(() => setInitialParamsLoaded(true), [setInitialParamsLoaded]);
+
   // Load static and facet filters on page load.
-  useLoadInitialSearchParams(searchActions, searchParams, setSearchParams, () => setInitialParamsLoaded(true));
+  useLoadInitialSearchParams(searchActions, searchParams, setSearchParams, initialParamsLoadedCallback);
   // Update the facet url params whenever the search state facets object updates.
   useUpdateFacetParams(searchActions, searchParams, setSearchParams);
 

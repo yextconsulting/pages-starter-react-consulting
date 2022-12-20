@@ -3,7 +3,7 @@ import { Matcher } from "@yext/search-headless-react";
 import type { DisplayableFacetOption, SearchHeadless } from "@yext/search-headless-react";
 import { getUserLocation } from "@yext/search-ui-react";
 import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
-import type { URLSearchParamsInit } from "react-router-dom";
+import type { SetSearchParamsType } from "src/types/additional";
 
 // URL Parameters used for static filters.
 export const static_config = {
@@ -16,8 +16,8 @@ export const static_config = {
 // URL Parameters used for facet filters.
 // Add the facet field as a key to enable faceting on that field.
 export const facet_config =  {
-  // 'paymentOptions': 0,
-  // 'services': 1,
+  'paymentOptions': 0,
+  'services': 1,
 } as const;
 
 // Convert a static filter fieldId to a URL param to distinguish location filter types.
@@ -37,10 +37,7 @@ export function locationTypeToFilter(type: string) {
 export function useLoadInitialSearchParams(
   searchActions: SearchHeadless,
   searchParams: URLSearchParams,
-  setSearchParams: (nextInit: URLSearchParamsInit, navigateOptions?: {
-    replace?: boolean | undefined;
-    state?: any;
-  } | undefined) => void,
+  setSearchParams: SetSearchParamsType,
   callback?: () => void,
 ) {
   useEffect(() => {
@@ -209,17 +206,14 @@ export function useLoadInitialSearchParams(
       }
     }
     loadUrlParams();
-  }, []);
+  }, [searchActions, searchParams, setSearchParams, callback]);
 }
 
 // When the search state facets are updated, add any facets with selected options to the URLSearchParams.
 export function useUpdateFacetParams(
   searchActions: SearchHeadless,
   searchParams: URLSearchParams,
-  setSearchParams: (nextInit: URLSearchParamsInit, navigateOptions?: {
-    replace?: boolean | undefined;
-    state?: any;
-  } | undefined) => void,
+  setSearchParams: SetSearchParamsType,
 ) {
   useEffect(() => {
     const facetFilters = searchActions.state.filters.facets;
@@ -235,5 +229,5 @@ export function useUpdateFacetParams(
       setSearchParams(searchParams);
     }
 
-  }, [searchActions.state.filters.facets]);
+  }, [searchActions.state.filters.facets, setSearchParams, searchParams]);
 }
