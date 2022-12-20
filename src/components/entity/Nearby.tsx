@@ -30,7 +30,7 @@ const getConfig = (api_key: string): NearbyAPIConfig => {
       limit: '4',
       radius: '50',
       savedFilterIds: '1246936843',
-      v: '20220927',
+      v: '<REPLACE-ME>',
     }
   }
 }

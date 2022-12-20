@@ -26,7 +26,7 @@ export function DirectoryGrid(props: DirectoryGridProps) {
       <DirectoryHero title={name} subtitle={brand} />
       <div className="container my-8">
         <ul className="flex flex-wrap">
-          {directoryChildren.map((child, idx: number) => (
+          {directoryChildren.map((child, idx) => (
             <li className="Directory-listItem p-4 w-full md:w-1/2 lg:w-1/3" key={idx}>
               <CardComponent profile={child} />
             </li>
