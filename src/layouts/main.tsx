@@ -5,6 +5,8 @@ import config from '../config';
 import { Header } from 'src/components/common/Header';
 import type { TemplateRenderProps, BaseProfile } from 'src/types/entities';
 import Footer from 'src/components/common/Footer';
+import { AnalyticsProvider } from "@yext/pages/components";
+import { useExposeEnableYAFunction } from 'src/common/useExposeEnableYAFunction';
 
 interface MainProps {
   data: TemplateRenderProps<BaseProfile>;
@@ -12,31 +14,43 @@ interface MainProps {
 }
 
 const Main = (props: MainProps) => {
+  return (
+    <ConfigurationProvider value={config}>
+      <AnalyticsProvider templateData={props.data} requireOptIn={true}>
+        <MainInternal {...props} />
+      </AnalyticsProvider>
+    </ConfigurationProvider>
+  )
+}
+
+const MainInternal = (props: MainProps) => {
   const {
     _site
   } = props.data.document;
 
   const { children } = props;
 
+  // Create the global window.enableYextAnalytics function for clients that need to get user consent
+  // If consent is not required, set requireOptIn on AnalyticsProvider above to false.
+  useExposeEnableYAFunction();
+
   return (
-    <ConfigurationProvider value={config}>
-      <TemplateDataProvider value={props.data}>
-        <Header
-          logo={_site?.c_header?.logo}
-          links={_site?.c_header?.links || []}
-        />
-        {children}
-        <Footer
-          copyrightMessage={_site.c_copyrightMessage || ""}
-          facebook={_site.c_facebook}
-          instagram={_site.c_instagram}
-          youtube={_site.c_youtube}
-          twitter={_site.c_twitter}
-          linkedIn={_site.c_linkedIn}
-          footerLinks={_site.c_footerLinks || []}
-        />
-      </TemplateDataProvider>
-    </ConfigurationProvider>
+    <TemplateDataProvider value={props.data}>
+      <Header
+        logo={_site?.c_header?.logo}
+        links={_site?.c_header?.links || []}
+      />
+      {children}
+      <Footer
+        copyrightMessage={_site.c_copyrightMessage || ""}
+        facebook={_site.c_facebook}
+        instagram={_site.c_instagram}
+        youtube={_site.c_youtube}
+        twitter={_site.c_twitter}
+        linkedIn={_site.c_linkedIn}
+        footerLinks={_site.c_footerLinks || []}
+      />
+    </TemplateDataProvider>
   )
 }
 
