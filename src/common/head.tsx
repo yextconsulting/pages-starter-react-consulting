@@ -133,10 +133,15 @@ export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Ta
       ...(additionalTags || [])
     ],
     other: [
+      yaScript(),
       SchemaBuilder(data),
     ].join('\n'),
   };
 }
+
+function yaScript(): string {
+	return `<script>window.yextAnalyticsEnabled=false;window.enableYextAnalytics=()=>{window.yextAnalyticsEnabled=true}</script>`;
+};
 
 function metaTitle(data: TemplateRenderProps): string {
   // 1. Check for meta field on the entity
