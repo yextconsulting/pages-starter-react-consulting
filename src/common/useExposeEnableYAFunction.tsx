@@ -11,7 +11,7 @@ declare global {
 
 // This provides the window.enableYextAnalytics function so that clients can enable Yext analytics
 // after gaining user consent.
-// This component must be a descendant of an AnalyticsProvider.
+// This hook must be called within a descendant of an AnalyticsProvider.
 export function useExposeEnableYAFunction() {
   const analytics = useAnalytics();
   if (!analytics) {
