@@ -109,6 +109,10 @@ export interface LocationProfile extends BaseProfile {
   readonly googlePlaceId?: string
   readonly ref_listings?: ListingType[]
   readonly logo?: Image
+  readonly ref_reviewsAgg?: {
+    readonly reviewCount?: number
+  }[]
+
   // Add custom fields here
   // c_myStringField: string
   readonly c_eventsSection?: {
@@ -163,7 +167,11 @@ export interface LocationProfile extends BaseProfile {
     readonly title?: string
     readonly cta?: CTA
     readonly insights?: Insight[]
-  }
+  },
+  readonly c_reviewsSection?: {
+    readonly title?: string;
+    readonly reviews?: ReviewProfile[];
+  },
 }
 
 export type DirectoryProfile<T> = BaseProfile & {
@@ -180,16 +188,48 @@ export interface FAQProfile extends BaseProfile {
   readonly answer: string;
 }
 
+export interface ReviewProfile {
+  apiIdentifier: string;
+  authorName: string;
+  comments?: {
+    authorName: string;
+    commentDate: string;
+    commentId: number;
+    content: string;
+  }[];
+  content: string;
+  entity: {
+    id: string;
+  };
+  rating: number;
+  reviewDate: string;
+}
+
 export type TemplateProps<T = Record<string, unknown>> = Omit<InternalTemplateProps, 'document'> & {
   document: T;
 }
 export type TemplateRenderProps<T = Record<string, unknown>> = Omit<InternalTemplateRenderProps, 'document'> & TemplateProps<T>;
 
 // The data returned by liveAPI has a slightly different meta property.
-export type LiveAPIProfile<T = Record<string, unknown>> = Omit<BaseProfile, 'meta'> & T & {
+export type LiveAPIProfile<T = Record<string, unknown>> = Omit<T, 'meta'> & {
   meta: {
     entityType: string;
     id: string;
     uid: string;
+  }
+}
+
+export type ReviewStreamsResponse = {
+  meta: {
+    uuid: string;
+    errors: {
+      code: number;
+      type: string;
+      message: string;
+    }[];
+  };
+  response: {
+    count: number;
+    docs: ReviewProfile[];
   }
 }

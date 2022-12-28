@@ -29,7 +29,7 @@ const CoreSection = (props: {children: React.ReactNode}) => {
 }
 
 const CoreHeading = (props: {children: React.ReactNode}) => {
-  return <h2 className="Heading--sub mb-4 font-bold">{props.children}</h2>
+  return <h2 className="Heading Heading--sub mb-4 font-bold">{props.children}</h2>
 }
 
 const Core = (props: CoreProps) => {
