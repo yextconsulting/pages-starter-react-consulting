@@ -28,18 +28,18 @@ export const fetchReviews = async (api_key: string) => {
 type ReviewsProps = {
   title: string;
   reviews: ReviewProfile[];
-  name: string;
   maxReviews?: number;
   numReviewsPerPage?: number;
+  name: string;
 };
 
 const Reviews = (props: ReviewsProps) => {
   const {
     title,
     reviews,
-    name,
     maxReviews = 12,
     numReviewsPerPage = 3,
+    name,
   } = props;
 
   const averageRating = +(reviews.reduce((prev, curr) => prev + curr.rating, 0) / reviews.length).toFixed(2);

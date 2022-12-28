@@ -118,6 +118,7 @@ export const config: TemplateConfig = {
     localPhone,
     alternatePhone,
     address,
+    _site,
   } = data.document;
 
   return {
@@ -133,7 +134,7 @@ export const config: TemplateConfig = {
       alternatePhone: formatPhone(alternatePhone, address.countryCode),
       c_reviewsSection: {
         ...data.document.c_reviewsSection,
-        reviews: await fetchReviews('950cb865b1378ec95ad87c7b2a54a806'),
+        ...(_site.c_reviewsAPIKey && {reviews: await fetchReviews(_site.c_reviewsAPIKey)})
       },
     }
   };
@@ -204,7 +205,6 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
 
   return (
     <Main data={data}>
-      {showReviews && <Reviews title={reviews.title} reviews={reviews.reviews} name={name} />}
       {showBanner && <Banner text={banner.text} image={banner.image} />}
       <Hero name={name} cta1={hero?.cta1} cta2={hero?.cta2} address={address} background={hero?.background} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={data.document} />
@@ -216,6 +216,7 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
       {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
       {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
       {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
+      {showReviews && <Reviews title={reviews.title} reviews={reviews.reviews} name={name}  />}
       <LazyLoadWrapper>
         <Nearby
           title={nearby?.title}

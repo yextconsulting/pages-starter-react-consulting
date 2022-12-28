@@ -39,6 +39,7 @@ export interface SiteProfile extends BaseProfile {
   },
   readonly c_nearbySectionAPIKey?: string;
   readonly c_searchExperienceAPIKey?: string;
+  readonly c_reviewsAPIKey?: string;
 }
 
 export interface ProductProfile extends BaseProfile {

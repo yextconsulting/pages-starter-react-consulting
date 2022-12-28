@@ -5,14 +5,12 @@ import { useTemplateData } from "src/common/useTemplateData";
 type ReviewCardProps = {
   review: ReviewProfile;
   name: string;
-  businessResponseLabel?: string;
 };
 
 const ReviewCard = (props: ReviewCardProps) => {
   const {
     review,
     name,
-    businessResponseLabel,
   } = props;
 
   const { document } = useTemplateData();
@@ -39,7 +37,7 @@ const ReviewCard = (props: ReviewCardProps) => {
         {review.comments?[0] && (
           <div className="mt-6">
             <div className="font-bold mb-1">
-              {businessResponseLabel ? businessResponseLabel : `Response from ${name}`}
+              {`Response from ${name}`}
             </div>
             <div className="mb-4 sm:mb-2">
               {formateDate(review.comments[0].commentDate)}
