@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useAnalytics } from "@yext/pages/components";
 import { getRuntime } from '@yext/pages/util';
 

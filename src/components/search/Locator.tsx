@@ -51,7 +51,7 @@ export default function Locator(props: LocatorProps) {
   const initialParamsLoadedCallback = useCallback(() => setInitialParamsLoaded(true), [setInitialParamsLoaded]);
 
   // Load static and facet filters on page load.
-  useLoadInitialSearchParams(searchActions, searchParams, setSearchParams, initialParamsLoadedCallback);
+  useLoadInitialSearchParams(searchActions, searchParams, setSearchParams, initialParamsLoaded, initialParamsLoadedCallback);
   // Update the facet url params whenever the search state facets object updates.
   useUpdateFacetParams(searchActions, searchParams, setSearchParams);
 
