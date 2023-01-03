@@ -52,10 +52,6 @@ export default function SearchBox(props: SearchBoxProps) {
               newFilter,
               setCurrentFilter,
             }) => {
-              // Currently on load this component won't recognize a filter set from the url params when a
-              // "builtin.region" or "address.countryCode" filter is being used since it only checks "builtin.location".
-              // TODO: Product is working on a fix - check and remove comment when done.
-
               // Unselect selected matching filters.
               const matchingFilters = searchActions.state.filters.static?.filter(({ filter, selected }) => 
                 selected
@@ -76,6 +72,7 @@ export default function SearchBox(props: SearchBoxProps) {
               // Update URLSearchParams.
               searchParams.set('q', newFilter.value.toString());
               searchParams.set('qp', newDisplayName);
+              searchParams.delete('r');
 
               // For builtin.location we need to also indicate the type of filter being used so it can be loaded in correctly.
               // TODO: When product updates the component check to make sure this isn't needed then.

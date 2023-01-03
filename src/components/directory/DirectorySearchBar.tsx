@@ -4,7 +4,7 @@ import { provideHeadless, SearchHeadlessProvider } from "@yext/search-headless-r
 import { FilterSearch } from "@yext/search-ui-react";
 import GeolocateButton from "src/components/search/GeolocateButton";
 import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
-import { locationTypeToFilter } from "src/components/search/utils/handleSearchParams";
+import { locationFilterToType } from "src/components/search/utils/handleSearchParams";
 // import { SandboxEndpoints } from "@yext/search-headless-react";
 
 const searchFields = [
@@ -57,7 +57,7 @@ function DirectorySearchBarInternal(props: DirectorySearchBarProps) {
             searchParams.set('q', newFilter.value.toString());
             searchParams.set('qp', newDisplayName);
             if (checkIsLocationFilter(newFilter)) {
-              const type = locationTypeToFilter(newFilter.fieldId);
+              const type = locationFilterToType(newFilter.fieldId);
               searchParams.set('location_type', type);
             }
 

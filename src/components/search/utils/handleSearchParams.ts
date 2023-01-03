@@ -38,9 +38,13 @@ export function useLoadInitialSearchParams(
   searchActions: SearchHeadless,
   searchParams: URLSearchParams,
   setSearchParams: SetSearchParamsType,
+  paramsLoaded: boolean,
   callback?: () => void,
 ) {
   useEffect(() => {
+    // Don't run again after params are loaded.
+    if (paramsLoaded) return;
+
     const loadUrlParams = async () => {
       // Load values from URL.
       const locationPlaceId = searchParams.get('q');
@@ -206,10 +210,11 @@ export function useLoadInitialSearchParams(
       }
     }
     loadUrlParams();
-  }, [searchActions, searchParams, setSearchParams, callback]);
+  }, [searchActions, searchParams, setSearchParams, paramsLoaded, callback]);
 }
 
-// When the search state facets are updated, add any facets with selected options to the URLSearchParams.
+// When the search state facets are updated, add any facets with selected options to the URLSearchParams
+// and remove any unused facets.
 export function useUpdateFacetParams(
   searchActions: SearchHeadless,
   searchParams: URLSearchParams,
@@ -219,11 +224,15 @@ export function useUpdateFacetParams(
     const facetFilters = searchActions.state.filters.facets;
 
     if (facetFilters) {
-      const activeFacets = facetFilters.filter(facet => facet.options.filter(f => f.selected).length);
-      activeFacets.forEach(facet => {
-        const fieldId = facet.fieldId;
-        const activeOptions = facet.options.filter(f => f.selected).map(f => f.value).join(',');
-        searchParams.set(fieldId, activeOptions);
+      facetFilters.forEach(facet => {
+        // If a facet has selected options.
+        if (facet.options.filter(f => f.selected).length) {
+          const activeOptions = facet.options.filter(f => f.selected).map(f => f.value).join(',');
+          searchParams.set(facet.fieldId, activeOptions);
+        }
+        else {
+          searchParams.delete(facet.fieldId);
+        }
       });
 
       setSearchParams(searchParams);
