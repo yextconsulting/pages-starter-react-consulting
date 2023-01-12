@@ -71,7 +71,7 @@ const Reviews = (props: ReviewsProps) => {
         </div>
         <div>
           <CarouselProvider
-            className="relative max-w-[100vw]"
+            className="relative"
             naturalSlideWidth={100}
             naturalSlideHeight={100}
             totalSlides={slides.length}
@@ -80,7 +80,7 @@ const Reviews = (props: ReviewsProps) => {
             currentSlide={0}
           >
             <div className="flex">
-              <Slider className="-m-4">
+              <Slider>
                 {slides.map((slide, idx) => (
                   <Slide index={idx} key={idx}>
                     {slide}
