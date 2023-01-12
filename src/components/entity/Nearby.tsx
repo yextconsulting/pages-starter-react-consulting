@@ -46,7 +46,6 @@ type NearbyProps = {
   buttonLink?: string;
   geocodedCoordinate: Coordinate;
   id: string;
-  relativePrefixToRoot: string;
 }
 
 const Nearby = (props: NearbyProps) => {
@@ -57,11 +56,10 @@ const Nearby = (props: NearbyProps) => {
     buttonLink,
     geocodedCoordinate,
     id,
-    relativePrefixToRoot,
   } = props;
 
-  const templateData = useTemplateData();
-  const apiKey = templateData.document._site.c_nearbySectionAPIKey;
+  const { document, relativePrefixToRoot } = useTemplateData();
+  const apiKey = document._site.c_nearbySectionAPIKey;
 
   const [nearbyLocations, setNearbyLocations] = useState<LiveAPIProfile<LocationProfile>[]>([]);
   const isDesktopBreakpoint = useBreakpoint("sm");

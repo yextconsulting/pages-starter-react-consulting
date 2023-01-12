@@ -35,6 +35,7 @@ import { Nearby, defaultFields as NearbyFields } from "src/components/entity/Nea
 import { Products, defaultFields as featuredProductFields } from "src/components/entity/Products";
 import { Events, defaultFields as eventFields } from "src/components/entity/Events";
 import { Insights, defaultFields as InsightsFields } from 'src/components/entity/Insights';
+import { Reviews, fetchReviews, defaultFields as reviewsFields } from 'src/components/entity/Reviews';
 import { formatPhone } from 'src/common/helpers'
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
 
@@ -82,6 +83,7 @@ export const config: TemplateConfig = {
       ...NearbyFields,
       ...eventFields,
       ...InsightsFields,
+      ...reviewsFields
     ]),
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -115,7 +117,8 @@ export const config: TemplateConfig = {
     ttyPhone,
     localPhone,
     alternatePhone,
-    address
+    address,
+    _site,
   } = data.document;
 
   return {
@@ -129,6 +132,10 @@ export const config: TemplateConfig = {
       ttyPhone: formatPhone(ttyPhone, address.countryCode),
       localPhone: formatPhone(localPhone, address.countryCode),
       alternatePhone: formatPhone(alternatePhone, address.countryCode),
+      c_reviewsSection: {
+        ...data.document.c_reviewsSection,
+        ...(_site.c_reviewsAPIKey && {reviews: await fetchReviews(_site.c_reviewsAPIKey)})
+      },
     }
   };
 };
@@ -181,7 +188,8 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
     c_faqSection: faq,
     c_nearbySection: nearby,
     c_eventsSection: events,
-    c_insightsSection: insights
+    c_insightsSection: insights,
+    c_reviewsSection: reviews,
   } = data.document;
 
   const showBanner = banner?.text && banner?.image;
@@ -193,6 +201,7 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
   const showFAQ = faq?.title && faq?.faqs;
   const showEvents = events?.title && events.events;
   const showInsights = insights?.title && insights?.insights
+  const showReviews = reviews?.title && reviews?.reviews;
 
   return (
     <Main data={data}>
@@ -207,6 +216,7 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
       {showGallery && <Gallery title={gallery?.title} images={gallery?.images || photoGallery} />}
       {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
       {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
+      {showReviews && <Reviews title={reviews.title} reviews={reviews.reviews} name={name}  />}
       <LazyLoadWrapper>
         <Nearby
           title={nearby?.title}
@@ -215,7 +225,6 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
           buttonLink={nearby?.cta?.link}
           geocodedCoordinate={geocodedCoordinate}
           id={id}
-          relativePrefixToRoot={data.relativePrefixToRoot}
         />
       </LazyLoadWrapper>
     </Main>

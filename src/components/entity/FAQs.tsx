@@ -1,4 +1,3 @@
-import React from "react";
 import type { FAQProfile } from "src/types/entities";
 import { FAQ } from "src/components/entity/FAQ";
 
@@ -19,7 +18,7 @@ const FAQs = (props: FAQsProps) => {
   return (
     <div className="FAQ bg-brand-gray-100 py-8 sm:py-16">
       <div className="container">
-        <h2 className="FAQ-heading font-bold text-4xl mb-8">
+        <h2 className="Heading Heading--sub font-bold mb-8">
           {title}
         </h2>
         <div className="FAQ-content divide-y border-t border-b">
