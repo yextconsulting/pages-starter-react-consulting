@@ -82,11 +82,11 @@ module.exports = {
         fontFamily: theme('fontFamily.primary'),
         variants: {
           sub: {
-            fontSize: '1.375rem',
-            lineHeight: '1.27',
+            fontSize: '1.25rem',
+            lineHeight: '1.4',
             '@screen sm': {
-              fontSize: '2.125rem',
-              lineHeight: '1.18',
+              fontSize: '1.5rem',
+              lineHeight: '1.25',
             },
           },
           head: {

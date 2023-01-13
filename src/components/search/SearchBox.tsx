@@ -1,4 +1,4 @@
-import { FilterSearch, StandardFacets, executeSearch } from "@yext/search-ui-react";
+import { FilterSearch, executeSearch } from "@yext/search-ui-react";
 import GeolocateButton from "./GeolocateButton";
 import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 import { useSearchActions } from "@yext/search-headless-react";
@@ -102,18 +102,6 @@ export default function SearchBox(props: SearchBoxProps) {
           setSearchParams={setSearchParams}
         />
       </div>
-      <StandardFacets
-        collapsible={true}
-        showOptionCounts={true}
-        customCssClasses={{
-          standardFacetsContainer: "pt-2",
-          divider: "w-full h-px bg-gray-200 my-2"
-        }}
-        searchOnChange={true}
-        // Exclude all facets that aren't defined in the facet_config object.
-        // This will ensure that if a field is added to the search experience as a facet it won't unexpectedly show up on the locator.
-        excludedFieldIds={searchActions.state.filters.facets?.filter(facet => !Array.from(Object.keys(facet_config)).includes(facet.fieldId)).map(facet => facet.fieldId)}
-      />
     </div>
   )
 }

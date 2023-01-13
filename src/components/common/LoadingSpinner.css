@@ -1,5 +1,5 @@
 .LoadingSpinner {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -7,6 +7,10 @@
   z-index: 100;
   opacity: 0.7;
   background-color: white;
+
+  @screen sm {
+    position: absolute;
+  }
 
   &-spinner {
     width: 2rem;

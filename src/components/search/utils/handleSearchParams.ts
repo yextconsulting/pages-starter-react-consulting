@@ -16,8 +16,8 @@ export const static_config = {
 // URL Parameters used for facet filters.
 // Add the facet field as a key to enable faceting on that field.
 export const facet_config =  {
-  // 'paymentOptions': 0,
-  // 'services': 1,
+  'paymentOptions': 0,
+  'services': 1,
 } as const;
 
 // Convert a static filter fieldId to a URL param to distinguish location filter types.

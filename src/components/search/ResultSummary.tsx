@@ -24,7 +24,7 @@ export default function ResultSummary() {
   }
 
   return (
-    <div className="py-4 px-6">
+    <div className="mr-4">
       { searchMade ? resultsText : ititialSummaryText }
     </div>
   );

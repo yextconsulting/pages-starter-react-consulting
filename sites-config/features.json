@@ -159,7 +159,9 @@
         "c_insightsSection.insights.date",
         "c_insightsSection.insights.descriptionLong",
         "c_insightsSection.insights.descriptionShort",
-        "c_insightsSection.insights.cta"
+        "c_insightsSection.insights.cta",
+        "c_reviewsSection",
+        "ref_reviewsAgg.reviewCount"
       ],
       "filter": {
         "entityTypes": [

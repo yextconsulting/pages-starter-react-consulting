@@ -2,8 +2,11 @@
   position: relative;
   display: flex;
   flex: 1;
-  overflow: auto;
   border-bottom: 1px solid theme(colors.brand-gray.300);
+
+  @screen sm {
+    overflow: auto;
+  }
 
   &-content {
     width: 100%;
@@ -21,6 +24,30 @@
   &-map {
     flex: 1;
     height: 100%;
+  }
+
+  &-facetsModal {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: theme(padding.4);
+    background-color: white;
+    overflow-y: auto;
+    height: theme(height.96);
+    z-index: theme(zIndex.20);
+    position: fixed;
+
+    @screen sm {
+      position: absolute;
+      top: 16px;
+      left: 366px;
+      width: theme(width.80);
+      max-height: 90%;
+    }
+
+    @screen md {
+      left: 466px;
+    }
   }
 }
 
