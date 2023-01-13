@@ -4,19 +4,17 @@ import { createCtx } from "src/common/createCtx";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
-import SearchBox from "src/components/search/SearchBox"
-import LocatorCard from "src/components/cards/LocatorCard";
-import ResultInfo from "src/components/search/ResultInfo";
-import ResultSummary from "src/components/search/ResultSummary";
-import FacetsModal from "src/components/search/FacetsModal";
-import ResultList from "src/components/search/ResultList";
-import CustomMarker from "src/components/search/CustomMarker";
-import LoadingSpinner from "src/components/common/LoadingSpinner";
-import mapStyles from "./defaultMapStyles.json";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { useLoadInitialSearchParams, useUpdateFacetParams } from "src/components/search/utils/handleSearchParams";
 import { useGetSearchResults } from "src/components/search/utils/useGetSearchResults";
 import "src/components/search/Locator.css";
+import mapStyles from "src/components/search/defaultMapStyles.json";
+import SearchBox from "src/components/search/SearchBox"
+import LocatorCard from "src/components/cards/LocatorCard";
+import ResultInfo from "src/components/search/ResultInfo";
+import ResultList from "src/components/search/ResultList";
+import CustomMarker from "src/components/search/CustomMarker";
+import LoadingSpinner from "src/components/common/LoadingSpinner";
 
 export type LocatorContextType = {
   selectedId: string,

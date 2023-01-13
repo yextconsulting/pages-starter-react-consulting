@@ -32,17 +32,18 @@
     left: 0;
     padding: theme(padding.4);
     background-color: white;
-    overflow-y: auto;
-    height: theme(height.96);
-    z-index: theme(zIndex.20);
+    z-index: theme(zIndex.10);
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(min(440px, 90%));
 
     @screen sm {
       position: absolute;
       top: 16px;
       left: 366px;
       width: theme(width.80);
-      max-height: 90%;
+      height: fit-content;
     }
 
     @screen md {

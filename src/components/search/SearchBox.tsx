@@ -1,10 +1,10 @@
 import { FilterSearch, executeSearch } from "@yext/search-ui-react";
-import GeolocateButton from "./GeolocateButton";
-import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 import { useSearchActions } from "@yext/search-headless-react";
-import type { SetSearchParamsType } from "src/types/additional";
 import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
 import { facet_config, locationFilterToType } from "src/components/search/utils/handleSearchParams";
+import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
+import type { SetSearchParamsType } from "src/types/additional";
+import GeolocateButton from "src/components/search/GeolocateButton";
 
 const searchFields = [
   { fieldApiName: LOCATOR_STATIC_FILTER_FIELD, entityType: LOCATOR_ENTITY_TYPE },
