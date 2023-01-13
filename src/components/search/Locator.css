@@ -42,12 +42,13 @@
       position: absolute;
       top: 16px;
       left: 366px;
-      width: theme(width.80);
       height: fit-content;
+      width: calc(100% - 382px)
     }
 
     @screen md {
       left: 466px;
+      width: theme(width.80);
     }
   }
 }

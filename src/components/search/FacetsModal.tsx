@@ -2,7 +2,6 @@ import { FaTimes} from "react-icons/fa";
 import { useSearchActions } from "@yext/search-headless-react";
 import { StandardFacets, executeSearch,  } from "@yext/search-ui-react";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import { facet_config } from "src/components/search/utils/handleSearchParams";
 import ActiveFacets from "src/components/search/ActiveFacets";
 
 type FacetsModalProps = {
@@ -44,8 +43,6 @@ const FacetsModal = (props: FacetsModalProps) => {
           divider: "w-full bg-white my-3",
         }}
         searchOnChange={true}
-        // Exclude all facets that aren't defined in the facet_config object.
-        excludedFieldIds={facets?.filter(facet => !Array.from(Object.keys(facet_config)).includes(facet.fieldId)).map(facet => facet.fieldId)}
       />
       <div className="text-center mt-6">
         <button className="Link Link--primary disabled:text-brand-gray-400"
