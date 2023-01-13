@@ -52,6 +52,7 @@
     @screen md {
       left: calc(var(--content-width-md-up) + 16px);
       width: theme(width.80);
+      max-width: calc(min(theme(width.80), 100% - var(--content-width-md-up) - 32px ));
     }
   }
 }
