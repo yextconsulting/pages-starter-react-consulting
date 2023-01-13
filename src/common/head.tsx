@@ -1,5 +1,6 @@
 import type { TemplateRenderProps, HeadConfig, Tag } from "@yext/pages";
 import { SchemaBuilder } from 'src/common/schema';
+import favicon from "src/assets/images/favicon.ico";
 
 const dnsPrefetchTags: Tag[] = [
   { type: "meta", attributes: { rel: "dns-prefetch", href: "//www.yext-pixel.com" } },
@@ -124,6 +125,14 @@ export function defaultHeadConfig(data: TemplateRenderProps, additionalTags?: Ta
           rel: "canonical",
           href: canonicalUrl(data),
         },
+      },
+      {
+        type: "link",
+        attributes: {
+          rel: "shortcut icon",
+          type: "image/ico",
+          href: favicon,
+        }
       },
       ...logoTags,
       ...defaultHeadTags,
