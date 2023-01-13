@@ -1,4 +1,7 @@
 .Locator {
+  --content-width-sm: 350px;
+  --content-width-md-up: 450px;
+
   position: relative;
   display: flex;
   flex: 1;
@@ -13,11 +16,11 @@
     overflow-y: auto;
 
     @screen sm {
-      flex-basis: 350px;
+      flex-basis: var(--content-width-sm);
     }
 
     @screen md {
-      flex-basis: 450px;
+      flex-basis: var(--content-width-md-up);
     }
   }
 
@@ -41,15 +44,14 @@
     @screen sm {
       position: absolute;
       top: 16px;
-      left: 366px;
+      left: calc(var(--content-width-sm) + 16px);
       height: fit-content;
-      width: calc(100% - 382px)
+      width: calc(100% - var(--content-width-sm) - 32px)
     }
 
     @screen md {
-      left: 466px;
+      left: calc(var(--content-width-md-up) + 16px);
       width: theme(width.80);
     }
   }
 }
-
