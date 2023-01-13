@@ -4,17 +4,17 @@ import { createCtx } from "src/common/createCtx";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
-import SearchBox from "src/components/search/SearchBox"
-import LocatorCard from "src/components/cards/LocatorCard";
-import ResultSummary from "src/components/search/ResultSummary";
-import ResultList from "src/components/search/ResultList";
-import CustomMarker from "src/components/search/CustomMarker";
-import LoadingSpinner from "src/components/common/LoadingSpinner";
-import mapStyles from "./defaultMapStyles.json";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { useLoadInitialSearchParams, useUpdateFacetParams } from "src/components/search/utils/handleSearchParams";
 import { useGetSearchResults } from "src/components/search/utils/useGetSearchResults";
 import "src/components/search/Locator.css";
+import mapStyles from "src/components/search/defaultMapStyles.json";
+import SearchBox from "src/components/search/SearchBox"
+import LocatorCard from "src/components/cards/LocatorCard";
+import ResultInfo from "src/components/search/ResultInfo";
+import ResultList from "src/components/search/ResultList";
+import CustomMarker from "src/components/search/CustomMarker";
+import LoadingSpinner from "src/components/common/LoadingSpinner";
 
 export type LocatorContextType = {
   selectedId: string,
@@ -83,10 +83,8 @@ export default function Locator(props: LocatorProps) {
             searchParams={ searchParams }
             setSearchParams={ setSearchParams }
           />
-          <div className="Locator-resultsWrapper">
-            <ResultSummary />
-            <ResultList CardComponent={ LocatorCard } displayAllOnNoResults={ displayAllOnNoResults } />
-          </div>
+          <ResultInfo />
+          <ResultList CardComponent={ LocatorCard } displayAllOnNoResults={ displayAllOnNoResults } />
         </div>
         {isDesktopBreakpoint && (
           <div className="Locator-map">

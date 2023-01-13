@@ -1,20 +1,26 @@
 .Locator {
+  --content-width-sm: 350px;
+  --content-width-md-up: 450px;
+
   position: relative;
   display: flex;
   flex: 1;
-  overflow: auto;
   border-bottom: 1px solid theme(colors.brand-gray.300);
+
+  @screen sm {
+    overflow: auto;
+  }
 
   &-content {
     width: 100%;
     overflow-y: auto;
 
     @screen sm {
-      flex-basis: 350px;
+      flex-basis: var(--content-width-sm);
     }
 
     @screen md {
-      flex-basis: 450px;
+      flex-basis: var(--content-width-md-up);
     }
   }
 
@@ -22,5 +28,30 @@
     flex: 1;
     height: 100%;
   }
-}
 
+  &-facetsModal {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: theme(padding.4);
+    background-color: white;
+    z-index: theme(zIndex.10);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(min(440px, 90%));
+
+    @screen sm {
+      position: absolute;
+      top: 16px;
+      left: calc(var(--content-width-sm) + 16px);
+      height: fit-content;
+      width: calc(100% - var(--content-width-sm) - 32px)
+    }
+
+    @screen md {
+      left: calc(var(--content-width-md-up) + 16px);
+      width: theme(width.80);
+    }
+  }
+}
