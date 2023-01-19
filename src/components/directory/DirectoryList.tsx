@@ -8,6 +8,9 @@ export const directoryListFields = [
   "dm_directoryChildren.slug",
   "dm_directoryChildren.name",
   "dm_directoryChildren.dm_directoryChildrenCount",
+  "dm_directoryChildren.dm_directoryChildren.slug",
+  "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
+  "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
 ]
 
 interface DirectoryListProps {
@@ -16,6 +19,14 @@ interface DirectoryListProps {
   showNumLocs: boolean;
   directoryChildren: DirectoryProfile<never>[];
   relativePrefixToRoot: string;
+}
+
+// Skip directory levels that would only render one option.
+const getSkipLevelSlug = (child: DirectoryProfile<never>): string => {
+  if (child.dm_directoryChildren?.length === 1) {
+    return getSkipLevelSlug(child.dm_directoryChildren[0]);
+  }
+  return child.slug;
 }
 
 export function DirectoryList(props: DirectoryListProps) {
@@ -29,7 +40,7 @@ export function DirectoryList(props: DirectoryListProps) {
             <li className="Directory-listItem" key={idx}>
               <Link
                 className="Directory-listLink m-3"
-                href={relativePrefixToRoot + child.slug}
+                href={relativePrefixToRoot + getSkipLevelSlug(child)}
                 data-count={showNumLocs ? '(' + child.dm_directoryChildrenCount + ')' : ''}
               >
                 <span className="text-brand-primary hover:underline">
