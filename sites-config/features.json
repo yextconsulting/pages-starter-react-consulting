@@ -190,7 +190,8 @@
         "dm_directoryChildren.name",
         "dm_directoryChildren.dm_directoryChildrenCount",
         "dm_directoryChildren.dm_directoryChildren.slug",
-        "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug"
+        "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
+        "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug"
       ],
       "filter": {
         "savedFilterIds": [
@@ -219,7 +220,8 @@
         "dm_directoryChildren.name",
         "dm_directoryChildren.dm_directoryChildrenCount",
         "dm_directoryChildren.dm_directoryChildren.slug",
-        "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug"
+        "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
+        "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug"
       ],
       "filter": {
         "savedFilterIds": [

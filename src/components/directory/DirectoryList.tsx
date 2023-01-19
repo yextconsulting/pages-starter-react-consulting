@@ -10,6 +10,7 @@ export const directoryListFields = [
   "dm_directoryChildren.dm_directoryChildrenCount",
   "dm_directoryChildren.dm_directoryChildren.slug",
   "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
+  "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
 ]
 
 interface DirectoryListProps {
