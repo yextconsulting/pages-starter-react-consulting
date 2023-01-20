@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import type { Coordinate } from "@yext/types";
 import { Coordinate as CoordinateClass } from "@yext/components-tsx-geo";
 import { Marker, useMapContext } from "@yext/pages/components";
-import { useLocatorContext } from "src/components/search/Locator";
+import { useLocator } from "src/components/search/Locator";
 
 type CustomMarkerProps = {
   coordinate: Coordinate,
@@ -18,7 +18,7 @@ export default function CustomMarker(props: CustomMarkerProps) {
     setHoveredId,
     focusedId,
     setFocusedId,
-  }  = useLocatorContext();
+  }  = useLocator();
 
   const { coordinate, id, index } = props;
   const selected = id === selectedId;
