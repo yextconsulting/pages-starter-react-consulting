@@ -1,11 +1,10 @@
-import { getSearchProviderConfig, LOCATOR_ENTITY_TYPE, LOCATOR_STATIC_FILTER_FIELD } from "src/config";
+import { getSearchProvider, LOCATOR_ENTITY_TYPE, LOCATOR_STATIC_FILTER_FIELD } from "src/config";
 import { useTemplateData } from "src/common/useTemplateData";
-import { provideHeadless, SearchHeadlessProvider } from "@yext/search-headless-react";
+import { SearchHeadlessProvider } from "@yext/search-headless-react";
 import { FilterSearch } from "@yext/search-ui-react";
 import GeolocateButton from "src/components/search/GeolocateButton";
 import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
 import { locationFilterToType } from "src/components/search/utils/handleSearchParams";
-// import { SandboxEndpoints } from "@yext/search-headless-react";
 
 const searchFields = [
   { fieldApiName: LOCATOR_STATIC_FILTER_FIELD, entityType: LOCATOR_ENTITY_TYPE },
@@ -19,10 +18,7 @@ interface DirectorySearchBarProps {
 export function DirectorySearchBar(props: DirectorySearchBarProps) {
   const { document } = useTemplateData();
 
-  const searcher = provideHeadless({
-    ...getSearchProviderConfig(document._site.c_searchExperienceAPIKey ?? '', document.meta.locale),
-    // endpoints: SandboxEndpoints // Add if using a sandbox account
-  });
+  const searcher = getSearchProvider(document._site.c_searchExperienceAPIKey ?? '', document.meta.locale);
 
   return (
     <SearchHeadlessProvider searcher={searcher}>
