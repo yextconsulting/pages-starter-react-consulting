@@ -18,6 +18,10 @@ interface DirectorySearchBarProps {
 export function DirectorySearchBar(props: DirectorySearchBarProps) {
   const { document } = useTemplateData();
 
+  if (!document._site.c_searchExperienceAPIKey) {
+    console.error("Add the search experience API key to the Site Entity");
+  }
+
   const searcher = getSearchProvider(document._site.c_searchExperienceAPIKey ?? '', document.meta.locale);
 
   return (
