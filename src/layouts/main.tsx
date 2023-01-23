@@ -7,6 +7,7 @@ import type { TemplateRenderProps, BaseProfile } from 'src/types/entities';
 import Footer from 'src/components/common/Footer';
 import { AnalyticsProvider } from "@yext/pages/components";
 import { useExposeEnableYAFunction } from 'src/common/useExposeEnableYAFunction';
+import Breadcrumbs from 'src/components/common/Breadcrumbs';
 
 interface MainProps {
   data: TemplateRenderProps<BaseProfile>;
@@ -34,11 +35,22 @@ const MainInternal = (props: MainProps) => {
   // If consent is not required, set requireOptIn on AnalyticsProvider above to false.
   useExposeEnableYAFunction();
 
+  const Breadcrumbs_data: { slug: string; name: string }[] = [
+    { name: "VA", slug: "va.html" },
+    { name: "Vienna", slug: "va/vienna.html" },
+    { name: "123 Main St", slug: "va/vienna/123-Main-St.html" },
+  ];
+
   return (
     <TemplateDataProvider value={props.data}>
       <Header
         logo={_site?.c_header?.logo}
         links={_site?.c_header?.links || []}
+      />
+      <Breadcrumbs 
+        breadcrumbs={Breadcrumbs_data} 
+        separator=">"
+        className="container"
       />
       {children}
       <Footer
