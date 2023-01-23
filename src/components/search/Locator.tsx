@@ -26,7 +26,7 @@ export type LocatorContextType = {
 }
 
 // Setup LocatorProvider to pass the [selected, hovered, focused]Ids between Marker interactions and LocatorCard interactions
-export const [useLocatorContext, LocatorProvider] = createCtx<LocatorContextType>();
+export const [useLocator, LocatorProvider] = createCtx<LocatorContextType>("Attempted to call useLocator outside of LocatorProvider");
 
 type LocatorProps = {
   // Will display results up to the verticalLimit (default 20, change with searchActions.setVerticalLimit(num))

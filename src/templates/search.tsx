@@ -7,14 +7,13 @@ import {
 import "src/index.css";
 import "src/styles/search.css";
 import { defaultHeadConfig } from "src/common/head";
-import { provideHeadless, SearchHeadlessProvider } from "@yext/search-headless-react";
+import { SearchHeadlessProvider } from "@yext/search-headless-react";
 import Locator from "src/components/search/Locator";
-// import { SandboxEndpoints } from "@yext/search-headless-react"; // add if using a sandbox account
 import { Main } from "src/layouts/main";
 import { BrowserRouter } from "react-router-dom";
 import { getRuntime } from "@yext/pages/util";
 import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
-import { SEARCH_PATH, getSearchProviderConfig } from "src/config";
+import { SEARCH_PATH, getSearchProvider } from "src/config";
 
 /**
  * Not required depending on your use case.
@@ -84,10 +83,7 @@ const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
   } = document;
 
   const runtime = getRuntime();
-  const searcher = provideHeadless({
-    ...getSearchProviderConfig(_site.c_searchExperienceAPIKey ?? '', document.meta.locale),
-    // endpoints: SandboxEndpoints // Add if using a sandbox account
-  });
+  const searcher = getSearchProvider(_site.c_searchExperienceAPIKey ?? '', document.meta.locale);
 
   if (!_site.c_searchExperienceAPIKey) {
     console.error("Add the search experience API key to the Site Entity");
