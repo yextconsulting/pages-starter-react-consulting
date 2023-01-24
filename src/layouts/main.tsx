@@ -34,12 +34,6 @@ const MainInternal = (props: MainProps) => {
   // If consent is not required, set requireOptIn on AnalyticsProvider above to false.
   useExposeEnableYAFunction();
 
-  const Breadcrumbs_data: { slug: string; name: string }[] = [
-    { name: "VA", slug: "va.html" },
-    { name: "Vienna", slug: "va/vienna.html" },
-    { name: "123 Main St", slug: "va/vienna/123-Main-St.html" },
-  ];
-
   return (
     <TemplateDataProvider value={props.data}>
       <Header
