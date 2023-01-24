@@ -7,7 +7,6 @@ import type { TemplateRenderProps, BaseProfile } from 'src/types/entities';
 import Footer from 'src/components/common/Footer';
 import { AnalyticsProvider } from "@yext/pages/components";
 import { useExposeEnableYAFunction } from 'src/common/useExposeEnableYAFunction';
-import Breadcrumbs from 'src/components/common/Breadcrumbs';
 
 interface MainProps {
   data: TemplateRenderProps<BaseProfile>;
@@ -46,11 +45,6 @@ const MainInternal = (props: MainProps) => {
       <Header
         logo={_site?.c_header?.logo}
         links={_site?.c_header?.links || []}
-      />
-      <Breadcrumbs 
-        breadcrumbs={Breadcrumbs_data} 
-        separator=">"
-        className="container"
       />
       {children}
       <Footer

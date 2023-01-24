@@ -5,7 +5,8 @@ import type { LocationProfile } from "src/types/entities";
 import "src/styles/Directory.css";
 
 export const directoryGridFields = [
-  "dm_directoryParents",
+  "dm_directoryParents.slug",
+  "dm_directoryParents.name",
   "dm_directoryChildren.slug",
   "dm_directoryChildren.name",
   "dm_directoryChildren.address",
