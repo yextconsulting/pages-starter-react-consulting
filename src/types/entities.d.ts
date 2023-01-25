@@ -173,6 +173,7 @@ export interface LocationProfile extends BaseProfile {
     readonly title?: string;
     readonly reviews?: ReviewProfile[];
   },
+  readonly dm_directoryParents?: Array<{ slug: string; name: string }>;
 }
 
 export type DirectoryProfile<T> = BaseProfile & {

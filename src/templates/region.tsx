@@ -13,13 +13,15 @@ import type {
   Template,
   GetPath,
   TemplateConfig,
+  TransformProps,
   GetHeadConfig,
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import { DirectoryList, directoryListFields } from "src/components/directory/DirectoryList"
-import type { DirectoryProfile, TemplateProps, TemplateRenderProps } from "src/types/entities";
+import type { DirectoryProfile, LocationProfile, TemplateProps, TemplateRenderProps } from "src/types/entities";
 import { Main } from 'src/layouts/main';
+import Breadcrumbs from 'src/components/common/Breadcrumbs';
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -76,6 +78,30 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps<DirectoryProfile<n
 };
 
 /**
+ * Required only when data needs to be retrieved from an external (non-Knowledge Graph) source.
+ * If the page is truly static this function is not necessary.
+ *
+ * This function will be run during generation and pass in directly as props to the default
+ * exported function.
+ */
+ export const transformProps: TransformProps<TemplateRenderProps<LocationProfile>> = async (data) => {
+  const {
+    dm_directoryParents,
+    name
+  } = data.document;
+
+  (dm_directoryParents || []).push({name: name, slug: ''})
+
+  return {
+    ...data,
+    document: {
+      ...data.document,
+      dm_directoryParents: dm_directoryParents,
+    }
+  };
+};
+
+/**
  * This is the main template. It can have any name as long as it's the default export.
  * The props passed in here are the direct stream document defined by `config`.
  *
@@ -85,10 +111,15 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps<DirectoryProfile<n
  * them in the src/templates folder as this is specific for true template files).
  */
 const Region: Template<TemplateRenderProps<DirectoryProfile<DirectoryProfile<never>>>> = (data) => {
-  const { name, c_brand, dm_directoryChildren } = data.document;
+  const { name, c_brand, dm_directoryChildren, dm_directoryParents } = data.document;
 
   return (
     <Main data={data}>
+      <Breadcrumbs 
+        breadcrumbs={dm_directoryParents || []} 
+        separator=">"
+        className="container"
+      />
       <DirectoryList
         name={name}
         brand={c_brand}
