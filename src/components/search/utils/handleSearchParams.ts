@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import { Matcher } from "@yext/search-headless-react";
+import { DisplayableFacet, Matcher, useSearchActions } from "@yext/search-headless-react";
 import type { DisplayableFacetOption, SearchHeadless } from "@yext/search-headless-react";
 import { getUserLocation } from "@yext/search-ui-react";
 import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 import type { SetSearchParamsType } from "src/types/additional";
+import { useSearchParams } from "react-router-dom";
 
 // URL Parameters used for static filters.
 export const static_config = {
@@ -13,12 +14,8 @@ export const static_config = {
   'r': 3,
 } as const;
 
-// URL Parameters used for facet filters.
-// Add the facet field as a key to enable faceting on that field.
-export const facet_config =  {
-  // 'paymentOptions': 0,
-  // 'services': 1,
-} as const;
+// Schema for the facets search param value: &facets={"facetFieldId1": ["OptionA", "OptionB", "OptionC"], ...}.
+type FacetParamSchema = Record<string, string[]>;
 
 // Convert a static filter fieldId to a URL param to distinguish location filter types.
 export function locationFilterToType(filterId: string) {
@@ -51,9 +48,10 @@ export function useLoadInitialSearchParams(
       const locationDisplayName = searchParams.get('qp');
       const filterType = searchParams.get('location_type');
       const radius = searchParams.get('r');
+      const facetsSearchParamString = searchParams.get('facets');
 
-      // Load facets
-      const facetParams = Array.from(searchParams.entries()).filter(([fieldId, _]) => Array.from(Object.keys(facet_config)).includes(fieldId));
+      // If the facets search param key exists, parse back into JSON.
+      const facets = facetsSearchParamString ? JSON.parse(facetsSearchParamString) as FacetParamSchema : null;
 
       // If the locator is using "builtin.location" as the filterId for FilterSearch,
       // make sure we're loading in the correct type of location filter.
@@ -62,7 +60,7 @@ export function useLoadInitialSearchParams(
         : LOCATOR_STATIC_FILTER_FIELD;
 
       // Remove extra params added to the url that are not defined in facet_config or static_config.
-      const extraParams = Array.from(searchParams.keys()).filter(key => !Array.from(Object.keys(static_config)).concat(Array.from(Object.keys(facet_config))).includes(key));
+      const extraParams = Array.from(searchParams.keys()).filter(key => !Array.from(Object.keys(static_config)).includes(key));
       for (const param of extraParams) {
         searchParams.delete(param);
       }
@@ -173,10 +171,9 @@ export function useLoadInitialSearchParams(
 
       // If any of the above functions set a static filter in the search state and there are facet params available,
       // parse the facet params and add them to the search state.
-      if (searchActions.state.filters.static?.find(filter => filter.selected) && facetParams.length) {
-        for (const [fieldId, options] of facetParams) {
-          const optionsArray = options.split(',');
-          const optionsToAdd: DisplayableFacetOption[] = optionsArray.map(option => ({
+      if (searchActions.state.filters.static?.find(filter => filter.selected) && facets) {
+        for (const [fieldId, options] of Object.entries(facets)) {
+          const optionsToAdd: DisplayableFacetOption[] = options.map(option => ({
             count: 0,
             displayName: '',
             matcher: Matcher.Equals,
@@ -213,30 +210,48 @@ export function useLoadInitialSearchParams(
   }, [searchActions, searchParams, setSearchParams, paramsLoaded, callback]);
 }
 
-// When the search state facets are updated, add any facets with selected options to the URLSearchParams
-// and remove any unused facets.
-export function useUpdateFacetParams(
-  searchActions: SearchHeadless,
-  searchParams: URLSearchParams,
-  setSearchParams: SetSearchParamsType,
-) {
-  useEffect(() => {
-    const facetFilters = searchActions.state.filters.facets;
+function encodeFacetFilters(facets: DisplayableFacet[]): string|null {
+  const activeFacets: FacetParamSchema = {};
 
-    if (facetFilters) {
-      facetFilters.forEach(facet => {
-        // If a facet has selected options.
-        if (facet.options.filter(f => f.selected).length) {
-          const activeOptions = facet.options.filter(f => f.selected).map(f => f.value).join(',');
-          searchParams.set(facet.fieldId, activeOptions);
-        }
-        else {
-          searchParams.delete(facet.fieldId);
-        }
-      });
+  facets.forEach(facet => {
+    const isActive = facet.options.some(option => option.selected);
+    if (isActive) {
+      const activeOptions = facet.options
+        .filter(f => f.selected)
+        .map(f => f.value)
+        .filter((val): val is string => typeof val === 'string');
 
-      setSearchParams(searchParams);
+      activeFacets[facet.fieldId] = activeOptions;
     }
+  });
 
-  }, [searchActions.state.filters.facets, setSearchParams, searchParams]);
+  if (Object.keys(activeFacets).length) {
+    return JSON.stringify(activeFacets)
+  }
+ 
+  return null;
+}
+
+export function useHandleSearchParams (initialParamsLoaded: boolean) {
+  const searchActions = useSearchActions();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    // Don't register any listeners on page load until all of the initial params are loaded.
+    if (!initialParamsLoaded) return;
+
+    searchActions.addListener({
+      valueAccessor: state => state.filters.facets,
+      callback: facets => {
+        if (facets) {
+          const encodedFacets = encodeFacetFilters(facets);
+          if (encodedFacets) {
+            searchParams.set('facets', encodedFacets);
+            setSearchParams(searchParams);
+          }
+        }
+      },
+    });
+
+  }, [initialParamsLoaded]);
 }

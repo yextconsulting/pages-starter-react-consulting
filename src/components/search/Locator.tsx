@@ -5,7 +5,7 @@ import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import { useLoadInitialSearchParams, useUpdateFacetParams } from "src/components/search/utils/handleSearchParams";
+import { useHandleSearchParams, useLoadInitialSearchParams } from "src/components/search/utils/handleSearchParams";
 import { useGetSearchResults } from "src/components/search/utils/useGetSearchResults";
 import "src/components/search/Locator.css";
 import mapStyles from "src/components/search/defaultMapStyles.json";
@@ -53,7 +53,7 @@ export default function Locator(props: LocatorProps) {
   // Load static and facet filters on page load.
   useLoadInitialSearchParams(searchActions, searchParams, setSearchParams, initialParamsLoaded, initialParamsLoadedCallback);
   // Update the facet url params whenever the search state facets object updates.
-  useUpdateFacetParams(searchActions, searchParams, setSearchParams);
+  useHandleSearchParams(initialParamsLoaded);
 
   // Unset any selected, hovered, or focused markers on new search
   useEffect(() => {
