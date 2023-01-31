@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { createCtx } from "src/common/createCtx";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/pages/components";
@@ -45,15 +44,13 @@ export default function Locator(props: LocatorProps) {
   const searchActions = useSearchActions();
   const isLoading = useSearchState(state => state.searchStatus.isLoading);
   const isDesktopBreakpoint = useBreakpoint("sm");
-  const [searchParams, setSearchParams] = useSearchParams();
   const [initialParamsLoaded, setInitialParamsLoaded] = useState(false);
-
   const initialParamsLoadedCallback = useCallback(() => setInitialParamsLoaded(true), [setInitialParamsLoaded]);
 
   // Load static and facet filters on page load.
-  useLoadInitialSearchParams(searchActions, searchParams, setSearchParams, initialParamsLoaded, initialParamsLoadedCallback);
+  useLoadInitialSearchParams(initialParamsLoaded, initialParamsLoadedCallback);
   // Update the search params whenever the search state filters property changes.
-  useHandleSearchParams(initialParamsLoaded, searchParams, setSearchParams);
+  useHandleSearchParams(initialParamsLoaded);
 
   // Unset any selected, hovered, or focused markers on new search
   useEffect(() => {

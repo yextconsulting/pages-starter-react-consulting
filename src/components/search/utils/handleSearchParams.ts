@@ -8,7 +8,6 @@ import type {
   DisplayableFacet,
   FieldValueStaticFilter,
   NearFilterValue,
-  SearchHeadless,
   SelectableStaticFilter,
 } from "@yext/search-headless-react";
 import { getUserLocation } from "@yext/search-ui-react";
@@ -17,13 +16,13 @@ import {
   LOCATOR_STATIC_FILTER_FIELD,
   LOCATOR_ENTITY_TYPE
 } from "src/config";
-import type { SetSearchParamsType } from "src/types/additional";
 import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
 import {
   combineSearchParams,
   locationFilterToType,
   locationTypeToFilter,
 } from "src/components/search/utils/helpers";
+import { useSearchParams } from "react-router-dom";
 
 // URLSearchParams keys used for storing and loading search state.
 // Any values not in this array will be removed from the URLSearchParams on page load.
@@ -41,12 +40,12 @@ export const FILTERS_CONFIG = [
 type FacetParamSchema = Record<string, string[]>;
 
 export function useLoadInitialSearchParams(
-  searchActions: SearchHeadless,
-  searchParams: URLSearchParams,
-  setSearchParams: SetSearchParamsType,
   paramsLoaded: boolean,
   callback?: () => void,
 ) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchActions = useSearchActions();
+
   useEffect(() => {
     // Don't run again after params are loaded.
     if (paramsLoaded) return;
@@ -211,6 +210,7 @@ export function useLoadInitialSearchParams(
   }, [searchActions, searchParams, setSearchParams, paramsLoaded, callback]);
 }
 
+// Create URLSearchParams from the current static filter state.
 export function encodeStaticFilters(filters: SelectableStaticFilter[]): URLSearchParams|null {
   const selectedFilter = filters.find(f => f.selected && f.filter.kind === 'fieldValue');
   
@@ -239,6 +239,7 @@ export function encodeStaticFilters(filters: SelectableStaticFilter[]): URLSearc
   return searchParams;
 }
 
+// Create URLSearchParams from the current facet filter state.
 export function encodeFacetFilters(facets: DisplayableFacet[]): URLSearchParams|null {
   const activeFacets: FacetParamSchema = {};
 
@@ -262,49 +263,49 @@ export function encodeFacetFilters(facets: DisplayableFacet[]): URLSearchParams|
   return null;
 }
 
+// Register listeners for updating the URLSearchParams when the search redux state is updated.
 export function useHandleSearchParams (
   initialParamsLoaded: boolean,
-  searchParams: URLSearchParams,
-  setSearchParams: SetSearchParamsType,
 ) {
   const searchActions = useSearchActions();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     // Don't register listeners on page load until all of the initial params are loaded.
     if (!initialParamsLoaded) return;
 
-    searchActions.addListener({
+    const removeStaticListener = searchActions.addListener({
       valueAccessor: state => state.filters.static,
       callback: filters => {
         if (filters) {
           const encodedFilters = encodeStaticFilters(filters);
           if (encodedFilters) {
-            setSearchParams(combineSearchParams(searchParams, encodedFilters));
+            setSearchParams(encodedFilters);
           }
         }
       }
     });
 
-    searchActions.addListener({
+    const removeFacetListener = searchActions.addListener({
       valueAccessor: state => state.filters.facets,
       callback: facets => {
         if (facets) {
           const encodedFacets = encodeFacetFilters(facets);
           if (encodedFacets) {
             setSearchParams(combineSearchParams(searchParams, encodedFacets));
+          } else {
+            searchParams.delete('facets');
+            setSearchParams(searchParams);
           }
         }
       },
     });
 
-    // On a new search the facets are reset so remove the facets key from the search params.
-    searchActions.addListener({
-      valueAccessor: state => state.query.queryId,
-      callback: _ => {
-        searchParams.delete('facets');
-        setSearchParams(searchParams);
-      },
-    });
+    return () => {
+      // Unsubscribe from search state listeners.
+      removeStaticListener();
+      removeFacetListener();
+    }
 
   }, [searchActions, searchParams, setSearchParams, initialParamsLoaded]);
 }
