@@ -52,8 +52,8 @@ export default function Locator(props: LocatorProps) {
 
   // Load static and facet filters on page load.
   useLoadInitialSearchParams(searchActions, searchParams, setSearchParams, initialParamsLoaded, initialParamsLoadedCallback);
-  // Update the facet url params whenever the search state facets object updates.
-  useHandleSearchParams(initialParamsLoaded);
+  // Update the search params whenever the search state filters property changes.
+  useHandleSearchParams(initialParamsLoaded, searchParams, setSearchParams);
 
   // Unset any selected, hovered, or focused markers on new search
   useEffect(() => {
@@ -80,8 +80,6 @@ export default function Locator(props: LocatorProps) {
             title={ title }
             subTitle={ subTitle }
             placeholderText={ placeholderText }
-            searchParams={ searchParams }
-            setSearchParams={ setSearchParams }
           />
           <ResultInfo />
           <ResultList CardComponent={ LocatorCard } displayAllOnNoResults={ displayAllOnNoResults } />

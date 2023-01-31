@@ -1,9 +1,7 @@
 import { FilterSearch, executeSearch } from "@yext/search-ui-react";
 import { useSearchActions } from "@yext/search-headless-react";
 import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
-import { locationFilterToType } from "src/components/search/utils/handleSearchParams";
 import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
-import type { SetSearchParamsType } from "src/types/additional";
 import GeolocateButton from "src/components/search/GeolocateButton";
 
 const searchFields = [
@@ -14,8 +12,6 @@ type SearchBoxProps = {
   title: string;
   subTitle: string;
   placeholderText?: string;
-  searchParams: URLSearchParams;
-  setSearchParams: SetSearchParamsType;
 }
 
 export default function SearchBox(props: SearchBoxProps) {
@@ -23,8 +19,6 @@ export default function SearchBox(props: SearchBoxProps) {
     title,
     subTitle,
     placeholderText,
-    searchParams,
-    setSearchParams
   } = props;
 
   const searchActions = useSearchActions();
@@ -58,30 +52,16 @@ export default function SearchBox(props: SearchBoxProps) {
                 && filter.kind === "fieldValue"
                 && (LOCATOR_STATIC_FILTER_FIELD === "builtin.location" ? checkIsLocationFilter(filter) : searchFields.some(s => s.fieldApiName === filter.fieldId))
               ) ?? [];
-              matchingFilters.forEach(f => searchActions.setFilterOption({ filter: f.filter, selected: false }));
+              matchingFilters.forEach(f => searchActions.setFilterOption({ ...f, selected: false }));
 
               // Update the static filter state with the new filter.
               searchActions.setFilterOption({
-                filter: newFilter,
                 displayName: newDisplayName,
+                filter: newFilter,
                 selected: true
               });
               setCurrentFilter(newFilter);
               executeFilterSearch(newDisplayName);
-
-              // Update URLSearchParams.
-              searchParams.set('q', newFilter.value.toString());
-              searchParams.set('qp', newDisplayName);
-              searchParams.delete('r');
-
-              // For builtin.location we need to also indicate the type of filter being used so it can be loaded in correctly.
-              // TODO: When product updates the component check to make sure this isn't needed then.
-              if (checkIsLocationFilter(newFilter)) {
-                const locationType = locationFilterToType(newFilter.fieldId);
-                searchParams.set('location_type', locationType);
-              }
-
-              setSearchParams(searchParams);
 
               // Run new search with updated filter
               searchActions.setOffset(0);
@@ -90,11 +70,7 @@ export default function SearchBox(props: SearchBoxProps) {
             }}
           />
         </div>
-        <GeolocateButton
-          className="ml-4"
-          searchParams={searchParams}
-          setSearchParams={setSearchParams}
-        />
+        <GeolocateButton className="ml-4" />
       </div>
     </div>
   )
