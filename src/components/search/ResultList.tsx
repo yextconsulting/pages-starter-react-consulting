@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { useSearchState } from "@yext/search-headless-react";
 import type { CardComponent } from "@yext/search-ui-react";
 import type { Result } from "@yext/search-headless-react";
-import { useLocatorContext } from "src/components/search/Locator";
+import { useLocator } from "src/components/search/Locator";
 import type { LocatorCardProps } from "src/components/cards/LocatorCard";
 import "src/components/search/ResultList.css";
 
@@ -49,7 +49,7 @@ function ResultListItem(props: ResultListItemProps) {
     setHoveredId,
     focusedId,
     setFocusedId,
-  }  = useLocatorContext();
+  }  = useLocator();
   const listItemRef = useRef<HTMLDivElement | null>(null);
 
   // When the selectedId is updated from a marker click scroll the ResultList to show the current LocatorCard

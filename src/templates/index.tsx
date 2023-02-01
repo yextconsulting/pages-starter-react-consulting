@@ -38,6 +38,7 @@ import { Insights, defaultFields as InsightsFields } from 'src/components/entity
 import { Reviews, fetchReviews, defaultFields as reviewsFields } from 'src/components/entity/Reviews';
 import { formatPhone } from 'src/common/helpers'
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
+import Breadcrumbs from 'src/components/common/Breadcrumbs';
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -119,7 +120,11 @@ export const config: TemplateConfig = {
     alternatePhone,
     address,
     _site,
+    dm_directoryParents,
+    name
   } = data.document;
+
+  (dm_directoryParents || []).push({name: name, slug: ''})
 
   return {
     ...data,
@@ -136,6 +141,7 @@ export const config: TemplateConfig = {
         ...data.document.c_reviewsSection,
         ...(_site.c_reviewsAPIKey && {reviews: await fetchReviews(_site.c_reviewsAPIKey)})
       },
+      dm_directoryParents: dm_directoryParents,
     }
   };
 };
@@ -190,6 +196,7 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
     c_eventsSection: events,
     c_insightsSection: insights,
     c_reviewsSection: reviews,
+    dm_directoryParents: directoryParents,
   } = data.document;
 
   const showBanner = banner?.text && banner?.image;
@@ -205,6 +212,11 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
 
   return (
     <Main data={data}>
+      <Breadcrumbs 
+        breadcrumbs={directoryParents || []} 
+        separator=">"
+        className="container"
+      />
       {showBanner && <Banner text={banner.text} image={banner.image} />}
       <Hero name={name} cta1={hero?.cta1} cta2={hero?.cta2} address={address} background={hero?.background} hours={hours} numReviews={21} rating={4.5} />
       <Core profile={data.document} />
