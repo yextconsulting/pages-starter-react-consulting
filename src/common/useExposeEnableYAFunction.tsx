@@ -1,5 +1,5 @@
 import { useAnalytics } from "@yext/pages/components";
-import { getRuntime } from '@yext/pages/util';
+import { getRuntime } from "@yext/pages/util";
 
 declare global {
   interface Window {
@@ -14,7 +14,9 @@ declare global {
 export function useExposeEnableYAFunction() {
   const analytics = useAnalytics();
   if (!analytics) {
-    throw new Error("Attempted to enable Analytics outside of AnalyticsProvider")
+    throw new Error(
+      "Attempted to enable Analytics outside of AnalyticsProvider"
+    );
   }
 
   if (!getRuntime().isServerSide) {

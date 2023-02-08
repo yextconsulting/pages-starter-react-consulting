@@ -27,6 +27,7 @@ npm install
 ### Dev workflow
 
 Making changes to this repo:
+
 1. Testing data comes from this account: https://sandbox.yext.com/admin2/customers/3160439.
 2. To update localData, `yext init` and use the account id `3861963`.
 3. `npm run dev` will run the webserver locally to view changes.

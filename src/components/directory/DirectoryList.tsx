@@ -11,7 +11,7 @@ export const directoryListFields = [
   "dm_directoryChildren.dm_directoryChildren.slug",
   "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
   "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
-]
+];
 
 interface DirectoryListProps {
   name: string;
@@ -27,10 +27,11 @@ const getSkipLevelSlug = (child: DirectoryProfile<never>): string => {
     return getSkipLevelSlug(child.dm_directoryChildren[0]);
   }
   return child.slug;
-}
+};
 
 export function DirectoryList(props: DirectoryListProps) {
-  const { name, brand, showNumLocs, directoryChildren, relativePrefixToRoot } = props;
+  const { name, brand, showNumLocs, directoryChildren, relativePrefixToRoot } =
+    props;
   return (
     <div className="my-8">
       <DirectoryHero title={name} subtitle={brand} />
@@ -41,7 +42,9 @@ export function DirectoryList(props: DirectoryListProps) {
               <Link
                 className="Directory-listLink m-3"
                 href={relativePrefixToRoot + getSkipLevelSlug(child)}
-                data-count={showNumLocs ? '(' + child.dm_directoryChildrenCount + ')' : ''}
+                data-count={
+                  showNumLocs ? "(" + child.dm_directoryChildrenCount + ")" : ""
+                }
               >
                 <span className="text-brand-primary hover:underline">
                   {child.name}
@@ -52,5 +55,5 @@ export function DirectoryList(props: DirectoryListProps) {
         </ul>
       </div>
     </div>
-  )
+  );
 }

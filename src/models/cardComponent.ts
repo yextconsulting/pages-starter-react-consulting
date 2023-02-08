@@ -5,7 +5,7 @@
  */
 export interface CardProps<ProfileType> {
   /** The result data provided to the card for rendering. */
-  profile: ProfileType
+  profile: ProfileType;
 }
 
 /**
@@ -13,4 +13,6 @@ export interface CardProps<ProfileType> {
  *
  * @public
  */
- export type CardComponent<ProfileType> = (props: CardProps<ProfileType>) => JSX.Element;
+export type CardComponent<ProfileType> = (
+  props: CardProps<ProfileType>
+) => JSX.Element;

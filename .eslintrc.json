@@ -4,9 +4,7 @@
     "es2021": true,
     "node": true
   },
-  "extends": [
-    "@yext/eslint-config/typescript-react"
-  ],
+  "extends": ["@yext/eslint-config/typescript-react"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {

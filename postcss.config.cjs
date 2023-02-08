@@ -9,6 +9,6 @@ module.exports = {
     "./beforeTailwindPostCSSPlugins.cjs": {},
     "tailwindcss/nesting": {},
     tailwindcss: {},
-    autoprefixer: {}
-  }
+    autoprefixer: {},
+  },
 };

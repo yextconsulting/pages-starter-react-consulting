@@ -18,7 +18,4 @@ function gtmBodyScript(id: string): string {
   `;
 }
 
-export {
-  gtmBodyScript,
-  gtmHeadScript,
-}
+export { gtmBodyScript, gtmHeadScript };

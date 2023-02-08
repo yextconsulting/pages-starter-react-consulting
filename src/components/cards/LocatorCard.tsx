@@ -17,33 +17,50 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
   const geomodifier = address.line1 ? address.line1 : address.city;
   const isDesktopBreakpoint = useBreakpoint("sm");
 
-  const renderTitle = () => <h3 className="Heading Heading--sub pb-2 sm:pb-4">{ geomodifier }</h3>;
-  const renderDistance = () => distanceFromFilter ? <div className="LocatorCard-distance whitespace-nowrap pt-2 sm:pt-0">{getDistance(distanceFromFilter, useKilometers)} {useKilometers ? 'km' : 'mi'}</div> : null;
+  const renderTitle = () => (
+    <h3 className="Heading Heading--sub pb-2 sm:pb-4">{geomodifier}</h3>
+  );
+  const renderDistance = () =>
+    distanceFromFilter ? (
+      <div className="LocatorCard-distance whitespace-nowrap pt-2 sm:pt-0">
+        {getDistance(distanceFromFilter, useKilometers)}{" "}
+        {useKilometers ? "km" : "mi"}
+      </div>
+    ) : null;
 
   return (
     <div className="LocatorCard">
       <div className="flex justify-between">
         {link ? (
-          <Link href={ link } className="LocatorCard-visitpage Link--underlineInverse text-brand-primary">
-            { renderTitle() }
+          <Link
+            href={link}
+            className="LocatorCard-visitpage Link--underlineInverse text-brand-primary"
+          >
+            {renderTitle()}
           </Link>
-        ) : renderTitle()}
-        { isDesktopBreakpoint && renderDistance() }
+        ) : (
+          renderTitle()
+        )}
+        {isDesktopBreakpoint && renderDistance()}
       </div>
       {hours && (
         <div className="pb-2 sm:pb-4">
           <HoursStatus
-            currentTemplate={ (params: StatusParams) => <span className="HoursStatus-current--search">{ params.isOpen ? 'Open Now' : 'Closed' }</span> }
-            dayOfWeekTemplate={ () => null }
-            hours={ hours }
-            separatorTemplate={ () => <span className="bullet" /> }
+            currentTemplate={(params: StatusParams) => (
+              <span className="HoursStatus-current--search">
+                {params.isOpen ? "Open Now" : "Closed"}
+              </span>
+            )}
+            dayOfWeekTemplate={() => null}
+            hours={hours}
+            separatorTemplate={() => <span className="bullet" />}
           />
         </div>
       )}
       <div>{address.line1}</div>
-      { !isDesktopBreakpoint && renderDistance() }
+      {!isDesktopBreakpoint && renderDistance()}
     </div>
-  )
+  );
 }
 
 // convert meters to miles or kilometers

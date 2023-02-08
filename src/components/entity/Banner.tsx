@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Image } from "@yext/pages/components";
-import type { Image as ImageType } from  "@yext/types";
+import type { Image as ImageType } from "@yext/types";
 import { FaTimes } from "react-icons/fa";
 
-const defaultFields: string[] = [
-  'c_bannerSection',
-];
+const defaultFields: string[] = ["c_bannerSection"];
 
 type BannerProps = {
   image?: ImageType;
@@ -14,7 +12,7 @@ type BannerProps = {
 };
 
 const Banner = (props: BannerProps) => {
-  const [ showBanner, setShowBanner ] = useState(true);
+  const [showBanner, setShowBanner] = useState(true);
 
   if (!showBanner) {
     return null;
@@ -28,9 +26,7 @@ const Banner = (props: BannerProps) => {
             <Image image={props.image} />
           </div>
         )}
-        <div className="flex flex-grow mr-4">
-          {props.text}
-        </div>
+        <div className="flex flex-grow mr-4">{props.text}</div>
 
         {props.hasCloseBtn && (
           <button onClick={() => setShowBanner(false)}>
@@ -43,7 +39,4 @@ const Banner = (props: BannerProps) => {
   );
 };
 
-export {
-  Banner,
-  defaultFields,
-};
+export { Banner, defaultFields };

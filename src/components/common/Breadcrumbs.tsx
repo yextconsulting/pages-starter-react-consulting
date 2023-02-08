@@ -29,30 +29,31 @@ const Breadcrumbs = (props: BreadcrumbsPropsDefault) => {
 
   return (
     <>
-    {breadcrumbs?.length && (
-      <nav
-        className={classNames("Breadcrumbs", className)}
-        aria-label="Breadcrumb"
-      >
-        <ol className="Breadcrumbs-list">
-          {breadcrumbs.map(({ name, slug }, idx) => {
-            const isLast = idx === breadcrumbs.length - 1;
+      {breadcrumbs?.length && (
+        <nav
+          className={classNames("Breadcrumbs", className)}
+          aria-label="Breadcrumb"
+        >
+          <ol className="Breadcrumbs-list">
+            {breadcrumbs.map(({ name, slug }, idx) => {
+              const isLast = idx === breadcrumbs.length - 1;
 
-            return (
-              <li className="Breadcrumbs-item" key={idx}>
-                <Breadcrumb 
-                  name={name} 
-                  slug={isLast ? "" : slug} 
-                  index={idx}
-                  {...props} />
-                {!isLast && (
-                  <span className="Breadcrumbs-separator">{separator}</span>
-                )}
-              </li>
-            );
-          })}
-        </ol>
-      </nav>
+              return (
+                <li className="Breadcrumbs-item" key={idx}>
+                  <Breadcrumb
+                    name={name}
+                    slug={isLast ? "" : slug}
+                    index={idx}
+                    {...props}
+                  />
+                  {!isLast && (
+                    <span className="Breadcrumbs-separator">{separator}</span>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        </nav>
       )}
     </>
   );
@@ -70,7 +71,11 @@ const Breadcrumb = (props: BreadcrumbProps) => {
 
   if (slug) {
     return (
-      <Link className="Breadcrumbs-link Link--breadcrumbs" href={slug} eventName={props.addAnalytics ? 'breadcrumb_' + props.index : ''}>
+      <Link
+        className="Breadcrumbs-link Link--breadcrumbs"
+        href={slug}
+        eventName={props.addAnalytics ? "breadcrumb_" + props.index : ""}
+      >
         <span className="Breadcrumbs-label">{name}</span>
       </Link>
     );
