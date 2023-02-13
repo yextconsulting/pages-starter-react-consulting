@@ -3,8 +3,7 @@ import { useTemplateData } from "src/common/useTemplateData";
 import { SearchHeadlessProvider } from "@yext/search-headless-react";
 import { FilterSearch } from "@yext/search-ui-react";
 import GeolocateButton from "src/components/search/GeolocateButton";
-import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
-import { locationFilterToType } from "src/components/search/utils/handleSearchParams";
+import { encodeStaticFilters } from "src/components/search/utils/handleSearchParams";
 
 const searchFields = [
   { fieldApiName: LOCATOR_STATIC_FILTER_FIELD, entityType: LOCATOR_ENTITY_TYPE },
@@ -53,16 +52,15 @@ function DirectorySearchBarInternal(props: DirectorySearchBarProps) {
             newDisplayName,
             newFilter,
           }) => {
-            const searchParams = new URLSearchParams();
-            searchParams.set('q', newFilter.value.toString());
-            searchParams.set('qp', newDisplayName);
-            if (checkIsLocationFilter(newFilter)) {
-              const type = locationFilterToType(newFilter.fieldId);
-              searchParams.set('location_type', type);
-            }
+            const searchParams = encodeStaticFilters([{
+              displayName: newDisplayName,
+              filter: newFilter,
+              selected: true,
+            }]);
 
-            // Redirect to the search page.
-            window.location.href = `${searcherPath}?${searchParams.toString()}`;
+            if (searchParams) {
+              window.location.href = `${searcherPath}?${searchParams.toString()}`;
+            }
           }}
         />
       </div>

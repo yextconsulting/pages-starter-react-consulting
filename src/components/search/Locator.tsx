@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { createCtx } from "src/common/createCtx";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import { useLoadInitialSearchParams, useUpdateFacetParams } from "src/components/search/utils/handleSearchParams";
+import { useHandleSearchParams, useLoadInitialSearchParams } from "src/components/search/utils/handleSearchParams";
 import { useGetSearchResults } from "src/components/search/utils/useGetSearchResults";
 import "src/components/search/Locator.css";
 import mapStyles from "src/components/search/defaultMapStyles.json";
@@ -45,15 +44,13 @@ export default function Locator(props: LocatorProps) {
   const searchActions = useSearchActions();
   const isLoading = useSearchState(state => state.searchStatus.isLoading);
   const isDesktopBreakpoint = useBreakpoint("sm");
-  const [searchParams, setSearchParams] = useSearchParams();
   const [initialParamsLoaded, setInitialParamsLoaded] = useState(false);
-
   const initialParamsLoadedCallback = useCallback(() => setInitialParamsLoaded(true), [setInitialParamsLoaded]);
 
   // Load static and facet filters on page load.
-  useLoadInitialSearchParams(searchActions, searchParams, setSearchParams, initialParamsLoaded, initialParamsLoadedCallback);
-  // Update the facet url params whenever the search state facets object updates.
-  useUpdateFacetParams(searchActions, searchParams, setSearchParams);
+  useLoadInitialSearchParams(initialParamsLoaded, initialParamsLoadedCallback);
+  // Update the search params whenever the search state filters property changes.
+  useHandleSearchParams(initialParamsLoaded);
 
   // Unset any selected, hovered, or focused markers on new search
   useEffect(() => {
@@ -80,8 +77,6 @@ export default function Locator(props: LocatorProps) {
             title={ title }
             subTitle={ subTitle }
             placeholderText={ placeholderText }
-            searchParams={ searchParams }
-            setSearchParams={ setSearchParams }
           />
           <ResultInfo />
           <ResultList CardComponent={ LocatorCard } displayAllOnNoResults={ displayAllOnNoResults } />

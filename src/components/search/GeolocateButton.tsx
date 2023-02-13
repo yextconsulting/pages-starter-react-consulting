@@ -1,16 +1,15 @@
 import { useState } from 'react';
 import { useSearchActions, Matcher } from '@yext/search-headless-react';
+import type { SelectableStaticFilter } from '@yext/search-headless-react';
 import { executeSearch, getUserLocation } from '@yext/search-ui-react';
 import LoadingSpinner from 'src/components/common/LoadingSpinner';
-import { GEOLOCATE_RADIUS, LOCATOR_STATIC_FILTER_FIELD } from 'src/config';
-import type { SetSearchParamsType } from "src/types/additional";
+import { GEOLOCATE_RADIUS } from 'src/config';
+import { encodeStaticFilters } from './utils/handleSearchParams';
 
 interface GeolocateButtonProps {
   className?: string;
   redirectToSearchPage?: boolean;
   searcherPath?: string;
-  searchParams?: URLSearchParams;
-  setSearchParams?: SetSearchParamsType;
 }
 
 export default function GeolocateButton(props: GeolocateButtonProps) {
@@ -18,8 +17,6 @@ export default function GeolocateButton(props: GeolocateButtonProps) {
     className,
     redirectToSearchPage,
     searcherPath,
-    searchParams = new URLSearchParams(),
-    setSearchParams,
   } = props;
 
   const searchActions = useSearchActions();
@@ -36,13 +33,12 @@ export default function GeolocateButton(props: GeolocateButtonProps) {
         longitude: position.coords.longitude,
       });
 
-      // Set static filter to radius around users position
-      searchActions.setStaticFilters([{
+      const newFilter: SelectableStaticFilter = {
         displayName: "My Location",
         selected: true,
         filter: {
           kind: 'fieldValue',
-          fieldId: LOCATOR_STATIC_FILTER_FIELD,
+          fieldId: 'builtin.location',
           matcher: Matcher.Near,
           value: {
             lat: position.coords.latitude,
@@ -50,29 +46,21 @@ export default function GeolocateButton(props: GeolocateButtonProps) {
             radius: 1609 * GEOLOCATE_RADIUS
           },
         }
-      }]);
+      };
 
+      searchActions.setStaticFilters([newFilter]);
       searchActions.setOffset(0);
       searchActions.resetFacets();
       await executeSearch(searchActions);
 
-      // Update URLSearchParams.
-      searchParams.set('q', `${position.coords.latitude},${position.coords.longitude}`);
-      searchParams.set('qp', "My Location");
-      searchParams.set('r', (GEOLOCATE_RADIUS).toString());
-      if (LOCATOR_STATIC_FILTER_FIELD === "builtin.location") {
-        searchParams.set('location_type', LOCATOR_STATIC_FILTER_FIELD);
-      }
-
       // Redirect to another page with the url params filled out.
       if (redirectToSearchPage && searcherPath) {
-        window.location.href = `${searcherPath}?${searchParams.toString()}`;
+        const searchParams = encodeStaticFilters([newFilter]);
+        if (searchParams) {
+          window.location.href = `${searcherPath}?${searchParams.toString()}`;
+        }
       }
 
-      // Update the url params with the new values.
-      if (setSearchParams) {
-        setSearchParams(searchParams);
-      }
     } catch (e) {
       alert("User location could not be determined.");
       console.error(e);
