@@ -1,8 +1,8 @@
 import { FilterSearch, executeSearch } from "@yext/search-ui-react";
 import { useSearchActions } from "@yext/search-headless-react";
-import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
 import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 import GeolocateButton from "src/components/search/GeolocateButton";
+import { useEffect } from "react";
 
 const searchFields = [
   { fieldApiName: LOCATOR_STATIC_FILTER_FIELD, entityType: LOCATOR_ENTITY_TYPE },
@@ -23,6 +23,13 @@ export default function SearchBox(props: SearchBoxProps) {
 
   const searchActions = useSearchActions();
 
+  // When the FilterSearch component updates the search state with the users selection execute a new search.
+  useEffect(() => {
+    if (searchActions.state.filters.static?.find(f => f.selected)) {
+      executeSearch(searchActions);
+    }
+  }, [searchActions, searchActions.state.filters.static]);
+
   return (
     <div className="shadow-brand-shadow p-6">
       <h1 className="Heading--lead mb-4">
@@ -40,34 +47,6 @@ export default function SearchBox(props: SearchBoxProps) {
             label=""
             placeholder={ placeholderText }
             searchFields={ searchFields }
-            onSelect={({
-              executeFilterSearch,
-              newDisplayName,
-              newFilter,
-              setCurrentFilter,
-            }) => {
-              // Unselect selected matching filters.
-              const matchingFilters = searchActions.state.filters.static?.filter(({ filter, selected }) => 
-                selected
-                && filter.kind === "fieldValue"
-                && (LOCATOR_STATIC_FILTER_FIELD === "builtin.location" ? checkIsLocationFilter(filter) : searchFields.some(s => s.fieldApiName === filter.fieldId))
-              ) ?? [];
-              matchingFilters.forEach(f => searchActions.setFilterOption({ ...f, selected: false }));
-
-              // Update the static filter state with the new filter.
-              searchActions.setFilterOption({
-                displayName: newDisplayName,
-                filter: newFilter,
-                selected: true
-              });
-              setCurrentFilter(newFilter);
-              executeFilterSearch(newDisplayName);
-
-              // Run new search with updated filter
-              searchActions.setOffset(0);
-              searchActions.resetFacets();
-              executeSearch(searchActions);
-            }}
           />
         </div>
         <GeolocateButton className="ml-4" />

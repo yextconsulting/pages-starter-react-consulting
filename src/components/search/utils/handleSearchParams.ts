@@ -25,7 +25,6 @@ import {
 import { useSearchParams } from "react-router-dom";
 
 // URLSearchParams keys used for storing and loading search state.
-// Any values not in this array will be removed from the URLSearchParams on page load.
 export const FILTERS_CONFIG = [
   'q',
   'qp',
@@ -68,15 +67,6 @@ export function useLoadInitialSearchParams(
       const locationFilterId = LOCATOR_STATIC_FILTER_FIELD === 'builtin.location' && locationType
         ? locationTypeToFilter(locationType)
         : LOCATOR_STATIC_FILTER_FIELD;
-
-      // Remove extra params added to the url that are not defined in FILTERS_CONFIG.
-      const unusedParams = Array.from(searchParams.keys()).filter(key => !FILTERS_CONFIG.some(val => val === key));
-      if (unusedParams.length) {
-        for (const param of unusedParams) {
-          searchParams.delete(param);
-        }
-        setSearchParams(searchParams);
-      }
 
       // If the filter value is available, set a filter with a string value in state.
       if (query) {
@@ -157,7 +147,7 @@ export function useLoadInitialSearchParams(
         const topResult = autocompleteOptions?.sections[0].results[0];
         if (topResult?.filter) {
           searchActions.setStaticFilters([{
-            displayName: topResult?.value ?? '',
+            displayName: topResult.value,
             filter: {
               fieldId: topResult.filter.fieldId,
               kind: 'fieldValue',
