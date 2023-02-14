@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@yext/custom-field-debugger": "2.0.6",
-    "@yext/pages": "1.0.0-beta.16",
+    "@yext/pages": "1.0.0-beta.10",
     "@yext/schema-wrapper": "1.0.1",
     "@yext/search-headless-react": "^2.0.0",
     "@yext/search-ui-react": "1.1.0",
@@ -34,7 +34,7 @@
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "typescript": "^4.6.2",
-    "vite": "4.0.0"
+    "vite": "3.0.0"
   },
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "^1.0.3",
@@ -42,7 +42,7 @@
     "@types/react-dom": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "5.48.2",
     "@typescript-eslint/parser": "5.48.2",
-    "@vitejs/plugin-react": "3.0.1",
+    "@vitejs/plugin-react": "1.2.0",
     "@yext/cobalt": "0.0.1",
     "@yext/eslint-config": "1.0.0",
     "@yext/eslint-plugin-export-star": "1.1.0",
