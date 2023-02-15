@@ -6,7 +6,7 @@ type maybeLinkProps = {
   children?: React.ReactNode;
   className?: string;
   eventName?: string;
-}
+};
 
 const MaybeLink = (props: maybeLinkProps) => {
   if (props.href) {
@@ -16,10 +16,8 @@ const MaybeLink = (props: maybeLinkProps) => {
       </Link>
     );
   } else {
-    return (<>{props.children}</>);
+    return <>{props.children}</>;
   }
 };
 
-export {
-  MaybeLink,
-}
+export { MaybeLink };

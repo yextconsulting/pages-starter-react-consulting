@@ -8,15 +8,19 @@ import type { LocatorCardProps } from "src/components/cards/LocatorCard";
 import "src/components/search/ResultList.css";
 
 interface ResultListProps extends LocatorCardProps {
-  CardComponent: CardComponent,
-  displayAllOnNoResults?: boolean,
+  CardComponent: CardComponent;
+  displayAllOnNoResults?: boolean;
 }
 
 export default function ResultList(props: ResultListProps) {
   const { CardComponent, displayAllOnNoResults } = props;
 
-  const verticalResults = useSearchState(state => state.vertical.results) || [];
-  const allResultsForVertical = useSearchState(state => state.vertical?.noResults?.allResultsForVertical.results) || [];
+  const verticalResults =
+    useSearchState((state) => state.vertical.results) || [];
+  const allResultsForVertical =
+    useSearchState(
+      (state) => state.vertical?.noResults?.allResultsForVertical.results
+    ) || [];
   let results = verticalResults;
   if (verticalResults.length === 0 && displayAllOnNoResults) {
     results = allResultsForVertical;
@@ -24,20 +28,20 @@ export default function ResultList(props: ResultListProps) {
 
   return (
     <div className="ResultList">
-      {results?.map(result => (
+      {results?.map((result) => (
         <ResultListItem
-          key={ result.id || result.index }
-          CardComponent={ CardComponent }
-          result={ result }
+          key={result.id || result.index}
+          CardComponent={CardComponent}
+          result={result}
         />
       ))}
     </div>
-  )
+  );
 }
 
 interface ResultListItemProps {
-  CardComponent: CardComponent,
-  result: Result,
+  CardComponent: CardComponent;
+  result: Result;
 }
 
 function ResultListItem(props: ResultListItemProps) {
@@ -49,32 +53,34 @@ function ResultListItem(props: ResultListItemProps) {
     setHoveredId,
     focusedId,
     setFocusedId,
-  }  = useLocator();
+  } = useLocator();
   const listItemRef = useRef<HTMLDivElement | null>(null);
 
   // When the selectedId is updated from a marker click scroll the ResultList to show the current LocatorCard
   useEffect(() => {
     if (selectedId === result.id) {
-      listItemRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest"});
+      listItemRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
     }
   }, [selectedId, result.id]);
 
   return (
     <div
-      ref={ listItemRef }
-      className={
-        classNames(
-          "ResultList-item",
-          { "is-selected": selectedId === result.id },
-          { "is-hovered": hoveredId === result.id || focusedId === result.id })
-      }
-      onClick={ () => setSelectedId(result.id ?? "" ) }
-      onFocus={ () => setFocusedId(result.id ?? "") }
-      onBlur={ () => setFocusedId("") }
-      onMouseEnter={ () => setHoveredId(result.id ?? "") }
-      onMouseLeave={ () => setHoveredId("") }
+      ref={listItemRef}
+      className={classNames(
+        "ResultList-item",
+        { "is-selected": selectedId === result.id },
+        { "is-hovered": hoveredId === result.id || focusedId === result.id }
+      )}
+      onClick={() => setSelectedId(result.id ?? "")}
+      onFocus={() => setFocusedId(result.id ?? "")}
+      onBlur={() => setFocusedId("")}
+      onMouseEnter={() => setHoveredId(result.id ?? "")}
+      onMouseLeave={() => setHoveredId("")}
     >
-      <CardComponent result={ result } />
+      <CardComponent result={result} />
     </div>
-  )
+  );
 }

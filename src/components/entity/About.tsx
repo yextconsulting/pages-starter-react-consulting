@@ -1,14 +1,8 @@
 import React from "react";
-import type {
-  Image as ImageType,
-  CTA as CTAType
-} from "@yext/types";
+import type { Image as ImageType, CTA as CTAType } from "@yext/types";
 import { Link, Image } from "@yext/pages/components";
 
-const defaultFields: string[] = [
-  'c_aboutSection',
-  'description',
-];
+const defaultFields: string[] = ["c_aboutSection", "description"];
 
 type AboutProps = {
   image?: ImageType;
@@ -28,26 +22,20 @@ const About = (props: AboutProps) => {
         )}
 
         <div className="w-full md:w-1/2 flex flex-col gap-8">
-          <h2 className="Heading Heading--head">
-            {props.title}
-          </h2>
+          <h2 className="Heading Heading--head">{props.title}</h2>
 
-          {props.description && (
-            <div>
-              {props.description}
-            </div>
-          )}
+          {props.description && <div>{props.description}</div>}
 
           {props.cta && (
-            <Link className="inline-flex self-start Button Button--secondary" cta={props.cta} />
+            <Link
+              className="inline-flex self-start Button Button--secondary"
+              cta={props.cta}
+            />
           )}
         </div>
       </div>
     </div>
-  )
+  );
 };
 
-export {
-  About,
-  defaultFields,
-};
+export { About, defaultFields };

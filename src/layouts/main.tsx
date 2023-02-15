@@ -1,12 +1,12 @@
-import React from 'react';
-import { ConfigurationProvider } from '@yext/sites-react-components';
-import { TemplateDataProvider } from 'src/common/useTemplateData';
-import config from '../config';
-import { Header } from 'src/components/common/Header';
-import type { TemplateRenderProps, BaseProfile } from 'src/types/entities';
-import Footer from 'src/components/common/Footer';
+import React from "react";
+import { ConfigurationProvider } from "@yext/sites-react-components";
+import { TemplateDataProvider } from "src/common/useTemplateData";
+import config from "../config";
+import { Header } from "src/components/common/Header";
+import type { TemplateRenderProps, BaseProfile } from "src/types/entities";
+import Footer from "src/components/common/Footer";
 import { AnalyticsProvider } from "@yext/pages/components";
-import { useExposeEnableYAFunction } from 'src/common/useExposeEnableYAFunction';
+import { useExposeEnableYAFunction } from "src/common/useExposeEnableYAFunction";
 
 interface MainProps {
   data: TemplateRenderProps<BaseProfile>;
@@ -20,13 +20,11 @@ const Main = (props: MainProps) => {
         <MainInternal {...props} />
       </AnalyticsProvider>
     </ConfigurationProvider>
-  )
-}
+  );
+};
 
 const MainInternal = (props: MainProps) => {
-  const {
-    _site
-  } = props.data.document;
+  const { _site } = props.data.document;
 
   const { children } = props;
 
@@ -51,7 +49,7 @@ const MainInternal = (props: MainProps) => {
         footerLinks={_site.c_footerLinks || []}
       />
     </TemplateDataProvider>
-  )
-}
+  );
+};
 
 export { Main };

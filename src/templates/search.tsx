@@ -30,7 +30,7 @@ export const config: TemplateConfig = {
       "name",
       "c_searchTitle",
       "c_searchSubTitle",
-      "c_searchPlaceholderText"
+      "c_searchPlaceholderText",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -42,10 +42,7 @@ export const config: TemplateConfig = {
       primary: false,
     },
   },
-  alternateLanguageFields: [
-    "name",
-    "slug"
-  ],
+  alternateLanguageFields: ["name", "slug"],
 };
 
 /**
@@ -64,10 +61,11 @@ export const getPath = (): string => {
  * will be used to generate the inner contents of the HTML document"s <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
- export const getHeadConfig: GetHeadConfig<TemplateRenderProps<SearchPageProfile>> = (data): HeadConfig => {
+export const getHeadConfig: GetHeadConfig<
+  TemplateRenderProps<SearchPageProfile>
+> = (data): HeadConfig => {
   return defaultHeadConfig(data);
 };
-
 
 /**
  * This is the main template. It can have any name as long as it"s the default export.
@@ -75,15 +73,14 @@ export const getPath = (): string => {
  */
 const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
   const { document } = data;
-  const {
-    c_searchTitle,
-    c_searchSubTitle,
-    c_searchPlaceholderText,
-    _site,
-  } = document;
+  const { c_searchTitle, c_searchSubTitle, c_searchPlaceholderText, _site } =
+    document;
 
   const runtime = getRuntime();
-  const searcher = getSearchProvider(_site.c_searchExperienceAPIKey ?? '', document.meta.locale);
+  const searcher = getSearchProvider(
+    _site.c_searchExperienceAPIKey ?? "",
+    document.meta.locale
+  );
 
   if (!_site.c_searchExperienceAPIKey) {
     console.error("Add the search experience API key to the Site Entity");
@@ -92,12 +89,12 @@ const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
   return (
     <Main data={data}>
       <SearchHeadlessProvider searcher={searcher}>
-        {runtime.name === 'browser' && (
+        {runtime.name === "browser" && (
           <BrowserRouter>
             <Locator
-              title={ c_searchTitle }
-              subTitle={ c_searchSubTitle }
-              placeholderText={ c_searchPlaceholderText }
+              title={c_searchTitle}
+              subTitle={c_searchSubTitle}
+              placeholderText={c_searchPlaceholderText}
             />
           </BrowserRouter>
         )}

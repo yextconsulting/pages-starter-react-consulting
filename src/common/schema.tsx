@@ -6,6 +6,6 @@ export function SchemaBuilder(data: TemplateRenderProps) {
     ...LocalBusiness(data),
     paymentAccepted: data.document.paymentOptions,
     makesOffer: data.document.services,
-  }
+  };
   return SchemaWrapper(json);
 }

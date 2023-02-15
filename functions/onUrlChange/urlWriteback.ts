@@ -7,5 +7,5 @@ export const main = urlWritebackPlugin({
   field: pageUrlCustomField,
   apiKey: API_KEY,
   environment: "prod",
-  v: "20221010"
+  v: "20221010",
 });

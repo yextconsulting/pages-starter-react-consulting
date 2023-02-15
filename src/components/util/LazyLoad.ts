@@ -2,11 +2,14 @@ import { useState, useEffect } from "react";
 
 const OPTIONS: IntersectionObserverInit = {
   root: null,
-  rootMargin: '100px 0px',
+  rootMargin: "100px 0px",
   threshold: 0,
 };
 
-export default function useIfVisible(ref: React.RefObject<HTMLElement>, options = OPTIONS) {
+export default function useIfVisible(
+  ref: React.RefObject<HTMLElement>,
+  options = OPTIONS
+) {
   const [isVisibleOnce, setIsVisibleOnce] = useState(false);
 
   useEffect(() => {

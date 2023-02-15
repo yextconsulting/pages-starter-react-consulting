@@ -1,13 +1,10 @@
-.Hero
-{
-  &-hourSeparator
-  {
+.Hero {
+  &-hourSeparator {
     display: inline-flex;
     padding: theme(spacing.0) theme(spacing.3);
   }
 
-  .HoursStatus-current
-  {
+  .HoursStatus-current {
     font-weight: theme(fontWeight.bold);
   }
 }

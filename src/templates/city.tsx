@@ -18,11 +18,19 @@ import type {
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
-import { DirectoryCard } from "src/components/cards/DirectoryCard"
-import { DirectoryGrid, directoryGridFields } from "src/components/directory/DirectoryGrid"
-import type { DirectoryProfile, LocationProfile, TemplateProps, TemplateRenderProps } from "src/types/entities";
-import { Main } from 'src/layouts/main';
-import Breadcrumbs from 'src/components/common/Breadcrumbs';
+import { DirectoryCard } from "src/components/cards/DirectoryCard";
+import {
+  DirectoryGrid,
+  directoryGridFields,
+} from "src/components/directory/DirectoryGrid";
+import type {
+  DirectoryProfile,
+  LocationProfile,
+  TemplateProps,
+  TemplateRenderProps,
+} from "src/types/entities";
+import { Main } from "src/layouts/main";
+import Breadcrumbs from "src/components/common/Breadcrumbs";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -52,10 +60,7 @@ export const config: TemplateConfig = {
       primary: false,
     },
   },
-  alternateLanguageFields: [
-    "name",
-    "slug"
-  ],
+  alternateLanguageFields: ["name", "slug"],
 };
 
 /**
@@ -64,7 +69,9 @@ export const config: TemplateConfig = {
  * NOTE: This currently has no impact on the local dev path. Local dev urls currently
  * take on the form: featureName/entityId
  */
-export const getPath: GetPath<TemplateProps<DirectoryProfile<never>>> = (data) => {
+export const getPath: GetPath<TemplateProps<DirectoryProfile<never>>> = (
+  data
+) => {
   return data.document.slug;
 };
 
@@ -74,7 +81,9 @@ export const getPath: GetPath<TemplateProps<DirectoryProfile<never>>> = (data) =
  * will be used to generate the inner contents of the HTML document's <head> tag.
  * This can include the title, meta tags, script tags, etc.
  */
-export const getHeadConfig: GetHeadConfig<TemplateRenderProps<DirectoryProfile<never>>> = (data) => {
+export const getHeadConfig: GetHeadConfig<
+  TemplateRenderProps<DirectoryProfile<never>>
+> = (data) => {
   return defaultHeadConfig(data);
 };
 
@@ -85,20 +94,19 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps<DirectoryProfile<n
  * This function will be run during generation and pass in directly as props to the default
  * exported function.
  */
- export const transformProps: TransformProps<TemplateRenderProps<LocationProfile>> = async (data) => {
-  const {
-    dm_directoryParents,
-    name
-  } = data.document;
+export const transformProps: TransformProps<
+  TemplateRenderProps<LocationProfile>
+> = async (data) => {
+  const { dm_directoryParents, name } = data.document;
 
-  (dm_directoryParents || []).push({name: name, slug: ''})
+  (dm_directoryParents || []).push({ name: name, slug: "" });
 
   return {
     ...data,
     document: {
       ...data.document,
       dm_directoryParents: dm_directoryParents,
-    }
+    },
   };
 };
 
@@ -111,17 +119,16 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps<DirectoryProfile<n
  * components any way you'd like as long as it lives in the src folder (though you should not put
  * them in the src/templates folder as this is specific for true template files).
  */
-const City: Template<TemplateRenderProps<DirectoryProfile<LocationProfile>>> = (data) => {
-  const { 
-    name,
-    c_brand, 
-    dm_directoryChildren, 
-    dm_directoryParents } = data.document;
+const City: Template<TemplateRenderProps<DirectoryProfile<LocationProfile>>> = (
+  data
+) => {
+  const { name, c_brand, dm_directoryChildren, dm_directoryParents } =
+    data.document;
 
   return (
     <Main data={data}>
-      <Breadcrumbs 
-        breadcrumbs={dm_directoryParents || []} 
+      <Breadcrumbs
+        breadcrumbs={dm_directoryParents || []}
         separator=">"
         className="container"
       />

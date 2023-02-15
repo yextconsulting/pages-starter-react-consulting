@@ -8,7 +8,7 @@ const defaultFields: string[] = [
   "c_eventsSection.events.time",
   "c_eventsSection.events.description",
   "c_eventsSection.events.c_primaryCTA",
-  "c_eventsSection.events.photoGallery"
+  "c_eventsSection.events.photoGallery",
 ];
 
 interface EventProps {
@@ -20,20 +20,17 @@ interface EventProps {
 const Events = (props: EventProps) => {
   const { title, items, showPastEvents = false } = props;
   const today = new Date();
-  const validEvents = items.filter(event => {
+  const validEvents = items.filter((event) => {
     if (!showPastEvents && event.time.end) {
       const eventEndDate = new Date(event.time.end);
-      return (eventEndDate >= today)
+      return eventEndDate >= today;
     }
     return true;
   });
 
   return (
-    <Featured title={title} items={validEvents} CardComponent={EventCard}/>
-  )
-}
+    <Featured title={title} items={validEvents} CardComponent={EventCard} />
+  );
+};
 
-export {
-  Events,
-  defaultFields,
-}
+export { Events, defaultFields };

@@ -1,11 +1,12 @@
-
 import { HoursStatus } from "@yext/sites-react-components";
 import { Link, Address } from "@yext/pages/components";
-import type { LiveAPIProfile, LocationProfile } from 'src/types/entities';
+import type { LiveAPIProfile, LocationProfile } from "src/types/entities";
 import { CardComponent } from "src/models/cardComponent";
 import { useTemplateData } from "src/common/useTemplateData";
 
-export const DirectoryCard: CardComponent<LocationProfile|LiveAPIProfile<LocationProfile>> = function DirectoryCard(props): JSX.Element {
+export const DirectoryCard: CardComponent<
+  LocationProfile | LiveAPIProfile<LocationProfile>
+> = function DirectoryCard(props): JSX.Element {
   const { profile } = props;
   const { relativePrefixToRoot } = useTemplateData();
 
@@ -13,7 +14,10 @@ export const DirectoryCard: CardComponent<LocationProfile|LiveAPIProfile<Locatio
     <div className="Directorycard bg-white px-6 py-8 border h-full">
       <h3 className="mb-4 text-lg font-medium">
         {profile.slug ? (
-          <Link href={relativePrefixToRoot + profile.slug} className="Link Link--primary hover:underline">
+          <Link
+            href={relativePrefixToRoot + profile.slug}
+            className="Link Link--primary hover:underline"
+          >
             {profile.name}
           </Link>
         ) : (
@@ -29,9 +33,9 @@ export const DirectoryCard: CardComponent<LocationProfile|LiveAPIProfile<Locatio
 
       {profile.address && (
         <div className="text-sm">
-            <Address address={profile.address} lines={[["line1"]]}/>
+          <Address address={profile.address} lines={[["line1"]]} />
         </div>
       )}
     </div>
-  )
-}
+  );
+};
