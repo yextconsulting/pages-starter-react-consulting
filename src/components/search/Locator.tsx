@@ -115,6 +115,7 @@ export default function Locator(props: LocatorProps) {
                   coordinate={data.coordinate}
                   id={data.id}
                   index={index + 1}
+                  name={data.name}
                 />
               ))}
             </Map>

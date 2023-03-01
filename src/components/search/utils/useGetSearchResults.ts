@@ -4,6 +4,7 @@ import type { Coordinate } from "@yext/types";
 type LocatorSearchResultType = {
   coordinate: Coordinate;
   id: string;
+  name: string;
 };
 
 // Custom hook to get search results from search state and map them to the required fields for the Map and Marker components
@@ -19,6 +20,7 @@ export function useGetSearchResults(displayAllOnNoResults: boolean) {
     return {
       coordinate: result.rawData.yextDisplayCoordinate,
       id: result.id,
+      name: result.name,
     } as LocatorSearchResultType;
   });
 

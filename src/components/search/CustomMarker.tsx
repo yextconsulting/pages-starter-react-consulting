@@ -8,6 +8,7 @@ type CustomMarkerProps = {
   coordinate: Coordinate;
   id: string;
   index: number;
+  name: string;
 };
 
 export default function CustomMarker(props: CustomMarkerProps) {
@@ -20,7 +21,7 @@ export default function CustomMarker(props: CustomMarkerProps) {
     setFocusedId,
   } = useLocator();
 
-  const { coordinate, id, index } = props;
+  const { coordinate, id, index, name } = props;
   const selected = id === selectedId;
   const focused = id === focusedId;
   const hovered = id === hoveredId;
@@ -44,14 +45,21 @@ export default function CustomMarker(props: CustomMarkerProps) {
       onHover={(hovered, id) => setHoveredId(hovered ? id : "")}
       zIndex={selected ? 1 : hovered || focused ? 2 : 0}
     >
-      <MapPin
-        backgroundColor={
-          selected ? "#0C5ECB" : hovered || focused ? "#0C5ECB" : "#0f70f0"
-        }
-        index={index}
-        height={selected ? 57 : 49}
-        width={selected ? 33 : 29}
-      />
+      <>
+        {selected && (
+          <div className="bg-white bottom-[105%] right-1/2 translate-x-1/2 p-4 absolute">
+            <h3 className="Heading Heading--sub">{name}</h3>
+          </div>
+        )}
+        <MapPin
+          backgroundColor={
+            selected ? "#0C5ECB" : hovered || focused ? "#0C5ECB" : "#0f70f0"
+          }
+          index={index}
+          height={selected ? 57 : 49}
+          width={selected ? 33 : 29}
+        />
+      </>
     </Marker>
   );
 }
