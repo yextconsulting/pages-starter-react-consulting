@@ -31,7 +31,7 @@ const getConfig = (api_key: string): NearbyAPIConfig => {
       entityTypes: "location",
       limit: "4",
       radius: "50",
-      savedFilterIds: "<REPLACE-ME>",
+      savedFilterIds: "1246936843",
       v: "20220927",
     },
   };
