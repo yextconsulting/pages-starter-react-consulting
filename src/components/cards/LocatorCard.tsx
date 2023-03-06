@@ -3,7 +3,7 @@ import { HoursStatus } from "@yext/sites-react-components";
 import type { StatusParams } from "@yext/sites-react-components";
 import { Link } from "@yext/pages/components";
 import type { Address, Hours } from "@yext/types";
-import { useBreakpoint } from "src/common/useBreakpoints";
+import classNames from "classnames";
 
 export interface LocatorCardProps {
   useKilometers?: boolean;
@@ -15,14 +15,18 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
   const address = profile.address as Address;
   const hours = profile.hours as Hours;
   const geomodifier = address.line1 ? address.line1 : address.city;
-  const isDesktopBreakpoint = useBreakpoint("sm");
 
   const renderTitle = () => (
     <h3 className="Heading Heading--sub pb-2 sm:pb-4">{geomodifier}</h3>
   );
-  const renderDistance = () =>
+  const renderDistance = (cls?: string) =>
     distanceFromFilter ? (
-      <div className="LocatorCard-distance whitespace-nowrap pt-2 sm:pt-0">
+      <div
+        className={classNames(
+          "LocatorCard-distance whitespace-nowrap pt-2 sm:pt-0",
+          cls
+        )}
+      >
         {getDistance(distanceFromFilter, useKilometers)}{" "}
         {useKilometers ? "km" : "mi"}
       </div>
@@ -41,7 +45,7 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
         ) : (
           renderTitle()
         )}
-        {isDesktopBreakpoint && renderDistance()}
+        {renderDistance("hidden sm:flex")}
       </div>
       {hours && (
         <div className="pb-2 sm:pb-4">
@@ -58,7 +62,7 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
         </div>
       )}
       <div>{address.line1}</div>
-      {!isDesktopBreakpoint && renderDistance()}
+      {renderDistance("sm:hidden")}
     </div>
   );
 }

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import type { Coordinate } from "@yext/types";
 import { DirectoryCard } from "src/components/cards/DirectoryCard";
-import { useBreakpoint } from "src/common/useBreakpoints";
 import { Link } from "@yext/pages/components";
 import { SEARCH_PATH } from "src/config";
 import { useTemplateData } from "src/common/useTemplateData";
 import type { LiveAPIProfile, LocationProfile } from "src/types/entities";
+import classNames from "classnames";
 
 // Configure nearby locations section liveapi params and endpoint
 // See https://hitchhikers.yext.com/docs/liveapis/knowledgegraphliveapi/entities/entities/#operation/geoSearchEntities
@@ -64,7 +64,6 @@ const Nearby = (props: NearbyProps) => {
   const [nearbyLocations, setNearbyLocations] = useState<
     LiveAPIProfile<LocationProfile>[]
   >([]);
-  const isDesktopBreakpoint = useBreakpoint("sm");
 
   useEffect(() => {
     if (!geocodedCoordinate || !apiKey) {
@@ -84,11 +83,11 @@ const Nearby = (props: NearbyProps) => {
       .catch((error) => console.error(error));
   }, [geocodedCoordinate, id, apiKey]);
 
-  const renderLocatorLink = () => {
+  const renderLocatorLink = (cls?: string) => {
     return linkToLocator ? (
       <Link
         href={buttonLink ?? relativePrefixToRoot + SEARCH_PATH}
-        className="Button Button--primary mt-8 sm:mt-0"
+        className={classNames("Button Button--primary mt-8 sm:mt-0", cls)}
       >
         {buttonText}
       </Link>
@@ -104,7 +103,7 @@ const Nearby = (props: NearbyProps) => {
       <div className="container">
         <div className="flex justify-between items-center mb-8">
           <h2 className="Heading Heading--head">{title}</h2>
-          {isDesktopBreakpoint && renderLocatorLink()}
+          {renderLocatorLink("hidden sm:flex")}
         </div>
         <ul className="flex flex-wrap -m-4">
           {nearbyLocations.map((location) => (
@@ -113,7 +112,7 @@ const Nearby = (props: NearbyProps) => {
             </li>
           ))}
         </ul>
-        {!isDesktopBreakpoint && renderLocatorLink()}
+        {renderLocatorLink("sm:hidden")}
       </div>
     </div>
   );
