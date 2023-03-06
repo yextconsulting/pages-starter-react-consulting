@@ -19,7 +19,7 @@
     "node": ">=17"
   },
   "dependencies": {
-    "@yext/custom-field-debugger": "2.0.6",
+    "@yext/custom-field-debugger": "2.0.9",
     "@yext/pages": "1.0.0-beta.10",
     "@yext/schema-wrapper": "1.0.1",
     "@yext/search-headless-react": "^2.0.0",
