@@ -31,6 +31,7 @@ import type {
 } from "src/types/entities";
 import { Main } from "src/layouts/main";
 import Breadcrumbs from "src/components/common/Breadcrumbs";
+import { AnalyticsScopeProvider } from "@yext/pages/components";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -127,17 +128,22 @@ const City: Template<TemplateRenderProps<DirectoryProfile<LocationProfile>>> = (
 
   return (
     <Main data={data}>
-      <Breadcrumbs
-        breadcrumbs={dm_directoryParents || []}
-        separator=">"
-        className="container"
-      />
-      <DirectoryGrid
-        name={name}
-        brand={c_brand}
-        CardComponent={DirectoryCard}
-        directoryChildren={dm_directoryChildren || []}
-      />
+      <AnalyticsScopeProvider name="breadcrumbs">
+        <Breadcrumbs
+          breadcrumbs={dm_directoryParents || []}
+          separator=">"
+          className="container"
+          addAnalytics={true}
+        />
+      </AnalyticsScopeProvider>
+      <AnalyticsScopeProvider name="directory">
+        <DirectoryGrid
+          name={name}
+          brand={c_brand}
+          CardComponent={DirectoryCard}
+          directoryChildren={dm_directoryChildren || []}
+        />
+      </AnalyticsScopeProvider>
     </Main>
   );
 };

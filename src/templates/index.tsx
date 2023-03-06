@@ -71,6 +71,7 @@ import {
 import { formatPhone } from "src/common/helpers";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
 import Breadcrumbs from "src/components/common/Breadcrumbs";
+import { AnalyticsScopeProvider } from "@yext/pages/components";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -247,72 +248,113 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
 
   return (
     <Main data={data}>
-      <Breadcrumbs
-        breadcrumbs={directoryParents || []}
-        separator=">"
-        className="container"
-      />
-      {showBanner && <Banner text={banner.text} image={banner.image} />}
-      <Hero
-        name={name}
-        cta1={hero?.cta1}
-        cta2={hero?.cta2}
-        address={address}
-        background={hero?.background}
-        hours={hours}
-        numReviews={21}
-        rating={4.5}
-      />
-      <Core profile={data.document} />
-      {showPromo && (
-        <Promo
-          title={promo.title}
-          description={promo.description}
-          image={promo.image}
-          cta={promo.cta}
-          googlePlayUrl={promo.googlePlayUrl}
-          appStoreUrl={promo.appStoreUrl}
+      <AnalyticsScopeProvider name="breadcrumbs">
+        <Breadcrumbs
+          breadcrumbs={directoryParents || []}
+          separator=">"
+          className="container"
+          addAnalytics={true}
         />
+      </AnalyticsScopeProvider>
+      {showBanner && (
+        <AnalyticsScopeProvider name="banner">
+          <Banner text={banner.text} image={banner.image} />
+        </AnalyticsScopeProvider>
+      )}
+      <AnalyticsScopeProvider name="hero">
+        <Hero
+          name={name}
+          cta1={hero?.cta1}
+          cta2={hero?.cta2}
+          address={address}
+          background={hero?.background}
+          hours={hours}
+          numReviews={21}
+          rating={4.5}
+        />
+      </AnalyticsScopeProvider>
+      <AnalyticsScopeProvider name="core">
+        <Core profile={data.document} />
+      </AnalyticsScopeProvider>
+      {showPromo && (
+        <AnalyticsScopeProvider name="promo">
+          <Promo
+            title={promo.title}
+            description={promo.description}
+            image={promo.image}
+            cta={promo.cta}
+            googlePlayUrl={promo.googlePlayUrl}
+            appStoreUrl={promo.appStoreUrl}
+          />
+        </AnalyticsScopeProvider>
       )}
       {showProducts && (
-        <Products title={products.title} items={products.products} />
+        <AnalyticsScopeProvider name="products">
+          <Products title={products.title} items={products.products} />
+        </AnalyticsScopeProvider>
       )}
-      {showEvents && <Events title={events.title} items={events.events} />}
+      {showEvents && (
+        <AnalyticsScopeProvider name="events">
+          <Events title={events.title} items={events.events} />
+        </AnalyticsScopeProvider>
+      )}
       {showAbout && (
-        <About
-          title={about.title}
-          image={about.image}
-          description={about.description || description}
-          cta={about.cta}
-        />
+        <AnalyticsScopeProvider name="about">
+          <About
+            title={about.title}
+            image={about.image}
+            description={about.description || description}
+            cta={about.cta}
+          />
+        </AnalyticsScopeProvider>
       )}
       {showInsights && (
-        <Insights
-          title={insights.title}
-          cta={insights.cta}
-          insights={insights.insights}
-        />
+        <AnalyticsScopeProvider name="insights">
+          <Insights
+            title={insights.title}
+            cta={insights.cta}
+            insights={insights.insights}
+          />
+        </AnalyticsScopeProvider>
       )}
       {showGallery && (
-        <Gallery
-          title={gallery?.title}
-          images={gallery?.images || photoGallery}
-        />
+        <AnalyticsScopeProvider name="gallery">
+          <Gallery
+            title={gallery?.title}
+            images={gallery?.images || photoGallery}
+          />
+        </AnalyticsScopeProvider>
       )}
-      {showTeam && <Team title={team.title} team={team.team} initialSize={3} />}
-      {showFAQ && <FAQs title={faq.title} faqs={faq.faqs} />}
+      {showTeam && (
+        <AnalyticsScopeProvider name="team">
+          <Team title={team.title} team={team.team} initialSize={3} />
+        </AnalyticsScopeProvider>
+      )}
+      {showFAQ && (
+        <AnalyticsScopeProvider name="faqs">
+          <FAQs title={faq.title} faqs={faq.faqs} />
+        </AnalyticsScopeProvider>
+      )}
       {showReviews && (
-        <Reviews title={reviews.title} reviews={reviews.reviews} name={name} />
+        <AnalyticsScopeProvider name="reviews">
+          <Reviews
+            title={reviews.title}
+            reviews={reviews.reviews}
+            name={name}
+          />
+        </AnalyticsScopeProvider>
       )}
       <LazyLoadWrapper>
-        <Nearby
-          title={nearby?.title}
-          linkToLocator={nearby?.linkToLocator}
-          buttonText={nearby?.cta?.label}
-          buttonLink={nearby?.cta?.link}
-          geocodedCoordinate={geocodedCoordinate}
-          id={id}
-        />
+        <AnalyticsScopeProvider name="nearby">
+          <Nearby
+            title={nearby?.title}
+            linkToLocator={nearby?.linkToLocator}
+            buttonText={nearby?.cta?.label}
+            buttonLink={nearby?.cta?.link}
+            geocodedCoordinate={geocodedCoordinate}
+            id={id}
+          />
+        </AnalyticsScopeProvider>
       </LazyLoadWrapper>
     </Main>
   );

@@ -30,6 +30,7 @@ import type {
 } from "src/types/entities";
 import { Main } from "src/layouts/main";
 import Breadcrumbs from "src/components/common/Breadcrumbs";
+import { AnalyticsScopeProvider } from "@yext/pages/components";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -126,18 +127,23 @@ const Region: Template<
 
   return (
     <Main data={data}>
-      <Breadcrumbs
-        breadcrumbs={dm_directoryParents || []}
-        separator=">"
-        className="container"
-      />
-      <DirectoryList
-        name={name}
-        brand={c_brand}
-        showNumLocs={true}
-        directoryChildren={dm_directoryChildren || []}
-        relativePrefixToRoot={data.relativePrefixToRoot}
-      />
+      <AnalyticsScopeProvider name="breadcrumbs">
+        <Breadcrumbs
+          breadcrumbs={dm_directoryParents || []}
+          separator=">"
+          className="container"
+          addAnalytics={true}
+        />
+      </AnalyticsScopeProvider>
+      <AnalyticsScopeProvider name="directory">
+        <DirectoryList
+          name={name}
+          brand={c_brand}
+          showNumLocs={true}
+          directoryChildren={dm_directoryChildren || []}
+          relativePrefixToRoot={data.relativePrefixToRoot}
+        />
+      </AnalyticsScopeProvider>
     </Main>
   );
 };
