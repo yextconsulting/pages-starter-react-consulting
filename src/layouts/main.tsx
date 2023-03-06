@@ -19,7 +19,7 @@ interface MainProps {
 const Main = (props: MainProps) => {
   return (
     <ConfigurationProvider value={config}>
-      <AnalyticsProvider templateData={props.data} requireOptIn={false}>
+      <AnalyticsProvider templateData={props.data} requireOptIn={true}>
         <MainInternal {...props} />
       </AnalyticsProvider>
     </ConfigurationProvider>
