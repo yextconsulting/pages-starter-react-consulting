@@ -5,7 +5,10 @@ import config from "../config";
 import { Header } from "src/components/common/Header";
 import type { TemplateRenderProps, BaseProfile } from "src/types/entities";
 import Footer from "src/components/common/Footer";
-import { AnalyticsProvider } from "@yext/pages/components";
+import {
+  AnalyticsProvider,
+  AnalyticsScopeProvider,
+} from "@yext/pages/components";
 import { useExposeEnableYAFunction } from "src/common/useExposeEnableYAFunction";
 
 interface MainProps {
@@ -34,20 +37,24 @@ const MainInternal = (props: MainProps) => {
 
   return (
     <TemplateDataProvider value={props.data}>
-      <Header
-        logo={_site?.c_header?.logo}
-        links={_site?.c_header?.links || []}
-      />
+      <AnalyticsScopeProvider name="header">
+        <Header
+          logo={_site?.c_header?.logo}
+          links={_site?.c_header?.links || []}
+        />
+      </AnalyticsScopeProvider>
       {children}
-      <Footer
-        copyrightMessage={_site.c_copyrightMessage || ""}
-        facebook={_site.c_facebook}
-        instagram={_site.c_instagram}
-        youtube={_site.c_youtube}
-        twitter={_site.c_twitter}
-        linkedIn={_site.c_linkedIn}
-        footerLinks={_site.c_footerLinks || []}
-      />
+      <AnalyticsScopeProvider name="footer">
+        <Footer
+          copyrightMessage={_site.c_copyrightMessage || ""}
+          facebook={_site.c_facebook}
+          instagram={_site.c_instagram}
+          youtube={_site.c_youtube}
+          twitter={_site.c_twitter}
+          linkedIn={_site.c_linkedIn}
+          footerLinks={_site.c_footerLinks || []}
+        />
+      </AnalyticsScopeProvider>
     </TemplateDataProvider>
   );
 };

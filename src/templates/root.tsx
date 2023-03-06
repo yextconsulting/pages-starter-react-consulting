@@ -27,6 +27,7 @@ import type {
   TemplateRenderProps,
 } from "src/types/entities";
 import { Main } from "src/layouts/main";
+import { AnalyticsScopeProvider } from "@yext/pages/components";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -99,13 +100,15 @@ const Root: Template<
 
   return (
     <Main data={data}>
-      <DirectoryList
-        name={name}
-        brand={c_brand}
-        showNumLocs={true}
-        directoryChildren={dm_directoryChildren || []}
-        relativePrefixToRoot={data.relativePrefixToRoot}
-      />
+      <AnalyticsScopeProvider name="directory">
+        <DirectoryList
+          name={name}
+          brand={c_brand}
+          showNumLocs={true}
+          directoryChildren={dm_directoryChildren || []}
+          relativePrefixToRoot={data.relativePrefixToRoot}
+        />
+      </AnalyticsScopeProvider>
     </Main>
   );
 };
