@@ -124,6 +124,7 @@ export interface LocationProfile extends BaseProfile {
   readonly ref_reviewsAgg?: {
     readonly reviewCount?: number;
   }[];
+  readonly paymentOptions?: string;
 
   // Add custom fields here
   // c_myStringField: string

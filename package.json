@@ -21,7 +21,7 @@
   "dependencies": {
     "@yext/custom-field-debugger": "2.0.9",
     "@yext/pages": "1.0.0-beta.10",
-    "@yext/schema-wrapper": "1.0.1",
+    "@yext/schema-wrapper": "1.0.2",
     "@yext/search-headless-react": "^2.0.0",
     "@yext/search-ui-react": "1.1.0",
     "@yext/sites-react-components": "^0.1.14",
