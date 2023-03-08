@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import classNames from "classnames";
 import { Link } from "@yext/pages/components";
 import "src/components/common/Breadcrumbs.css";
+import { useTemplateData } from "src/common/useTemplateData";
 
 interface BreadcrumbsPropsDefault {
   breadcrumbs: Array<{ slug: string; name: string }>;
@@ -26,6 +27,7 @@ interface BreadcrumbsPropsDefault {
  */
 const Breadcrumbs = (props: BreadcrumbsPropsDefault) => {
   const { breadcrumbs, className, separator = "/" } = props;
+  const { relativePrefixToRoot } = useTemplateData();
 
   return (
     <>
@@ -42,7 +44,7 @@ const Breadcrumbs = (props: BreadcrumbsPropsDefault) => {
                 <li className="Breadcrumbs-item" key={idx}>
                   <Breadcrumb
                     name={name}
-                    slug={isLast ? "" : slug}
+                    slug={isLast ? "" : relativePrefixToRoot + slug}
                     index={idx}
                     {...props}
                   />

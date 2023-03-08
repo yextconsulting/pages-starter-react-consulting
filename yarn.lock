@@ -1773,10 +1773,10 @@
     "vite" "^3.1.0"
     "yargs" "^17.6.0"
 
-"@yext/schema-wrapper@1.0.1":
-  "integrity" "sha512-RDssdPIQYXSKhMjrkp3HMSLxI/DfqjtbsyV6Una2zXBXG/ogQ1WZbMS4ViTEK2yAUF6A3xhXjKTGdaSkWXhkgg=="
-  "resolved" "https://registry.npmjs.org/@yext/schema-wrapper/-/schema-wrapper-1.0.1.tgz"
-  "version" "1.0.1"
+"@yext/schema-wrapper@1.0.2":
+  "integrity" "sha512-g0j2zGeXVJbB4HeWL1mZR1vjNMyD4nHNfKc2lRmF0cqyNeVHWJPoyCvIZFMCJVYumidQo1QF5TW7gjjJZioQLA=="
+  "resolved" "https://registry.npmjs.org/@yext/schema-wrapper/-/schema-wrapper-1.0.2.tgz"
+  "version" "1.0.2"
 
 "@yext/search-core@^2.1.0":
   "integrity" "sha512-zlR3es8AYWKowp+h5uAdvNyyy66xI3FBq6YA5RRF+47J/Zrg9JDM95O+GzkQD1c9yuy4aRDn+NB59f05VQwACQ=="
