@@ -95,7 +95,7 @@ export const getHeadConfig: GetHeadConfig<
 const Root: Template<
   TemplateRenderProps<DirectoryProfile<DirectoryProfile<never>>>
 > = (data) => {
-  const { name, dm_directoryChildren. _site } = data.document;
+  const { name, dm_directoryChildren, _site } = data.document;
 
   return (
     <Main data={data}>
