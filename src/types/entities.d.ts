@@ -36,6 +36,7 @@ interface BaseProfile {
 
 export interface SiteProfile extends BaseProfile {
   readonly name: string;
+  readonly c_brand?: string
   readonly c_copyrightMessage?: string;
   readonly c_facebook?: string;
   readonly c_instagram?: string;
@@ -190,7 +191,6 @@ export interface LocationProfile extends BaseProfile {
 
 export type DirectoryProfile<T> = BaseProfile & {
   readonly name: string;
-  readonly c_brand: string;
   readonly dm_directoryChildrenCount: number;
   readonly dm_directoryChildren?: T[];
   readonly dm_directoryParents?: DirectoryProfile<DirectoryProfile<T>>[];
