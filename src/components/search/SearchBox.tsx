@@ -3,6 +3,7 @@ import { useSearchActions } from "@yext/search-headless-react";
 import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 import GeolocateButton from "src/components/search/GeolocateButton";
 import { useEffect } from "react";
+import { useLocatorRouter } from "./LocatorRouter";
 
 const searchFields = [
   {
@@ -19,15 +20,30 @@ type SearchBoxProps = {
 
 export default function SearchBox(props: SearchBoxProps) {
   const { title, subTitle, placeholderText } = props;
-
+  const { initialParamsLoaded } = useLocatorRouter();
   const searchActions = useSearchActions();
 
   // When the FilterSearch component updates the search state with the users selection execute a new search.
   useEffect(() => {
-    if (searchActions.state.filters.static?.find((f) => f.selected)) {
-      executeSearch(searchActions);
+    if (!initialParamsLoaded) {
+      return;
     }
-  }, [searchActions, searchActions.state.filters.static]);
+
+    const removeListener = searchActions.addListener({
+      valueAccessor: (state) => state.filters.static,
+      callback: (filters) => {
+        if (filters?.find((f) => f.selected)) {
+          searchActions.setOffset(0);
+          searchActions.resetFacets();
+          executeSearch(searchActions);
+        }
+      },
+    });
+
+    return () => {
+      removeListener();
+    };
+  }, [searchActions, initialParamsLoaded]);
 
   return (
     <div className="shadow-brand-shadow p-6">
@@ -42,6 +58,7 @@ export default function SearchBox(props: SearchBoxProps) {
             label=""
             placeholder={placeholderText}
             searchFields={searchFields}
+            searchOnSelect={true}
           />
         </div>
         <GeolocateButton className="ml-4" />

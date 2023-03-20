@@ -4,7 +4,7 @@ import type { SelectableStaticFilter } from "@yext/search-headless-react";
 import { executeSearch, getUserLocation } from "@yext/search-ui-react";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import { GEOLOCATE_RADIUS } from "src/config";
-import { encodeStaticFilters } from "./utils/handleSearchParams";
+import { defaultRouter } from "./utils/defaultRouter";
 
 interface GeolocateButtonProps {
   className?: string;
@@ -51,7 +51,9 @@ export default function GeolocateButton(props: GeolocateButtonProps) {
 
       // Redirect to another page with the url params filled out.
       if (redirectToSearchPage && searcherPath) {
-        const searchParams = encodeStaticFilters([newFilter]);
+        const searchParams = defaultRouter.serializeState({
+          static: [newFilter],
+        });
         if (searchParams) {
           window.location.href = `${searcherPath}?${searchParams.toString()}`;
         }

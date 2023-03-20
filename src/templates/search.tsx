@@ -10,10 +10,10 @@ import { defaultHeadConfig } from "src/common/head";
 import { SearchHeadlessProvider } from "@yext/search-headless-react";
 import Locator from "src/components/search/Locator";
 import { Main } from "src/layouts/main";
-import { BrowserRouter } from "react-router-dom";
-import { getRuntime } from "@yext/pages/util";
 import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
 import { SEARCH_PATH, getSearchProvider } from "src/config";
+import { LocatorRouter } from "src/components/search/LocatorRouter";
+import { defaultRouter } from "src/components/search/utils/defaultRouter";
 
 /**
  * Not required depending on your use case.
@@ -76,7 +76,6 @@ const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
   const { c_searchTitle, c_searchSubTitle, c_searchPlaceholderText, _site } =
     document;
 
-  const runtime = getRuntime();
   const searcher = getSearchProvider(
     _site.c_searchExperienceAPIKey ?? "",
     document.meta.locale
@@ -89,15 +88,13 @@ const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
   return (
     <Main data={data}>
       <SearchHeadlessProvider searcher={searcher}>
-        {runtime.name === "browser" && (
-          <BrowserRouter>
-            <Locator
-              title={c_searchTitle}
-              subTitle={c_searchSubTitle}
-              placeholderText={c_searchPlaceholderText}
-            />
-          </BrowserRouter>
-        )}
+        <LocatorRouter router={defaultRouter}>
+          <Locator
+            title={c_searchTitle}
+            subTitle={c_searchSubTitle}
+            placeholderText={c_searchPlaceholderText}
+          />
+        </LocatorRouter>
       </SearchHeadlessProvider>
     </Main>
   );

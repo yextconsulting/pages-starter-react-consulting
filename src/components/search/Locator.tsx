@@ -1,13 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { createCtx } from "src/common/createCtx";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import {
-  useHandleSearchParams,
-  useLoadInitialSearchParams,
-} from "src/components/search/utils/handleSearchParams";
 import { useGetSearchResults } from "src/components/search/utils/useGetSearchResults";
 import "src/components/search/Locator.css";
 import mapStyles from "src/components/search/defaultMapStyles.json";
@@ -17,6 +13,7 @@ import ResultInfo from "src/components/search/ResultInfo";
 import ResultList from "src/components/search/ResultList";
 import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
+import { useLocatorRouter } from "src/components/search/LocatorRouter";
 
 export type LocatorContextType = {
   selectedId: string;
@@ -54,16 +51,7 @@ export default function Locator(props: LocatorProps) {
   const searchActions = useSearchActions();
   const isLoading = useSearchState((state) => state.searchStatus.isLoading);
   const isDesktopBreakpoint = useBreakpoint("sm");
-  const [initialParamsLoaded, setInitialParamsLoaded] = useState(false);
-  const initialParamsLoadedCallback = useCallback(
-    () => setInitialParamsLoaded(true),
-    [setInitialParamsLoaded]
-  );
-
-  // Load static and facet filters on page load.
-  useLoadInitialSearchParams(initialParamsLoaded, initialParamsLoadedCallback);
-  // Update the search params whenever the search state filters property changes.
-  useHandleSearchParams(initialParamsLoaded);
+  const { initialParamsLoaded } = useLocatorRouter();
 
   // Unset any selected, hovered, or focused markers on new search
   useEffect(() => {

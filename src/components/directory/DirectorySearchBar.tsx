@@ -7,7 +7,7 @@ import { useTemplateData } from "src/common/useTemplateData";
 import { SearchHeadlessProvider } from "@yext/search-headless-react";
 import { FilterSearch } from "@yext/search-ui-react";
 import GeolocateButton from "src/components/search/GeolocateButton";
-import { encodeStaticFilters } from "src/components/search/utils/handleSearchParams";
+import { defaultRouter } from "src/components/search/utils/defaultRouter";
 
 const searchFields = [
   {
@@ -56,13 +56,15 @@ function DirectorySearchBarInternal(props: DirectorySearchBarProps) {
           searchFields={searchFields}
           key="directory-search"
           onSelect={({ newDisplayName, newFilter }) => {
-            const searchParams = encodeStaticFilters([
-              {
-                displayName: newDisplayName,
-                filter: newFilter,
-                selected: true,
-              },
-            ]);
+            const searchParams = defaultRouter.serializeState({
+              static: [
+                {
+                  displayName: newDisplayName,
+                  filter: newFilter,
+                  selected: true,
+                },
+              ],
+            });
 
             if (searchParams) {
               window.location.href = `${searcherPath}?${searchParams.toString()}`;
