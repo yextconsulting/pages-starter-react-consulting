@@ -58,7 +58,6 @@ export default function SearchBox(props: SearchBoxProps) {
             label=""
             placeholder={placeholderText}
             searchFields={searchFields}
-            searchOnSelect={true}
           />
         </div>
         <GeolocateButton className="ml-4" />
