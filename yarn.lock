@@ -6841,3 +6841,13 @@
     "validator" "^13.7.0"
   optionalDependencies:
     "commander" "^2.20.3"
+
+"zod-form-data@^2.0.1":
+  "integrity" "sha512-4jcsj3vFyFGINLLHEmehfOPKdcw+HqV65RwsV2IdyLHp9wpvGJRVXWg1yY8sq0ASEbQfTVBRtI7LcDGv3Qpj8g=="
+  "resolved" "https://registry.npmjs.org/zod-form-data/-/zod-form-data-2.0.1.tgz"
+  "version" "2.0.1"
+
+"zod@^3.11.x", "zod@^3.21.4":
+  "integrity" "sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw=="
+  "resolved" "https://registry.npmjs.org/zod/-/zod-3.21.4.tgz"
+  "version" "3.21.4"
