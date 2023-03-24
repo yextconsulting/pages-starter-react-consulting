@@ -15,7 +15,7 @@ export default function ResultSummary() {
   );
 
   // Element to render for results summary when page is first loaded before a search is made.
-  const ititialSummaryText = (
+  const initialSummaryText = (
     <span>
       Use our locator to find a location near you or{" "}
       <a href={relativePrefixToRoot + "index.html"} className="Link--underline">
@@ -25,7 +25,7 @@ export default function ResultSummary() {
     </span>
   );
 
-  // Check if a search has been made in order to conditionally render ititialSummaryText.
+  // Check if a search has been made in order to conditionally render initialSummaryText.
   if (
     !searchMade &&
     searchState.query.queryId &&
@@ -35,7 +35,7 @@ export default function ResultSummary() {
   }
 
   return (
-    <div className="mr-4">{searchMade ? resultsText : ititialSummaryText}</div>
+    <div className="mr-4">{searchMade ? resultsText : initialSummaryText}</div>
   );
 }
 

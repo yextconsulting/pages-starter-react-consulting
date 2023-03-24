@@ -26,7 +26,6 @@ import type {
 import { dedupeStreamFields } from "src/common/helpers";
 import { Main } from "src/layouts/main";
 
-import { defaultFields as headerFields } from "src/components/common/Header";
 import {
   Banner,
   defaultFields as bannerFields,
@@ -104,7 +103,6 @@ export const config: TemplateConfig = {
       "dm_directoryParents.slug",
       "dm_directoryChildrenCount",
       "slug",
-      ...headerFields,
       ...bannerFields,
       ...heroFields,
       ...coreFields,

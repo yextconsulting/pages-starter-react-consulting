@@ -1,6 +1,5 @@
-import React from "react";
-import { Link } from "@yext/pages/components";
 import type { CTA } from "@yext/types";
+import { Link } from "@yext/pages/components";
 import {
   FaFacebook,
   FaInstagram,
@@ -69,4 +68,4 @@ const Footer = (props: FooterProps) => {
   );
 };
 
-export default Footer;
+export { Footer };

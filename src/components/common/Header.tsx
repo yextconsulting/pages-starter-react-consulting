@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import { Image, Link } from "@yext/pages/components";
 import type { CTA, Image as ImageType } from "@yext/types";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { Image, Link } from "@yext/pages/components";
 import c from "classnames";
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { MaybeLink } from "src/components/common/MaybeLink";
-
-const defaultFields: string[] = ["c_header"];
 
 type HeaderProps = {
   links: CTA[];
@@ -70,4 +68,4 @@ const Header = (props: HeaderProps) => {
   );
 };
 
-export { Header, defaultFields };
+export { Header };

@@ -1,19 +1,19 @@
-import React from "react";
-import { ConfigurationProvider } from "@yext/sites-react-components";
-import { TemplateDataProvider } from "src/common/useTemplateData";
-import config from "../config";
-import { Header } from "src/components/common/Header";
+import type { ReactNode } from "react";
 import type { TemplateRenderProps, BaseProfile } from "src/types/entities";
-import Footer from "src/components/common/Footer";
 import {
   AnalyticsProvider,
   AnalyticsScopeProvider,
 } from "@yext/pages/components";
+import { ConfigurationProvider } from "@yext/sites-react-components";
+import { TemplateDataProvider } from "src/common/useTemplateData";
+import { Header } from "src/components/common/Header";
+import { Footer } from "src/components/common/Footer";
 import { useExposeEnableYAFunction } from "src/common/useExposeEnableYAFunction";
+import config from "src/config";
 
 interface MainProps {
   data: TemplateRenderProps<BaseProfile>;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 const Main = (props: MainProps) => {
