@@ -101,7 +101,7 @@ export const config: TemplateConfig = {
       "services",
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
-      "dm_directoryChildrenCount",
+      "dm_baseEntityCount",
       "slug",
       ...bannerFields,
       ...heroFields,
