@@ -7,7 +7,7 @@ export const directoryListFields = [
   "dm_directoryParents",
   "dm_directoryChildren.slug",
   "dm_directoryChildren.name",
-  "dm_directoryChildren.dm_directoryChildrenCount",
+  "dm_directoryChildren.dm_baseEntityCount",
   "dm_directoryChildren.dm_directoryChildren.slug",
   "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
   "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
@@ -43,7 +43,7 @@ export function DirectoryList(props: DirectoryListProps) {
                 className="Directory-listLink m-3"
                 href={relativePrefixToRoot + getSkipLevelSlug(child)}
                 data-count={
-                  showNumLocs ? "(" + child.dm_directoryChildrenCount + ")" : ""
+                  showNumLocs ? "(" + child.dm_baseEntityCount + ")" : ""
                 }
               >
                 <span className="text-brand-primary hover:underline">

@@ -101,7 +101,7 @@
         "services",
         "dm_directoryParents.name",
         "dm_directoryParents.slug",
-        "dm_directoryChildrenCount",
+        "dm_baseEntityCount",
         "slug",
         "c_header",
         "c_bannerSection",
@@ -164,7 +164,7 @@
         "dm_directoryParents",
         "dm_directoryChildren.slug",
         "dm_directoryChildren.name",
-        "dm_directoryChildren.dm_directoryChildrenCount",
+        "dm_directoryChildren.dm_baseEntityCount",
         "dm_directoryChildren.dm_directoryChildren.slug",
         "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
         "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug"
@@ -189,7 +189,7 @@
         "dm_directoryParents",
         "dm_directoryChildren.slug",
         "dm_directoryChildren.name",
-        "dm_directoryChildren.dm_directoryChildrenCount",
+        "dm_directoryChildren.dm_baseEntityCount",
         "dm_directoryChildren.dm_directoryChildren.slug",
         "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
         "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug"
