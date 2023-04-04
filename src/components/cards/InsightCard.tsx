@@ -1,4 +1,3 @@
-import React from "react";
 import type { CTA, Image as ImageType } from "@yext/types";
 import { Image, Link } from "@yext/pages/components";
 import { FaChevronRight } from "react-icons/fa";

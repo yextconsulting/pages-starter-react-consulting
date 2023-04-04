@@ -1,4 +1,3 @@
-import React from "react";
 import { CardComponent } from "src/models/cardComponent";
 
 interface FeaturedProps<ProfileType> {

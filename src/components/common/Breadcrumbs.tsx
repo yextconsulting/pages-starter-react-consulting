@@ -1,4 +1,3 @@
-import React from "react";
 import { ReactNode } from "react";
 import classNames from "classnames";
 import { Link } from "@yext/pages/components";

@@ -8,7 +8,6 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import React from "react";
 import type {
   Template,
   GetPath,
