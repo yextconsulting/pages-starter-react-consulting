@@ -129,7 +129,7 @@ const City: Template<TemplateRenderProps<DirectoryProfile<LocationProfile>>> = (
       <AnalyticsScopeProvider name="breadcrumbs">
         <Breadcrumbs
           breadcrumbs={dm_directoryParents || []}
-          separator=">"
+          separator="/"
           className="container"
           addAnalytics={true}
         />

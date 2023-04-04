@@ -246,19 +246,19 @@ const Index: Template<TemplateRenderProps<LocationProfile>> = (data) => {
 
   return (
     <Main data={data}>
-      <AnalyticsScopeProvider name="breadcrumbs">
-        <Breadcrumbs
-          breadcrumbs={directoryParents || []}
-          separator=">"
-          className="container"
-          addAnalytics={true}
-        />
-      </AnalyticsScopeProvider>
       {showBanner && (
         <AnalyticsScopeProvider name="banner">
           <Banner text={banner.text} image={banner.image} />
         </AnalyticsScopeProvider>
       )}
+      <AnalyticsScopeProvider name="breadcrumbs">
+        <Breadcrumbs
+          breadcrumbs={directoryParents || []}
+          separator="/"
+          className="container"
+          addAnalytics={true}
+        />
+      </AnalyticsScopeProvider>
       <AnalyticsScopeProvider name="hero">
         <Hero
           name={name}

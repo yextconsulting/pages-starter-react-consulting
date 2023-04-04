@@ -128,7 +128,7 @@ const Region: Template<
       <AnalyticsScopeProvider name="breadcrumbs">
         <Breadcrumbs
           breadcrumbs={dm_directoryParents || []}
-          separator=">"
+          separator="/"
           className="container"
           addAnalytics={true}
         />
