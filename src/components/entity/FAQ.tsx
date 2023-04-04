@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { GoChevronDown } from "react-icons/go";
+import c from "classnames";
 
 interface FAQItem {
   question: string;
@@ -24,25 +25,25 @@ const FAQ = (props: FAQItem) => {
   };
 
   return (
-    <div className="FAQ-qa">
+    <div>
       <div
-        className="FAQ-question justify-between flex py-4 cursor-pointer font-bold text-lg"
+        className="justify-between flex py-4 cursor-pointer font-bold text-lg"
         onClick={faqToggle}
       >
         <div>{question}</div>
         <div>
           <GoChevronDown
-            className={`transition-transform duration-500 ${
-              isOpen ? "rotate-180" : ""
-            }`}
-            color="#1B78D0"
+            className={c(
+              "transition-transform duration-500 text-brand-primary",
+              { "rotate-180": isOpen }
+            )}
             size="1.5em"
           />
         </div>
       </div>
       <div
         ref={faqRef}
-        className="FAQ-answer font-normal text-base overflow-y-hidden duration-500 h-0 transition-[height]"
+        className="overflow-y-hidden duration-500 h-0 transition-[height]"
       >
         <div className="mb-4">{answer}</div>
       </div>

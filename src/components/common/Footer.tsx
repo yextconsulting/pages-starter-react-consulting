@@ -34,18 +34,18 @@ const Footer = (props: FooterProps) => {
   return (
     <footer className="Footer py-8 sm:py-16">
       <div className="container">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <div className="flex flex-col md:flex-row items-center">
+        <div className="flex flex-col sm:flex-row items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-center">
             {footerLinks.map((link, i) => (
               <Link
-                className="Link Link--primary mb-4 md:mb-0 md:mr-4"
+                className="Link Link--primary mb-4 sm:mb-0 sm:mr-4"
                 key={i}
                 cta={link}
               />
             ))}
           </div>
 
-          <div className="my-4 md:my-0 flex flex-row items-center justify-center md:justify-end">
+          <div className="my-4 sm:my-0 flex flex-row items-center justify-center sm:justify-end">
             {socialLinks.map((socialLink, i) =>
               socialLink.link ? (
                 <Link
@@ -60,7 +60,7 @@ const Footer = (props: FooterProps) => {
           </div>
         </div>
 
-        <div className="text-sm text-center md:text-left mt-4">
+        <div className="text-sm text-center sm:text-left mt-4">
           {copyrightMessage}
         </div>
       </div>

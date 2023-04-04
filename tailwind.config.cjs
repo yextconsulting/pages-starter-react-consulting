@@ -92,6 +92,7 @@ module.exports = {
       /** @type {(theme: any) => import('./tailwind').HeadingConfig} */
       headings: ({ theme }) => ({
         fontFamily: theme("fontFamily.primary"),
+        fontWeight: theme("fontWeight.bold"),
         variants: {
           sub: {
             fontSize: "1.25rem",

@@ -1,9 +1,0 @@
-.Core {
-  .HoursTable-row {
-    margin-bottom: 4px;
-
-    &.is-today {
-      font-weight: theme(fontWeight.bold);
-    }
-  }
-}

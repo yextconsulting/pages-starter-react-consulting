@@ -19,11 +19,11 @@ const Banner = (props: BannerProps) => {
   }
 
   return (
-    <div className="Banner bg-brand-secondary text-white py-4">
+    <div className="Banner bg-brand-primary text-white py-4">
       <div className="container flex items-center">
         {props.image && (
-          <div className="flex mr-4">
-            <Image image={props.image} />
+          <div className="flex mr-4 w-4">
+            <Image image={props.image} className="rounded-full" />
           </div>
         )}
         <div className="flex flex-grow mr-4">{props.text}</div>

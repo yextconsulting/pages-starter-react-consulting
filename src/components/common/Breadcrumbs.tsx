@@ -34,12 +34,12 @@ const Breadcrumbs = (props: BreadcrumbsPropsDefault) => {
           className={classNames("Breadcrumbs my-4", className)}
           aria-label="Breadcrumb"
         >
-          <ol className="flex">
+          <ol className="flex flex-wrap">
             {breadcrumbs.map(({ name, slug }, idx) => {
               const isLast = idx === breadcrumbs.length - 1;
 
               return (
-                <li className="Breadcrumbs-item" key={idx}>
+                <li key={idx}>
                   <Breadcrumb
                     name={name}
                     slug={isLast ? "" : relativePrefixToRoot + slug}

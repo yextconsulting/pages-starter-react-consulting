@@ -31,6 +31,7 @@ import type {
 import { Main } from "src/layouts/main";
 import Breadcrumbs from "src/components/common/Breadcrumbs";
 import { AnalyticsScopeProvider } from "@yext/pages/components";
+import { DirectoryHero } from "src/components/directory/DirectoryHero";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -126,6 +127,9 @@ const City: Template<TemplateRenderProps<DirectoryProfile<LocationProfile>>> = (
 
   return (
     <Main data={data}>
+      <AnalyticsScopeProvider name="directory_hero">
+        <DirectoryHero title={name} brand={_site.c_brand} />
+      </AnalyticsScopeProvider>
       <AnalyticsScopeProvider name="breadcrumbs">
         <Breadcrumbs
           breadcrumbs={dm_directoryParents || []}
@@ -136,8 +140,6 @@ const City: Template<TemplateRenderProps<DirectoryProfile<LocationProfile>>> = (
       </AnalyticsScopeProvider>
       <AnalyticsScopeProvider name="directory">
         <DirectoryGrid
-          name={name}
-          brand={_site?.c_brand ?? ""}
           CardComponent={DirectoryCard}
           directoryChildren={dm_directoryChildren || []}
         />

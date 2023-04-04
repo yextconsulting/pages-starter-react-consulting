@@ -11,7 +11,6 @@ import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
-import "src/components/entity/Core.css";
 
 const defaultFields: string[] = [
   "address",
@@ -34,9 +33,7 @@ const CoreSection = (props: { children: ReactNode }) => {
 };
 
 const CoreHeading = (props: { children: ReactNode }) => {
-  return (
-    <h2 className="Heading Heading--sub mb-4 font-bold">{props.children}</h2>
-  );
+  return <h2 className="Heading Heading--sub mb-4">{props.children}</h2>;
 };
 
 const Core = (props: CoreProps) => {

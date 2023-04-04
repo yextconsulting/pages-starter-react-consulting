@@ -27,6 +27,7 @@ import type {
 } from "src/types/entities";
 import { Main } from "src/layouts/main";
 import { AnalyticsScopeProvider } from "@yext/pages/components";
+import { DirectoryHero } from "src/components/directory/DirectoryHero";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -98,10 +99,11 @@ const Root: Template<
 
   return (
     <Main data={data}>
+      <AnalyticsScopeProvider name="directory_hero">
+        <DirectoryHero title={name} brand={_site.c_brand} />
+      </AnalyticsScopeProvider>
       <AnalyticsScopeProvider name="directory">
         <DirectoryList
-          name={name}
-          brand={_site?.c_brand ?? ""}
           showNumLocs={true}
           directoryChildren={dm_directoryChildren || []}
           relativePrefixToRoot={data.relativePrefixToRoot}
