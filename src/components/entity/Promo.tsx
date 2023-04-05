@@ -1,4 +1,3 @@
-import React from "react";
 import type { Image as ImageType, CTA as CTAType } from "@yext/types";
 import { Link, Image } from "@yext/pages/components";
 import appStoreIcon from "src/assets/images/appstore.svg";

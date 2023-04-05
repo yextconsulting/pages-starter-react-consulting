@@ -1,9 +1,9 @@
-import React from "react";
+import { ReactNode } from "react";
 import { Link } from "@yext/pages/components";
 
 type maybeLinkProps = {
   href?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
   eventName?: string;
 };

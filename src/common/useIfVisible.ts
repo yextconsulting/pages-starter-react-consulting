@@ -6,7 +6,7 @@ const OPTIONS: IntersectionObserverInit = {
   threshold: 0,
 };
 
-export default function useIfVisible(
+export function useIfVisible(
   ref: React.RefObject<HTMLElement>,
   options = OPTIONS
 ) {

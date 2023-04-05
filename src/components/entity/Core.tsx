@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactNode } from "react";
 import { HoursTable } from "@yext/sites-react-components";
 import {
   Link,
@@ -11,7 +11,6 @@ import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
-import "src/components/entity/Core.css";
 
 const defaultFields: string[] = [
   "address",
@@ -29,14 +28,12 @@ type CoreProps = {
   profile: LocationProfile;
 };
 
-const CoreSection = (props: { children: React.ReactNode }) => {
+const CoreSection = (props: { children: ReactNode }) => {
   return <div className="w-full sm:w-1/2 lg:w-1/3 mb-8">{props.children}</div>;
 };
 
-const CoreHeading = (props: { children: React.ReactNode }) => {
-  return (
-    <h2 className="Heading Heading--sub mb-4 font-bold">{props.children}</h2>
-  );
+const CoreHeading = (props: { children: ReactNode }) => {
+  return <h2 className="Heading Heading--sub mb-4">{props.children}</h2>;
 };
 
 const Core = (props: CoreProps) => {

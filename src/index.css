@@ -1,6 +1,7 @@
 @import "src/styles/variables.css";
 @import "src/styles/utils.css";
 @import "src/styles/fonts.css";
+@import "src/styles/theme.css";
 
 @tailwind base;
 @tailwind components;

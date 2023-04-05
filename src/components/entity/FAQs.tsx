@@ -19,7 +19,7 @@ const FAQs = (props: FAQsProps) => {
     <div className="FAQ bg-brand-gray-100 py-8 sm:py-16">
       <div className="container">
         <h2 className="Heading Heading--sub font-bold mb-8">{title}</h2>
-        <div className="FAQ-content divide-y border-t border-b">
+        <div className="divide-y border-t border-b">
           {faqs.map((faq) => (
             <FAQ
               key={faq.question}

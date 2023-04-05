@@ -1,9 +1,6 @@
-import React from "react";
 import { HoursStatus } from "@yext/sites-react-components";
 import { Link, Image } from "@yext/pages/components";
 import type { Address, Hours, CTA, Image as ImageType } from "@yext/types";
-import "src/components/entity/Hero.css";
-import ellipse from "src/assets/images/ellipse.svg";
 
 const defaultFields: string[] = [
   "c_heroSection",
@@ -37,9 +34,7 @@ const Hero = (props: HeroProps) => {
             <div className="mb-4">
               <HoursStatus
                 hours={props.hours}
-                separatorTemplate={() => (
-                  <img className="Hero-hourSeparator" alt="" src={ellipse} />
-                )}
+                separatorTemplate={() => <span className="bullet" />}
                 dayOfWeekTemplate={() => null}
               />
             </div>

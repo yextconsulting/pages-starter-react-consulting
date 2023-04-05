@@ -33,31 +33,6 @@ function styleguidePlugin() {
   });
 }
 
-// Create the utility class font-sizes that accepts 4 values for mobile and desktop font styling.
-// Example usage: font-sizes-[20px,30px,16px,24px]
-function fontSizes() {
-  return plugin(function ({ matchUtilities }) {
-    matchUtilities({
-      "font-sizes": (value) => {
-        const values = value.split(",");
-        return {
-          ...(values.length === 4
-            ? {
-                fontSize: values[2],
-                lineHeight: values[3],
-                "@screen sm": {
-                  fontSize: values[0],
-                  lineHeight: values[1],
-                },
-              }
-            : {}),
-        };
-      },
-    });
-  });
-}
-
 module.exports = {
   styleguidePlugin,
-  fontSizes,
 };

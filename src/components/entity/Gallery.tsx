@@ -1,4 +1,3 @@
-import React from "react";
 import { Image } from "@yext/pages/components";
 import type {
   Image as ImageType,

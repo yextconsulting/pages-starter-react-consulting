@@ -1,8 +1,6 @@
-import React from "react";
 import { ReactNode } from "react";
 import classNames from "classnames";
 import { Link } from "@yext/pages/components";
-import "src/components/common/Breadcrumbs.css";
 import { useTemplateData } from "src/common/useTemplateData";
 
 interface BreadcrumbsPropsDefault {
@@ -33,15 +31,15 @@ const Breadcrumbs = (props: BreadcrumbsPropsDefault) => {
     <>
       {breadcrumbs?.length && (
         <nav
-          className={classNames("Breadcrumbs", className)}
+          className={classNames("Breadcrumbs my-4", className)}
           aria-label="Breadcrumb"
         >
-          <ol className="Breadcrumbs-list">
+          <ol className="flex flex-wrap">
             {breadcrumbs.map(({ name, slug }, idx) => {
               const isLast = idx === breadcrumbs.length - 1;
 
               return (
-                <li className="Breadcrumbs-item" key={idx}>
+                <li key={idx}>
                   <Breadcrumb
                     name={name}
                     slug={isLast ? "" : relativePrefixToRoot + slug}
@@ -49,7 +47,9 @@ const Breadcrumbs = (props: BreadcrumbsPropsDefault) => {
                     {...props}
                   />
                   {!isLast && (
-                    <span className="Breadcrumbs-separator">{separator}</span>
+                    <span className="mx-2 text-brand-gray-400">
+                      {separator}
+                    </span>
                   )}
                 </li>
               );
@@ -74,16 +74,16 @@ const Breadcrumb = (props: BreadcrumbProps) => {
   if (slug) {
     return (
       <Link
-        className="Breadcrumbs-link Link--breadcrumbs"
+        className="Link--breadcrumbs Link--underline"
         href={slug}
         eventName={props.addAnalytics ? "breadcrumb_" + props.index : ""}
       >
-        <span className="Breadcrumbs-label">{name}</span>
+        <span>{name}</span>
       </Link>
     );
   }
 
-  return <span className="Breadcrumbs-label">{name}</span>;
+  return <span>{name}</span>;
 };
 
 export default Breadcrumbs;

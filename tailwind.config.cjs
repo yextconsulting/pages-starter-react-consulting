@@ -1,6 +1,6 @@
 //@ts-check
 
-const { styleguidePlugin, fontSizes } = require("./tailwindPlugin.cjs");
+const { styleguidePlugin } = require("./tailwindPlugin.cjs");
 
 /** @type {import('tailwindcss/types/config').Config} */
 module.exports = {
@@ -13,6 +13,11 @@ module.exports = {
       fontFamily: {
         primary: "'Arial','Helvetica','sans-serif','system'",
         secondary: "'Arial','Helvetica','sans-serif','system'",
+      },
+      fontSize: {
+        sm: ["14px", "22px"],
+        base: ["16px", "24px"],
+        lg: ["18px", "24px"],
       },
       colors: {
         text: "black",
@@ -66,6 +71,10 @@ module.exports = {
               color: theme("colors.brand-primary"),
             },
           },
+          breadcrumbs: {
+            color: theme("colors.brand-primary"),
+            fontWeight: theme("fontWeight.bold"),
+          },
           underline: {
             textDecoration: "underline",
             "&:hover": {
@@ -83,6 +92,7 @@ module.exports = {
       /** @type {(theme: any) => import('./tailwind').HeadingConfig} */
       headings: ({ theme }) => ({
         fontFamily: theme("fontFamily.primary"),
+        fontWeight: theme("fontWeight.bold"),
         variants: {
           sub: {
             fontSize: "1.25rem",
@@ -124,5 +134,5 @@ module.exports = {
       },
     },
   },
-  plugins: [styleguidePlugin(), fontSizes()],
+  plugins: [styleguidePlugin()],
 };

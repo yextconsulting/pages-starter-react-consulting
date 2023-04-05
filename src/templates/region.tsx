@@ -8,7 +8,6 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import React from "react";
 import type {
   Template,
   GetPath,
@@ -31,6 +30,7 @@ import type {
 import { Main } from "src/layouts/main";
 import Breadcrumbs from "src/components/common/Breadcrumbs";
 import { AnalyticsScopeProvider } from "@yext/pages/components";
+import { DirectoryHero } from "src/components/directory/DirectoryHero";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -126,18 +126,19 @@ const Region: Template<
 
   return (
     <Main data={data}>
+      <AnalyticsScopeProvider name="directory_hero">
+        <DirectoryHero title={name} brand={_site.c_brand} />
+      </AnalyticsScopeProvider>
       <AnalyticsScopeProvider name="breadcrumbs">
         <Breadcrumbs
           breadcrumbs={dm_directoryParents || []}
-          separator=">"
+          separator="/"
           className="container"
           addAnalytics={true}
         />
       </AnalyticsScopeProvider>
       <AnalyticsScopeProvider name="directory">
         <DirectoryList
-          name={name}
-          brand={_site?.c_brand ?? ""}
           showNumLocs={true}
           directoryChildren={dm_directoryChildren || []}
           relativePrefixToRoot={data.relativePrefixToRoot}

@@ -1,4 +1,3 @@
-import React from "react";
 import { Image, Link } from "@yext/pages/components";
 import type { ProductProfile } from "src/types/entities";
 

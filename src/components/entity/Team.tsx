@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TeamCard from "src/components/entity/TeamCard";
 import type { FinancialProfessionalProfile } from "src/types/entities";
 
