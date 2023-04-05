@@ -4,7 +4,7 @@ import type { LiveAPIProfile, LocationProfile } from "src/types/entities";
 import { CardComponent } from "src/models/cardComponent";
 import { useTemplateData } from "src/common/useTemplateData";
 
-export const DirectoryCard: CardComponent<
+const DirectoryCard: CardComponent<
   LocationProfile | LiveAPIProfile<LocationProfile>
 > = function DirectoryCard(props): JSX.Element {
   const { profile } = props;
@@ -39,3 +39,5 @@ export const DirectoryCard: CardComponent<
     </div>
   );
 };
+
+export default DirectoryCard;

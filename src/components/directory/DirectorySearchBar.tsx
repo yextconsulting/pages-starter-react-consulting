@@ -21,7 +21,7 @@ interface DirectorySearchBarProps {
   searcherPath: string;
 }
 
-export function DirectorySearchBar(props: DirectorySearchBarProps) {
+const DirectorySearchBar = (props: DirectorySearchBarProps) => {
   const { document } = useTemplateData();
 
   if (!document._site.c_searchExperienceAPIKey) {
@@ -38,9 +38,9 @@ export function DirectorySearchBar(props: DirectorySearchBarProps) {
       <DirectorySearchBarInternal {...props} />
     </SearchHeadlessProvider>
   );
-}
+};
 
-function DirectorySearchBarInternal(props: DirectorySearchBarProps) {
+const DirectorySearchBarInternal = (props: DirectorySearchBarProps) => {
   const { placeholder, searcherPath } = props;
 
   return (
@@ -77,4 +77,6 @@ function DirectorySearchBarInternal(props: DirectorySearchBarProps) {
       />
     </div>
   );
-}
+};
+
+export default DirectorySearchBar;

@@ -17,20 +17,17 @@ import type {
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
-import {
-  DirectoryList,
-  directoryListFields,
-} from "src/components/directory/DirectoryList";
 import type {
   DirectoryProfile,
   LocationProfile,
   TemplateProps,
   TemplateRenderProps,
 } from "src/types/entities";
+import { AnalyticsScopeProvider } from "@yext/pages/components";
 import { Main } from "src/layouts/main";
 import Breadcrumbs from "src/components/common/Breadcrumbs";
-import { AnalyticsScopeProvider } from "@yext/pages/components";
-import { DirectoryHero } from "src/components/directory/DirectoryHero";
+import DirectoryHero from "src/components/directory/DirectoryHero";
+import DirectoryList from "src/components/directory/DirectoryList";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -47,7 +44,15 @@ export const config: TemplateConfig = {
       "name",
       "slug",
       "c_meta",
-      ...directoryListFields,
+      // Directory List Fields
+      "dm_directoryParents.slug",
+      "dm_directoryParents.name",
+      "dm_directoryChildren.slug",
+      "dm_directoryChildren.name",
+      "dm_directoryChildren.dm_baseEntityCount",
+      "dm_directoryChildren.dm_directoryChildren.slug",
+      "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
+      "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {

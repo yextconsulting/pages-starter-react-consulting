@@ -1,13 +1,13 @@
-import { DirectorySearchBar } from "src/components/directory/DirectorySearchBar";
 import { useTemplateData } from "src/common/useTemplateData";
 import { SEARCH_PATH } from "src/config";
+import DirectorySearchBar from "src/components/directory/DirectorySearchBar";
 
 interface DirectoryHeroProps {
   brand?: string;
   title: string;
 }
 
-export function DirectoryHero(props: DirectoryHeroProps) {
+const DirectoryHero = (props: DirectoryHeroProps) => {
   const { brand, title } = props;
   const { relativePrefixToRoot } = useTemplateData();
 
@@ -23,4 +23,6 @@ export function DirectoryHero(props: DirectoryHeroProps) {
       />
     </div>
   );
-}
+};
+
+export default DirectoryHero;
