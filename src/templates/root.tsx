@@ -13,18 +13,18 @@ import type {
   GetPath,
   TemplateConfig,
   GetHeadConfig,
+  TransformProps,
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import type {
   DirectoryProfile,
+  LocationProfile,
   TemplateProps,
   TemplateRenderProps,
 } from "src/types/entities";
-import { AnalyticsScopeProvider } from "@yext/pages/components";
 import { Main } from "src/layouts/main";
-import DirectoryHero from "src/components/directory/DirectoryHero";
-import DirectoryList from "src/components/directory/DirectoryList";
+import DirectoryLayout from "src/layouts/directory";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -89,6 +89,27 @@ export const getHeadConfig: GetHeadConfig<
 };
 
 /**
+ * Required only when data needs to be retrieved from an external (non-Knowledge Graph) source.
+ * If the page is truly static this function is not necessary.
+ *
+ * This function will be run during generation and pass in directly as props to the default
+ * exported function.
+ */
+export const transformProps: TransformProps<
+  TemplateRenderProps<LocationProfile>
+> = async (data) => {
+  const { name } = data.document;
+
+  return {
+    ...data,
+    document: {
+      ...data.document,
+      dm_directoryParents: [{ name: name, slug: "" }],
+    },
+  };
+};
+
+/**
  * This is the main template. It can have any name as long as it's the default export.
  * The props passed in here are the direct stream document defined by `config`.
  *
@@ -100,20 +121,9 @@ export const getHeadConfig: GetHeadConfig<
 const Root: Template<
   TemplateRenderProps<DirectoryProfile<DirectoryProfile<never>>>
 > = (data) => {
-  const { name, dm_directoryChildren, _site } = data.document;
-
   return (
     <Main data={data}>
-      <AnalyticsScopeProvider name="directory_hero">
-        <DirectoryHero title={name} brand={_site.c_brand} />
-      </AnalyticsScopeProvider>
-      <AnalyticsScopeProvider name="directory">
-        <DirectoryList
-          showNumLocs={true}
-          directoryChildren={dm_directoryChildren || []}
-          relativePrefixToRoot={data.relativePrefixToRoot}
-        />
-      </AnalyticsScopeProvider>
+      <DirectoryLayout data={data} directoryLevel="root" />
     </Main>
   );
 };

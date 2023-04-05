@@ -23,12 +23,8 @@ import type {
   TemplateProps,
   TemplateRenderProps,
 } from "src/types/entities";
-import { AnalyticsScopeProvider } from "@yext/pages/components";
 import { Main } from "src/layouts/main";
-import Breadcrumbs from "src/components/common/Breadcrumbs";
-import DirectoryCard from "src/components/cards/DirectoryCard";
-import DirectoryGrid from "src/components/directory/DirectoryGrid";
-import DirectoryHero from "src/components/directory/DirectoryHero";
+import DirectoryLayout from "src/layouts/directory";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -125,28 +121,9 @@ export const transformProps: TransformProps<
 const City: Template<TemplateRenderProps<DirectoryProfile<LocationProfile>>> = (
   data
 ) => {
-  const { name, dm_directoryChildren, dm_directoryParents, _site } =
-    data.document;
-
   return (
     <Main data={data}>
-      <AnalyticsScopeProvider name="directory_hero">
-        <DirectoryHero title={name} brand={_site.c_brand} />
-      </AnalyticsScopeProvider>
-      <AnalyticsScopeProvider name="breadcrumbs">
-        <Breadcrumbs
-          breadcrumbs={dm_directoryParents || []}
-          separator="/"
-          className="container"
-          addAnalytics={true}
-        />
-      </AnalyticsScopeProvider>
-      <AnalyticsScopeProvider name="directory">
-        <DirectoryGrid
-          CardComponent={DirectoryCard}
-          directoryChildren={dm_directoryChildren || []}
-        />
-      </AnalyticsScopeProvider>
+      <DirectoryLayout data={data} directoryLevel="city" />
     </Main>
   );
 };
