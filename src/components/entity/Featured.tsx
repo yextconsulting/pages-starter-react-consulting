@@ -1,6 +1,6 @@
 import { CardComponent } from "src/models/cardComponent";
 
-interface FeaturedProps<ProfileType> {
+export interface FeaturedProps<ProfileType> {
   title: string;
   items: ProfileType[];
   CardComponent: CardComponent<ProfileType>;
@@ -31,4 +31,4 @@ const Featured = <ProfileType,>(props: FeaturedProps<ProfileType>) => {
   );
 };
 
-export { Featured, FeaturedProps };
+export default Featured;

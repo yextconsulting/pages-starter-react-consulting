@@ -12,18 +12,6 @@ import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
 
-const defaultFields: string[] = [
-  "address",
-  "mainPhone",
-  "googlePlaceId",
-  "tollFreePhone",
-  "emails",
-  "hours",
-  "additionalHoursText",
-  "services",
-  "geocodedCoordinate",
-];
-
 type CoreProps = {
   profile: LocationProfile;
 };
@@ -143,4 +131,4 @@ const Core = (props: CoreProps) => {
   );
 };
 
-export { Core, defaultFields };
+export default Core;

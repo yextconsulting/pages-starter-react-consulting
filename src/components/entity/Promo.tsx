@@ -3,8 +3,6 @@ import { Link, Image } from "@yext/pages/components";
 import appStoreIcon from "src/assets/images/appstore.svg";
 import playStoreIcon from "src/assets/images/playstore.svg";
 
-const defaultFields: string[] = ["c_promoSection"];
-
 type PromoProps = {
   image?: ImageType;
   title: string;
@@ -56,4 +54,4 @@ const Promo = (props: PromoProps) => {
   );
 };
 
-export { Promo, defaultFields };
+export default Promo;

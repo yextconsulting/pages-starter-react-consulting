@@ -51,4 +51,4 @@ const FAQ = (props: FAQItem) => {
   );
 };
 
-export { FAQ };
+export default FAQ;

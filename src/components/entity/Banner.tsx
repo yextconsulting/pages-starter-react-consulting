@@ -3,8 +3,6 @@ import { Image } from "@yext/pages/components";
 import type { Image as ImageType } from "@yext/types";
 import { FaTimes } from "react-icons/fa";
 
-const defaultFields: string[] = ["c_bannerSection"];
-
 type BannerProps = {
   image?: ImageType;
   text: string;
@@ -39,4 +37,4 @@ const Banner = (props: BannerProps) => {
   );
 };
 
-export { Banner, defaultFields };
+export default Banner;

@@ -1,17 +1,6 @@
 import { useState } from "react";
-import TeamCard from "src/components/entity/TeamCard";
 import type { FinancialProfessionalProfile } from "src/types/entities";
-
-const defaultFields: string[] = [
-  "c_teamSection.title",
-  "c_teamSection.team.id",
-  "c_teamSection.team.name",
-  "c_teamSection.team.headshot",
-  "c_teamSection.team.mainPhone",
-  "c_teamSection.team.c_occupation",
-  "c_teamSection.team.emails",
-  "c_teamSection.team.websiteUrl",
-];
+import TeamCard from "src/components/cards/TeamCard";
 
 type TeamProps = {
   title: string;
@@ -54,4 +43,4 @@ const Team = (props: TeamProps) => {
   );
 };
 
-export { Team, defaultFields };
+export default Team;

@@ -14,8 +14,6 @@ import {
 import "pure-react-carousel/dist/react-carousel.es.css";
 import c from "classnames";
 
-const defaultFields: string[] = ["c_gallerySection", "photoGallery"];
-
 type GalleryProps = {
   images: (ImageType | ComplexImageType)[];
   title?: string;
@@ -115,4 +113,4 @@ const Gallery = (props: GalleryProps) => {
   );
 };
 
-export { Gallery, defaultFields };
+export default Gallery;

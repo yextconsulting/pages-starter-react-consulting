@@ -1,5 +1,5 @@
-import { ReviewStars } from "src/components/entity/ReviewStars";
-import { ReviewCard } from "src/components/cards/ReviewCard";
+import ReviewStars from "src/components/entity/ReviewStars";
+import ReviewCard from "src/components/cards/ReviewCard";
 import {
   CarouselProvider,
   Slider,
@@ -9,30 +9,7 @@ import {
   Dot,
 } from "pure-react-carousel";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import type { ReviewProfile, ReviewStreamsResponse } from "src/types/entities";
-import { fetch } from "@yext/pages/util";
-
-const defaultFields: string[] = [
-  "c_reviewsSection",
-  // This is required in order to update the stream every time a new review is created.
-  "ref_reviewsAgg.reviewCount",
-];
-
-export const fetchReviews = async (api_key: string) => {
-  const params = new URLSearchParams({
-    api_key,
-    v: "20221227",
-  });
-
-  // https://hitchhikers.yext.com/docs/streams/reviews-streams-reference/
-  const data: ReviewStreamsResponse = await fetch(
-    `https://streams.yext.com/v2/accounts/me/api/reviewsStreamsEndpoints_reviews?${params.toString()}`
-  )
-    .then((resp) => resp.json())
-    .catch((error) => console.log(error));
-
-  return data.response.docs;
-};
+import type { ReviewProfile } from "src/types/entities";
 
 type ReviewsProps = {
   title: string;
@@ -132,4 +109,4 @@ const Reviews = (props: ReviewsProps) => {
   );
 };
 
-export { Reviews, defaultFields };
+export default Reviews;

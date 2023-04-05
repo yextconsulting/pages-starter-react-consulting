@@ -1,15 +1,6 @@
-import { Featured } from "src/components/entity/Featured";
-import { EventCard } from "src/components/cards/EventCard";
 import { EventProfile } from "src/types/entities";
-
-const defaultFields: string[] = [
-  "c_eventsSection.title",
-  "c_eventsSection.events.name",
-  "c_eventsSection.events.time",
-  "c_eventsSection.events.description",
-  "c_eventsSection.events.c_primaryCTA",
-  "c_eventsSection.events.photoGallery",
-];
+import EventCard from "src/components/cards/EventCard";
+import Featured from "src/components/entity/Featured";
 
 interface EventProps {
   title: string;
@@ -33,4 +24,4 @@ const Events = (props: EventProps) => {
   );
 };
 
-export { Events, defaultFields };
+export default Events;

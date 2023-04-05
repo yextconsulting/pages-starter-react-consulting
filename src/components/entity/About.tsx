@@ -1,8 +1,6 @@
 import type { Image as ImageType, CTA as CTAType } from "@yext/types";
 import { Link, Image } from "@yext/pages/components";
 
-const defaultFields: string[] = ["c_aboutSection", "description"];
-
 type AboutProps = {
   image?: ImageType;
   title: string;
@@ -37,4 +35,4 @@ const About = (props: AboutProps) => {
   );
 };
 
-export { About, defaultFields };
+export default About;

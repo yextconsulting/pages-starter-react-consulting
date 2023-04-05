@@ -24,53 +24,26 @@ import type {
   TemplateProps,
 } from "src/types/entities";
 import { dedupeStreamFields } from "src/common/helpers";
-import { Main } from "src/layouts/main";
-
-import {
-  Banner,
-  defaultFields as bannerFields,
-} from "src/components/entity/Banner";
-import { Hero, defaultFields as heroFields } from "src/components/entity/Hero";
-import { Core, defaultFields as coreFields } from "src/components/entity/Core";
-import {
-  Promo,
-  defaultFields as promoFields,
-} from "src/components/entity/Promo";
-import {
-  Gallery,
-  defaultFields as galleryFields,
-} from "src/components/entity/Gallery";
-import {
-  About,
-  defaultFields as aboutFields,
-} from "src/components/entity/About";
-import { Team, defaultFields as teamFields } from "src/components/entity/Team";
-import { FAQs, defaultFields as FAQsFields } from "src/components/entity/FAQs";
-import {
-  Nearby,
-  defaultFields as NearbyFields,
-} from "src/components/entity/Nearby";
-import {
-  Products,
-  defaultFields as featuredProductFields,
-} from "src/components/entity/Products";
-import {
-  Events,
-  defaultFields as eventFields,
-} from "src/components/entity/Events";
-import {
-  Insights,
-  defaultFields as InsightsFields,
-} from "src/components/entity/Insights";
-import {
-  Reviews,
-  fetchReviews,
-  defaultFields as reviewsFields,
-} from "src/components/entity/Reviews";
 import { formatPhone } from "src/common/helpers";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
-import Breadcrumbs from "src/components/common/Breadcrumbs";
 import { AnalyticsScopeProvider } from "@yext/pages/components";
+
+import { Main } from "src/layouts/main";
+import About from "src/components/entity/About";
+import Banner from "src/components/entity/Banner";
+import Breadcrumbs from "src/components/common/Breadcrumbs";
+import Core from "src/components/entity/Core";
+import Events from "src/components/entity/Events";
+import FAQs from "src/components/entity/FAQs";
+import Gallery from "src/components/entity/Gallery";
+import Hero from "src/components/entity/Hero";
+import Insights from "src/components/entity/Insights";
+import Nearby from "src/components/entity/Nearby";
+import Products from "src/components/entity/Products";
+import Promo from "src/components/entity/Promo";
+import Reviews from "src/components/entity/Reviews";
+import { fetchReviews } from "src/components/entity/utils/fetchReviews";
+import Team from "src/components/entity/Team";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -103,19 +76,72 @@ export const config: TemplateConfig = {
       "dm_directoryParents.slug",
       "dm_baseEntityCount",
       "slug",
-      ...bannerFields,
-      ...heroFields,
-      ...coreFields,
-      ...promoFields,
-      ...featuredProductFields,
-      ...galleryFields,
-      ...aboutFields,
-      ...teamFields,
-      ...FAQsFields,
-      ...NearbyFields,
-      ...eventFields,
-      ...InsightsFields,
-      ...reviewsFields,
+      // About Fields
+      "c_aboutSection",
+      "description",
+      // Banner Fields
+      "c_bannerSection",
+      // Core Fields
+      "address",
+      "mainPhone",
+      "googlePlaceId",
+      "tollFreePhone",
+      "emails",
+      "hours",
+      "additionalHoursText",
+      "services",
+      "geocodedCoordinate",
+      // Events Fields
+      "c_eventsSection.title",
+      "c_eventsSection.events.name",
+      "c_eventsSection.events.time",
+      "c_eventsSection.events.description",
+      "c_eventsSection.events.c_primaryCTA",
+      "c_eventsSection.events.photoGallery",
+      // FAQ Fields
+      "c_faqSection.title",
+      "c_faqSection.faqs.question",
+      "c_faqSection.faqs.answer",
+      // Gallery Fields
+      "c_gallerySection",
+      "photoGallery",
+      // Hero Fields
+      "c_heroSection",
+      "name",
+      "address",
+      "hours",
+      // Insights Fields
+      "c_insightsSection.title",
+      "c_insightsSection.cta",
+      "c_insightsSection.insights.title",
+      "c_insightsSection.insights.category",
+      "c_insightsSection.insights.photo",
+      "c_insightsSection.insights.date",
+      "c_insightsSection.insights.descriptionLong",
+      "c_insightsSection.insights.descriptionShort",
+      "c_insightsSection.insights.cta",
+      // Nearby Fields
+      "c_nearbySection",
+      // Product Fields
+      "c_featuredProductsSection.title",
+      "c_featuredProductsSection.products.name",
+      "c_featuredProductsSection.products.richTextDescription",
+      "c_featuredProductsSection.products.primaryPhoto",
+      "c_featuredProductsSection.products.c_primaryCTA",
+      // Promo Fields
+      "c_promoSection",
+      // Review Fields
+      "c_reviewsSection",
+      "ref_reviewsAgg.reviewCount", // This is required in order to update the stream every time a new review is created.
+      // Team Fields
+      "c_teamSection.title",
+      "c_teamSection.team.id",
+      "c_teamSection.team.name",
+      "c_teamSection.team.headshot",
+      "c_teamSection.team.mainPhone",
+      "c_teamSection.team.c_occupation",
+      "c_teamSection.team.emails",
+      "c_teamSection.team.websiteUrl",
     ]),
     // Defines the scope of entities that qualify for this stream.
     filter: {

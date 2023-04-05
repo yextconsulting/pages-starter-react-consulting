@@ -5,19 +5,6 @@ import {
   InsightCardFeatured,
 } from "src/components/cards/InsightCard";
 import { Link } from "@yext/pages/components";
-import "src/components/entity/Insights.css";
-
-const defaultFields: string[] = [
-  "c_insightsSection.title",
-  "c_insightsSection.cta",
-  "c_insightsSection.insights.title",
-  "c_insightsSection.insights.category",
-  "c_insightsSection.insights.photo",
-  "c_insightsSection.insights.date",
-  "c_insightsSection.insights.descriptionLong",
-  "c_insightsSection.insights.descriptionShort",
-  "c_insightsSection.insights.cta",
-];
 
 interface InsightsProps {
   title: string;
@@ -48,9 +35,9 @@ const Insights = (props: InsightsProps) => {
             </div>
           </div>
           {!!listedInsights.length && (
-            <div className="md:w-1/2 md:ml-4 mt-6 md:mt-0">
+            <div className="md:w-1/2 md:ml-4 md:-my-4">
               {listedInsights.map((item, i) => (
-                <div key={i} className="Insights-insightCard">
+                <div key={i} className="py-4 border-b border-b-brand-gray-300">
                   <InsightCard
                     title={item.title}
                     category={item.category}
@@ -73,4 +60,4 @@ const Insights = (props: InsightsProps) => {
   );
 };
 
-export { Insights, defaultFields };
+export default Insights;

@@ -37,8 +37,6 @@ const getConfig = (api_key: string): NearbyAPIConfig => {
   };
 };
 
-const defaultFields: string[] = ["c_nearbySection"];
-
 type NearbyProps = {
   title?: string;
   linkToLocator?: boolean;
@@ -118,4 +116,4 @@ const Nearby = (props: NearbyProps) => {
   );
 };
 
-export { Nearby, defaultFields };
+export default Nearby;
