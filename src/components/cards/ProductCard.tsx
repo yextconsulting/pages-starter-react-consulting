@@ -2,7 +2,7 @@ import { Image, Link } from "@yext/pages/components";
 import { ProductProfile } from "src/types/entities";
 import { CardComponent } from "src/models/cardComponent";
 
-export const ProductCard: CardComponent<ProductProfile> = function productCard(
+const ProductCard: CardComponent<ProductProfile> = function productCard(
   props
 ): JSX.Element {
   const { profile } = props;
@@ -29,3 +29,5 @@ export const ProductCard: CardComponent<ProductProfile> = function productCard(
     </>
   );
 };
+
+export default ProductCard;

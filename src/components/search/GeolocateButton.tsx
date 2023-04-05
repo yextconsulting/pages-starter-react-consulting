@@ -12,7 +12,7 @@ interface GeolocateButtonProps {
   searcherPath?: string;
 }
 
-export default function GeolocateButton(props: GeolocateButtonProps) {
+const GeolocateButton = (props: GeolocateButtonProps) => {
   const { className, redirectToSearchPage, searcherPath } = props;
 
   const searchActions = useSearchActions();
@@ -84,4 +84,6 @@ export default function GeolocateButton(props: GeolocateButtonProps) {
       {isFetchingLocation && <LoadingSpinner />}
     </>
   );
-}
+};
+
+export default GeolocateButton;

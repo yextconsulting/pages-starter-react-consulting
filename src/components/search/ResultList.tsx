@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { useSearchState } from "@yext/search-headless-react";
 import type { CardComponent } from "@yext/search-ui-react";
 import type { Result } from "@yext/search-headless-react";
-import { useLocator } from "src/components/search/Locator";
+import { useLocator } from "src/components/search/utils/useLocator";
 import type { LocatorCardProps } from "src/components/cards/LocatorCard";
 import "src/components/search/ResultList.css";
 
@@ -12,7 +12,7 @@ interface ResultListProps extends LocatorCardProps {
   displayAllOnNoResults?: boolean;
 }
 
-export default function ResultList(props: ResultListProps) {
+const ResultList = (props: ResultListProps) => {
   const { CardComponent, displayAllOnNoResults } = props;
 
   const verticalResults =
@@ -37,7 +37,7 @@ export default function ResultList(props: ResultListProps) {
       ))}
     </div>
   );
-}
+};
 
 interface ResultListItemProps {
   CardComponent: CardComponent;
@@ -84,3 +84,5 @@ function ResultListItem(props: ResultListItemProps) {
     </div>
   );
 }
+
+export default ResultList;

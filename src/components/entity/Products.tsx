@@ -1,14 +1,6 @@
-import { Featured } from "src/components/entity/Featured";
-import { ProductCard } from "src/components/cards/ProductCard";
 import { ProductProfile } from "src/types/entities";
-
-const defaultFields: string[] = [
-  "c_featuredProductsSection.title",
-  "c_featuredProductsSection.products.name",
-  "c_featuredProductsSection.products.richTextDescription",
-  "c_featuredProductsSection.products.primaryPhoto",
-  "c_featuredProductsSection.products.c_primaryCTA",
-];
+import Featured from "src/components/entity/Featured";
+import ProductCard from "src/components/cards/ProductCard";
 
 interface ProductProps {
   title: string;
@@ -27,4 +19,4 @@ const Products = (props: ProductProps) => {
   );
 };
 
-export { Products, defaultFields };
+export default Products;

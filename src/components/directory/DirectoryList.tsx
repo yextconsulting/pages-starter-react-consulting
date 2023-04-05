@@ -1,17 +1,6 @@
 import { Link } from "@yext/pages/components";
 import type { DirectoryProfile } from "src/types/entities";
 
-export const directoryListFields = [
-  "dm_directoryParents.slug",
-  "dm_directoryParents.name",
-  "dm_directoryChildren.slug",
-  "dm_directoryChildren.name",
-  "dm_directoryChildren.dm_baseEntityCount",
-  "dm_directoryChildren.dm_directoryChildren.slug",
-  "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
-  "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
-];
-
 interface DirectoryListProps {
   showNumLocs: boolean;
   directoryChildren: DirectoryProfile<never>[];
@@ -26,7 +15,7 @@ const getSkipLevelSlug = (child: DirectoryProfile<never>): string => {
   return child.slug;
 };
 
-export function DirectoryList(props: DirectoryListProps) {
+const DirectoryList = (props: DirectoryListProps) => {
   const { showNumLocs, directoryChildren, relativePrefixToRoot } = props;
   return (
     <div className="container my-8">
@@ -49,4 +38,6 @@ export function DirectoryList(props: DirectoryListProps) {
       </ul>
     </div>
   );
-}
+};
+
+export default DirectoryList;

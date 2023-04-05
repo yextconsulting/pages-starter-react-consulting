@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import type { Coordinate } from "@yext/types";
 import { Coordinate as CoordinateClass } from "@yext/components-tsx-geo";
 import { Marker, useMapContext } from "@yext/pages/components";
-import { useLocator } from "src/components/search/Locator";
+import { useLocator } from "src/components/search/utils/useLocator";
 
 type CustomMarkerProps = {
   coordinate: Coordinate;
@@ -10,7 +10,7 @@ type CustomMarkerProps = {
   index: number;
 };
 
-export default function CustomMarker(props: CustomMarkerProps) {
+const CustomMarker = (props: CustomMarkerProps) => {
   const {
     selectedId,
     setSelectedId,
@@ -54,7 +54,7 @@ export default function CustomMarker(props: CustomMarkerProps) {
       />
     </Marker>
   );
-}
+};
 
 type MapPinProps = {
   backgroundColor?: string;
@@ -64,7 +64,7 @@ type MapPinProps = {
   width: number;
 };
 
-function MapPin(props: MapPinProps) {
+const MapPin = (props: MapPinProps) => {
   const { backgroundColor, height, index, textColor, width } = props;
   return (
     <svg
@@ -93,4 +93,6 @@ function MapPin(props: MapPinProps) {
       </text>
     </svg>
   );
-}
+};
+
+export default CustomMarker;

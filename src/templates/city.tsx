@@ -17,21 +17,18 @@ import type {
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
-import { DirectoryCard } from "src/components/cards/DirectoryCard";
-import {
-  DirectoryGrid,
-  directoryGridFields,
-} from "src/components/directory/DirectoryGrid";
 import type {
   DirectoryProfile,
   LocationProfile,
   TemplateProps,
   TemplateRenderProps,
 } from "src/types/entities";
+import { AnalyticsScopeProvider } from "@yext/pages/components";
 import { Main } from "src/layouts/main";
 import Breadcrumbs from "src/components/common/Breadcrumbs";
-import { AnalyticsScopeProvider } from "@yext/pages/components";
-import { DirectoryHero } from "src/components/directory/DirectoryHero";
+import DirectoryCard from "src/components/cards/DirectoryCard";
+import DirectoryGrid from "src/components/directory/DirectoryGrid";
+import DirectoryHero from "src/components/directory/DirectoryHero";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -48,7 +45,13 @@ export const config: TemplateConfig = {
       "name",
       "slug",
       "c_meta",
-      ...directoryGridFields,
+      // Directory Grid Fields
+      "dm_directoryParents.slug",
+      "dm_directoryParents.name",
+      "dm_directoryChildren.slug",
+      "dm_directoryChildren.name",
+      "dm_directoryChildren.address",
+      "dm_directoryChildren.hours",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {

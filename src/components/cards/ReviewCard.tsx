@@ -1,6 +1,6 @@
 import type { ReviewProfile } from "src/types/entities";
-import { ReviewStars } from "src/components/entity/ReviewStars";
 import { useTemplateData } from "src/common/useTemplateData";
+import ReviewStars from "src/components/entity/ReviewStars";
 
 type ReviewCardProps = {
   review: ReviewProfile;
@@ -46,4 +46,4 @@ const ReviewCard = (props: ReviewCardProps) => {
   );
 };
 
-export { ReviewCard };
+export default ReviewCard;

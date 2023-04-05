@@ -29,4 +29,4 @@ const ReviewStars = (props: ReviewStarsProps) => {
   );
 };
 
-export { ReviewStars };
+export default ReviewStars;

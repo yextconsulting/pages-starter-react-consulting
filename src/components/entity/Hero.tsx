@@ -2,14 +2,6 @@ import { HoursStatus } from "@yext/sites-react-components";
 import { Link, Image } from "@yext/pages/components";
 import type { Address, Hours, CTA, Image as ImageType } from "@yext/types";
 
-const defaultFields: string[] = [
-  "c_heroSection",
-  "name",
-  "address",
-  "hours",
-  // TODO: add reviews fields
-];
-
 type HeroProps = {
   name: string;
   address: Address;
@@ -70,4 +62,4 @@ const Hero = (props: HeroProps) => {
   );
 };
 
-export { Hero, defaultFields };
+export default Hero;

@@ -50,4 +50,4 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
   );
 };
 
-export { FeaturedProduct, defaultFields };
+export default FeaturedProduct;

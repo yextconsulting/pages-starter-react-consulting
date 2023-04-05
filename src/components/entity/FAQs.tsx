@@ -1,11 +1,5 @@
 import type { FAQProfile } from "src/types/entities";
-import { FAQ } from "src/components/entity/FAQ";
-
-const defaultFields: string[] = [
-  "c_faqSection.title",
-  "c_faqSection.faqs.question",
-  "c_faqSection.faqs.answer",
-];
+import FAQ from "src/components/entity/FAQ";
 
 type FAQsProps = {
   title: string;
@@ -33,4 +27,4 @@ const FAQs = (props: FAQsProps) => {
   );
 };
 
-export { FAQs, defaultFields };
+export default FAQs;
