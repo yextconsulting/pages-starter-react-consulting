@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import { createCtx } from "src/common/createCtx";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
@@ -9,6 +8,7 @@ import {
   useLoadInitialSearchParams,
 } from "src/components/search/utils/handleSearchParams";
 import { useGetSearchResults } from "src/components/search/utils/useGetSearchResults";
+import { LocatorProvider } from "./utils/useLocator";
 import "src/components/search/Locator.css";
 import mapStyles from "src/components/search/defaultMapStyles.json";
 import SearchBox from "src/components/search/SearchBox";
@@ -18,20 +18,6 @@ import ResultList from "src/components/search/ResultList";
 import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 
-export type LocatorContextType = {
-  selectedId: string;
-  setSelectedId: (id: string) => void;
-  focusedId: string;
-  setFocusedId: (id: string) => void;
-  hoveredId: string;
-  setHoveredId: (id: string) => void;
-};
-
-// Setup LocatorProvider to pass the [selected, hovered, focused]Ids between Marker interactions and LocatorCard interactions
-export const [useLocator, LocatorProvider] = createCtx<LocatorContextType>(
-  "Attempted to call useLocator outside of LocatorProvider"
-);
-
 type LocatorProps = {
   // Will display results up to the verticalLimit (default 20, change with searchActions.setVerticalLimit(num))
   displayAllOnNoResults?: boolean;
@@ -40,7 +26,7 @@ type LocatorProps = {
   title: string;
 };
 
-export default function Locator(props: LocatorProps) {
+const Locator = (props: LocatorProps) => {
   const {
     displayAllOnNoResults = false,
     placeholderText,
@@ -123,4 +109,6 @@ export default function Locator(props: LocatorProps) {
       </div>
     </LocatorProvider>
   );
-}
+};
+
+export default Locator;

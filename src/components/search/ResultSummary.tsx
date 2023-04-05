@@ -5,7 +5,7 @@ import { LOCATOR_STATIC_FILTER_FIELD } from "src/config";
 import { useTemplateData } from "src/common/useTemplateData";
 import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
 
-export default function ResultSummary() {
+const ResultSummary = () => {
   const searchState = useSearchState((state) => state);
   const { relativePrefixToRoot } = useTemplateData();
   const [searchMade, setSearchMade] = useState(false);
@@ -37,7 +37,7 @@ export default function ResultSummary() {
   return (
     <div className="mr-4">{searchMade ? resultsText : initialSummaryText}</div>
   );
-}
+};
 
 function getResultsCountText(state: State) {
   let searchPlace = "";
@@ -80,3 +80,5 @@ function getResultsCountText(state: State) {
   }
   return `${resultsCount} locations found.`;
 }
+
+export default ResultSummary;

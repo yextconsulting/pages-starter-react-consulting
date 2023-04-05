@@ -9,7 +9,7 @@ export interface LocatorCardProps {
   useKilometers?: boolean;
 }
 
-export default function LocatorCard(props: LocatorCardProps & CardProps) {
+const LocatorCard = (props: LocatorCardProps & CardProps) => {
   const { result, useKilometers = false } = props;
   const { distanceFromFilter, link, rawData: profile } = result;
   const address = profile.address as Address;
@@ -65,7 +65,7 @@ export default function LocatorCard(props: LocatorCardProps & CardProps) {
       {renderDistance("sm:hidden")}
     </div>
   );
-}
+};
 
 // convert meters to miles or kilometers
 function getDistance(distance: number, useKilometers: boolean) {
@@ -74,3 +74,5 @@ function getDistance(distance: number, useKilometers: boolean) {
   }
   return (distance / 1609.344).toFixed(2);
 }
+
+export default LocatorCard;

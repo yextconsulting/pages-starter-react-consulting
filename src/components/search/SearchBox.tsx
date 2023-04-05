@@ -17,7 +17,7 @@ type SearchBoxProps = {
   placeholderText?: string;
 };
 
-export default function SearchBox(props: SearchBoxProps) {
+const SearchBox = (props: SearchBoxProps) => {
   const { title, subTitle, placeholderText } = props;
 
   const searchActions = useSearchActions();
@@ -48,4 +48,6 @@ export default function SearchBox(props: SearchBoxProps) {
       </div>
     </div>
   );
-}
+};
+
+export default SearchBox;
