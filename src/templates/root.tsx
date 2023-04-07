@@ -25,6 +25,7 @@ import { AnalyticsScopeProvider } from "@yext/pages/components";
 import { Main } from "src/layouts/main";
 import DirectoryHero from "src/components/directory/DirectoryHero";
 import DirectoryList from "src/components/directory/DirectoryList";
+import { getRuntime } from "@yext/pages/util";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -101,6 +102,10 @@ const Root: Template<
   TemplateRenderProps<DirectoryProfile<DirectoryProfile<never>>>
 > = (data) => {
   const { name, dm_directoryChildren, _site } = data.document;
+
+  (data.document.dm_directoryChildren || []).reverse();
+
+  console.log(dm_directoryChildren);
 
   return (
     <Main data={data}>
