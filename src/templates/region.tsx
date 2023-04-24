@@ -19,7 +19,6 @@ import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import type {
   DirectoryProfile,
-  LocationProfile,
   TemplateProps,
   TemplateRenderProps,
 } from "src/types/entities";
@@ -96,7 +95,7 @@ export const getHeadConfig: GetHeadConfig<
  * exported function.
  */
 export const transformProps: TransformProps<
-  TemplateRenderProps<LocationProfile>
+  TemplateRenderProps<DirectoryProfile<never>>
 > = async (data) => {
   const { dm_directoryParents, name } = data.document;
 
