@@ -123,7 +123,7 @@ const City: Template<TemplateRenderProps<DirectoryProfile<LocationProfile>>> = (
 ) => {
   return (
     <Main data={data}>
-      <DirectoryLayout data={data} directoryLevel="city" />
+      <DirectoryLayout data={data} />
     </Main>
   );
 };

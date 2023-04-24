@@ -124,7 +124,7 @@ const Region: Template<TemplateRenderProps<DirectoryProfile<never>>> = (
 ) => {
   return (
     <Main data={data}>
-      <DirectoryLayout data={data} directoryLevel="region" />
+      <DirectoryLayout data={data} />
     </Main>
   );
 };

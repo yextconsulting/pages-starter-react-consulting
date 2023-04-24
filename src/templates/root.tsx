@@ -122,7 +122,7 @@ const Root: Template<
 > = (data) => {
   return (
     <Main data={data}>
-      <DirectoryLayout data={data} directoryLevel="root" />
+      <DirectoryLayout data={data} />
     </Main>
   );
 };

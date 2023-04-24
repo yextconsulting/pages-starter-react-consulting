@@ -12,17 +12,23 @@ import DirectoryList from "src/components/directory/DirectoryList";
 
 interface DirectoryListLayoutProps {
   data: TemplateRenderProps<DirectoryProfile<DirectoryProfile<never>>>;
-  directoryLevel: "root" | "region";
 }
 
 interface DirectoryGridLayoutProps {
   data: TemplateRenderProps<DirectoryProfile<LocationProfile>>;
-  directoryLevel: "city";
 }
 
 type DirectoryLayoutProps = DirectoryListLayoutProps | DirectoryGridLayoutProps;
 
-const DirectoryLayout = ({ data, directoryLevel }: DirectoryLayoutProps) => {
+// Type guard to determine whether to render the DirectoryGrid or DirectoryList component
+// based on the type of dm_directoryChildren.
+const isDirectoryGrid = (
+  children: LocationProfile[] | DirectoryProfile<never>[]
+): children is LocationProfile[] => {
+  return "address" in children[0];
+};
+
+const DirectoryLayout = ({ data }: DirectoryLayoutProps) => {
   const { name, dm_directoryChildren, dm_directoryParents, _site } =
     data.document;
 
@@ -39,25 +45,20 @@ const DirectoryLayout = ({ data, directoryLevel }: DirectoryLayoutProps) => {
           addAnalytics={true}
         />
       </AnalyticsScopeProvider>
-      {(directoryLevel === "region" || directoryLevel === "root") &&
-        dm_directoryChildren && (
-          <AnalyticsScopeProvider name="directory">
-            <DirectoryList
-              showNumLocs={true}
-              directoryChildren={
-                (dm_directoryChildren || []) as DirectoryProfile<never>[]
-              }
-              relativePrefixToRoot={data.relativePrefixToRoot}
-            />
-          </AnalyticsScopeProvider>
-        )}
-      {directoryLevel === "city" && (
+      {dm_directoryChildren && !isDirectoryGrid(dm_directoryChildren) && (
+        <AnalyticsScopeProvider name="directory">
+          <DirectoryList
+            showNumLocs={true}
+            directoryChildren={dm_directoryChildren}
+            relativePrefixToRoot={data.relativePrefixToRoot}
+          />
+        </AnalyticsScopeProvider>
+      )}
+      {dm_directoryChildren && isDirectoryGrid(dm_directoryChildren) && (
         <AnalyticsScopeProvider name="directory">
           <DirectoryGrid
             CardComponent={DirectoryCard}
-            directoryChildren={
-              (dm_directoryChildren || []) as LocationProfile[]
-            }
+            directoryChildren={dm_directoryChildren}
           />
         </AnalyticsScopeProvider>
       )}
