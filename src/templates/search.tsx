@@ -7,13 +7,10 @@ import {
 import "src/index.css";
 import "src/styles/search.css";
 import { defaultHeadConfig } from "src/common/head";
-import { SearchHeadlessProvider } from "@yext/search-headless-react";
-import Locator from "src/components/search/Locator";
 import { Main } from "src/layouts/main";
-import { BrowserRouter } from "react-router-dom";
-import { getRuntime } from "@yext/pages/util";
+import SearchLayout from "src/layouts/search";
 import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
-import { SEARCH_PATH, getSearchProvider } from "src/config";
+import { SEARCH_PATH } from "src/config";
 
 /**
  * Not required depending on your use case.
@@ -72,33 +69,9 @@ export const getHeadConfig: GetHeadConfig<
  * The props passed in here are the direct result from `getStaticProps`.
  */
 const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
-  const { document } = data;
-  const { c_searchTitle, c_searchSubTitle, c_searchPlaceholderText, _site } =
-    document;
-
-  const runtime = getRuntime();
-  const searcher = getSearchProvider(
-    _site.c_searchExperienceAPIKey ?? "",
-    document.meta.locale
-  );
-
-  if (!_site.c_searchExperienceAPIKey) {
-    console.error("Add the search experience API key to the Site Entity");
-  }
-
   return (
     <Main data={data}>
-      <SearchHeadlessProvider searcher={searcher}>
-        {runtime.name === "browser" && (
-          <BrowserRouter>
-            <Locator
-              title={c_searchTitle}
-              subTitle={c_searchSubTitle}
-              placeholderText={c_searchPlaceholderText}
-            />
-          </BrowserRouter>
-        )}
-      </SearchHeadlessProvider>
+      <SearchLayout data={data} />
     </Main>
   );
 };

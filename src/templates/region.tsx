@@ -19,15 +19,11 @@ import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import type {
   DirectoryProfile,
-  LocationProfile,
   TemplateProps,
   TemplateRenderProps,
 } from "src/types/entities";
-import { AnalyticsScopeProvider } from "@yext/pages/components";
 import { Main } from "src/layouts/main";
-import Breadcrumbs from "src/components/common/Breadcrumbs";
-import DirectoryHero from "src/components/directory/DirectoryHero";
-import DirectoryList from "src/components/directory/DirectoryList";
+import DirectoryLayout from "src/layouts/directory";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -99,7 +95,7 @@ export const getHeadConfig: GetHeadConfig<
  * exported function.
  */
 export const transformProps: TransformProps<
-  TemplateRenderProps<LocationProfile>
+  TemplateRenderProps<DirectoryProfile<never>>
 > = async (data) => {
   const { dm_directoryParents, name } = data.document;
 
@@ -123,32 +119,12 @@ export const transformProps: TransformProps<
  * components any way you'd like as long as it lives in the src folder (though you should not put
  * them in the src/templates folder as this is specific for true template files).
  */
-const Region: Template<
-  TemplateRenderProps<DirectoryProfile<DirectoryProfile<never>>>
-> = (data) => {
-  const { name, dm_directoryChildren, dm_directoryParents, _site } =
-    data.document;
-
+const Region: Template<TemplateRenderProps<DirectoryProfile<never>>> = (
+  data
+) => {
   return (
     <Main data={data}>
-      <AnalyticsScopeProvider name="directory_hero">
-        <DirectoryHero title={name} brand={_site.c_brand} />
-      </AnalyticsScopeProvider>
-      <AnalyticsScopeProvider name="breadcrumbs">
-        <Breadcrumbs
-          breadcrumbs={dm_directoryParents || []}
-          separator="/"
-          className="container"
-          addAnalytics={true}
-        />
-      </AnalyticsScopeProvider>
-      <AnalyticsScopeProvider name="directory">
-        <DirectoryList
-          showNumLocs={true}
-          directoryChildren={dm_directoryChildren || []}
-          relativePrefixToRoot={data.relativePrefixToRoot}
-        />
-      </AnalyticsScopeProvider>
+      <DirectoryLayout data={data} />
     </Main>
   );
 };
