@@ -24,6 +24,7 @@ import type {
 } from "src/types/entities";
 import { Main } from "src/layouts/main";
 import DirectoryLayout from "src/layouts/directory";
+import { useEffect } from "react";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -120,6 +121,13 @@ export const transformProps: TransformProps<
 const Root: Template<
   TemplateRenderProps<DirectoryProfile<DirectoryProfile<never>>>
 > = (data) => {
+  useEffect(() => {
+    fetch(
+      "https://www.fairfaxcounty.gov/gisapps/Reports/GetReport.ashx?reportType=generalinfo&format=json&loc=38.90798682105633%20-77.28541386948326"
+    )
+      .then((r) => r.json())
+      .then(console.log);
+  }, []);
   return (
     <Main data={data}>
       <DirectoryLayout data={data} />

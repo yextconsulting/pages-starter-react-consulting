@@ -4,6 +4,7 @@ import { getRuntime } from "@yext/pages/util";
 import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
 import { getSearchProvider } from "src/config";
 import Locator from "src/components/search/Locator";
+import { useEffect, useState } from "react";
 
 interface SearchLayoutProps {
   data: TemplateRenderProps<SearchPageProfile>;
@@ -20,6 +21,12 @@ const SearchLayout = ({ data }: SearchLayoutProps) => {
     document.meta.locale
   );
 
+  const [firstRender, setFirstRender] = useState(true);
+
+  useEffect(() => {
+    if (firstRender) setFirstRender(false);
+  }, [firstRender]);
+
   if (!_site.c_searchExperienceAPIKey) {
     console.error("Add the search experience API key to the Site Entity");
   }
@@ -27,7 +34,7 @@ const SearchLayout = ({ data }: SearchLayoutProps) => {
   return (
     <>
       <SearchHeadlessProvider searcher={searcher}>
-        {runtime.name === "browser" && (
+        {runtime.name === "browser" && !firstRender && (
           <BrowserRouter>
             <Locator
               title={c_searchTitle}

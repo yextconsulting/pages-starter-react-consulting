@@ -1,6 +1,16 @@
 import type { TemplateRenderProps, LocationProfile } from "src/types/entities";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
 import { AnalyticsScopeProvider } from "@yext/pages/components";
+import {
+  PDFViewer,
+  PDFDownloadLink,
+  Text,
+  Document,
+  Page,
+  Image,
+  StyleSheet,
+  View,
+} from "@react-pdf/renderer";
 
 import About from "src/components/entity/About";
 import Banner from "src/components/entity/Banner";
@@ -16,6 +26,8 @@ import Products from "src/components/entity/Products";
 import Promo from "src/components/entity/Promo";
 import Reviews from "src/components/entity/Reviews";
 import Team from "src/components/entity/Team";
+import { getRuntime } from "@yext/pages/util";
+import { useState } from "react";
 
 interface EntityLayoutProps {
   data: TemplateRenderProps<LocationProfile>;
@@ -56,8 +68,19 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
   const showInsights = insights?.title && insights?.insights;
   const showReviews = reviews?.title && reviews?.reviews;
 
+  const docs = Array(100)
+    .fill(data.document)
+    .map((loc, i) => ({ ...loc, id: i, name: `Test Location ${i}` }));
+
+  const runtime = getRuntime();
+
   return (
-    <>
+    <div className="">
+      {!runtime.isServerSide && (
+        <PDFViewer className="w-full h-[700px]">
+          <ExportDoc docs={docs} />
+        </PDFViewer>
+      )}
       {showBanner && (
         <AnalyticsScopeProvider name="banner">
           <Banner text={banner.text} image={banner.image} />
@@ -166,8 +189,61 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
           />
         </AnalyticsScopeProvider>
       </LazyLoadWrapper>
-    </>
+    </div>
   );
 };
+
+const styles = StyleSheet.create({
+  tocentry: { margin: 10 },
+  doctor: {
+    border: "2px solid black",
+    textAlign: "center",
+    margin: 30,
+    padding: 30,
+  },
+});
+
+export function ExportDoc(props: { docs: any[] }) {
+  const { docs } = props;
+  const pageNumMap: Record<number, any> = {};
+
+  return (
+    <Document>
+      <Page>
+        <Text>Table of Contents</Text>
+        {docs.map((doc) => {
+          console.log(pageNumMap);
+          console.log(doc.id, pageNumMap[doc.id]);
+          return (
+            <View style={styles.tocentry}>
+              <Text
+                wrap={false}
+                render={({ pageNumber }) => {
+                  return `${doc.name} - Page ${
+                    pageNumMap[doc.id] || "unknown"
+                  }`;
+                }}
+              ></Text>
+            </View>
+          );
+        })}
+      </Page>
+      <Page>
+        {docs.map((doc) => {
+          return (
+            <View
+              style={styles.doctor}
+              wrap={false}
+              render={({ pageNumber }) => {
+                pageNumMap[doc.id] = pageNumber;
+                return <Text>Hello {doc.name}</Text>;
+              }}
+            ></View>
+          );
+        })}
+      </Page>
+    </Document>
+  );
+}
 
 export default EntityLayout;
