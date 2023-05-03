@@ -25,7 +25,7 @@ type DirectoryLayoutProps = DirectoryListLayoutProps | DirectoryGridLayoutProps;
 const isDirectoryGrid = (
   children: LocationProfile[] | DirectoryProfile<never>[]
 ): children is LocationProfile[] => {
-  return children.length > 1 && "address" in children[0];
+  return children.length > 0 && "address" in children[0];
 };
 
 const DirectoryLayout = ({ data }: DirectoryLayoutProps) => {
