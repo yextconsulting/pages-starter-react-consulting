@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
-import { Map } from "./map";
+import { Map, Clusterer, ClusterTemplateProps } from "./map";
 import { GoogleMaps } from "@yext/components-tsx-maps";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import {
@@ -95,14 +95,16 @@ const Locator = (props: LocatorProps) => {
               padding={{ top: 100, bottom: 200, left: 50, right: 50 }}
               className="h-full"
             >
-              {results.map((data, index) => (
-                <CustomMarker
-                  key={data.id}
-                  coordinate={data.coordinate}
-                  id={data.id}
-                  index={index + 1}
-                />
-              ))}
+              <Clusterer ClusterTemplate={ClusterPinTemplate}>
+                {results.map((data, index) => (
+                  <CustomMarker
+                    key={data.id}
+                    coordinate={data.coordinate}
+                    id={data.id}
+                    index={index + 1}
+                  />
+                ))}
+              </Clusterer>
             </Map>
           </div>
         )}
@@ -112,3 +114,33 @@ const Locator = (props: LocatorProps) => {
 };
 
 export default Locator;
+
+const ClusterPinTemplate = (props: ClusterTemplateProps) => {
+  return (
+    <div>
+      <svg
+        width="30"
+        height="38"
+        viewBox="0 0 30 38"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M30 15.0882C30 23.4212 23.3333 30.7353 15 38C7.22222 31.2941 0 23.4212 0 15.0882C0 6.75523 6.71573 0 15 0C23.2843 0 30 6.75523 30 15.0882Z"
+          fill="blue"
+        />
+        <text
+          x="50%"
+          y="40%"
+          fontSize="14px"
+          fontWeight="bold"
+          dominantBaseline="middle"
+          textAnchor="middle"
+          fill="#FFFFFF"
+        >
+          {props.count}
+        </text>
+      </svg>
+    </div>
+  );
+};

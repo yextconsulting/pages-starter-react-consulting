@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { MapPin, MapPinOptions } from "@yext/components-tsx-maps";
 import { MapContext } from "./map.js";
-import { MapContextType, MarkerProps } from "./types.js";
+import { MapContextType, MarkerProps, ClusterContextType } from "./types.js";
+import { ClusterContext } from "./clusterer.js";
 
 const defaultMarkerIcon = (
   <svg
@@ -29,8 +30,10 @@ export const Marker = ({
   onFocus,
   onHover,
   zIndex,
-}: MarkerProps): JSX.Element | null => {
+  isCluster,
+}: MarkerProps & { isCluster?: boolean }): JSX.Element | null => {
   const { map, provider } = useContext(MapContext) as MapContextType;
+  const cluster = useContext(ClusterContext) as ClusterContextType;
 
   const marker: MapPin = useMemo(() => {
     return new MapPinOptions()
@@ -56,8 +59,23 @@ export const Marker = ({
     marker.setFocusHandler((focused: boolean) => onFocus(focused, id));
     marker.setHoverHandler((hovered: boolean) => onHover(hovered, id));
 
+    if (cluster && cluster["setPinStore"] && !isCluster) {
+      cluster["setPinStore"]((pinStore) => [
+        ...pinStore,
+        {
+          pin: marker,
+          id,
+        },
+      ]);
+    }
+
     return () => {
       marker.setMap(null);
+      if (cluster && cluster["setPinStore"]) {
+        cluster["setPinStore"]((pinStore) =>
+          pinStore.filter((pin) => pin.id !== id)
+        );
+      }
     };
   }, []);
 
@@ -68,7 +86,6 @@ export const Marker = ({
     Object.assign(pinEl.style, {
       height: "auto",
       width: "auto",
-      fontSize: 0,
     });
     return createPortal(elementToRender, pinEl);
   }
