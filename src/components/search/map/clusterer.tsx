@@ -23,6 +23,18 @@ import {
 
 export const ClusterContext = createContext<ClusterContextType | null>(null);
 
+export function useClusterContext() {
+  const ctx = useContext(ClusterContext);
+
+  if (!ctx) {
+    throw new Error(
+      "Attempted to call useClusterContext() outside of <Clusterer>."
+    );
+  }
+
+  return ctx;
+}
+
 export const Clusterer = ({ children, ClusterTemplate }: ClustererProps) => {
   const { map } = useContext(MapContext) as MapContextType;
   const [pinStore, setPinStore] = useState<PinStoreType[]>([]);

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import type { Coordinate } from "@yext/types";
 import { Coordinate as CoordinateClass } from "@yext/components-tsx-geo";
-import { Marker, useMapContext } from "./map";
+import { Marker, useClusterContext, useMapContext } from "./map";
 import { useLocator } from "src/components/search/utils/useLocator";
 
 type CustomMarkerProps = {
@@ -25,6 +25,26 @@ const CustomMarker = (props: CustomMarkerProps) => {
   const focused = id === focusedId;
   const hovered = id === hoveredId;
   const map = useMapContext();
+
+  const { clusters } = useClusterContext();
+  const isMarkerInCluster = !!clusters.find(
+    (cluster) => cluster.length > 1 && cluster.find((pin) => pin.id === id)
+  );
+
+  // If a marker is within a cluster when the LocatorCard is clicked, zoom into the cluster.
+  useEffect(() => {
+    if (selectedId === id && isMarkerInCluster) {
+      map.setCenter(coordinate);
+      map.setZoom(16);
+    }
+  }, [selectedId, id, coordinate]);
+
+  // When a cluster is created, unset the selected marker if it was contained within the cluster.
+  useEffect(() => {
+    if (selectedId === id && isMarkerInCluster) {
+      setSelectedId("");
+    }
+  }, [isMarkerInCluster]);
 
   // If a marker is offscreen when its corresponding LocatorCard is clicked, pan the map to be centered on the marker
   useEffect(() => {
