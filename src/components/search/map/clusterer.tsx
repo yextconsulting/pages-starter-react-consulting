@@ -41,6 +41,8 @@ export const Clusterer = ({ children, ClusterTemplate }: ClustererProps) => {
   const [clusters, setClusters] = useState<PinStoreType[][]>();
   const [clustersToRender, setClustersToRender] = useState<JSX.Element[]>([]);
 
+  console.log(pinStore);
+
   // Recalculate the clusters when either the pin store is updated or the map zoom level changes.
   useEffect(() => {
     setClusters(generateClusters(pinStore, map));
@@ -60,17 +62,20 @@ export const Clusterer = ({ children, ClusterTemplate }: ClustererProps) => {
           // Single marker in cluster so just render normally.
           cluster[0].pin.setMap(map);
         } else {
+          // Calculate center of all markers in the cluster.
+          // Used to set the coordinate of the marker as well as generate a unique id.
+          const clusterCenter: Coordinate = GeoBounds.fit(
+            cluster.map((p) => p.pin.getCoordinate())
+          ).getCenter(Projection.MERCATOR);
+
           // Remove all markers in cluster from the map and render one cluster marker instead at their geo center.
           cluster.forEach((p) => p.pin.setMap(null));
           setClustersToRender((clustersToRender) => [
             ...clustersToRender,
             <Marker
-              isCluster={true}
-              coordinate={GeoBounds.fit(
-                cluster.map((p) => p.pin.getCoordinate())
-              ).getCenter(Projection.MERCATOR)}
-              id={`cluster-${JSON.stringify(cluster[0].pin.getCoordinate())}`}
-              key={`cluster-${JSON.stringify(cluster[0].pin.getCoordinate())}`}
+              coordinate={clusterCenter}
+              id={`cluster-{${clusterCenter._lat},${clusterCenter._lon}}`}
+              key={`cluster-{${clusterCenter._lat},${clusterCenter._lon}}`}
               onClick={() =>
                 map.fitCoordinates(
                   cluster.map((p) => p.pin.getCoordinate()),
@@ -126,8 +131,8 @@ export const Clusterer = ({ children, ClusterTemplate }: ClustererProps) => {
       }}
     >
       <>
-        {clustersToRender.map((c, idx) => (
-          <Fragment key={idx}>{c}</Fragment>
+        {clustersToRender.map((cluster, idx) => (
+          <Fragment key={idx}>{cluster}</Fragment>
         ))}
         {children}
       </>

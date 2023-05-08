@@ -30,8 +30,7 @@ export const Marker = ({
   onFocus,
   onHover,
   zIndex,
-  isCluster,
-}: MarkerProps & { isCluster?: boolean }): JSX.Element | null => {
+}: MarkerProps): JSX.Element | null => {
   const { map, provider } = useContext(MapContext) as MapContextType;
   const cluster = useContext(ClusterContext) as ClusterContextType;
 
@@ -59,7 +58,9 @@ export const Marker = ({
     marker.setFocusHandler((focused: boolean) => onFocus(focused, id));
     marker.setHoverHandler((hovered: boolean) => onHover(hovered, id));
 
-    if (cluster && cluster["setPinStore"] && !isCluster) {
+    // Add the pin to the pinStore if it is not a cluster marker
+    const isClusterMarker = id.includes("cluster-");
+    if (cluster && cluster["setPinStore"] && !isClusterMarker) {
       cluster["setPinStore"]((pinStore) => [
         ...pinStore,
         {
