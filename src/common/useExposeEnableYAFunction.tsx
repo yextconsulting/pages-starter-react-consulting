@@ -19,7 +19,7 @@ export function useExposeEnableYAFunction() {
     );
   }
 
-  if (!getRuntime().isServerSide) {
+  if (getRuntime().name === "browser") {
     window.enableYextAnalytics = () => {
       window.yextAnalyticsEnabled = true;
       analytics.optIn();
