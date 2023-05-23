@@ -2,6 +2,10 @@ html {
   --yxt-hoursTable-col2-width: auto;
 }
 
+abbr:where([title]) {
+  text-decoration: none;
+}
+
 .HoursStatus-current {
   font-weight: theme("fontWeight.bold");
 }
