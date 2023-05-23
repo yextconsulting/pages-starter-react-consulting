@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { MapPin, MapPinOptions } from "@yext/components-tsx-maps";
 import { MapContext } from "./map.js";
-import { MapContextType, MarkerProps, ClusterContextType } from "./types.js";
-import { ClusterContext } from "./clusterer.js";
+import { MapContextType, MarkerProps, ClustererContextType } from "./types.js";
+import { ClustererContext } from "./clusterer.js";
 
 const defaultMarkerIcon = (
   <svg
@@ -32,7 +32,7 @@ export const Marker = ({
   zIndex,
 }: MarkerProps): JSX.Element | null => {
   const { map, provider } = useContext(MapContext) as MapContextType;
-  const cluster = useContext(ClusterContext) as ClusterContextType;
+  const cluster = useContext(ClustererContext) as ClustererContextType;
 
   const marker: MapPin = useMemo(() => {
     return new MapPinOptions()
@@ -58,10 +58,10 @@ export const Marker = ({
     marker.setFocusHandler((focused: boolean) => onFocus(focused, id));
     marker.setHoverHandler((hovered: boolean) => onHover(hovered, id));
 
-    // Add the pin to the pinStore if it is not a cluster marker
-    const isClusterMarker = id.includes("cluster-");
-    if (cluster && cluster["setPinStore"] && !isClusterMarker) {
-      cluster["setPinStore"]((pinStore) => [
+    // Add the pin to the pinStore if it is not a cluster marker.
+    const isClusterMarker = cluster?.clusterIds.includes(id);
+    if (cluster && !isClusterMarker) {
+      cluster.setPinStore((pinStore) => [
         ...pinStore,
         {
           pin: marker,
@@ -72,8 +72,9 @@ export const Marker = ({
 
     return () => {
       marker.setMap(null);
-      if (cluster && cluster["setPinStore"]) {
-        cluster["setPinStore"]((pinStore) =>
+
+      if (cluster) {
+        cluster.setPinStore((pinStore) =>
           pinStore.filter((pin) => pin.id !== id)
         );
       }

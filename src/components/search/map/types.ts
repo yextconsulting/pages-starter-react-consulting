@@ -61,8 +61,9 @@ export type ClusterTemplateProps = {
 };
 
 export type ClustererProps = {
-  ClusterTemplate?: (props: ClusterTemplateProps) => JSX.Element;
+  clusterRadius?: number;
   children?: any;
+  ClusterTemplate?: (props: ClusterTemplateProps) => JSX.Element;
 };
 
 export type PinStoreType = {
@@ -70,8 +71,8 @@ export type PinStoreType = {
   pin: MapPin;
 };
 
-export interface ClusterContextType {
-  pinStore: PinStoreType[];
-  setPinStore: React.Dispatch<React.SetStateAction<PinStoreType[]>>;
+export interface ClustererContextType {
   clusters: PinStoreType[][];
+  clusterIds: string[];
+  setPinStore: React.Dispatch<React.SetStateAction<PinStoreType[]>>;
 }

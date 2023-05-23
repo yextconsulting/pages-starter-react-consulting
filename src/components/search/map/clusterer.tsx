@@ -11,7 +11,8 @@ import type {
   MapContextType,
   ClustererProps,
   PinStoreType,
-  ClusterContextType,
+  ClustererContextType,
+  ClusterTemplateProps,
 } from "./types";
 import type { Map } from "@yext/components-tsx-maps";
 import {
@@ -21,113 +22,129 @@ import {
   GeoBounds,
 } from "@yext/components-tsx-geo";
 
-export const ClusterContext = createContext<ClusterContextType | null>(null);
+const defaultClusterTemplate = ({ count }: ClusterTemplateProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+    >
+      <g fill="none" fillRule="evenodd">
+        <circle
+          fill="red"
+          fillRule="nonzero"
+          stroke="white"
+          cx="11"
+          cy="11"
+          r="11"
+        />
+        <text
+          fill="white"
+          fontFamily="Arial-BoldMT,Arial"
+          fontSize="12"
+          fontWeight="bold"
+        >
+          <tspan x="50%" y="15" textAnchor="middle">
+            {count}
+          </tspan>
+        </text>
+      </g>
+    </svg>
+  );
+};
+
+export const ClustererContext = createContext<ClustererContextType | null>(
+  null
+);
 
 export function useClusterContext() {
-  const ctx = useContext(ClusterContext);
+  const ctx = useContext(ClustererContext);
 
   if (!ctx) {
     throw new Error(
-      "Attempted to call useClusterContext() outside of <Clusterer>."
+      "Attempted to call useClustererContext() outside of <Clusterer>."
     );
   }
 
   return ctx;
 }
 
-export const Clusterer = ({ children, ClusterTemplate }: ClustererProps) => {
+export const Clusterer = ({
+  clusterRadius = 50,
+  children,
+  ClusterTemplate = defaultClusterTemplate,
+}: ClustererProps) => {
   const { map } = useContext(MapContext) as MapContextType;
   const [pinStore, setPinStore] = useState<PinStoreType[]>([]);
   const [clusters, setClusters] = useState<PinStoreType[][]>();
+  const [clusterIds, setClusterIds] = useState<string[]>([]);
   const [clustersToRender, setClustersToRender] = useState<JSX.Element[]>([]);
-
-  console.log(pinStore);
 
   // Recalculate the clusters when either the pin store is updated or the map zoom level changes.
   useEffect(() => {
-    setClusters(generateClusters(pinStore, map));
+    setClusters(_generateClusters(pinStore, map, clusterRadius));
   }, [pinStore, map.getZoom()]);
 
   // When the clusters are updated, remove any pins in a cluster of more than 1 pin from the map.
   // Then calculate the geo bounds of all the pins in the cluster and render a single marker
   // at their center.
   useEffect(() => {
-    if (clusters && clusters.length) {
-      setClustersToRender(() => []);
-      clusters.forEach((cluster) => {
-        if (cluster.length === 0) {
-          return;
-        }
-        if (cluster.length === 1) {
-          // Single marker in cluster so just render normally.
-          cluster[0].pin.setMap(map);
-        } else {
-          // Calculate center of all markers in the cluster.
-          // Used to set the coordinate of the marker as well as generate a unique id.
-          const clusterCenter: Coordinate = GeoBounds.fit(
-            cluster.map((p) => p.pin.getCoordinate())
-          ).getCenter(Projection.MERCATOR);
+    setClustersToRender(() => []);
 
-          // Remove all markers in cluster from the map and render one cluster marker instead at their geo center.
-          cluster.forEach((p) => p.pin.setMap(null));
-          setClustersToRender((clustersToRender) => [
-            ...clustersToRender,
-            <Marker
-              coordinate={clusterCenter}
-              id={`cluster-{${clusterCenter._lat},${clusterCenter._lon}}`}
-              key={`cluster-{${clusterCenter._lat},${clusterCenter._lon}}`}
-              onClick={() =>
-                map.fitCoordinates(
-                  cluster.map((p) => p.pin.getCoordinate()),
-                  true,
-                  Infinity
-                )
-              }
-            >
-              {ClusterTemplate ? (
-                <ClusterTemplate count={cluster.length} />
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  viewBox="0 0 22 22"
-                >
-                  <g fill="none" fillRule="evenodd">
-                    <circle
-                      fill="red"
-                      fillRule="nonzero"
-                      stroke="white"
-                      cx="11"
-                      cy="11"
-                      r="11"
-                    />
-                    <text
-                      fill="white"
-                      fontFamily="Arial-BoldMT,Arial"
-                      fontSize="12"
-                      fontWeight="bold"
-                    >
-                      <tspan x="50%" y="15" textAnchor="middle">
-                        {cluster.length}
-                      </tspan>
-                    </text>
-                  </g>
-                </svg>
-              )}
-            </Marker>,
-          ]);
-        }
-      });
+    if (clusters?.length === 0) {
+      return;
     }
+
+    clusters?.forEach((cluster) => {
+      // Add pins back to map if they are in a cluster of 1.
+      if (cluster.length === 1) {
+        cluster[0].pin.setMap(map);
+        return;
+      }
+      if (cluster.length > 1) {
+        // Calculate center of all markers in the cluster.
+        // Used to set the coordinate of the marker as well as generate a unique id.
+        const clusterCenter: Coordinate = GeoBounds.fit(
+          cluster.map((p) => p.pin.getCoordinate())
+        ).getCenter(Projection.MERCATOR);
+        const id = `cluster-{${clusterCenter._lat},${clusterCenter._lon}}`;
+
+        // Remove all markers in cluster from the map and instead
+        // render one cluster marker at their geo center.
+        cluster.forEach((p) => p.pin.setMap(null));
+
+        // Add cluster id to clusterIds in order to track what markers are actually clusters.
+        setClusterIds((clusterIds) => [...clusterIds, id]);
+
+        // Add cluster marker to array to be rendered.
+        setClustersToRender((clustersToRender) => [
+          ...clustersToRender,
+          <Marker
+            coordinate={clusterCenter}
+            id={id}
+            key={id}
+            onClick={() =>
+              map.fitCoordinates(
+                cluster.map((p) => p.pin.getCoordinate()),
+                true,
+                Infinity
+              )
+            }
+          >
+            <ClusterTemplate count={cluster.length} />
+          </Marker>,
+        ]);
+      }
+    });
   }, [clusters]);
 
   return (
-    <ClusterContext.Provider
+    <ClustererContext.Provider
       value={{
-        pinStore,
-        setPinStore,
         clusters: clusters ?? [],
+        clusterIds,
+        setPinStore,
       }}
     >
       <>
@@ -136,15 +153,22 @@ export const Clusterer = ({ children, ClusterTemplate }: ClustererProps) => {
         ))}
         {children}
       </>
-    </ClusterContext.Provider>
+    </ClustererContext.Provider>
   );
 };
 
-const CLUSTER_RADIUS = 50;
-
-const generateClusters = (pins: PinStoreType[], map: Map) => {
+/**
+ * Generate groups of pins such that each pin is in exactly one cluster, each pin is at most
+ * @param clusterRadius pixels from the center of the cluster, and each cluster
+ * has at least one pin.
+ */
+const _generateClusters = (
+  pins: PinStoreType[],
+  map: Map,
+  clusterRadius: number
+) => {
   const clusterRadiusRadians =
-    (CLUSTER_RADIUS * Math.PI) / 2 ** (map.getZoom() + 7);
+    (clusterRadius * Math.PI) / 2 ** (map.getZoom() + 7);
   const pinsInRadius = pins.map((_, index) => [index]);
   const pinClusters = [];
 
