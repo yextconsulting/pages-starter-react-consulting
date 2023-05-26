@@ -118,7 +118,6 @@ export const config: TemplateConfig = {
       "c_reviewsSection",
       "ref_reviewsAgg.reviewCount", // This is required in order to update the stream every time a new review is created.
       // Team Fields
-      "c_teamSection.title",
       "c_teamSection.team.id",
       "c_teamSection.team.name",
       "c_teamSection.team.headshot",
