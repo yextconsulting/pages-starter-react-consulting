@@ -16,7 +16,10 @@ interface MainProps {
   children?: ReactNode;
 }
 
+declare let YEXT_PUBLIC_MY_SECRET_VARIABLE: string;
+
 const Main = (props: MainProps) => {
+  console.log("ENV VAR: ", YEXT_PUBLIC_MY_SECRET_VARIABLE);
   return (
     <ConfigurationProvider value={config}>
       <AnalyticsProvider templateData={props.data} requireOptIn={true}>
