@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@yext/custom-field-debugger": "2.0.9",
-    "@yext/pages": "1.0.0-beta.21",
+    "@yext/pages": "1.0.0-beta.22",
     "@yext/schema-wrapper": "1.0.2",
     "@yext/search-headless-react": "^2.0.0",
     "@yext/search-ui-react": "1.1.0",
