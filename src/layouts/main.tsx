@@ -1,9 +1,7 @@
 import type { ReactNode } from "react";
 import type { TemplateRenderProps, BaseProfile } from "src/types/entities";
-import {
-  AnalyticsProvider,
-  AnalyticsScopeProvider,
-} from "@yext/pages/components";
+import { AnalyticsProvider } from "@yext/pages/components";
+import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 import { ConfigurationProvider } from "@yext/sites-react-components";
 import { TemplateDataProvider } from "src/common/useTemplateData";
 import { Header } from "src/components/common/Header";
@@ -37,14 +35,14 @@ const MainInternal = (props: MainProps) => {
 
   return (
     <TemplateDataProvider value={props.data}>
-      <AnalyticsScopeProvider name="header">
+      <ErrorBoundaryWithAnalytics name="header">
         <Header
           logo={_site?.c_header?.logo}
           links={_site?.c_header?.links || []}
         />
-      </AnalyticsScopeProvider>
+      </ErrorBoundaryWithAnalytics>
       {children}
-      <AnalyticsScopeProvider name="footer">
+      <ErrorBoundaryWithAnalytics name="footer">
         <Footer
           copyrightMessage={_site.c_copyrightMessage || ""}
           facebook={_site.c_facebook}
@@ -54,7 +52,7 @@ const MainInternal = (props: MainProps) => {
           linkedIn={_site.c_linkedIn}
           footerLinks={_site.c_footerLinks || []}
         />
-      </AnalyticsScopeProvider>
+      </ErrorBoundaryWithAnalytics>
     </TemplateDataProvider>
   );
 };
