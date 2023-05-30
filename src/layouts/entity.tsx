@@ -1,6 +1,6 @@
 import type { TemplateRenderProps, LocationProfile } from "src/types/entities";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
-import { AnalyticsScopeProvider } from "@yext/pages/components";
+import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 
 import About from "src/components/entity/About";
 import Banner from "src/components/entity/Banner";
@@ -59,19 +59,19 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
   return (
     <>
       {showBanner && (
-        <AnalyticsScopeProvider name="banner">
+        <ErrorBoundaryWithAnalytics name="banner">
           <Banner text={banner.text} image={banner.image} />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       )}
-      <AnalyticsScopeProvider name="breadcrumbs">
+      <ErrorBoundaryWithAnalytics name="breadcrumbs">
         <Breadcrumbs
           breadcrumbs={directoryParents || []}
           separator="/"
           className="container"
           addAnalytics={true}
         />
-      </AnalyticsScopeProvider>
-      <AnalyticsScopeProvider name="hero">
+      </ErrorBoundaryWithAnalytics>
+      <ErrorBoundaryWithAnalytics name="hero">
         <Hero
           name={name}
           cta1={hero?.cta1}
@@ -82,12 +82,12 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
           numReviews={21}
           rating={4.5}
         />
-      </AnalyticsScopeProvider>
-      <AnalyticsScopeProvider name="core">
+      </ErrorBoundaryWithAnalytics>
+      <ErrorBoundaryWithAnalytics name="core">
         <Core profile={data.document} />
-      </AnalyticsScopeProvider>
+      </ErrorBoundaryWithAnalytics>
       {showPromo && (
-        <AnalyticsScopeProvider name="promo">
+        <ErrorBoundaryWithAnalytics name="promo">
           <Promo
             title={promo.title}
             description={promo.description}
@@ -96,66 +96,66 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
             googlePlayUrl={promo.googlePlayUrl}
             appStoreUrl={promo.appStoreUrl}
           />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       )}
       {showProducts && (
-        <AnalyticsScopeProvider name="products">
+        <ErrorBoundaryWithAnalytics name="products">
           <Products title={products.title} items={products.products} />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       )}
       {showEvents && (
-        <AnalyticsScopeProvider name="events">
+        <ErrorBoundaryWithAnalytics name="events">
           <Events title={events.title} items={events.events} />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       )}
       {showAbout && (
-        <AnalyticsScopeProvider name="about">
+        <ErrorBoundaryWithAnalytics name="about">
           <About
             title={about.title}
             image={about.image}
             description={about.description || description}
             cta={about.cta}
           />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       )}
       {showInsights && (
-        <AnalyticsScopeProvider name="insights">
+        <ErrorBoundaryWithAnalytics name="insights">
           <Insights
             title={insights.title}
             cta={insights.cta}
             insights={insights.insights}
           />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       )}
       {showGallery && (
-        <AnalyticsScopeProvider name="gallery">
+        <ErrorBoundaryWithAnalytics name="gallery">
           <Gallery
             title={gallery?.title}
             images={gallery?.images || photoGallery}
           />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       )}
       {showTeam && (
-        <AnalyticsScopeProvider name="team">
+        <ErrorBoundaryWithAnalytics name="team">
           <Team title={team.title} team={team.team} initialSize={3} />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       )}
       {showFAQ && (
-        <AnalyticsScopeProvider name="faqs">
+        <ErrorBoundaryWithAnalytics name="faqs">
           <FAQs title={faq.title} faqs={faq.faqs} />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       )}
       {showReviews && (
-        <AnalyticsScopeProvider name="reviews">
+        <ErrorBoundaryWithAnalytics name="reviews">
           <Reviews
             title={reviews.title}
             reviews={reviews.reviews}
             name={name}
           />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       )}
       <LazyLoadWrapper>
-        <AnalyticsScopeProvider name="nearby">
+        <ErrorBoundaryWithAnalytics name="nearby">
           <Nearby
             title={nearby?.title}
             linkToLocator={nearby?.linkToLocator}
@@ -164,7 +164,7 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
             geocodedCoordinate={geocodedCoordinate}
             id={id}
           />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       </LazyLoadWrapper>
     </>
   );

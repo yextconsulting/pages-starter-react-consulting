@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
 type ErrorBoundaryWithAnalyticsProps = {
-  scope: string;
+  name: string;
   children: ReactNode;
 };
 
@@ -14,12 +14,12 @@ type ErrorBoundaryWithAnalyticsProps = {
 const ErrorBoundaryWithAnalytics = (props: ErrorBoundaryWithAnalyticsProps) => {
   const handleError = () => {
     // Setup any sentry reporting here.
-    console.error(`Error occured in "${props.scope}" scope.`);
+    console.error(`Error occured in "${props.name}" scope.`);
   };
 
   return (
     <ErrorBoundary onError={handleError} fallback={<></>}>
-      <AnalyticsScopeProvider name={props.scope}>
+      <AnalyticsScopeProvider name={props.name}>
         {props.children}
       </AnalyticsScopeProvider>
     </ErrorBoundary>
