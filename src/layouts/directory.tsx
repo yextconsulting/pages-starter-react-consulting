@@ -3,7 +3,7 @@ import type {
   LocationProfile,
   TemplateRenderProps,
 } from "src/types/entities";
-import { AnalyticsScopeProvider } from "@yext/pages/components";
+import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 import Breadcrumbs from "src/components/common/Breadcrumbs";
 import DirectoryCard from "src/components/cards/DirectoryCard";
 import DirectoryGrid from "src/components/directory/DirectoryGrid";
@@ -34,33 +34,33 @@ const DirectoryLayout = ({ data }: DirectoryLayoutProps) => {
 
   return (
     <>
-      <AnalyticsScopeProvider name="directory_hero">
+      <ErrorBoundaryWithAnalytics name="directory_hero">
         <DirectoryHero title={name} brand={_site.c_brand} />
-      </AnalyticsScopeProvider>
-      <AnalyticsScopeProvider name="breadcrumbs">
+      </ErrorBoundaryWithAnalytics>
+      <ErrorBoundaryWithAnalytics name="breadcrumbs">
         <Breadcrumbs
           breadcrumbs={dm_directoryParents || []}
           separator="/"
           className="container flex justify-center"
           addAnalytics={true}
         />
-      </AnalyticsScopeProvider>
+      </ErrorBoundaryWithAnalytics>
       {dm_directoryChildren && !isDirectoryGrid(dm_directoryChildren) && (
-        <AnalyticsScopeProvider name="directory">
+        <ErrorBoundaryWithAnalytics name="directory">
           <DirectoryList
             showNumLocs={true}
             directoryChildren={dm_directoryChildren}
             relativePrefixToRoot={data.relativePrefixToRoot}
           />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       )}
       {dm_directoryChildren && isDirectoryGrid(dm_directoryChildren) && (
-        <AnalyticsScopeProvider name="directory">
+        <ErrorBoundaryWithAnalytics name="directory">
           <DirectoryGrid
             CardComponent={DirectoryCard}
             directoryChildren={dm_directoryChildren}
           />
-        </AnalyticsScopeProvider>
+        </ErrorBoundaryWithAnalytics>
       )}
     </>
   );
