@@ -12,10 +12,6 @@ export default {
   ],
   theme: {
     extend: {
-      screens: {
-        bob: "400px",
-        test: "123",
-      },
       fontFamily: {
         primary: "'Arial','Helvetica','sans-serif','system'",
         secondary: "'Arial','Helvetica','sans-serif','system'",
@@ -138,4 +134,4 @@ export default {
     },
   },
   plugins: [styleguidePlugin()],
-} satisfies Config;
+} as Config;
