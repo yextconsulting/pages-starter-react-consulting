@@ -12,6 +12,10 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        bob: "400px",
+        test: "123",
+      },
       fontFamily: {
         primary: "'Arial','Helvetica','sans-serif','system'",
         secondary: "'Arial','Helvetica','sans-serif','system'",
@@ -36,7 +40,6 @@ export default {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: theme("spacing.6"),
         padding: `${theme("spacing.2")} ${theme("spacing.6")}`,
         fontWeight: theme("fontWeight.bold"),
         borderRadius: "50px",
@@ -135,4 +138,4 @@ export default {
     },
   },
   plugins: [styleguidePlugin()],
-} as Config;
+} satisfies Config;

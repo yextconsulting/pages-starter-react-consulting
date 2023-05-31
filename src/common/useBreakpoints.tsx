@@ -1,15 +1,22 @@
 import { useState } from "react";
 import { useEffect, useLayoutEffect } from "react";
-import resolveConfig from "tailwindcss/resolveConfig";
 import { getRuntime } from "@yext/pages/util";
-import { screens as defaultScreens } from "tailwindcss/defaultTheme";
+import defaultTheme from "tailwindcss/defaultTheme";
 import tailwindConfig from "../../tailwind.config";
-import type { KeyValuePair } from "tailwindcss/types/config.js";
+import resolveConfig from "tailwindcss/resolveConfig";
+import { KeyValuePair } from "tailwindcss/types/config";
 
-const fullConfig = resolveConfig(tailwindConfig);
+const fullConfig = resolveConfig({
+  ...tailwindConfig,
+  theme: {
+    ...defaultTheme,
+    ...tailwindConfig.theme,
+  },
+});
+
 // TODO: get rid of this type cast. The possible types for screens are very flexible, which makes this complicated
-const screens: KeyValuePair<string, string> = (fullConfig.theme?.screens ||
-  defaultScreens) as KeyValuePair<string, string>;
+const screens = (fullConfig.theme?.screens ||
+  defaultTheme.screens) as KeyValuePair<string, string>;
 
 const runtime = getRuntime();
 // TODO(bhaines): move to isServerSide helper when that's released in future pagesJS version
@@ -22,7 +29,9 @@ export function useBreakpoint(
   // TODO: this should be `keyof typeof screens`, but because types don't exist for the imported file that breaks
   // autocomplete. This is ok as a workaround because while people might tweak the values for the different breakpoints,
   // they're not likely to change the set of available breakpoints
-  breakpoint: keyof typeof defaultScreens,
+  breakpoint:
+    | keyof typeof defaultTheme.screens
+    | keyof typeof tailwindConfig.theme.extend.screens,
   defaultValue = false
 ) {
   const [match, setMatch] = useState(defaultValue);

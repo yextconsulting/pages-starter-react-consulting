@@ -15,7 +15,6 @@ function styleguidePlugin() {
     for (const [variant, styles] of Object.entries(
       theme("buttons")?.variants
     )) {
-      console.log(variant, styles);
       components[`.Button--${variant}`] = styles;
     }
 
