@@ -3,7 +3,7 @@ import { useEffect, useLayoutEffect } from "react";
 import resolveConfig from "tailwindcss/resolveConfig";
 import { getRuntime } from "@yext/pages/util";
 import { screens as defaultScreens } from "tailwindcss/defaultTheme";
-import * as tailwindConfig from "../../tailwind.config.cjs";
+import tailwindConfig from "../../tailwind.config";
 import type { KeyValuePair } from "tailwindcss/types/config.js";
 
 const fullConfig = resolveConfig(tailwindConfig);

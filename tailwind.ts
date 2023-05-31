@@ -1,21 +1,37 @@
-import React from "react";
+import { CSSProperties } from "react";
 
 export type ComponentDefinitions = Record<
   string,
-  React.CSSProperties | { "&:hover": React.CSSProperties } | {'&:focus': React.CSSProperties} | {'&:active': React.CSSProperties}
+  | CSSProperties
+  | { "&:hover": CSSProperties }
+  | { "&:focus": CSSProperties }
+  | { "&:active": CSSProperties }
 >;
 
-export type ButtonConfig = React.CSSProperties & {
+export type ButtonConfig = CSSProperties & {
   variants: Record<
     string,
-    React.CSSProperties | { "&:hover": React.CSSProperties } | {'&:focus': React.CSSProperties} | {'&:active': React.CSSProperties}
+    | CSSProperties
+    | { "&:hover": CSSProperties }
+    | { "&:focus": CSSProperties }
+    | { "&:active": CSSProperties }
   >;
 };
 
-export type LinkConfig = React.CSSProperties & {
+export type HeadingConfig = CSSProperties & {
   variants: Record<
     string,
-    React.CSSProperties | { "&:hover": React.CSSProperties } | {'&:focus': React.CSSProperties} | {'&:active': React.CSSProperties}
+    CSSProperties | { [key in ScreenSizeQuerys]: CSSProperties }
+  >;
+};
+
+export type LinkConfig = CSSProperties & {
+  variants: Record<
+    string,
+    | CSSProperties
+    | { "&:hover": CSSProperties }
+    | { "&:focus": CSSProperties }
+    | { "&:active": CSSProperties }
   >;
 };
 
@@ -25,10 +41,3 @@ type ScreenSizeQuerys =
   | "@screen lg"
   | "@screen xl"
   | "@screen 2xl";
-
-export type HeadingConfig = React.CSSProperties & {
-  variants: Record<
-    string,
-    React.CSSProperties | { [key in ScreenSizeQuerys]: React.CSSProperties }
-  >;
-};

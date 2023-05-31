@@ -1,30 +1,32 @@
-const plugin = require("tailwindcss/plugin");
+import plugin from "tailwindcss/plugin";
 
 // Plugin to generate tailwind components from the buttons, links, and headings keys in tailwind.config.cjs
 // Components will be available as tailwind class ex: <button className="Button Button--primary">
 function styleguidePlugin() {
   return plugin(({ addComponents, theme }) => {
-    const components = Object.assign(
+    const components: any = Object.assign(
       {},
-      { ".Button": JSON.parse(JSON.stringify(theme("buttons") || {})) }
+      { ".Button": JSON.parse(JSON.stringify(theme("buttons") || {})) },
+      { ".Link": JSON.parse(JSON.stringify(theme("links") || {})) },
+      { ".Heading": JSON.parse(JSON.stringify(theme("headings") || {})) }
     );
+
     delete components[".Button"].variants;
-    for (const [variant, styles] of Object.entries(theme("buttons.variants"))) {
+    for (const [variant, styles] of Object.entries(
+      theme("buttons")?.variants
+    )) {
+      console.log(variant, styles);
       components[`.Button--${variant}`] = styles;
     }
 
-    components[".Link"] = JSON.parse(JSON.stringify(theme("links") || {}));
     delete components[".Link"].variants;
-    for (const [variant, styles] of Object.entries(theme("links.variants"))) {
+    for (const [variant, styles] of Object.entries(theme("links")?.variants)) {
       components[`.Link--${variant}`] = styles;
     }
 
-    components[".Heading"] = JSON.parse(
-      JSON.stringify(theme("headings") || {})
-    );
     delete components[".Heading"].variants;
     for (const [variant, styles] of Object.entries(
-      theme("headings.variants")
+      theme("headings")?.variants
     )) {
       components[`.Heading--${variant}`] = styles;
     }
@@ -33,6 +35,4 @@ function styleguidePlugin() {
   });
 }
 
-module.exports = {
-  styleguidePlugin,
-};
+export { styleguidePlugin };

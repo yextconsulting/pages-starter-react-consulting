@@ -1,9 +1,11 @@
-//@ts-check
+// @ts-check
 
-const { styleguidePlugin } = require("./tailwindPlugin.cjs");
+import type { Config } from "tailwindcss";
+import type { PluginAPI } from "tailwindcss/types/config";
+import { ButtonConfig, HeadingConfig, LinkConfig } from "./tailwind";
+import { styleguidePlugin } from "./tailwindPlugin";
 
-/** @type {import('tailwindcss/types/config').Config} */
-module.exports = {
+export default {
   content: [
     "./src/**/*.{html,js,jsx,ts,tsx}",
     "./node_modules/@yext/search-ui-react/**/*.{html,js,jsx,ts,tsx}",
@@ -30,11 +32,11 @@ module.exports = {
           400: "#767676",
         },
       },
-      /** @type {(theme: any) => import('./tailwind').ButtonConfig} */
-      buttons: (theme) => ({
+      buttons: (theme: PluginAPI["theme"]): ButtonConfig => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        marginTop: theme("spacing.6"),
         padding: `${theme("spacing.2")} ${theme("spacing.6")}`,
         fontWeight: theme("fontWeight.bold"),
         borderRadius: "50px",
@@ -56,8 +58,37 @@ module.exports = {
           },
         },
       }),
-      /** @type {(theme: any) => import('./tailwind').LinkConfig} */
-      links: ({ theme }) => ({
+      headings: (theme: PluginAPI["theme"]): HeadingConfig => ({
+        fontFamily: theme("fontFamily.primary"),
+        fontWeight: theme("fontWeight.bold"),
+        variants: {
+          sub: {
+            fontSize: "1.25rem",
+            lineHeight: "1.4",
+            "@screen sm": {
+              fontSize: "1.5rem",
+              lineHeight: "1.25",
+            },
+          },
+          head: {
+            fontSize: "1.5rem",
+            lineHeight: "1.33",
+            "@screen sm": {
+              fontSize: "2.125rem",
+              lineHeight: "1.18",
+            },
+          },
+          lead: {
+            fontSize: "1.75rem",
+            lineHeight: "1.14",
+            "@screen sm": {
+              fontSize: "3rem",
+              lineHeight: "1.33",
+            },
+          },
+        },
+      }),
+      links: (theme: PluginAPI["theme"]): LinkConfig => ({
         variants: {
           primary: {
             color: theme("colors.brand-primary"),
@@ -89,37 +120,6 @@ module.exports = {
           },
         },
       }),
-      /** @type {(theme: any) => import('./tailwind').HeadingConfig} */
-      headings: ({ theme }) => ({
-        fontFamily: theme("fontFamily.primary"),
-        fontWeight: theme("fontWeight.bold"),
-        variants: {
-          sub: {
-            fontSize: "1.25rem",
-            lineHeight: "1.4",
-            "@screen sm": {
-              fontSize: "1.5rem",
-              lineHeight: "1.25",
-            },
-          },
-          head: {
-            fontSize: "1.5rem",
-            lineHeight: "1.33",
-            "@screen sm": {
-              fontSize: "2.125rem",
-              lineHeight: "1.18",
-            },
-          },
-          lead: {
-            fontSize: "1.75rem",
-            lineHeight: "1.14",
-            "@screen sm": {
-              fontSize: "3rem",
-              lineHeight: "1.33",
-            },
-          },
-        },
-      }),
       container: {
         center: true,
         padding: {
@@ -135,4 +135,4 @@ module.exports = {
     },
   },
   plugins: [styleguidePlugin()],
-};
+} as Config;
