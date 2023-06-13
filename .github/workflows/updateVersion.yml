@@ -7,7 +7,7 @@ on:
 
 jobs:
   update-version:
-    if: github.event.pull_request.merged && github.repositoryUrl == 'git@github.com:yextconsulting/pages-starter-react-consulting.git'
+    if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
