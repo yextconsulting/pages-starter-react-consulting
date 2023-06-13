@@ -7,15 +7,17 @@ on:
 
 jobs:
   update-version:
-    if: github.event.pull_request.merged
+    if: github.event.pull_request.merged && github.repositoryUrl == 'git@github.com:yextconsulting/pages-starter-react-consulting.git'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: "17"
+
       - run: npm install
-      - run: |
+      - name: Create version.json file
+        run: |
           # Add commit hash to file for version tracking.
           ORIGIN=`git remote get-url origin`
           if [[ $ORIGIN == "https://github.com/yextconsulting/pages-starter-react-consulting" ]]; then
@@ -25,12 +27,9 @@ jobs:
               --arg version "$HASH" \
               '{"version": $version }' > version.json
 
-            git config --global user.email "jhood@yext.com"
-            git config --global user.name "Jared-Hood"
+            git config --global user.name github-actions
+            git config --global user.email github-actions@github.com
             git add version.json
             git commit -m "update version"
             git push
-
-            BRANCH="echo git rev-parse --abbrev-ref HEAD"
-            echo $BRANCH
           fi
