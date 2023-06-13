@@ -1,0 +1,36 @@
+name: Update Version
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [version-action/trunk]
+
+jobs:
+  update-version:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "17"
+      - run: npm install
+      - run: |
+          # Add commit hash to file for version tracking.
+          ORIGIN=`git remote get-url origin`
+          if [[ $ORIGIN == "https://github.com/yextconsulting/pages-starter-react-consulting" ]]; then
+            HASH="$(git rev-parse HEAD)"
+
+            jq --null-input \
+              --arg version "$HASH" \
+              '{"version": $version }' > version.json
+
+            git config --global user.email "jhood@yext.com"
+            git config --global user.name "Jared-Hood"
+            git add version.json
+            git commit -m "update version"
+            git push
+
+            BRANCH="echo git rev-parse --abbrev-ref HEAD"
+            echo $BRANCH
+          fi
