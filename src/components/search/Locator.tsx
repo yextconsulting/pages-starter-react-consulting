@@ -60,7 +60,6 @@ const Locator = (props: LocatorProps) => {
   }, [searchActions.state.query.queryId]);
 
   const results = useGetSearchResults<LocationProfile>(displayAllOnNoResults);
-  console.log(results);
 
   return (
     <LocatorProvider
