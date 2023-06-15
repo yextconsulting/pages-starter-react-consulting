@@ -1,26 +1,16 @@
-import { useSearchState } from "@yext/search-headless-react";
-import type { Coordinate } from "@yext/types";
+import { Result, useSearchState } from "@yext/search-headless-react";
 
-type LocatorSearchResultType = {
-  coordinate: Coordinate;
-  id: string;
-};
+// Get the results from the search state and cast to the given type.
+export function useGetSearchResults<T>(displayAllOnNoResults?: boolean) {
+  const vertical = useSearchState((s) => s.vertical);
+  const verticalResults = vertical.results;
+  const allResultsForVertical =
+    vertical?.noResults?.allResultsForVertical.results;
 
-// Custom hook to get search results from search state and map them to the required fields for the Map and Marker components
-// If displayAllOnNoResults = true, the search will use the 20 locations closest to the users location by default
-export function useGetSearchResults(displayAllOnNoResults: boolean) {
-  const state = useSearchState((state) => state);
-  const searchResults = state.vertical.results || [];
-  const allResults =
-    state.vertical.noResults?.allResultsForVertical.results || [];
-  const resultsToMap =
-    !searchResults.length && displayAllOnNoResults ? allResults : searchResults;
-  const dataToRender = resultsToMap.map((result) => {
-    return {
-      coordinate: result.rawData.yextDisplayCoordinate,
-      id: result.id,
-    } as LocatorSearchResultType;
-  });
-
-  return dataToRender;
+  const results = verticalResults?.length
+    ? verticalResults
+    : displayAllOnNoResults
+    ? allResultsForVertical
+    : [];
+  return results as Result<T>[];
 }

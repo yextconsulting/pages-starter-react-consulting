@@ -4,12 +4,13 @@ import type { StatusParams } from "@yext/sites-react-components";
 import { Link } from "@yext/pages/components";
 import type { Address, Hours } from "@yext/types";
 import classNames from "classnames";
+import { LocationProfile } from "src/types/entities";
 
 export interface LocatorCardProps {
   useKilometers?: boolean;
 }
 
-const LocatorCard = (props: LocatorCardProps & CardProps) => {
+const LocatorCard = (props: LocatorCardProps & CardProps<LocationProfile>) => {
   const { result, useKilometers = false } = props;
   const { distanceFromFilter, link, rawData: profile } = result;
   const address = profile.address as Address;
