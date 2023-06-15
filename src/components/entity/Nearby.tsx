@@ -8,22 +8,9 @@ import classNames from "classnames";
 import DirectoryCard from "src/components/cards/DirectoryCard";
 
 // Configure nearby locations section liveapi params and endpoint
-// See https://hitchhikers.yext.com/docs/liveapis/knowledgegraphliveapi/entities/entities/#operation/geoSearchEntities
-type NearbyAPIConfig = {
-  endpoint:
-    | "https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch"
-    | "https://liveapi.yext.com/v2/accounts/me/entities/geosearch";
-  params: {
-    api_key: string;
-    entityTypes?: string;
-    limit?: string;
-    radius?: string;
-    savedFilterIds?: string;
-    v: string;
-  };
-};
+// For all available params see: https://hitchhikers.yext.com/docs/contentdeliveryapis/legacy/entities#operation/geoSearchEntities
 
-const getConfig = (api_key: string): NearbyAPIConfig => {
+const getConfig = (api_key: string) => {
   return {
     endpoint: "https://liveapi.yext.com/v2/accounts/me/entities/geosearch",
     params: {
@@ -42,7 +29,7 @@ type NearbyProps = {
   linkToLocator?: boolean;
   buttonText?: string;
   buttonLink?: string;
-  geocodedCoordinate: Coordinate;
+  coordinate: Coordinate;
   id: string;
 };
 
@@ -52,7 +39,7 @@ const Nearby = (props: NearbyProps) => {
     linkToLocator = true,
     buttonText = "Find a Location",
     buttonLink,
-    geocodedCoordinate,
+    coordinate,
     id,
   } = props;
 
@@ -64,14 +51,14 @@ const Nearby = (props: NearbyProps) => {
   >([]);
 
   useEffect(() => {
-    if (!geocodedCoordinate || !apiKey) {
+    if (!coordinate || !apiKey) {
       return;
     }
 
     const config = getConfig(apiKey);
     const searchParams = new URLSearchParams({
       ...config.params,
-      location: `${geocodedCoordinate.latitude},${geocodedCoordinate.longitude}`,
+      location: `${coordinate.latitude},${coordinate.longitude}`,
       filter: JSON.stringify({ "meta.id": { "!$eq": `${id}` } }),
     });
 
@@ -79,7 +66,7 @@ const Nearby = (props: NearbyProps) => {
       .then((resp) => resp.json())
       .then((data) => setNearbyLocations(data.response.entities || []))
       .catch((error) => console.error(error));
-  }, [geocodedCoordinate, id, apiKey]);
+  }, [coordinate, id, apiKey]);
 
   const renderLocatorLink = (cls?: string) => {
     return linkToLocator ? (

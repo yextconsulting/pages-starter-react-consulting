@@ -24,7 +24,7 @@ interface EntityLayoutProps {
 const EntityLayout = ({ data }: EntityLayoutProps) => {
   const {
     id,
-    geocodedCoordinate,
+    yextDisplayCoordinate,
     name,
     address,
     description,
@@ -161,7 +161,7 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
             linkToLocator={nearby?.linkToLocator}
             buttonText={nearby?.cta?.label}
             buttonLink={nearby?.cta?.link}
-            geocodedCoordinate={geocodedCoordinate}
+            coordinate={yextDisplayCoordinate}
             id={id}
           />
         </ErrorBoundaryWithAnalytics>

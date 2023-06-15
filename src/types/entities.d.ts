@@ -104,7 +104,7 @@ interface Insight {
 export interface LocationProfile extends BaseProfile {
   readonly name: string;
   readonly address: Address;
-  readonly geocodedCoordinate: Coordinate;
+  readonly yextDisplayCoordinate: Coordinate;
   readonly slug: string;
   readonly hours?: Hours;
   readonly additionalHoursText?: string;

@@ -47,7 +47,7 @@ export const config: TemplateConfig = {
       "mainPhone",
       "tollFreePhone",
       "emails",
-      "geocodedCoordinate",
+      "yextDisplayCoordinate",
       "description",
       "hours",
       "googlePlaceId",
@@ -74,7 +74,6 @@ export const config: TemplateConfig = {
       "hours",
       "additionalHoursText",
       "services",
-      "geocodedCoordinate",
       // Events Fields
       "c_eventsSection.title",
       "c_eventsSection.events.name",
