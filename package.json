@@ -1,5 +1,5 @@
 {
-  "name": "yext-sites-starter",
+  "name": "pages-starter-react-consulting",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,7 @@
     "fmt": "prettier -w ./src",
     "lint": "eslint .",
     "generate-notices": "generate-license-file --input package.json --output ./THIRD-PARTY-NOTICES --overwrite",
-    "check-types": "tsc --noEmit --skipLibCheck --excludeFiles tailwind.config.cjs",
+    "check-types": "tsc --noEmit --skipLibCheck",
     "clean": "rm -rf .artifact-output .yext/ dist/ localData sites-rendered-output",
     "generate": "plop",
     "prepare": "husky install"
@@ -35,11 +35,10 @@
     "react-error-boundary": "^4.0.8",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
-    "typescript": "^4.6.2",
+    "typescript": "^5.0.4",
     "vite": "3.0.0"
   },
   "devDependencies": {
-    "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "5.48.2",
@@ -62,6 +61,6 @@
     "postcss-mixins": "^9.0.3",
     "prettier": "^2.6.2",
     "pretty-quick": "^3.1.3",
-    "tailwindcss": "3.2.0"
+    "tailwindcss": "^3.3.2"
   }
 }
