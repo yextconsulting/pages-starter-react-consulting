@@ -1,5 +1,3 @@
-// @ts-check
-
 import type { Config } from "tailwindcss";
 import type { PluginAPI } from "tailwindcss/types/config";
 import { ButtonConfig, HeadingConfig, LinkConfig } from "./tailwind";
