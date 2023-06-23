@@ -79,27 +79,13 @@ const Gallery = (props: GalleryProps) => {
                   })}
                 >
                   {props.images.map((_, idx) => {
-                    // These can't be dynamic because tailwind doesn't support dynamic classnames
-                    const classes = [
-                      "w-1/1",
-                      "w-1/2",
-                      "w-1/3",
-                      "w-1/4",
-                      "w-1/5",
-                      "w-1/6",
-                      "w-1/7",
-                      "w-1/8",
-                      "w-1/9",
-                      "w-1/10",
-                    ];
-                    const width = classes[props.images.length - 1];
                     const afterStyles =
                       "after:content-[' '] after:py-2 after:block after:relative after:-top-1";
                     return (
                       <Dot
                         slide={idx}
                         key={idx}
-                        className={`mx-2 ${width} max-w-[theme(spacing.16)] h-1 rounded-full bg-brand-gray-300 disabled:bg-brand-primary disabled:cursor-default ${afterStyles}`}
+                        className={`mx-2 basis-0 flex-grow max-w-[theme(spacing.16)] h-1 rounded-full bg-brand-gray-300 disabled:bg-brand-primary disabled:cursor-default ${afterStyles}`}
                       ></Dot>
                     );
                   })}
