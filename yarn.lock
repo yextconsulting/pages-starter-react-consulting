@@ -1790,7 +1790,7 @@
   "resolved" "https://registry.npmjs.org/@yext/components-tsx-geo/-/components-tsx-geo-1.0.3.tgz"
   "version" "1.0.3"
 
-"@yext/components-tsx-maps@^1.0.5", "@yext/components-tsx-maps@^1.0.9":
+"@yext/components-tsx-maps@^1.0.10", "@yext/components-tsx-maps@^1.0.5", "@yext/components-tsx-maps@^1.0.9":
   "integrity" "sha512-4dSbTPmL4d0uWtl3EUL2sVrcLQbkfhfEAkNyh0H50TFVI46ZzqW7Hy12icoj3mH7ozTjtPJDgiqSH5yg5znwWA=="
   "resolved" "https://registry.npmjs.org/@yext/components-tsx-maps/-/components-tsx-maps-1.0.10.tgz"
   "version" "1.0.10"
