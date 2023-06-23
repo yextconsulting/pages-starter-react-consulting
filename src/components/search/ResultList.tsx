@@ -5,18 +5,16 @@ import type { Result } from "@yext/search-headless-react";
 import { useLocator } from "src/components/search/utils/useLocator";
 import type { LocatorCardProps } from "src/components/cards/LocatorCard";
 import "src/components/search/ResultList.css";
-import { useGetSearchResults } from "./utils/useGetSearchResults";
 import { LocationProfile } from "src/types/entities";
 
 interface ResultListProps extends LocatorCardProps {
   CardComponent: CardComponent<LocationProfile>;
-  displayAllOnNoResults?: boolean;
 }
 
 const ResultList = (props: ResultListProps) => {
-  const { CardComponent, displayAllOnNoResults } = props;
+  const { CardComponent } = props;
 
-  const results = useGetSearchResults<LocationProfile>(displayAllOnNoResults);
+  const { results } = useLocator();
 
   return (
     <div className="ResultList">

@@ -1,6 +1,9 @@
+import { Result } from "@yext/search-headless-react";
 import { createCtx } from "src/common/createCtx";
+import { LocationProfile } from "src/types/entities";
 
 type LocatorContextType = {
+  results: Result<LocationProfile>[];
   selectedId: string;
   setSelectedId: (id: string) => void;
   focusedId: string;

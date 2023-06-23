@@ -64,6 +64,7 @@ const Locator = (props: LocatorProps) => {
   return (
     <LocatorProvider
       value={{
+        results,
         selectedId: selectedEntityId,
         setSelectedId: setSelectedEntityId,
         focusedId: focusedEntityId,
@@ -81,10 +82,7 @@ const Locator = (props: LocatorProps) => {
             placeholderText={placeholderText}
           />
           <ResultInfo />
-          <ResultList
-            CardComponent={LocatorCard}
-            displayAllOnNoResults={displayAllOnNoResults}
-          />
+          <ResultList CardComponent={LocatorCard} />
         </div>
         {isDesktopBreakpoint && (
           <div className="Locator-map">

@@ -25,6 +25,8 @@ const SearchBox = (props: SearchBoxProps) => {
   // When the FilterSearch component updates the search state with the users selection execute a new search.
   useEffect(() => {
     if (searchActions.state.filters.static?.find((f) => f.selected)) {
+      searchActions.resetFacets();
+      searchActions.setOffset(0);
       executeSearch(searchActions);
     }
   }, [searchActions, searchActions.state.filters.static]);
