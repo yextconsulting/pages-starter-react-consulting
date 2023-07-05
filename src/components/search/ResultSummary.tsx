@@ -4,14 +4,16 @@ import type { State } from "@yext/search-headless-react";
 import { LOCATOR_STATIC_FILTER_FIELD } from "src/config";
 import { useTemplateData } from "src/common/useTemplateData";
 import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
+import { useLocator } from "./utils/useLocator";
 
 const ResultSummary = () => {
   const searchState = useSearchState((state) => state);
   const { relativePrefixToRoot } = useTemplateData();
   const [searchMade, setSearchMade] = useState(false);
+  const { results } = useLocator();
   const resultsText = useMemo(
-    () => getResultsCountText(searchState),
-    [searchState]
+    () => getResultsCountText(searchState, results.length),
+    [searchState, results.length]
   );
 
   // Element to render for results summary when page is first loaded before a search is made.
@@ -39,9 +41,8 @@ const ResultSummary = () => {
   );
 };
 
-function getResultsCountText(state: State) {
+function getResultsCountText(state: State, resultsCount: number) {
   let searchPlace = "";
-  const resultsCount = state.vertical.results?.length ?? 0;
 
   if (state.filters.static?.length) {
     // Make sure to get the match to the correct filter in case multiple are set.

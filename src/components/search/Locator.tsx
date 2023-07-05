@@ -9,6 +9,7 @@ import {
 } from "src/components/search/utils/handleSearchParams";
 import { useGetSearchResults } from "src/components/search/utils/useGetSearchResults";
 import { LocatorProvider } from "./utils/useLocator";
+import { LocationProfile } from "src/types/entities";
 import "src/components/search/Locator.css";
 import mapStyles from "src/components/search/defaultMapStyles.json";
 import SearchBox from "src/components/search/SearchBox";
@@ -58,11 +59,12 @@ const Locator = (props: LocatorProps) => {
     setHoveredEntityId("");
   }, [searchActions.state.query.queryId]);
 
-  const results = useGetSearchResults(displayAllOnNoResults);
+  const results = useGetSearchResults<LocationProfile>(displayAllOnNoResults);
 
   return (
     <LocatorProvider
       value={{
+        results,
         selectedId: selectedEntityId,
         setSelectedId: setSelectedEntityId,
         focusedId: focusedEntityId,
@@ -80,10 +82,7 @@ const Locator = (props: LocatorProps) => {
             placeholderText={placeholderText}
           />
           <ResultInfo />
-          <ResultList
-            CardComponent={LocatorCard}
-            displayAllOnNoResults={displayAllOnNoResults}
-          />
+          <ResultList CardComponent={LocatorCard} />
         </div>
         {isDesktopBreakpoint && (
           <div className="Locator-map">
@@ -91,15 +90,15 @@ const Locator = (props: LocatorProps) => {
               provider={GoogleMaps}
               providerOptions={{ styles: mapStyles }}
               clientKey="gme-yextinc"
-              bounds={results.map((data) => data.coordinate)}
+              bounds={results.map((data) => data.rawData.yextDisplayCoordinate)}
               padding={{ top: 100, bottom: 200, left: 50, right: 50 }}
               className="h-full"
             >
               {results.map((data, index) => (
                 <CustomMarker
-                  key={data.id}
-                  coordinate={data.coordinate}
-                  id={data.id}
+                  key={data.rawData.id}
+                  coordinate={data.rawData.yextDisplayCoordinate}
+                  id={data.rawData.id}
                   index={index + 1}
                 />
               ))}

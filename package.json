@@ -19,11 +19,12 @@
     "node": ">=17"
   },
   "dependencies": {
+    "@yext/components-tsx-maps": "^1.0.10",
     "@yext/custom-field-debugger": "2.0.9",
     "@yext/pages": "1.0.0-beta.21",
     "@yext/schema-wrapper": "1.0.2",
-    "@yext/search-headless-react": "^2.0.0",
-    "@yext/search-ui-react": "1.1.0",
+    "@yext/search-headless-react": "^2.2.0",
+    "@yext/search-ui-react": "1.2.1",
     "@yext/sites-react-components": "^0.1.14",
     "@yext/types": "0.1.10-alpha",
     "classnames": "2.3.1",

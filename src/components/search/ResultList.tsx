@@ -1,30 +1,20 @@
 import { useEffect, useRef } from "react";
 import classNames from "classnames";
-import { useSearchState } from "@yext/search-headless-react";
 import type { CardComponent } from "@yext/search-ui-react";
 import type { Result } from "@yext/search-headless-react";
 import { useLocator } from "src/components/search/utils/useLocator";
 import type { LocatorCardProps } from "src/components/cards/LocatorCard";
 import "src/components/search/ResultList.css";
+import { LocationProfile } from "src/types/entities";
 
 interface ResultListProps extends LocatorCardProps {
-  CardComponent: CardComponent;
-  displayAllOnNoResults?: boolean;
+  CardComponent: CardComponent<LocationProfile>;
 }
 
 const ResultList = (props: ResultListProps) => {
-  const { CardComponent, displayAllOnNoResults } = props;
+  const { CardComponent } = props;
 
-  const verticalResults =
-    useSearchState((state) => state.vertical.results) || [];
-  const allResultsForVertical =
-    useSearchState(
-      (state) => state.vertical?.noResults?.allResultsForVertical.results
-    ) || [];
-  let results = verticalResults;
-  if (verticalResults.length === 0 && displayAllOnNoResults) {
-    results = allResultsForVertical;
-  }
+  const { results } = useLocator();
 
   return (
     <div className="ResultList">
@@ -40,8 +30,8 @@ const ResultList = (props: ResultListProps) => {
 };
 
 interface ResultListItemProps {
-  CardComponent: CardComponent;
-  result: Result;
+  CardComponent: CardComponent<LocationProfile>;
+  result: Result<LocationProfile>;
 }
 
 function ResultListItem(props: ResultListItemProps) {

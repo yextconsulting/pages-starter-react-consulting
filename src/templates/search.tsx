@@ -5,7 +5,6 @@ import {
   HeadConfig,
 } from "@yext/pages";
 import "src/index.css";
-import "src/styles/search.css";
 import { defaultHeadConfig } from "src/common/head";
 import { Main } from "src/layouts/main";
 import SearchLayout from "src/layouts/search";
