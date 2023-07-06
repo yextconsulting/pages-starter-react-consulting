@@ -4,5 +4,6 @@ export default {
   isPagesJSRepo: true,
   paths: {
     pages: path.resolve("./src/templates"),
+    components: path.resolve("./src/studio-components"),
   },
 };
