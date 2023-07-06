@@ -14,7 +14,8 @@
     "clean": "rm -rf .artifact-output .yext/ dist/ localData sites-rendered-output",
     "generate": "plop",
     "prepare": "husky install",
-    "studio": "npm run features && yext pages generate-test-data -a && studio"
+    "studio": "yext pages build && yext pages generate-test-data -a && studio",
+    "rawstudio": "studio"
   },
   "engines": {
     "node": ">=17"
@@ -27,6 +28,8 @@
     "@yext/search-headless-react": "^2.2.0",
     "@yext/search-ui-react": "1.2.1",
     "@yext/sites-react-components": "^0.1.14",
+    "@yext/studio": "^0.14.0",
+    "@yext/studio-plugin": "^0.14.0",
     "@yext/types": "0.1.10-alpha",
     "classnames": "2.3.1",
     "libphonenumber-js": "1.10.14",
@@ -38,7 +41,7 @@
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "typescript": "^5.0.4",
-    "vite": "3.0.0"
+    "vite": "4.0.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.40",

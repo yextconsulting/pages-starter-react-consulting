@@ -1,7 +1,7 @@
 {
   "features": [
     {
-      "name": "city",
+      "name": "city-d89ff87",
       "streamId": "directory-city",
       "templateType": "JS",
       "alternateLanguageFields": ["name", "slug"],
@@ -10,7 +10,7 @@
       }
     },
     {
-      "name": "index",
+      "name": "index-65094c2",
       "streamId": "locations",
       "templateType": "JS",
       "alternateLanguageFields": ["name", "slug"],
@@ -19,7 +19,7 @@
       }
     },
     {
-      "name": "region",
+      "name": "region-404e56e",
       "streamId": "directory-region",
       "templateType": "JS",
       "alternateLanguageFields": ["name", "slug"],
@@ -35,7 +35,7 @@
       }
     },
     {
-      "name": "root",
+      "name": "root-906b249",
       "streamId": "directory-root",
       "templateType": "JS",
       "alternateLanguageFields": ["name", "slug"],
@@ -44,7 +44,7 @@
       }
     },
     {
-      "name": "search",
+      "name": "search-b5e7a68",
       "streamId": "search-page",
       "templateType": "JS",
       "alternateLanguageFields": ["name", "slug"],
@@ -90,7 +90,7 @@
         "mainPhone",
         "tollFreePhone",
         "emails",
-        "geocodedCoordinate",
+        "yextDisplayCoordinate",
         "description",
         "hours",
         "googlePlaceId",
