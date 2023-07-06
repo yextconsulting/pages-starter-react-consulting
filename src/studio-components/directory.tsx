@@ -2,13 +2,13 @@ import type {
   DirectoryProfile,
   LocationProfile,
   TemplateRenderProps,
-} from "src/types/entities";
-import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
-import Breadcrumbs from "src/components/common/Breadcrumbs";
-import DirectoryCard from "src/components/cards/DirectoryCard";
-import DirectoryGrid from "src/components/directory/DirectoryGrid";
-import DirectoryHero from "src/components/directory/DirectoryHero";
-import DirectoryList from "src/components/directory/DirectoryList";
+} from "../types/entities";
+import ErrorBoundaryWithAnalytics from "../components/common/ErrorBoundaryWithAnalytics";
+import Breadcrumbs from "../components/common/Breadcrumbs";
+import DirectoryCard from "../components/cards/DirectoryCard";
+import DirectoryGrid from "../components/directory/DirectoryGrid";
+import DirectoryHero from "../components/directory/DirectoryHero";
+import DirectoryList from "../components/directory/DirectoryList";
 
 interface DirectoryListLayoutProps {
   data: TemplateRenderProps<DirectoryProfile<DirectoryProfile<never>>>;

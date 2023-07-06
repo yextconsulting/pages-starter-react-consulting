@@ -1,6 +1,6 @@
-import { ProductProfile } from "src/types/entities";
-import Featured from "src/components/entity/Featured";
-import ProductCard from "src/components/cards/ProductCard";
+import { ProductProfile } from "../../types/entities";
+import Featured from "../../components/entity/Featured";
+import ProductCard from "../../components/cards/ProductCard";
 
 interface ProductProps {
   title: string;

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import type { FinancialProfessionalProfile } from "src/types/entities";
-import TeamCard from "src/components/cards/TeamCard";
+import type { FinancialProfessionalProfile } from "../../types/entities";
+import TeamCard from "../../components/cards/TeamCard";
 
 type TeamProps = {
   title: string;

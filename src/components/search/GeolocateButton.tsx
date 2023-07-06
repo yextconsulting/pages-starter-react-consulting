@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useSearchActions, Matcher } from "@yext/search-headless-react";
 import type { SelectableStaticFilter } from "@yext/search-headless-react";
 import { executeSearch, getUserLocation } from "@yext/search-ui-react";
-import LoadingSpinner from "src/components/common/LoadingSpinner";
-import { GEOLOCATE_RADIUS } from "src/config";
+import LoadingSpinner from "../../components/common/LoadingSpinner";
+import { GEOLOCATE_RADIUS } from "../../config";
 import { encodeStaticFilters } from "./utils/handleSearchParams";
 
 interface GeolocateButtonProps {

@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 import { useSearchState } from "@yext/search-headless-react";
 import type { State } from "@yext/search-headless-react";
-import { LOCATOR_STATIC_FILTER_FIELD } from "src/config";
-import { useTemplateData } from "src/common/useTemplateData";
-import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
+import { LOCATOR_STATIC_FILTER_FIELD } from "../../config";
+import { useTemplateData } from "../../common/useTemplateData";
+import { checkIsLocationFilter } from "../../components/search/utils/checkIsLocationFilter";
 import { useLocator } from "./utils/useLocator";
 
 const ResultSummary = () => {

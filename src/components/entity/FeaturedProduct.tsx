@@ -1,5 +1,5 @@
 import { Image, Link } from "@yext/pages/components";
-import type { ProductProfile } from "src/types/entities";
+import type { ProductProfile } from "../../types/entities";
 
 const defaultFields: string[] = [
   "c_featuredProductsSection.title",

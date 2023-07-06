@@ -1,6 +1,6 @@
 import { Image, Link } from "@yext/pages/components";
-import { EventProfile } from "src/types/entities";
-import { CardComponent } from "src/models/cardComponent";
+import { EventProfile } from "../../types/entities";
+import { CardComponent } from "../../models/cardComponent";
 
 const EventCard: CardComponent<EventProfile> = function EventCard(
   props

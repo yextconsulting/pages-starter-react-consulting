@@ -1,5 +1,5 @@
 import { Link, Image } from "@yext/pages/components";
-import type { FinancialProfessionalProfile } from "src/types/entities";
+import type { FinancialProfessionalProfile } from "../../types/entities";
 import { FaPhone, FaEnvelope, FaChevronRight } from "react-icons/fa";
 
 type TeamCardProps = {

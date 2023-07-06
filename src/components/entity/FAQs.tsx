@@ -1,5 +1,5 @@
-import type { FAQProfile } from "src/types/entities";
-import FAQ from "src/components/entity/FAQ";
+import type { FAQProfile } from "../../types/entities";
+import FAQ from "../../components/entity/FAQ";
 
 type FAQsProps = {
   title: string;

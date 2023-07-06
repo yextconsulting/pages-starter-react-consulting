@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSearchActions } from "@yext/search-headless-react";
-import { useBreakpoint } from "src/common/useBreakpoints";
+import { useBreakpoint } from "../../common/useBreakpoints";
 import { MdFilterList } from "react-icons/md";
-import ResultSummary from "src/components/search/ResultSummary";
-import FacetsModal from "src/components/search/FacetsModal";
-import ActiveFacets from "src/components/search/ActiveFacets";
+import ResultSummary from "../../components/search/ResultSummary";
+import FacetsModal from "../../components/search/FacetsModal";
+import ActiveFacets from "../../components/search/ActiveFacets";
 
 const ResultInfo = () => {
   const isDesktop = useBreakpoint("sm");

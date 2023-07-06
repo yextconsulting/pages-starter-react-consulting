@@ -2,12 +2,12 @@ import {
   getSearchProvider,
   LOCATOR_ENTITY_TYPE,
   LOCATOR_STATIC_FILTER_FIELD,
-} from "src/config";
-import { useTemplateData } from "src/common/useTemplateData";
+} from "../../config";
+import { useTemplateData } from "../../common/useTemplateData";
 import { SearchHeadlessProvider } from "@yext/search-headless-react";
 import { FilterSearch } from "@yext/search-ui-react";
-import GeolocateButton from "src/components/search/GeolocateButton";
-import { encodeStaticFilters } from "src/components/search/utils/handleSearchParams";
+import GeolocateButton from "../../components/search/GeolocateButton";
+import { encodeStaticFilters } from "../../components/search/utils/handleSearchParams";
 
 const searchFields = [
   {

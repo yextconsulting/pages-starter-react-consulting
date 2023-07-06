@@ -1,4 +1,4 @@
-import { CardComponent } from "src/models/cardComponent";
+import { CardComponent } from "../../models/cardComponent";
 
 export interface FeaturedProps<ProfileType> {
   title: string;

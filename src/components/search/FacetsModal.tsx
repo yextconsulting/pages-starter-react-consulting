@@ -1,8 +1,8 @@
 import { FaTimes } from "react-icons/fa";
 import { useSearchActions } from "@yext/search-headless-react";
 import { StandardFacets, executeSearch } from "@yext/search-ui-react";
-import { useBreakpoint } from "src/common/useBreakpoints";
-import ActiveFacets from "src/components/search/ActiveFacets";
+import { useBreakpoint } from "../../common/useBreakpoints";
+import ActiveFacets from "../../components/search/ActiveFacets";
 
 type FacetsModalProps = {
   setFiltersOpen: React.Dispatch<React.SetStateAction<boolean>>;

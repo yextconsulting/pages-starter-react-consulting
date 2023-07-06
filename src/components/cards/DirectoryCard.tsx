@@ -1,8 +1,8 @@
 import { HoursStatus } from "@yext/sites-react-components";
 import { Link, Address } from "@yext/pages/components";
-import type { LiveAPIProfile, LocationProfile } from "src/types/entities";
-import { CardComponent } from "src/models/cardComponent";
-import { useTemplateData } from "src/common/useTemplateData";
+import type { LiveAPIProfile, LocationProfile } from "../../types/entities";
+import { CardComponent } from "../../models/cardComponent";
+import { useTemplateData } from "../../common/useTemplateData";
 
 const DirectoryCard: CardComponent<
   LocationProfile | LiveAPIProfile<LocationProfile>

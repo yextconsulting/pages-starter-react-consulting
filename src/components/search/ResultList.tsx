@@ -2,10 +2,10 @@ import { useEffect, useRef } from "react";
 import classNames from "classnames";
 import type { CardComponent } from "@yext/search-ui-react";
 import type { Result } from "@yext/search-headless-react";
-import { useLocator } from "src/components/search/utils/useLocator";
-import type { LocatorCardProps } from "src/components/cards/LocatorCard";
-import "src/components/search/ResultList.css";
-import { LocationProfile } from "src/types/entities";
+import { useLocator } from "../../components/search/utils/useLocator";
+import type { LocatorCardProps } from "../../components/cards/LocatorCard";
+import "../../components/search/ResultList.css";
+import { LocationProfile } from "../../types/entities";
 
 interface ResultListProps extends LocatorCardProps {
   CardComponent: CardComponent<LocationProfile>;

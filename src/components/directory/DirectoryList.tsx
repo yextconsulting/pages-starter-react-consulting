@@ -1,5 +1,5 @@
 import { Link } from "@yext/pages/components";
-import type { DirectoryProfile } from "src/types/entities";
+import type { DirectoryProfile } from "../../types/entities";
 
 interface DirectoryListProps {
   showNumLocs: boolean;

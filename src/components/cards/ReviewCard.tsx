@@ -1,6 +1,6 @@
-import type { ReviewProfile } from "src/types/entities";
-import { useTemplateData } from "src/common/useTemplateData";
-import ReviewStars from "src/components/entity/ReviewStars";
+import type { ReviewProfile } from "../../types/entities";
+import { useTemplateData } from "../../common/useTemplateData";
+import ReviewStars from "../../components/entity/ReviewStars";
 
 type ReviewCardProps = {
   review: ReviewProfile;

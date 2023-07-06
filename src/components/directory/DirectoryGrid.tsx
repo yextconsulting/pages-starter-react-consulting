@@ -1,6 +1,6 @@
-import DirectoryCard from "src/components/cards/DirectoryCard";
-import type { CardComponent } from "src/models/cardComponent";
-import type { LocationProfile } from "src/types/entities";
+import DirectoryCard from "../../components/cards/DirectoryCard";
+import type { CardComponent } from "../../models/cardComponent";
+import type { LocationProfile } from "../../types/entities";
 
 interface DirectoryGridProps {
   CardComponent: CardComponent<LocationProfile>;

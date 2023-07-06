@@ -1,5 +1,5 @@
 import { SchemaWrapper, LocalBusiness, FAQPage } from "@yext/schema-wrapper";
-import type { TemplateRenderProps } from "src/types/entities";
+import type { TemplateRenderProps } from "../types/entities";
 
 export function SchemaBuilder(
   data: TemplateRenderProps<Record<string, any>>

@@ -15,16 +15,16 @@ import type {
   TransformProps,
   GetHeadConfig,
 } from "@yext/pages";
-import "src/index.css";
-import { defaultHeadConfig } from "src/common/head";
+import "../index.css";
+import { defaultHeadConfig } from "../common/head";
 import type {
   DirectoryProfile,
   LocationProfile,
   TemplateProps,
   TemplateRenderProps,
-} from "src/types/entities";
-import { Main } from "src/layouts/main";
-import DirectoryLayout from "src/studio-components/directory";
+} from "../types/entities";
+import { Main } from "../layouts/main";
+import DirectoryLayout from "../studio-components/directory";
 
 /**
  * Required when Knowledge Graph data is used for a template.

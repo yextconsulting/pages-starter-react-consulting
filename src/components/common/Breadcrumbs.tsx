@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import classNames from "classnames";
 import { Link } from "@yext/pages/components";
-import { useTemplateData } from "src/common/useTemplateData";
+import { useTemplateData } from "../../common/useTemplateData";
 
 interface BreadcrumbsPropsDefault {
   breadcrumbs: Array<{ slug: string; name: string }>;

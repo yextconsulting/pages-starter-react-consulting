@@ -1,7 +1,7 @@
 import type { Image as ImageType, CTA as CTAType } from "@yext/types";
 import { Link, Image } from "@yext/pages/components";
-import appStoreIcon from "src/assets/images/appstore.svg";
-import playStoreIcon from "src/assets/images/playstore.svg";
+import appStoreIcon from "../../assets/images/appstore.svg";
+import playStoreIcon from "../../assets/images/playstore.svg";
 
 type PromoProps = {
   image?: ImageType;

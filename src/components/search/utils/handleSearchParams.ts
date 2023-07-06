@@ -12,13 +12,13 @@ import {
   GEOLOCATE_RADIUS,
   LOCATOR_STATIC_FILTER_FIELD,
   LOCATOR_ENTITY_TYPE,
-} from "src/config";
-import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
+} from "../../../config";
+import { checkIsLocationFilter } from "./checkIsLocationFilter";
 import {
   combineSearchParams,
   locationFilterToType,
   locationTypeToFilter,
-} from "src/components/search/utils/helpers";
+} from "./helpers";
 import { useSearchParams } from "react-router-dom";
 
 // URLSearchParams keys used for storing and loading search state.

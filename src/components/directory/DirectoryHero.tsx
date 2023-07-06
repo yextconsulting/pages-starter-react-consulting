@@ -1,6 +1,6 @@
-import { useTemplateData } from "src/common/useTemplateData";
-import { SEARCH_PATH } from "src/config";
-import DirectorySearchBar from "src/components/directory/DirectorySearchBar";
+import { useTemplateData } from "../../common/useTemplateData";
+import { SEARCH_PATH } from "../../config";
+import DirectorySearchBar from "../../components/directory/DirectorySearchBar";
 
 interface DirectoryHeroProps {
   brand?: string;

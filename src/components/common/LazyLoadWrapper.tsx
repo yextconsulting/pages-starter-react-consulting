@@ -1,5 +1,5 @@
 import { useRef, ReactNode } from "react";
-import { useIfVisible } from "src/common/useIfVisible";
+import { useIfVisible } from "../../common/useIfVisible";
 
 interface LazyLoadWrapperProps {
   children: ReactNode;

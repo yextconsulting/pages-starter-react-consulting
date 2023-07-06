@@ -1,5 +1,5 @@
-import ReviewStars from "src/components/entity/ReviewStars";
-import ReviewCard from "src/components/cards/ReviewCard";
+import ReviewStars from "../../components/entity/ReviewStars";
+import ReviewCard from "../../components/cards/ReviewCard";
 import {
   CarouselProvider,
   Slider,
@@ -9,7 +9,7 @@ import {
   Dot,
 } from "pure-react-carousel";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import type { ReviewProfile } from "src/types/entities";
+import type { ReviewProfile } from "../../types/entities";
 
 type ReviewsProps = {
   title: string;

@@ -1,6 +1,6 @@
 import { Result } from "@yext/search-headless-react";
-import { createCtx } from "src/common/createCtx";
-import { LocationProfile } from "src/types/entities";
+import { createCtx } from "../../../common/createCtx";
+import { LocationProfile } from "../../../types/entities";
 
 type LocatorContextType = {
   results: Result<LocationProfile>[];

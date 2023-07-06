@@ -7,10 +7,10 @@ import {
   LocationMap,
 } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
-import type { LocationProfile } from "src/types/entities";
+import type { LocationProfile } from "../../types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
-import { useBreakpoint } from "src/common/useBreakpoints";
-import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
+import { useBreakpoint } from "../../common/useBreakpoints";
+import { LazyLoadWrapper } from "../../components/common/LazyLoadWrapper";
 
 type CoreProps = {
   profile: LocationProfile;

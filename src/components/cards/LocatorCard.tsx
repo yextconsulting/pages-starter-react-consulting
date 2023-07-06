@@ -2,8 +2,8 @@ import type { CardProps } from "@yext/search-ui-react";
 import { HoursStatus } from "@yext/sites-react-components";
 import { Link } from "@yext/pages/components";
 import classNames from "classnames";
-import { LocationProfile } from "src/types/entities";
-import { useTemplateData } from "src/common/useTemplateData";
+import { LocationProfile } from "../../types/entities";
+import { useTemplateData } from "../../common/useTemplateData";
 
 export interface LocatorCardProps {
   useKilometers?: boolean;

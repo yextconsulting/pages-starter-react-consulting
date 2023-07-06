@@ -1,5 +1,5 @@
-import { TemplateRenderProps, BaseProfile } from "src/types/entities";
-import { createCtx } from "src/common/createCtx";
+import { TemplateRenderProps, BaseProfile } from "../types/entities";
+import { createCtx } from "./createCtx";
 
 type TemplateDataProviderProps = TemplateRenderProps<BaseProfile>;
 

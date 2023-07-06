@@ -1,7 +1,7 @@
 import { FilterSearch, executeSearch } from "@yext/search-ui-react";
 import { useSearchActions } from "@yext/search-headless-react";
-import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
-import GeolocateButton from "src/components/search/GeolocateButton";
+import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "../../config";
+import GeolocateButton from "./GeolocateButton";
 import { useEffect } from "react";
 
 const searchFields = [

@@ -2,22 +2,22 @@ import { useCallback, useEffect, useState } from "react";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map } from "@yext/pages/components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
-import { useBreakpoint } from "src/common/useBreakpoints";
+import { useBreakpoint } from "../../common/useBreakpoints";
 import {
   useHandleSearchParams,
   useLoadInitialSearchParams,
-} from "src/components/search/utils/handleSearchParams";
-import { useGetSearchResults } from "src/components/search/utils/useGetSearchResults";
+} from "../../components/search/utils/handleSearchParams";
+import { useGetSearchResults } from "../../components/search/utils/useGetSearchResults";
 import { LocatorProvider } from "./utils/useLocator";
-import { LocationProfile } from "src/types/entities";
-import "src/components/search/Locator.css";
-import mapStyles from "src/components/search/defaultMapStyles.json";
-import SearchBox from "src/components/search/SearchBox";
-import LocatorCard from "src/components/cards/LocatorCard";
-import ResultInfo from "src/components/search/ResultInfo";
-import ResultList from "src/components/search/ResultList";
-import CustomMarker from "src/components/search/CustomMarker";
-import LoadingSpinner from "src/components/common/LoadingSpinner";
+import { LocationProfile } from "../../types/entities";
+import "../../components/search/Locator.css";
+import mapStyles from "../../components/search/defaultMapStyles.json";
+import SearchBox from "../../components/search/SearchBox";
+import LocatorCard from "../../components/cards/LocatorCard";
+import ResultInfo from "../../components/search/ResultInfo";
+import ResultList from "../../components/search/ResultList";
+import CustomMarker from "../../components/search/CustomMarker";
+import LoadingSpinner from "../../components/common/LoadingSpinner";
 
 type LocatorProps = {
   // Will display results up to the verticalLimit (default 20, change with searchActions.setVerticalLimit(num))

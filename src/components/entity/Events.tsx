@@ -1,6 +1,6 @@
-import { EventProfile } from "src/types/entities";
-import EventCard from "src/components/cards/EventCard";
-import Featured from "src/components/entity/Featured";
+import { EventProfile } from "../../types/entities";
+import EventCard from "../../components/cards/EventCard";
+import Featured from "../../components/entity/Featured";
 
 interface EventProps {
   title: string;

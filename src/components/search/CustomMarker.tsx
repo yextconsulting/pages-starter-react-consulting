@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import type { Coordinate } from "@yext/types";
 import { Coordinate as CoordinateClass } from "@yext/components-tsx-geo";
 import { Marker, useMapContext } from "@yext/pages/components";
-import { useLocator } from "src/components/search/utils/useLocator";
+import { useLocator } from "../../components/search/utils/useLocator";
 
 type CustomMarkerProps = {
   coordinate: Coordinate;
