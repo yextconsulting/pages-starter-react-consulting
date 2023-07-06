@@ -25,7 +25,7 @@ import type {
 } from "src/types/entities";
 import { dedupeStreamFields } from "src/common/helpers";
 import { formatPhone } from "src/common/helpers";
-import { Main } from "src/layouts/main";
+import { Main } from "src/studio-components/main";
 import EntityLayout from "src/layouts/entity";
 import { fetchReviews } from "src/components/entity/utils/fetchReviews";
 

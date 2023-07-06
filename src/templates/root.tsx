@@ -22,7 +22,7 @@ import type {
   TemplateProps,
   TemplateRenderProps,
 } from "src/types/entities";
-import { Main } from "src/layouts/main";
+import { Main } from "src/studio-components/main";
 import DirectoryLayout from "src/studio-components/directory";
 
 /**

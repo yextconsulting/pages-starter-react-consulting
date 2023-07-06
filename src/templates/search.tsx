@@ -6,7 +6,7 @@ import {
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
-import { Main } from "src/layouts/main";
+import { Main } from "src/studio-components/main";
 import SearchLayout from "src/layouts/search";
 import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
 import { SEARCH_PATH } from "src/config";

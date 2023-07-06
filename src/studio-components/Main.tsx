@@ -9,7 +9,7 @@ import { Footer } from "src/components/common/Footer";
 import { useExposeEnableYAFunction } from "src/common/useExposeEnableYAFunction";
 import config from "src/config";
 
-interface MainProps {
+export interface MainProps {
   data: TemplateRenderProps<BaseProfile>;
   children?: ReactNode;
 }
@@ -57,4 +57,4 @@ const MainInternal = (props: MainProps) => {
   );
 };
 
-export { Main };
+export default Main;
