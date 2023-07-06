@@ -24,7 +24,7 @@ import type {
   TemplateRenderProps,
 } from "src/types/entities";
 import { Main } from "src/layouts/main";
-import DirectoryLayout from "src/layouts/directory";
+import DirectoryLayout from "src/studio-components/directory";
 
 /**
  * Required when Knowledge Graph data is used for a template.

@@ -1,7 +1,7 @@
 {
   "features": [
     {
-      "name": "city-d89ff87",
+      "name": "city-af8d944",
       "streamId": "directory-city",
       "templateType": "JS",
       "alternateLanguageFields": ["name", "slug"],
@@ -10,7 +10,7 @@
       }
     },
     {
-      "name": "index-65094c2",
+      "name": "index-751c571",
       "streamId": "locations",
       "templateType": "JS",
       "alternateLanguageFields": ["name", "slug"],
@@ -19,7 +19,7 @@
       }
     },
     {
-      "name": "region-404e56e",
+      "name": "region-0ce3f2c",
       "streamId": "directory-region",
       "templateType": "JS",
       "alternateLanguageFields": ["name", "slug"],
@@ -28,7 +28,7 @@
       }
     },
     {
-      "name": "root-906b249",
+      "name": "root-801d37d",
       "streamId": "directory-root",
       "templateType": "JS",
       "alternateLanguageFields": ["name", "slug"],
@@ -37,7 +37,7 @@
       }
     },
     {
-      "name": "search-b5e7a68",
+      "name": "search-6992894",
       "streamId": "search-page",
       "templateType": "JS",
       "alternateLanguageFields": ["name", "slug"],

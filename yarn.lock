@@ -3800,7 +3800,7 @@
     "esbuild-windows-64" "0.15.18"
     "esbuild-windows-arm64" "0.15.18"
 
-"esbuild@^0.16.3":
+"esbuild@^0.16.14":
   "integrity" "sha512-G8LEkV0XzDMNwXKgM0Jwu3nY3lSTwSGY6XbxM9cr9+s0T/qSV1q1JVPBGzm3dcjhCic9+emZDmMffkwgPeOeLg=="
   "resolved" "https://registry.npmjs.org/esbuild/-/esbuild-0.16.17.tgz"
   "version" "0.16.17"
@@ -6469,7 +6469,7 @@
   "resolved" "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
   "version" "4.2.0"
 
-"postcss@^8.0.0", "postcss@^8.1.0", "postcss@^8.2.1", "postcss@^8.2.14", "postcss@^8.3.3", "postcss@^8.4.12", "postcss@^8.4.18", "postcss@^8.4.19", "postcss@^8.4.21", "postcss@^8.4.23", "postcss@>=8.0.9":
+"postcss@^8.0.0", "postcss@^8.1.0", "postcss@^8.2.1", "postcss@^8.2.14", "postcss@^8.3.3", "postcss@^8.4.12", "postcss@^8.4.18", "postcss@^8.4.21", "postcss@^8.4.23", "postcss@>=8.0.9":
   "integrity" "sha512-M0RzbcI0sO/XJNucsGjvWU9ERWxb/ytp1w6dKtxTKgixdtQDq4rmx/g8W1hnaheq9jgwL/oyEdH5Bc4WwJKMqg=="
   "resolved" "https://registry.npmjs.org/postcss/-/postcss-8.4.24.tgz"
   "version" "8.4.24"
@@ -7049,14 +7049,14 @@
   optionalDependencies:
     "fsevents" "~2.3.2"
 
-"rollup@^3.21.0":
+"rollup@^3.10.0":
   "integrity" "sha512-I5gJCSpSMr3U9wv4D5YA8g7w7cj3eaSDeo7t+JcaFQOmoOUBgu4K9iMp8k3EZnwbJrjQxUMSKxMyB8qEQzzaSg=="
   "resolved" "https://registry.npmjs.org/rollup/-/rollup-3.26.1.tgz"
   "version" "3.26.1"
   optionalDependencies:
     "fsevents" "~2.3.2"
 
-"rollup@^3.7.0":
+"rollup@^3.21.0":
   "integrity" "sha512-I5gJCSpSMr3U9wv4D5YA8g7w7cj3eaSDeo7t+JcaFQOmoOUBgu4K9iMp8k3EZnwbJrjQxUMSKxMyB8qEQzzaSg=="
   "resolved" "https://registry.npmjs.org/rollup/-/rollup-3.26.1.tgz"
   "version" "3.26.1"
@@ -7969,15 +7969,15 @@
     "@rollup/pluginutils" "^5.0.2"
     "@svgr/core" "^6.5.1"
 
-"vite@^2.6.0 || 3 || 4", "vite@^4", "vite@4.0.0":
-  "integrity" "sha512-ynad+4kYs8Jcnn8J7SacS9vAbk7eMy0xWg6E7bAhS1s79TK+D7tVFGXVZ55S7RNLRROU1rxoKlvZ/qjaB41DGA=="
-  "resolved" "https://registry.npmjs.org/vite/-/vite-4.0.0.tgz"
-  "version" "4.0.0"
+"vite@^2.6.0 || 3 || 4", "vite@^4", "vite@4.1.3":
+  "integrity" "sha512-0Zqo4/Fr/swSOBmbl+HAAhOjrqNwju+yTtoe4hQX9UsARdcuc9njyOdr6xU0DDnV7YP0RT6mgTTOiRtZgxfCxA=="
+  "resolved" "https://registry.npmjs.org/vite/-/vite-4.1.3.tgz"
+  "version" "4.1.3"
   dependencies:
-    "esbuild" "^0.16.3"
-    "postcss" "^8.4.19"
+    "esbuild" "^0.16.14"
+    "postcss" "^8.4.21"
     "resolve" "^1.22.1"
-    "rollup" "^3.7.0"
+    "rollup" "^3.10.0"
   optionalDependencies:
     "fsevents" "~2.3.2"
 
