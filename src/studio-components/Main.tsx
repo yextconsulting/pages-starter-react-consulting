@@ -1,13 +1,13 @@
 import type { ReactNode } from "react";
-import type { TemplateRenderProps, BaseProfile } from "src/types/entities";
+import type { TemplateRenderProps, BaseProfile } from "../types/entities";
 import { AnalyticsProvider } from "@yext/pages/components";
-import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
+import ErrorBoundaryWithAnalytics from "../components/common/ErrorBoundaryWithAnalytics";
 import { ConfigurationProvider } from "@yext/sites-react-components";
-import { TemplateDataProvider } from "src/common/useTemplateData";
-import { Header } from "src/components/common/Header";
-import { Footer } from "src/components/common/Footer";
-import { useExposeEnableYAFunction } from "src/common/useExposeEnableYAFunction";
-import config from "src/config";
+import { TemplateDataProvider } from "../common/useTemplateData";
+import { Header } from "../components/common/Header";
+import { Footer } from "../components/common/Footer";
+import { useExposeEnableYAFunction } from "../common/useExposeEnableYAFunction";
+import config from "../config";
 
 export interface MainProps {
   data: TemplateRenderProps<BaseProfile>;
