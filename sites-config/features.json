@@ -28,13 +28,6 @@
       }
     },
     {
-      "name": "robots",
-      "templateType": "JS",
-      "staticPage": {
-        "plugin": {}
-      }
-    },
-    {
       "name": "root-906b249",
       "streamId": "directory-root",
       "templateType": "JS",
