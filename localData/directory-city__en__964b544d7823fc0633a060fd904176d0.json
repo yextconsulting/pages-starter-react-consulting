@@ -1,0 +1,335 @@
+{
+  "__": {
+    "alternateLanguageFields": ["name", "slug"],
+    "entityPageSet": {
+      "plugin": {}
+    },
+    "name": "city",
+    "streamId": "directory-city",
+    "templateType": "JS"
+  },
+  "_site": {
+    "c_brand": "Yext Consulting",
+    "c_copyrightMessage": "© 2022. All Rights Reserved.",
+    "c_facebook": "https://www.facebook.com/",
+    "c_footerLinks": [
+      {
+        "label": "Link1",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link2",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link3",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link4",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link5",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      }
+    ],
+    "c_header": {
+      "links": [
+        {
+          "label": "Link1",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link2",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link3",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link4",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link5",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        }
+      ],
+      "logo": {
+        "height": 100,
+        "url": "http://a.mktgcdn.com/p/BzSALSNKyVBFz797EoaKt_k3rgAJonv9DnbGYMbxqds/100x100.png",
+        "width": 100
+      }
+    },
+    "c_instagram": "https://www.instagram.com/",
+    "c_linkedIn": "https://www.linkedin.com/",
+    "c_nearbySectionAPIKey": "a76f3747d89260bdebb2c3223cffe03e",
+    "c_reviewsAPIKey": "950cb865b1378ec95ad87c7b2a54a806",
+    "c_searchExperienceAPIKey": "134988aadced7171cc410730c3aec4f6",
+    "c_twitter": "https://www.twitter.com/",
+    "c_youtube": "https://www.youtube.com/",
+    "id": "site-entity",
+    "meta": {
+      "entityType": {
+        "id": "ce_site",
+        "uid": 132489
+      },
+      "locale": "en"
+    },
+    "name": "Site Entity",
+    "uid": 64216926
+  },
+  "alternateLanguageFields": {},
+  "businessId": 3861963,
+  "dm_directoryChildren": [
+    {
+      "address": {
+        "city": "New York",
+        "countryCode": "US",
+        "line1": "61 Ninth Avenue",
+        "postalCode": "10011",
+        "region": "NY"
+      },
+      "hours": {
+        "friday": {
+          "openIntervals": [
+            {
+              "end": "17:00",
+              "start": "09:00"
+            }
+          ]
+        },
+        "monday": {
+          "openIntervals": [
+            {
+              "end": "17:00",
+              "start": "09:00"
+            }
+          ]
+        },
+        "saturday": {
+          "isClosed": true
+        },
+        "sunday": {
+          "isClosed": true
+        },
+        "thursday": {
+          "openIntervals": [
+            {
+              "end": "17:00",
+              "start": "09:00"
+            }
+          ]
+        },
+        "tuesday": {
+          "openIntervals": [
+            {
+              "end": "17:00",
+              "start": "09:00"
+            }
+          ]
+        },
+        "wednesday": {
+          "openIntervals": [
+            {
+              "end": "17:00",
+              "start": "09:00"
+            }
+          ]
+        }
+      },
+      "name": "Test Location",
+      "slug": "ny/new-york/61-ninth-avenue"
+    },
+    {
+      "address": {
+        "city": "New York",
+        "countryCode": "US",
+        "line1": "40 Broad St",
+        "postalCode": "10004",
+        "region": "NY"
+      },
+      "hours": {
+        "friday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "22:00",
+              "start": "09:00"
+            }
+          ]
+        },
+        "monday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "22:00",
+              "start": "09:00"
+            }
+          ]
+        },
+        "saturday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "22:00",
+              "start": "09:00"
+            }
+          ]
+        },
+        "sunday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "22:00",
+              "start": "09:00"
+            }
+          ]
+        },
+        "thursday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "22:00",
+              "start": "09:00"
+            }
+          ]
+        },
+        "tuesday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "22:00",
+              "start": "09:00"
+            }
+          ]
+        },
+        "wednesday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "22:00",
+              "start": "09:00"
+            }
+          ]
+        }
+      },
+      "name": "Test Location 2",
+      "slug": "ny/new-york/40-broad-st"
+    },
+    {
+      "address": {
+        "city": "New York",
+        "countryCode": "US",
+        "line1": "601–699 E 6th St",
+        "postalCode": "10009",
+        "region": "NY"
+      },
+      "hours": {
+        "friday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "19:00",
+              "start": "10:00"
+            }
+          ]
+        },
+        "monday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "19:00",
+              "start": "10:00"
+            }
+          ]
+        },
+        "saturday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "19:00",
+              "start": "10:00"
+            }
+          ]
+        },
+        "sunday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "19:00",
+              "start": "10:00"
+            }
+          ]
+        },
+        "thursday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "19:00",
+              "start": "10:00"
+            }
+          ]
+        },
+        "tuesday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "19:00",
+              "start": "10:00"
+            }
+          ]
+        },
+        "wednesday": {
+          "isClosed": false,
+          "openIntervals": [
+            {
+              "end": "19:00",
+              "start": "10:00"
+            }
+          ]
+        }
+      },
+      "name": "Test Location 3",
+      "slug": "ny/new-york/601699-e-6th-st"
+    }
+  ],
+  "dm_directoryParents": [
+    {
+      "name": "All Locations",
+      "slug": "index.html"
+    },
+    {
+      "name": "NY",
+      "slug": "ny"
+    }
+  ],
+  "id": "defaultDirectory_ny_new_york",
+  "key": "0:city:knowledgeGraph:64216972:en",
+  "locale": "en",
+  "meta": {
+    "entityType": {
+      "id": "ce_city",
+      "uid": 132487
+    },
+    "locale": "en"
+  },
+  "name": "New York",
+  "siteDomain": "",
+  "siteId": 0,
+  "siteInternalHostName": "",
+  "slug": "ny/new-york",
+  "uid": 64216972
+}
