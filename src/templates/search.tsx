@@ -1,6 +1,7 @@
 import {
   Template,
   TemplateConfig,
+  TransformProps,
   GetHeadConfig,
   HeadConfig,
 } from "@yext/pages";
@@ -10,6 +11,7 @@ import { Main } from "src/layouts/main";
 import SearchLayout from "src/layouts/search";
 import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
 import { SEARCH_PATH } from "src/config";
+import { getTranslations } from "i18n/translation";
 
 /**
  * Not required depending on your use case.
@@ -61,6 +63,24 @@ export const getHeadConfig: GetHeadConfig<
   TemplateRenderProps<SearchPageProfile>
 > = (data): HeadConfig => {
   return defaultHeadConfig(data);
+};
+
+/**
+ * Required only when data needs to be retrieved from an external (non-Knowledge Graph) source.
+ * If the page is truly static this function is not necessary.
+ *
+ * This function will be run during generation and pass in directly as props to the default
+ * exported function.
+ */
+export const transformProps: TransformProps<
+  TemplateRenderProps<SearchPageProfile>
+> = async (data) => {
+  const { locale } = data.document;
+
+  return {
+    ...data,
+    translations: await getTranslations(locale),
+  };
 };
 
 /**

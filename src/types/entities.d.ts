@@ -224,6 +224,7 @@ export type TemplateProps<T = Record<string, unknown>> = Omit<
   "document"
 > & {
   document: T;
+  translations: Record<string, string>;
 };
 export type TemplateRenderProps<T = Record<string, unknown>> = Omit<
   InternalTemplateRenderProps,

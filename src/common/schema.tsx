@@ -1,9 +1,7 @@
 import { SchemaWrapper, LocalBusiness, FAQPage } from "@yext/schema-wrapper";
-import type { TemplateRenderProps } from "src/types/entities";
+import type { TemplateRenderProps } from "@yext/pages";
 
-export function SchemaBuilder(
-  data: TemplateRenderProps<Record<string, any>>
-): string {
+export function SchemaBuilder(data: TemplateRenderProps): string {
   const localBusiness = data.document.address
     ? {
         ...LocalBusiness(data),

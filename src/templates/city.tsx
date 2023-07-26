@@ -25,6 +25,7 @@ import type {
 } from "src/types/entities";
 import { Main } from "src/layouts/main";
 import DirectoryLayout from "src/layouts/directory";
+import { getTranslations } from "i18n/translation";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -96,7 +97,7 @@ export const getHeadConfig: GetHeadConfig<
 export const transformProps: TransformProps<
   TemplateRenderProps<DirectoryProfile<never>>
 > = async (data) => {
-  const { dm_directoryParents, name } = data.document;
+  const { dm_directoryParents, locale, name } = data.document;
 
   (dm_directoryParents || []).push({ name: name, slug: "" });
 
@@ -106,6 +107,7 @@ export const transformProps: TransformProps<
       ...data.document,
       dm_directoryParents: dm_directoryParents,
     },
+    translations: await getTranslations(locale),
   };
 };
 

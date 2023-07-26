@@ -3,6 +3,7 @@
     "baseUrl": "./",
     "target": "ESNext",
     "strict": true,
+    "module": "node16",
     "moduleResolution": "Node",
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
@@ -14,5 +15,5 @@
     },
     "outDir": "./dist"
   },
-  "include": ["src"]
+  "include": ["i18n", "src"]
 }

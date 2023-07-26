@@ -6,6 +6,7 @@ import * as path from "path";
 export default defineConfig({
   resolve: {
     alias: {
+      i18n: path.resolve("i18n/"),
       src: path.resolve("src/"),
     },
   },
