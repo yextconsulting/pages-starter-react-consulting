@@ -3,12 +3,14 @@ import { useSearchState } from "@yext/search-headless-react";
 import type { State } from "@yext/search-headless-react";
 import { LOCATOR_STATIC_FILTER_FIELD } from "src/config";
 import { useTemplateData } from "src/common/useTemplateData";
+import { useTranslations } from "src/common/useTranslations";
 import { checkIsLocationFilter } from "src/components/search/utils/checkIsLocationFilter";
 import { useLocator } from "./utils/useLocator";
 
 const ResultSummary = () => {
   const searchState = useSearchState((state) => state);
   const { relativePrefixToRoot } = useTemplateData();
+  const translate = useTranslations();
   const [searchMade, setSearchMade] = useState(false);
   const { results } = useLocator();
   const resultsText = useMemo(
@@ -19,11 +21,19 @@ const ResultSummary = () => {
   // Element to render for results summary when page is first loaded before a search is made.
   const initialSummaryText = (
     <span>
-      Use our locator to find a location near you or{" "}
-      <a href={relativePrefixToRoot + "index.html"} className="Link--underline">
-        browse our directory
-      </a>
-      .
+      {translate(
+        "Use our locator to find a location near you or {BROWSE_DIRECTORY}.",
+        {
+          BROWSE_DIRECTORY: (
+            <a
+              href={relativePrefixToRoot + "index.html"}
+              className="Link--underline"
+            >
+              {translate("browse our directory")}
+            </a>
+          ),
+        }
+      )}
     </span>
   );
 
@@ -42,6 +52,7 @@ const ResultSummary = () => {
 };
 
 function getResultsCountText(state: State, resultsCount: number) {
+  const translate = useTranslations();
   let searchPlace = "";
 
   if (state.filters.static?.length) {
@@ -65,21 +76,30 @@ function getResultsCountText(state: State, resultsCount: number) {
 
   if (searchPlace) {
     if (resultsCount === 0) {
-      return `No locations found near "${searchPlace}".`;
+      return translate("No locations found near {SEARCH_PLACE}.", {
+        SEARCH_PLACE: searchPlace,
+      });
     }
     if (resultsCount === 1) {
-      return `${resultsCount} location near "${searchPlace}".`;
+      return translate("1 location found near {SEARCH_PLACE}.", {
+        SEARCH_PLACE: searchPlace,
+      });
     }
-    return `${resultsCount} locations near "${searchPlace}".`;
+    return translate("{RESULTS_COUNT} locations found near {SEARCH_PLACE}.", {
+      RESULTS_COUNT: resultsCount,
+      SEARCH_PLACE: searchPlace,
+    });
   }
 
   if (resultsCount === 0) {
-    return `No locations found.`;
+    return translate("No locations found.");
   }
   if (resultsCount === 1) {
-    return `${resultsCount} location found.`;
+    return translate("1 location found.");
   }
-  return `${resultsCount} locations found.`;
+  return translate("{RESULTS_COUNT} locations found.", {
+    RESULTS_COUNT: resultsCount,
+  });
 }
 
 export default ResultSummary;

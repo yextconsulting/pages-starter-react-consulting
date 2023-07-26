@@ -1,6 +1,7 @@
 import { HoursStatus } from "@yext/sites-react-components";
 import { Link, Image } from "@yext/pages/components";
 import type { Address, Hours, CTA, Image as ImageType } from "@yext/types";
+import { useTranslations } from "src/common/useTranslations";
 
 type HeroProps = {
   name: string;
@@ -14,6 +15,8 @@ type HeroProps = {
 };
 
 const Hero = (props: HeroProps) => {
+  const translate = useTranslations();
+
   return (
     <div className="Hero py-8 sm:py-16">
       <div className="container flex flex-col lg:flex-row">
@@ -32,10 +35,12 @@ const Hero = (props: HeroProps) => {
             </div>
           )}
           {/* TODO(aganesh) : use Reviews component when available */}
-          {props.rating && (
+          {props.rating && props.numReviews && (
             <div className="mb-6 lg:mb-8">
-              <span> {props.rating} out of 5 </span>
-              <span>({props.numReviews} reviews)</span>
+              {translate("{RATING} out of 5 ({NUMREVIEWS} reviews)", {
+                RATING: props.rating,
+                NUMREVIEWS: props.numReviews,
+              })}
             </div>
           )}
           {(props.cta1 || props.cta2) && (

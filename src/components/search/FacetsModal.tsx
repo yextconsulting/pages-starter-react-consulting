@@ -2,6 +2,7 @@ import { FaTimes } from "react-icons/fa";
 import { useSearchActions } from "@yext/search-headless-react";
 import { StandardFacets, executeSearch } from "@yext/search-ui-react";
 import { useBreakpoint } from "src/common/useBreakpoints";
+import { useTranslations } from "src/common/useTranslations";
 import ActiveFacets from "src/components/search/ActiveFacets";
 
 type FacetsModalProps = {
@@ -11,6 +12,7 @@ type FacetsModalProps = {
 const FacetsModal = (props: FacetsModalProps) => {
   const isDesktop = useBreakpoint("sm");
   const searchActions = useSearchActions();
+  const translate = useTranslations();
   const facets = searchActions.state.filters.facets;
 
   const handleClearAllFacets = () => {
@@ -23,7 +25,7 @@ const FacetsModal = (props: FacetsModalProps) => {
     <div className="Locator-facetsModal">
       <div className="flex items-center mb-4">
         <h3 className="text-lg font-bold text-brand-primary">
-          Refine Your Search
+          {translate("Refine Your Search")}
         </h3>
         <button className="ml-auto" onClick={() => props.setFiltersOpen(false)}>
           <FaTimes className="text-brand-primary" />
@@ -56,7 +58,7 @@ const FacetsModal = (props: FacetsModalProps) => {
               : true
           }
         >
-          Clear All
+          {translate("Clear All")}
         </button>
       </div>
     </div>

@@ -4,6 +4,7 @@ import c from "classnames";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { MaybeLink } from "src/components/common/MaybeLink";
+import { useTranslations } from "src/common/useTranslations";
 
 type HeaderProps = {
   links: CTA[];
@@ -14,6 +15,7 @@ type HeaderProps = {
 const Header = (props: HeaderProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { logo, logoLink, links } = props;
+  const translate = useTranslations();
 
   return (
     <header className="Header relative">
@@ -44,7 +46,7 @@ const Header = (props: HeaderProps) => {
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
-          <span className="sr-only">Toggle Header Menu</span>
+          <span className="sr-only">{translate("Toggle Header Menu")}</span>
         </button>
       </div>
 

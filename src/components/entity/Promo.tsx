@@ -1,5 +1,6 @@
 import type { Image as ImageType, CTA as CTAType } from "@yext/types";
 import { Link, Image } from "@yext/pages/components";
+import { useTranslations } from "src/common/useTranslations";
 import appStoreIcon from "src/assets/images/appstore.svg";
 import playStoreIcon from "src/assets/images/playstore.svg";
 
@@ -13,6 +14,8 @@ type PromoProps = {
 };
 
 const Promo = (props: PromoProps) => {
+  const translate = useTranslations();
+
   return (
     <div className="Promo py-8 sm:py-16">
       <div className="container flex flex-col md:flex-row">
@@ -38,12 +41,18 @@ const Promo = (props: PromoProps) => {
             <div className="flex gap-4">
               {props.appStoreUrl && (
                 <Link href={props.appStoreUrl}>
-                  <img src={appStoreIcon} alt="Download on the App Store" />
+                  <img
+                    src={appStoreIcon}
+                    alt={translate("Download on the App Store")}
+                  />
                 </Link>
               )}
               {props.googlePlayUrl && (
                 <Link href={props.googlePlayUrl}>
-                  <img src={playStoreIcon} alt="Download on the Play Store" />
+                  <img
+                    src={playStoreIcon}
+                    alt={translate("Get it on Google Play")}
+                  />
                 </Link>
               )}
             </div>

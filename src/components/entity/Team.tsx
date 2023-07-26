@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { FinancialProfessionalProfile } from "src/types/entities";
 import TeamCard from "src/components/cards/TeamCard";
+import { useTranslations } from "src/common/useTranslations";
 
 type TeamProps = {
   title: string;
@@ -10,6 +11,7 @@ type TeamProps = {
 
 const Team = (props: TeamProps) => {
   const { title, team, initialSize } = props;
+  const translate = useTranslations();
 
   const [numberVisible, setNumberVisible] = useState(
     initialSize ? Math.min(initialSize, team.length) : team.length
@@ -35,7 +37,7 @@ const Team = (props: TeamProps) => {
               setNumberVisible(team.length);
             }}
           >
-            Load More
+            {translate("Load More")}
           </button>
         )}
       </div>

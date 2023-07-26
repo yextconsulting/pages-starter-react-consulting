@@ -3,6 +3,7 @@ import type { Coordinate } from "@yext/types";
 import { Link } from "@yext/pages/components";
 import { SEARCH_PATH } from "src/config";
 import { useTemplateData } from "src/common/useTemplateData";
+import { useTranslations } from "src/common/useTranslations";
 import type { LiveAPIProfile, LocationProfile } from "src/types/entities";
 import classNames from "classnames";
 import DirectoryCard from "src/components/cards/DirectoryCard";
@@ -34,10 +35,12 @@ type NearbyProps = {
 };
 
 const Nearby = (props: NearbyProps) => {
+  const translate = useTranslations();
+
   const {
-    title = "Nearby Locations",
+    title = translate("Nearby Locations"),
     linkToLocator = true,
-    buttonText = "Find a Location",
+    buttonText = translate("Find a Location"),
     buttonLink,
     coordinate,
     id,

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Image } from "@yext/pages/components";
 import type { Image as ImageType } from "@yext/types";
 import { FaTimes } from "react-icons/fa";
+import { useTranslations } from "src/common/useTranslations";
 
 type BannerProps = {
   image?: ImageType;
@@ -11,6 +12,7 @@ type BannerProps = {
 
 const Banner = (props: BannerProps) => {
   const [showBanner, setShowBanner] = useState(true);
+  const translate = useTranslations();
 
   if (!showBanner) {
     return null;
@@ -29,7 +31,7 @@ const Banner = (props: BannerProps) => {
         {props.hasCloseBtn && (
           <button onClick={() => setShowBanner(false)}>
             <FaTimes className="w-4 h-4" />
-            <span className="sr-only">Hide banner</span>
+            <span className="sr-only">{translate("Hide banner")}</span>
           </button>
         )}
       </div>

@@ -11,6 +11,7 @@ import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
+import { useTranslations } from "src/common/useTranslations";
 
 type CoreProps = {
   profile: LocationProfile;
@@ -26,6 +27,7 @@ const CoreHeading = (props: { children: ReactNode }) => {
 
 const Core = (props: CoreProps) => {
   const isDesktopBreakpoint = useBreakpoint("sm");
+  const translate = useTranslations();
   const { profile } = props;
   const mappinSVG = (
     <svg
@@ -53,7 +55,7 @@ const Core = (props: CoreProps) => {
       <div className="container">
         <div className="flex flex-row flex-wrap">
           <CoreSection>
-            <CoreHeading>Information</CoreHeading>
+            <CoreHeading>{translate("Information")}</CoreHeading>
             <Address address={profile.address} />
             <Link
               className="Link--primary Link--underline font-bold mt-2"
@@ -63,20 +65,20 @@ const Core = (props: CoreProps) => {
                 profile.googlePlaceId
               )}`}
             >
-              Get Directions
+              {translate("Get Directions")}
             </Link>
             {/* TODO(GENERATOR): use Phone component */}
             {profile.mainPhone && (
               <div className="flex items-center mt-4">
                 <FaPhone className="text-blue-500 mr-2" />
-                <span className="mr-2 font-bold">Phone</span>
+                <span className="mr-2 font-bold">{translate("Phone")}</span>
                 <span>{profile.mainPhone}</span>
               </div>
             )}
             {profile.tollFreePhone && (
               <div className="flex items-center mt-4">
                 <FaPhone className="text-blue-500 mr-2" />
-                <span className="mr-2 font-bold">Toll-free</span>
+                <span className="mr-2 font-bold">{translate("Toll-free")}</span>
                 <span>{profile.tollFreePhone}</span>
               </div>
             )}
@@ -92,7 +94,7 @@ const Core = (props: CoreProps) => {
           </CoreSection>
           {(profile.hours || profile.additionalHoursText) && (
             <CoreSection>
-              <CoreHeading>Hours</CoreHeading>
+              <CoreHeading>{translate("Hours")}</CoreHeading>
               {profile.hours && (
                 <HoursTable hours={profile.hours} startOfWeek="Monday" />
               )}
@@ -103,7 +105,7 @@ const Core = (props: CoreProps) => {
           )}
           {profile.services && (
             <CoreSection>
-              <CoreHeading>Services</CoreHeading>
+              <CoreHeading>{translate("Services")}</CoreHeading>
               <ul className="list-inside">
                 {profile.services.map((service) => (
                   <li className="mb-2" key={service}>

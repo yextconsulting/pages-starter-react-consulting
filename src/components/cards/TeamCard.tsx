@@ -1,6 +1,7 @@
 import { Link, Image } from "@yext/pages/components";
 import type { FinancialProfessionalProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope, FaChevronRight } from "react-icons/fa";
+import { useTranslations } from "src/common/useTranslations";
 
 type TeamCardProps = {
   profile: FinancialProfessionalProfile;
@@ -8,6 +9,8 @@ type TeamCardProps = {
 
 const TeamCard = (props: TeamCardProps) => {
   const { profile } = props;
+  const translate = useTranslations();
+
   return (
     <div className="TeamCard h-full rounded-lg shadow-lg">
       <div className="border-b-2 p-8 flex items-center">
@@ -60,7 +63,7 @@ const TeamCard = (props: TeamCardProps) => {
             className="Link--primary mt-6 flex items-center font-bold"
             href={profile.websiteUrl.url}
           >
-            Visit Profile
+            {translate("Visit Profile")}
             <FaChevronRight className="text-blue-500 ml-2" />
           </Link>
         )}

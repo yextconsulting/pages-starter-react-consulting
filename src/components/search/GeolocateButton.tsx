@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSearchActions, Matcher } from "@yext/search-headless-react";
 import type { SelectableStaticFilter } from "@yext/search-headless-react";
 import { executeSearch, getUserLocation } from "@yext/search-ui-react";
+import { useTranslations } from "src/common/useTranslations";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import { GEOLOCATE_RADIUS } from "src/config";
 import { encodeStaticFilters } from "./utils/handleSearchParams";
@@ -14,6 +15,7 @@ interface GeolocateButtonProps {
 
 const GeolocateButton = (props: GeolocateButtonProps) => {
   const { className, redirectToSearchPage, searcherPath } = props;
+  const translate = useTranslations();
 
   const searchActions = useSearchActions();
   const [isFetchingLocation, setIsFetchingLocation] = useState<boolean>(false);
@@ -30,7 +32,7 @@ const GeolocateButton = (props: GeolocateButtonProps) => {
       });
 
       const newFilter: SelectableStaticFilter = {
-        displayName: "My Location",
+        displayName: translate("My Location"),
         selected: true,
         filter: {
           kind: "fieldValue",
@@ -57,7 +59,7 @@ const GeolocateButton = (props: GeolocateButtonProps) => {
         }
       }
     } catch (e) {
-      alert("User location could not be determined.");
+      alert(translate("User location could not be determined."));
       console.error(e);
     } finally {
       setIsFetchingLocation(false);

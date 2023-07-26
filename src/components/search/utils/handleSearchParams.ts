@@ -20,6 +20,7 @@ import {
   locationTypeToFilter,
 } from "src/components/search/utils/helpers";
 import { useSearchParams } from "react-router-dom";
+import { useTranslations } from "src/common/useTranslations";
 
 // URLSearchParams keys used for storing and loading search state.
 export const FILTERS_CONFIG = [
@@ -41,6 +42,7 @@ export function useLoadInitialSearchParams(
 ) {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchActions = useSearchActions();
+  const translate = useTranslations();
 
   useEffect(() => {
     // Don't run again after params are loaded.
@@ -108,7 +110,7 @@ export function useLoadInitialSearchParams(
 
       // If the pretty query is "My Location", attempt to geolocate the user and
       // use their position to set a filter with a NearFilterValue value in state.
-      else if (prettyQuery === "My Location") {
+      else if (prettyQuery === translate("My Location")) {
         try {
           const position = await getUserLocation();
 
@@ -138,7 +140,7 @@ export function useLoadInitialSearchParams(
             },
           ]);
         } catch (e) {
-          alert("User location could not be determined.");
+          alert(translate("User location could not be determined."));
           console.error(e);
         }
       }
