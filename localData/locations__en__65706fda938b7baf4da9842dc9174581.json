@@ -1,0 +1,391 @@
+{
+	"__": {
+		"alternateLanguageFields": [
+			"name",
+			"slug"
+		],
+		"entityPageSet": {
+			"plugin": {}
+		},
+		"name": "index",
+		"streamId": "locations",
+		"templateType": "JS"
+	},
+	"_site": {
+		"c_brand": "Yext Consulting",
+		"c_copyrightMessage": "© 2022. All Rights Reserved.",
+		"c_facebook": "https://www.facebook.com/",
+		"c_footerLinks": [
+			{
+				"label": "Link1",
+				"link": "https://www.yext.com",
+				"linkType": "URL"
+			},
+			{
+				"label": "Link2",
+				"link": "https://www.yext.com",
+				"linkType": "URL"
+			},
+			{
+				"label": "Link3",
+				"link": "https://www.yext.com",
+				"linkType": "URL"
+			},
+			{
+				"label": "Link4",
+				"link": "https://www.yext.com",
+				"linkType": "URL"
+			},
+			{
+				"label": "Link5",
+				"link": "https://www.yext.com",
+				"linkType": "URL"
+			}
+		],
+		"c_header": {
+			"links": [
+				{
+					"label": "Link1",
+					"link": "https://www.yext.com",
+					"linkType": "URL"
+				},
+				{
+					"label": "Link2",
+					"link": "https://www.yext.com",
+					"linkType": "URL"
+				},
+				{
+					"label": "Link3",
+					"link": "https://www.yext.com",
+					"linkType": "URL"
+				},
+				{
+					"label": "Link4",
+					"link": "https://www.yext.com",
+					"linkType": "URL"
+				},
+				{
+					"label": "Link5",
+					"link": "https://www.yext.com",
+					"linkType": "URL"
+				}
+			],
+			"logo": {
+				"height": 100,
+				"url": "http://a.mktgcdn.com/p/BzSALSNKyVBFz797EoaKt_k3rgAJonv9DnbGYMbxqds/100x100.png",
+				"width": 100
+			}
+		},
+		"c_instagram": "https://www.instagram.com/",
+		"c_linkedIn": "https://www.linkedin.com/",
+		"c_nearbySectionAPIKey": "a76f3747d89260bdebb2c3223cffe03e",
+		"c_reviewsAPIKey": "950cb865b1378ec95ad87c7b2a54a806",
+		"c_searchExperienceAPIKey": "134988aadced7171cc410730c3aec4f6",
+		"c_twitter": "https://www.twitter.com/",
+		"c_youtube": "https://www.youtube.com/",
+		"id": "site-entity",
+		"meta": {
+			"entityType": {
+				"id": "ce_site",
+				"uid": 132489
+			},
+			"locale": "en"
+		},
+		"name": "Site Entity",
+		"uid": 64216926
+	},
+	"additionalHoursText": "No pickup on Christmas Eve.",
+	"address": {
+		"city": "New York",
+		"countryCode": "US",
+		"line1": "61 Ninth Avenue",
+		"localizedCountryName": "United States",
+		"localizedRegionName": "New York",
+		"postalCode": "10011",
+		"region": "NY"
+	},
+	"alternateLanguageFields": {},
+	"businessId": 3861963,
+	"c_aboutSection": {
+		"cta": {
+			"label": "Learn More",
+			"link": "https://www.yext.com",
+			"linkType": "URL"
+		},
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus placerat justo a viverra. Quisque ut congue tellus, vitae fermentum velit. Suspendisse sed gravida libero. Etiam pulvinar tincidunt augue vitae fermentum. Maecenas tortor nunc, ullamcorper eu tortor sed, vestibulum suscipit libero. \\nPraesent sit amet pulvinar massa. Proin mattis tellus tristique neque ullamcorper, vel vestibulum lorem dapibus. Vivamus et magna in justo posuere imperdiet sit amet amour tellus.",
+		"image": {
+			"height": 667,
+			"url": "http://a.mktgcdn.com/p/fxDoh01VfDcdT3hiWZvsVSIxs8w_ci3xWidm6fVDzz0/1000x667.png",
+			"width": 1000
+		},
+		"title": "About Section"
+	},
+	"c_bannerSection": {
+		"image": {
+			"alternateText": "Banner Icon",
+			"height": 64,
+			"url": "https://a.mktgcdn.com/p/A38YlEmgDwj2x0wsYWn2PkLTCWnkHYON9hXZl2OB-00/64x64.png",
+			"width": 64
+		},
+		"text": "This location is closed outside of business hours"
+	},
+	"c_faqSection": {
+		"faqs": [
+			{
+				"answer": "They're built with React!",
+				"question": "What JavaScript framework are Yext pages built with?"
+			},
+			{
+				"answer": "Yext is a company that helps businesses and organizations around the world deliver official answers everywhere people search.",
+				"question": "What is Yext?"
+			}
+		],
+		"title": "Frequently Asked Questions"
+	},
+	"c_featuredProductsSection": {
+		"products": [
+			{
+				"c_primaryCTA": {
+					"label": "Learn More",
+					"link": "https://www.yext.com",
+					"linkType": "URL"
+				},
+				"name": "Product 1",
+				"primaryPhoto": {
+					"image": {
+						"height": 187,
+						"url": "http://a.mktgcdn.com/p/VT4zXQpGL-fASXLYdjTP6nfuTKaINJqQNPTIVUeAJdE/280x187.png",
+						"width": 280
+					}
+				},
+				"richTextDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+			}
+		],
+		"title": "Featured Products at Test Location"
+	},
+	"c_gallerySection": {
+		"images": [
+			{
+				"height": 450,
+				"url": "http://a.mktgcdn.com/p/JZ3nUQGJIk660rHBia0lv_80nlcAml5J8Mi9jD7Ljac/600x450.png",
+				"width": 600
+			},
+			{
+				"height": 450,
+				"url": "http://a.mktgcdn.com/p/JZ3nUQGJIk660rHBia0lv_80nlcAml5J8Mi9jD7Ljac/600x450.png",
+				"width": 600
+			},
+			{
+				"height": 450,
+				"url": "http://a.mktgcdn.com/p/JZ3nUQGJIk660rHBia0lv_80nlcAml5J8Mi9jD7Ljac/600x450.png",
+				"width": 600
+			}
+		],
+		"title": "Image Gallery"
+	},
+	"c_heroSection": {
+		"background": {
+			"height": 667,
+			"url": "http://a.mktgcdn.com/p/fxDoh01VfDcdT3hiWZvsVSIxs8w_ci3xWidm6fVDzz0/1000x667.png",
+			"width": 1000
+		},
+		"cta1": {
+			"label": "Learn More",
+			"link": "https://www.yext.com",
+			"linkType": "URL"
+		},
+		"cta2": {
+			"label": "Call Now",
+			"link": "+12129943900",
+			"linkType": "PHONE"
+		}
+	},
+	"c_insightsSection": {
+		"cta": {
+			"label": "Sample CTA",
+			"link": "https://yext.com",
+			"linkType": "URL"
+		},
+		"insights": [
+			{
+				"category": "Category",
+				"cta": {
+					"label": "CTA",
+					"link": "https://yext.com",
+					"linkType": "URL"
+				},
+				"date": "2023-04-05",
+				"descriptionLong": "Lorem ipsum dolor sit amet, consectetur adipiscing. Maecenas finibus placerat justo. 100 characters",
+				"descriptionShort": "Lorem ipsum dolor sit amet",
+				"photo": {
+					"alternateText": "Insight Img Alt",
+					"height": 807,
+					"url": "https://a.mktgcdn.com/p/6ilw-tpI7cjGjJhIEECa7SbhH55e9C2iq51GEhoHo8k/1435x807.png",
+					"width": 1435
+				},
+				"title": "Insight Title"
+			}
+		],
+		"title": "Insight Section"
+	},
+	"c_nearbySection": {
+		"cta": {
+			"label": "Find another Location"
+		},
+		"linkToLocator": true,
+		"title": "Find Nearby Locations"
+	},
+	"c_promoSection": {
+		"appStoreUrl": "https://www.yext.com",
+		"cta": {
+			"label": "Learn More",
+			"link": "https://www.yext.com",
+			"linkType": "URL"
+		},
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing. Maecenas finibus placerat justo.",
+		"googlePlayUrl": "https://www.yext.com",
+		"image": {
+			"height": 667,
+			"url": "http://a.mktgcdn.com/p/fxDoh01VfDcdT3hiWZvsVSIxs8w_ci3xWidm6fVDzz0/1000x667.png",
+			"width": 1000
+		},
+		"title": "Featured Promotion"
+	},
+	"c_reviewsSection": {
+		"title": "Recent Reviews"
+	},
+	"c_teamSection": {
+		"team": [
+			{
+				"c_occupation": "Job Title",
+				"emails": [
+					"professional@example.com"
+				],
+				"headshot": {
+					"alternateText": "test",
+					"height": 830,
+					"url": "http://a.mktgcdn.com/p/7WOgS52NNSiswLNzTN70J-VbCOEM75eS4HhINXOia2U/1.0000/830x830.jpg",
+					"width": 830
+				},
+				"id": "test-professional",
+				"mainPhone": "+12129943900",
+				"name": "Test Professional",
+				"websiteUrl": {
+					"displayUrl": "https://www.yext.com/",
+					"preferDisplayUrl": false,
+					"url": "https://www.yext.com/"
+				}
+			}
+		],
+		"title": "Meet Our Team"
+	},
+	"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus placerat justo a viverra. Quisque ut congue tellus, vitae fermentum velit. Suspendisse sed gravida libero. Etiam pulvinar tincidunt augue vitae fermentum. Maecenas tortor nunc, ullamcorper eu tortor sed, vestibulum suscipit libero. \\nPraesent sit amet pulvinar massa. Proin mattis tellus tristique neque ullamcorper, vel vestibulum lorem dapibus. Vivamus et magna in justo posuere imperdiet sit amet amour tellus.",
+	"dm_directoryParents": [
+		{
+			"name": "All Locations",
+			"slug": "index.html"
+		},
+		{
+			"name": "NY",
+			"slug": "ny"
+		},
+		{
+			"name": "New York",
+			"slug": "ny/new-york"
+		}
+	],
+	"emails": [
+		"email@gmail.com"
+	],
+	"geocodedCoordinate": {
+		"latitude": 40.7416944,
+		"longitude": -74.0056597
+	},
+	"hours": {
+		"friday": {
+			"openIntervals": [
+				{
+					"end": "17:00",
+					"start": "09:00"
+				}
+			]
+		},
+		"monday": {
+			"openIntervals": [
+				{
+					"end": "17:00",
+					"start": "09:00"
+				}
+			]
+		},
+		"saturday": {
+			"isClosed": true
+		},
+		"sunday": {
+			"isClosed": true
+		},
+		"thursday": {
+			"openIntervals": [
+				{
+					"end": "17:00",
+					"start": "09:00"
+				}
+			]
+		},
+		"tuesday": {
+			"openIntervals": [
+				{
+					"end": "17:00",
+					"start": "09:00"
+				}
+			]
+		},
+		"wednesday": {
+			"openIntervals": [
+				{
+					"end": "17:00",
+					"start": "09:00"
+				}
+			]
+		}
+	},
+	"id": "test-location",
+	"key": "0:index:knowledgeGraph:64216931:en",
+	"locale": "en",
+	"logo": {
+		"image": {
+			"height": 100,
+			"url": "http://a.mktgcdn.com/p/BzSALSNKyVBFz797EoaKt_k3rgAJonv9DnbGYMbxqds/100x100.png",
+			"width": 100
+		}
+	},
+	"mainPhone": "+12129943900",
+	"meta": {
+		"entityType": {
+			"id": "location",
+			"uid": 0
+		},
+		"locale": "en"
+	},
+	"name": "Test Location",
+	"ref_listings": [],
+	"ref_reviewsAgg": [
+		{
+			"reviewCount": 3
+		},
+		{
+			"reviewCount": 5
+		}
+	],
+	"services": [
+		"Option A",
+		"Option B",
+		"Option C"
+	],
+	"siteDomain": "",
+	"siteId": 0,
+	"siteInternalHostName": "",
+	"slug": "ny/new-york/61-ninth-avenue",
+	"tollFreePhone": "+12129943900",
+	"uid": 64216931
+}
