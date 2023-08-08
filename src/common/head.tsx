@@ -4,27 +4,27 @@ import favicon from "src/assets/images/favicon.ico";
 
 const dnsPrefetchTags: Tag[] = [
   {
-    type: "meta",
+    type: "link",
     attributes: { rel: "dns-prefetch", href: "//www.yext-pixel.com" },
   },
   {
-    type: "meta",
+    type: "link",
     attributes: { rel: "dns-prefetch", href: "//a.cdnmktg.com" },
   },
   {
-    type: "meta",
+    type: "link",
     attributes: { rel: "dns-prefetch", href: "//a.mktgcdn.com" },
   },
   {
-    type: "meta",
+    type: "link",
     attributes: { rel: "dns-prefetch", href: "//dynl.mktgcdn.com" },
   },
   {
-    type: "meta",
+    type: "link",
     attributes: { rel: "dns-prefetch", href: "//dynm.mktgcdn.com" },
   },
   {
-    type: "meta",
+    type: "link",
     attributes: { rel: "dns-prefetch", href: "//www.google-analytics.com" },
   },
 ];
