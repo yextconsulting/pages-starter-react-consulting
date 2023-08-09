@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { GoChevronDown } from "react-icons/go";
 import c from "classnames";
+import classNames from "classnames";
 
 interface FAQItem {
   question: string;
@@ -43,7 +44,10 @@ const FAQ = (props: FAQItem) => {
       </button>
       <div
         ref={faqRef}
-        className="overflow-hidden duration-500 h-0 transition-[height]"
+        className={classNames(
+          "overflow-hidden duration-500 h-0 transition-all",
+          { invisible: !isOpen }
+        )}
       >
         <div className="mb-4">{answer}</div>
       </div>
