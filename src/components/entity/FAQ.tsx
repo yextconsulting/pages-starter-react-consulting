@@ -26,8 +26,8 @@ const FAQ = (props: FAQItem) => {
 
   return (
     <div>
-      <div
-        className="justify-between flex py-4 cursor-pointer font-bold text-lg"
+      <button
+        className="justify-between w-full flex py-4 cursor-pointer font-bold text-lg"
         onClick={faqToggle}
       >
         <div>{question}</div>
@@ -40,10 +40,10 @@ const FAQ = (props: FAQItem) => {
             size="1.5em"
           />
         </div>
-      </div>
+      </button>
       <div
         ref={faqRef}
-        className="overflow-y-hidden duration-500 h-0 transition-[height]"
+        className="overflow-hidden duration-500 h-0 transition-[height]"
       >
         <div className="mb-4">{answer}</div>
       </div>
