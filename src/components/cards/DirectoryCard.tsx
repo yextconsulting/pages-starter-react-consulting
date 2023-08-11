@@ -1,5 +1,5 @@
 import { HoursStatus } from "@yext/sites-react-components";
-import { Link, Address } from "@yext/pages/components";
+import { Link, Address } from "@yext/sites-components";
 import type { LiveAPIProfile, LocationProfile } from "src/types/entities";
 import { CardComponent } from "src/models/cardComponent";
 import { useTemplateData } from "src/common/useTemplateData";

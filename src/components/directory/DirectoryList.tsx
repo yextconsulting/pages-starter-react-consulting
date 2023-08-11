@@ -1,4 +1,4 @@
-import { Link } from "@yext/pages/components";
+import { Link } from "@yext/sites-components";
 import type { DirectoryProfile } from "src/types/entities";
 
 interface DirectoryListProps {

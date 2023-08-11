@@ -1,4 +1,4 @@
-import { AnalyticsScopeProvider } from "@yext/pages/components";
+import { AnalyticsScopeProvider } from "@yext/sites-components";
 import { ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 

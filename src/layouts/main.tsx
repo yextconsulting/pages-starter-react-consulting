@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { TemplateRenderProps, BaseProfile } from "src/types/entities";
-import { AnalyticsProvider } from "@yext/pages/components";
+import { AnalyticsProvider } from "@yext/sites-components";
 import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 import { ConfigurationProvider } from "@yext/sites-react-components";
 import { TemplateDataProvider } from "src/common/useTemplateData";

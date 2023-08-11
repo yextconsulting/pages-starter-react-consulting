@@ -1,4 +1,4 @@
-import { Image } from "@yext/pages/components";
+import { Image } from "@yext/sites-components";
 import type {
   Image as ImageType,
   ComplexImage as ComplexImageType,

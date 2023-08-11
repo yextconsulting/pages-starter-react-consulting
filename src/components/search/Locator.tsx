@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
-import { Map } from "@yext/pages/components";
-import { GoogleMaps } from "@yext/components-tsx-maps";
+import { Map, GoogleMaps } from "@yext/sites-components";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import {
   useHandleSearchParams,

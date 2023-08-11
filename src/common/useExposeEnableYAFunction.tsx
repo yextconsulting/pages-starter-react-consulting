@@ -1,4 +1,4 @@
-import { useAnalytics } from "@yext/pages/components";
+import { useAnalytics } from "@yext/sites-components";
 import { getRuntime } from "@yext/pages/util";
 
 declare global {

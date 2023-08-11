@@ -4,7 +4,7 @@ import {
   InsightCard,
   InsightCardFeatured,
 } from "src/components/cards/InsightCard";
-import { Link } from "@yext/pages/components";
+import { Link } from "@yext/sites-components";
 
 interface InsightsProps {
   title: string;

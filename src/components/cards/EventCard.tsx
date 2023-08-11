@@ -1,4 +1,4 @@
-import { Image, Link } from "@yext/pages/components";
+import { Image, Link } from "@yext/sites-components";
 import { EventProfile } from "src/types/entities";
 import { CardComponent } from "src/models/cardComponent";
 

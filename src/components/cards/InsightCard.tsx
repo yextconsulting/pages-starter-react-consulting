@@ -1,5 +1,5 @@
 import type { CTA, Image as ImageType } from "@yext/types";
-import { Image, Link } from "@yext/pages/components";
+import { Image, Link } from "@yext/sites-components";
 import { FaChevronRight } from "react-icons/fa";
 
 export interface InsightCardProps {
