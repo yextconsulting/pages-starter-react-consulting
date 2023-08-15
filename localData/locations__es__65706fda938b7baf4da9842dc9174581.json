@@ -1,0 +1,236 @@
+{
+	"__": {
+		"entityPageSet": {
+			"plugin": {}
+		},
+		"name": "index",
+		"streamId": "locations",
+		"templateType": "JS"
+	},
+	"additionalHoursText": "No pickup on Christmas Eve.",
+	"address": {
+		"city": "New York",
+		"countryCode": "US",
+		"line1": "61 Ninth Avenue",
+		"localizedCountryName": "Estados Unidos",
+		"localizedRegionName": "Nueva York",
+		"postalCode": "10011",
+		"region": "NY"
+	},
+	"businessId": 3861963,
+	"c_aboutSection": {
+		"cta": {
+			"label": "Learn More",
+			"link": "https://www.yext.com",
+			"linkType": "URL"
+		},
+		"image": {
+			"height": 667,
+			"url": "http://a.mktgcdn.com/p/fxDoh01VfDcdT3hiWZvsVSIxs8w_ci3xWidm6fVDzz0/1000x667.png",
+			"width": 1000
+		},
+		"title": "About Section"
+	},
+	"c_bannerSection": {
+		"image": {
+			"alternateText": "Banner Icon",
+			"height": 64,
+			"url": "https://a.mktgcdn.com/p/A38YlEmgDwj2x0wsYWn2PkLTCWnkHYON9hXZl2OB-00/64x64.png",
+			"width": 64
+		},
+		"text": "This location is closed outside of business hours"
+	},
+	"c_faqSection": {
+		"faqs": [],
+		"title": "Frequently Asked Questions"
+	},
+	"c_featuredProductsSection": {
+		"products": [],
+		"title": "Featured Products at Test Location"
+	},
+	"c_gallerySection": {
+		"images": [
+			{
+				"height": 450,
+				"url": "http://a.mktgcdn.com/p/JZ3nUQGJIk660rHBia0lv_80nlcAml5J8Mi9jD7Ljac/600x450.png",
+				"width": 600
+			},
+			{
+				"height": 450,
+				"url": "http://a.mktgcdn.com/p/JZ3nUQGJIk660rHBia0lv_80nlcAml5J8Mi9jD7Ljac/600x450.png",
+				"width": 600
+			},
+			{
+				"height": 450,
+				"url": "http://a.mktgcdn.com/p/JZ3nUQGJIk660rHBia0lv_80nlcAml5J8Mi9jD7Ljac/600x450.png",
+				"width": 600
+			}
+		],
+		"title": "Image Gallery"
+	},
+	"c_heroSection": {
+		"background": {
+			"height": 667,
+			"url": "http://a.mktgcdn.com/p/fxDoh01VfDcdT3hiWZvsVSIxs8w_ci3xWidm6fVDzz0/1000x667.png",
+			"width": 1000
+		},
+		"cta1": {
+			"label": "Learn More",
+			"link": "https://www.yext.com",
+			"linkType": "URL"
+		},
+		"cta2": {
+			"label": "Call Now",
+			"link": "+12129943900",
+			"linkType": "PHONE"
+		}
+	},
+	"c_insightsSection": {
+		"cta": {
+			"label": "Sample CTA",
+			"link": "https://yext.com",
+			"linkType": "URL"
+		},
+		"insights": [
+			{
+				"category": "Category",
+				"cta": {
+					"label": "CTA",
+					"link": "https://yext.com",
+					"linkType": "URL"
+				},
+				"date": "2023-04-05",
+				"descriptionLong": "Lorem ipsum dolor sit amet, consectetur adipiscing. Maecenas finibus placerat justo. 100 characters",
+				"descriptionShort": "Lorem ipsum dolor sit amet",
+				"photo": {
+					"alternateText": "Insight Img Alt",
+					"height": 807,
+					"url": "https://a.mktgcdn.com/p/6ilw-tpI7cjGjJhIEECa7SbhH55e9C2iq51GEhoHo8k/1435x807.png",
+					"width": 1435
+				},
+				"title": "Insight Title"
+			}
+		],
+		"title": "Insight Section"
+	},
+	"c_nearbySection": {
+		"cta": {
+			"label": "Find another Location"
+		},
+		"linkToLocator": true,
+		"title": "Find Nearby Locations"
+	},
+	"c_promoSection": {
+		"appStoreUrl": "https://www.yext.com",
+		"cta": {
+			"label": "Learn More",
+			"link": "https://www.yext.com",
+			"linkType": "URL"
+		},
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing. Maecenas finibus placerat justo.",
+		"googlePlayUrl": "https://www.yext.com",
+		"image": {
+			"height": 667,
+			"url": "http://a.mktgcdn.com/p/fxDoh01VfDcdT3hiWZvsVSIxs8w_ci3xWidm6fVDzz0/1000x667.png",
+			"width": 1000
+		},
+		"title": "Featured Promotion"
+	},
+	"c_reviewsSection": {
+		"title": "Recent Reviews"
+	},
+	"c_teamSection": {
+		"team": [],
+		"title": "Meet Our Team"
+	},
+	"dm_directoryParents": [],
+	"emails": [
+		"email@gmail.com"
+	],
+	"hours": {
+		"friday": {
+			"openIntervals": [
+				{
+					"end": "17:00",
+					"start": "09:00"
+				}
+			]
+		},
+		"monday": {
+			"openIntervals": [
+				{
+					"end": "17:00",
+					"start": "09:00"
+				}
+			]
+		},
+		"saturday": {
+			"isClosed": true
+		},
+		"sunday": {
+			"isClosed": true
+		},
+		"thursday": {
+			"openIntervals": [
+				{
+					"end": "17:00",
+					"start": "09:00"
+				}
+			]
+		},
+		"tuesday": {
+			"openIntervals": [
+				{
+					"end": "17:00",
+					"start": "09:00"
+				}
+			]
+		},
+		"wednesday": {
+			"openIntervals": [
+				{
+					"end": "17:00",
+					"start": "09:00"
+				}
+			]
+		}
+	},
+	"id": "test-location",
+	"key": "0:index:knowledgeGraph:64216931:es",
+	"locale": "es",
+	"logo": {
+		"image": {
+			"height": 100,
+			"url": "http://a.mktgcdn.com/p/BzSALSNKyVBFz797EoaKt_k3rgAJonv9DnbGYMbxqds/100x100.png",
+			"width": 100
+		}
+	},
+	"mainPhone": "+12129943900",
+	"meta": {
+		"entityType": {
+			"id": "location",
+			"uid": 0
+		},
+		"locale": "es"
+	},
+	"name": "Test Location",
+	"ref_listings": [],
+	"ref_reviewsAgg": [
+		{
+			"reviewCount": 3
+		},
+		{
+			"reviewCount": 5
+		}
+	],
+	"siteDomain": "",
+	"siteId": 0,
+	"siteInternalHostName": "",
+	"slug": "es/ny/new-york/61-ninth-avenue",
+	"tollFreePhone": "+12129943900",
+	"uid": 64216931,
+	"yextDisplayCoordinate": {
+		"latitude": 40.7416944,
+		"longitude": -74.0056597
+	}
+}

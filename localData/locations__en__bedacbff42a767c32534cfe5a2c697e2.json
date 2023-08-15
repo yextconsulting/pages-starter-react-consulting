@@ -1,9 +1,5 @@
 {
 	"__": {
-		"alternateLanguageFields": [
-			"name",
-			"slug"
-		],
 		"entityPageSet": {
 			"plugin": {}
 		},
@@ -103,7 +99,6 @@
 		"postalCode": "10004",
 		"region": "NY"
 	},
-	"alternateLanguageFields": {},
 	"businessId": 3861963,
 	"dm_directoryParents": [
 		{
@@ -119,10 +114,6 @@
 			"slug": "ny/new-york"
 		}
 	],
-	"geocodedCoordinate": {
-		"latitude": 40.7060275,
-		"longitude": -74.0117654
-	},
 	"hours": {
 		"friday": {
 			"isClosed": false,
@@ -208,5 +199,9 @@
 	"siteId": 0,
 	"siteInternalHostName": "",
 	"slug": "ny/new-york/40-broad-st",
-	"uid": 65703152
+	"uid": 65703152,
+	"yextDisplayCoordinate": {
+		"latitude": 40.7060275,
+		"longitude": -74.0117654
+	}
 }
