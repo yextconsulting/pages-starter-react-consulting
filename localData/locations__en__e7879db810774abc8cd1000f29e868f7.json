@@ -1,9 +1,5 @@
 {
 	"__": {
-		"alternateLanguageFields": [
-			"name",
-			"slug"
-		],
 		"entityPageSet": {
 			"plugin": {}
 		},
@@ -103,7 +99,6 @@
 		"postalCode": "10009",
 		"region": "NY"
 	},
-	"alternateLanguageFields": {},
 	"businessId": 3861963,
 	"dm_directoryParents": [
 		{
@@ -119,10 +114,6 @@
 			"slug": "ny/new-york"
 		}
 	],
-	"geocodedCoordinate": {
-		"latitude": 40.7207,
-		"longitude": -73.9783833
-	},
 	"hours": {
 		"friday": {
 			"isClosed": false,
@@ -209,5 +200,9 @@
 	"siteId": 0,
 	"siteInternalHostName": "",
 	"slug": "ny/new-york/601699-e-6th-st",
-	"uid": 65703155
+	"uid": 65703155,
+	"yextDisplayCoordinate": {
+		"latitude": 40.7207,
+		"longitude": -73.9783833
+	}
 }

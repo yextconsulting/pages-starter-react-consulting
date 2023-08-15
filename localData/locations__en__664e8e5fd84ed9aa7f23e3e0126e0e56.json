@@ -1,9 +1,5 @@
 {
 	"__": {
-		"alternateLanguageFields": [
-			"name",
-			"slug"
-		],
 		"entityPageSet": {
 			"plugin": {}
 		},
@@ -103,7 +99,6 @@
 		"postalCode": "22209",
 		"region": "VA"
 	},
-	"alternateLanguageFields": {},
 	"businessId": 3861963,
 	"dm_directoryParents": [
 		{
@@ -119,10 +114,6 @@
 			"slug": "va/arlington"
 		}
 	],
-	"geocodedCoordinate": {
-		"latitude": 38.895222,
-		"longitude": -77.072724
-	},
 	"id": "1088806405329641369",
 	"key": "0:index:knowledgeGraph:93336705:en",
 	"locale": "en",
@@ -140,5 +131,9 @@
 	"siteId": 0,
 	"siteInternalHostName": "",
 	"slug": "va/arlington/1325-wilson-blvd",
-	"uid": 93336705
+	"uid": 93336705,
+	"yextDisplayCoordinate": {
+		"latitude": 38.895222,
+		"longitude": -77.072724
+	}
 }

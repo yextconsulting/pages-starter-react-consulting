@@ -159,7 +159,6 @@ export function defaultHeadConfig(
       ...defaultHeadTags,
       ...geoTags,
       ...addressTags,
-      ...alternates(data),
       ...(additionalTags || []),
     ],
     other: [yaScript(), SchemaBuilder(data)].join("\n"),
@@ -194,38 +193,12 @@ function metaDescription(data: TemplateRenderProps): string {
   return "";
 }
 
-function canonicalUrl(data: TemplateRenderProps, locale?: string): string {
+function canonicalUrl(data: TemplateRenderProps): string {
   let pagePath = data.path;
-
-  const alfs = data.document?.alternateLanguageFields;
-  if (alfs && locale) {
-    const altLocalePath = alfs[locale]?.slug;
-    if (altLocalePath) {
-      pagePath = altLocalePath;
-    }
-  }
 
   if (pagePath === "index.html") {
     pagePath = "";
   }
 
   return `https://${data.document.siteDomain}/${pagePath}`;
-}
-
-function alternates(data: TemplateRenderProps): Tag[] {
-  const thisLocale = data.document.locale;
-  const alternateLocales: string[] = Object.keys(
-    data.document?.alternateLanguageFields || {}
-  );
-  const alternateLinks: Tag[] = alternateLocales
-    .filter((locale) => locale !== thisLocale)
-    .map((locale) => ({
-      type: "link",
-      attributes: {
-        rel: "alternate",
-        hreflang: locale,
-        href: canonicalUrl(data, locale),
-      },
-    }));
-  return alternateLinks;
 }

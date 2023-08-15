@@ -1,9 +1,5 @@
 {
 	"__": {
-		"alternateLanguageFields": [
-			"name",
-			"slug"
-		],
 		"entityPageSet": {
 			"plugin": {}
 		},
@@ -104,7 +100,6 @@
 		"postalCode": "10011",
 		"region": "NY"
 	},
-	"alternateLanguageFields": {},
 	"businessId": 3861963,
 	"c_aboutSection": {
 		"cta": {
@@ -297,10 +292,6 @@
 	"emails": [
 		"email@gmail.com"
 	],
-	"geocodedCoordinate": {
-		"latitude": 40.7416944,
-		"longitude": -74.0056597
-	},
 	"hours": {
 		"friday": {
 			"openIntervals": [
@@ -387,5 +378,9 @@
 	"siteInternalHostName": "",
 	"slug": "ny/new-york/61-ninth-avenue",
 	"tollFreePhone": "+12129943900",
-	"uid": 64216931
+	"uid": 64216931,
+	"yextDisplayCoordinate": {
+		"latitude": 40.7416944,
+		"longitude": -74.0056597
+	}
 }

@@ -1,9 +1,5 @@
 {
 	"__": {
-		"alternateLanguageFields": [
-			"name",
-			"slug"
-		],
 		"entityPageSet": {
 			"plugin": {}
 		},
@@ -103,7 +99,6 @@
 		"postalCode": "22209",
 		"region": "VA"
 	},
-	"alternateLanguageFields": {},
 	"businessId": 3861963,
 	"dm_directoryParents": [
 		{
@@ -119,10 +114,6 @@
 			"slug": "va/arlington"
 		}
 	],
-	"geocodedCoordinate": {
-		"latitude": 38.895459,
-		"longitude": -77.069871
-	},
 	"hours": {
 		"friday": {
 			"isClosed": false,
@@ -208,5 +199,9 @@
 	"siteId": 0,
 	"siteInternalHostName": "",
 	"slug": "va/arlington/1101-wilson-blvd",
-	"uid": 65703163
+	"uid": 65703163,
+	"yextDisplayCoordinate": {
+		"latitude": 38.895459,
+		"longitude": -77.069871
+	}
 }

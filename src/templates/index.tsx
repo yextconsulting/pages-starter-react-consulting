@@ -136,7 +136,6 @@ export const config: TemplateConfig = {
       primary: false,
     },
   },
-  alternateLanguageFields: ["name", "slug"],
 };
 
 /**

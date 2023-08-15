@@ -1,9 +1,5 @@
 {
 	"__": {
-		"alternateLanguageFields": [
-			"name",
-			"slug"
-		],
 		"entityPageSet": {
 			"plugin": {}
 		},
@@ -94,7 +90,6 @@
 		"name": "Site Entity",
 		"uid": 64216926
 	},
-	"alternateLanguageFields": {},
 	"businessId": 3861963,
 	"c_searchPlaceholderText": "Search by city and state or ZIP code",
 	"c_searchSubTitle": "Search by city and state or ZIP code",
