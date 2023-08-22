@@ -17,6 +17,10 @@ import Promo from "src/components/entity/Promo";
 import Reviews from "src/components/entity/Reviews";
 import Team from "src/components/entity/Team";
 
+import { Trans } from "react-i18next";
+import { useTranslation } from "src/i18n";
+import { Link } from "@yext/pages/components";
+
 interface EntityLayoutProps {
   data: TemplateRenderProps<LocationProfile>;
 }
@@ -56,8 +60,29 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
   const showInsights = insights?.title && insights?.insights;
   const showReviews = reviews?.title && reviews?.reviews;
 
+  const { t } = useTranslation();
+  const count = Math.ceil(Math.random() * 2);
+
   return (
     <>
+      <Trans>Welcome to My House</Trans>
+      <div>
+        <Trans shouldUnescape={true}>
+          Translated content with a custom component:{" "}
+          <Link className="Link Link--primary" href="https://www.yext.com">
+            translated link text
+          </Link>
+        </Trans>
+      </div>
+      <h1>{t("Welcome to React")}</h1>
+      <h2>
+        {t("{{author}} is the author of {{book}}", {
+          author: "Herman Melville",
+          book: "Moby Dick",
+        })}
+      </h2>
+      <Trans count={count}>You have {{ count }} messages.</Trans> (Refresh to
+      randomize)
       {showBanner && (
         <ErrorBoundaryWithAnalytics name="banner">
           <Banner text={banner.text} image={banner.image} />

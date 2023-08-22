@@ -7,9 +7,9 @@ const config = {
   locales,
 
   // Smartling Parameters
-  userID: "",
-  userSecret: "",
-  projectID: "", // Found in the Smartling URL: https://dashboard.smartling.com/app/projects/[PROJECT_ID]
+  userID: "toqujwutaejksvdrrnpbdihbkqooor",
+  userSecret: "l20d2t5l6nd48vpemgr0fite41El!dr05p4nclp9qt5p3hfqnkt5kbk",
+  projectID: "7b244c6c4", // Found in the Smartling URL: https://dashboard.smartling.com/app/projects/[PROJECT_ID]
   defaultLocale: "en",
   smartlingLocaleToYextLocaleMapping: {
     // Mapping of Smartling locale code to Yext locale codes. Example:

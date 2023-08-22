@@ -66,10 +66,14 @@
         "dm_directoryChildren.hours"
       ],
       "filter": {
-        "savedFilterIds": ["dm_defaultDirectory_address_city"]
+        "savedFilterIds": [
+          "dm_defaultDirectory_address_city"
+        ]
       },
       "localization": {
-        "locales": ["en"],
+        "locales": [
+          "en"
+        ],
         "primary": false
       }
     },
@@ -139,10 +143,15 @@
         "c_teamSection.team.websiteUrl"
       ],
       "filter": {
-        "entityTypes": ["location"]
+        "entityTypes": [
+          "location"
+        ]
       },
       "localization": {
-        "locales": ["en"],
+        "locales": [
+          "en",
+          "es"
+        ],
         "primary": false
       }
     },
@@ -165,10 +174,14 @@
         "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug"
       ],
       "filter": {
-        "savedFilterIds": ["dm_defaultDirectory_address_region"]
+        "savedFilterIds": [
+          "dm_defaultDirectory_address_region"
+        ]
       },
       "localization": {
-        "locales": ["en"],
+        "locales": [
+          "en"
+        ],
         "primary": false
       }
     },
@@ -191,10 +204,14 @@
         "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug"
       ],
       "filter": {
-        "savedFilterIds": ["dm_defaultDirectory"]
+        "savedFilterIds": [
+          "dm_defaultDirectory"
+        ]
       },
       "localization": {
-        "locales": ["en"],
+        "locales": [
+          "en"
+        ],
         "primary": false
       }
     },
@@ -210,10 +227,14 @@
         "c_searchPlaceholderText"
       ],
       "filter": {
-        "entityIds": ["search-page"]
+        "entityIds": [
+          "search-page"
+        ]
       },
       "localization": {
-        "locales": ["en"],
+        "locales": [
+          "en"
+        ],
         "primary": false
       }
     }

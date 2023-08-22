@@ -21,7 +21,7 @@
     "c_brand"
   ],
   "localization": {
-    "locales": ["en"],
+    "locales": ["en", "es"],
     "primary": false
   }
 }

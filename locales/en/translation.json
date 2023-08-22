@@ -1,0 +1,8 @@
+{
+  "Welcome to My House": "Welcome to My House",
+  "Translated content with a custom component: <1>translated link text</1>": "Translated content with a custom component: <1>translated link text</1>",
+  "Welcome to React": "",
+  "{{author}} is the author of {{book}}": "",
+  "You have {{count}} messages.": "You have {{count}} messages.",
+  "You have {{count}} messages._plural": "You have {{count}} messages."
+}

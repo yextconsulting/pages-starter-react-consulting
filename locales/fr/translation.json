@@ -1,0 +1,6 @@
+{
+  "Welcome to My House": "Welcome to my French House",
+  "Welcome to React": "Welcome to French React",
+  "You have {{count}} messages.": "You have {{count}} French Message.",
+  "You have {{count}} messages._plural": "You have {{count}} French Messages."
+}
