@@ -12,6 +12,7 @@ import type {
   ComplexImage,
   WebsiteUrl,
 } from "@yext/types";
+import type { Resource } from "i18next";
 
 // TODO: potentially move this to @yext/types
 // Also we should probably move @yext/types into @yext/pages
@@ -229,7 +230,9 @@ export type TemplateRenderProps<T = Record<string, unknown>> = Omit<
   InternalTemplateRenderProps,
   "document"
 > &
-  TemplateProps<T>;
+  TemplateProps<T> & {
+    translations: Resource;
+  };
 
 // The data returned by liveAPI has a slightly different meta property.
 export type LiveAPIProfile<T = Record<string, unknown>> = Omit<T, "meta"> & {

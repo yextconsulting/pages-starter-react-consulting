@@ -28,6 +28,7 @@ import { formatPhone } from "src/common/helpers";
 import { Main } from "src/layouts/main";
 import EntityLayout from "src/layouts/entity";
 import { fetchReviews } from "src/components/entity/utils/fetchReviews";
+import { getTranslations } from "../i18n";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -164,6 +165,8 @@ export const transformProps: TransformProps<
 
   (dm_directoryParents || []).push({ name: name, slug: "" });
 
+  const translations = await getTranslations(data.document.locale);
+
   return {
     ...data,
     document: {
@@ -183,6 +186,7 @@ export const transformProps: TransformProps<
       },
       dm_directoryParents: dm_directoryParents,
     },
+    translations,
   };
 };
 
