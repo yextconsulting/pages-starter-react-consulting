@@ -1,6 +1,6 @@
 {
   "Welcome to My House": "Welcome to my Spanish House",
-  "Translated content with a custom component: <1>translated link text</1>": "spanish custom component: &lt;1&gt;spanish link&lt;/1&gt;",
+  "Translated content with a custom component: <1>translated link text</1>": "spanish custom component: <1>spanish link</1>",
   "Welcome to React": "Welcome to Spanish React",
   "{{author}} is the author of {{book}}": "{{author}} es el autor de {{book}}",
   "You have {{count}} messages.": "You have {{count}} Spanish message.",
