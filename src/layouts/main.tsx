@@ -8,8 +8,7 @@ import { Header } from "src/components/common/Header";
 import { Footer } from "src/components/common/Footer";
 import { useExposeEnableYAFunction } from "src/common/useExposeEnableYAFunction";
 import config from "src/config";
-import "../i18n";
-import { useSSR } from "react-i18next";
+import { initi18n } from "src/i18n";
 
 interface MainProps {
   data: TemplateRenderProps<BaseProfile>;
@@ -17,7 +16,7 @@ interface MainProps {
 }
 
 const Main = (props: MainProps) => {
-  useSSR(props.data.translations, props.data.document.locale);
+  initi18n(props.data.translations, props.data.document.locale);
 
   return (
     <ConfigurationProvider value={config}>
