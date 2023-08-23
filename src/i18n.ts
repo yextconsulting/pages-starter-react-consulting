@@ -52,7 +52,7 @@ i18n
 export async function getTranslations(localeCode: string) {
   return await import(`../locales/${localeCode}/translation.json`)
     .then((module) => ({ [localeCode]: { translation: module.default } }))
-    .catch((_) => {
+    .catch(() => {
       console.error(`unable to load translations for: ${localeCode}`);
       return {};
     });
