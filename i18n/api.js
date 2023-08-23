@@ -46,6 +46,7 @@ class SmartlingAPI {
   async upload(filepath, filename) {
     const uploadParams = new UploadFileParameters()
       .setFileFromLocalFilePath(filepath.toString())
+      .setDirective("entity_escaping", "false")
       .setFileType(FileType.GETTEXT)
       .setFileUri(filename);
     uploadParams.set("authorize", "true");
