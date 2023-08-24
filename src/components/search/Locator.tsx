@@ -25,11 +25,13 @@ type LocatorProps = {
   placeholderText?: string;
   subTitle: string;
   title: string;
+  allResultsOnLoad?: boolean;
 };
 
 const Locator = (props: LocatorProps) => {
   const {
     displayAllOnNoResults = false,
+    allResultsOnLoad = false,
     placeholderText,
     subTitle,
     title,
@@ -41,6 +43,7 @@ const Locator = (props: LocatorProps) => {
   const searchActions = useSearchActions();
   const isLoading = useSearchState((state) => state.searchStatus.isLoading);
   const isDesktopBreakpoint = useBreakpoint("sm");
+  const [allLocationsLoaded, setAllLocationsLoaded] = useState(false);
   const [initialParamsLoaded, setInitialParamsLoaded] = useState(false);
   const initialParamsLoadedCallback = useCallback(
     () => setInitialParamsLoaded(true),
@@ -59,7 +62,13 @@ const Locator = (props: LocatorProps) => {
     setHoveredEntityId("");
   }, [searchActions.state.query.queryId]);
 
-  const results = useGetSearchResults<LocationProfile>(displayAllOnNoResults);
+  const results = useGetSearchResults<LocationProfile>(
+    displayAllOnNoResults,
+    allResultsOnLoad,
+    () => {
+      setAllLocationsLoaded(true);
+    }
+  );
 
   return (
     <LocatorProvider
@@ -74,7 +83,9 @@ const Locator = (props: LocatorProps) => {
       }}
     >
       <div className="Locator">
-        {(!initialParamsLoaded || isLoading) && <LoadingSpinner />}
+        {(!initialParamsLoaded ||
+          isLoading ||
+          (allResultsOnLoad && !allLocationsLoaded)) && <LoadingSpinner />}
         <div className="Locator-content">
           <SearchBox
             title={title}
