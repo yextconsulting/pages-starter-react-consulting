@@ -3,6 +3,6 @@
   "Translated content with a custom component: <2>translated link text</2>": "Translated content with a custom component: <2>translated link text</2>",
   "Welcome to React": "",
   "{{author}} is the author of {{book}}": "",
-  "You have {{count}} messages.": "You have {{count}} messages.",
+  "You have {{count}} messages.": "You have {{count}} message.",
   "You have {{count}} messages._plural": "You have {{count}} messages."
 }
