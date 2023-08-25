@@ -67,7 +67,7 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
     <>
       <Trans>Welcome to My House</Trans>
       <div>
-        <Trans shouldUnescape={true}>
+        <Trans>
           Translated content with a custom component:{" "}
           <Link className="Link Link--primary" href="https://www.yext.com">
             translated link text
