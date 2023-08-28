@@ -46,6 +46,11 @@ async function pull(api) {
   }
 
   i18nConfig.locales.forEach(async (locale) => {
+    // Skip processing source locale, there are no translations to pull
+    // and we don't want to overwrite local changes to translation files
+    // such as handling plurals.
+    if (locale === i18nConfig.defaultLocale) return;
+
     // Check if the yext/smartling locale name is different
     let apiLocale = locale;
     const localeMap = i18nConfig.smartlingLocaleToYextLocaleMapping;
