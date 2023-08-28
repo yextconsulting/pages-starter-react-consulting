@@ -2,7 +2,6 @@ import { i18nextToPo, gettextToI18next } from "i18next-conv";
 import fs from "fs";
 import { SmartlingAPI } from "./api.js";
 import i18nConfig from "../smartling.config.js";
-import config from "../smartling.config.js";
 
 function relURL(path) {
   return new URL(path, import.meta.url);
@@ -50,7 +49,7 @@ async function pull(api) {
     // Skip processing source locale, there are no translations to pull
     // and we don't want to overwrite local changes to translation files
     // such as handling plurals.
-    if (locale === config.defaultLocale) return;
+    if (locale === i18nConfig.defaultLocale) return;
 
     // Check if the yext/smartling locale name is different
     let apiLocale = locale;
