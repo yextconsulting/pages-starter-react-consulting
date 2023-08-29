@@ -6,12 +6,16 @@ import {
   useSearchActions,
 } from "@yext/search-headless-react";
 
-async function fetchAll<T>(core: SearchCore, verticalKey: string) {
+async function fetchAll<T>(
+  core: SearchCore,
+  verticalKey: string,
+  limit = Infinity
+) {
   async function fetchPage(offset: number) {
     const res = await core.verticalSearch({
       query: "",
       verticalKey: verticalKey,
-      limit: 50,
+      limit: Math.min(limit, 50),
       offset,
       retrieveFacets: false,
       skipSpellCheck: true,
@@ -19,19 +23,25 @@ async function fetchAll<T>(core: SearchCore, verticalKey: string) {
     return res;
   }
 
-  let offset = 0;
-  let done = false;
-  const out = [];
+  const res = await fetchPage(0);
 
-  while (!done) {
-    const res = await fetchPage(offset);
-    out.push(...(res.verticalResults.results as Result<T>[]));
-    if (out.length === res.verticalResults.resultsCount) {
-      done = true;
-    }
-    offset += 50;
+  const searches = [Promise.resolve(res)];
+  const per = 50; // Max number of entities allowed per response
+  const totalEntities = Math.min(res.verticalResults.resultsCount, limit);
+
+  for (
+    let offset = res.verticalResults.results.length;
+    offset < totalEntities;
+    offset += per
+  ) {
+    searches.push(fetchPage(offset));
   }
-
+  const out: Result<T>[] = [];
+  await Promise.all(searches).then((responses) => {
+    for (const response of responses) {
+      out.push(...(response.verticalResults.results as Result<T>[]));
+    }
+  });
   return out;
 }
 
@@ -42,21 +52,18 @@ export function useGetSearchResults<T>(
   allResultsLoadedCallback?: () => void
 ) {
   const [allResults, setAllResults] = useState<Result<T>[]>([]);
-  const [allResultsLoaded, setAllResultsLoaded] = useState(false);
   const actions = useSearchActions();
   const state = useSearchState((s) => s);
   const initialLoad = !state.query.queryId;
 
   useEffect(() => {
-    if (!allResultsOnLoad || allResultsLoaded || !state.vertical.verticalKey)
-      return;
+    if (!allResultsOnLoad || !state.vertical.verticalKey) return;
     async function load() {
       // @ts-expect-error core is private, but we want to reuse the same core as the
       // locator, rather than needing to create a new instance with the same configuration
       // it's less convenient to use it indirectly through searchActions.executeVerticalQuery
       // because that doesn't provide us direct access to results
       const res = await fetchAll<T>(actions.core, state.vertical.verticalKey);
-      setAllResultsLoaded(true);
       setAllResults(res);
       if (allResultsLoadedCallback) allResultsLoadedCallback();
     }
