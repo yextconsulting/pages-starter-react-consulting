@@ -1,7 +1,8 @@
 import { FaTimes } from "react-icons/fa";
 import { useSearchActions } from "@yext/search-headless-react";
-import { StandardFacets, executeSearch } from "@yext/search-ui-react";
+import { executeSearch } from "@yext/search-ui-react";
 import { useBreakpoint } from "src/common/useBreakpoints";
+import { Facets } from "src/components/search/Facets/Facets";
 import ActiveFacets from "src/components/search/ActiveFacets";
 
 type FacetsModalProps = {
@@ -33,17 +34,13 @@ const FacetsModal = (props: FacetsModalProps) => {
       <div className="h-px bg-brand-gray-300 w-screen -mx-4 mb-4 sm:mx-0 sm:w-full">
         {/* Divider */}
       </div>
-      <StandardFacets
-        collapsible={false}
-        showOptionCounts={true}
-        customCssClasses={{
-          standardFacetsContainer: "w-full overflow-y-auto",
-          titleLabel: "text-lg font-bold text-brand-primary",
-          optionLabel: "text-sm",
-          divider: "w-full bg-white my-3",
-        }}
-        searchOnChange={true}
-      />
+      <div className="overflow-y-auto">
+        <Facets
+          collapsible={false}
+          searchOnChange={true}
+          showOptionCounts={true}
+        />
+      </div>
       <div className="text-center mt-6">
         <button
           className="Link Link--primary disabled:text-brand-gray-400"
