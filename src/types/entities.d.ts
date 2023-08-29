@@ -231,7 +231,7 @@ export type TemplateRenderProps<T = Record<string, unknown>> = Omit<
   "document"
 > &
   TemplateProps<T> & {
-    translations: Resource;
+    translations?: Resource;
   };
 
 // The data returned by liveAPI has a slightly different meta property.

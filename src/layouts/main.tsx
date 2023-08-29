@@ -16,7 +16,7 @@ interface MainProps {
 }
 
 const Main = (props: MainProps) => {
-  initi18n(props.data.translations, props.data.document.locale);
+  initi18n(props.data.translations || {}, props.data.document.locale);
 
   return (
     <ConfigurationProvider value={config}>

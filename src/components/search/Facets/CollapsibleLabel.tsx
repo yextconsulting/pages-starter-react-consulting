@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { ChevronIcon } from "./ChevronIcon";
 import { useFilterGroupContext } from "./FilterGroupContext";
-import { useComposedCssClasses } from "./useComposedCssClasses";
 
 /**
  * The CSS class interface for {@link CollapsibleLabelProps}.
@@ -40,20 +39,18 @@ export const builtInCssClasses: Readonly<CollapsibleLabelCssClasses> = {
  */
 export function CollapsibleLabel({
   label,
-  customCssClasses,
 }: CollapsibleLabelProps): JSX.Element {
   const { isExpanded, getToggleProps } = useFilterGroupContext();
   const iconClassName = classNames("w-3 text-gray-400", {
     "transform rotate-180": !isExpanded,
   });
-  const cssClasses = useComposedCssClasses(builtInCssClasses, customCssClasses);
 
   return (
     <button
       className="w-full flex justify-between items-center mb-4"
       {...getToggleProps()}
     >
-      <div className={cssClasses.label}>{label}</div>
+      <div className={builtInCssClasses.label}>{label}</div>
       <ChevronIcon className={iconClassName} />
     </button>
   );
