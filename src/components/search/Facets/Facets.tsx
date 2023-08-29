@@ -35,6 +35,7 @@ export function Facets(props: FacetsProps) {
     hierarchicalFieldIds = [],
     excludedFieldIds = [],
     collapsible,
+    showOptionCounts,
   } = props;
 
   const fieldIdToCustomFacetProps = new Map();
@@ -83,6 +84,7 @@ export function Facets(props: FacetsProps) {
                     facet={facet}
                     hierarchicalFieldIds={hierarchicalFieldIds}
                     collapsible={collapsible}
+                    showOptionCounts={showOptionCounts}
                   />
                   {i < facets.length - 1 && <FilterDivider />}
                 </Fragment>
@@ -109,15 +111,18 @@ export function Facet({
   facet,
   hierarchicalFieldIds,
   collapsible,
+  showOptionCounts,
 }: {
   facet: DisplayableFacet;
   hierarchicalFieldIds: string[];
   collapsible?: boolean;
+  showOptionCounts?: boolean;
 }) {
   const facetProps: FacetProps = {
     fieldId: facet.fieldId,
     label: facet.displayName,
     collapsible,
+    showOptionCounts,
   };
   const facetType = getFacetTypeFromFacet(facet, hierarchicalFieldIds);
 

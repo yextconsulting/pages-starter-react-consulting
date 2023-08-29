@@ -34,8 +34,12 @@ const FacetsModal = (props: FacetsModalProps) => {
       <div className="h-px bg-brand-gray-300 w-screen -mx-4 mb-4 sm:mx-0 sm:w-full">
         {/* Divider */}
       </div>
-      <div className="overflow-y-scroll">
-        <Facets collapsible={false} />
+      <div className="overflow-y-auto">
+        <Facets
+          collapsible={false}
+          searchOnChange={true}
+          showOptionCounts={true}
+        />
       </div>
       <div className="text-center mt-6">
         <button

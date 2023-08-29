@@ -39,6 +39,7 @@ export interface FacetsProps {
    */
   children?: ReactElement[] | ReactElement | undefined | null;
   collapsible?: boolean;
+  showOptionCounts?: boolean;
 }
 
 /**
