@@ -13,6 +13,7 @@
     "paths": {
       "src/*": ["./src/*"]
     },
+    "types": ["vite/client"],
     "outDir": "./dist"
   },
   "include": ["src"]

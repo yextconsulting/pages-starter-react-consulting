@@ -67,8 +67,10 @@ export function initi18n(resources: Resource, locale: string) {
 export function useTranslation() {
   const { t, ...rest } = usei18nextTranslation();
   return {
+    // @ts-expect-error typings for `t` are complicated
     t: (key, ...args) => {
       if (args.length > 0) {
+        // @ts-expect-error see above
         return t(key, ...args);
       } else {
         return t(key, key);

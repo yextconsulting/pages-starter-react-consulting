@@ -1,6 +1,5 @@
 import { DisplayableFacet } from "@yext/search-headless-react";
 import { ReactNode, useCallback, useState } from "react";
-import { useComposedCssClasses } from "./useComposedCssClasses";
 import {
   HierarchicalFacetNode,
   HierarchicalFacetTree,
@@ -68,9 +67,7 @@ export function HierarchicalFacetDisplay({
   facet,
   delimiter = DEFAULT_HIERARCHICAL_DELIMITER,
   showMoreLimit = 4,
-  customCssClasses,
 }: HierarchicalFacetDisplayProps): JSX.Element {
-  const cssClasses = useComposedCssClasses(builtInCssClasses, customCssClasses);
   const tree = useHierarchicalFacetTree(facet, delimiter);
   const [isShowingMore, setIsShowingMore] = useState(false);
   const resetShowMore = useCallback(() => setIsShowingMore(false), []);
@@ -120,8 +117,8 @@ export function HierarchicalFacetDisplay({
     return (
       <AllCategories
         key="_AllCategories"
-        activeClassName={cssClasses.allCategoriesOption___active}
-        inactiveClassName={cssClasses.allCategoriesOption___inactive}
+        activeClassName={builtInCssClasses.allCategoriesOption___active}
+        inactiveClassName={builtInCssClasses.allCategoriesOption___inactive}
         facet={facet}
         resetShowMore={resetShowMore}
       />
@@ -133,8 +130,8 @@ export function HierarchicalFacetDisplay({
     return nodesToRender.map((n) => (
       <AvailableOption
         key={n.lastDisplayNameToken}
-        activeClassName={cssClasses.availableOption__active}
-        inactiveClassName={cssClasses.availableOption__inactive}
+        activeClassName={builtInCssClasses.availableOption__active}
+        inactiveClassName={builtInCssClasses.availableOption__inactive}
         fieldId={facet.fieldId}
         currentNode={n}
         resetShowMore={resetShowMore}
@@ -147,7 +144,7 @@ export function HierarchicalFacetDisplay({
     return (
       <ShowMoreButton
         key="_ShowMoreButton"
-        className={cssClasses.showMoreButton}
+        className={builtInCssClasses.showMoreButton}
         isShowingMore={isShowingMore}
         toggleShowMore={toggleShowMore}
       />
@@ -168,21 +165,21 @@ export function HierarchicalFacetDisplay({
     if (selectedNode.hasSelectedChild) {
       return (
         <ParentCategory
-          className={cssClasses.parentCategory}
+          className={builtInCssClasses.parentCategory}
           {...sharedProps}
         />
       );
     } else {
       return (
         <CurrentCategory
-          className={cssClasses.currentCategory}
+          className={builtInCssClasses.currentCategory}
           {...sharedProps}
         />
       );
     }
   }
 
-  return <div className={cssClasses.treeContainer}>{renderTree()}</div>;
+  return <div className={builtInCssClasses.treeContainer}>{renderTree()}</div>;
 }
 
 /**
