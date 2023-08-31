@@ -18,6 +18,7 @@ import ResultInfo from "src/components/search/ResultInfo";
 import ResultList from "src/components/search/ResultList";
 import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
+import { MAPS_API_KEY } from "src/config";
 
 type LocatorProps = {
   // Will display results up to the verticalLimit (default 20, change with searchActions.setVerticalLimit(num))
@@ -100,10 +101,10 @@ const Locator = (props: LocatorProps) => {
             <Map
               provider={GoogleMaps}
               providerOptions={{ styles: mapStyles }}
-              clientKey="gme-yextinc"
               bounds={results.map((data) => data.rawData.yextDisplayCoordinate)}
               padding={{ top: 100, bottom: 200, left: 50, right: 50 }}
               className="h-full"
+              apiKey={MAPS_API_KEY}
             >
               {results.map((data, index) => (
                 <CustomMarker

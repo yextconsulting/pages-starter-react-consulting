@@ -11,6 +11,7 @@ import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
+import { MAPS_API_KEY } from "src/config";
 
 type CoreProps = {
   profile: LocationProfile;
@@ -118,9 +119,9 @@ const Core = (props: CoreProps) => {
           <LazyLoadWrapper>
             <LocationMap
               className="h-[300px] mt-16"
-              clientKey="gme-yextinc"
               coordinate={profile.yextDisplayCoordinate}
               provider={GoogleMaps}
+              apiKey={MAPS_API_KEY}
             >
               {mappinSVG}
             </LocationMap>
