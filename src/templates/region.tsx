@@ -46,9 +46,6 @@ export const config: TemplateConfig = {
       "dm_directoryChildren.slug",
       "dm_directoryChildren.name",
       "dm_directoryChildren.dm_baseEntityCount",
-      "dm_directoryChildren.dm_directoryChildren.slug",
-      "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
-      "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {

@@ -46,9 +46,6 @@ export const config: TemplateConfig = {
       "dm_directoryChildren.slug",
       "dm_directoryChildren.name",
       "dm_directoryChildren.dm_baseEntityCount",
-      "dm_directoryChildren.dm_directoryChildren.slug",
-      "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
-      "dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.dm_directoryChildren.slug",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: {
@@ -116,9 +113,7 @@ export const transformProps: TransformProps<
  * components any way you'd like as long as it lives in the src folder (though you should not put
  * them in the src/templates folder as this is specific for true template files).
  */
-const Root: Template<
-  TemplateRenderProps<DirectoryProfile<DirectoryProfile<never>>>
-> = (data) => {
+const Root: Template<TemplateRenderProps<DirectoryProfile<never>>> = (data) => {
   return (
     <Main data={data}>
       <DirectoryLayout data={data} />

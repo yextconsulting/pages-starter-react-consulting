@@ -11,7 +11,7 @@ import DirectoryHero from "src/components/directory/DirectoryHero";
 import DirectoryList from "src/components/directory/DirectoryList";
 
 interface DirectoryListLayoutProps {
-  data: TemplateRenderProps<DirectoryProfile<DirectoryProfile<never>>>;
+  data: TemplateRenderProps<DirectoryProfile<never>>;
 }
 
 interface DirectoryGridLayoutProps {
