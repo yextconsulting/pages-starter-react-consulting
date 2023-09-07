@@ -116,7 +116,6 @@ export const config: TemplateConfig = {
       "c_promoSection",
       // Review Fields
       "c_reviewsSection",
-      "ref_reviewsAgg.reviewCount", // This is required in order to update the stream every time a new review is created.
       // Team Fields
       "c_teamSection.title",
       "c_teamSection.team.id",
@@ -178,12 +177,6 @@ export const transformProps: TransformProps<
       ttyPhone: formatPhone(ttyPhone, address.countryCode),
       localPhone: formatPhone(localPhone, address.countryCode),
       alternatePhone: formatPhone(alternatePhone, address.countryCode),
-      c_reviewsSection: {
-        ...data.document.c_reviewsSection,
-        ...(_site.c_reviewsAPIKey && {
-          reviews: await fetchReviews(_site.c_reviewsAPIKey),
-        }),
-      },
       dm_directoryParents: dm_directoryParents,
     },
     translations,

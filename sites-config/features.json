@@ -128,7 +128,6 @@
         "c_featuredProductsSection.products.c_primaryCTA",
         "c_promoSection",
         "c_reviewsSection",
-        "ref_reviewsAgg.reviewCount",
         "c_teamSection.title",
         "c_teamSection.team.id",
         "c_teamSection.team.name",

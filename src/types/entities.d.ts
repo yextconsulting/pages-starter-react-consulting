@@ -123,9 +123,6 @@ export interface LocationProfile extends BaseProfile {
   readonly googlePlaceId?: string;
   readonly ref_listings?: ListingType[];
   readonly logo?: Image;
-  readonly ref_reviewsAgg?: {
-    readonly reviewCount?: number;
-  }[];
   readonly paymentOptions?: string;
 
   // Add custom fields here

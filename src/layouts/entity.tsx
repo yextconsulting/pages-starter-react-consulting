@@ -54,7 +54,6 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
   const showFAQ = faq?.title && faq?.faqs;
   const showEvents = events?.title && events.events;
   const showInsights = insights?.title && insights?.insights;
-  const showReviews = reviews?.title && reviews?.reviews;
 
   return (
     <>
@@ -145,15 +144,11 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
           <FAQs title={faq.title} faqs={faq.faqs} />
         </ErrorBoundaryWithAnalytics>
       )}
-      {showReviews && (
+      <LazyLoadWrapper>
         <ErrorBoundaryWithAnalytics name="reviews">
-          <Reviews
-            title={reviews.title}
-            reviews={reviews.reviews}
-            name={name}
-          />
+          <Reviews title={reviews?.title} name={name} />
         </ErrorBoundaryWithAnalytics>
-      )}
+      </LazyLoadWrapper>
       <LazyLoadWrapper>
         <ErrorBoundaryWithAnalytics name="nearby">
           <Nearby
