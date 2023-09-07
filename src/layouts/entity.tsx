@@ -144,9 +144,11 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
           <FAQs title={faq.title} faqs={faq.faqs} />
         </ErrorBoundaryWithAnalytics>
       )}
-      <ErrorBoundaryWithAnalytics name="reviews">
-        <Reviews title={reviews?.title} name={name} />
-      </ErrorBoundaryWithAnalytics>
+      <LazyLoadWrapper>
+        <ErrorBoundaryWithAnalytics name="reviews">
+          <Reviews title={reviews?.title} name={name} />
+        </ErrorBoundaryWithAnalytics>
+      </LazyLoadWrapper>
       <LazyLoadWrapper>
         <ErrorBoundaryWithAnalytics name="nearby">
           <Nearby

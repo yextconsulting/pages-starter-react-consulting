@@ -36,7 +36,7 @@ const Reviews = (props: ReviewsProps) => {
   useEffect(() => {
     if (!apiKey) return;
     fetchReviews(apiKey).then((r) => setReviews(r || []));
-  });
+  }, [apiKey]);
 
   const averageRating = +(
     reviews.reduce((prev, curr) => prev + curr.rating, 0) / reviews.length
