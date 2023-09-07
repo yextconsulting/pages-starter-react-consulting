@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import ReviewStars from "src/components/entity/ReviewStars";
 import ReviewCard from "src/components/cards/ReviewCard";
 import {
@@ -9,11 +10,12 @@ import {
   Dot,
 } from "pure-react-carousel";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import type { ReviewProfile } from "src/types/entities";
+import { fetchReviews } from "src/components/entity/utils/fetchReviews";
+import { useTemplateData } from "src/common/useTemplateData";
+import { ReviewProfile } from "src/types/entities";
 
 type ReviewsProps = {
-  title: string;
-  reviews: ReviewProfile[];
+  title?: string;
   maxReviews?: number;
   numReviewsPerPage?: number;
   name: string;
@@ -21,12 +23,20 @@ type ReviewsProps = {
 
 const Reviews = (props: ReviewsProps) => {
   const {
-    title,
-    reviews,
+    title = "Recent Reviews",
     maxReviews = 12,
     numReviewsPerPage = 3,
     name,
   } = props;
+
+  const [reviews, setReviews] = useState<ReviewProfile[]>([]);
+  const { document } = useTemplateData();
+  const apiKey = document._site.c_reviewsAPIKey;
+
+  useEffect(() => {
+    if (!apiKey) return;
+    fetchReviews(apiKey).then((r) => setReviews(r || []));
+  });
 
   const averageRating = +(
     reviews.reduce((prev, curr) => prev + curr.rating, 0) / reviews.length
@@ -53,6 +63,10 @@ const Reviews = (props: ReviewsProps) => {
         )}
       </div>
     ));
+
+  if (!reviews.length) {
+    return null;
+  }
 
   return (
     <div className="py-8 sm:py-16">
