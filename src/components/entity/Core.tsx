@@ -5,7 +5,7 @@ import {
   Address,
   getDirections,
   LocationMap,
-} from "@yext/pages/components";
+} from "@yext/sites-components";
 import { GoogleMaps } from "@yext/components-tsx-maps";
 import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
