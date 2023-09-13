@@ -7,7 +7,7 @@
       },
       {
         "root": "static",
-        "pattern": "*"
+        "pattern": "**/*"
       }
     ],
     "features": "sites-config/features.json",
