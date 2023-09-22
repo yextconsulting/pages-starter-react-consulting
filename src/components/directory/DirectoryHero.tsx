@@ -1,6 +1,6 @@
 import { useTemplateData } from "src/common/useTemplateData";
-import { SEARCH_PATH } from "src/config";
 import DirectorySearchBar from "src/components/directory/DirectorySearchBar";
+import { FALLBACK_SEARCH_PATH } from "src/config";
 
 interface DirectoryHeroProps {
   brand?: string;
@@ -9,7 +9,9 @@ interface DirectoryHeroProps {
 
 const DirectoryHero = (props: DirectoryHeroProps) => {
   const { brand, title } = props;
-  const { relativePrefixToRoot } = useTemplateData();
+  const { relativePrefixToRoot, document } = useTemplateData();
+  const search_path =
+    document?._site?.c_searchPage?.slug || FALLBACK_SEARCH_PATH;
 
   return (
     <div className="DirectoryHero bg-brand-gray-100 py-8 md:py-20 px-4 md:px-0">
@@ -19,7 +21,7 @@ const DirectoryHero = (props: DirectoryHeroProps) => {
       </h1>
       <DirectorySearchBar
         placeholder="Search by city and state or ZIP code"
-        searcherPath={relativePrefixToRoot + SEARCH_PATH}
+        searcherPath={relativePrefixToRoot + search_path}
       />
     </div>
   );

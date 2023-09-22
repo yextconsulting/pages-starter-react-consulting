@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Coordinate } from "@yext/types";
 import { Link } from "@yext/pages/components";
-import { SEARCH_PATH } from "src/config";
+import { FALLBACK_SEARCH_PATH } from "src/config";
 import { useTemplateData } from "src/common/useTemplateData";
 import type { LiveAPIProfile, LocationProfile } from "src/types/entities";
 import classNames from "classnames";
@@ -44,6 +44,8 @@ const Nearby = (props: NearbyProps) => {
   } = props;
 
   const { document, relativePrefixToRoot } = useTemplateData();
+  const search_path =
+    document?._site?.c_searchPage?.slug || FALLBACK_SEARCH_PATH;
   const apiKey = document._site.c_nearbySectionAPIKey;
 
   const [nearbyLocations, setNearbyLocations] = useState<
@@ -71,7 +73,7 @@ const Nearby = (props: NearbyProps) => {
   const renderLocatorLink = (cls?: string) => {
     return linkToLocator ? (
       <Link
-        href={buttonLink ?? relativePrefixToRoot + SEARCH_PATH}
+        href={buttonLink ?? relativePrefixToRoot + search_path}
         className={classNames("Button Button--primary mt-8 sm:mt-0", cls)}
       >
         {buttonText}
