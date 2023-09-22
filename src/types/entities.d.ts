@@ -53,6 +53,9 @@ export interface SiteProfile extends BaseProfile {
   readonly c_nearbySectionAPIKey?: string;
   readonly c_searchExperienceAPIKey?: string;
   readonly c_reviewsAPIKey?: string;
+  readonly c_searchPage?: {
+    readonly slug?: string;
+  };
 }
 
 export interface ProductProfile extends BaseProfile {
@@ -63,9 +66,10 @@ export interface ProductProfile extends BaseProfile {
 }
 
 export interface SearchPageProfile extends BaseProfile {
-  c_searchTitle: string;
-  c_searchSubTitle: string;
-  c_searchPlaceholderText: string;
+  readonly slug: string;
+  readonly c_searchTitle?: string;
+  readonly c_searchSubTitle?: string;
+  readonly c_searchPlaceholderText?: string;
 }
 
 export interface EventDate {

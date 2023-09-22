@@ -2,14 +2,18 @@ import {
   Template,
   TemplateConfig,
   GetHeadConfig,
+  GetPath,
   HeadConfig,
 } from "@yext/pages";
 import "src/index.css";
 import { defaultHeadConfig } from "src/common/head";
 import { Main } from "src/layouts/main";
 import SearchLayout from "src/layouts/search";
-import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
-import { SEARCH_PATH } from "src/config";
+import {
+  SearchPageProfile,
+  TemplateRenderProps,
+  TemplateProps,
+} from "src/types/entities";
 
 /**
  * Not required depending on your use case.
@@ -24,6 +28,7 @@ export const config: TemplateConfig = {
       "uid",
       "meta",
       "name",
+      "slug",
       "c_searchTitle",
       "c_searchSubTitle",
       "c_searchPlaceholderText",
@@ -46,8 +51,8 @@ export const config: TemplateConfig = {
  * NOTE: This currently has no impact on the local dev path. Local dev urls currently
  * take on the form: featureName/entityId
  */
-export const getPath = (): string => {
-  return SEARCH_PATH;
+export const getPath: GetPath<TemplateProps<SearchPageProfile>> = (data) => {
+  return data.document.slug;
 };
 
 /**

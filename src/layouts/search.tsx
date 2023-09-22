@@ -30,9 +30,14 @@ const SearchLayout = ({ data }: SearchLayoutProps) => {
         {runtime.name === "browser" && (
           <BrowserRouter>
             <Locator
-              title={c_searchTitle}
-              subTitle={c_searchSubTitle}
-              placeholderText={c_searchPlaceholderText}
+              title={c_searchTitle || "Find a Location"}
+              subTitle={
+                c_searchSubTitle || "Search by city and state or ZIP code"
+              }
+              placeholderText={
+                c_searchPlaceholderText ||
+                "Search by city and state or ZIP code"
+              }
             />
           </BrowserRouter>
         )}

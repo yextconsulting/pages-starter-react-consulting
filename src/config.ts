@@ -13,7 +13,7 @@ export const MAPS_API_KEY = "<REPLACE-ME>";
 
 // Path for the search page.
 // Exported here since it's required across multiple pages such as the nearby section and directory search bar.
-export const SEARCH_PATH = "search";
+export const FALLBACK_SEARCH_PATH = "search";
 // Static filter field for FilterSearch.
 export const LOCATOR_STATIC_FILTER_FIELD = "builtin.location";
 // Entity type for FilterSearch
