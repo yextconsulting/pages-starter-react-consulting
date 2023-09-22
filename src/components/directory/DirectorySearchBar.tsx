@@ -30,7 +30,8 @@ const DirectorySearchBar = (props: DirectorySearchBarProps) => {
 
   const searcher = getSearchProvider(
     document._site.c_searchExperienceAPIKey ?? "",
-    document.meta.locale
+    document.meta.locale,
+    document.siteDomain
   );
 
   return (

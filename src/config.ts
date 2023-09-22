@@ -1,3 +1,4 @@
+import { isProduction } from "@yext/pages/util";
 import { provideHeadless } from "@yext/search-headless-react";
 import type { ConfigurationProviderContextType } from "@yext/sites-react-components";
 // import { SandboxEndpoints } from "@yext/search-headless-react"; // Add if using a sandbox account
@@ -21,12 +22,19 @@ export const LOCATOR_ENTITY_TYPE = "location";
 // Radius used for the locator geolocate button.
 export const GEOLOCATE_RADIUS = 50;
 
-export const getSearchProvider = (apiKey: string, locale: string) =>
-  provideHeadless({
+export const getSearchProvider = (
+  apiKey: string,
+  locale: string,
+  domain: string
+) => {
+  const experienceVersion = isProduction(domain) ? "PRODUCTION" : "STAGING";
+
+  return provideHeadless({
     apiKey,
-    experienceKey: "<REPLACE-ME>",
+    experienceKey: "locator",
     locale,
-    verticalKey: "<REPLACE-ME>",
-    experienceVersion: "<REPLACE-ME>",
+    verticalKey: "locations",
+    experienceVersion,
     // endpoints: SandboxEndpoints // Add if using a sandbox account
   });
+};

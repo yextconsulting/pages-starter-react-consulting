@@ -17,7 +17,8 @@ const SearchLayout = ({ data }: SearchLayoutProps) => {
   const runtime = getRuntime();
   const searcher = getSearchProvider(
     _site.c_searchExperienceAPIKey ?? "",
-    document.meta.locale
+    document.meta.locale,
+    document.siteDomain
   );
 
   if (!_site.c_searchExperienceAPIKey) {
