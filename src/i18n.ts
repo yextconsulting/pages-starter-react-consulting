@@ -15,7 +15,6 @@ export async function getTranslations(localeCode: string) {
 }
 
 export function initi18n(resources: Resource, locale: string) {
-  const lookupOrder = ["querystring"];
 
   i18n
     .use(initReactI18next) // passes i18n down to react-i18next
@@ -23,10 +22,6 @@ export function initi18n(resources: Resource, locale: string) {
       resources,
       compatibilityJSON: "v3",
       returnEmptyString: false,
-      detection: {
-        order: lookupOrder,
-        lookupQuerystring: "locale",
-      },
       interpolation: {
         escapeValue: false, // react already safes from xss
       },
