@@ -32,7 +32,6 @@
     "@yext/types": "0.1.10-alpha",
     "classnames": "2.3.1",
     "i18next": "^23.4.4",
-    "i18next-browser-languagedetector": "^7.1.0",
     "libphonenumber-js": "1.10.14",
     "postcss-mixins": "^9.0.3",
     "pure-react-carousel": "1.30.1",
