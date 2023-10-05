@@ -9,7 +9,7 @@
       }
     },
     {
-      "name": "index",
+      "name": "entity",
       "streamId": "locations",
       "templateType": "JS",
       "entityPageSet": {
@@ -198,6 +198,7 @@
         "uid",
         "meta",
         "name",
+        "slug",
         "c_searchTitle",
         "c_searchSubTitle",
         "c_searchPlaceholderText"
