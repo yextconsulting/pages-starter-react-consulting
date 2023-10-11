@@ -1,208 +1,207 @@
 {
-	"__": {
-		"entityPageSet": {
-			"plugin": {}
-		},
-		"name": "index",
-		"streamId": "locations",
-		"templateType": "JS"
-	},
-	"_site": {
-		"c_brand": "Yext Consulting",
-		"c_copyrightMessage": "© 2022. All Rights Reserved.",
-		"c_facebook": "https://www.facebook.com/",
-		"c_footerLinks": [
-			{
-				"label": "Link1",
-				"link": "https://www.yext.com",
-				"linkType": "URL"
-			},
-			{
-				"label": "Link2",
-				"link": "https://www.yext.com",
-				"linkType": "URL"
-			},
-			{
-				"label": "Link3",
-				"link": "https://www.yext.com",
-				"linkType": "URL"
-			},
-			{
-				"label": "Link4",
-				"link": "https://www.yext.com",
-				"linkType": "URL"
-			},
-			{
-				"label": "Link5",
-				"link": "https://www.yext.com",
-				"linkType": "URL"
-			}
-		],
-		"c_header": {
-			"links": [
-				{
-					"label": "Link1",
-					"link": "https://www.yext.com",
-					"linkType": "URL"
-				},
-				{
-					"label": "Link2",
-					"link": "https://www.yext.com",
-					"linkType": "URL"
-				},
-				{
-					"label": "Link3",
-					"link": "https://www.yext.com",
-					"linkType": "URL"
-				},
-				{
-					"label": "Link4",
-					"link": "https://www.yext.com",
-					"linkType": "URL"
-				},
-				{
-					"label": "Link5",
-					"link": "https://www.yext.com",
-					"linkType": "URL"
-				}
-			],
-			"logo": {
-				"height": 100,
-				"url": "http://a.mktgcdn.com/p/BzSALSNKyVBFz797EoaKt_k3rgAJonv9DnbGYMbxqds/100x100.png",
-				"width": 100
-			}
-		},
-		"c_instagram": "https://www.instagram.com/",
-		"c_linkedIn": "https://www.linkedin.com/",
-		"c_nearbySectionAPIKey": "a76f3747d89260bdebb2c3223cffe03e",
-		"c_reviewsAPIKey": "950cb865b1378ec95ad87c7b2a54a806",
-		"c_searchExperienceAPIKey": "134988aadced7171cc410730c3aec4f6",
-		"c_twitter": "https://www.twitter.com/",
-		"c_youtube": "https://www.youtube.com/",
-		"id": "site-entity",
-		"meta": {
-			"entityType": {
-				"id": "ce_site",
-				"uid": 132489
-			},
-			"locale": "en"
-		},
-		"name": "Site Entity",
-		"uid": 64216926
-	},
-	"address": {
-		"city": "New York",
-		"countryCode": "US",
-		"line1": "601–699 E 6th St",
-		"localizedCountryName": "United States",
-		"localizedRegionName": "New York",
-		"postalCode": "10009",
-		"region": "NY"
-	},
-	"businessId": 3861963,
-	"dm_directoryParents": [
-		{
-			"name": "All Locations",
-			"slug": "index.html"
-		},
-		{
-			"name": "NY",
-			"slug": "ny"
-		},
-		{
-			"name": "New York",
-			"slug": "ny/new-york"
-		}
-	],
-	"hours": {
-		"friday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "19:00",
-					"start": "10:00"
-				}
-			]
-		},
-		"monday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "19:00",
-					"start": "10:00"
-				}
-			]
-		},
-		"saturday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "19:00",
-					"start": "10:00"
-				}
-			]
-		},
-		"sunday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "19:00",
-					"start": "10:00"
-				}
-			]
-		},
-		"thursday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "19:00",
-					"start": "10:00"
-				}
-			]
-		},
-		"tuesday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "19:00",
-					"start": "10:00"
-				}
-			]
-		},
-		"wednesday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "19:00",
-					"start": "10:00"
-				}
-			]
-		}
-	},
-	"id": "test-location-3",
-	"key": "0:index:knowledgeGraph:65703155:en",
-	"locale": "en",
-	"meta": {
-		"entityType": {
-			"id": "location",
-			"uid": 0
-		},
-		"locale": "en"
-	},
-	"name": "Test Location 3",
-	"ref_listings": [],
-	"ref_reviewsAgg": [],
-	"services": [
-		"Option B",
-		"Option C"
-	],
-	"siteDomain": "",
-	"siteId": 0,
-	"siteInternalHostName": "",
-	"slug": "ny/new-york/601699-e-6th-st",
-	"uid": 65703155,
-	"yextDisplayCoordinate": {
-		"latitude": 40.7207,
-		"longitude": -73.9783833
-	}
+  "__": {
+    "entityPageSet": {},
+    "name": "entity",
+    "streamId": "locations",
+    "templateType": "JS"
+  },
+  "_site": {
+    "c_brand": "Yext Consulting",
+    "c_copyrightMessage": "© 2022. All Rights Reserved.",
+    "c_facebook": "https://www.facebook.com/",
+    "c_footerLinks": [
+      {
+        "label": "Link1",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link2",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link3",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link4",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link5",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      }
+    ],
+    "c_header": {
+      "links": [
+        {
+          "label": "Link1",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link2",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link3",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link4",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link5",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        }
+      ],
+      "logo": {
+        "height": 100,
+        "url": "http://a.mktgcdn.com/p/BzSALSNKyVBFz797EoaKt_k3rgAJonv9DnbGYMbxqds/100x100.png",
+        "width": 100
+      }
+    },
+    "c_instagram": "https://www.instagram.com/",
+    "c_linkedIn": "https://www.linkedin.com/",
+    "c_nearbySectionAPIKey": "a76f3747d89260bdebb2c3223cffe03e",
+    "c_reviewsAPIKey": "950cb865b1378ec95ad87c7b2a54a806",
+    "c_searchExperienceAPIKey": "134988aadced7171cc410730c3aec4f6",
+    "c_searchPage": [
+      {
+        "slug": "search"
+      }
+    ],
+    "c_twitter": "https://www.twitter.com/",
+    "c_youtube": "https://www.youtube.com/",
+    "id": "site-entity",
+    "meta": {
+      "entityType": {
+        "id": "ce_site",
+        "uid": 132489
+      },
+      "locale": "en"
+    },
+    "name": "Site Entity",
+    "uid": 64216926
+  },
+  "address": {
+    "city": "New York",
+    "countryCode": "US",
+    "line1": "601–699 E 6th St",
+    "localizedCountryName": "United States",
+    "localizedRegionName": "New York",
+    "postalCode": "10009",
+    "region": "NY"
+  },
+  "businessId": 3861963,
+  "dm_directoryParents": [
+    {
+      "name": "All Locations",
+      "slug": "index.html"
+    },
+    {
+      "name": "NY",
+      "slug": "ny"
+    },
+    {
+      "name": "New York",
+      "slug": "ny/new-york"
+    }
+  ],
+  "hours": {
+    "friday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "19:00",
+          "start": "10:00"
+        }
+      ]
+    },
+    "monday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "19:00",
+          "start": "10:00"
+        }
+      ]
+    },
+    "saturday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "19:00",
+          "start": "10:00"
+        }
+      ]
+    },
+    "sunday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "19:00",
+          "start": "10:00"
+        }
+      ]
+    },
+    "thursday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "19:00",
+          "start": "10:00"
+        }
+      ]
+    },
+    "tuesday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "19:00",
+          "start": "10:00"
+        }
+      ]
+    },
+    "wednesday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "19:00",
+          "start": "10:00"
+        }
+      ]
+    }
+  },
+  "id": "test-location-3",
+  "key": "0:entity:knowledgeGraph:65703155:en",
+  "locale": "en",
+  "meta": {
+    "entityType": {
+      "id": "location",
+      "uid": 0
+    },
+    "locale": "en"
+  },
+  "name": "Test Location 3",
+  "ref_listings": [],
+  "services": ["Option B", "Option C"],
+  "siteDomain": "",
+  "siteId": 0,
+  "siteInternalHostName": "",
+  "slug": "ny/new-york/601699-e-6th-st",
+  "uid": 65703155,
+  "yextDisplayCoordinate": {
+    "latitude": 40.7207,
+    "longitude": -73.9783833
+  }
 }

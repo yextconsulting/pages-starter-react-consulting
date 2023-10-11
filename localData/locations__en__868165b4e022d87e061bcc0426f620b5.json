@@ -1,8 +1,8 @@
 {
   "__": {
     "entityPageSet": {},
-    "name": "root",
-    "streamId": "directory-root",
+    "name": "entity",
+    "streamId": "locations",
     "templateType": "JS"
   },
   "_site": {
@@ -93,33 +93,50 @@
     "name": "Site Entity",
     "uid": 64216926
   },
+  "address": {
+    "city": "Arlington",
+    "countryCode": "US",
+    "line1": "1101 Wilson Boulevard",
+    "localizedCountryName": "United States",
+    "localizedRegionName": "Virginia",
+    "postalCode": "22209",
+    "region": "VA"
+  },
   "businessId": 3861963,
-  "dm_directoryChildren": [
+  "description": "New Description 2",
+  "dm_directoryParents": [
     {
-      "dm_baseEntityCount": "3",
-      "name": "NY",
-      "slug": "ny"
+      "name": "All Locations",
+      "slug": "index.html"
     },
     {
-      "dm_baseEntityCount": "3",
       "name": "VA",
       "slug": "va"
+    },
+    {
+      "name": "Arlington",
+      "slug": "va/arlington"
     }
   ],
-  "id": "defaultDirectory",
-  "key": "0:root:knowledgeGraph:64216970:en",
+  "id": "8626211257623564931",
+  "key": "0:entity:knowledgeGraph:1010273973:en",
   "locale": "en",
   "meta": {
     "entityType": {
-      "id": "ce_root",
-      "uid": 132491
+      "id": "location",
+      "uid": 0
     },
     "locale": "en"
   },
-  "name": "All Locations",
+  "name": "Webhook Test 2",
+  "ref_listings": [],
   "siteDomain": "",
   "siteId": 0,
   "siteInternalHostName": "",
-  "slug": "index.html",
-  "uid": 64216970
+  "slug": "webhook-test",
+  "uid": 1010273973,
+  "yextDisplayCoordinate": {
+    "latitude": 38.895459,
+    "longitude": -77.069871
+  }
 }

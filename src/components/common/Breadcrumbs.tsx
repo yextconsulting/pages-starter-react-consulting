@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import classNames from "classnames";
-import { Link } from "@yext/pages/components";
+import { Link } from "@yext/sites-components";
 import { useTemplateData } from "src/common/useTemplateData";
 
 interface BreadcrumbsPropsDefault {

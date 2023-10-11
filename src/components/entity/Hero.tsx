@@ -1,5 +1,5 @@
 import { HoursStatus } from "@yext/sites-react-components";
-import { Link, Image } from "@yext/pages/components";
+import { Link, Image } from "@yext/sites-components";
 import type { Address, Hours, CTA, Image as ImageType } from "@yext/types";
 
 type HeroProps = {

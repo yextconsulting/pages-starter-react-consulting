@@ -5,8 +5,8 @@ import {
   Address,
   getDirections,
   LocationMap,
-} from "@yext/pages/components";
-import { GoogleMaps } from "@yext/components-tsx-maps";
+  GoogleMaps,
+} from "@yext/sites-components";
 import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
@@ -118,7 +118,7 @@ const Core = (props: CoreProps) => {
         {isDesktopBreakpoint && profile.yextDisplayCoordinate && (
           <LazyLoadWrapper>
             <LocationMap
-              className="h-[300px] mt-16"
+              className="h-[300px] mt-6"
               coordinate={profile.yextDisplayCoordinate}
               provider={GoogleMaps}
               apiKey={MAPS_API_KEY}

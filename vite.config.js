@@ -27,4 +27,7 @@ export default defineConfig({
       },
     },
   },
+  ssr: {
+    noExternal: ["@yext/search-headless-react", "@yext/search-ui-react"],
+  },
 });

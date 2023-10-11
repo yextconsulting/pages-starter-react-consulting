@@ -6,14 +6,14 @@
         "pattern": "assets/**/*"
       },
       {
-        "root": "static",
-        "pattern": "**/*"
+        "root": "dist",
+        "pattern": "*"
       }
     ],
     "features": "sites-config/features.json",
     "plugins": [
       {
-        "pluginName": "Generator",
+        "pluginName": "PagesGenerator",
         "sourceFiles": [
           {
             "root": "dist/plugin",
@@ -21,11 +21,11 @@
           },
           {
             "root": "dist",
-            "pattern": "assets/{server,static,renderer}/**/*{.js,.css}"
+            "pattern": "assets/{server,static,renderer,render}/**/*{.js,.css}"
           }
         ],
         "event": "ON_PAGE_GENERATE",
-        "functionName": "Generate"
+        "functionName": "PagesGenerator"
       }
     ]
   },

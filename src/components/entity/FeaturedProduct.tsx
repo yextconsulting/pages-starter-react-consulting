@@ -1,4 +1,4 @@
-import { Image, Link } from "@yext/pages/components";
+import { Image, Link } from "@yext/sites-components";
 import type { ProductProfile } from "src/types/entities";
 
 const defaultFields: string[] = [

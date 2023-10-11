@@ -1,56 +1,66 @@
 {
   "features": [
     {
-      "name": "city",
-      "streamId": "directory-city",
+      "name": "search",
+      "streamId": "search-page",
       "templateType": "JS",
-      "entityPageSet": {
-        "plugin": {}
-      }
-    },
-    {
-      "name": "entity",
-      "streamId": "locations",
-      "templateType": "JS",
-      "entityPageSet": {
-        "plugin": {}
-      }
-    },
-    {
-      "name": "region",
-      "streamId": "directory-region",
-      "templateType": "JS",
-      "entityPageSet": {
-        "plugin": {}
-      }
-    },
-    {
-      "name": "robots",
-      "templateType": "JS",
-      "staticPage": {
-        "plugin": {}
-      }
+      "entityPageSet": {}
     },
     {
       "name": "root",
       "streamId": "directory-root",
       "templateType": "JS",
-      "entityPageSet": {
-        "plugin": {}
-      }
+      "entityPageSet": {}
     },
     {
-      "name": "search",
-      "streamId": "search-page",
+      "name": "robots",
       "templateType": "JS",
-      "entityPageSet": {
-        "plugin": {}
-      }
+      "staticPage": {}
+    },
+    {
+      "name": "region",
+      "streamId": "directory-region",
+      "templateType": "JS",
+      "entityPageSet": {}
+    },
+    {
+      "name": "entity",
+      "streamId": "locations",
+      "templateType": "JS",
+      "entityPageSet": {}
+    },
+    {
+      "name": "city",
+      "streamId": "directory-city",
+      "templateType": "JS",
+      "entityPageSet": {}
     }
   ],
   "streams": [
     {
-      "$id": "directory-city",
+      "$id": "search-page",
+      "fields": [
+        "id",
+        "uid",
+        "meta",
+        "name",
+        "slug",
+        "c_searchTitle",
+        "c_searchSubTitle",
+        "c_searchPlaceholderText"
+      ],
+      "filter": {
+        "entityIds": ["search-page"]
+      },
+      "localization": {
+        "locales": ["en"],
+        "primary": false
+      },
+      "source": "knowledgeGraph",
+      "destination": "pages"
+    },
+    {
+      "$id": "directory-root",
       "fields": [
         "id",
         "uid",
@@ -62,16 +72,42 @@
         "dm_directoryParents.name",
         "dm_directoryChildren.slug",
         "dm_directoryChildren.name",
-        "dm_directoryChildren.address",
-        "dm_directoryChildren.hours"
+        "dm_directoryChildren.dm_baseEntityCount"
       ],
       "filter": {
-        "savedFilterIds": ["dm_defaultDirectory_address_city"]
+        "savedFilterIds": ["dm_defaultDirectory"]
       },
       "localization": {
         "locales": ["en"],
         "primary": false
-      }
+      },
+      "source": "knowledgeGraph",
+      "destination": "pages"
+    },
+    {
+      "$id": "directory-region",
+      "fields": [
+        "id",
+        "uid",
+        "meta",
+        "name",
+        "slug",
+        "c_meta",
+        "dm_directoryParents.slug",
+        "dm_directoryParents.name",
+        "dm_directoryChildren.slug",
+        "dm_directoryChildren.name",
+        "dm_directoryChildren.dm_baseEntityCount"
+      ],
+      "filter": {
+        "savedFilterIds": ["dm_defaultDirectory_address_region"]
+      },
+      "localization": {
+        "locales": ["en"],
+        "primary": false
+      },
+      "source": "knowledgeGraph",
+      "destination": "pages"
     },
     {
       "$id": "locations",
@@ -143,10 +179,12 @@
       "localization": {
         "locales": ["en"],
         "primary": false
-      }
+      },
+      "source": "knowledgeGraph",
+      "destination": "pages"
     },
     {
-      "$id": "directory-region",
+      "$id": "directory-city",
       "fields": [
         "id",
         "uid",
@@ -158,58 +196,18 @@
         "dm_directoryParents.name",
         "dm_directoryChildren.slug",
         "dm_directoryChildren.name",
-        "dm_directoryChildren.dm_baseEntityCount"
+        "dm_directoryChildren.address",
+        "dm_directoryChildren.hours"
       ],
       "filter": {
-        "savedFilterIds": ["dm_defaultDirectory_address_region"]
+        "savedFilterIds": ["dm_defaultDirectory_address_city"]
       },
       "localization": {
         "locales": ["en"],
         "primary": false
-      }
-    },
-    {
-      "$id": "directory-root",
-      "fields": [
-        "id",
-        "uid",
-        "meta",
-        "name",
-        "slug",
-        "c_meta",
-        "dm_directoryParents.slug",
-        "dm_directoryParents.name",
-        "dm_directoryChildren.slug",
-        "dm_directoryChildren.name",
-        "dm_directoryChildren.dm_baseEntityCount"
-      ],
-      "filter": {
-        "savedFilterIds": ["dm_defaultDirectory"]
       },
-      "localization": {
-        "locales": ["en"],
-        "primary": false
-      }
-    },
-    {
-      "$id": "search-page",
-      "fields": [
-        "id",
-        "uid",
-        "meta",
-        "name",
-        "slug",
-        "c_searchTitle",
-        "c_searchSubTitle",
-        "c_searchPlaceholderText"
-      ],
-      "filter": {
-        "entityIds": ["search-page"]
-      },
-      "localization": {
-        "locales": ["en"],
-        "primary": false
-      }
+      "source": "knowledgeGraph",
+      "destination": "pages"
     }
   ]
 }
