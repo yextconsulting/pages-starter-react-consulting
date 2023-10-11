@@ -1,27 +1,22 @@
 {
-	"city": [
-		"directory-city__en__964b544d7823fc0633a060fd904176d0.json",
-		"directory-city__en__82782b2605ed8fe8ba33d83a14680e56.json"
-	],
-	"index": [
-		"locations__en__65706fda938b7baf4da9842dc9174581.json",
-		"locations__en__bedacbff42a767c32534cfe5a2c697e2.json",
-		"locations__en__e7879db810774abc8cd1000f29e868f7.json",
-		"locations__en__c4f729fae841e9c79ff7a1deb820586e.json",
-		"locations__en__664e8e5fd84ed9aa7f23e3e0126e0e56.json",
-		"locations__es__65706fda938b7baf4da9842dc9174581.json"
-	],
-	"region": [
-		"directory-region__en__a467079276adfd1e162839fb16569e38.json",
-		"directory-region__en__1210576f6b59e22e89e12a77f7a798a6.json"
-	],
-	"robots": [
-		"cog-internal-feature-static-file-generation-robots__en__cfcd208495d565ef66e7dff9f98764da.json"
-	],
-	"root": [
-		"directory-root__en__a9692a4fddb39679e182eede5b5da11b.json"
-	],
-	"search": [
-		"search-page__en__d2148443c57696a3a7b3206170755172.json"
-	]
+  "city": [
+    "directory-city__en__964b544d7823fc0633a060fd904176d0.json",
+    "directory-city__en__82782b2605ed8fe8ba33d83a14680e56.json"
+  ],
+  "entity": [
+    "locations__en__65706fda938b7baf4da9842dc9174581.json",
+    "locations__en__bedacbff42a767c32534cfe5a2c697e2.json",
+    "locations__en__e7879db810774abc8cd1000f29e868f7.json",
+    "locations__en__c4f729fae841e9c79ff7a1deb820586e.json",
+    "locations__en__868165b4e022d87e061bcc0426f620b5.json"
+  ],
+  "region": [
+    "directory-region__en__a467079276adfd1e162839fb16569e38.json",
+    "directory-region__en__1210576f6b59e22e89e12a77f7a798a6.json"
+  ],
+  "robots": [
+    "cog-internal-feature-static-file-generation-robots__en__cfcd208495d565ef66e7dff9f98764da.json"
+  ],
+  "root": ["directory-root__en__a9692a4fddb39679e182eede5b5da11b.json"],
+  "search": ["search-page__en__d2148443c57696a3a7b3206170755172.json"]
 }

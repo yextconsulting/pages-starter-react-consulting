@@ -1,9 +1,7 @@
 {
   "__": {
     "name": "robots",
-    "staticPage": {
-      "plugin": {}
-    },
+    "staticPage": {},
     "templateType": "JS"
   },
   "_site": {
@@ -76,6 +74,11 @@
     "c_nearbySectionAPIKey": "a76f3747d89260bdebb2c3223cffe03e",
     "c_reviewsAPIKey": "950cb865b1378ec95ad87c7b2a54a806",
     "c_searchExperienceAPIKey": "134988aadced7171cc410730c3aec4f6",
+    "c_searchPage": [
+      {
+        "slug": "search"
+      }
+    ],
     "c_twitter": "https://www.twitter.com/",
     "c_youtube": "https://www.youtube.com/",
     "id": "site-entity",

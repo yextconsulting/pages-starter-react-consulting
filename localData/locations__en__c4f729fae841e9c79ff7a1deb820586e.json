@@ -1,207 +1,210 @@
 {
-	"__": {
-		"entityPageSet": {
-			"plugin": {}
-		},
-		"name": "index",
-		"streamId": "locations",
-		"templateType": "JS"
-	},
-	"_site": {
-		"c_brand": "Yext Consulting",
-		"c_copyrightMessage": "© 2022. All Rights Reserved.",
-		"c_facebook": "https://www.facebook.com/",
-		"c_footerLinks": [
-			{
-				"label": "Link1",
-				"link": "https://www.yext.com",
-				"linkType": "URL"
-			},
-			{
-				"label": "Link2",
-				"link": "https://www.yext.com",
-				"linkType": "URL"
-			},
-			{
-				"label": "Link3",
-				"link": "https://www.yext.com",
-				"linkType": "URL"
-			},
-			{
-				"label": "Link4",
-				"link": "https://www.yext.com",
-				"linkType": "URL"
-			},
-			{
-				"label": "Link5",
-				"link": "https://www.yext.com",
-				"linkType": "URL"
-			}
-		],
-		"c_header": {
-			"links": [
-				{
-					"label": "Link1",
-					"link": "https://www.yext.com",
-					"linkType": "URL"
-				},
-				{
-					"label": "Link2",
-					"link": "https://www.yext.com",
-					"linkType": "URL"
-				},
-				{
-					"label": "Link3",
-					"link": "https://www.yext.com",
-					"linkType": "URL"
-				},
-				{
-					"label": "Link4",
-					"link": "https://www.yext.com",
-					"linkType": "URL"
-				},
-				{
-					"label": "Link5",
-					"link": "https://www.yext.com",
-					"linkType": "URL"
-				}
-			],
-			"logo": {
-				"height": 100,
-				"url": "http://a.mktgcdn.com/p/BzSALSNKyVBFz797EoaKt_k3rgAJonv9DnbGYMbxqds/100x100.png",
-				"width": 100
-			}
-		},
-		"c_instagram": "https://www.instagram.com/",
-		"c_linkedIn": "https://www.linkedin.com/",
-		"c_nearbySectionAPIKey": "a76f3747d89260bdebb2c3223cffe03e",
-		"c_reviewsAPIKey": "950cb865b1378ec95ad87c7b2a54a806",
-		"c_searchExperienceAPIKey": "134988aadced7171cc410730c3aec4f6",
-		"c_twitter": "https://www.twitter.com/",
-		"c_youtube": "https://www.youtube.com/",
-		"id": "site-entity",
-		"meta": {
-			"entityType": {
-				"id": "ce_site",
-				"uid": 132489
-			},
-			"locale": "en"
-		},
-		"name": "Site Entity",
-		"uid": 64216926
-	},
-	"address": {
-		"city": "Arlington",
-		"countryCode": "US",
-		"line1": "1101 Wilson Blvd",
-		"localizedCountryName": "United States",
-		"localizedRegionName": "Virginia",
-		"postalCode": "22209",
-		"region": "VA"
-	},
-	"businessId": 3861963,
-	"dm_directoryParents": [
-		{
-			"name": "All Locations",
-			"slug": "index.html"
-		},
-		{
-			"name": "VA",
-			"slug": "va"
-		},
-		{
-			"name": "Arlington",
-			"slug": "va/arlington"
-		}
-	],
-	"hours": {
-		"friday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "17:00",
-					"start": "07:00"
-				}
-			]
-		},
-		"monday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "17:00",
-					"start": "07:00"
-				}
-			]
-		},
-		"saturday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "17:00",
-					"start": "07:00"
-				}
-			]
-		},
-		"sunday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "17:00",
-					"start": "07:00"
-				}
-			]
-		},
-		"thursday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "17:00",
-					"start": "07:00"
-				}
-			]
-		},
-		"tuesday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "17:00",
-					"start": "07:00"
-				}
-			]
-		},
-		"wednesday": {
-			"isClosed": false,
-			"openIntervals": [
-				{
-					"end": "17:00",
-					"start": "07:00"
-				}
-			]
-		}
-	},
-	"id": "test-location-4",
-	"key": "0:index:knowledgeGraph:65703163:en",
-	"locale": "en",
-	"meta": {
-		"entityType": {
-			"id": "location",
-			"uid": 0
-		},
-		"locale": "en"
-	},
-	"name": "Test Location 4",
-	"ref_listings": [],
-	"ref_reviewsAgg": [],
-	"services": [
-		"Option D"
-	],
-	"siteDomain": "",
-	"siteId": 0,
-	"siteInternalHostName": "",
-	"slug": "va/arlington/1101-wilson-blvd",
-	"uid": 65703163,
-	"yextDisplayCoordinate": {
-		"latitude": 38.895459,
-		"longitude": -77.069871
-	}
+  "__": {
+    "entityPageSet": {},
+    "name": "entity",
+    "streamId": "locations",
+    "templateType": "JS"
+  },
+  "_site": {
+    "c_brand": "Yext Consulting",
+    "c_copyrightMessage": "© 2022. All Rights Reserved.",
+    "c_facebook": "https://www.facebook.com/",
+    "c_footerLinks": [
+      {
+        "label": "Link1",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link2",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link3",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link4",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link5",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      }
+    ],
+    "c_header": {
+      "links": [
+        {
+          "label": "Link1",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link2",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link3",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link4",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link5",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        }
+      ],
+      "logo": {
+        "height": 100,
+        "url": "http://a.mktgcdn.com/p/BzSALSNKyVBFz797EoaKt_k3rgAJonv9DnbGYMbxqds/100x100.png",
+        "width": 100
+      }
+    },
+    "c_instagram": "https://www.instagram.com/",
+    "c_linkedIn": "https://www.linkedin.com/",
+    "c_nearbySectionAPIKey": "a76f3747d89260bdebb2c3223cffe03e",
+    "c_reviewsAPIKey": "950cb865b1378ec95ad87c7b2a54a806",
+    "c_searchExperienceAPIKey": "134988aadced7171cc410730c3aec4f6",
+    "c_searchPage": [
+      {
+        "slug": "search"
+      }
+    ],
+    "c_twitter": "https://www.twitter.com/",
+    "c_youtube": "https://www.youtube.com/",
+    "id": "site-entity",
+    "meta": {
+      "entityType": {
+        "id": "ce_site",
+        "uid": 132489
+      },
+      "locale": "en"
+    },
+    "name": "Site Entity",
+    "uid": 64216926
+  },
+  "address": {
+    "city": "Arlington",
+    "countryCode": "US",
+    "line1": "1101 Wilson Blvd",
+    "localizedCountryName": "United States",
+    "localizedRegionName": "Virginia",
+    "postalCode": "22209",
+    "region": "VA"
+  },
+  "businessId": 3861963,
+  "c_faqSection": {
+    "title": "Test"
+  },
+  "dm_directoryParents": [
+    {
+      "name": "All Locations",
+      "slug": "index.html"
+    },
+    {
+      "name": "VA",
+      "slug": "va"
+    },
+    {
+      "name": "Arlington",
+      "slug": "va/arlington"
+    }
+  ],
+  "hours": {
+    "friday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "17:00",
+          "start": "07:00"
+        }
+      ]
+    },
+    "monday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "17:00",
+          "start": "07:00"
+        }
+      ]
+    },
+    "saturday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "17:00",
+          "start": "07:00"
+        }
+      ]
+    },
+    "sunday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "17:00",
+          "start": "07:00"
+        }
+      ]
+    },
+    "thursday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "17:00",
+          "start": "07:00"
+        }
+      ]
+    },
+    "tuesday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "17:00",
+          "start": "07:00"
+        }
+      ]
+    },
+    "wednesday": {
+      "isClosed": false,
+      "openIntervals": [
+        {
+          "end": "17:00",
+          "start": "07:00"
+        }
+      ]
+    }
+  },
+  "id": "test-location-4",
+  "key": "0:entity:knowledgeGraph:65703163:en",
+  "locale": "en",
+  "meta": {
+    "entityType": {
+      "id": "location",
+      "uid": 0
+    },
+    "locale": "en"
+  },
+  "name": "Test Location 4",
+  "ref_listings": [],
+  "services": ["Option D"],
+  "siteDomain": "",
+  "siteId": 0,
+  "siteInternalHostName": "",
+  "slug": "va/arlington/1101-wilson-blvd",
+  "uid": 65703163,
+  "yextDisplayCoordinate": {
+    "latitude": 38.895459,
+    "longitude": -77.069871
+  }
 }
