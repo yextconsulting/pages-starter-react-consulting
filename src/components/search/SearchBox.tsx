@@ -1,4 +1,4 @@
-import { FilterSearch, executeSearch } from "@yext/search-ui-react";
+import { FilterSearch, executeSearch, SearchBar } from "@yext/search-ui-react";
 import { useSearchActions } from "@yext/search-headless-react";
 import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 import GeolocateButton from "src/components/search/GeolocateButton";
@@ -25,7 +25,7 @@ const SearchBox = (props: SearchBoxProps) => {
 
   // When the FilterSearch component updates the search state with the users selection execute a new search.
   useEffect(() => {
-    if (initialParamsLoaded) {
+    if (!initialParamsLoaded) {
       return;
     }
 
