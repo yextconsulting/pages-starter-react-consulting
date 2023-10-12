@@ -15,15 +15,20 @@ type SearchBoxProps = {
   title: string;
   subTitle: string;
   placeholderText?: string;
+  initialParamsLoaded?: boolean;
 };
 
 const SearchBox = (props: SearchBoxProps) => {
-  const { title, subTitle, placeholderText } = props;
+  const { title, subTitle, placeholderText, initialParamsLoaded } = props;
 
   const searchActions = useSearchActions();
 
   // When the FilterSearch component updates the search state with the users selection execute a new search.
   useEffect(() => {
+    if (initialParamsLoaded) {
+      return;
+    }
+
     if (searchActions.state.filters.static?.find((f) => f.selected)) {
       searchActions.resetFacets();
       searchActions.setOffset(0);
