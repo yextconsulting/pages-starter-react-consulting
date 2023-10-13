@@ -28,7 +28,7 @@
     "@yext/components-404": "2.1.0",
     "@yext/components-tsx-geo": "1.0.3",
     "@yext/components-tsx-maps": "1.0.11",
-    "@yext/custom-field-debugger": "2.0.9",
+    "@yext/custom-field-debugger": "2.1.6",
     "@yext/pages": "1.0.0-rc.6",
     "@yext/schema-wrapper": "1.0.4",
     "@yext/search-headless-react": "2.4.0",
