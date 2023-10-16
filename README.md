@@ -34,11 +34,7 @@ This repository provides a basic example of how to start developing a React site
 6. In the Yext platform, run the directory manager named “Directory” that was created as part of the resource apply command in Step 3. This will create the location-related entities necessary to render a directory on the frontend based on your account’s location entities.
    1. Navigate to **Pages** > **Directory Manager**.
    2. Click to view the directory, then click **Run**.
-7. Back in your repo, remove any fields from the location stream defined in `src/layouts/entity.tsx` that do not exist on your location entities. Failing to delete fields that don’t exist on your entities will lead to errors during development. There are several groups of fields included by default that you likely may need to delete:
-   - Events Fields
-   - FAQ Fields
-   - Product Fields
-   - Team Fields
+7. Back in your repo, remove any fields from the location stream defined in `src/layouts/entity.tsx` that do not exist on your location entities. Failing to delete fields that don’t exist on your entities will lead to errors during development.
 8. If you plan to use the locator component with a map, you will need to have a map provider API key and update the placeholder value in `config.ts` with your key.
 9. If you did not provide API keys for the reviews, nearby locations and search components during step 4, these components will not work properly and will produce errors if used.
 10. You’re good to go! Run `npm run dev` to spin up a local development server and take a look at your starter site.
