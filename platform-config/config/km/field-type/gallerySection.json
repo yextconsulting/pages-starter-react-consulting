@@ -1,0 +1,45 @@
+{
+  "$id": "c_gallerySection",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "description": "CFT for starter Gallery section",
+  "displayName": "Gallery Section",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "title",
+          "displayName": "Title",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE"
+            }
+          }
+        },
+        {
+          "name": "images",
+          "displayName": "Images",
+          "isRequired": false,
+          "typeId": "list",
+          "type": {
+            "listType": {
+              "typeId": "image",
+              "type": {
+                "imageType": {
+                  "isSimpleImage": true,
+                  "minSize": {
+                    "height": 0,
+                    "width": 0
+                  },
+                  "noAllowedAspectRatios": true,
+                  "unconstrainedAspectRatioAllowed": true
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

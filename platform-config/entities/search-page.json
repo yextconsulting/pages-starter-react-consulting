@@ -1,0 +1,16 @@
+{
+  "$id": "search-page",
+  "$schema": "https://schema.yext.com/config/km/entity/v1",
+  "primaryLocale": "en",
+  "content": {
+    "c_searchPlaceholderText": "Search by city and state or ZIP code",
+    "c_searchSubTitle": "Search by city and state or ZIP code",
+    "c_searchTitle": "Find a Location",
+    "name": "Search Page Entity",
+    "slug": "search"
+  },
+
+  "entityType": "ce_searchPage",
+  "folder": "yext/root",
+  "labels": []
+}

@@ -1,0 +1,38 @@
+{
+  "$id": "c_featuredProductsSection",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "displayName": "Featured Products Section",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "title",
+          "displayName": "Title",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE"
+            }
+          }
+        },
+        {
+          "name": "products",
+          "displayName": "Products",
+          "isRequired": false,
+          "typeId": "list",
+          "type": {
+            "listType": {
+              "typeId": "entityReference",
+              "type": {
+                "entityReferenceType": {
+                  "type": "ONE_WAY"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

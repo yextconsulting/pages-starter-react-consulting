@@ -1,0 +1,13 @@
+{
+  "$id": "c_instagram",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "Instagram",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "type": {
+    "stringType": {
+      "stereotype": "URL"
+    }
+  },
+  "typeId": "string"
+}

@@ -1,0 +1,38 @@
+{
+  "$id": "c_nearbySection",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "displayName": "Nearby Section",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "title",
+          "displayName": "Title",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE",
+              "maxLength": 512
+            }
+          }
+        },
+        {
+          "name": "linkToLocator",
+          "displayName": "Link To Locator",
+          "isRequired": false,
+          "typeId": "boolean",
+          "type": {
+            "booleanType": {}
+          }
+        },
+        {
+          "name": "cta",
+          "displayName": "CTA",
+          "isRequired": false,
+          "typeId": "cta"
+        }
+      ]
+    }
+  }
+}

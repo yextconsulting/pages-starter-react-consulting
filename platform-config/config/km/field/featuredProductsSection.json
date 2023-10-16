@@ -1,0 +1,8 @@
+{
+  "$id": "c_featuredProductsSection",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "Featured Products Section",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "typeId": "c_featuredProductsSection"
+}

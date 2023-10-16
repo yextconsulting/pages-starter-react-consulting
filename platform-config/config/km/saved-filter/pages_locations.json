@@ -1,0 +1,19 @@
+{
+  "$id": "pages_locations",
+  "$schema": "https://schema.yext.com/config/km/saved-filter/v1",
+  "name": "Pages Locations",
+  "filter": {
+    "entityField": [
+      {
+        "fieldId": "closed",
+        "searchBool": "FALSE"
+      }
+    ],
+    "entityType": [
+      {
+        "entityTypeId": ["location"],
+        "type": "IS"
+      }
+    ]
+  }
+}

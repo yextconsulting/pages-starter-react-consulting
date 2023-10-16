@@ -34,7 +34,10 @@ const Reviews = (props: ReviewsProps) => {
   const apiKey = document._site.c_reviewsAPIKey;
 
   useEffect(() => {
-    if (!apiKey) return;
+    if (!apiKey) {
+      console.error("Add the Reviews API key to the Site Entity");
+      return;
+    }
     fetchReviews(apiKey).then((r) => setReviews(r || []));
   }, [apiKey]);
 

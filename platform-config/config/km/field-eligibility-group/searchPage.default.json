@@ -1,0 +1,14 @@
+{
+  "$id": "proserveStarter_ce_searchPage",
+  "$schema": "https://schema.yext.com/config/km/field-eligibility-group/v1",
+  "name": "Prosever Starter Search Page",
+  "entityType": "ce_searchPage",
+  "fields": [
+    "c_directoryRoot",
+    "c_searchPlaceholderText",
+    "c_searchSubTitle",
+    "c_searchTitle",
+    "slug"
+  ],
+  "required": []
+}

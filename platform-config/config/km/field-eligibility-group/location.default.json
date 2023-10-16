@@ -1,0 +1,22 @@
+{
+  "$id": "proserveStarter_location",
+  "$schema": "https://schema.yext.com/config/km/field-eligibility-group/v1",
+  "name": "Proserve Starter Location",
+  "entityType": "location",
+  "fields": [
+    "c_aboutSection",
+    "c_bannerSection",
+    "c_eventsSection",
+    "c_faqSection",
+    "c_gallerySection",
+    "c_heroSection",
+    "c_insightsSection",
+    "c_nearbySection",
+    "c_promoSection",
+    "c_reviewsSection",
+    "c_teamSection",
+    "c_featuredProductsSection",
+    "c_meta"
+  ],
+  "required": []
+}

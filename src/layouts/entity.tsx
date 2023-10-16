@@ -91,16 +91,16 @@ export const configBuilder: (
       "additionalHoursText",
       "services",
       // Events Fields
-      "c_eventsSection.title",
-      "c_eventsSection.events.name",
-      "c_eventsSection.events.time",
-      "c_eventsSection.events.description",
-      "c_eventsSection.events.c_primaryCTA",
-      "c_eventsSection.events.photoGallery",
+      // "c_eventsSection.title",
+      // "c_eventsSection.events.name",
+      // "c_eventsSection.events.time",
+      // "c_eventsSection.events.description",
+      // "c_eventsSection.events.c_primaryCTA",
+      // "c_eventsSection.events.photoGallery",
       // FAQ Fields
-      "c_faqSection.title",
-      "c_faqSection.faqs.question",
-      "c_faqSection.faqs.answer",
+      // "c_faqSection.title",
+      // "c_faqSection.faqs.question",
+      // "c_faqSection.faqs.answer",
       // Gallery Fields
       "c_gallerySection",
       "photoGallery",
@@ -122,24 +122,24 @@ export const configBuilder: (
       // Nearby Fields
       "c_nearbySection",
       // Product Fields
-      "c_featuredProductsSection.title",
-      "c_featuredProductsSection.products.name",
-      "c_featuredProductsSection.products.richTextDescription",
-      "c_featuredProductsSection.products.primaryPhoto",
-      "c_featuredProductsSection.products.c_primaryCTA",
+      // "c_featuredProductsSection.title",
+      // "c_featuredProductsSection.products.name",
+      // "c_featuredProductsSection.products.richTextDescription",
+      // "c_featuredProductsSection.products.primaryPhoto",
+      // "c_featuredProductsSection.products.c_primaryCTA",
       // Promo Fields
       "c_promoSection",
       // Review Fields
       "c_reviewsSection",
       // Team Fields
-      "c_teamSection.title",
-      "c_teamSection.team.id",
-      "c_teamSection.team.name",
-      "c_teamSection.team.headshot",
-      "c_teamSection.team.mainPhone",
-      "c_teamSection.team.c_occupation",
-      "c_teamSection.team.emails",
-      "c_teamSection.team.websiteUrl",
+      // "c_teamSection.title",
+      // "c_teamSection.team.id",
+      // "c_teamSection.team.name",
+      // "c_teamSection.team.headshot",
+      // "c_teamSection.team.mainPhone",
+      // "c_teamSection.team.c_occupation",
+      // "c_teamSection.team.emails",
+      // "c_teamSection.team.websiteUrl",
     ]),
     // Defines the scope of entities that qualify for this stream.
     filter: filter || {

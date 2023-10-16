@@ -1,0 +1,8 @@
+{
+  "$id": "c_insightsSection",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "Insights Section",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "typeId": "c_insightsSection"
+}

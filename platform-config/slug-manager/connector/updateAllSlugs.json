@@ -1,0 +1,73 @@
+{
+  "$id": "updateAllSlugs",
+  "$schema": "https://schema.yext.com/config/km/connector/v4",
+  "displayName": "Update All Slugs",
+  "entityTypes": ["location"],
+  "source": {
+    "sourceConfig": {
+      "functionConfig": {
+        "plugin": "Slug-Manager",
+        "function": "connector",
+        "dataFormat": "JSON"
+      }
+    },
+    "baseSelector": {
+      "type": "JSON",
+      "header": "Entity Container",
+      "path": "[*]"
+    },
+    "selectors": [
+      {
+        "type": "JSON",
+        "header": "slug",
+        "path": "slug"
+      },
+      {
+        "type": "JSON",
+        "header": "meta.uid",
+        "path": "meta.uid"
+      },
+      {
+        "type": "JSON",
+        "header": "meta.id",
+        "path": "meta.id"
+      },
+      {
+        "type": "JSON",
+        "header": "meta.language",
+        "path": "meta.language"
+      },
+      {
+        "type": "JSON",
+        "header": "isAlternateProfile",
+        "path": "isAlternateProfile"
+      }
+    ]
+  },
+  "mappings": [
+    {
+      "field": "localeCode",
+      "header": "meta.language",
+      "subfieldPath": []
+    },
+    {
+      "field": "entityId",
+      "header": "meta.id",
+      "subfieldPath": []
+    },
+    {
+      "field": "slug",
+      "header": "slug",
+      "subfieldPath": []
+    },
+    {
+      "field": "isAlternateProfile",
+      "header": "isAlternateProfile",
+      "subfieldPath": []
+    }
+  ],
+  "comprehensiveModeConfig": {
+    "comprehensiveSet": "ENTITIES_CREATED_BY_THIS_CONNECTOR",
+    "actionOnMissingEntities": "DELETE"
+  }
+}

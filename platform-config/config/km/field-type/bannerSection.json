@@ -1,0 +1,40 @@
+{
+  "$id": "c_bannerSection",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "description": "CFT for starter Banner section",
+  "displayName": "Banner Section",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "text",
+          "displayName": "Text",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE"
+            }
+          }
+        },
+        {
+          "name": "image",
+          "displayName": "Image",
+          "isRequired": false,
+          "typeId": "image",
+          "type": {
+            "imageType": {
+              "isSimpleImage": true,
+              "minSize": {
+                "width": 0,
+                "height": 0
+              },
+              "unconstrainedAspectRatioAllowed": true,
+              "noAllowedAspectRatios": true
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$id": "c_teamSection",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "description": "CFT for starter Team section",
+  "displayName": "Team Section",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "title",
+          "displayName": "Title",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE"
+            }
+          }
+        },
+        {
+          "name": "team",
+          "displayName": "Team",
+          "isRequired": false,
+          "typeId": "list",
+          "type": {
+            "listType": {
+              "typeId": "entityReference",
+              "type": {
+                "entityReferenceType": {
+                  "supportedEntityTypeIds": ["financialProfessional"],
+                  "type": "ONE_WAY"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

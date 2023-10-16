@@ -1,0 +1,9 @@
+{
+  "$id": "directoryRegion",
+  "$schema": "https://schema.yext.com/config/km/entity-template/v2",
+  "content": {
+    "c_meta": null
+  },
+  "entityTypes": ["ce_region"],
+  "name": "Directory Region"
+}

@@ -1,0 +1,40 @@
+{
+  "$id": "c_eventsSection",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "displayName": "Events Section",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "title",
+          "displayName": "Title",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE",
+              "maxLength": 512
+            }
+          }
+        },
+        {
+          "name": "events",
+          "displayName": "Events",
+          "isRequired": false,
+          "typeId": "list",
+          "type": {
+            "listType": {
+              "typeId": "entityReference",
+              "maxLength": 5000,
+              "type": {
+                "entityReferenceType": {
+                  "supportedEntityTypeIds": ["event"]
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$id": "c_faqs",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "FAQs",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "type": {
+    "listType": {
+      "typeId": "entityReference",
+      "type": {
+        "entityReferenceType": {
+          "supportedEntityTypeIds": ["faq"],
+          "type": "ONE_WAY"
+        }
+      }
+    }
+  },
+  "typeId": "list"
+}

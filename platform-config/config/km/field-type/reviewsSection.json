@@ -1,0 +1,23 @@
+{
+  "$id": "c_reviewsSection",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "displayName": "Reviews Section",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "title",
+          "displayName": "Title",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE",
+              "maxLength": 100000
+            }
+          }
+        }
+      ]
+    }
+  }
+}
