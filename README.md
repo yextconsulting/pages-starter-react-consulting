@@ -32,8 +32,8 @@ This repository provides a basic example of how to start developing a React site
 
 5. If you are implementing a locator search experience, run `yext resources apply platform-config/search` to apply the locator search config to your account.
 6. In the Yext platform, run the directory manager named “Directory” that was created as part of the resource apply command in Step 3. This will create the location-related entities necessary to render a directory on the frontend based on your account’s location entities.
-   1. Navigate to Pages > Directory Manager.
-   2. Click to view the directory, then click “Run”.
+   1. Navigate to **Pages** > **Directory Manager**.
+   2. Click to view the directory, then click **Run**.
 7. Back in your repo, remove any fields from the location stream defined in `src/layouts/entity.tsx` that do not exist on your location entities. Failing to delete fields that don’t exist on your entities will lead to errors during development. There are several groups of fields included by default that you likely may need to delete:
    - Events Fields
    - FAQ Fields
