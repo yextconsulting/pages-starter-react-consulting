@@ -28,18 +28,20 @@ This repository provides a basic example of how to start developing a React site
 3. Run `yext resources apply platform-config/config` to apply the required configuration resources to your account.
 4. Run `yext resources apply platform-config/entities` to add the necessary entities to your account. This includes a test location entity which can be deleted before running the apply command if desired.
 
-**Note:** you will be prompted to enter several API keys during this step which power reviews, nearby locations and search experience components. If you do not plan to use these components, you can skip the API key input by pressing Enter. The Reviews API key should come from a developer app with Read access to the Management API > Reviews endpoint. For both the Nearby API key as well as the Search API key, you can use an API key from any search experience in your account or a developer app with Read access to the Content Delivery API > Entities endpoint. For guidance on creating a developer app in the Yext plaform, see the first two steps of the Slug Manager section below. 5. If you are implementing a locator search experience, run `yext resources apply platform-config/search` to apply the locator search config to your account. 6. In the Yext platform, run the directory manager named “Directory” that was created as part of the resource apply command in Step 3. This will create the location-related entities necessary to render a directory on the frontend based on your account’s location entities.
+   **Note:** you will be prompted to enter several API keys during this step which power reviews, nearby locations and search experience components. If you do not plan to use these components, you can skip the API key input by pressing Enter. The Reviews API key should come from a developer app with Read access to the Management API > Reviews endpoint. For both the Nearby API key as well as the Search API key, you can use an API key from any search experience in your account or a developer app with Read access to the Content Delivery API > Entities endpoint. For guidance on creating a developer app in the Yext plaform, see the first two steps of the Slug Manager section below.
 
-1.  Navigate to Pages > Directory Manager.
-2.  Click to view the directory, then click “Run”.
-3.  Back in your repo, remove any fields from the location stream defined in `src/layouts/entity.tsx` that do not exist on your location entities. Failing to delete fields that don’t exist on your entities will lead to errors during development. There are several groups of fields included by default that you likely may need to delete:
-    - Events Fields
-    - FAQ Fields
-    - Product Fields
-    - Team Fields
-4.  If you plan to use the locator component with a map, you will need to have a map provider API key and update the placeholder value in `config.ts` with your key.
-5.  If you did not provide API keys for the reviews, nearby locations and search components during step 4, these components will not work properly and will produce errors if used.
-6.  You’re good to go! Run `npm run dev` to spin up a local development server and take a look at your starter site.
+5. If you are implementing a locator search experience, run `yext resources apply platform-config/search` to apply the locator search config to your account.
+6. In the Yext platform, run the directory manager named “Directory” that was created as part of the resource apply command in Step 3. This will create the location-related entities necessary to render a directory on the frontend based on your account’s location entities.
+   1. Navigate to Pages > Directory Manager.
+   2. Click to view the directory, then click “Run”.
+7. Back in your repo, remove any fields from the location stream defined in `src/layouts/entity.tsx` that do not exist on your location entities. Failing to delete fields that don’t exist on your entities will lead to errors during development. There are several groups of fields included by default that you likely may need to delete:
+   - Events Fields
+   - FAQ Fields
+   - Product Fields
+   - Team Fields
+8. If you plan to use the locator component with a map, you will need to have a map provider API key and update the placeholder value in `config.ts` with your key.
+9. If you did not provide API keys for the reviews, nearby locations and search components during step 4, these components will not work properly and will produce errors if used.
+10. You’re good to go! Run `npm run dev` to spin up a local development server and take a look at your starter site.
 
 ### Implementing the Slug Manager
 
