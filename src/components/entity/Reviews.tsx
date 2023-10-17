@@ -35,7 +35,9 @@ const Reviews = (props: ReviewsProps) => {
 
   useEffect(() => {
     if (!apiKey) {
-      console.error("Add the Reviews API key to the Site Entity");
+      console.error(
+        "Add a Reviews API key to the Site Entity to enable the reviews component."
+      );
       return;
     }
     fetchReviews(apiKey).then((r) => setReviews(r || []));

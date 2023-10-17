@@ -35,9 +35,19 @@ This repository provides a basic example of how to start developing a React site
    1. Navigate to **Pages** > **Directory Manager**.
    2. Click to view the directory, then click **Run**.
 7. Back in your repo, remove any fields from the location stream defined in `src/layouts/entity.tsx` that do not exist on your location entities. Failing to delete fields that don’t exist on your entities will lead to errors during development.
-8. If you plan to use the locator component with a map, you will need to have a map provider API key and update the placeholder value in `config.ts` with your key.
-9. If you did not provide API keys for the reviews, nearby locations and search components during step 4, these components will not work properly and will produce errors if used.
-10. You’re good to go! Run `npm run dev` to spin up a local development server and take a look at your starter site.
+8. If you plan to leverage the `<Nearby>` component to show nearby locations, navigate to **src** > **components** > **entity** > `Nearby.tsx` and replace the placeholder `savedFilterIds` value in the `getConfig` function with the ID of the saved filter you use to filter which locations should be live on your site. If you do not use a saved filter, delete this line entirely.
+9. If you plan to use the `<Locator>` component with a map, you will need to have a map provider API key and update the placeholder value in **src** > `config.ts` with your key.
+10. If you did not provide API keys for the reviews, nearby locations and search components during step 4, these components will not work properly and will produce errors if used.
+11. If you are working in a sandbox Yext account, refer to the Working With a Sandbox Account section below to see what changes need to be made to the repo.
+12. You’re good to go! Run `npm run dev` to spin up a local development server and take a look at your starter site.
+
+### Working With A Sandbox Account
+
+There are a few changes that must be made to the repo to ensure it works with sandbox Yext accounts:
+
+1. If you plan to leverage the `<Nearby>` component to show nearby locations, navigate to **src** > **components** > **entity** > **Nearby.tsx** and update the `endpoint` value in the `getConfig` function to `https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch`.
+2. If you plan to leverage the `<Locator>` search component, navigate to **src** > `config.ts` and comment in the `endpoints: SandboxEndpoints` line of the `provideHeadless` function and update your import from `@yext/search-headless-react` accordingly.
+3. Follow Step 3 in the Slug Manager section to make the plugin work with your sandbox account.
 
 ### Implementing the Slug Manager
 
