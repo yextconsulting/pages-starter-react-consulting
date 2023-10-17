@@ -1,16 +1,23 @@
-/**
-1. Add font files to `src/assets/fonts`
-2. Add @font-face declarations here to define the font
-3. Update fontFamily in tailwind.config.css
-
-For example:
-
-@font-face
-{
-  font-family: 'Proxima Nova';
-  src: url('/src/assets/fonts/ProximaNova.otf') format("opentype");
-  font-weight: 400;
+@font-face {
+  font-family: "Connections";
+  src: url("/src/assets/fonts/Connections_Light.otf") format("truetype");
+  font-weight: theme("fontWeight.light");
   font-style: normal;
   font-display: swap;
 }
-*/
+
+@font-face {
+  font-family: "Connections";
+  src: url("/src/assets/fonts/Connections_Regular.otf") format("truetype");
+  font-weight: theme("fontWeight.normal");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Connections";
+  src: url("/src/assets/fonts/Connections_Bold.otf") format("truetype");
+  font-weight: theme("fontWeight.bold");
+  font-style: normal;
+  font-display: swap;
+}
