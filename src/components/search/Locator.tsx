@@ -91,7 +91,6 @@ const Locator = (props: LocatorProps) => {
             title={title}
             subTitle={subTitle}
             placeholderText={placeholderText}
-            initialParamsLoaded={initialParamsLoaded}
           />
           <ResultInfo />
           <ResultList CardComponent={LocatorCard} />

@@ -1,8 +1,7 @@
-import { FilterSearch, executeSearch, SearchBar } from "@yext/search-ui-react";
+import { FilterSearch, executeSearch } from "@yext/search-ui-react";
 import { useSearchActions } from "@yext/search-headless-react";
 import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 import GeolocateButton from "src/components/search/GeolocateButton";
-import { useEffect } from "react";
 
 const searchFields = [
   {
@@ -15,26 +14,12 @@ type SearchBoxProps = {
   title: string;
   subTitle: string;
   placeholderText?: string;
-  initialParamsLoaded?: boolean;
 };
 
 const SearchBox = (props: SearchBoxProps) => {
-  const { title, subTitle, placeholderText, initialParamsLoaded } = props;
+  const { title, subTitle, placeholderText } = props;
 
   const searchActions = useSearchActions();
-
-  // When the FilterSearch component updates the search state with the users selection execute a new search.
-  useEffect(() => {
-    if (!initialParamsLoaded) {
-      return;
-    }
-
-    if (searchActions.state.filters.static?.find((f) => f.selected)) {
-      searchActions.resetFacets();
-      searchActions.setOffset(0);
-      executeSearch(searchActions);
-    }
-  }, [searchActions, searchActions.state.filters.static]);
 
   return (
     <div className="shadow-brand-shadow p-6">
@@ -49,6 +34,33 @@ const SearchBox = (props: SearchBoxProps) => {
             label=""
             placeholder={placeholderText}
             searchFields={searchFields}
+            onSelect={({
+              currentFilter,
+              executeFilterSearch,
+              newDisplayName,
+              newFilter,
+              setCurrentFilter,
+            }) => {
+              // Update static filters.
+              if (currentFilter) {
+                searchActions.setFilterOption({
+                  filter: currentFilter,
+                  selected: false,
+                });
+              }
+              searchActions.setFilterOption({
+                filter: newFilter,
+                displayName: newDisplayName,
+                selected: true,
+              });
+              setCurrentFilter(newFilter);
+              executeFilterSearch(newDisplayName);
+
+              // Execute search on select.
+              searchActions.setOffset(0);
+              searchActions.resetFacets();
+              executeSearch(searchActions);
+            }}
           />
         </div>
         <GeolocateButton className="ml-4" />
