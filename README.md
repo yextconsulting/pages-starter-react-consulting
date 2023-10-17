@@ -28,7 +28,7 @@ This repository provides a basic example of how to start developing a React site
 3. Run `yext resources apply platform-config/config` to apply the required configuration resources to your account.
 4. Run `yext resources apply platform-config/entities` to add the necessary entities to your account. This includes a test location entity which can be deleted before running the apply command if desired.
 
-   - You will be prompted to enter several API keys during this step which power reviews, nearby locations and search experience components. If you do not plan to use these components, you can skip the API key input by pressing Enter.
+   - You will be prompted to enter several API keys during this step which power the `<Reviews>`, `<Nearby>` and `<Locator>` components. If you do not plan to use these components, you can skip the API key input by pressing Enter.
    - The Reviews API key should come from a developer app with Read access to the Management API > Reviews endpoint.
    - For both the Nearby API key as well as the Search API key, you can use an API key from any search experience in your account or a developer app with Read access to the Content Delivery API > Entities endpoint.
    - These keys will live on the Site entity that is created during this step, so you can always update or add the keys later once the entity has been created.
