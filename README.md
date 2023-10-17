@@ -24,7 +24,7 @@ This repository provides a basic example of how to start developing a React site
    npm install
    ```
 
-2. Run `yext init` and authenticate the CLI with your Yext credentials.
+2. Run `yext init` and authenticate the CLI with your Yext credentials. Add the `-u sandbox` flag if you're using a sandbox Yext account.
 3. Run `yext resources apply platform-config/config` to apply the required configuration resources to your account.
 4. Run `yext resources apply platform-config/entities` to add the necessary entities to your account. This includes a test location entity which can be deleted before running the apply command if desired.
 
