@@ -6,3 +6,4 @@ sites-rendered-output/
 .artifact-output
 .env
 .yext
+sites-config/features.json
