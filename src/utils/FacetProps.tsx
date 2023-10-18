@@ -1,9 +1,9 @@
 import { DisplayableFacetOption } from "@yext/search-headless-react";
-import { FilterGroupCssClasses } from "./FilterGroup";
+import { FilterGroupCssClasses } from "../components/FilterGroup";
 import { ReactElement } from "react";
 import { NumberRangeValue } from "@yext/search-headless-react";
-import { HierarchicalFacetDisplayCssClasses } from "./HierarchicalFacetDisplay";
-import { RangeInputCssClasses } from "./RangeInput";
+import { HierarchicalFacetDisplayCssClasses } from "../components/HierarchicalFacetDisplay";
+import { RangeInputCssClasses } from "../components/RangeInput";
 
 /**
  * The CSS class interface for {@link Facets}. Any {@link FilterGroupCssClasses} props will be

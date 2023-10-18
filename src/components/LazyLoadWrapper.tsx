@@ -6,7 +6,7 @@ interface LazyLoadWrapperProps {
 }
 
 // This component can be used to lazy load its children components.
-export const LazyLoadWrapper = (props: LazyLoadWrapperProps) => {
+const LazyLoadWrapper = (props: LazyLoadWrapperProps) => {
   const { children } = props;
 
   const wrapperRef = useRef(null);
@@ -18,3 +18,5 @@ export const LazyLoadWrapper = (props: LazyLoadWrapperProps) => {
 
   return <>{children}</>;
 };
+
+export default LazyLoadWrapper;

@@ -1,11 +1,11 @@
 import { useSearchUtilities } from "@yext/search-headless-react";
 import { PropsWithChildren, useState } from "react";
 import CheckboxOption, { FilterOptionConfig } from "./CheckboxOption";
-import { CollapsibleSection } from "./CollapsibleSection";
-import { SearchInput } from "./SearchInput";
+import CollapsibleSection from "./CollapsibleSection";
+import SearchInput from "./SearchInput";
 import { useFilterGroupContext } from "../utils/FilterGroupContext";
-import { FilterGroupProvider } from "./FilterGroupProvider";
-import { FacetTitle } from "./FacetTiltle";
+import FilterGroupProvider from "./FilterGroupProvider";
+import FacetTitle from "./FacetTiltle";
 
 /**
  * The CSS class interface for FilterGroup.
@@ -51,7 +51,7 @@ export interface FilterGroupProps {
 /**
  * Renders a group of selectable filters with support for searching and collapsing.
  */
-export function FilterGroup({
+export default function FilterGroup({
   fieldId,
   filterOptions,
   title,

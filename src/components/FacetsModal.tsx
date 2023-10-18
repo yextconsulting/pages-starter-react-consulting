@@ -2,7 +2,7 @@ import { FaTimes } from "react-icons/fa";
 import { useSearchActions } from "@yext/search-headless-react";
 import { executeSearch } from "@yext/search-ui-react";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import { Facets } from "src/components/Facets";
+import Facets from "src/components/Facets";
 import ActiveFacets from "src/components/ActiveFacets";
 
 type FacetsModalProps = {

@@ -1,7 +1,7 @@
-import { FilterGroup } from "./FilterGroup";
+import FilterGroup from "./FilterGroup";
 import { DisplayableFacet } from "@yext/search-headless-react";
-import { NumericalFacetProps } from "./FacetProps";
-import { RangeInput } from "./RangeInput";
+import { NumericalFacetProps } from "../utils/FacetProps";
+import RangeInput from "./RangeInput";
 
 const DEFAULT_RANGE_INPUT_PREFIX = <>$</>;
 
@@ -13,7 +13,7 @@ const DEFAULT_RANGE_INPUT_PREFIX = <>$</>;
  *
  * @internal
  */
-export function NumericalFacetContent({
+export default function NumericalFacetContent({
   fieldId,
   label,
   transformOptions,

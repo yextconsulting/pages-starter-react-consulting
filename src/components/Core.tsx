@@ -10,7 +10,7 @@ import {
 import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import { LazyLoadWrapper } from "src/components/LazyLoadWrapper";
+import LazyLoadWrapper from "src/components/LazyLoadWrapper";
 import { MAPS_API_KEY } from "src/config";
 
 type CoreProps = {

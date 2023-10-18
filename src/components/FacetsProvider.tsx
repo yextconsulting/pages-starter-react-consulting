@@ -9,8 +9,8 @@ import { SelectableFieldValueFilter } from "../utils/SelectableFieldValueFilter"
 import {
   getSelectedNumericalFacetFields,
   isNumberRangeValue,
-} from "./filterutils";
-import { clearStaticRangeFilters } from "./filterutils";
+} from "../utils/filterutils";
+import { clearStaticRangeFilters } from "../utils/filterutils";
 import { executeSearch } from "../utils/search-operations";
 import { FiltersContext, FiltersContextType } from "../utils/FiltersContext";
 
@@ -45,7 +45,7 @@ export interface FacetsProviderProps {
  *
  * @param props - {@link Filters.FacetsProviderProps}
  */
-export function FacetsProvider({
+export default function FacetsProvider({
   children,
   className = "w-full",
   searchOnChange = true,

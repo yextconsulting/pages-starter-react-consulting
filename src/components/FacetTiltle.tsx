@@ -1,10 +1,9 @@
-import {
+import CollapsibleLabel, {
   builtInCssClasses,
-  CollapsibleLabel,
   CollapsibleLabelCssClasses,
 } from "./CollapsibleLabel";
 import { Fragment, useMemo } from "react";
-import { twMerge } from "./useComposedCssClasses";
+import { twMerge } from "../utils/useComposedCssClasses";
 import { FilterGroupCssClasses } from "./FilterGroup";
 
 /**
@@ -29,7 +28,7 @@ export interface FacetTitleProps {
  *
  * @internal
  */
-export function FacetTitle({
+export default function FacetTitle({
   label,
   customCssClasses,
   collapsible = true,

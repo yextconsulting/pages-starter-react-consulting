@@ -4,8 +4,8 @@ import { AnalyticsProvider } from "@yext/sites-components";
 import ErrorBoundaryWithAnalytics from "src/components/ErrorBoundaryWithAnalytics";
 import { ConfigurationProvider } from "@yext/sites-react-components";
 import { TemplateDataProvider } from "src/common/useTemplateData";
-import { Header } from "src/components/Header";
-import { Footer } from "src/components/Footer";
+import Header from "src/components/Header";
+import Footer from "src/components/Footer";
 import { useExposeEnableYAFunction } from "src/common/useExposeEnableYAFunction";
 import config from "src/config";
 import { initi18n } from "src/i18n";
@@ -60,4 +60,4 @@ const MainInternal = (props: MainProps) => {
   );
 };
 
-export { Main };
+export default Main;

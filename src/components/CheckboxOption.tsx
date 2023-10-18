@@ -6,7 +6,7 @@ import {
 import { useCallback, useEffect, useMemo } from "react";
 import { useFiltersContext } from "../utils/FiltersContext";
 import { useFilterGroupContext } from "../utils/FilterGroupContext";
-import { findSelectableFieldValueFilter } from "./filterutils";
+import { findSelectableFieldValueFilter } from "../utils/filterutils";
 import classNames from "classnames";
 import { useId } from "@reach/auto-id";
 /**

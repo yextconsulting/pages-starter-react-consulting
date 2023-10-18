@@ -11,11 +11,11 @@ import {
   findSelectableFieldValueFilter,
   getSelectableFieldValueFilters,
   parseNumberRangeInput,
-} from "./filterutils";
+} from "../utils/filterutils";
 import { executeSearch } from "../utils/search-operations";
 import classNames from "classnames";
 import { useFiltersContext } from "../utils/FiltersContext";
-import { InvalidIcon } from "./InvalidIcon";
+import InvalidIcon from "./InvalidIcon";
 
 /**
  * Props for RangeInput
@@ -99,7 +99,7 @@ const builtInCssClasses: Readonly<RangeInputCssClasses> = {
  *
  * @param props - RangeInputProps
  */
-export function RangeInput(props: RangeInputProps): JSX.Element | null {
+export default function RangeInput(props: RangeInputProps): JSX.Element | null {
   const { filters } = useFiltersContext();
   const { fieldId, setIsOptionsDisabled } = useFilterGroupContext();
   const { getFilterDisplayName = getDefaultFilterDisplayName, inputPrefix } =

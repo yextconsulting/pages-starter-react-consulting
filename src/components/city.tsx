@@ -24,7 +24,7 @@ import type {
   TemplateProps,
   TemplateRenderProps,
 } from "src/types/entities";
-import { Main } from "src/components/main";
+import Main from "src/components/main";
 import DirectoryLayout from "src/components/directory";
 
 /**

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ChevronIcon } from "./ChevronIcon";
+import ChevronIcon from "./ChevronIcon";
 import { useFilterGroupContext } from "../utils/FilterGroupContext";
 
 /**
@@ -37,7 +37,7 @@ export const builtInCssClasses: Readonly<CollapsibleLabelCssClasses> = {
  *
  * @public
  */
-export function CollapsibleLabel({
+export default function CollapsibleLabel({
   label,
 }: CollapsibleLabelProps): JSX.Element {
   const { isExpanded, getToggleProps } = useFilterGroupContext();

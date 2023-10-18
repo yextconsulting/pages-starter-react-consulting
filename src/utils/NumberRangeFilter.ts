@@ -3,7 +3,7 @@ import {
   Matcher,
   NumberRangeValue,
 } from "@yext/search-headless-react";
-import { isNumberRangeValue } from "../components/filterutils";
+import { isNumberRangeValue } from "./filterutils";
 
 export interface NumberRangeFilter extends FieldValueFilter {
   value: NumberRangeValue;

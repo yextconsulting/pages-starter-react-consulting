@@ -20,4 +20,4 @@ const MaybeLink = (props: maybeLinkProps) => {
   }
 };
 
-export { MaybeLink };
+export default MaybeLink;

@@ -3,7 +3,7 @@ import { Image, Link } from "@yext/sites-components";
 import c from "classnames";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { MaybeLink } from "src/components/MaybeLink";
+import MaybeLink from "src/components/MaybeLink";
 
 type HeaderProps = {
   links: CTA[];
@@ -68,4 +68,4 @@ const Header = (props: HeaderProps) => {
   );
 };
 
-export { Header };
+export default Header;

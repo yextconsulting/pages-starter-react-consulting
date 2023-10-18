@@ -15,7 +15,7 @@ import {
 } from "@yext/pages";
 import { defaultHeadConfig } from "src/common/head";
 import "src/index.css";
-import { Main } from "src/components/main";
+import Main from "src/components/main";
 import { TemplateProps } from "src/types/entities";
 
 /**

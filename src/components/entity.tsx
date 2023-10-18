@@ -8,7 +8,7 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 import ErrorBoundaryWithAnalytics from "src/components/ErrorBoundaryWithAnalytics";
-import { LazyLoadWrapper } from "src/components/LazyLoadWrapper";
+import LazyLoadWrapper from "src/components/LazyLoadWrapper";
 import type { LocationProfile, TemplateRenderProps } from "src/types/entities";
 
 import Breadcrumbs from "src/components/Breadcrumbs";
@@ -38,7 +38,7 @@ import type {
 import { defaultHeadConfig } from "src/common/head";
 import { dedupeStreamFields, formatPhone } from "src/common/helpers";
 import "src/index.css";
-import { Main } from "src/components/main";
+import Main from "src/components/main";
 import type { TemplateProps } from "src/types/entities";
 import { getTranslations } from "../i18n";
 

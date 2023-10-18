@@ -1,9 +1,9 @@
 import { DisplayableFacet } from "@yext/search-headless-react";
-import { HierarchicalFacetProps } from "./FacetProps";
-import { HierarchicalFacetDisplay } from "./HierarchicalFacetDisplay";
-import { CollapsibleSection } from "./CollapsibleSection";
-import { FilterGroupProvider } from "./FilterGroupProvider";
-import { FacetTitle } from "./FacetTiltle";
+import { HierarchicalFacetProps } from "../utils/FacetProps";
+import HierarchicalFacetDisplay from "./HierarchicalFacetDisplay";
+import CollapsibleSection from "./CollapsibleSection";
+import FilterGroupProvider from "./FilterGroupProvider";
+import FacetTitle from "./FacetTiltle";
 
 /**
  * A component that displays the content of a hierarchical facet.
@@ -13,7 +13,7 @@ import { FacetTitle } from "./FacetTiltle";
  *
  * @internal
  */
-export function HierarchicalFacetContent({
+export default function HierarchicalFacetContent({
   fieldId,
   label,
   transformOptions,

@@ -1,4 +1,4 @@
-export function InvalidIcon(): JSX.Element {
+export default function InvalidIcon(): JSX.Element {
   return (
     <svg
       width="20"

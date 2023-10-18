@@ -1,4 +1,4 @@
-import { twMerge } from "./useComposedCssClasses";
+import { twMerge } from "../utils/useComposedCssClasses";
 /**
  * A divider component used to separate NumericalFacets, HierarchicalFacets, StandardFacets,
  * and StaticFilters.
@@ -8,7 +8,7 @@ import { twMerge } from "./useComposedCssClasses";
  *
  * @public
  */
-export function FilterDivider({
+export default function FilterDivider({
   className,
 }: {
   className?: string;

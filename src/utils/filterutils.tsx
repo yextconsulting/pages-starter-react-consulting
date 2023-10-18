@@ -8,8 +8,8 @@ import {
   SelectableStaticFilter,
   StaticFilter,
 } from "@yext/search-headless-react";
-import { isNumberRangeFilter } from "../utils/NumberRangeFilter";
-import { SelectableFieldValueFilter } from "../utils/SelectableFieldValueFilter";
+import { isNumberRangeFilter } from "./NumberRangeFilter";
+import { SelectableFieldValueFilter } from "./SelectableFieldValueFilter";
 
 /**
  * Check if the object follows NearFilterValue interface.

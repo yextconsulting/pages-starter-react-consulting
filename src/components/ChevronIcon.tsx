@@ -1,4 +1,4 @@
-export function ChevronIcon({
+export default function ChevronIcon({
   className,
 }: {
   className?: string;

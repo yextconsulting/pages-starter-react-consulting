@@ -1,6 +1,7 @@
 import type { CTA } from "@yext/types";
 import type { Insight } from "src/types/entities";
-import { InsightCard, InsightCardFeatured } from "src/components/InsightCard";
+import InsightCard from "src/components/InsightCard";
+import InsightCardFeatured from "src/components/InsightCardFeatured";
 import { Link } from "@yext/sites-components";
 
 interface InsightsProps {

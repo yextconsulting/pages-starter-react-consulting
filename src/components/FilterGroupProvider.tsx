@@ -28,7 +28,7 @@ export type FilterGroupProviderProps = PropsWithChildren<{
  *
  * @param props - {@link Filters.FilterGroupProviderProps}
  */
-export function FilterGroupProvider(
+export default function FilterGroupProvider(
   props: FilterGroupProviderProps
 ): JSX.Element {
   const { children, defaultExpanded = true, fieldId } = props;

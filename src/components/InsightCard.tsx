@@ -1,5 +1,5 @@
 import type { CTA, Image as ImageType } from "@yext/types";
-import { Image, Link } from "@yext/sites-components";
+import { Link } from "@yext/sites-components";
 import { FaChevronRight } from "react-icons/fa";
 
 export interface InsightCardProps {
@@ -15,7 +15,7 @@ export interface InsightCardFeaturedProps {
   descriptionLong?: string;
 }
 
-export function InsightCard(props: InsightCardProps) {
+export default function InsightCard(props: InsightCardProps) {
   const { title, category, date, descriptionShort, cta } = props;
 
   return (
@@ -40,29 +40,6 @@ export function InsightCard(props: InsightCardProps) {
           </Link>
         </div>
       )}
-    </div>
-  );
-}
-
-export function InsightCardFeatured(
-  props: InsightCardProps & InsightCardFeaturedProps
-) {
-  const { title, category, date, cta, image, descriptionLong } = props;
-
-  return (
-    <div>
-      {image && (
-        <div className="flex justify-center mb-8">
-          <Image layout="fill" image={image} />
-        </div>
-      )}
-      <InsightCard
-        title={title}
-        category={category}
-        date={date}
-        cta={cta}
-        descriptionShort={descriptionLong}
-      />
     </div>
   );
 }

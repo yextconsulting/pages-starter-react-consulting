@@ -20,7 +20,7 @@ export type CollapsibleSectionProps = PropsWithChildren<{
  *
  * @public
  */
-export function CollapsibleSection(
+export default function CollapsibleSection(
   props: CollapsibleSectionProps
 ): JSX.Element {
   const { className = "space-y-3", children } = props;

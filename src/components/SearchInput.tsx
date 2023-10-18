@@ -21,7 +21,7 @@ export interface SearchInputProps {
  *
  * @public
  */
-export function SearchInput(props: SearchInputProps): JSX.Element {
+export default function SearchInput(props: SearchInputProps): JSX.Element {
   const {
     className = "text-sm form-input bg-white h-9 w-full outline-none p-2 mb-2 rounded-md border border-gray-300 focus:ring-primary focus:ring-0 text-neutral-dark placeholder:text-neutral",
     placeholder = "Search here...",

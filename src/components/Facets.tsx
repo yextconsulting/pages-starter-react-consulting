@@ -1,11 +1,11 @@
-import { FacetsProvider } from "./FacetsProvider";
-import { StandardFacetContent } from "./StandardFacetContent";
-import { FacetProps, FacetsProps } from "./FacetProps";
-import { isNumericalFacet, isStringFacet } from "./filterutils";
-import { FilterDivider } from "./FilterDivider";
+import FacetsProvider from "./FacetsProvider";
+import StandardFacetContent from "./StandardFacetContent";
+import { FacetProps, FacetsProps } from "../utils/FacetProps";
+import { isNumericalFacet, isStringFacet } from "../utils/filterutils";
+import FilterDivider from "./FilterDivider";
 import { Fragment } from "react";
-import { NumericalFacetContent } from "./NumericalFacetContent";
-import { HierarchicalFacetContent } from "./HierarchicalFacetContent";
+import NumericalFacetContent from "./NumericalFacetContent";
+import HierarchicalFacetContent from "./HierarchicalFacetContent";
 import { DisplayableFacet } from "@yext/search-headless-react";
 
 enum FacetType {
@@ -27,7 +27,7 @@ enum FacetType {
  *
  * @public
  */
-export function Facets(props: FacetsProps) {
+export default function Facets(props: FacetsProps) {
   const {
     searchOnChange,
     onlyRenderChildren = false,

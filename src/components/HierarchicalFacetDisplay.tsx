@@ -63,7 +63,7 @@ const builtInCssClasses: Readonly<HierarchicalFacetDisplayCssClasses> = {
  *
  * @public
  */
-export function HierarchicalFacetDisplay({
+export default function HierarchicalFacetDisplay({
   facet,
   delimiter = DEFAULT_HIERARCHICAL_DELIMITER,
   showMoreLimit = 4,
