@@ -1,6 +1,6 @@
-export { getPath, transformProps, getHeadConfig } from "src/layouts/city";
+export { getPath, transformProps, getHeadConfig } from "src/components/city";
 import { Template } from "@yext/pages";
-import CityLayout, { configBuilder } from "src/layouts/city";
+import CityLayout, { configBuilder } from "src/components/city";
 import {
   DirectoryProfile,
   LocationProfile,

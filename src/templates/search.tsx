@@ -1,6 +1,6 @@
-export { getPath, getHeadConfig } from "src/layouts/search";
+export { getPath, getHeadConfig } from "src/components/search";
 import { Template } from "@yext/pages";
-import SearchLayout, { configBuilder } from "src/layouts/search";
+import SearchLayout, { configBuilder } from "src/components/search";
 import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
 
 // When copying this file for multibrand, you can pass arguments

@@ -1,6 +1,6 @@
-export { getPath, transformProps, getHeadConfig } from "src/layouts/region";
+export { getPath, transformProps, getHeadConfig } from "src/components/region";
 import { Template } from "@yext/pages";
-import RegionLayout, { configBuilder } from "src/layouts/region";
+import RegionLayout, { configBuilder } from "src/components/region";
 import { DirectoryProfile, TemplateRenderProps } from "src/types/entities";
 
 // When copying this file for multibrand, you can pass arguments

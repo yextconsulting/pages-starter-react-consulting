@@ -1,6 +1,6 @@
-export { getPath, transformProps, getHeadConfig } from "src/layouts/entity";
+export { getPath, transformProps, getHeadConfig } from "src/components/entity";
 import { Template } from "@yext/pages";
-import EntityLayout, { configBuilder } from "src/layouts/entity";
+import EntityLayout, { configBuilder } from "src/components/entity";
 import { LocationProfile, TemplateRenderProps } from "src/types/entities";
 
 // When copying this file for multibrand, you can pass arguments
