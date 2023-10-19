@@ -1,0 +1,55 @@
+{
+  "$id": "test-product",
+  "$schema": "https://schema.yext.com/config/km/entity/v1",
+  "primaryLocale": "en",
+  "content": {
+    "c_primaryCTA": {
+      "label": "Learn More",
+      "link": "https://www.yext.com",
+      "linkType": "URL"
+    },
+    "landingPageUrl": "https://www.yext.com/",
+    "name": "Product 1",
+    "primaryPhoto": {
+      "image": {
+        "height": 187,
+        "url": "https://a.mktgcdn.com/p-sandbox/5DMkpC1VRKF7_CscN6Gmi8e5iZ_pzfLwp228HkFW894/280x187.png",
+        "width": 280
+      }
+    },
+    "richTextDescriptionV2": {
+      "json": {
+        "root": {
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "type": "root",
+          "version": 1
+        }
+      }
+    }
+  },
+  "entityType": "product",
+  "folder": "testEntities",
+  "labels": []
+}
