@@ -1,0 +1,18 @@
+{
+  "$id": "c_directoryRoot",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "Directory Root",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "type": {
+    "listType": {
+      "typeId": "entityReference",
+      "type": {
+        "entityReferenceType": {
+          "type": "ONE_WAY"
+        }
+      }
+    }
+  },
+  "typeId": "list"
+}

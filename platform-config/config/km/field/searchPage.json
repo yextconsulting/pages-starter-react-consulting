@@ -1,0 +1,20 @@
+{
+  "$id": "c_searchPage",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "Search Page",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "type": {
+    "listType": {
+      "typeId": "entityReference",
+      "maxLength": 1,
+      "type": {
+        "entityReferenceType": {
+          "supportedEntityTypeIds": ["ce_searchPage"],
+          "type": "ONE_WAY"
+        }
+      }
+    }
+  },
+  "typeId": "list"
+}

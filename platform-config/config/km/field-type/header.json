@@ -1,0 +1,39 @@
+{
+  "$id": "c_header",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "displayName": "Header",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "logo",
+          "displayName": "Logo",
+          "isRequired": false,
+          "typeId": "image",
+          "type": {
+            "imageType": {
+              "isSimpleImage": true,
+              "minSize": {
+                "width": 0,
+                "height": 0
+              },
+              "unconstrainedAspectRatioAllowed": true,
+              "noAllowedAspectRatios": true
+            }
+          }
+        },
+        {
+          "name": "links",
+          "displayName": "Links",
+          "isRequired": false,
+          "typeId": "list",
+          "type": {
+            "listType": {
+              "typeId": "cta"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

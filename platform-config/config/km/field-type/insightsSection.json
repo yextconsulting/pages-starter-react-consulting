@@ -1,0 +1,41 @@
+{
+  "$id": "c_insightsSection",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "displayName": "Insights Section",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "title",
+          "displayName": "Title",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE",
+              "maxLength": 512
+            }
+          }
+        },
+        {
+          "name": "insights",
+          "displayName": "Insights",
+          "isRequired": false,
+          "typeId": "list",
+          "type": {
+            "listType": {
+              "typeId": "c_insight",
+              "maxLength": 5000
+            }
+          }
+        },
+        {
+          "name": "cta",
+          "displayName": "CTA",
+          "isRequired": false,
+          "typeId": "cta"
+        }
+      ]
+    }
+  }
+}

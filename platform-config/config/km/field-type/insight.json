@@ -1,0 +1,89 @@
+{
+  "$id": "c_insight",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "displayName": "Insight",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "photo",
+          "displayName": "Photo",
+          "isRequired": false,
+          "typeId": "image",
+          "type": {
+            "imageType": {
+              "isSimpleImage": true,
+              "minSize": {
+                "width": 0,
+                "height": 0
+              },
+              "unconstrainedAspectRatioAllowed": true,
+              "noAllowedAspectRatios": true
+            }
+          }
+        },
+        {
+          "name": "category",
+          "displayName": "Category",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE"
+            }
+          }
+        },
+        {
+          "name": "date",
+          "displayName": "Date",
+          "isRequired": false,
+          "typeId": "date",
+          "type": {
+            "dateType": {}
+          }
+        },
+        {
+          "name": "title",
+          "displayName": "Title",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE"
+            }
+          }
+        },
+        {
+          "name": "descriptionLong",
+          "displayName": "Description (Long)",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "MULTILINE",
+              "maxLength": 300
+            }
+          }
+        },
+        {
+          "name": "descriptionShort",
+          "displayName": "Description (Short)",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "MULTILINE",
+              "maxLength": 100
+            }
+          }
+        },
+        {
+          "name": "cta",
+          "displayName": "CTA",
+          "isRequired": false,
+          "typeId": "cta"
+        }
+      ]
+    }
+  }
+}

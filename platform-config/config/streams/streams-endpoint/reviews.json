@@ -1,0 +1,28 @@
+{
+  "$id": "reviewsStreamsEndpoints_reviews",
+  "$schema": "https://schema.yext.com/config/streams/streams-endpoint/v2",
+  "name": "Streams Endpoint - Individual Reviews",
+  "stream": {
+    "source": "reviews",
+    "fields": [
+      "rating",
+      "content",
+      "reviewDate",
+      "authorName",
+      "comments",
+      "entity.id",
+      "apiIdentifier"
+    ],
+    "filter": {
+      "publishers": ["FIRSTPARTY", "EXTERNALFIRSTPARTY"]
+    }
+  },
+  "fieldIndexes": [
+    {
+      "field": "entity.id"
+    },
+    {
+      "field": "apiIdentifier"
+    }
+  ]
+}

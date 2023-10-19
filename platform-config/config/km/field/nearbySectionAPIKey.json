@@ -1,0 +1,15 @@
+{
+  "$id": "c_nearbySectionAPIKey",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "description": "The API key used for the nearby locations section. Requires the LiveAPI entities endpoint.",
+  "displayName": "Nearby Section API Key",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "type": {
+    "stringType": {
+      "stereotype": "SIMPLE",
+      "maxLength": 512
+    }
+  },
+  "typeId": "string"
+}

@@ -1,0 +1,8 @@
+{
+  "$id": "proserveStarter_product",
+  "$schema": "https://schema.yext.com/config/km/field-eligibility-group/v1",
+  "name": "Proserve Starter Product",
+  "entityType": "product",
+  "fields": ["c_primaryCTA"],
+  "required": []
+}

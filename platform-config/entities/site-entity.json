@@ -1,0 +1,88 @@
+{
+  "$id": "site-entity",
+  "$schema": "https://schema.yext.com/config/km/entity/v1",
+  "primaryLocale": "en",
+  "content": {
+    "c_copyrightMessage": "© 2022. All Rights Reserved.",
+    "c_facebook": "https://www.facebook.com/",
+    "c_footerLinks": [
+      {
+        "label": "Link1",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link2",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link3",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link4",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      {
+        "label": "Link5",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      }
+    ],
+    "c_header": {
+      "links": [
+        {
+          "label": "Link1",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link2",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link3",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link4",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        },
+        {
+          "label": "Link5",
+          "link": "https://www.yext.com",
+          "linkType": "URL"
+        }
+      ],
+      "logo": {
+        "height": 100,
+        "url": "https://a.mktgcdn.com/p-sandbox/hoFxFk7QZTsh10XJezwLl_mU98YpK9h9-5lF0O7W7f4/100x100.png",
+        "width": 100
+      }
+    },
+    "c_instagram": "https://www.instagram.com/",
+    "c_linkedIn": "https://www.linkedin.com/",
+    "c_nearbySectionAPIKey": "${{nearbyAPIKey}}",
+    "c_reviewsAPIKey": "${{reviewsAPIKey}}",
+    "c_searchExperienceAPIKey": "${{searchAPIKey}}",
+    "c_twitter": "https://www.twitter.com/",
+    "c_youtube": "https://www.youtube.com/",
+    "logo": {
+      "image": {
+        "height": 100,
+        "url": "https://a.mktgcdn.com/p-sandbox/hoFxFk7QZTsh10XJezwLl_mU98YpK9h9-5lF0O7W7f4/100x100.png",
+        "width": 100
+      }
+    },
+    "name": "Site Entity",
+    "c_searchPage": ["search-page"]
+  },
+  "entityType": "ce_site",
+  "labels": []
+}

@@ -1,0 +1,41 @@
+{
+  "$id": "c_heroSection",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "description": "CFT for starter Hero section",
+  "displayName": "Hero Section",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "background",
+          "displayName": "Background",
+          "isRequired": false,
+          "typeId": "image",
+          "type": {
+            "imageType": {
+              "isSimpleImage": true,
+              "minSize": {
+                "width": 0,
+                "height": 0
+              },
+              "unconstrainedAspectRatioAllowed": true,
+              "noAllowedAspectRatios": true
+            }
+          }
+        },
+        {
+          "name": "cta1",
+          "displayName": "CTA 1",
+          "isRequired": false,
+          "typeId": "cta"
+        },
+        {
+          "name": "cta2",
+          "displayName": "CTA 2",
+          "isRequired": false,
+          "typeId": "cta"
+        }
+      ]
+    }
+  }
+}

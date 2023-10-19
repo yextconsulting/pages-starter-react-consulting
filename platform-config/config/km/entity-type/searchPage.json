@@ -1,0 +1,6 @@
+{
+  "$id": "ce_searchPage",
+  "$schema": "https://schema.yext.com/config/km/entity-type/v2",
+  "description": "Search Page Entity",
+  "displayName": "Search Page"
+}

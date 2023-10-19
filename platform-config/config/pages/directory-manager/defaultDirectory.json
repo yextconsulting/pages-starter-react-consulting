@@ -1,0 +1,27 @@
+{
+  "$id": "defaultDirectory",
+  "$schema": "https://schema.yext.com/config/pages/directory-manager/v1",
+  "name": "Directory",
+  "baseEntities": {
+    "entityTypes": ["location"]
+  },
+  "root": {
+    "entityType": "ce_root",
+    "slug": "index.html"
+  },
+  "localization": {
+    "locales": ["en"]
+  },
+  "levels": [
+    {
+      "entityType": "ce_region",
+      "field": "address.region",
+      "slug": "{{address.region}}"
+    },
+    {
+      "entityType": "ce_city",
+      "field": "address.city",
+      "slug": "{{address.region}}/{{address.city}}"
+    }
+  ]
+}

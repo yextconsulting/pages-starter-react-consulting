@@ -1,0 +1,40 @@
+{
+  "$id": "c_faqSection",
+  "$schema": "https://schema.yext.com/config/km/field-type/v1",
+  "description": "CFT for starter FAQ section",
+  "displayName": "FAQ Section",
+  "type": {
+    "structType": {
+      "property": [
+        {
+          "name": "title",
+          "displayName": "Title",
+          "isRequired": false,
+          "typeId": "string",
+          "type": {
+            "stringType": {
+              "stereotype": "SIMPLE"
+            }
+          }
+        },
+        {
+          "name": "faqs",
+          "displayName": "FAQs",
+          "isRequired": false,
+          "typeId": "list",
+          "type": {
+            "listType": {
+              "typeId": "entityReference",
+              "type": {
+                "entityReferenceType": {
+                  "supportedEntityTypeIds": ["faq"],
+                  "type": "ONE_WAY"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

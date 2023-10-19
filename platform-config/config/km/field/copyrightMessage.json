@@ -1,0 +1,13 @@
+{
+  "$id": "c_copyrightMessage",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "Copyright Message",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "type": {
+    "stringType": {
+      "stereotype": "SIMPLE"
+    }
+  },
+  "typeId": "string"
+}

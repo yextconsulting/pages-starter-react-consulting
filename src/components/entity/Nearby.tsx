@@ -81,8 +81,10 @@ const Nearby = (props: NearbyProps) => {
     ) : null;
   };
 
-  if (!nearbyLocations.length) {
-    return null;
+  if (!apiKey) {
+    console.error(
+      "Add the nearby API key to the Site Entity to enable nearby functionality."
+    );
   }
 
   return (

@@ -1,0 +1,185 @@
+{
+  "$id": "test-location",
+  "$schema": "https://schema.yext.com/config/km/entity/v1",
+  "primaryLocale": "en",
+  "content": {
+    "additionalHoursText": "No pickup on Christmas Eve.",
+    "address": {
+      "city": "New York",
+      "countryCode": "US",
+      "line1": "61 Ninth Avenue",
+      "postalCode": "10011",
+      "region": "NY"
+    },
+    "addressHidden": false,
+    "c_aboutSection": {
+      "cta": {
+        "label": "Learn More",
+        "linkType": "URL",
+        "link": "https://www.yext.com"
+      },
+      "description": "[[description]]",
+      "image": {
+        "height": 667,
+        "url": "https://a.mktgcdn.com/p-sandbox/OxpFIrEccA3zsdZ6LlKVxdQD_cGOME_8mNFU0IdByd4/1000x667.png",
+        "width": 1000
+      },
+      "title": "About Section"
+    },
+    "c_bannerSection": {
+      "image": {
+        "height": 16,
+        "url": "https://a.mktgcdn.com/p-sandbox/SfrRxRW8tFhve9rZ1LWi4n831jY3uhAeNBkElwkeNck/16x16.png",
+        "width": 16
+      },
+      "text": "This location is closed outside of business hours"
+    },
+    "c_faqSection": {
+      "title": "Frequently Asked Questions",
+      "faqs": ["test-faq"]
+    },
+    "c_featuredProductsSection": {
+      "products": ["test-product"],
+      "title": "Featured Products at [[name]]"
+    },
+    "c_heroSection": {
+      "background": {
+        "height": 667,
+        "url": "https://a.mktgcdn.com/p-sandbox/OxpFIrEccA3zsdZ6LlKVxdQD_cGOME_8mNFU0IdByd4/1000x667.png",
+        "width": 1000
+      },
+      "cta1": {
+        "label": "Learn More",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      "cta2": {
+        "label": "Call Now",
+        "link": "+12129943900",
+        "linkType": "PHONE"
+      }
+    },
+    "c_nearbySection": {
+      "cta": {
+        "label": "Find another Location"
+      },
+      "linkToLocator": true,
+      "title": "Find Nearby Locations"
+    },
+    "c_promoSection": {
+      "appStoreUrl": "https://www.yext.com",
+      "cta": {
+        "label": "Learn More",
+        "link": "https://www.yext.com",
+        "linkType": "URL"
+      },
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing. Maecenas finibus placerat justo.",
+      "googlePlayUrl": "https://www.yext.com",
+      "image": {
+        "height": 667,
+        "url": "https://a.mktgcdn.com/p-sandbox/OxpFIrEccA3zsdZ6LlKVxdQD_cGOME_8mNFU0IdByd4/1000x667.png",
+        "width": 1000
+      },
+      "title": "Featured Promotion"
+    },
+    "c_teamSection": {
+      "title": "Meet Our Team",
+      "team": ["test-professional"]
+    },
+    "c_reviewsSection": {
+      "title": "Recent Reviews"
+    },
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus placerat justo a viverra. Quisque ut congue tellus, vitae fermentum velit. Suspendisse sed gravida libero. Etiam pulvinar tincidunt augue vitae fermentum. Maecenas tortor nunc, ullamcorper eu tortor sed, vestibulum suscipit libero. \\nPraesent sit amet pulvinar massa. Proin mattis tellus tristique neque ullamcorper, vel vestibulum lorem dapibus. Vivamus et magna in justo posuere imperdiet sit amet amour tellus.",
+    "emails": ["email@gmail.com"],
+    "hours": {
+      "friday": {
+        "openIntervals": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ]
+      },
+      "monday": {
+        "openIntervals": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ]
+      },
+      "saturday": {
+        "isClosed": true
+      },
+      "sunday": {
+        "isClosed": true
+      },
+      "thursday": {
+        "openIntervals": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ]
+      },
+      "tuesday": {
+        "openIntervals": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ]
+      },
+      "wednesday": {
+        "openIntervals": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ]
+      }
+    },
+    "c_gallerySection": {
+      "title": "Image Gallery",
+      "images": [
+        {
+          "height": 450,
+          "url": "https://a.mktgcdn.com/p-sandbox/9sn9iH-i10Oill3Sj2t29BQcUyJmCeVyWT8L9VwNyrs/600x450.png",
+          "width": 600
+        },
+        {
+          "height": 450,
+          "url": "https://a.mktgcdn.com/p-sandbox/9sn9iH-i10Oill3Sj2t29BQcUyJmCeVyWT8L9VwNyrs/600x450.png",
+          "width": 600
+        },
+        {
+          "height": 450,
+          "url": "https://a.mktgcdn.com/p-sandbox/9sn9iH-i10Oill3Sj2t29BQcUyJmCeVyWT8L9VwNyrs/600x450.png",
+          "width": 600
+        }
+      ]
+    },
+    "logo": {
+      "image": {
+        "height": 100,
+        "url": "https://a.mktgcdn.com/p-sandbox/hoFxFk7QZTsh10XJezwLl_mU98YpK9h9-5lF0O7W7f4/100x100.png",
+        "width": 100
+      }
+    },
+    "mainPhone": "+12129943900",
+    "name": "Test Location",
+    "services": [
+      "Augue interdum velit euismod",
+      "Euismod lacinia at quis",
+      "Viverra ipsum nunc aliquet bib",
+      "Ultrices dui sapien",
+      "Deserunt mollit anim id est"
+    ],
+    "slug": "[[address.region]]/[[address.city]]/[[address.line1]]",
+    "timezone": "America/Chicago",
+    "tollFreePhone": "+12129943900"
+  },
+  "entityType": "location",
+  "folder": "testEntities",
+  "labels": []
+}

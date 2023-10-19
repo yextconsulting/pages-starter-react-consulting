@@ -49,6 +49,12 @@ const Core = (props: CoreProps) => {
     </svg>
   );
 
+  if (MAPS_API_KEY === "<REPLACE-ME>") {
+    console.error(
+      "Add a map provider API key to config.ts to enable map functionality."
+    );
+  }
+
   return (
     <div className="Core py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">

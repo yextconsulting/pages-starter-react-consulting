@@ -1,0 +1,14 @@
+{
+  "$id": "c_reviewsAPIKey",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "Reviews API Key",
+  "group": "NONE",
+  "localization": "PRIMARY_ONLY",
+  "type": {
+    "stringType": {
+      "stereotype": "SIMPLE",
+      "maxLength": 100000
+    }
+  },
+  "typeId": "string"
+}

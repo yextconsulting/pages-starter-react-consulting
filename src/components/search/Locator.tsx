@@ -70,6 +70,12 @@ const Locator = (props: LocatorProps) => {
     }
   );
 
+  if (MAPS_API_KEY === "<REPLACE-ME>") {
+    console.error(
+      "Add a map provider API key to config.ts to enable map functionality."
+    );
+  }
+
   return (
     <LocatorProvider
       value={{

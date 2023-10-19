@@ -1,0 +1,34 @@
+{
+  "$id": "test-professional",
+  "$schema": "https://schema.yext.com/config/km/entity/v1",
+  "primaryLocale": "en",
+  "content": {
+    "address": {
+      "city": "New York",
+      "countryCode": "US",
+      "line1": "61 Ninth Avenue",
+      "postalCode": "10011",
+      "region": "NY"
+    },
+    "addressHidden": false,
+    "c_occupation": "Job Title",
+    "emails": ["professional@example.com"],
+    "headshot": {
+      "alternateText": "test",
+      "height": 830,
+      "url": "https://a.mktgcdn.com/p-sandbox/7WOgS52NNSiswLNzTN70J-VbCOEM75eS4HhINXOia2U/820x830.jpg",
+      "width": 820
+    },
+    "mainPhone": "+12129943900",
+    "name": "Test Professional",
+    "timezone": "America/Chicago",
+    "websiteUrl": {
+      "displayUrl": "https://www.yext.com/",
+      "preferDisplayUrl": false,
+      "url": "https://www.yext.com/"
+    }
+  },
+  "entityType": "financialProfessional",
+  "folder": "testEntities",
+  "labels": []
+}

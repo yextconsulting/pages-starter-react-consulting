@@ -2,31 +2,99 @@
 
 This repository provides a basic example of how to start developing a React site on the Yext Sites system.
 
-## Getting Started
+## Quickstart Instructions
 
 ### Prerequisites
 
-1. You must have access to the Yext Github organization: https://github.com/yext
-1. You must have access to the Yext NPM organization: https://www.npmjs.com/org/yext
 1. Have the Yext CLI installed: https://hitchhikers.yext.com/guides/cli-getting-started-resources/01-install-cli/
-1. Have Deno installed, version 1.21.0 or later: https://deno.land/manual/getting_started/installation
-1. Have node installed, version 17 or later: https://nodejs.org/en/download/
+2. Have Deno installed, version 1.21.0 or later: https://deno.land/manual/getting_started/installation
+3. Have node installed, version 17 or later: https://nodejs.org/en/download/
 
    - It's recommend to use nvm: https://github.com/nvm-sh/nvm#installing-and-updating or via brew `brew install nvm`
 
-1. Optional: Have a Yext account (necessary for production builds, deploying on Yext Sites, and pulling local stream document data via `yext sites generate-test-data`). This starter already comes with some localData that can be used for local dev without the need to init with a Yext account.
+4. Optional: Have a Yext account (necessary for production builds, deploying on Yext Sites, and pulling local stream document data via `yext sites generate-test-data`). This starter already comes with some localData that can be used for local dev without the need to init with a Yext account.
 
-### Clone this repo and install dependencies
+### Getting started
 
-```shell
-git clone git@github.com:yextconsulting/site-starter-react-consulting.git
-cd site-starter-react-consulting
-npm install
-```
+1. Clone this repo and install dependencies:
 
-### Dev workflow
+   ```bash
+   git clone https://github.com/yextconsulting/pages-starter-react-consulting.git
+   cd site-starter-react-consulting
+   npm install
+   ```
 
-### Useful commands
+2. Run `yext init` and authenticate the CLI with your Yext credentials. Add the `-u sandbox` flag if you're using a sandbox Yext account.
+3. Run `yext resources apply platform-config/config` to apply the required configuration resources to your account.
+4. Run `yext resources apply platform-config/entities` to add the necessary entities to your account. This includes a test location entity which can be deleted before running the apply command if desired.
+
+   - You will be prompted to enter several API keys during this step which power the `<Reviews>`, `<Nearby>` and `<Locator>` components. If you do not plan to use these components, you can skip the API key input by pressing Enter.
+   - The Reviews API key should come from a developer app with Read access to the Management API > Reviews endpoint.
+   - The Nearby API key should come from a developer app with Read access to the Content Delivery API > Entities endpoint.
+   - The Search API key should be an API key from the search experience in your account you plan to use for your locator. If you plan to use the search experience that is created automatically for you in step 5, you can skip this step by hitting **Enter** and fill in the key after the search experience has been created.
+   - These keys will live on the Site entity that is created during this step, so you can always update or add the keys later once the entity has been created.
+   - For guidance on creating a developer app in the Yext plaform, see the first two steps of the Slug Manager section below.
+
+5. Optionally, run `yext resources apply platform-config/advanced` to apply test product, financial professional and faq entities to your account as well as an updated test location which links to these newly created entities. To make sure this related entity information is displayed on your location template, navigate to **src** > **layouts** > **entity.tsx** and comment in the Product, Team and FAQ field sets in the `fields` section of the `configBuilder` function. These fields will now be included in the stream that powers your location template.
+6. If you are implementing a locator search experience, run `yext resources apply platform-config/search` to apply the locator search config to your account.
+7. In the Yext platform, run the directory manager named “Directory” that was created as part of the resource apply command in Step 3. This will create the location-related entities necessary to render a directory on the frontend based on your account’s location entities.
+   1. Navigate to **Pages** > **Directory Manager**.
+   2. Click to view the directory, then click **Run**.
+8. If you plan to leverage the `<Nearby>` component to show nearby locations, navigate to **src** > **components** > **entity** > `Nearby.tsx` and replace the placeholder `savedFilterIds` value in the `getConfig` function with the ID of the saved filter you use to filter which locations should be live on your site. If you do not use a saved filter, delete this line entirely.
+9. If you plan to use the `<Locator>` component, you will need to have a map provider API key and update the placeholder value in **src** > `config.ts` with your key. You will also need to ensure the `experienceKey` and `verticalKey` values match the search experience you'd like to use.
+10. If you did not provide API keys for the `<Reviews>`, `<Nearby>` and `<Locator>` components during step 4, these components will not work properly and will produce errors if used.
+11. If you are working in a sandbox Yext account, refer to the Working With a Sandbox Account section below to see what changes need to be made to the repo.
+12. You’re good to go! Run `npm run dev` to spin up a local development server and take a look at your starter site.
+
+### Working With A Sandbox Account
+
+There are a few changes that must be made to the repo to ensure it works with sandbox Yext accounts:
+
+1. If you plan to leverage the `<Nearby>` component to show nearby locations, navigate to **src** > **components** > **entity** > **Nearby.tsx** and update the `endpoint` value in the `getConfig` function to `https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch`.
+2. If you plan to leverage the `<Locator>` search component, navigate to **src** > `config.ts` and comment in the `endpoints: SandboxEndpoints` line of the `provideHeadless` function and update your import from `@yext/search-headless-react` accordingly.
+3. Follow step 3 in the Slug Manager section to make the plugin work with your sandbox account.
+
+### Implementing the Slug Manager
+
+The Slug Manager helps to automate the process of populating and updating the builtin `slug` field on your entities. The `slug` field is used to determine what the URL of each entity-powered page will be. If you’d like to use the Slug Manager, follow the instructions below:
+
+1. In the Yext platform, navigate to **Developer** > **Developer Console**. Click **Add an App**. Name it "Slug Manager" and click **Create App**.
+2. In the **API Credentials** section, add **Read / Write** permissions to the **Management API** > **Entities** endpoint and click **Save**. Copy the API Key on this page as you’ll need it in the next step.
+3. If you are working in a sandbox Yext account, navigate to `platform-config/slug-manager/plugin/mod.ts` and add `env:”sandbox”` to the object being passed to the `createSlugManager` function. For example:
+
+   ```jsx
+   export const { webhook, connector } = createSlugManager({
+     apiKey: API_KEY,
+     slugFormat: (lang, profile) => {
+       if (lang === "en") {
+         return "[[address.region]]/[[address.city]]/[[address.line1]]";
+       }
+       return "[[localeCode]]/[[address.region]]/[[address.city]]/[[address.line1]]";
+     },
+     fields: [],
+     entityTypes: ["location"],
+     env: "sandbox", // add this line for sandbox accounts
+   });
+   ```
+
+4. Run `yext resources apply platform-config/slug-manager` to add the slug management plugin and connector to your account. When you are prompted to provide an API key, paste the key you copied from your developer app and hit **Enter**.
+5. To populate an initial `slug` value for all your location entities, go into the Yext platform and navigate to **Content** > **Connectors**. Go to the **Update All Slugs** connector and click **Run Connector**.
+6. To ensure `slug` values are kept up to date when data changes or new entities are created, navigate back to the developer app you created and navigate to the **Webhooks** section. Click **Add a Webhook**.
+7. Select **Entities** as the Webhook Type and click **Next**.
+8. Name your webhook whatever you’d like. Under where it says “URL”, click on **…or invoke a function**.
+9. Select the **Slug-Manager** function and click the webhook option. Hit **Finish and Add**.
+10. The Slug Manager is now set up and ready to go!
+
+### Implementing the `urlWriteBack` function
+
+It is a common practice to store an entity page URL as a field on the entity itself. The `urlWriteback` function helps to automate the process of keeping the URL field value up to date if the underlying URL changes. To set up the `urlWriteback` function, the follow the instructions below:
+
+1. In your repo, navigate to `functions/onUrlChange/urlWriteback.ts`.
+2. By default, the function references `c_pagesURL` as the field where your entity page URL will be stored on each entity. You can either create a field with this API name or change the value of the `pageUrlCustomField` to the field API name of the field you plan to use to store your URLs.
+3. Update the placeholder value for the `API_KEY` variable with a real API key. If you went through the above instructions to set up the Slug Manager, you can use that same API key here. If not, follow the first two steps in the Slug Manager section to create an app with **Read / Write** permissions to the **Entities Management API** endpoint.
+4. You’re good to go! This function will be invoked by the `onUrlChange` event documented [here](https://hitchhikers.yext.com/docs/pages/plugins/?target=plugin-events).
+
+## Useful commands
 
 `yext init` - Authenticates the Yext CLI with your Yext account
 
