@@ -7,7 +7,7 @@ import {
   LocationMap,
   GoogleMaps,
 } from "@yext/sites-components";
-import type { LocationProfile } from "src/types/entities";
+import { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import LazyLoadWrapper from "src/components/LazyLoadWrapper";

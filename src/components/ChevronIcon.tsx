@@ -1,8 +1,10 @@
+interface ChevronIconProps {
+  className?: string;
+}
+
 export default function ChevronIcon({
   className,
-}: {
-  className?: string;
-}): JSX.Element {
+}: ChevronIconProps): JSX.Element {
   return (
     <svg
       viewBox="0 0 12 8"

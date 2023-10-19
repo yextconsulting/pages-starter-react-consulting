@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { ReactNode } from "react";
 import { useFilterGroupContext } from "../utils/FilterGroupContext";
 
 /**
@@ -6,10 +6,11 @@ import { useFilterGroupContext } from "../utils/FilterGroupContext";
  *
  * @public
  */
-export type CollapsibleSectionProps = PropsWithChildren<{
+export type CollapsibleSectionProps = {
   /** CSS classes applied to the component's container div. */
+  children?: ReactNode;
   className?: string;
-}>;
+};
 
 /**
  * CollapsibleSection are used for collapsing and un-collapsing groups of filters.
