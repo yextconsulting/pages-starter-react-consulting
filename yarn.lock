@@ -2459,10 +2459,10 @@
     "classnames" "^2.3.1"
     "rollup-plugin-import-css" "^3.0.3"
 
-"@yext/studio-plugin@*", "@yext/studio-plugin@^0.26.1", "@yext/studio-plugin@0.26.1":
-  "integrity" "sha512-eB3fy8Ka9RDt9DChEg40OxHguiPpZSW0sQUSuRV9Bp5y43mAPt+HHEqAkYOTKaLJ6tTpmVBhxMSDfFxT5i+ajQ=="
-  "resolved" "https://registry.npmjs.org/@yext/studio-plugin/-/studio-plugin-0.26.1.tgz"
-  "version" "0.26.1"
+"@yext/studio-plugin@*", "@yext/studio-plugin@0.27.0-alpha.0":
+  "integrity" "sha512-tCJrV+b+IFg81wlPaEmPNMOy/8CYSzcIMJPSySQK5k7qNNyQPFkcLcJFqRAPpMG1zZ6adSohHyGAY9NpO+RE9w=="
+  "resolved" "https://registry.npmjs.org/@yext/studio-plugin/-/studio-plugin-0.27.0-alpha.0.tgz"
+  "version" "0.27.0-alpha.0"
   dependencies:
     "@babel/parser" "^7.21.8"
     "@babel/preset-env" "^7.22.4"
@@ -2482,10 +2482,10 @@
     "upath" "^2.0.1"
     "uuid" "^9.0.0"
 
-"@yext/studio-ui@0.26.1":
-  "integrity" "sha512-agXWRYHIPZ3SQ+0b5SN2x9RMESd0znnFqvjHV9CGU7qUdtRx0vRbampnqxENXNB0b6Lc/Xh4ZZkgEzS8GF41Cg=="
-  "resolved" "https://registry.npmjs.org/@yext/studio-ui/-/studio-ui-0.26.1.tgz"
-  "version" "0.26.1"
+"@yext/studio-ui@0.27.0-alpha.0":
+  "integrity" "sha512-Vt6FS2seliC+Z8XIeH6lbP6w/gGiBxCW2UgWEgMuiA7T2vjUIE6/uBVlLOaIqwHqcWkW0pYS4fY7rei3ZPOrug=="
+  "resolved" "https://registry.npmjs.org/@yext/studio-ui/-/studio-ui-0.27.0-alpha.0.tgz"
+  "version" "0.27.0-alpha.0"
   dependencies:
     "@dhmk/zustand-lens" "^2.0.5"
     "@minoru/react-dnd-treeview" "^3.4.1"
@@ -2511,14 +2511,14 @@
     "zundo" "2.0.0-beta.12"
     "zustand" "^4.3.2"
 
-"@yext/studio@^0.26.1":
-  "integrity" "sha512-GTeW4FzFUQgutpMRIAdZlfFgAWBKdALVrYfxnamMN6iXPYipv55+QQifKbUXtfV8x9+2M9suPONVtAAO7LtvVw=="
-  "resolved" "https://registry.npmjs.org/@yext/studio/-/studio-0.26.1.tgz"
-  "version" "0.26.1"
+"@yext/studio@0.27.0-alpha.0":
+  "integrity" "sha512-uW+V1HH9hGs1P1/74K3LFE+FEEwOttiwuQgXaZeCTRaUROzJSS5GK105B3LO3ncwXgAZyGesXtwqUH1X0wIc/g=="
+  "resolved" "https://registry.npmjs.org/@yext/studio/-/studio-0.27.0-alpha.0.tgz"
+  "version" "0.27.0-alpha.0"
   dependencies:
     "@vitejs/plugin-react" "^4.0.4"
-    "@yext/studio-plugin" "0.26.1"
-    "@yext/studio-ui" "0.26.1"
+    "@yext/studio-plugin" "0.27.0-alpha.0"
+    "@yext/studio-ui" "0.27.0-alpha.0"
     "autoprefixer" "^10.4.14"
     "cac" "^6.7.14"
     "cross-env" "^7.0.3"
