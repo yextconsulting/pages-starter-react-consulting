@@ -167,7 +167,7 @@
       }
     },
     "mainPhone": "+12129943900",
-    "name": "Test Location",
+    "name": "Test Location 2",
     "services": [
       "Augue interdum velit euismod",
       "Euismod lacinia at quis",
@@ -175,7 +175,7 @@
       "Ultrices dui sapien",
       "Deserunt mollit anim id est"
     ],
-    "slug": "/[[address.region]]/[[address.city]]/[[address.line1]]",
+    "slug": "[[address.region]]/[[address.city]]/[[address.line1]]",
     "timezone": "America/Chicago",
     "tollFreePhone": "+12129943900"
   },
