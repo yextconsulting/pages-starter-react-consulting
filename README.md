@@ -30,7 +30,8 @@ This repository provides a basic example of how to start developing a React site
 
    - You will be prompted to enter several API keys during this step which power the `<Reviews>`, `<Nearby>` and `<Locator>` components. If you do not plan to use these components, you can skip the API key input by pressing Enter.
    - The Reviews API key should come from a developer app with Read access to the Management API > Reviews endpoint.
-   - For both the Nearby API key as well as the Search API key, you can use an API key from any search experience in your account or a developer app with Read access to the Content Delivery API > Entities endpoint.
+   - The Nearby API key should come from a developer app with Read access to the Content Delivery API > Entities endpoint.
+   - The Search API key should be an API key from the search experience in your account you plan to use for your locator. If you plan to use the search experience that is created automatically for you in step 5, you can skip this step by hitting **Enter** and fill in the key after the search experience has been created.
    - These keys will live on the Site entity that is created during this step, so you can always update or add the keys later once the entity has been created.
    - For guidance on creating a developer app in the Yext plaform, see the first two steps of the Slug Manager section below.
 
@@ -56,18 +57,20 @@ There are a few changes that must be made to the repo to ensure it works with sa
 
 The Slug Manager helps to automate the process of populating and updating the builtin `slug` field on your entities. The `slug` field is used to determine what the URL of each entity-powered page will be. If you’d like to use the Slug Manager, follow the instructions below:
 
-1. In the Yext platform, navigate to **Developer** > **Developer Console**. Click **Add an App**. Name it whatever you’d like and click **Create App**.
+1. In the Yext platform, navigate to **Developer** > **Developer Console**. Click **Add an App**. Name it "Slug Manager" and click **Create App**.
 2. In the **API Credentials** section, add **Read / Write** permissions to the **Management API** > **Entities** endpoint and click **Save**. Copy the API Key on this page as you’ll need it in the next step.
 3. If you are working in a sandbox Yext account, navigate to `platform-config/slug-manager/plugin/mod.ts` and add `env:”sandbox”` to the object being passed to the `createSlugManager` function. For example:
 
    ```jsx
    export const { webhook, connector } = createSlugManager({
      apiKey: API_KEY,
-     slugFormat:
-       "[[localeCode]]/[[address.region]]/[[address.city]]/[[address.line1]]",
-     slugFormatLocaleOverrides: {
-       en: "[[address.region]]/[[address.city]]/[[address.line1]]",
+     slugFormat: (lang, profile) => {
+       if (lang === "en") {
+         return "[[address.region]]/[[address.city]]/[[address.line1]]";
+       }
+       return "[[localeCode]]/[[address.region]]/[[address.city]]/[[address.line1]]";
      },
+     fields: [],
      entityTypes: ["location"],
      env: "sandbox", // add this line for sandbox accounts
    });
