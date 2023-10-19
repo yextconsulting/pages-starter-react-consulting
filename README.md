@@ -35,15 +35,16 @@ This repository provides a basic example of how to start developing a React site
    - These keys will live on the Site entity that is created during this step, so you can always update or add the keys later once the entity has been created.
    - For guidance on creating a developer app in the Yext plaform, see the first two steps of the Slug Manager section below.
 
-5. If you are implementing a locator search experience, run `yext resources apply platform-config/search` to apply the locator search config to your account.
-6. In the Yext platform, run the directory manager named “Directory” that was created as part of the resource apply command in Step 3. This will create the location-related entities necessary to render a directory on the frontend based on your account’s location entities.
+5. Optionally, run `yext resources apply platform-config/advanced` to apply test product, financial professional and faq entities to your account as well as an updated test location which links to these newly created entities. To make sure this related entity information is displayed on your location template, navigate to **src** > **layouts** > **entity.tsx** and comment in the Product, Team and FAQ field sets in the `fields` section of the `configBuilder` function.
+6. If you are implementing a locator search experience, run `yext resources apply platform-config/search` to apply the locator search config to your account.
+7. In the Yext platform, run the directory manager named “Directory” that was created as part of the resource apply command in Step 3. This will create the location-related entities necessary to render a directory on the frontend based on your account’s location entities.
    1. Navigate to **Pages** > **Directory Manager**.
    2. Click to view the directory, then click **Run**.
-7. If you plan to leverage the `<Nearby>` component to show nearby locations, navigate to **src** > **components** > **entity** > `Nearby.tsx` and replace the placeholder `savedFilterIds` value in the `getConfig` function with the ID of the saved filter you use to filter which locations should be live on your site. If you do not use a saved filter, delete this line entirely.
-8. If you plan to use the `<Locator>` component with a map, you will need to have a map provider API key and update the placeholder value in **src** > `config.ts` with your key.
-9. If you did not provide API keys for the `<Reviews>`, `<Nearby>` and `<Locator>` components during step 4, these components will not work properly and will produce errors if used.
-10. If you are working in a sandbox Yext account, refer to the Working With a Sandbox Account section below to see what changes need to be made to the repo.
-11. You’re good to go! Run `npm run dev` to spin up a local development server and take a look at your starter site.
+8. If you plan to leverage the `<Nearby>` component to show nearby locations, navigate to **src** > **components** > **entity** > `Nearby.tsx` and replace the placeholder `savedFilterIds` value in the `getConfig` function with the ID of the saved filter you use to filter which locations should be live on your site. If you do not use a saved filter, delete this line entirely.
+9. If you plan to use the `<Locator>` component with a map, you will need to have a map provider API key and update the placeholder value in **src** > `config.ts` with your key.
+10. If you did not provide API keys for the `<Reviews>`, `<Nearby>` and `<Locator>` components during step 4, these components will not work properly and will produce errors if used.
+11. If you are working in a sandbox Yext account, refer to the Working With a Sandbox Account section below to see what changes need to be made to the repo.
+12. You’re good to go! Run `npm run dev` to spin up a local development server and take a look at your starter site.
 
 ### Working With A Sandbox Account
 
