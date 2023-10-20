@@ -19,6 +19,7 @@ type ReviewsProps = {
   maxReviews?: number;
   numReviewsPerPage?: number;
   name: string;
+  entityId: string;
 };
 
 const Reviews = (props: ReviewsProps) => {
@@ -27,6 +28,7 @@ const Reviews = (props: ReviewsProps) => {
     maxReviews = 12,
     numReviewsPerPage = 3,
     name,
+    entityId,
   } = props;
 
   const [reviews, setReviews] = useState<ReviewProfile[]>([]);
@@ -40,8 +42,8 @@ const Reviews = (props: ReviewsProps) => {
       );
       return;
     }
-    fetchReviews(apiKey).then((r) => setReviews(r || []));
-  }, [apiKey]);
+    fetchReviews(apiKey, entityId).then((r) => setReviews(r || []));
+  }, [apiKey, entityId]);
 
   const averageRating = +(
     reviews.reduce((prev, curr) => prev + curr.rating, 0) / reviews.length
