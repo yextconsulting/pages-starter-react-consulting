@@ -348,7 +348,7 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
       )}
       <LazyLoadWrapper>
         <ErrorBoundaryWithAnalytics name="reviews">
-          <Reviews title={reviews?.title} name={name} />
+          <Reviews title={reviews?.title} name={name} entityId={id} />
         </ErrorBoundaryWithAnalytics>
       </LazyLoadWrapper>
       <LazyLoadWrapper>
