@@ -1,4 +1,4 @@
-# SITE-STARTER-REACT-BASIC
+# PAGES-STARTER-REACT-BASIC
 
 This repository provides a basic example of how to start developing a React site on the Yext Sites system.
 
@@ -20,7 +20,7 @@ This repository provides a basic example of how to start developing a React site
 
    ```bash
    git clone https://github.com/yextconsulting/pages-starter-react-consulting.git
-   cd site-starter-react-consulting
+   cd pages-starter-react-consulting
    npm install
    ```
 
@@ -45,6 +45,7 @@ This repository provides a basic example of how to start developing a React site
 10. If you did not provide API keys for the `<Reviews>`, `<Nearby>` and `<Locator>` components during step 4, these components will not work properly and will produce errors if used.
 11. If you are working in a sandbox Yext account, refer to the Working With a Sandbox Account section below to see what changes need to be made to the repo.
 12. You’re good to go! Run `npm run dev` to spin up a local development server and take a look at your starter site.
+13. See [here](https://drive.google.com/file/d/1A1sNSciY0zD4SVVhRYaoFo9yC7u3InBz/view?usp=sharing) for a detailed video walk-through of these instructions.
 
 ### Working With A Sandbox Account
 
