@@ -44,6 +44,7 @@
     "react-error-boundary": "4.0.8",
     "react-i18next": "13.1.2",
     "react-icons": "4.4.0",
+    "react-markdown": "^8.0.7",
     "react-router-dom": "6.3.0",
     "typescript": "5.0.4",
     "vite": "3.0.0"
