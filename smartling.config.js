@@ -13,7 +13,7 @@ const config = {
   defaultLocale: "en",
   smartlingLocaleToYextLocaleMapping: {
     // Mapping of Smartling locale code to Yext locale codes. Example:
-    // "zh-CN": ["zh_Hans"],
+    // "zh-CN": ["zh-Hans"],
   },
 };
 
