@@ -7,3 +7,4 @@ sites-rendered-output/
 .env
 .yext
 sites-config/features.json
+functions/functionMetadata.json
