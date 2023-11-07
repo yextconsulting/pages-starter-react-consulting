@@ -8,3 +8,5 @@ sites-rendered-output/
 .yext
 sites-config/features.json
 functions/functionMetadata.json
+pnpm-lock.yaml
+yarn.lock
