@@ -2,6 +2,7 @@ import ReactMarkdown from "react-markdown";
 import remarkYext, {
   yextRemarkRehypeHandlers,
 } from "src/components/common/rtf-library/index";
+import "src/components/common/RTF.css";
 // import { Link } from "@yext/sites-components";
 
 /**
@@ -16,6 +17,7 @@ import remarkYext, {
 export default function RTF(props: { content: string }) {
   return (
     <ReactMarkdown
+      className="RTF"
       children={props.content}
       remarkPlugins={[remarkYext]}
       remarkRehypeOptions={{
@@ -24,9 +26,9 @@ export default function RTF(props: { content: string }) {
       // Example of overriding an element with a custom component.
       // Uncomment this and the Link import to use.
       // components={{
-      // 	a: (props) => {
-      // 		return <Link className="Link Link--primary" target="_blank" href={props.href || ''}>{props.children}</Link>
-      // 	},
+      // a: (props) => {
+      // 	return <Link className="Link Link--primary" target="_blank" href={props.href || ''}>{props.children}</Link>
+      // },
       // }}
     />
   );

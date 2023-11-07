@@ -1,0 +1,16 @@
+.RTF {
+  p,
+  blockquote,
+  ul,
+  ol,
+  dl,
+  table,
+  pre,
+  details {
+    margin-bottom: theme("spacing.4");
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
