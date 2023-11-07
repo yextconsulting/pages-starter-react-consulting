@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 17.4.1
           registry-url: "https://registry.npmjs.org"
-      - run: npm install -g generate-license-file@1
+      - run: npm ci -g generate-license-file@1
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}

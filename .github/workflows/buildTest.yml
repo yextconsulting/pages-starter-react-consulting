@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: "17"
       - run: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
-      - run: npm install
+      - run: npm ci
       - run: npm run build
 
       - name: Tests ✅
