@@ -24,6 +24,7 @@
     "node": ">=18"
   },
   "dependencies": {
+    "@yext/components-404": "2.1.0",
     "@yext/components-tsx-maps": "1.0.11",
     "@yext/custom-field-debugger": "2.0.9",
     "@yext/pages": "1.0.0-rc.5",
