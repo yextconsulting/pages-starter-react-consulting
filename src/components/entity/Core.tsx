@@ -11,7 +11,7 @@ import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
-import { MAPS_API_KEY } from "src/config";
+import { useMapKey } from "src/common/useMapKey";
 
 type CoreProps = {
   profile: LocationProfile;
@@ -26,6 +26,7 @@ const CoreHeading = (props: { children: ReactNode }) => {
 };
 
 const Core = (props: CoreProps) => {
+  const mapKey = useMapKey();
   const isDesktopBreakpoint = useBreakpoint("sm");
   const { profile } = props;
   const mappinSVG = (
@@ -48,12 +49,6 @@ const Core = (props: CoreProps) => {
       />
     </svg>
   );
-
-  if (MAPS_API_KEY === "<REPLACE-ME>") {
-    console.error(
-      "Add a map provider API key to config.ts to enable map functionality."
-    );
-  }
 
   return (
     <div className="Core py-8 sm:py-16 bg-brand-gray-100">
@@ -127,7 +122,7 @@ const Core = (props: CoreProps) => {
               className="h-[300px] mt-6"
               coordinate={profile.yextDisplayCoordinate}
               provider={GoogleMaps}
-              apiKey={MAPS_API_KEY}
+              {...mapKey}
             >
               {mappinSVG}
             </LocationMap>
