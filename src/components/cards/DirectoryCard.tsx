@@ -1,8 +1,9 @@
 import { HoursStatus } from "@yext/sites-react-components";
-import { Link, Address } from "@yext/sites-components";
+import { Address } from "@yext/sites-components";
 import type { LiveAPIProfile, LocationProfile } from "src/types/entities";
 import { CardComponent } from "src/models/cardComponent";
 import { useTemplateData } from "src/common/useTemplateData";
+import { MaybeLink } from "src/components/common/MaybeLink";
 
 const DirectoryCard: CardComponent<
   LocationProfile | LiveAPIProfile<LocationProfile>
@@ -13,16 +14,12 @@ const DirectoryCard: CardComponent<
   return (
     <div className="Directorycard bg-white px-6 py-8 border h-full">
       <h3 className="mb-4 text-lg font-medium">
-        {profile.slug ? (
-          <Link
-            href={relativePrefixToRoot + profile.slug}
-            className="Link Link--primary hover:underline"
-          >
-            {profile.name}
-          </Link>
-        ) : (
-          profile.name
-        )}
+        <MaybeLink
+          className="Link Link--primary hover:underline"
+          href={profile.slug ? relativePrefixToRoot + profile.slug : ""}
+        >
+          {profile.name}
+        </MaybeLink>
       </h3>
 
       {profile.hours && (
