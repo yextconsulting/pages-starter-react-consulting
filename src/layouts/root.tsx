@@ -25,6 +25,7 @@ import type {
 } from "src/types/entities";
 import { Main } from "src/layouts/main";
 import DirectoryLayout from "src/layouts/directory";
+import { getTranslations } from "src/i18n";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -34,7 +35,7 @@ export const configBuilder: (
   filter?: Stream["filter"]
 ) => TemplateConfig = (id?: string, filter?: Stream["filter"]) => ({
   stream: {
-    $id: "directory-root",
+    $id: id || "directory-root",
     // Specifies the exact data that each generated document will contain. This data is passed in
     // directly as props to the default exported function.
     fields: [
@@ -52,7 +53,7 @@ export const configBuilder: (
       "dm_directoryChildren.dm_baseEntityCount",
     ],
     // Defines the scope of entities that qualify for this stream.
-    filter: {
+    filter: filter || {
       savedFilterIds: ["dm_defaultDirectory"],
     },
     // The entity language profiles that documents will be generated for.
@@ -98,12 +99,15 @@ export const transformProps: TransformProps<
 > = async (data) => {
   const { name } = data.document;
 
+  const translations = await getTranslations(data.document.locale);
+
   return {
     ...data,
     document: {
       ...data.document,
       dm_directoryParents: [{ name: name, slug: "" }],
     },
+    translations,
   };
 };
 
