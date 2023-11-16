@@ -1,4 +1,4 @@
-export { getPath, getHeadConfig } from "src/layouts/search";
+export { getPath, getHeadConfig, transformProps } from "src/layouts/search";
 import { Template } from "@yext/pages";
 import SearchLayout, { configBuilder } from "src/layouts/search";
 import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";

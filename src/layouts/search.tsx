@@ -4,8 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import Locator from "src/components/search/Locator";
 import { getSearchProvider } from "src/config";
 import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
-
 import {
+  TransformProps,
   GetHeadConfig,
   GetPath,
   HeadConfig,
@@ -17,6 +17,7 @@ import { defaultHeadConfig } from "src/common/head";
 import "src/index.css";
 import { Main } from "src/layouts/main";
 import { TemplateProps } from "src/types/entities";
+import { getTranslations } from "src/i18n";
 
 /**
  * Not required depending on your use case.
@@ -70,6 +71,24 @@ export const getHeadConfig: GetHeadConfig<
   TemplateRenderProps<SearchPageProfile>
 > = (data): HeadConfig => {
   return defaultHeadConfig(data);
+};
+
+/**
+ * Required only when data needs to be retrieved from an external (non-Knowledge Graph) source.
+ * If the page is truly static this function is not necessary.
+ *
+ * This function will be run during generation and pass in directly as props to the default
+ * exported function.
+ */
+export const transformProps: TransformProps<
+  TemplateRenderProps<SearchPageProfile>
+> = async (data) => {
+  const translations = await getTranslations(data.document.locale);
+
+  return {
+    ...data,
+    translations,
+  };
 };
 
 interface SearchLayoutProps {
