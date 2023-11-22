@@ -1,0 +1,44 @@
+buildConfiguration:
+  buildCommand: npm run build
+  installDependenciesStep:
+    command: npm ci
+    requiredFiles:
+      - package.json
+      - package-lock.json
+livePreviewConfiguration:
+  setupCommand: ":"
+siteStream:
+  id: site-stream
+  fields:
+    - id
+    - meta
+    - name
+    - c_facebook
+    - c_youtube
+    - c_twitter
+    - c_linkedIn
+    - c_instagram
+    - c_copyrightMessage
+    - c_footerLinks
+    - c_header
+    - c_nearbySectionAPIKey
+    - c_searchExperienceAPIKey
+    - c_reviewsAPIKey
+    - c_brand
+    - c_searchPage.slug
+  localization:
+    locales:
+      - en
+    primary: false
+  entityId: site-entity
+sitemap:
+  exclude_list:
+    - feedback/
+    - robots.txt
+    - google5804978b12580bf0.html
+    - googleb3b80496355c277a.html
+    - googlebd0a38c70774abc9.html
+    - googlece5070621c727874.html
+    - googled2b2b0d496836f12.html
+    - googled44f8f19fc4a8f0d.html
+    - googlee17902bbeee43866.html

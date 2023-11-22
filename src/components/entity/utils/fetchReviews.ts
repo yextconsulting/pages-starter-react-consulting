@@ -1,5 +1,4 @@
 import type { ReviewStreamsResponse } from "src/types/entities";
-import { fetch } from "@yext/pages/util";
 
 export const fetchReviews = async (api_key: string, entityId: string) => {
   const params = new URLSearchParams({
