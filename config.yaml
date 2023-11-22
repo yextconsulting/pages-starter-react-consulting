@@ -5,7 +5,6 @@ buildConfiguration:
     requiredFiles:
       - package.json
       - package-lock.json
-      - .npmrc
 livePreviewConfiguration:
   setupCommand: ":"
 siteStream:
