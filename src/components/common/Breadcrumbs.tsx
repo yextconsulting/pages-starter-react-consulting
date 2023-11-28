@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
 import classNames from "classnames";
-import { Link } from "@yext/sites-components";
 import { useTemplateData } from "src/common/useTemplateData";
+import ErrorBoundaryWithAnalytics from "./ErrorBoundaryWithAnalytics";
+import { MaybeLink } from "./MaybeLink";
 
 interface BreadcrumbsPropsDefault {
   breadcrumbs: Array<{ slug: string; name: string }>;
   separator?: ReactNode;
   className?: string;
-  addAnalytics?: boolean;
 }
 
 /*
@@ -28,7 +28,7 @@ const Breadcrumbs = (props: BreadcrumbsPropsDefault) => {
   const { relativePrefixToRoot } = useTemplateData();
 
   return (
-    <>
+    <ErrorBoundaryWithAnalytics name="breadcrumbs">
       {breadcrumbs?.length && (
         <nav
           className={classNames("Breadcrumbs my-4", className)}
@@ -57,7 +57,7 @@ const Breadcrumbs = (props: BreadcrumbsPropsDefault) => {
           </ol>
         </nav>
       )}
-    </>
+    </ErrorBoundaryWithAnalytics>
   );
 };
 
@@ -65,25 +65,20 @@ interface BreadcrumbProps {
   name: string;
   slug?: string;
   index: number;
-  addAnalytics?: boolean;
 }
 
 const Breadcrumb = (props: BreadcrumbProps) => {
   const { name, slug } = props;
 
-  if (slug) {
-    return (
-      <Link
-        className="Link--breadcrumbs Link--underline"
-        href={slug}
-        eventName={props.addAnalytics ? "breadcrumb_" + props.index : ""}
-      >
-        <span>{name}</span>
-      </Link>
-    );
-  }
-
-  return <span>{name}</span>;
+  return (
+    <MaybeLink
+      className="Link--breadcrumbs Link--underline"
+      href={slug}
+      eventName={`link${props.index}`}
+    >
+      <span>{name}</span>
+    </MaybeLink>
+  );
 };
 
 export default Breadcrumbs;

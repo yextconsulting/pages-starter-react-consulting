@@ -269,7 +269,6 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
           breadcrumbs={directoryParents || []}
           separator="/"
           className="container"
-          addAnalytics={true}
         />
       </ErrorBoundaryWithAnalytics>
       <ErrorBoundaryWithAnalytics name="hero">
