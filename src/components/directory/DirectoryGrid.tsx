@@ -15,10 +15,12 @@ const DirectoryGrid = (props: DirectoryGridProps) => {
 
   if (profile.dm_directoryChildren) {
     return (
-      <DirectoryGridLayout
-        CardComponent={props.CardComponent}
-        directoryChildren={profile.dm_directoryChildren}
-      />
+      <ErrorBoundaryWithAnalytics name="directory">
+        <DirectoryGridLayout
+          CardComponent={props.CardComponent}
+          directoryChildren={profile.dm_directoryChildren}
+        />
+      </ErrorBoundaryWithAnalytics>
     );
   }
 
@@ -33,17 +35,15 @@ type DirectoryGridLayoutProps = DirectoryGridProps & {
 const DirectoryGridLayout = (props: DirectoryGridLayoutProps) => {
   const { directoryChildren, CardComponent = DirectoryCard } = props;
   return (
-    <ErrorBoundaryWithAnalytics name="directory">
-      <div className="container my-8">
-        <ul className="flex flex-wrap -m-4">
-          {directoryChildren.map((child, idx) => (
-            <li className="p-4 w-full md:w-1/2 lg:w-1/3" key={idx}>
-              <CardComponent profile={child} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </ErrorBoundaryWithAnalytics>
+    <div className="container my-8">
+      <ul className="flex flex-wrap -m-4">
+        {directoryChildren.map((child, idx) => (
+          <li className="p-4 w-full md:w-1/2 lg:w-1/3" key={idx}>
+            <CardComponent profile={child} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

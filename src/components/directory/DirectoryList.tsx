@@ -15,11 +15,13 @@ const DirectoryList = (props: DirectoryListProps) => {
 
   if (profile.dm_directoryChildren) {
     return (
-      <DirectoryListLayout
-        directoryChildren={profile.dm_directoryChildren}
-        relativePrefixToRoot={relativePrefixToRoot}
-        showNumLocs={props.showNumLocs}
-      />
+      <ErrorBoundaryWithAnalytics name="directory">
+        <DirectoryListLayout
+          directoryChildren={profile.dm_directoryChildren}
+          relativePrefixToRoot={relativePrefixToRoot}
+          showNumLocs={props.showNumLocs}
+        />
+      </ErrorBoundaryWithAnalytics>
     );
   }
 
@@ -36,27 +38,25 @@ interface DirectoryListLayoutProps {
 const DirectoryListLayout = (props: DirectoryListLayoutProps) => {
   const { showNumLocs, directoryChildren, relativePrefixToRoot } = props;
   return (
-    <ErrorBoundaryWithAnalytics name="directory">
-      <div className="container my-8">
-        <ul className="lg:columns-4 md:columns-3 sm:columns-2 columns-1 -m-3">
-          {directoryChildren.map((child, idx) => (
-            <li className="p-3" key={idx}>
-              <Link
-                className="inline-block after:content-[attr(data-count)] after:ml-2"
-                href={relativePrefixToRoot + child.slug}
-                data-count={
-                  showNumLocs ? "(" + child.dm_baseEntityCount + ")" : ""
-                }
-              >
-                <span className="text-brand-primary hover:underline">
-                  {child.name}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </ErrorBoundaryWithAnalytics>
+    <div className="container my-8">
+      <ul className="lg:columns-4 md:columns-3 sm:columns-2 columns-1 -m-3">
+        {directoryChildren.map((child, idx) => (
+          <li className="p-3" key={idx}>
+            <Link
+              className="inline-block after:content-[attr(data-count)] after:ml-2"
+              href={relativePrefixToRoot + child.slug}
+              data-count={
+                showNumLocs ? "(" + child.dm_baseEntityCount + ")" : ""
+              }
+            >
+              <span className="text-brand-primary hover:underline">
+                {child.name}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

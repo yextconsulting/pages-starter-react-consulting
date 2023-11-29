@@ -7,8 +7,29 @@ import {
   FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
+import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
+import { useTemplateData } from "src/common/useTemplateData";
 
-interface FooterProps {
+const Footer = () => {
+  const templateData = useTemplateData();
+  const siteProfile = templateData.document._site;
+
+  return (
+    <ErrorBoundaryWithAnalytics name="footer">
+      <FooterLayout
+        copyrightMessage={siteProfile.c_copyrightMessage || ""}
+        facebook={siteProfile.c_facebook}
+        instagram={siteProfile.c_instagram}
+        youtube={siteProfile.c_youtube}
+        twitter={siteProfile.c_twitter}
+        linkedIn={siteProfile.c_linkedIn}
+        footerLinks={siteProfile.c_footerLinks || []}
+      />
+    </ErrorBoundaryWithAnalytics>
+  );
+};
+
+interface FooterLayoutProps {
   copyrightMessage: string;
   youtube?: string;
   linkedIn?: string;
@@ -18,7 +39,7 @@ interface FooterProps {
   footerLinks: CTA[];
 }
 
-const Footer = (props: FooterProps) => {
+const FooterLayout = (props: FooterLayoutProps) => {
   const copyrightMessage = props.copyrightMessage;
 
   const socialLinks = [
