@@ -30,7 +30,7 @@
     "@yext/components-tsx-maps": "1.0.11",
     "@yext/custom-field-debugger": "2.0.9",
     "@yext/pages": "1.0.0-rc.6",
-    "@yext/schema-wrapper": "1.0.3",
+    "@yext/schema-wrapper": "1.0.4",
     "@yext/search-headless-react": "2.2.0",
     "@yext/search-ui-react": "1.2.1",
     "@yext/sites-components": "1.0.0-rc.5",
