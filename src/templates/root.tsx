@@ -1,6 +1,9 @@
-export { getPath, transformProps, getHeadConfig } from "src/layouts/root";
+export { getPath } from "src/layouts/root/getPath";
+export { transformProps } from "src/layouts/root/transformProps";
+export { getHeadConfig } from "src/layouts/root/getHeadConfig";
 import { Template } from "@yext/pages";
-import RootLayout, { configBuilder } from "src/layouts/root";
+import RootLayout from "src/layouts/root/template";
+import { configBuilder } from "src/layouts/root/configBuilder";
 import { DirectoryProfile, TemplateRenderProps } from "src/types/entities";
 
 // When copying this file for multibrand, you can pass arguments
