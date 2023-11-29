@@ -13,11 +13,13 @@ const DirectoryHero = (props: {}) => {
     (profile._site.c_searchPage?.slug || FALLBACK_SEARCH_PATH);
 
   return (
-    <DirectoryHeroLayout
-      line1={profile._site.c_brand}
-      line2={profile.name}
-      searchPath={searchPath}
-    />
+    <ErrorBoundaryWithAnalytics name="directory_hero">
+      <DirectoryHeroLayout
+        line1={profile._site.c_brand}
+        line2={profile.name}
+        searchPath={searchPath}
+      />
+    </ErrorBoundaryWithAnalytics>
   );
 };
 
@@ -32,20 +34,18 @@ const DirectoryHeroLayout = (props: DirectoryHeroProps) => {
   const { line1, line2 } = props;
 
   return (
-    <ErrorBoundaryWithAnalytics name="directory_hero">
-      <div className="DirectoryHero bg-brand-gray-100 py-8 md:py-20 px-4 md:px-0">
-        <h1 className="mb-6 text-center">
-          {line1 && <div className="Heading Heading--sub mb-6">{line1}</div>}
-          {line2 && <div className="Heading Heading--head">{line2}</div>}
-        </h1>
-        {props.searchPath && (
-          <DirectorySearchBar
-            placeholder="Search by city and state or ZIP code"
-            searcherPath={props.searchPath}
-          />
-        )}
-      </div>
-    </ErrorBoundaryWithAnalytics>
+    <div className="DirectoryHero bg-brand-gray-100 py-8 md:py-20 px-4 md:px-0">
+      <h1 className="mb-6 text-center">
+        {line1 && <div className="Heading Heading--sub mb-6">{line1}</div>}
+        {line2 && <div className="Heading Heading--head">{line2}</div>}
+      </h1>
+      {props.searchPath && (
+        <DirectorySearchBar
+          placeholder="Search by city and state or ZIP code"
+          searcherPath={props.searchPath}
+        />
+      )}
+    </div>
   );
 };
 
