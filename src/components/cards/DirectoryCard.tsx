@@ -24,7 +24,7 @@ const DirectoryCard: CardComponent<
 
       {profile.hours && (
         <div className="mb-4 text-sm">
-          <HoursStatus hours={profile.hours} />
+          <HoursStatus hours={profile.hours} timezone={profile.timezone} />
         </div>
       )}
 
