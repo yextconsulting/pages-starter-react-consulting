@@ -108,6 +108,7 @@ interface Insight {
 // TODO: generate these automatically from stream definitions
 export interface LocationProfile extends BaseProfile {
   readonly name: string;
+  readonly timezone: string;
   readonly address: Address;
   readonly yextDisplayCoordinate: Coordinate;
   readonly slug: string;

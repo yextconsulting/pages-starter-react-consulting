@@ -34,7 +34,7 @@
     "@yext/search-headless-react": "2.2.0",
     "@yext/search-ui-react": "1.2.1",
     "@yext/sites-components": "1.0.0-rc.5",
-    "@yext/sites-react-components": "0.1.16",
+    "@yext/sites-react-components": "0.1.17",
     "@yext/types": "0.1.10-alpha",
     "classnames": "2.3.1",
     "i18next": "23.4.4",

@@ -5,6 +5,7 @@ import type { Address, Hours, CTA, Image as ImageType } from "@yext/types";
 type HeroProps = {
   name: string;
   address: Address;
+  timezone: string;
   background?: ImageType;
   cta1?: CTA;
   cta2?: CTA;
@@ -26,6 +27,7 @@ const Hero = (props: HeroProps) => {
             <div className="mb-4">
               <HoursStatus
                 hours={props.hours}
+                timezone={props.timezone}
                 separatorTemplate={() => <span className="bullet" />}
                 dayOfWeekTemplate={() => null}
               />
