@@ -1,8 +1,32 @@
 import { HoursStatus } from "@yext/sites-react-components";
 import { Link, Image } from "@yext/pages-components";
 import type { Address, Hours, CTA, Image as ImageType } from "@yext/types";
+import { useTemplateData } from "src/common/useTemplateData";
+import type { LocationProfile } from "src/types/entities";
+import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 
-type HeroProps = {
+const Hero = () => {
+  const templateData = useTemplateData();
+  const profile = templateData.document as LocationProfile;
+  const hero = profile.c_heroSection;
+
+  return (
+    <ErrorBoundaryWithAnalytics name="hero">
+      <HeroLayout
+        name={profile.name}
+        cta1={hero?.cta1}
+        cta2={hero?.cta2}
+        address={profile.address}
+        background={hero?.background}
+        hours={profile.hours}
+        numReviews={21}
+        rating={4.5}
+      />
+    </ErrorBoundaryWithAnalytics>
+  );
+};
+
+type HeroLayoutProps = {
   name: string;
   address: Address;
   background?: ImageType;
@@ -13,7 +37,7 @@ type HeroProps = {
   rating?: number;
 };
 
-const Hero = (props: HeroProps) => {
+const HeroLayout = (props: HeroLayoutProps) => {
   return (
     <div className="Hero py-8 sm:py-16">
       <div className="container flex flex-col lg:flex-row">

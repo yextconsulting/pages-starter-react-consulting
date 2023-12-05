@@ -2,8 +2,34 @@ import type { Image as ImageType, CTA as CTAType } from "@yext/types";
 import { Link, Image } from "@yext/pages-components";
 import appStoreIcon from "src/assets/images/appstore.svg";
 import playStoreIcon from "src/assets/images/playstore.svg";
+import { useTemplateData } from "src/common/useTemplateData";
+import { LocationProfile } from "src/types/entities";
+import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 
-type PromoProps = {
+const Promo = () => {
+  const templateData = useTemplateData();
+  const profile = templateData.document as LocationProfile;
+  const promo = profile.c_promoSection;
+
+  if (promo?.title && promo?.image) {
+    return (
+      <ErrorBoundaryWithAnalytics name="promo">
+        <PromoLayout
+          title={promo.title}
+          description={promo.description}
+          image={promo.image}
+          cta={promo.cta}
+          googlePlayUrl={promo.googlePlayUrl}
+          appStoreUrl={promo.appStoreUrl}
+        />
+      </ErrorBoundaryWithAnalytics>
+    );
+  }
+
+  return null;
+};
+
+type PromoLayoutProps = {
   image?: ImageType;
   title: string;
   description?: string;
@@ -12,7 +38,7 @@ type PromoProps = {
   googlePlayUrl?: string;
 };
 
-const Promo = (props: PromoProps) => {
+const PromoLayout = (props: PromoLayoutProps) => {
   return (
     <div className="Promo py-8 sm:py-16">
       <div className="container flex flex-col md:flex-row">

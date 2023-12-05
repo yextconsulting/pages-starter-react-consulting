@@ -1,14 +1,42 @@
 import { useState } from "react";
-import type { FinancialProfessionalProfile } from "src/types/entities";
+import type {
+  FinancialProfessionalProfile,
+  LocationProfile,
+} from "src/types/entities";
 import TeamCard from "src/components/cards/TeamCard";
+import { useTemplateData } from "src/common/useTemplateData";
+import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 
 type TeamProps = {
-  title: string;
-  team: FinancialProfessionalProfile[];
   initialSize?: number;
 };
 
 const Team = (props: TeamProps) => {
+  const templateData = useTemplateData();
+  const profile = templateData.document as LocationProfile;
+  const team = profile.c_teamSection;
+
+  if (team?.title && team?.team) {
+    return (
+      <ErrorBoundaryWithAnalytics name="team">
+        <TeamLayout
+          title={team.title}
+          team={team.team}
+          initialSize={props.initialSize}
+        />
+      </ErrorBoundaryWithAnalytics>
+    );
+  }
+
+  return null;
+};
+
+type TeamLayoutProps = TeamProps & {
+  title: string;
+  team: FinancialProfessionalProfile[];
+};
+
+const TeamLayout = (props: TeamLayoutProps) => {
   const { title, team, initialSize } = props;
 
   const [numberVisible, setNumberVisible] = useState(

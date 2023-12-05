@@ -6,6 +6,7 @@ import { useTemplateData } from "src/common/useTemplateData";
 import type { LiveAPIProfile, LocationProfile } from "src/types/entities";
 import classNames from "classnames";
 import DirectoryCard from "src/components/cards/DirectoryCard";
+import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 
 // Configure nearby locations section liveapi params and endpoint
 // For all available params see: https://hitchhikers.yext.com/docs/contentdeliveryapis/legacy/entities#operation/geoSearchEntities
@@ -24,7 +25,28 @@ const getConfig = (api_key: string) => {
   };
 };
 
-type NearbyProps = {
+const Nearby = () => {
+  const templateData = useTemplateData();
+  const profile = templateData.document as LocationProfile;
+  const nearby = profile.c_nearbySection;
+
+  // TODO: move API fetching to this template
+
+  return (
+    <ErrorBoundaryWithAnalytics name="neaby">
+      <NearbyLayout
+        title={nearby?.title}
+        linkToLocator={nearby?.linkToLocator}
+        buttonText={nearby?.cta?.label}
+        buttonLink={nearby?.cta?.link}
+        coordinate={profile.yextDisplayCoordinate}
+        id={profile.id}
+      />
+    </ErrorBoundaryWithAnalytics>
+  );
+};
+
+type NearbyLayoutProps = {
   title?: string;
   linkToLocator?: boolean;
   buttonText?: string;
@@ -33,7 +55,7 @@ type NearbyProps = {
   id: string;
 };
 
-const Nearby = (props: NearbyProps) => {
+const NearbyLayout = (props: NearbyLayoutProps) => {
   const {
     title = "Nearby Locations",
     linkToLocator = true,

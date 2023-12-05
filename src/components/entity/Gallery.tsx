@@ -13,15 +13,42 @@ import {
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import c from "classnames";
+import { useTemplateData } from "src/common/useTemplateData";
+import { LocationProfile } from "src/types/entities";
+import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 
 type GalleryProps = {
-  images: (ImageType | ComplexImageType)[];
-  title?: string;
   hideArrows?: boolean;
   hideNav?: boolean;
 };
 
 const Gallery = (props: GalleryProps) => {
+  const templateData = useTemplateData();
+  const profile = templateData.document as LocationProfile;
+  const gallery = profile.c_gallerySection;
+
+  if (gallery?.images || profile.photoGallery) {
+    return (
+      <ErrorBoundaryWithAnalytics name="gallery">
+        <GalleryLayout
+          title={gallery?.title}
+          images={gallery?.images || profile.photoGallery}
+          hideArrows={props.hideArrows}
+          hideNav={props.hideNav}
+        />
+      </ErrorBoundaryWithAnalytics>
+    );
+  }
+
+  return null;
+};
+
+type GalleryLayoutProps = GalleryProps & {
+  images: (ImageType | ComplexImageType)[];
+  title?: string;
+};
+
+const GalleryLayout = (props: GalleryLayoutProps) => {
   const arrowSVG = (
     <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

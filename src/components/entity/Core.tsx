@@ -12,8 +12,21 @@ import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
 import { getMapKey } from "src/common/getMapKey";
+import { useTemplateData } from "src/common/useTemplateData";
+import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 
-type CoreProps = {
+const Core = () => {
+  const templateData = useTemplateData();
+  const profile = templateData.document as LocationProfile;
+
+  return (
+    <ErrorBoundaryWithAnalytics name="core">
+      <CoreLayout profile={profile} />
+    </ErrorBoundaryWithAnalytics>
+  );
+};
+
+type CoreLayoutProps = {
   profile: LocationProfile;
 };
 
@@ -25,7 +38,7 @@ const CoreHeading = (props: { children: ReactNode }) => {
   return <h2 className="Heading Heading--sub mb-4">{props.children}</h2>;
 };
 
-const Core = (props: CoreProps) => {
+const CoreLayout = (props: CoreLayoutProps) => {
   const mapKey = getMapKey();
   const isDesktopBreakpoint = useBreakpoint("sm");
   const { profile } = props;

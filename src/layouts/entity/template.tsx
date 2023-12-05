@@ -7,7 +7,6 @@
  * Another way to think about it is that a page will be generated using this
  * template for every eligible entity in your Knowledge Graph.
  */
-import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
 import type { LocationProfile, TemplateRenderProps } from "src/types/entities";
 
@@ -35,143 +34,31 @@ interface EntityLayoutProps {
 }
 
 const EntityLayout = ({ data }: EntityLayoutProps) => {
-  const {
-    id,
-    yextDisplayCoordinate,
-    name,
-    address,
-    description,
-    hours,
-    photoGallery,
-    c_bannerSection: banner,
-    c_heroSection: hero,
-    c_promoSection: promo,
-    c_featuredProductsSection: products,
-    c_aboutSection: about,
-    c_gallerySection: gallery,
-    c_teamSection: team,
-    c_faqSection: faq,
-    c_nearbySection: nearby,
-    c_eventsSection: events,
-    c_insightsSection: insights,
-    c_reviewsSection: reviews,
-    dm_directoryParents: directoryParents,
-  } = data.document;
-
-  const showBanner = banner?.text && banner?.image;
-  const showPromo = promo?.title && promo?.image;
-  const showProducts = products?.title && products?.products;
-  const showAbout = about?.title && (about.description || description);
-  const showGallery = gallery?.images || photoGallery;
-  const showTeam = team?.title && team?.team;
-  const showFAQ = faq?.title && faq?.faqs;
-  const showEvents = events?.title && events.events;
-  const showInsights = insights?.title && insights?.insights;
+  const { dm_directoryParents: directoryParents } = data.document;
 
   return (
     <>
-      {showBanner && (
-        <ErrorBoundaryWithAnalytics name="banner">
-          <Banner text={banner.text} image={banner.image} />
-        </ErrorBoundaryWithAnalytics>
-      )}
-      <ErrorBoundaryWithAnalytics name="breadcrumbs">
-        <Breadcrumbs
-          breadcrumbs={directoryParents || []}
-          separator="/"
-          className="container"
-        />
-      </ErrorBoundaryWithAnalytics>
-      <ErrorBoundaryWithAnalytics name="hero">
-        <Hero
-          name={name}
-          cta1={hero?.cta1}
-          cta2={hero?.cta2}
-          address={address}
-          background={hero?.background}
-          hours={hours}
-          numReviews={21}
-          rating={4.5}
-        />
-      </ErrorBoundaryWithAnalytics>
-      <ErrorBoundaryWithAnalytics name="core">
-        <Core profile={data.document} />
-      </ErrorBoundaryWithAnalytics>
-      {showPromo && (
-        <ErrorBoundaryWithAnalytics name="promo">
-          <Promo
-            title={promo.title}
-            description={promo.description}
-            image={promo.image}
-            cta={promo.cta}
-            googlePlayUrl={promo.googlePlayUrl}
-            appStoreUrl={promo.appStoreUrl}
-          />
-        </ErrorBoundaryWithAnalytics>
-      )}
-      {showProducts && (
-        <ErrorBoundaryWithAnalytics name="products">
-          <Products title={products.title} items={products.products} />
-        </ErrorBoundaryWithAnalytics>
-      )}
-      {showEvents && (
-        <ErrorBoundaryWithAnalytics name="events">
-          <Events title={events.title} items={events.events} />
-        </ErrorBoundaryWithAnalytics>
-      )}
-      {showAbout && (
-        <ErrorBoundaryWithAnalytics name="about">
-          <About
-            title={about.title}
-            image={about.image}
-            description={about.description || description}
-            cta={about.cta}
-          />
-        </ErrorBoundaryWithAnalytics>
-      )}
-      {showInsights && (
-        <ErrorBoundaryWithAnalytics name="insights">
-          <Insights
-            title={insights.title}
-            cta={insights.cta}
-            insights={insights.insights}
-          />
-        </ErrorBoundaryWithAnalytics>
-      )}
-      {showGallery && (
-        <ErrorBoundaryWithAnalytics name="gallery">
-          <Gallery
-            title={gallery?.title}
-            images={gallery?.images || photoGallery}
-          />
-        </ErrorBoundaryWithAnalytics>
-      )}
-      {showTeam && (
-        <ErrorBoundaryWithAnalytics name="team">
-          <Team title={team.title} team={team.team} initialSize={3} />
-        </ErrorBoundaryWithAnalytics>
-      )}
-      {showFAQ && (
-        <ErrorBoundaryWithAnalytics name="faqs">
-          <FAQs title={faq.title} faqs={faq.faqs} />
-        </ErrorBoundaryWithAnalytics>
-      )}
+      <Banner hasCloseBtn={true} />
+      <Breadcrumbs
+        breadcrumbs={directoryParents || []}
+        separator="/"
+        className="container"
+      />
+      <Hero />
+      <Core />
+      <Promo />
+      <Products itemsToShow={3} />
+      <Events showPastEvents={false} />
+      <About />
+      <Insights />
+      <Gallery />
+      <Team initialSize={3} />
+      <FAQs />
       <LazyLoadWrapper>
-        <ErrorBoundaryWithAnalytics name="reviews">
-          <Reviews title={reviews?.title} name={name} entityId={id} />
-        </ErrorBoundaryWithAnalytics>
+        <Reviews maxReviews={12} numReviewsPerPage={3} />
       </LazyLoadWrapper>
       <LazyLoadWrapper>
-        <ErrorBoundaryWithAnalytics name="nearby">
-          <Nearby
-            title={nearby?.title}
-            linkToLocator={nearby?.linkToLocator}
-            buttonText={nearby?.cta?.label}
-            buttonLink={nearby?.cta?.link}
-            coordinate={yextDisplayCoordinate}
-            id={id}
-          />
-        </ErrorBoundaryWithAnalytics>
+        <Nearby />
       </LazyLoadWrapper>
     </>
   );

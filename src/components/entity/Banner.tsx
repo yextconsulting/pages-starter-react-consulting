@@ -2,14 +2,40 @@ import { useState } from "react";
 import { Image } from "@yext/pages-components";
 import type { Image as ImageType } from "@yext/types";
 import { FaTimes } from "react-icons/fa";
+import { useTemplateData } from "src/common/useTemplateData";
+import { LocationProfile } from "src/types/entities";
+import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 
 type BannerProps = {
-  image?: ImageType;
-  text: string;
   hasCloseBtn?: boolean;
 };
 
 const Banner = (props: BannerProps) => {
+  const templateData = useTemplateData();
+  const profile = templateData.document as LocationProfile;
+  const banner = profile.c_bannerSection;
+
+  if (banner?.text && banner?.image) {
+    return (
+      <ErrorBoundaryWithAnalytics name="banner">
+        <BannerLayout
+          text={banner.text}
+          image={banner.image}
+          hasCloseBtn={props.hasCloseBtn}
+        />
+      </ErrorBoundaryWithAnalytics>
+    );
+  }
+
+  return null;
+};
+
+type BannerLayoutProps = BannerProps & {
+  image?: ImageType;
+  text: string;
+};
+
+const BannerLayout = (props: BannerLayoutProps) => {
   const [showBanner, setShowBanner] = useState(true);
 
   if (!showBanner) {

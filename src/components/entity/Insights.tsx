@@ -1,18 +1,40 @@
 import type { CTA } from "@yext/types";
-import type { Insight } from "src/types/entities";
+import type { Insight, LocationProfile } from "src/types/entities";
 import {
   InsightCard,
   InsightCardFeatured,
 } from "src/components/cards/InsightCard";
 import { Link } from "@yext/pages-components";
+import { useTemplateData } from "src/common/useTemplateData";
+import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 
-interface InsightsProps {
+const Insights = () => {
+  const templateData = useTemplateData();
+  const profile = templateData.document as LocationProfile;
+  const insights = profile.c_insightsSection;
+
+  if (insights?.title && insights?.insights) {
+    return (
+      <ErrorBoundaryWithAnalytics name="insights">
+        <InsightsLayout
+          title={insights.title}
+          cta={insights.cta}
+          insights={insights.insights}
+        />
+      </ErrorBoundaryWithAnalytics>
+    );
+  }
+
+  return null;
+};
+
+interface InsightsLayoutProps {
   title: string;
   cta?: CTA;
   insights: Insight[];
 }
 
-const Insights = (props: InsightsProps) => {
+const InsightsLayout = (props: InsightsLayoutProps) => {
   const { title, cta, insights } = props;
   // First insight is blown up and features a picture
   const featuredInsight = insights[0];

@@ -11,17 +11,42 @@ import {
 } from "pure-react-carousel";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { fetchReviews } from "src/components/entity/utils/fetchReviews";
-import { ReviewProfile } from "src/types/entities";
+import { useTemplateData } from "src/common/useTemplateData";
+import { LocationProfile, ReviewProfile } from "src/types/entities";
+import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 
 type ReviewsProps = {
-  title?: string;
   maxReviews?: number;
   numReviewsPerPage?: number;
+};
+
+const Reviews = (props: ReviewsProps) => {
+  const templateData = useTemplateData();
+  const profile = templateData.document as LocationProfile;
+  const reviews = profile.c_reviewsSection;
+
+  // TODO: move reviews API fetching into this template
+
+  return (
+    <ErrorBoundaryWithAnalytics name="reviews">
+      <ReviewsLayout
+        title={reviews?.title}
+        name={profile.name}
+        entityId={profile.id}
+        maxReviews={props.maxReviews}
+        numReviewsPerPage={props.numReviewsPerPage}
+      />
+    </ErrorBoundaryWithAnalytics>
+  );
+};
+
+type ReviewsLayoutProps = ReviewsProps & {
+  title?: string;
   name: string;
   entityId: string;
 };
 
-const Reviews = (props: ReviewsProps) => {
+const ReviewsLayout = (props: ReviewsLayoutProps) => {
   const {
     title = "Recent Reviews",
     maxReviews = 12,

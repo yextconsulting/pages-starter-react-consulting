@@ -1,12 +1,30 @@
-import type { FAQProfile } from "src/types/entities";
+import type { FAQProfile, LocationProfile } from "src/types/entities";
 import FAQ from "src/components/entity/FAQ";
+import { useTemplateData } from "src/common/useTemplateData";
+import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 
-type FAQsProps = {
+const FAQs = () => {
+  const templateData = useTemplateData();
+  const profile = templateData.document as LocationProfile;
+  const faq = profile.c_faqSection;
+
+  if (faq?.title && faq?.faqs) {
+    return (
+      <ErrorBoundaryWithAnalytics name="faqs">
+        <FAQsLayout title={faq.title} faqs={faq.faqs} />
+      </ErrorBoundaryWithAnalytics>
+    );
+  }
+
+  return null;
+};
+
+type FAQsLayoutProps = {
   title: string;
   faqs: FAQProfile[];
 };
 
-const FAQs = (props: FAQsProps) => {
+const FAQsLayout = (props: FAQsLayoutProps) => {
   const { title, faqs } = props;
 
   return (
