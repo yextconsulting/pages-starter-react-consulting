@@ -18,7 +18,6 @@ export const configBuilder: (
       "logo",
       "c_meta",
       "name",
-      "timezone",
       "address",
       "mainPhone",
       "tollFreePhone",

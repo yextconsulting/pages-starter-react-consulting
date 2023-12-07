@@ -12,7 +12,7 @@ export interface LocatorCardProps {
 const LocatorCard = (props: LocatorCardProps & CardProps<LocationProfile>) => {
   const { result } = props;
   const { rawData } = result;
-  const { address, hours, slug, timezone } = rawData;
+  const { address, hours, slug } = rawData;
   const { relativePrefixToRoot } = useTemplateData();
 
   return (
@@ -31,7 +31,6 @@ const LocatorCard = (props: LocatorCardProps & CardProps<LocationProfile>) => {
       {hours && (
         <div className="pb-2 sm:pb-4">
           <HoursStatus
-            timezone={timezone}
             dayOfWeekTemplate={() => null}
             hours={hours}
             separatorTemplate={() => <span className="bullet" />}
