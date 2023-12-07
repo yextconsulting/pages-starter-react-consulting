@@ -39,7 +39,6 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
     id,
     yextDisplayCoordinate,
     name,
-    timezone,
     address,
     description,
     hours,
@@ -91,7 +90,6 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
           address={address}
           background={hero?.background}
           hours={hours}
-          timezone={timezone}
           numReviews={21}
           rating={4.5}
         />

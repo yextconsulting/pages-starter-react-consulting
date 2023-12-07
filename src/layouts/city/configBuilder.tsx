@@ -25,7 +25,6 @@ export const configBuilder: (
       "dm_directoryChildren.name",
       "dm_directoryChildren.address",
       "dm_directoryChildren.hours",
-      "dm_directoryChildren.timezone",
     ],
     // Defines the scope of entities that qualify for this stream.
     filter: filter || {
