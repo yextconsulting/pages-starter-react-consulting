@@ -11,6 +11,7 @@ export default defineConfig({
   },
   plugins: [react(), yextSSG()],
   build: {
+    assetsInlineLimit: 0, // TODO: Remove this if we ever upgrade to a Vite version that includes this fix: https://github.com/vitejs/vite/pull/14958
     rollupOptions: {
       output: {
         manualChunks: {
