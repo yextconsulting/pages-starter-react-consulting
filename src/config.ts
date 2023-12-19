@@ -3,6 +3,10 @@ import { provideHeadless } from "@yext/search-headless-react";
 import type { ConfigurationProviderContextType } from "@yext/sites-react-components";
 // import { SandboxEndpoints } from "@yext/search-headless-react"; // Add if using a sandbox account
 
+declare global {
+  const YEXT_PUBLIC_MAPS_API_KEY: string;
+}
+
 const config: ConfigurationProviderContextType = {
   components: {},
 };
@@ -10,7 +14,7 @@ const config: ConfigurationProviderContextType = {
 export default config;
 
 // Key for Maps provider.
-export const MAPS_API_KEY = "<REPLACE-ME>";
+export const MAPS_API_KEY = YEXT_PUBLIC_MAPS_API_KEY || "<REPLACE-ME>";
 
 // Path for the search page.
 // Exported here since it's required across multiple pages such as the nearby section and directory search bar.
