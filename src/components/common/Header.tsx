@@ -1,7 +1,7 @@
 import type { CTA, Image as ImageType } from "@yext/types";
 import { Image, Link } from "@yext/pages-components";
 import c from "classnames";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { MaybeLink } from "src/components/common/MaybeLink";
 import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
@@ -31,13 +31,16 @@ const HeaderLayout = (props: HeaderLayoutProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { logo, logoLink, links } = props;
 
+  // Ensure menu is closed on initial render
+  useEffect(() => {
+    setMenuOpen(false);
+  }, []);
+
   return (
     <header className="Header relative">
       <div className="container py-5 flex justify-start md:justify-between">
         {logo && <HeaderLogo logo={logo} logoLink={logoLink} />}
-
         <HeaderLinks links={links} />
-
         <button
           className="flex md:hidden absolute p-4 right-0 top-1/2 -translate-y-1/2"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -46,7 +49,6 @@ const HeaderLayout = (props: HeaderLayoutProps) => {
           <span className="sr-only">Toggle Header Menu</span>
         </button>
       </div>
-
       <HeaderMobileMenu isOpen={menuOpen} links={links} />
     </header>
   );
