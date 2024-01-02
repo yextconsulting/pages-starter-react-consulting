@@ -17,7 +17,7 @@ import ResultInfo from "src/components/search/ResultInfo";
 import ResultList from "src/components/search/ResultList";
 import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
-import { useMapKey } from "src/common/useMapKey";
+import { getMapKey } from "src/common/getMapKey";
 
 type LocatorProps = {
   // Will display results up to the verticalLimit (default 20, change with searchActions.setVerticalLimit(num))
@@ -36,7 +36,7 @@ const Locator = (props: LocatorProps) => {
     subTitle,
     title,
   } = props;
-  const mapKey = useMapKey();
+  const mapKey = getMapKey();
   const [selectedEntityId, setSelectedEntityId] = useState("");
   const [focusedEntityId, setFocusedEntityId] = useState("");
   const [hoveredEntityId, setHoveredEntityId] = useState("");

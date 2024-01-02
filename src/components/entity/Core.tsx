@@ -11,7 +11,7 @@ import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
-import { useMapKey } from "src/common/useMapKey";
+import { getMapKey } from "src/common/getMapKey";
 
 type CoreProps = {
   profile: LocationProfile;
@@ -26,7 +26,7 @@ const CoreHeading = (props: { children: ReactNode }) => {
 };
 
 const Core = (props: CoreProps) => {
-  const mapKey = useMapKey();
+  const mapKey = getMapKey();
   const isDesktopBreakpoint = useBreakpoint("sm");
   const { profile } = props;
   const mappinSVG = (
