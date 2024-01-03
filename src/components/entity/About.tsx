@@ -1,5 +1,5 @@
 import type { Image as ImageType, CTA as CTAType } from "@yext/types";
-import { Link, Image } from "@yext/sites-components";
+import { Link, Image } from "@yext/pages-components";
 
 type AboutProps = {
   image?: ImageType;

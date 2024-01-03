@@ -3,7 +3,7 @@ import remarkYext, {
   yextRemarkRehypeHandlers,
 } from "src/components/common/rtf-library/index";
 import "src/components/common/RTF.css";
-// import { Link } from "@yext/sites-components";
+// import { Link } from "@yext/pages-components";
 
 /**
  * This component is intended for rendering RTF v1 ("Legacy") fields.

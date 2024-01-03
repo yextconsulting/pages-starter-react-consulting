@@ -1,4 +1,4 @@
-import { Link } from "@yext/sites-components";
+import { Link } from "@yext/pages-components";
 import type { DirectoryProfile } from "src/types/entities";
 import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 import { useTemplateData } from "src/common/useTemplateData";

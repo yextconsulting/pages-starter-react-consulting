@@ -2,7 +2,7 @@ import {
   TemplateProps as InternalTemplateProps,
   TemplateRenderProps as InternalTemplateRenderProps,
 } from "@yext/pages/*";
-import type { ListingType } from "@yext/sites-components";
+import type { ListingType } from "@yext/pages-components";
 import type {
   Address,
   Coordinate,

@@ -7,7 +7,7 @@ import type {
 import { getRuntime } from "@yext/pages/util";
 import * as fourOhFour from "@yext/components-404";
 import { isProduction } from "@yext/pages/util";
-import { Link } from "@yext/sites-components";
+import { Link } from "@yext/pages-components";
 
 export const config: TemplateConfig = {
   // The name of the feature. If not set the name of this file will be used (without extension).

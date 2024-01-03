@@ -6,7 +6,7 @@ import {
   getDirections,
   LocationMap,
   GoogleMaps,
-} from "@yext/sites-components";
+} from "@yext/pages-components";
 import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";

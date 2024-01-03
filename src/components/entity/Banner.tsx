@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image } from "@yext/sites-components";
+import { Image } from "@yext/pages-components";
 import type { Image as ImageType } from "@yext/types";
 import { FaTimes } from "react-icons/fa";
 

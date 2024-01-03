@@ -1,5 +1,5 @@
 import type { CTA, Image as ImageType } from "@yext/types";
-import { Image, Link } from "@yext/sites-components";
+import { Image, Link } from "@yext/pages-components";
 import c from "classnames";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";

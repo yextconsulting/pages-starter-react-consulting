@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Link } from "@yext/sites-components";
+import { Link } from "@yext/pages-components";
 
 type maybeLinkProps = {
   href?: string;
