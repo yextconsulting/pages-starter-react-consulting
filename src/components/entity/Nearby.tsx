@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Coordinate } from "@yext/types";
 import { FALLBACK_SEARCH_PATH } from "src/config";
-import { Link } from "@yext/sites-components";
+import { Link } from "@yext/pages-components";
 import { useTemplateData } from "src/common/useTemplateData";
 import type { LiveAPIProfile, LocationProfile } from "src/types/entities";
 import classNames from "classnames";
