@@ -7,7 +7,7 @@ import { useTemplateData } from "src/common/useTemplateData";
 import { SearchHeadlessProvider } from "@yext/search-headless-react";
 import { FilterSearch } from "@yext/search-ui-react";
 import GeolocateButton from "src/components/search/GeolocateButton";
-import { encodeStaticFilters } from "src/components/search/utils/handleSearchParams";
+import { encodeStaticFilters } from "../search/utils/filterEncodings";
 
 const searchFields = [
   {
