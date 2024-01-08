@@ -161,12 +161,17 @@ export function defaultHeadConfig(
       ...addressTags,
       ...(additionalTags || []),
     ],
-    other: [yaScript(), SchemaBuilder(data)].join("\n"),
+    other: [yaScript(), SchemaBuilder(data), yextEntityData(data)].join("\n"),
   };
 }
 
 function yaScript(): string {
   return `<script>window.yextAnalyticsEnabled=false;window.enableYextAnalytics=()=>{window.yextAnalyticsEnabled=true}</script>`;
+}
+
+// Script for passing entity ID to yextension
+function yextEntityData(data: TemplateRenderProps): string {
+  return `<script id="yext-entity-data" data-entity-id="${data.document.uid}"></script>`;
 }
 
 function metaTitle(data: TemplateRenderProps): string {
