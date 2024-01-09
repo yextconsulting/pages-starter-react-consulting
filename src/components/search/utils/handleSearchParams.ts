@@ -45,13 +45,11 @@ export function useLoadInitialSearchParams(
       }
     }
     loadInitialParams();
-
-    // loadSearchParams(searchActions, searchParams, callback);
   }, [searchActions, searchParams, setSearchParams, paramsLoaded, callback]);
 }
 
-// Register listeners for updating the URLSearchParams when the search redux state is updated.
-export function useHandleSearchParams(initialParamsLoaded: boolean) {
+// On change in search state, encode the state into URLSearchParams and push to window.history if there is a delta.
+export function useSyncSearchParamsWithState(initialParamsLoaded: boolean) {
   const searchActions = useSearchActions();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -59,45 +57,37 @@ export function useHandleSearchParams(initialParamsLoaded: boolean) {
     // Don't register listeners on page load until all of the initial params are loaded.
     if (!initialParamsLoaded) return;
 
-    let encodedStatic;
-    let encodedFacets;
-
-    const filters = searchActions.state.filters;
-    if (filters.static) {
-      encodedStatic = encodeStaticFilters(filters.static);
-    }
-
-    if (filters.facets) {
-      encodedFacets = encodeFacetFilters(filters.facets);
-    }
-
-    let combined = "";
+    const encodedStatic = encodeStaticFilters(
+      searchActions.state.filters?.static || []
+    );
+    const encodedFacets = encodeFacetFilters(
+      searchActions.state.filters?.facets || []
+    );
+    let newSearchString = "";
 
     if (encodedStatic) {
-      combined += encodedStatic.toString();
+      newSearchString += encodedStatic.toString();
+
+      // Add facets if static filter exists.
+      if (encodedFacets) {
+        newSearchString += `&${encodedFacets.toString()}`;
+      }
     }
 
-    if (encodedFacets) {
-      combined += `&${encodedFacets.toString()}`;
-    }
-
-    if (combined && combined !== searchParams.toString()) {
-      setSearchParams(combined);
+    // Avoid pushing an identical URLSearchParams string.
+    if (newSearchString !== searchParams.toString()) {
+      setSearchParams(newSearchString);
     }
   }, [searchActions.state.filters, initialParamsLoaded]);
 }
 
-export function useUpdateState() {
+// On change in window location, check if the decoded URLSearchParams match the current search state and update if there is a delta.
+export function useSyncStateWithSearchParams() {
   const searchActions = useSearchActions();
   const [searchParams, _] = useSearchParams();
   const location = useLocation();
 
   useEffect(() => {
-    /**
-     * The search components update the state, which triggers a query params update, which then triggers this.
-     * This results in the state being set again by the query parameters this time.
-     * This function doesn't need to run in this case.
-     */
     async function loadParams() {
       const staticFilter = await decodeStaticFilters(
         searchParams,
@@ -123,30 +113,29 @@ export function useUpdateState() {
 
     let updateNeeded = false;
     const facets = searchParams.get("facets");
-
     const searchParamsWithoutFacets = new URLSearchParams(searchParams);
     searchParamsWithoutFacets.delete("facets");
 
-    const encodedCurrentStatic =
-      encodeStaticFilters(searchActions.state.filters.static || []) ??
+    // If the current static filter in state doesn't match the decoded static filter from the URLSearchParams perform an update.
+    const encodedCurrentStaticFilter =
+      encodeStaticFilters(searchActions.state.filters?.static || []) ??
       new URLSearchParams();
     if (
-      encodedCurrentStatic?.toString() !== searchParamsWithoutFacets.toString()
+      encodedCurrentStaticFilter?.toString() !==
+      searchParamsWithoutFacets.toString()
     ) {
-      console.log("Static need update");
       updateNeeded = true;
     }
 
+    // If the current facet filters in state don't match the decoded facet filters from the URLSearchParams perform an update.
     const encodedCurrentFacets =
       encodeFacetFilters(searchActions.state.filters.facets || []) ??
       new URLSearchParams();
     if (encodedCurrentFacets.get("facets") !== facets) {
-      console.log("Facets need update");
       updateNeeded = true;
     }
 
     if (updateNeeded) {
-      console.log("Reconcile required.");
       loadParams();
     }
   }, [location]);
