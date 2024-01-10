@@ -3,8 +3,9 @@ import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map, GoogleMaps } from "@yext/pages-components";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import {
-  useHandleSearchParams,
   useLoadInitialSearchParams,
+  useSyncSearchParamsWithState,
+  useSyncStateWithSearchParams,
 } from "src/components/search/utils/handleSearchParams";
 import { useGetSearchResults } from "src/components/search/utils/useGetSearchResults";
 import { LocatorProvider } from "./utils/useLocator";
@@ -54,7 +55,9 @@ const Locator = (props: LocatorProps) => {
   // Load static and facet filters on page load.
   useLoadInitialSearchParams(initialParamsLoaded, initialParamsLoadedCallback);
   // Update the search params whenever the search state filters property changes.
-  useHandleSearchParams(initialParamsLoaded);
+  useSyncSearchParamsWithState(initialParamsLoaded);
+  // Update the state only on history change.
+  useSyncStateWithSearchParams();
 
   // Unset any selected, hovered, or focused markers on new search
   useEffect(() => {
