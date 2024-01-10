@@ -105,9 +105,17 @@ export function useSyncStateWithSearchParams() {
           console.error(error);
         }
       } else {
+        // Reset back to initial search state.
         searchActions.setStaticFilters([]);
-        searchActions.resetFacets();
-        await searchActions.executeVerticalQuery();
+        searchActions.setFacets([]);
+        searchActions.setState({
+          ...searchActions.state,
+          vertical: {
+            ...searchActions.state.vertical,
+            results: undefined,
+          },
+          query: {},
+        });
       }
     }
 

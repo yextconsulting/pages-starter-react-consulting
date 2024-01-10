@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect, useLayoutEffect } from "react";
 import resolveConfig from "tailwindcss/resolveConfig";
 import { getRuntime } from "@yext/pages/util";
-import { screens as defaultScreens } from "tailwindcss/defaultTheme";
+import defaultScreens from "tailwindcss/defaultTheme";
 import tailwindConfig from "../../tailwind.config";
 import type { KeyValuePair } from "tailwindcss/types/config.js";
 
@@ -23,7 +23,7 @@ export function useBreakpoint(
   // TODO: this should be `keyof typeof screens`, but because types don't exist for the imported file that breaks
   // autocomplete. This is ok as a workaround because while people might tweak the values for the different breakpoints,
   // they're not likely to change the set of available breakpoints
-  breakpoint: keyof typeof defaultScreens,
+  breakpoint: keyof typeof defaultScreens.screens,
   defaultValue = false
 ) {
   const [match, setMatch] = useState(defaultValue);

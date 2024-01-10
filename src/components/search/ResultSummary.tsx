@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useSearchState } from "@yext/search-headless-react";
 import type { State } from "@yext/search-headless-react";
 import { LOCATOR_STATIC_FILTER_FIELD } from "src/config";
@@ -9,7 +9,6 @@ import { useLocator } from "./utils/useLocator";
 const ResultSummary = () => {
   const searchState = useSearchState((state) => state);
   const { relativePrefixToRoot } = useTemplateData();
-  const [searchMade, setSearchMade] = useState(false);
   const { results } = useLocator();
   const resultsText = useMemo(
     () => getResultsCountText(searchState, results.length),
@@ -27,17 +26,10 @@ const ResultSummary = () => {
     </span>
   );
 
-  // Check if a search has been made in order to conditionally render initialSummaryText.
-  if (
-    !searchMade &&
-    searchState.query.queryId &&
-    !searchState.searchStatus.isLoading
-  ) {
-    setSearchMade(true);
-  }
-
   return (
-    <div className="mr-4">{searchMade ? resultsText : initialSummaryText}</div>
+    <div className="mr-4">
+      {searchState.query.queryId ? resultsText : initialSummaryText}
+    </div>
   );
 };
 
