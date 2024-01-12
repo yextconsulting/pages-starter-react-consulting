@@ -199,7 +199,7 @@ export type DirectoryProfile<T> = BaseProfile & {
   readonly slug: string;
 };
 
-export interface FAQProfile extends BaseProfile {
+export interface FAQProfile {
   readonly question: string;
   readonly answer: string;
 }

@@ -44,6 +44,7 @@ const FAQ = (props: FAQItem) => {
       </button>
       <div
         ref={faqRef}
+        data-testid="answer-container"
         className={classNames(
           "overflow-hidden duration-500 h-0 transition-all",
           { invisible: !isOpen }
