@@ -1,6 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
-import { Map, GoogleMaps } from "@yext/pages-components";
+import {
+  Map,
+  GoogleMaps,
+  Clusterer,
+  ClusterTemplateProps,
+} from "@yext/pages-components";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import {
   useLoadInitialSearchParams,
@@ -109,14 +114,16 @@ const Locator = (props: LocatorProps) => {
               className="h-full"
               {...mapKey}
             >
-              {results.map((data, index) => (
-                <CustomMarker
-                  key={data.rawData.id}
-                  coordinate={data.rawData.yextDisplayCoordinate}
-                  id={data.rawData.id}
-                  index={index + 1}
-                />
-              ))}
+              <Clusterer ClusterTemplate={ClusterTemplate}>
+                {results.map((data, index) => (
+                  <CustomMarker
+                    key={data.rawData.id}
+                    coordinate={data.rawData.yextDisplayCoordinate}
+                    id={data.rawData.id}
+                    index={index + 1}
+                  />
+                ))}
+              </Clusterer>
             </Map>
           </div>
         )}
@@ -126,3 +133,35 @@ const Locator = (props: LocatorProps) => {
 };
 
 export default Locator;
+
+const ClusterTemplate = (props: ClusterTemplateProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      viewBox="0 0 40 40"
+    >
+      <g fill="none" fillRule="evenodd">
+        <circle
+          fill="#0f70f0"
+          fillRule="nonzero"
+          stroke="white"
+          cx="20"
+          cy="20"
+          r="20"
+        />
+        <text
+          fill="white"
+          fontFamily="Arial-BoldMT,Arial"
+          fontSize="16"
+          fontWeight="bold"
+        >
+          <tspan x="50%" y="25" textAnchor="middle">
+            {props.count}
+          </tspan>
+        </text>
+      </g>
+    </svg>
+  );
+};
