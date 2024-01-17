@@ -19,6 +19,7 @@ import ResultList from "src/components/search/ResultList";
 import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import { getMapKey } from "src/common/getMapKey";
+import { executeSearch } from "@yext/search-ui-react";
 
 type LocatorProps = {
   // Will display results up to the verticalLimit (default 20, change with searchActions.setVerticalLimit(num))
@@ -74,6 +75,14 @@ const Locator = (props: LocatorProps) => {
     }
   );
 
+  // Radius options in miles.
+  const radiusOptions = [50, 100, 150, 200, 500];
+
+  const handleRadius = async (radius: number) => {
+    searchActions.setLocationRadius(radius * 1609.34);
+    await executeSearch(searchActions);
+  };
+
   return (
     <LocatorProvider
       value={{
@@ -97,6 +106,17 @@ const Locator = (props: LocatorProps) => {
             placeholderText={placeholderText}
           />
           <ResultInfo />
+          <div className="shadow-brand-shadow py-4 px-6 flex flex-col">
+            {radiusOptions.map((r) => (
+              <button
+                key={r}
+                onClick={() => handleRadius(r)}
+                className="text-left"
+              >
+                {r} miles
+              </button>
+            ))}
+          </div>
           <ResultList CardComponent={LocatorCard} />
         </div>
         {isDesktopBreakpoint && (
