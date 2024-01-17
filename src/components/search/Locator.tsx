@@ -1,5 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
-import { useSearchActions, useSearchState } from "@yext/search-headless-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  Matcher,
+  useSearchActions,
+  useSearchState,
+} from "@yext/search-headless-react";
 import { Map, GoogleMaps } from "@yext/pages-components";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import {
@@ -19,6 +23,8 @@ import ResultList from "src/components/search/ResultList";
 import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import { getMapKey } from "src/common/getMapKey";
+import { executeSearch } from "@yext/search-ui-react";
+import { Coordinate } from "@yext/components-tsx-geo";
 
 type LocatorProps = {
   // Will display results up to the verticalLimit (default 20, change with searchActions.setVerticalLimit(num))
@@ -74,6 +80,8 @@ const Locator = (props: LocatorProps) => {
     }
   );
 
+  const previousCenter = useRef<Coordinate>();
+
   return (
     <LocatorProvider
       value={{
@@ -104,9 +112,43 @@ const Locator = (props: LocatorProps) => {
             <Map
               provider={GoogleMaps}
               providerOptions={{ styles: mapStyles }}
-              bounds={results.map((data) => data.rawData.yextDisplayCoordinate)}
               padding={{ top: 100, bottom: 200, left: 50, right: 50 }}
               className="h-full"
+              panStartHandler={(bounds) => {
+                // Set the search center on load.
+                if (!previousCenter.current) {
+                  previousCenter.current = bounds.getCenter();
+                }
+              }}
+              panHandler={(_, currentBounds) => {
+                if (previousCenter.current) {
+                  const center: Coordinate = currentBounds.getCenter();
+
+                  // If the distance the user panned is greater than 100 miles,
+                  // search the new map area and set the new search center.
+                  const panDistance = center.distanceTo(previousCenter.current);
+                  if (panDistance > 50) {
+                    searchActions.setStaticFilters([
+                      {
+                        displayName: "Current Location",
+                        selected: true,
+                        filter: {
+                          fieldId: "builtin.location",
+                          matcher: Matcher.Near,
+                          value: {
+                            lat: center.latitude,
+                            lng: center.longitude,
+                            radius: 100 * 1609.34, // Radius in meters
+                          },
+                          kind: "fieldValue",
+                        },
+                      },
+                    ]);
+                    executeSearch(searchActions);
+                    previousCenter.current = currentBounds.getCenter();
+                  }
+                }
+              }}
               {...mapKey}
             >
               {results.map((data, index) => (
