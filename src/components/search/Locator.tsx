@@ -1,12 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { Map, GoogleMaps } from "@yext/pages-components";
 import { useBreakpoint } from "src/common/useBreakpoints";
-import {
-  useLoadInitialSearchParams,
-  useSyncSearchParamsWithState,
-  useSyncStateWithSearchParams,
-} from "src/components/search/utils/handleSearchParams";
 import { useGetSearchResults } from "src/components/search/utils/useGetSearchResults";
 import { LocatorProvider } from "./utils/useLocator";
 import { LocationProfile } from "src/types/entities";
@@ -19,6 +14,7 @@ import ResultList from "src/components/search/ResultList";
 import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import { getMapKey } from "src/common/getMapKey";
+import { useLocatorRouter } from "./LocatorRouter";
 
 type LocatorProps = {
   // Will display results up to the verticalLimit (default 20, change with searchActions.setVerticalLimit(num))
@@ -46,18 +42,8 @@ const Locator = (props: LocatorProps) => {
   const isLoading = useSearchState((state) => state.searchStatus.isLoading);
   const isDesktopBreakpoint = useBreakpoint("sm");
   const [allLocationsLoaded, setAllLocationsLoaded] = useState(false);
-  const [initialParamsLoaded, setInitialParamsLoaded] = useState(false);
-  const initialParamsLoadedCallback = useCallback(
-    () => setInitialParamsLoaded(true),
-    [setInitialParamsLoaded]
-  );
 
-  // Load static and facet filters on page load.
-  useLoadInitialSearchParams(initialParamsLoaded, initialParamsLoadedCallback);
-  // Update the search params whenever the search state filters property changes.
-  useSyncSearchParamsWithState(initialParamsLoaded);
-  // Update the state only on history change.
-  useSyncStateWithSearchParams();
+  const { initialParamsLoaded } = useLocatorRouter();
 
   // Unset any selected, hovered, or focused markers on new search
   useEffect(() => {
