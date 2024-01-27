@@ -29,6 +29,8 @@ interface LocatorRouterProps {
 }
 
 export default function LocatorRouter(props: LocatorRouterProps) {
+  // Does this have to be setup client side?
+  // For BrowserRouter, yes.
   if (getRuntime()?.name !== "browser") {
     return null;
   }
@@ -58,18 +60,10 @@ const LocatorRouterInternal = ({
     console.log("Loading initial params");
 
     async function loadInitialParams() {
-      const staticFilter = await decodeStaticFilters(searchParams, actions);
-      const facetFilters = decodeFacetFilters(searchParams);
+      const initialState = await router.routeToState(searchParams, actions);
+      actions.setState(initialState);
 
-      if (staticFilter) {
-        actions.setState({
-          ...state,
-          filters: {
-            static: [staticFilter],
-            facets: facetFilters,
-          }
-        });
-
+      if (initialState.filters.static?.find(f => f.selected)) {
         try {
           await actions.executeVerticalQuery();
         } catch (error) {
@@ -87,21 +81,11 @@ const LocatorRouterInternal = ({
     if (!initialParamsLoaded) return;
 
     async function loadParams() {
-      const staticFilter = await decodeStaticFilters(
-        searchParams,
-        actions
-      );
-      const facetFilters = decodeFacetFilters(searchParams);
+      const decodedState = await router.routeToState(searchParams, actions);
 
-      if (staticFilter) {
-        actions.setState({
-          ...state,
-          filters: {
-            static: [staticFilter],
-            facets: facetFilters,
-          }
-        });
-
+      // TODO(jhood): should this maybe be based off of something else?
+      if (decodedState.filters.static?.find(f => f.selected)) {
+        actions.setState(decodedState);
         try {
           await actions.executeVerticalQuery();
         } catch (error) {
@@ -121,29 +105,10 @@ const LocatorRouterInternal = ({
       }
     }
 
-    let updateNeeded = false;
-    const facets = searchParams.get("facets");
-    const searchParamsWithoutFacets = new URLSearchParams(searchParams);
-    searchParamsWithoutFacets.delete("facets");
+    const encodedSearchParams = router.stateToRoute(state);
 
-    // If the current static filter in state doesn't match the decoded static filter from the URLSearchParams perform an update.
-    const encodedCurrentStaticFilter =
-      encodeStaticFilters(state.filters?.static || []) ?? new URLSearchParams();
-    if (
-      encodedCurrentStaticFilter?.toString() !==
-      searchParamsWithoutFacets.toString()
-    ) {
-      updateNeeded = true;
-    }
-
-    // If the current facet filters in state don't match the decoded facet filters from the URLSearchParams perform an update.
-    const encodedCurrentFacets =
-      encodeFacetFilters(state.filters.facets || []) ?? new URLSearchParams();
-    if (encodedCurrentFacets.get("facets") !== facets) {
-      updateNeeded = true;
-    }
-
-    if (updateNeeded) {
+    // Check if current state matches the current URLSearchParams when the state is encoded. If not, update the state.
+    if (!compareSearchParams(encodedSearchParams, searchParams)) {
       console.log("Syncing state");
       loadParams();
     }
@@ -151,7 +116,67 @@ const LocatorRouterInternal = ({
 
   // Sync search params on state update.
   useEffect(() => {
-    if (!initialParamsLoaded) return;
+    if (!initialParamsLoaded || state.searchStatus.isLoading) return;
+
+    const encodedSearchParams = router.stateToRoute(state);
+
+    // Avoid pushing an identical URLSearchParams string.
+    if (!compareSearchParams(encodedSearchParams, searchParams)) {
+      console.log("Syncing search params");
+      setSearchParams(encodedSearchParams);
+    }
+  }, [state]);
+
+  return (
+    <LocatorRouterProvider value={{ initialParamsLoaded }}>
+      {children}
+    </LocatorRouterProvider>
+  );
+}
+
+// Check if two URLSearchParams objects have the same key-value pairs.
+function compareSearchParams(params1: URLSearchParams, params2: URLSearchParams): boolean {
+  const entries1 = Array.from(params1.entries());
+  const entries2 = Array.from(params2.entries());
+
+  // Check if the number of key-value pairs is the same
+  if (entries1.length !== entries2.length) {
+    return false;
+  }
+
+  // Check if all key-value pairs are equal
+  for (const [key, value] of entries1) {
+    // Check if the key is present in the second URLSearchParams
+    if (!params2.has(key)) {
+      return false;
+    }
+
+    // Check if the values for the key are equal
+    if (params2.get(key) !== value) {
+      return false;
+    }
+  }
+
+  // If all checks pass, the URLSearchParams objects are equal
+  return true;
+}
+
+interface Router {
+  stateToRoute: (state: SearchState) => URLSearchParams;
+  routeToState: (searchParams: URLSearchParams, actions: SearchHeadless) => Promise<SearchState>
+}
+
+export const defaultLocatorRouter: Router = {
+  stateToRoute(state) {
+    // TODO(jhood): Update how this actually looks.
+    const newParams: Record<string, string> = {
+      q: "",  // Maps to value for Matcher.Equals. Only used for country searches.
+      qp: "New+York+City%2C+New+York%2C+United+States", // Maps to displayName.
+      lat: "40.7127492", // Maps to value for Matcher.Near.
+      lng: "-74.0059945",
+      r: "25",
+      fieldId: "" // Infer builtin.location if not set.
+    };
 
     const encodedStatic = encodeStaticFilters(state.filters?.static || []);
     const encodedFacets = encodeFacetFilters(state.filters?.facets || []);
@@ -166,63 +191,38 @@ const LocatorRouterInternal = ({
       }
     }
 
-    // Avoid pushing an identical URLSearchParams string.
-    if (newSearchString !== searchParams.toString()) {
-      console.log("Syncing search params");
-      setSearchParams(newSearchString);
+    return new URLSearchParams(newSearchString);
+  },
+  // This doesn't mutate any data.
+  // TODO(jhood): update the decode functions to make sure.
+  // TODO(jhood): update to be by param key.
+
+  // TODO(jhood): I'd like if this wasn't async.
+  // how to handle async and non-async?
+  async routeToState(searchParams, actions) {
+    const staticFilter = await decodeStaticFilters(searchParams, actions);
+    const facetFilters = decodeFacetFilters(searchParams);
+
+    return {
+      ...actions.state,
+      filters: {
+        static: staticFilter ? [staticFilter] : undefined,
+        facets: facetFilters,
+      }
     }
-  }, [state]);
-
-  return (
-    <LocatorRouterProvider value={{ initialParamsLoaded }}>
-      {children}
-    </LocatorRouterProvider>
-  );
+  },
 }
 
-interface Router {
-  stateMapping: {
-    stateToRoute: (state: SearchState) => URLSearchParams;
-    routeToState: (searchParams: URLSearchParams, actions: SearchHeadless) => SearchState;
-  }
-}
-
-export const defaultLocatorRouter: Router = {
-  stateMapping: {
-    stateToRoute(state) {
-      const encodedStatic = encodeStaticFilters(state.filters?.static || []);
-      const encodedFacets = encodeFacetFilters(state.filters?.facets || []);
-      let newSearchString = "";
-
-      if (encodedStatic) {
-        newSearchString += encodedStatic.toString();
-
-        // Add facets if static filter exists.
-        if (encodedFacets) {
-          newSearchString += `&${encodedFacets.toString()}`;
-        }
-      }
-
-      return new URLSearchParams(newSearchString);
-    },
-    routeToState(searchParams, actions) {
-      async function loadInitialParams() {
-        const staticFilter = await decodeStaticFilters(searchParams, actions);
-        const facetFilters = decodeFacetFilters(searchParams);
-  
-        if (staticFilter) {
-          actions.setState({
-            ...actions.state,
-            filters: {
-              static: [staticFilter],
-              facets: facetFilters,
-            }
-          });
-        }
-      }
-      loadInitialParams();
-
-      return actions.state;
-    },
-  }
-}
+/**
+ * TODO(jhood):
+ * 
+ * Location and region searches now both return fieldId: "builtin.location"
+ * with a radius and lat, lng included. builtin.region can be removed.
+ * 
+ * Might want to rethink what query params are required now that address.countryCode
+ * if the only thing that returns a q param.
+ * 
+ * Do we need the location_type param?
+ * 
+ * Test with a different search_field like searching by name instead
+ */
