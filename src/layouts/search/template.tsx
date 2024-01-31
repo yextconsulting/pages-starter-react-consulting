@@ -7,8 +7,9 @@ import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
 import { Template } from "@yext/pages";
 import "src/index.css";
 import { Main } from "src/layouts/main";
-import LocatorRouter, { defaultLocatorRouter } from "src/components/search/LocatorRouter";
 import { getRuntime } from "@yext/pages/util";
+import LocatorRouter from "src/components/search/LocatorRouter";
+import { defaultLocatorRouter } from "src/components/search/router";
 
 interface SearchLayoutProps {
   data: TemplateRenderProps<SearchPageProfile>;

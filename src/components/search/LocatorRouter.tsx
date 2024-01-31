@@ -2,7 +2,7 @@ import {
   useSearchActions,
   useSearchState,
   type SearchHeadless,
-  type State as SearchState,
+  type State,
 } from "@yext/search-headless-react";
 import {
   useEffect,
@@ -11,32 +11,44 @@ import {
 } from "react";
 import { BrowserRouter, useLocation, useSearchParams } from "react-router-dom";
 import { createCtx } from "src/common/createCtx";
-import {
-  decodeFacetFilters,
-  decodeStaticFilters,
-  encodeFacetFilters,
-  encodeStaticFilters,
-} from "./utils/filterEncodings";
 import { getRuntime } from "@yext/pages/util";
 
 export const [useLocatorRouter, LocatorRouterProvider] = createCtx<{
   initialParamsLoaded: boolean;
 }>("Attempted to call useLocatorRouter outside of LocatorRouterProvider");
 
+export interface Router {
+  // Encode search state into search params.
+  stateToRoute: (state: State) => URLSearchParams;
+  // Decode search params into search state.
+  routeToState: (searchParams: URLSearchParams, actions: SearchHeadless) => Promise<State>
+}
+
 interface LocatorRouterProps {
   router: Router;
   children?: ReactNode;
 }
 
+/**
+ * TODO(jhood):
+ * 
+ * Location and region searches now both return fieldId: "builtin.location"
+ * with a radius and lat, lng included. builtin.region can be removed.
+ * 
+ * Might want to rethink what query params are required now that address.countryCode
+ * if the only thing that returns a q param.
+ * 
+ * Do we need the location_type param?
+ * 
+ * Test with a different search_field like searching by name instead
+ */
+
 export default function LocatorRouter(props: LocatorRouterProps) {
-  // Does this have to be setup client side?
-  // For BrowserRouter, yes.
   if (getRuntime()?.name !== "browser") {
     return null;
   }
 
   return (
-    // TODO(jhood): use tanstack router or something else here for query param management?
     <BrowserRouter> 
       <LocatorRouterInternal router={props.router} children={props.children} />
     </BrowserRouter>
@@ -55,6 +67,9 @@ const LocatorRouterInternal = ({
   const [initialParamsLoaded, setInitialParamsLoaded] = useState(false);
 
   // Load initial state from search params.
+  /**
+   * On page load decode the search params into state. If a static filter is set, then run a vertical search.
+   */
   useEffect(() => {
     if (initialParamsLoaded) return;
     console.log("Loading initial params");
@@ -63,6 +78,7 @@ const LocatorRouterInternal = ({
       const initialState = await router.routeToState(searchParams, actions);
       actions.setState(initialState);
 
+      // TODO: check for something else here?
       if (initialState.filters.static?.find(f => f.selected)) {
         try {
           await actions.executeVerticalQuery();
@@ -77,6 +93,10 @@ const LocatorRouterInternal = ({
   }, []);
 
   // Sync state on search params update.
+  // When users click the forward or back browser buttons resync the state.
+  // Don't run this when the search params change in reponse to user interaction (like making a filter searcg)
+  // or applying facets.
+  // Rest the state back to its default value when there are no query params.
   useEffect(() => {
     if (!initialParamsLoaded) return;
 
@@ -115,6 +135,10 @@ const LocatorRouterInternal = ({
   }, [location]);
 
   // Sync search params on state update.
+  /**
+   * When the search state is updated in response to user interaction,
+   * sync the search params.
+   */
   useEffect(() => {
     if (!initialParamsLoaded || state.searchStatus.isLoading) return;
 
@@ -160,69 +184,3 @@ function compareSearchParams(params1: URLSearchParams, params2: URLSearchParams)
   // If all checks pass, the URLSearchParams objects are equal
   return true;
 }
-
-interface Router {
-  stateToRoute: (state: SearchState) => URLSearchParams;
-  routeToState: (searchParams: URLSearchParams, actions: SearchHeadless) => Promise<SearchState>
-}
-
-export const defaultLocatorRouter: Router = {
-  stateToRoute(state) {
-    // TODO(jhood): Update how this actually looks.
-    const newParams: Record<string, string> = {
-      q: "",  // Maps to value for Matcher.Equals. Only used for country searches.
-      qp: "New+York+City%2C+New+York%2C+United+States", // Maps to displayName.
-      lat: "40.7127492", // Maps to value for Matcher.Near.
-      lng: "-74.0059945",
-      r: "25",
-      fieldId: "" // Infer builtin.location if not set.
-    };
-
-    const encodedStatic = encodeStaticFilters(state.filters?.static || []);
-    const encodedFacets = encodeFacetFilters(state.filters?.facets || []);
-    let newSearchString = "";
-
-    if (encodedStatic) {
-      newSearchString += encodedStatic.toString();
-
-      // Add facets if static filter exists.
-      if (encodedFacets) {
-        newSearchString += `&${encodedFacets.toString()}`;
-      }
-    }
-
-    return new URLSearchParams(newSearchString);
-  },
-  // This doesn't mutate any data.
-  // TODO(jhood): update the decode functions to make sure.
-  // TODO(jhood): update to be by param key.
-
-  // TODO(jhood): I'd like if this wasn't async.
-  // how to handle async and non-async?
-  async routeToState(searchParams, actions) {
-    const staticFilter = await decodeStaticFilters(searchParams, actions);
-    const facetFilters = decodeFacetFilters(searchParams);
-
-    return {
-      ...actions.state,
-      filters: {
-        static: staticFilter ? [staticFilter] : undefined,
-        facets: facetFilters,
-      }
-    }
-  },
-}
-
-/**
- * TODO(jhood):
- * 
- * Location and region searches now both return fieldId: "builtin.location"
- * with a radius and lat, lng included. builtin.region can be removed.
- * 
- * Might want to rethink what query params are required now that address.countryCode
- * if the only thing that returns a q param.
- * 
- * Do we need the location_type param?
- * 
- * Test with a different search_field like searching by name instead
- */
