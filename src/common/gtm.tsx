@@ -10,12 +10,20 @@ function gtmHeadScript(id: string): string {
   `;
 }
 
-function gtmBodyScript(id: string): string {
-  return `
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${id}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-  `;
+function gtmBodyScript(id: string): JSX.Element {
+  return (
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${id}`}
+        height="0"
+        width="0"
+        style={{
+          display: "none",
+          visibility: "hidden",
+        }}
+      />
+    </noscript>
+  );
 }
 
 export { gtmBodyScript, gtmHeadScript };
