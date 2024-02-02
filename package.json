@@ -20,7 +20,7 @@
     "i18n-pull": "node i18n/index.js pull"
   },
   "engines": {
-    "node": "^18.0.0 || >=20.0.0"
+    "node": "^18.0.0 || >=20.2.0"
   },
   "dependencies": {
     "@reach/auto-id": "0.18.0",
@@ -29,7 +29,7 @@
     "@yext/components-tsx-geo": "1.0.3",
     "@yext/components-tsx-maps": "1.0.11",
     "@yext/custom-field-debugger": "2.0.9",
-    "@yext/pages": "1.0.0-rc.7",
+    "@yext/pages": "1.0.0-rc.9",
     "@yext/pages-components": "1.0.0-rc.0",
     "@yext/schema-wrapper": "1.0.4",
     "@yext/search-headless-react": "2.4.0",
