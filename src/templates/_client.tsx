@@ -13,7 +13,7 @@ const render = async (pageContext: PageContext<any>) => {
     <CacheProvider value={cache}>
       <Page {...pageProps} />
     </CacheProvider>,
-    document.getElementById("test")
+    document.getElementById("reactele")
   );
 };
 
