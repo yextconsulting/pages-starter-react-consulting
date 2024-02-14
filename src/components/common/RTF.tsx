@@ -12,7 +12,7 @@ import "src/components/common/RTF.css";
  * directly without needing the additional plugins provided here.
  *
  * If you are trying to render a "v2" rich text field, import the LexicalRichText
- * component from \@yext/react-components.
+ * component from \@yext/pages-components.
  */
 export default function RTF(props: { content: string }) {
   return (
