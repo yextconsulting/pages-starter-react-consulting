@@ -24,16 +24,16 @@
   },
   "dependencies": {
     "@reach/auto-id": "0.18.0",
+    "@mui/icons-material": "^5.15.10",
+    "@mui/x-tree-view": "^6.17.0",
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
     "@yext/components-404": "2.1.0",
-    "@yext/components-tsx-geo": "1.0.3",
-    "@yext/components-tsx-maps": "1.0.11",
     "@yext/custom-field-debugger": "2.0.9",
-    "@yext/pages": "1.0.0-rc.9",
-    "@yext/pages-components": "1.0.0-rc.0",
+    "@yext/pages": "1.0.0",
+    "@yext/pages-components": "^1.0.0-rc.1",
     "@yext/schema-wrapper": "1.0.4",
-    "@yext/search-headless-react": "2.4.0",
-    "@yext/search-ui-react": "1.4.1",
+    "@yext/search-headless-react": "^2.4.0",
+    "@yext/search-ui-react": "^1.4.1",
     "@yext/sites-react-components": "0.1.16",
     "@yext/types": "0.1.10-alpha",
     "classnames": "2.3.1",
@@ -57,7 +57,7 @@
     "@types/react-dom": "17.0.10",
     "@typescript-eslint/eslint-plugin": "5.48.2",
     "@typescript-eslint/parser": "5.48.2",
-    "@vitejs/plugin-react": "4.2.1",
+    "@vitejs/plugin-react": "^4.2.1",
     "@yext/cobalt": "0.0.1",
     "@yext/eslint-config": "1.0.0",
     "@yext/eslint-plugin-export-star": "1.1.0",
@@ -79,6 +79,6 @@
     "smartling-api-sdk-nodejs": "1.5.5",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4",
-    "vite": "^5.0.10"
+    "vite": "^5.1.2"
   }
 }
