@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { getRuntime } from "@yext/pages/util";
 import { SearchHeadlessProvider } from "@yext/search-headless-react";
 import { BrowserRouter } from "react-router-dom";
@@ -16,6 +17,11 @@ const SearchLayout = ({ data }: SearchLayoutProps) => {
   const { document } = data;
   const { c_searchTitle, c_searchSubTitle, c_searchPlaceholderText, _site } =
     document;
+  const [firstPass, setFirstPass] = useState(true);
+
+  useEffect(() => {
+    setFirstPass(false);
+  }, []);
 
   const runtime = getRuntime();
   const searcher = getSearchProvider(
@@ -31,7 +37,8 @@ const SearchLayout = ({ data }: SearchLayoutProps) => {
   return (
     <>
       <SearchHeadlessProvider searcher={searcher}>
-        {runtime.name === "browser" && (
+        {/* https://react.dev/reference/react-dom/hydrate#handling-different-client-and-server-content */}
+        {runtime.name === "browser" && !firstPass && (
           <BrowserRouter>
             <Locator
               title={c_searchTitle || "Find a Location"}
