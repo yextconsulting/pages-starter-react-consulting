@@ -2,6 +2,7 @@
   "$id": "defaultDirectory",
   "$schema": "https://schema.yext.com/config/pages/directory-manager/v1",
   "name": "Directory",
+  "collapseSlugs": true,
   "baseEntities": {
     "entityTypes": ["location"]
   },
