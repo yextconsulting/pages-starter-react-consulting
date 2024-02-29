@@ -17,7 +17,9 @@
     "prepare": "husky install",
     "i18n-scan": "i18next",
     "i18n-push": "node i18n/index.js push",
-    "i18n-pull": "node i18n/index.js pull"
+    "i18n-pull": "node i18n/index.js pull",
+    "i18n-usepo": "node i18n/index.js usepo",
+    "i18n-usecsv": "node i18n/index.js usecsv"
   },
   "engines": {
     "node": "^18.0.0 || >=20.2.0"

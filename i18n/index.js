@@ -9,32 +9,54 @@ function relURL(path) {
 
 async function main() {
   if (process.argv.length < 2) {
-    throw new Error("Invalid args - Usage: node index.js [pull|push]");
+    throw new Error(
+      "Invalid args - Usage: node index.js [pull|push|usepo|usecsv] (args?)"
+    );
   }
   const commandName = process.argv[2];
 
   const commands = {
     pull: pull, // Pull translations to smartling
     push: push, // Push translations from smartling
+    usepo: usepo, // import a .po file (convert to .json)
+    usecsv: usecsv, // import a .csv file (convert to .json)
   };
 
   // Check if command is valid
   if (!commands.hasOwnProperty(commandName)) {
-    throw new Error("First arg invalid, must be a valid command: [pull|push]");
+    throw new Error(
+      "First arg invalid, must be a valid command: [pull|push|usepo|usecsv]"
+    );
   }
 
-  // Check if config is valid
-  //  NOOP if invalid config - that indicates this project is not using Smartling
-  if (!i18nConfig.userID || !i18nConfig.userSecret || !i18nConfig.projectID) {
-    console.log(
-      `'smartling ${commandName}: NOOP - initialize smartling integration by filling out 'i18n/smartling/smartling.config.js'`
-    );
+  if (commandName === "pull" || commandName === "push") {
+    // Check if config is valid
+    //  NOOP if invalid config - that indicates this project is not using Smartling
+    if (!i18nConfig.userID || !i18nConfig.userSecret || !i18nConfig.projectID) {
+      console.log(
+        `'smartling ${commandName}: NOOP - initialize smartling integration by filling out 'i18n/smartling/smartling.config.js'`
+      );
+      return;
+    }
+
+    // Initialize the API
+    const api = new SmartlingAPI(i18nConfig);
+    await commands[commandName](api);
     return;
   }
 
-  // Initialize the API
-  const api = new SmartlingAPI(i18nConfig);
-  await commands[commandName](api);
+  if (commandName === "usepo" || commandName === "usecsv") {
+    // expect an argument "fileName" describing which .po file to use
+    if (!process.argv[3]) {
+      console.log(
+        "i18n usePo: NOOP - missing [locale].po fileName as first arg"
+      );
+      return;
+    }
+
+    await commands[commandName](process.argv[3]);
+    return;
+  }
 }
 
 async function pull(api) {
@@ -120,6 +142,58 @@ async function push(api) {
     await api.upload(outFilepath.pathname, "native.po");
     fs.unlinkSync(outFilepath);
   });
+}
+
+// Convert a .po file into a translation.json file
+//  expects the file `fileName.po` to be in the `locales` directory
+//
+// This script is intended to be used when an existing soy repo with .po translations
+//  needs to be converted to react and there isn't a smartling project to import on.
+async function usepo(fileName) {
+  let oldPoTranslations = "{}";
+  // Read the contents of the old .po file
+  try {
+    oldPoTranslations = fs.readFileSync(
+      relURL(`../locales/${fileName}`),
+      "utf-8"
+    );
+  } catch (err) {
+    console.log(
+      `couldn't find file 'locales/${fileName}. Are you sure it is in the 'locales' directory?`
+    );
+  }
+
+  // Assume the fileName is always [locale].po, so to get the locale just remove the extension
+  const fileLocale = fileName.split(".")[0];
+
+  // Translate the file from .po to .json and write to disk
+  const options = {
+    compatibilityJSON: "v3",
+  };
+  gettextToI18next(fileLocale, oldPoTranslations, options).then((output) => {
+    const outDirPath = relURL(`../locales/${fileLocale}/`);
+    try {
+      fs.accessSync(outDirPath);
+    } catch (err) {
+      fs.mkdirSync(outDirPath, { recursive: true });
+    }
+    const outFilepath = new URL("translation.json", outDirPath);
+    if (oldPoTranslations) {
+      console.log("Writing to " + outFilepath);
+      fs.writeFileSync(
+        outFilepath,
+        JSON.stringify(JSON.parse(output), null, 2) + "\n",
+        { flag: "w" }
+      );
+    }
+  });
+}
+
+async function usecsv(fileName) {
+  // TODO @aliang: implement this? idk if it will actually be useful
+  console.log(
+    "this has not been implemented yet, probably because nobody has need to use it yet."
+  );
 }
 
 await main();
