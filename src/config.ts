@@ -5,6 +5,9 @@ import type { ConfigurationProviderContextType } from "@yext/sites-react-compone
 
 declare global {
   const YEXT_PUBLIC_MAPS_API_KEY: string;
+  const YEXT_PUBLIC_SEARCH_EXPERIENCE_API_KEY: string;
+  const YEXT_PUBLIC_NEARBY_SECTION_API_KEY: string;
+  const YEXT_PUBLIC_REVIEWS_API_KEY: string;
 }
 
 const config: ConfigurationProviderContextType = {

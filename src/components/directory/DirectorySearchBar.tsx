@@ -24,12 +24,14 @@ interface DirectorySearchBarProps {
 const DirectorySearchBar = (props: DirectorySearchBarProps) => {
   const { document } = useTemplateData();
 
-  if (!document._site.c_searchExperienceAPIKey) {
-    console.error("Add the search experience API key to the Site Entity");
+  if (!YEXT_PUBLIC_SEARCH_EXPERIENCE_API_KEY) {
+    console.error(
+      "Add a search experience API key to the .env file or as a site variable to enable the DirectorySearchBar component."
+    );
   }
 
   const searcher = getSearchProvider(
-    document._site.c_searchExperienceAPIKey ?? "",
+    YEXT_PUBLIC_SEARCH_EXPERIENCE_API_KEY,
     document.meta.locale,
     document.siteDomain
   );

@@ -46,7 +46,7 @@ const Nearby = (props: NearbyProps) => {
   const { document, relativePrefixToRoot } = useTemplateData();
   const search_path =
     document?._site?.c_searchPage?.slug || FALLBACK_SEARCH_PATH;
-  const apiKey = document._site.c_nearbySectionAPIKey;
+  const apiKey = YEXT_PUBLIC_NEARBY_SECTION_API_KEY;
 
   const [nearbyLocations, setNearbyLocations] = useState<
     LiveAPIProfile<LocationProfile>[]
@@ -83,7 +83,7 @@ const Nearby = (props: NearbyProps) => {
 
   if (!apiKey) {
     console.error(
-      "Add the nearby API key to the Site Entity to enable nearby functionality."
+      "Add a nearby API key to the .env file or as a site variable to enable the nearby locations component."
     );
   }
 
