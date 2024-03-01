@@ -50,9 +50,6 @@ export interface SiteProfile extends BaseProfile {
     readonly logoLink?: string;
     readonly links?: CTA[];
   };
-  readonly c_nearbySectionAPIKey?: string;
-  readonly c_searchExperienceAPIKey?: string;
-  readonly c_reviewsAPIKey?: string;
   readonly c_searchPage?: {
     readonly slug?: string;
   };

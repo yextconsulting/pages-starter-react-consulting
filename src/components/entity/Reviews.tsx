@@ -11,7 +11,6 @@ import {
 } from "pure-react-carousel";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { fetchReviews } from "src/components/entity/utils/fetchReviews";
-import { useTemplateData } from "src/common/useTemplateData";
 import { ReviewProfile } from "src/types/entities";
 
 type ReviewsProps = {
@@ -32,13 +31,12 @@ const Reviews = (props: ReviewsProps) => {
   } = props;
 
   const [reviews, setReviews] = useState<ReviewProfile[]>([]);
-  const { document } = useTemplateData();
-  const apiKey = document._site.c_reviewsAPIKey;
+  const apiKey = YEXT_PUBLIC_REVIEWS_API_KEY;
 
   useEffect(() => {
     if (!apiKey) {
       console.error(
-        "Add a Reviews API key to the Site Entity to enable the reviews component."
+        "Add a Reviews API key to the .env file or as a site variable to enable the reviews component."
       );
       return;
     }

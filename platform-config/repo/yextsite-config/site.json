@@ -8,6 +8,24 @@
     "autoStage": true,
     "autoPublish": false,
     "pullRequestsEnabled": false,
+    "envVars": [
+      {
+        "key": "YEXT_PUBLIC_MAPS_API_KEY",
+        "value": "${{MAPS_API_KEY}}"
+      },
+      {
+        "key": "YEXT_PUBLIC_SEARCH_EXPERIENCE_API_KEY",
+        "value": "${{SEARCH_EXPERIENCE_API_KEY}}"
+      },
+      {
+        "key": "YEXT_PUBLIC_NEARBY_SECTION_API_KEY",
+        "value": "${{NEARBY_SECTION_API_KEY}}"
+      },
+      {
+        "key": "YEXT_PUBLIC_REVIEWS_API_KEY",
+        "value": "${{REVIEWS_API_KEY}}"
+      }
+    ],
     "stagingCredentials": {
       "password": "",
       "username": ""

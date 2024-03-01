@@ -21,9 +21,6 @@ siteStream:
     - c_copyrightMessage
     - c_footerLinks
     - c_header
-    - c_nearbySectionAPIKey
-    - c_searchExperienceAPIKey
-    - c_reviewsAPIKey
     - c_brand
     - c_searchPage.slug
   localization:
