@@ -2,6 +2,7 @@ import { Link } from "@yext/pages-components";
 import type { DirectoryProfile } from "src/types/entities";
 import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 import { useTemplateData } from "src/common/useTemplateData";
+import { sortDirectoryByAlphabetical } from "src/common/helpers";
 
 interface DirectoryListProps {
   showNumLocs: boolean;
@@ -37,10 +38,13 @@ interface DirectoryListLayoutProps {
 // This template renders the data into HTML
 const DirectoryListLayout = (props: DirectoryListLayoutProps) => {
   const { showNumLocs, directoryChildren, relativePrefixToRoot } = props;
+  const sortedDirectoryChildren =
+    sortDirectoryByAlphabetical(directoryChildren);
+
   return (
     <div className="container my-8">
       <ul className="lg:columns-4 md:columns-3 sm:columns-2 columns-1 -m-3">
-        {directoryChildren.map((child, idx) => (
+        {sortedDirectoryChildren.map((child, idx) => (
           <li className="p-3" key={idx}>
             <Link
               className="inline-block after:content-[attr(data-count)] after:ml-2"

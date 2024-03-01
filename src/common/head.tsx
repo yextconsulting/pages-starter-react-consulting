@@ -94,7 +94,10 @@ export function defaultHeadConfig(
           type: "meta",
           attributes: {
             name: "geo.placename",
-            content: `${data.document.address.city},${data.document.address.region}`, // TODO: dono't use abbreviated form here when it's available
+            content: `${data.document.address.city},${
+              data.document.address.localizedRegionName ||
+              data.document.address.region
+            }`,
           },
         },
         {
@@ -178,6 +181,12 @@ function metaTitle(data: TemplateRenderProps): string {
   // 1. Check for meta field on the entity
   const { c_meta: entityMeta } = data.document;
   if (entityMeta?.title) return entityMeta.title;
+
+  // if you want to return some hard coded string for specific page types:
+  // if (data.document.meta.entityType.id == "location") {
+  //   const profile = data.document;
+  //   return `${profile.name} at ${profile.address.line1}`;
+  // }
 
   return "";
 }

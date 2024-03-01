@@ -9,9 +9,12 @@ export const getMapKey = () => {
     );
   }
 
-  const authObj = isLocalDev
-    ? { clientKey: "gme-yextinc" }
-    : { apiKey: MAPS_API_KEY };
+  const googleLocalDevKey = { clientKey: "gme-yextinc" };
+  const mapboxLocalDevKey = {
+    apiKey: "pk.eyJ1IjoieWV4dCIsImEiOiJqNzVybUhnIn0.hTOO5A1yqfpN42-_z_GuLw",
+  };
+
+  const authObj = isLocalDev ? googleLocalDevKey : { apiKey: MAPS_API_KEY };
 
   return authObj;
 };

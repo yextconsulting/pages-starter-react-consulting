@@ -3,6 +3,7 @@ import type { CardComponent } from "src/models/cardComponent";
 import type { DirectoryProfile, LocationProfile } from "src/types/entities";
 import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 import { useTemplateData } from "src/common/useTemplateData";
+import { sortDirectoryByAlphabetical } from "src/common/helpers";
 
 interface DirectoryGridProps {
   CardComponent: CardComponent<LocationProfile>;
@@ -34,10 +35,13 @@ type DirectoryGridLayoutProps = DirectoryGridProps & {
 // This template renders the data into HTML
 const DirectoryGridLayout = (props: DirectoryGridLayoutProps) => {
   const { directoryChildren, CardComponent = DirectoryCard } = props;
+  const sortedDirectoryChildren =
+    sortDirectoryByAlphabetical(directoryChildren);
+
   return (
     <div className="container my-8">
       <ul className="flex flex-wrap -m-4">
-        {directoryChildren.map((child, idx) => (
+        {sortedDirectoryChildren.map((child, idx) => (
           <li className="p-4 w-full md:w-1/2 lg:w-1/3" key={idx}>
             <CardComponent profile={child} />
           </li>

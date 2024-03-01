@@ -2,7 +2,7 @@ html {
   --yxt-hoursTable-col2-width: auto;
 }
 
-abbr:where([title]) {
+.address-line abbr:where([title]) {
   text-decoration: none;
 }
 

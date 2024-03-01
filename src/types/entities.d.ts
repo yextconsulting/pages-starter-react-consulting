@@ -87,6 +87,7 @@ export interface FinancialProfessionalProfile extends BaseProfile {
   readonly name: string;
   readonly headshot?: Image;
   readonly mainPhone?: string;
+  readonly t_mainPhone?: PhoneData;
   readonly c_occupation?: string;
   readonly emails?: string[];
   readonly websiteUrl?: WebsiteUrl;
@@ -102,6 +103,12 @@ interface Insight {
   readonly cta: CTA;
 }
 
+interface PhoneData {
+  readonly label: string;
+  readonly href: string;
+  readonly raw: string;
+}
+
 // TODO: generate these automatically from stream definitions
 export interface LocationProfile extends BaseProfile {
   readonly name: string;
@@ -111,6 +118,7 @@ export interface LocationProfile extends BaseProfile {
   readonly hours?: Hours;
   readonly additionalHoursText?: string;
   readonly mainPhone?: string;
+  readonly t_mainPhone?: PhoneData;
   readonly fax?: string;
   readonly tollFreePhone?: string;
   readonly mobilePhone?: string;

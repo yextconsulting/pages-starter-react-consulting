@@ -81,11 +81,11 @@ const CoreLayout = (props: CoreLayoutProps) => {
               Get Directions
             </Link>
             {/* TODO(GENERATOR): use Phone component */}
-            {profile.mainPhone && (
+            {profile.t_mainPhone && (
               <div className="flex items-center mt-4">
                 <FaPhone className="text-blue-500 mr-2" />
                 <span className="mr-2 font-bold">Phone</span>
-                <span>{profile.mainPhone}</span>
+                <span>{profile.t_mainPhone.label}</span>
               </div>
             )}
             {profile.tollFreePhone && (

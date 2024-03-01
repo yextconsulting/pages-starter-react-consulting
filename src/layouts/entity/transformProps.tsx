@@ -35,7 +35,13 @@ export const transformProps: TransformProps<
     ...data,
     document: {
       ...data.document,
-      mainPhone: formatPhone(mainPhone, address.countryCode),
+      t_mainPhone: mainPhone
+        ? {
+            label: formatPhone(mainPhone, address.countryCode) || mainPhone,
+            href: `tel:${mainPhone}`,
+            raw: mainPhone,
+          }
+        : undefined,
       fax: formatPhone(fax, address.countryCode),
       tollFreePhone: formatPhone(tollFreePhone, address.countryCode),
       mobilePhone: formatPhone(mobilePhone, address.countryCode),

@@ -30,15 +30,15 @@ const TeamCard = (props: TeamCardProps) => {
       {/* TODO (GENERATOR): use Icon component when available */}
       <div className="p-8">
         {/* TODO (GENERATOR): use Phone component when available */}
-        {profile.mainPhone && (
+        {profile.t_mainPhone && (
           <div className="flex items-center">
             <FaPhone className="text-blue-500 mr-2 flex items-center" />
-            <div className="hidden lg:flex">{profile.mainPhone}</div>
+            <div className="hidden lg:flex">{profile.t_mainPhone.label}</div>
             <Link
               className="Link--primary Link--underline flex lg:hidden font-bold"
-              href={`tel:${profile.mainPhone}`}
+              href={profile.t_mainPhone.href}
             >
-              {profile.mainPhone}
+              {profile.t_mainPhone.label}
             </Link>
           </div>
         )}
