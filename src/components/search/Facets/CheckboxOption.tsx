@@ -3,12 +3,11 @@ import {
   Matcher,
   NumberRangeValue,
 } from "@yext/search-headless-react";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useId } from "react";
 import { useFiltersContext } from "./FiltersContext";
 import { useFilterGroupContext } from "./FilterGroupContext";
 import { findSelectableFieldValueFilter } from "./filterutils";
 import classNames from "classnames";
-import { useId } from "@reach/auto-id";
 /**
  * The configuration data for a field value filter option.
  *
