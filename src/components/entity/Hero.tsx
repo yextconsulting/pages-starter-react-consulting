@@ -10,8 +10,6 @@ const Hero = () => {
   const profile = templateData.document as LocationProfile;
   const hero = profile.c_heroSection;
 
-  console.log(hero?.cta2);
-
   return (
     <ErrorBoundaryWithAnalytics name="hero">
       <HeroLayout
