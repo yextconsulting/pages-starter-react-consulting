@@ -63,12 +63,12 @@ const PromoLayout = (props: PromoLayoutProps) => {
           {(props.appStoreUrl || props.googlePlayUrl) && (
             <div className="flex gap-4">
               {props.appStoreUrl && (
-                <Link href={props.appStoreUrl}>
+                <Link href={props.appStoreUrl} eventName="applestore">
                   <img src={appStoreIcon} alt="Download on the App Store" />
                 </Link>
               )}
               {props.googlePlayUrl && (
-                <Link href={props.googlePlayUrl}>
+                <Link href={props.googlePlayUrl} eventName="googleplaystore">
                   <img src={playStoreIcon} alt="Download on the Play Store" />
                 </Link>
               )}

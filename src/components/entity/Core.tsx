@@ -77,6 +77,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
                 profile.ref_listings,
                 profile.googlePlaceId
               )}`}
+              eventName="getdirections"
             >
               Get Directions
             </Link>
@@ -101,6 +102,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
                 <Link
                   className="Link--primary Link--underline font-bold"
                   cta={{ link: profile.emails[0], linkType: "Email" }}
+                  eventName="email"
                 />
               </div>
             )}
