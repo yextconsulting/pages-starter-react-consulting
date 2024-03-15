@@ -43,11 +43,31 @@ const FooterLayout = (props: FooterLayoutProps) => {
   const copyrightMessage = props.copyrightMessage;
 
   const socialLinks = [
-    { link: props.facebook, label: <FaFacebook className="w-5 h-5 mr-4" /> },
-    { link: props.instagram, label: <FaInstagram className="w-5 h-5 mr-4" /> },
-    { link: props.youtube, label: <FaYoutube className="w-5 h-5 mr-4" /> },
-    { link: props.linkedIn, label: <FaLinkedinIn className="w-5 h-5 mr-4" /> },
-    { link: props.twitter, label: <FaTwitter className="w-5 h-5 mr-4" /> },
+    {
+      name: "facebook",
+      link: props.facebook,
+      label: <FaFacebook className="w-5 h-5 mr-4" />,
+    },
+    {
+      name: "instagram",
+      link: props.instagram,
+      label: <FaInstagram className="w-5 h-5 mr-4" />,
+    },
+    {
+      name: "youtube",
+      link: props.youtube,
+      label: <FaYoutube className="w-5 h-5 mr-4" />,
+    },
+    {
+      name: "linkedIn",
+      link: props.linkedIn,
+      label: <FaLinkedinIn className="w-5 h-5 mr-4" />,
+    },
+    {
+      name: "twitter",
+      link: props.twitter,
+      label: <FaTwitter className="w-5 h-5 mr-4" />,
+    },
   ].filter((link) => link.link);
 
   const footerLinks = props.footerLinks || [];
@@ -62,6 +82,7 @@ const FooterLayout = (props: FooterLayoutProps) => {
                 className="Link Link--primary mb-4 sm:mb-0 sm:mr-4"
                 key={i}
                 cta={link}
+                eventName={`link${i}`}
               />
             ))}
           </div>
@@ -73,6 +94,7 @@ const FooterLayout = (props: FooterLayoutProps) => {
                   className="Link Link--primary"
                   key={i}
                   href={socialLink.link}
+                  eventName={socialLink.name}
                 >
                   {socialLink.label}
                 </Link>
