@@ -31,8 +31,8 @@ export const configBuilder: (
       "ref_listings.publisher",
       "additionalHoursText",
       "services",
-      "dm_directoryParents.name",
-      "dm_directoryParents.slug",
+      "dm_directoryParents_defaultdirectory.name",
+      "dm_directoryParents_defaultdirectory.slug",
       "dm_baseEntityCount",
       "slug",
       // About Fields

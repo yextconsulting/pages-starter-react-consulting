@@ -197,9 +197,9 @@ function metaDescription(data: TemplateRenderProps): string {
   if (entityMeta?.description) return entityMeta.description;
 
   // 2. Check for breadcrumbs
-  const { dm_directoryParents } = data.document;
-  if (dm_directoryParents) {
-    return `${dm_directoryParents
+  const { dm_directoryParents_defaultdirectory } = data.document;
+  if (dm_directoryParents_defaultdirectory) {
+    return `${dm_directoryParents_defaultdirectory
       .map((crumb: { name: string }) => crumb.name)
       .join(", ")}.`;
   }

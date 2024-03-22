@@ -34,7 +34,7 @@ interface EntityLayoutProps {
 }
 
 const EntityLayout = ({ data }: EntityLayoutProps) => {
-  const { dm_directoryParents: directoryParents } = data.document;
+  const { dm_directoryParents_defaultdirectory: directoryParents } = data.document;
 
   return (
     <>
