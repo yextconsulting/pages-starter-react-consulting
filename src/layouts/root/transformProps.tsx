@@ -20,7 +20,7 @@ export const transformProps: TransformProps<
     ...data,
     document: {
       ...data.document,
-      dm_directoryParents: [{ name: name, slug: "" }],
+      dm_directoryParents_defaultdirectory: [{ name: name, slug: "" }],
     },
     translations,
   };

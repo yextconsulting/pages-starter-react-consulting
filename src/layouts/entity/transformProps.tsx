@@ -23,11 +23,11 @@ export const transformProps: TransformProps<
     localPhone,
     alternatePhone,
     address,
-    dm_directoryParents,
+    dm_directoryParents_defaultdirectory,
     name,
   } = data.document;
 
-  (dm_directoryParents || []).push({ name: name, slug: "" });
+  (dm_directoryParents_defaultdirectory || []).push({ name: name, slug: "" });
 
   const translations = await getTranslations(data.document.locale);
 
@@ -48,7 +48,7 @@ export const transformProps: TransformProps<
       ttyPhone: formatPhone(ttyPhone, address.countryCode),
       localPhone: formatPhone(localPhone, address.countryCode),
       alternatePhone: formatPhone(alternatePhone, address.countryCode),
-      dm_directoryParents: dm_directoryParents,
+      dm_directoryParents_defaultdirectory: dm_directoryParents_defaultdirectory,
     },
     translations,
   };
