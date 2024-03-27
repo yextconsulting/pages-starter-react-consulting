@@ -34,4 +34,6 @@ export const configBuilder: (
       locales: ["en"],
     },
   },
+  // Specifies the field to use for URL paths when serving locally
+  slugField: "slug",
 });
