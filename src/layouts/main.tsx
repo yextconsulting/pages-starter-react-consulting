@@ -20,7 +20,7 @@ const Main = (props: MainProps) => {
 
   return (
     <ConfigurationProvider value={config}>
-      <AnalyticsProvider templateData={props.data} requireOptIn={true}>
+      <AnalyticsProvider templateData={props.data} requireOptIn={false}>
         <MainInternal {...props} />
       </AnalyticsProvider>
     </ConfigurationProvider>
