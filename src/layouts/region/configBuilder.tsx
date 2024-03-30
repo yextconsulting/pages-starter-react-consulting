@@ -19,8 +19,8 @@ export const configBuilder: (
       "slug",
       "c_meta",
       // Directory List Fields
-      "dm_directoryParents.slug",
-      "dm_directoryParents.name",
+      "dm_directoryParents_defaultdirectory.slug",
+      "dm_directoryParents_defaultdirectory.name",
       "dm_directoryChildren.slug",
       "dm_directoryChildren.name",
       "dm_directoryChildren.dm_baseEntityCount",
