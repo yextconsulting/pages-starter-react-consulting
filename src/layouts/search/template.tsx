@@ -1,6 +1,7 @@
 import { getRuntime } from "@yext/pages/util";
 import { SearchHeadlessProvider } from "@yext/search-headless-react";
 import { BrowserRouter } from "react-router-dom";
+import { StaticRouter } from "react-router-dom/server";
 import Locator from "src/components/search/Locator";
 import { getSearchProvider } from "src/config";
 import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
@@ -30,23 +31,22 @@ const SearchLayout = ({ data }: SearchLayoutProps) => {
     );
   }
 
+  const Router = runtime.name === "browser" ? BrowserRouter : StaticRouter;
+
   return (
     <>
       <SearchHeadlessProvider searcher={searcher}>
-        {runtime.name === "browser" && (
-          <BrowserRouter>
-            <Locator
-              title={c_searchTitle || "Find a Location"}
-              subTitle={
-                c_searchSubTitle || "Search by city and state or ZIP code"
-              }
-              placeholderText={
-                c_searchPlaceholderText ||
-                "Search by city and state or ZIP code"
-              }
-            />
-          </BrowserRouter>
-        )}
+        <Router location="">
+          <Locator
+            title={c_searchTitle || "Find a Location"}
+            subTitle={
+              c_searchSubTitle || "Search by city and state or ZIP code"
+            }
+            placeholderText={
+              c_searchPlaceholderText || "Search by city and state or ZIP code"
+            }
+          />
+        </Router>
       </SearchHeadlessProvider>
     </>
   );
