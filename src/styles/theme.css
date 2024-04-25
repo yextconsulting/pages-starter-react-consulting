@@ -19,4 +19,8 @@ html {
   &-row.is-today {
     font-weight: theme(fontWeight.bold);
   }
+
+  &-interval {
+    flex-shrink: 1;
+  }
 }
