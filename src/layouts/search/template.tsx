@@ -18,7 +18,6 @@ const SearchLayout = ({ data }: SearchLayoutProps) => {
   const { c_searchTitle, c_searchSubTitle, c_searchPlaceholderText, _site } =
     document;
 
-  const runtime = getRuntime();
   const searcher = getSearchProvider(
     YEXT_PUBLIC_SEARCH_EXPERIENCE_API_KEY,
     document.meta.locale,
@@ -31,22 +30,16 @@ const SearchLayout = ({ data }: SearchLayoutProps) => {
     );
   }
 
-  const Router = runtime.name === "browser" ? BrowserRouter : StaticRouter;
-
   return (
     <>
       <SearchHeadlessProvider searcher={searcher}>
-        <Router location="">
-          <Locator
-            title={c_searchTitle || "Find a Location"}
-            subTitle={
-              c_searchSubTitle || "Search by city and state or ZIP code"
-            }
-            placeholderText={
-              c_searchPlaceholderText || "Search by city and state or ZIP code"
-            }
-          />
-        </Router>
+        <Locator
+          title={c_searchTitle || "Find a Location"}
+          subTitle={c_searchSubTitle || "Search by city and state or ZIP code"}
+          placeholderText={
+            c_searchPlaceholderText || "Search by city and state or ZIP code"
+          }
+        />
       </SearchHeadlessProvider>
     </>
   );
@@ -57,9 +50,19 @@ const SearchLayout = ({ data }: SearchLayoutProps) => {
  * The props passed in here are the direct result from `getStaticProps`.
  */
 const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
+  const runtime = getRuntime();
+
   return (
     <Main data={data}>
-      <SearchLayout data={data} />
+      {runtime.name === "browser" ? (
+        <BrowserRouter>
+          <SearchLayout data={data} />
+        </BrowserRouter>
+      ) : (
+        <StaticRouter location="">
+          <SearchLayout data={data} />
+        </StaticRouter>
+      )}
     </Main>
   );
 };
