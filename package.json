@@ -22,7 +22,7 @@
     "i18n-usecsv": "node i18n/index.js usecsv"
   },
   "engines": {
-    "node": "^18.0.0 || >=20.2.0"
+    "node": "^18.20.0 || >=20.2.0"
   },
   "dependencies": {
     "@reach/auto-id": "0.18.0",
