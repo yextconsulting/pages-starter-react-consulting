@@ -1,5 +1,6 @@
 html {
   --yxt-hoursTable-col2-width: auto;
+  --header-height-mobile: 184px;
 }
 
 .address-line abbr:where([title]) {
@@ -17,5 +18,9 @@ html {
 
   &-row.is-today {
     font-weight: theme(fontWeight.bold);
+  }
+
+  &-interval {
+    flex-shrink: 1;
   }
 }

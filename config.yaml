@@ -29,7 +29,7 @@ siteStream:
     primary: false
   entityId: site-entity
 sitemap:
-  exclude_list:
+  excludeList:
     - feedback/
     - robots.txt
     - google5804978b12580bf0.html

@@ -48,7 +48,7 @@ const DirectorySearchBarInternal = (props: DirectorySearchBarProps) => {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="relative w-[350px!important] justify-center h-[54px]">
+      <div className="relative flex-1 max-w-[350px] justify-center h-[54px]">
         <FilterSearch
           customCssClasses={{
             filterSearchContainer: "absolute w-full mb-0",

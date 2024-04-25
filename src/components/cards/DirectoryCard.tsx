@@ -23,8 +23,8 @@ const DirectoryCard: CardComponent<
       </h3>
 
       {profile.hours && (
-        <div className="mb-4 text-sm">
-          <HoursStatus hours={profile.hours} />
+        <div className="mb-4 text-sm h-6">
+          <HoursStatus hours={profile.hours} className="h-full" />
         </div>
       )}
 

@@ -47,11 +47,12 @@ const HeroLayout = (props: HeroLayoutProps) => {
             {props.address.line1}
           </div>
           {props.hours && (
-            <div className="mb-4">
+            <div className="mb-4 h-6">
               <HoursStatus
                 hours={props.hours}
                 separatorTemplate={() => <span className="bullet" />}
                 dayOfWeekTemplate={() => null}
+                className="h-full"
               />
             </div>
           )}
