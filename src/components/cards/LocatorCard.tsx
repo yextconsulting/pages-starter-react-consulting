@@ -29,11 +29,12 @@ const LocatorCard = (props: LocatorCardProps & CardProps<LocationProfile>) => {
         <TeaserDistance {...props} className="hidden sm:flex" />
       </div>
       {hours && (
-        <div className="pb-2 sm:pb-4">
+        <div className="pb-2 sm:pb-4 h-6">
           <HoursStatus
             dayOfWeekTemplate={() => null}
             hours={hours}
             separatorTemplate={() => <span className="bullet" />}
+            className="h-full"
           />
         </div>
       )}
