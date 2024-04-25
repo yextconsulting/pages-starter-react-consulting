@@ -14,7 +14,7 @@ export function SchemaBuilder(
 
   const breadcrumbs = data.document.dm_directoryParents
     ? (
-        data.document.dm_directoryParents as Array<{
+        data.document.dm_directoryParents_defaultdirectory as Array<{
           slug: string;
           name: string;
         }>

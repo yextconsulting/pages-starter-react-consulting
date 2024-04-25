@@ -20,13 +20,14 @@ interface DirectoryGridLayoutProps {
 type DirectoryLayoutProps = DirectoryListLayoutProps | DirectoryGridLayoutProps;
 
 const DirectoryLayout = ({ data }: DirectoryLayoutProps) => {
-  const { dm_directoryParents, dm_directoryChildren } = data.document;
+  const { dm_directoryParents_defaultdirectory, dm_directoryChildren } =
+    data.document;
 
   return (
     <>
       <DirectoryHero />
       <Breadcrumbs
-        breadcrumbs={dm_directoryParents || []}
+        breadcrumbs={dm_directoryParents_defaultdirectory || []}
         separator="/"
         className="container flex justify-center"
       />

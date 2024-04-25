@@ -12,9 +12,9 @@ import { getTranslations } from "src/i18n";
 export const transformProps: TransformProps<
   TemplateRenderProps<DirectoryProfile<never>>
 > = async (data) => {
-  const { dm_directoryParents, name } = data.document;
+  const { dm_directoryParents_defaultdirectory, name } = data.document;
 
-  (dm_directoryParents || []).push({ name: name, slug: "" });
+  (dm_directoryParents_defaultdirectory || []).push({ name: name, slug: "" });
 
   const translations = await getTranslations(data.document.locale);
 
@@ -22,7 +22,8 @@ export const transformProps: TransformProps<
     ...data,
     document: {
       ...data.document,
-      dm_directoryParents: dm_directoryParents,
+      dm_directoryParents_defaultdirectory:
+        dm_directoryParents_defaultdirectory,
     },
     translations,
   };
