@@ -1,5 +1,6 @@
 html {
   --yxt-hoursTable-col2-width: auto;
+  --header-height-mobile: 184px;
 }
 
 .address-line abbr:where([title]) {

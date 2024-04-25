@@ -85,7 +85,7 @@ const HeaderMobileMenu = (props: { isOpen?: boolean; links: CTA[] }) => {
     <div
       className={
         c({ visible: props.isOpen }) +
-        "hidden absolute top-full left-0 right-0 h-screen bg-white"
+        "hidden absolute top-full left-0 right-0 h-screen bg-white z-50"
       }
     >
       <div className="container">

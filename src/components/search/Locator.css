@@ -1,3 +1,9 @@
+#reactele {
+  @screen sm {
+    height: 100%;
+  }
+}
+
 .Locator {
   --content-width-sm: 350px;
   --content-width-md-up: 450px;
@@ -6,17 +12,19 @@
   display: flex;
   flex: 1;
   border-bottom: 1px solid theme(colors.brand-gray.300);
+  min-height: calc(100vh - var(--header-height-mobile));
 
   @screen sm {
     overflow: auto;
+    min-height: auto;
   }
 
   &-content {
     width: 100%;
-    overflow-y: auto;
 
     @screen sm {
       flex-basis: var(--content-width-sm);
+      overflow-y: auto;
     }
 
     @screen md {
