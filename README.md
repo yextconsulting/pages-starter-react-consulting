@@ -31,25 +31,29 @@ This repository provides a basic example of how to start developing a React site
 
 1. Run `yext init` and authenticate the CLI with your Yext credentials. Add the `-u sandbox` flag if you're using a sandbox Yext account.
 2. Run `yext resources apply platform-config/config` to apply the required configuration resources to your account.
-3. Run `yext resources apply platform-config/entities` to add the necessary entities to your account. This includes a test location entity which can be deleted before running the apply command if desired.
+3. Run `yext resources apply platform-config/entities` to add the necessary entities to your account.
+4. Run `yext resources apply platform-config/repo` to create the Pages Site and generate the github repo
 
-   - You will be prompted to enter several API keys during this step which power the `<Reviews>`, `<Nearby>` and `<Locator>` components. If you do not plan to use these components, you can skip the API key input by pressing Enter.
+   - You may be prompted for a repo URL, it should be a string following this format: `github.com/yext-pages/[repo-name]`. This will generate a github repo.
+   - You may be prompted for API keys for several components. If you do not plan on using these components, you can skip the API key input by pressing Enter.
+   - The Maps API key should come from you map provider of choice (usually Google or Mapbox). [How to request a map API key](https://docs.google.com/document/d/1vMzwTLb8cPioeVH4yUhGuS8X0F5IPTBGk5Y4YXcwNGw/edit#heading=h.wugvxvb5kdka)
    - The Reviews API key should come from a developer app with Read access to the Management API > Reviews endpoint.
    - The Nearby API key should come from a developer app with Read access to the Content Delivery API > Entities endpoint.
    - The Search API key should be an API key from the search experience in your account you plan to use for your locator. If you plan to use the search experience that is created automatically for you in step 5, you can skip this step by hitting **Enter** and fill in the key after the search experience has been created.
-   - These keys will live on the Site entity that is created during this step, so you can always update or add the keys later once the entity has been created.
-   - For guidance on creating a developer app in the Yext plaform, see the first two steps of the Slug Manager section below.
 
-4. Optionally, run `yext resources apply platform-config/advanced` to apply test product, financial professional and faq entities to your account as well as an updated test location which links to these newly created entities. To make sure this related entity information is displayed on your location template, navigate to **src** > **layouts** > **entity.tsx** and comment in the Product, Team and FAQ field sets in the `fields` section of the `configBuilder` function. These fields will now be included in the stream that powers your location template.
-5. If you are implementing a locator search experience, run `yext resources apply platform-config/search` to apply the locator search config to your account.
-6. In the Yext platform, run the directory manager named “Directory” that was created as part of the resource apply command in Step 3. This will create the location-related entities necessary to render a directory on the frontend based on your account’s location entities.
+5. Run `yext resources apply platform-config/slug-manager` to create the slug manager
+
+   - You may be prompted for an API key, this should come from a developer app with Read/Write access to the Management API -> Entities endpoint.
+
+6. If you are implementing a locator search experience, run `yext resources apply platform-config/search` to apply the locator search config to your account.
+7. In the Yext platform, run the directory manager named “Directory” that was created as part of the resource apply command in Step 3. This will create the location-related entities necessary to render a directory on the frontend based on your account’s location entities.
    1. Navigate to **Pages** > **Directory Manager**.
    2. Click to view the directory, then click **Run**.
-7. If you plan to leverage the `<Nearby>` component to show nearby locations, navigate to **src** > **components** > **entity** > `Nearby.tsx` and replace the placeholder `savedFilterIds` value in the `getConfig` function with the ID of the saved filter you use to filter which locations should be live on your site. If you do not use a saved filter, delete this line entirely.
-8. If you plan to use the `<Locator>` component, you will need to have a map provider API key and update the placeholder value in **src** > `config.ts` with your key. You will also need to ensure the `experienceKey` and `verticalKey` values match the search experience you'd like to use.
-9. If you did not provide API keys for the `<Reviews>`, `<Nearby>` and `<Locator>` components during step 4, these components will not work properly and will produce errors if used.
-10. If you are working in a sandbox Yext account, refer to the Working With a Sandbox Account section below to see what changes need to be made to the repo.
-11. See [here](https://drive.google.com/file/d/1A1sNSciY0zD4SVVhRYaoFo9yC7u3InBz/view?usp=sharing) for a detailed video walk-through of these instructions.
+8. If you plan to leverage the `<Nearby>` component to show nearby locations, navigate to **src** > **components** > **entity** > `Nearby.tsx` and replace the placeholder `savedFilterIds` value in the `getConfig` function with the ID of the saved filter you use to filter which locations should be live on your site. If you do not use a saved filter, delete this line entirely.
+9. If you plan to use the `<Locator>` component, you will need to have a map provider API key and update the placeholder value in **src** > `config.ts` with your key. You will also need to ensure the `experienceKey` and `verticalKey` values match the search experience you'd like to use.
+10. If you did not provide API keys for the `<Reviews>`, `<Nearby>` and `<Locator>` components during step 4, these components will not work properly and will produce errors if used.
+11. If you are working in a sandbox Yext account, refer to the Working With a Sandbox Account section below to see what changes need to be made to the repo.
+12. See [here](https://drive.google.com/file/d/1A1sNSciY0zD4SVVhRYaoFo9yC7u3InBz/view?usp=sharing) for a detailed video walk-through of these instructions.
 
 ### Working With A Sandbox Account
 
