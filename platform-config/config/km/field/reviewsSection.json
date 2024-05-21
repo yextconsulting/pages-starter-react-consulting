@@ -1,8 +1,0 @@
-{
-  "$id": "c_reviewsSection",
-  "$schema": "https://schema.yext.com/config/km/field/v1",
-  "displayName": "Reviews Section",
-  "group": "NONE",
-  "localization": "PRIMARY_ONLY",
-  "typeId": "c_reviewsSection"
-}
