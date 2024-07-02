@@ -28,7 +28,7 @@ export function SearchInput(props: SearchInputProps): JSX.Element {
   } = props;
   const { searchValue, setSearchValue } = useFilterGroupContext();
   const handleChange = useCallback(
-    (e) => {
+    (e: any) => {
       setSearchValue(e.target.value);
     },
     [setSearchValue]
