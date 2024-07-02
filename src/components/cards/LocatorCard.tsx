@@ -1,5 +1,5 @@
 import type { CardProps } from "@yext/search-ui-react";
-import { HoursStatus } from "@yext/sites-react-components";
+import { HoursStatus } from "@yext/pages-components";
 import classNames from "classnames";
 import { LocationProfile } from "src/types/entities";
 import { useTemplateData } from "src/common/useTemplateData";
@@ -12,7 +12,7 @@ export interface LocatorCardProps {
 const LocatorCard = (props: LocatorCardProps & CardProps<LocationProfile>) => {
   const { result } = props;
   const { rawData } = result;
-  const { address, hours, slug } = rawData;
+  const { address, hours, slug, timezone } = rawData;
   const { relativePrefixToRoot } = useTemplateData();
 
   return (
@@ -28,11 +28,12 @@ const LocatorCard = (props: LocatorCardProps & CardProps<LocationProfile>) => {
         </MaybeLink>
         <TeaserDistance {...props} className="hidden sm:flex" />
       </div>
-      {hours && (
+      {hours && timezone && (
         <div className="pb-2 sm:pb-4 h-6">
           <HoursStatus
             dayOfWeekTemplate={() => null}
             hours={hours}
+            timezone={timezone}
             separatorTemplate={() => <span className="bullet" />}
             className="h-full"
           />

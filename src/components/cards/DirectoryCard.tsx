@@ -1,5 +1,4 @@
-import { HoursStatus } from "@yext/sites-react-components";
-import { Address } from "@yext/pages-components";
+import { Address, HoursStatus } from "@yext/pages-components";
 import type { LiveAPIProfile, LocationProfile } from "src/types/entities";
 import { CardComponent } from "src/models/cardComponent";
 import { useTemplateData } from "src/common/useTemplateData";
@@ -24,7 +23,11 @@ const DirectoryCard: CardComponent<
 
       {profile.hours && (
         <div className="mb-4 text-sm h-6">
-          <HoursStatus hours={profile.hours} className="h-full" />
+          <HoursStatus
+            hours={profile.hours}
+            timezone={profile.timezone}
+            className="h-full"
+          />
         </div>
       )}
 

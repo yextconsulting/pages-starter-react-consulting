@@ -25,6 +25,7 @@ export const configBuilder: (
       "yextDisplayCoordinate",
       "description",
       "hours",
+      "timezone",
       "googlePlaceId",
       "photoGallery",
       "ref_listings.listingUrl",
