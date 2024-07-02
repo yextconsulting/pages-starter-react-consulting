@@ -215,3 +215,20 @@ export function getSelectableFieldValueFilters(
     })
     .filter((s): s is SelectableFieldValueFilter => !!s);
 }
+
+/**
+ * Creates the filter's display name based on the number range.
+ */
+export function getDefaultFilterDisplayName(numberRange: NumberRangeValue) {
+  const start = numberRange.start;
+  const end = numberRange.end;
+
+  if (start && end) {
+    return `${start.value} - ${end.value}`;
+  } else if (start && !end) {
+    return `Over ${start.value}`;
+  } else if (end && !start) {
+    return `Up to ${end.value}`;
+  }
+  return "";
+}

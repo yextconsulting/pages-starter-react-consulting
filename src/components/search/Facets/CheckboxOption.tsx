@@ -3,12 +3,15 @@ import {
   Matcher,
   NumberRangeValue,
 } from "@yext/search-headless-react";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useId } from "react";
 import { useFiltersContext } from "./FiltersContext";
 import { useFilterGroupContext } from "./FilterGroupContext";
-import { findSelectableFieldValueFilter } from "./filterutils";
+import {
+  findSelectableFieldValueFilter,
+  getDefaultFilterDisplayName,
+  isNumberRangeValue,
+} from "./filterutils";
 import classNames from "classnames";
-import { useId } from "@reach/auto-id";
 /**
  * The configuration data for a field value filter option.
  *
@@ -101,7 +104,7 @@ export function CheckboxOption(props: CheckboxOptionProps): JSX.Element | null {
   );
 
   const handleChange = useCallback(
-    (evt) => {
+    (evt: any) => {
       handleClick(evt.target.checked);
     },
     [handleClick]
@@ -139,9 +142,13 @@ export function CheckboxOption(props: CheckboxOptionProps): JSX.Element | null {
     ? existingStoredFilter.selected
     : false;
 
+  const displayNameString = isNumberRangeValue(displayName)
+    ? getDefaultFilterDisplayName(displayName)
+    : displayName.toString();
+
   const labelText = resultsCount
-    ? `${displayName} (${resultsCount})`
-    : displayName;
+    ? `${displayNameString} (${resultsCount})`
+    : displayNameString;
 
   const inputClasses = classNames(cssClasses.input, {
     [cssClasses.input___disabled ?? ""]: isOptionsDisabled,

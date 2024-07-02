@@ -141,12 +141,12 @@ export function RangeInput(props: RangeInputProps): JSX.Element | null {
     setIsOptionsDisabled(hasUserInput);
   }, [hasUserInput, setIsOptionsDisabled]);
 
-  const handleMinChange = useCallback((event) => {
+  const handleMinChange = useCallback((event: any) => {
     const input = event?.target?.value;
     validateNumericInput(input) && setMinRangeInput(input);
   }, []);
 
-  const handleMaxChange = useCallback((event) => {
+  const handleMaxChange = useCallback((event: any) => {
     const input = event?.target?.value;
     validateNumericInput(input) && setMaxRangeInput(input);
   }, []);
