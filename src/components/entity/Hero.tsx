@@ -1,5 +1,4 @@
-import { HoursStatus } from "@yext/sites-react-components";
-import { Link, Image } from "@yext/pages-components";
+import { Link, Image, HoursStatus } from "@yext/pages-components";
 import type { Address, Hours, CTA, Image as ImageType } from "@yext/types";
 import { useTemplateData } from "src/common/useTemplateData";
 import type { LocationProfile } from "src/types/entities";
@@ -19,6 +18,7 @@ const Hero = () => {
         address={profile.address}
         background={hero?.background}
         hours={profile.hours}
+        timezone={profile.timezone}
         numReviews={21}
         rating={4.5}
       />
@@ -33,6 +33,7 @@ type HeroLayoutProps = {
   cta1?: CTA;
   cta2?: CTA;
   hours?: Hours;
+  timezone?: string;
   numReviews?: number;
   rating?: number;
 };
@@ -46,10 +47,11 @@ const HeroLayout = (props: HeroLayoutProps) => {
           <div className="Heading Heading--lead mb-4">
             {props.address.line1}
           </div>
-          {props.hours && (
+          {props.hours && props.timezone && (
             <div className="mb-4 h-6">
               <HoursStatus
                 hours={props.hours}
+                timezone={props.timezone}
                 separatorTemplate={() => <span className="bullet" />}
                 dayOfWeekTemplate={() => null}
                 className="h-full"

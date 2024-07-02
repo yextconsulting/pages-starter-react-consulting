@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
-import { HoursTable } from "@yext/sites-react-components";
 import {
   Link,
   Address,
   getDirections,
   LocationMap,
   GoogleMaps,
+  HoursTable,
 } from "@yext/pages-components";
 import type { LocationProfile } from "src/types/entities";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
@@ -111,7 +111,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
             <CoreSection>
               <CoreHeading>Hours</CoreHeading>
               {profile.hours && (
-                <HoursTable hours={profile.hours} startOfWeek="Monday" />
+                <HoursTable hours={profile.hours} startOfWeek="monday" />
               )}
               {profile.additionalHoursText && (
                 <div className="mt-4">{profile.additionalHoursText}</div>
