@@ -116,6 +116,7 @@ export interface LocationProfile extends BaseProfile {
   readonly yextDisplayCoordinate: Coordinate;
   readonly slug: string;
   readonly hours?: Hours;
+  readonly timezone: string;
   readonly additionalHoursText?: string;
   readonly mainPhone?: string;
   readonly t_mainPhone?: PhoneData;
