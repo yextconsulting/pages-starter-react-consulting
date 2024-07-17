@@ -16,7 +16,8 @@
     "c_reviewsSection",
     "c_teamSection",
     "c_featuredProductsSection",
-    "c_meta"
+    "c_meta",
+    "c_pagesURL"
   ],
   "required": []
 }
