@@ -110,6 +110,8 @@ export const configBuilder: (
       locales: ["en"],
     },
   },
-  // Specifies the field to use for URL paths when serving locally
+  // Specifies the field to use for URL paths when serving locally.
   slugField: "slug",
+  // Specifies the field to be used as the custom writeback URL.
+  pageUrlField: "c_pagesURL",
 });

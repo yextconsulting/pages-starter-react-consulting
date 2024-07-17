@@ -90,14 +90,11 @@ The Slug Manager helps to automate the process of populating and updating the bu
 9. Select the **Slug-Manager** function and click the webhook option. Hit **Finish and Add**.
 10. The Slug Manager is now set up and ready to go!
 
-### Implementing the `urlWriteBack` function
+### Page URL Writebacks
 
-It is a common practice to store an entity page URL as a field on the entity itself. The `urlWriteback` function helps to automate the process of keeping the URL field value up to date if the underlying URL changes. To set up the `urlWriteback` function, the follow the instructions below:
+It is a common practice to store an entity page URL as a field on the entity itself. Yext will automatically update a custom field with the entity page URL anytime the pages URLs are updated. You can configure the custom field Yext will write the URL to with the `pageUrlField` property within the config export of each Stream template.
 
-1. In your repo, navigate to `functions/onUrlChange/urlWriteback.ts`.
-2. By default, the function references `c_pagesURL` as the field where your entity page URL will be stored on each entity. You can either create a field with this API name or change the value of the `pageUrlCustomField` to the field API name of the field you plan to use to store your URLs.
-3. Update the placeholder value for the `API_KEY` variable with a real API key. If you went through the above instructions to set up the Slug Manager, you can use that same API key here. If not, follow the first two steps in the Slug Manager section to create an app with **Read / Write** permissions to the **Entities Management API** endpoint.
-4. You’re good to go! This function will be invoked by the `onUrlChange` event documented [here](https://hitchhikers.yext.com/docs/pages/plugins/?target=plugin-events).
+See the Hitchhiker reference for more information: [Page URL Writebacks](https://hitchhikers.yext.com/docs/pages/url-writebacks/).
 
 ## Useful commands
 
