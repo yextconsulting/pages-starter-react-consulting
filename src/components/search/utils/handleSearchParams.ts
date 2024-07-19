@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSearchActions } from "@yext/search-headless-react";
+import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import {
   decodeFacetFilters,
@@ -52,17 +52,14 @@ export function useLoadInitialSearchParams(
 export function useSyncSearchParamsWithState(initialParamsLoaded: boolean) {
   const searchActions = useSearchActions();
   const [searchParams, setSearchParams] = useSearchParams();
+  const filters = useSearchState((s) => s.filters);
 
   useEffect(() => {
     // Don't register listeners on page load until all of the initial params are loaded.
     if (!initialParamsLoaded) return;
 
-    const encodedStatic = encodeStaticFilters(
-      searchActions.state.filters?.static || []
-    );
-    const encodedFacets = encodeFacetFilters(
-      searchActions.state.filters?.facets || []
-    );
+    const encodedStatic = encodeStaticFilters(filters?.static || []);
+    const encodedFacets = encodeFacetFilters(filters?.facets || []);
     let newSearchString = "";
 
     if (encodedStatic) {
@@ -78,7 +75,7 @@ export function useSyncSearchParamsWithState(initialParamsLoaded: boolean) {
     if (newSearchString !== searchParams.toString()) {
       setSearchParams(newSearchString);
     }
-  }, [searchActions.state.filters, initialParamsLoaded]);
+  }, [filters, initialParamsLoaded]);
 }
 
 // On change in window location, check if the decoded URLSearchParams match the current search state and update if there is a delta.
