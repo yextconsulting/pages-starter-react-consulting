@@ -12,7 +12,7 @@ export function SchemaBuilder(
       }
     : null;
 
-  const breadcrumbs = data.document.dm_directoryParents
+  const breadcrumbs = data.document.dm_directoryParents_defaultdirectory
     ? (
         data.document.dm_directoryParents_defaultdirectory as Array<{
           slug: string;
