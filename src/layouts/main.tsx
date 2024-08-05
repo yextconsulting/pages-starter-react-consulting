@@ -16,16 +16,26 @@ interface MainProps {
 const Main = (props: MainProps) => {
   initi18n(props.data.translations || {}, props.data.document.locale);
 
+  if (!YEXT_PUBLIC_ANALYTICS_API_KEY) {
+    console.error(
+      "Add an analytics events API key to the .env file or as a site variable to enable Yext Analytics."
+    );
+  }
+
   return (
-    <AnalyticsProvider templateData={props.data} requireOptIn={false}>
+    <AnalyticsProvider
+      apiKey={YEXT_PUBLIC_ANALYTICS_API_KEY}
+      currency="USD"
+      templateData={props.data}
+      requireOptIn={false}
+      enableDebugging={true}
+    >
       <MainInternal {...props} />
     </AnalyticsProvider>
   );
 };
 
 const MainInternal = (props: MainProps) => {
-  const { _site } = props.data.document;
-
   const { children } = props;
 
   // Create the global window.enableYextAnalytics function for clients that need to get user consent
