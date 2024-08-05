@@ -30,7 +30,7 @@ const FAQsLayout = (props: FAQsLayoutProps) => {
   return (
     <div className="FAQ bg-brand-gray-100 py-8 sm:py-16">
       <div className="container">
-        <h2 className="Heading Heading--sub font-bold mb-8">{title}</h2>
+        <h2 className="heading heading-sub font-bold mb-8">{title}</h2>
         <div className="divide-y border-t border-b">
           {faqs.map((faq) => (
             <FAQ

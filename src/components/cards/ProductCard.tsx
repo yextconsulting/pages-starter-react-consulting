@@ -14,14 +14,14 @@ const ProductCard: CardComponent<ProductProfile> = function productCard(
           <Image layout="fill" image={profile.primaryPhoto.image} />
         </div>
       )}
-      <div className="Heading Heading--sub mx-8">{profile.name}</div>
+      <div className="heading heading-sub mx-8">{profile.name}</div>
       {profile.richTextDescription && (
         <div className="mx-8 mt-4">{profile.richTextDescription}</div>
       )}
       {profile.c_primaryCTA && (
         <div className="flex mx-8 mt-8 mb-4">
           <Link
-            className="self-start Button Button--secondary"
+            className="self-start btn btn-secondary"
             cta={profile.c_primaryCTA}
           />
         </div>

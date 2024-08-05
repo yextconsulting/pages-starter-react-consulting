@@ -79,7 +79,7 @@ const FooterLayout = (props: FooterLayoutProps) => {
           <div className="flex flex-col sm:flex-row items-center">
             {footerLinks.map((link, i) => (
               <Link
-                className="Link Link--primary mb-4 sm:mb-0 sm:mr-4"
+                className="link-primary mb-4 sm:mb-0 sm:mr-4"
                 key={i}
                 cta={link}
                 eventName={`link${i}`}
@@ -91,7 +91,7 @@ const FooterLayout = (props: FooterLayoutProps) => {
             {socialLinks.map((socialLink, i) =>
               socialLink.link ? (
                 <Link
-                  className="Link Link--primary"
+                  className="link-primary"
                   key={i}
                   href={socialLink.link}
                   eventName={socialLink.name}

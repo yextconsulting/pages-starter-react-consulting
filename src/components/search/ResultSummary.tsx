@@ -19,7 +19,7 @@ const ResultSummary = () => {
   const initialSummaryText = (
     <span>
       Use our locator to find a location near you or{" "}
-      <a href={relativePrefixToRoot + "index.html"} className="Link--underline">
+      <a href={relativePrefixToRoot + "index.html"} className="link-underline">
         browse our directory
       </a>
       .

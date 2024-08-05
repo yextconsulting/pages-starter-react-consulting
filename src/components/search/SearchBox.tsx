@@ -23,7 +23,7 @@ const SearchBox = (props: SearchBoxProps) => {
 
   return (
     <div className="shadow-brand-shadow p-6">
-      <h1 className="Heading--lead mb-4">{title}</h1>
+      <h1 className="heading heading-lead mb-4">{title}</h1>
       <div className="mb-2 text-brand-gray-400">{subTitle}</div>
       <div className="flex items-center">
         <div className="relative w-full h-9">

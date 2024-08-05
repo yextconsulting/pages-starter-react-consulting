@@ -42,7 +42,7 @@ const InsightsLayout = (props: InsightsLayoutProps) => {
   return (
     <div className="Insights py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
-        <div className="Heading Heading--head mb-8">{title}</div>
+        <div className="heading heading-head mb-8">{title}</div>
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/2 md:mr-4">
             <div className="border-b md:border-none">
@@ -74,7 +74,7 @@ const InsightsLayout = (props: InsightsLayoutProps) => {
         </div>
         {cta && (
           <div className="flex mt-8 mb-6 justify-center">
-            <Link className="Button Button--secondary" cta={cta} />
+            <Link className="btn btn-secondary" cta={cta} />
           </div>
         )}
       </div>

@@ -14,7 +14,7 @@ const DirectoryCard: CardComponent<
     <div className="Directorycard bg-white px-6 py-8 border h-full">
       <h3 className="mb-4 text-lg font-medium">
         <MaybeLink
-          className="Link Link--primary hover:underline"
+          className="link-primary hover:underline"
           href={profile.slug ? relativePrefixToRoot + profile.slug : ""}
         >
           {profile.name}
