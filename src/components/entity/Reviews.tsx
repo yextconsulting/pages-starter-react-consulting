@@ -65,7 +65,10 @@ const ReviewsLayout = (props: ReviewsLayoutProps) => {
       );
       return;
     }
-    fetchReviews(apiKey, entityId).then((r) => setReviews(r || []));
+    fetchReviews(apiKey, entityId).then((reviews) => {
+      reviews.sort((a, b) => (a.reviewDate < b.reviewDate ? 1 : -1));
+      setReviews(reviews || []);
+    });
   }, [apiKey, entityId]);
 
   const averageRating = +(
@@ -102,7 +105,7 @@ const ReviewsLayout = (props: ReviewsLayoutProps) => {
     <div className="py-8 sm:py-16">
       <div className="container">
         <div className="mb-12 sm:mb-16">
-          <h2 className="Heading Heading--sub text-center mb-3">{title}</h2>
+          <h2 className="heading heading-sub text-center mb-3">{title}</h2>
           <div className="flex justify-center">
             <span className="font-bold">{averageRating}</span>
             <ReviewStars rating={averageRating} className="mx-3" />
@@ -122,7 +125,7 @@ const ReviewsLayout = (props: ReviewsLayoutProps) => {
             <div className="flex">
               <Slider>
                 {slides.map((slide, idx) => (
-                  <Slide index={idx} key={idx}>
+                  <Slide index={idx} key={idx} classNameHidden="!h-0">
                     {slide}
                   </Slide>
                 ))}

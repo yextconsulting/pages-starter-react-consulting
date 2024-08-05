@@ -95,7 +95,7 @@ const NearbyLayout = (props: NearbyLayoutProps) => {
     return linkToLocator ? (
       <Link
         href={buttonLink ?? relativePrefixToRoot + search_path}
-        className={classNames("Button Button--primary mt-8 sm:mt-0", cls)}
+        className={classNames("btn btn-primary mt-8 sm:mt-0", cls)}
       >
         {buttonText}
       </Link>
@@ -112,7 +112,7 @@ const NearbyLayout = (props: NearbyLayoutProps) => {
     <div className="py-8 sm:py-16">
       <div className="container">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="Heading Heading--head">{title}</h2>
+          <h2 className="heading heading-head">{title}</h2>
           {renderLocatorLink("hidden sm:flex")}
         </div>
         <ul className="flex flex-wrap -m-4">

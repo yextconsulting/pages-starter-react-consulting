@@ -48,7 +48,7 @@ const TeamLayout = (props: TeamLayoutProps) => {
   return (
     <div className="Team py-8 sm:py-16">
       <div className="container">
-        <h2 className="Heading Heading--head mb-8 md:text-center">{title}</h2>
+        <h2 className="heading heading-head mb-8 md:text-center">{title}</h2>
         <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((member, i) => (
             <li key={i}>
@@ -58,7 +58,7 @@ const TeamLayout = (props: TeamLayoutProps) => {
         </ul>
         {load && (
           <button
-            className="Button Button--secondary m-auto mt-8"
+            className="btn btn-secondary m-auto mt-8"
             onClick={() => {
               setNumberVisible(team.length);
             }}

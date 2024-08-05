@@ -14,7 +14,7 @@ const EventCard: CardComponent<EventProfile> = function EventCard(
           <Image layout="fill" image={profile.photoGallery[0].image} />
         </div>
       )}
-      <div className="Heading Heading--sub mx-8">{profile.name}</div>
+      <div className="heading heading-sub mx-8">{profile.name}</div>
       {profile.time && (
         <div className="mx-8 mt-4">
           {formatEventDate(profile.time.start, profile.time.end)}
@@ -26,7 +26,7 @@ const EventCard: CardComponent<EventProfile> = function EventCard(
       {profile.c_primaryCTA && (
         <div className="flex mx-8 mt-8 mb-4">
           <Link
-            className="self-start Button Button--secondary"
+            className="self-start btn btn-secondary"
             cta={profile.c_primaryCTA}
           />
         </div>

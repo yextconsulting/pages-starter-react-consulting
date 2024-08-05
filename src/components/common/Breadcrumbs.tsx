@@ -72,7 +72,7 @@ const Breadcrumb = (props: BreadcrumbProps) => {
 
   return (
     <MaybeLink
-      className="Link--breadcrumbs Link--underline"
+      className="link-breadcrumbs link-underline"
       href={slug}
       eventName={`link${props.index}`}
     >

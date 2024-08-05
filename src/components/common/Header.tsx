@@ -54,7 +54,7 @@ const HeaderLayout = (props: HeaderLayoutProps) => {
 
 const HeaderLogo = (props: { logo: ImageType; logoLink?: string }) => {
   return (
-    <MaybeLink className="Header-logoLink" href={props.logoLink}>
+    <MaybeLink href={props.logoLink}>
       <div className="flex w-[144px] mr-2">
         <Image image={props.logo} layout="fill" />
       </div>
@@ -69,7 +69,7 @@ const HeaderLinks = (props: { links: CTA[] }) => {
         {props.links.map((item: CTA, idx) => (
           <li key={item.label}>
             <Link
-              className="Link Link--primary Link--header mx-2 lg:mx-5"
+              className="link-primary mx-2 lg:mx-5"
               cta={item}
               eventName={`link${idx}`}
             />
@@ -93,7 +93,7 @@ const HeaderMobileMenu = (props: { isOpen?: boolean; links: CTA[] }) => {
           {props.links.map((item: CTA, idx) => (
             <li key={item.label}>
               <Link
-                className="Link Link--header py-3 block"
+                className="link-primary py-3 block"
                 cta={item}
                 eventName={`mobilelink${idx}`}
               />

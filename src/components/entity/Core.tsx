@@ -34,8 +34,8 @@ const CoreSection = (props: { children: ReactNode }) => {
   return <div className="w-full sm:w-1/2 lg:w-1/3 mb-8">{props.children}</div>;
 };
 
-const CoreHeading = (props: { children: ReactNode }) => {
-  return <h2 className="Heading Heading--sub mb-4">{props.children}</h2>;
+const Coreheading = (props: { children: ReactNode }) => {
+  return <h2 className="heading heading-sub mb-4">{props.children}</h2>;
 };
 
 const CoreLayout = (props: CoreLayoutProps) => {
@@ -68,10 +68,10 @@ const CoreLayout = (props: CoreLayoutProps) => {
       <div className="container">
         <div className="flex flex-row flex-wrap">
           <CoreSection>
-            <CoreHeading>Information</CoreHeading>
+            <Coreheading>Information</Coreheading>
             <Address address={profile.address} />
             <Link
-              className="Link--primary Link--underline font-bold mt-2"
+              className="link-primary link-underline font-bold mt-2"
               href={`${getDirections(
                 profile.address,
                 profile.ref_listings,
@@ -100,16 +100,18 @@ const CoreLayout = (props: CoreLayoutProps) => {
               <div className="flex items-center mt-4">
                 <FaEnvelope className="text-blue-500 mr-2" />
                 <Link
-                  className="Link--primary Link--underline font-bold"
+                  className="link-primary link-underline font-bold"
                   cta={{ link: profile.emails[0], linkType: "Email" }}
                   eventName="email"
-                />
+                >
+                  {profile.emails[0]}
+                </Link>
               </div>
             )}
           </CoreSection>
           {(profile.hours || profile.additionalHoursText) && (
             <CoreSection>
-              <CoreHeading>Hours</CoreHeading>
+              <Coreheading>Hours</Coreheading>
               {profile.hours && (
                 <HoursTable hours={profile.hours} startOfWeek="monday" />
               )}
@@ -120,7 +122,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
           )}
           {profile.services && (
             <CoreSection>
-              <CoreHeading>Services</CoreHeading>
+              <Coreheading>Services</Coreheading>
               <ul className="list-inside">
                 {profile.services.map((service) => (
                   <li className="mb-2" key={service}>

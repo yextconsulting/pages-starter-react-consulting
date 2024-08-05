@@ -43,13 +43,13 @@ const AboutLayout = (props: AboutLayoutProps) => {
         )}
 
         <div className="w-full md:w-1/2 flex flex-col gap-8">
-          <h2 className="Heading Heading--head">{props.title}</h2>
+          <h2 className="heading heading-head">{props.title}</h2>
 
           {props.description && <div>{props.description}</div>}
 
           {props.cta && (
             <Link
-              className="inline-flex self-start Button Button--secondary"
+              className="inline-flex self-start btn btn-secondary"
               cta={props.cta}
             />
           )}
