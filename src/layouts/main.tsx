@@ -28,7 +28,6 @@ const Main = (props: MainProps) => {
       currency="USD"
       templateData={props.data}
       requireOptIn={false}
-      enableDebugging={true}
     >
       <MainInternal {...props} />
     </AnalyticsProvider>
