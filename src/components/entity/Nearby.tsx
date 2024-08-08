@@ -19,7 +19,6 @@ const getConfig = (api_key: string) => {
       entityTypes: "location",
       limit: "4",
       radius: "50",
-      savedFilterIds: "<REPLACE-ME>",
       v: "20220927",
     },
   };
