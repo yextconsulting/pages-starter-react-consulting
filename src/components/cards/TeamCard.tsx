@@ -9,7 +9,7 @@ type TeamCardProps = {
 const TeamCard = (props: TeamCardProps) => {
   const { profile } = props;
   return (
-    <div className="TeamCard h-full rounded-lg shadow-lg">
+    <div className="h-full rounded-lg shadow-lg">
       <div className="border-b-2 p-8 flex items-center">
         {profile.headshot && (
           <Image

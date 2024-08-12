@@ -16,7 +16,7 @@ const Featured = <ProfileType,>(props: FeaturedProps<ProfileType>) => {
   const itemsToRender = items.filter((_, idx) => idx < itemsToShow);
 
   return (
-    <div className="FeaturedProduct py-8 sm:py-16 bg-brand-gray-100">
+    <div className="py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
         <div className="pb-2 m-4 heading heading-head">{title}</div>
         <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">

@@ -73,7 +73,7 @@ const FooterLayout = (props: FooterLayoutProps) => {
   const footerLinks = props.footerLinks || [];
 
   return (
-    <footer className="Footer py-8 sm:py-16">
+    <footer className="py-8 sm:py-16">
       <div className="container">
         <div className="flex flex-col sm:flex-row items-center justify-between">
           <div className="flex flex-col sm:flex-row items-center">

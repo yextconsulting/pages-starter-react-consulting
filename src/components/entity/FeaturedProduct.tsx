@@ -19,7 +19,7 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
   if (!products.length) return null;
 
   return (
-    <div className="FeaturedProduct py-8 sm:py-16 bg-brand-gray-100">
+    <div className="py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
         <div className="pb-2 m-4 heading heading-head">{title}</div>
         <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -37,7 +37,7 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
               {item.c_primaryCTA && (
                 <div className="flex mx-8 mt-8 mb-4">
                   <Link
-                    className="self-start btn btn-secondary"
+                    className="self-start button button-secondary"
                     cta={item.c_primaryCTA}
                   />
                 </div>

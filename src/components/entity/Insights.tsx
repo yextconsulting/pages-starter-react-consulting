@@ -40,7 +40,7 @@ const InsightsLayout = (props: InsightsLayoutProps) => {
   const featuredInsight = insights[0];
   const listedInsights = insights.slice(1);
   return (
-    <div className="Insights py-8 sm:py-16 bg-brand-gray-100">
+    <div className="py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
         <div className="heading heading-head mb-8">{title}</div>
         <div className="flex flex-col md:flex-row">
@@ -74,7 +74,7 @@ const InsightsLayout = (props: InsightsLayoutProps) => {
         </div>
         {cta && (
           <div className="flex mt-8 mb-6 justify-center">
-            <Link className="btn btn-secondary" cta={cta} />
+            <Link className="button button-secondary" cta={cta} />
           </div>
         )}
       </div>

@@ -34,7 +34,7 @@ type AboutLayoutProps = {
 
 const AboutLayout = (props: AboutLayoutProps) => {
   return (
-    <div className="About py-8 sm:py-16">
+    <div className="py-8 sm:py-16">
       <div className="container flex flex-col md:flex-row gap-8 md:gap-16">
         {props.image && (
           <div className="w-full md:w-1/2">
@@ -49,7 +49,7 @@ const AboutLayout = (props: AboutLayoutProps) => {
 
           {props.cta && (
             <Link
-              className="inline-flex self-start btn btn-secondary"
+              className="inline-flex self-start button button-secondary"
               cta={props.cta}
             />
           )}

@@ -16,7 +16,7 @@ const LocatorCard = (props: LocatorCardProps & CardProps<LocationProfile>) => {
   const { relativePrefixToRoot } = useTemplateData();
 
   return (
-    <div className="LocatorCard">
+    <div>
       <div className="flex justify-between">
         <MaybeLink
           className="link-primary hover:underline"

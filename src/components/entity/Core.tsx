@@ -64,7 +64,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
   );
 
   return (
-    <div className="Core py-8 sm:py-16 bg-brand-gray-100">
+    <div className="py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
         <div className="flex flex-row flex-wrap">
           <CoreSection>

@@ -74,6 +74,8 @@ const Locator = (props: LocatorProps) => {
     }
   );
 
+  console.log(results);
+
   return (
     <LocatorProvider
       value={{

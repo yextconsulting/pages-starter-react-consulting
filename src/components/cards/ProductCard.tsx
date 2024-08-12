@@ -21,7 +21,7 @@ const ProductCard: CardComponent<ProductProfile> = function productCard(
       {profile.c_primaryCTA && (
         <div className="flex mx-8 mt-8 mb-4">
           <Link
-            className="self-start btn btn-secondary"
+            className="self-start button button-secondary"
             cta={profile.c_primaryCTA}
           />
         </div>

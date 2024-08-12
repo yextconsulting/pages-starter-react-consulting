@@ -28,7 +28,7 @@ const FAQsLayout = (props: FAQsLayoutProps) => {
   const { title, faqs } = props;
 
   return (
-    <div className="FAQ bg-brand-gray-100 py-8 sm:py-16">
+    <div className="bg-brand-gray-100 py-8 sm:py-16">
       <div className="container">
         <h2 className="heading heading-sub font-bold mb-8">{title}</h2>
         <div className="divide-y border-t border-b">

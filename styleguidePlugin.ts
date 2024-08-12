@@ -2,7 +2,7 @@ import plugin from "tailwindcss/plugin";
 
 export default plugin(({ addComponents, theme }) => {
   addComponents({
-    ".btn": {
+    ".button": {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -10,7 +10,7 @@ export default plugin(({ addComponents, theme }) => {
       padding: `${theme("spacing.2")} ${theme("spacing.6")}`,
       fontWeight: theme("fontWeight.bold"),
     },
-    ".btn-primary": {
+    ".button-primary": {
       backgroundColor: theme("colors.brand-primary"),
       color: "white",
       border: `2px solid ${theme("colors.brand-primary")}`,
@@ -20,7 +20,7 @@ export default plugin(({ addComponents, theme }) => {
         border: `2px solid ${theme("colors.brand-secondary")}`,
       },
     },
-    ".btn-secondary": {
+    ".button-secondary": {
       backgroundColor: "white",
       color: theme("colors.brand-secondary"),
       border: `2px solid ${theme("colors.brand-primary")}`,

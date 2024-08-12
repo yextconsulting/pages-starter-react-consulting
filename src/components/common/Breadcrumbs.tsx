@@ -30,10 +30,7 @@ const Breadcrumbs = (props: BreadcrumbsPropsDefault) => {
   return (
     <ErrorBoundaryWithAnalytics name="breadcrumbs">
       {breadcrumbs?.length && (
-        <nav
-          className={classNames("Breadcrumbs my-4", className)}
-          aria-label="Breadcrumb"
-        >
+        <nav className={classNames("my-4", className)} aria-label="Breadcrumb">
           <ol className="flex flex-wrap">
             {breadcrumbs.map(({ name, slug }, idx) => {
               const isLast = idx === breadcrumbs.length - 1;

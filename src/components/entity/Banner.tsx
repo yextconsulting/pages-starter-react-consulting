@@ -43,7 +43,7 @@ const BannerLayout = (props: BannerLayoutProps) => {
   }
 
   return (
-    <div className="Banner bg-brand-primary text-white py-4">
+    <div className="bg-brand-primary text-white py-4">
       <div className="container flex items-center">
         {props.image && (
           <div className="flex mr-4 w-4">

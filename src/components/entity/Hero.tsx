@@ -66,10 +66,10 @@ const HeroLayout = (props: HeroLayoutProps) => {
           {(props.cta1 || props.cta2) && (
             <div className="flex flex-col lg:flex-row mb-4 gap-4">
               {props.cta1 && (
-                <Link className="btn btn-primary" cta={props.cta1} />
+                <Link className="button button-primary" cta={props.cta1} />
               )}
               {props.cta2 && (
-                <Link className="btn btn-secondary" cta={props.cta2} />
+                <Link className="button button-secondary" cta={props.cta2} />
               )}
             </div>
           )}

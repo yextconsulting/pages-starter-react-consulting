@@ -95,7 +95,7 @@ const NearbyLayout = (props: NearbyLayoutProps) => {
     return linkToLocator ? (
       <Link
         href={buttonLink ?? relativePrefixToRoot + search_path}
-        className={classNames("btn btn-primary mt-8 sm:mt-0", cls)}
+        className={classNames("button button-primary mt-8 sm:mt-0", cls)}
       >
         {buttonText}
       </Link>

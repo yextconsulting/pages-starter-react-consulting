@@ -32,7 +32,7 @@ const HeaderLayout = (props: HeaderLayoutProps) => {
   const { logo, logoLink, links } = props;
 
   return (
-    <header className="Header relative">
+    <header className="relative">
       <div className="container py-5 flex justify-start md:justify-between">
         {logo && <HeaderLogo logo={logo} logoLink={logoLink} />}
 
