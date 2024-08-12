@@ -91,11 +91,11 @@ const NearbyLayout = (props: NearbyLayoutProps) => {
       .catch((error) => console.error(error));
   }, [coordinate, id, apiKey]);
 
-  const renderLocatorLink = (cls?: string) => {
+  const renderLocatorLink = (className?: string) => {
     return linkToLocator ? (
       <Link
         href={buttonLink ?? relativePrefixToRoot + search_path}
-        className={classNames("button button-primary mt-8 sm:mt-0", cls)}
+        className={classNames("button button-primary mt-8 sm:mt-0", className)}
       >
         {buttonText}
       </Link>

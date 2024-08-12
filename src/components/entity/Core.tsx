@@ -34,7 +34,7 @@ const CoreSection = (props: { children: ReactNode }) => {
   return <div className="w-full sm:w-1/2 lg:w-1/3 mb-8">{props.children}</div>;
 };
 
-const Coreheading = (props: { children: ReactNode }) => {
+const CoreHeading = (props: { children: ReactNode }) => {
   return <h2 className="heading heading-sub mb-4">{props.children}</h2>;
 };
 
@@ -68,7 +68,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
       <div className="container">
         <div className="flex flex-row flex-wrap">
           <CoreSection>
-            <Coreheading>Information</Coreheading>
+            <CoreHeading>Information</CoreHeading>
             <Address address={profile.address} />
             <Link
               className="link-primary link-underline font-bold mt-2"
@@ -111,7 +111,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
           </CoreSection>
           {(profile.hours || profile.additionalHoursText) && (
             <CoreSection>
-              <Coreheading>Hours</Coreheading>
+              <CoreHeading>Hours</CoreHeading>
               {profile.hours && (
                 <HoursTable hours={profile.hours} startOfWeek="monday" />
               )}
@@ -122,7 +122,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
           )}
           {profile.services && (
             <CoreSection>
-              <Coreheading>Services</Coreheading>
+              <CoreHeading>Services</CoreHeading>
               <ul className="list-inside">
                 {profile.services.map((service) => (
                   <li className="mb-2" key={service}>
