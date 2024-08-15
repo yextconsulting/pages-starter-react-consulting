@@ -19,9 +19,9 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
   if (!products.length) return null;
 
   return (
-    <div className="FeaturedProduct py-8 sm:py-16 bg-brand-gray-100">
+    <div className="py-8 sm:py-16 bg-brand-gray-100">
       <div className="container">
-        <div className="pb-2 m-4 Heading Heading--head">{title}</div>
+        <div className="pb-2 m-4 heading heading-head">{title}</div>
         <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {products?.map((item, i) => (
             <div key={i} className="bg-white">
@@ -30,14 +30,14 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
                   <Image layout="fill" image={item.primaryPhoto.image} />
                 </div>
               )}
-              <div className="Heading Heading--sub mx-8">{item.name}</div>
+              <div className="heading heading-sub mx-8">{item.name}</div>
               {item.richTextDescription && (
                 <div className="mx-8 mt-4">{item.richTextDescription}</div>
               )}
               {item.c_primaryCTA && (
                 <div className="flex mx-8 mt-8 mb-4">
                   <Link
-                    className="self-start Button Button--secondary"
+                    className="self-start button button-secondary"
                     cta={item.c_primaryCTA}
                   />
                 </div>

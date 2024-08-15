@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import type { Coordinate } from "@yext/types";
-import { Marker, useMapContext } from "@yext/pages-components";
+import { Marker, useMapContext, CoordinateClass } from "@yext/pages-components";
 import { useLocator } from "src/components/search/utils/useLocator";
 
 type CustomMarkerProps = {
@@ -28,7 +28,7 @@ const CustomMarker = (props: CustomMarkerProps) => {
   // If a marker is offscreen when its corresponding LocatorCard is clicked, pan the map to be centered on the marker
   useEffect(() => {
     if (selectedId === id) {
-      if (!map.getBounds().contains(coordinate)) {
+      if (!map.getBounds().contains(new CoordinateClass(coordinate))) {
         map.setCenter(coordinate, true);
       }
     }

@@ -43,7 +43,7 @@ const FacetsModal = (props: FacetsModalProps) => {
       </div>
       <div className="text-center mt-6">
         <button
-          className="Link Link--primary disabled:text-brand-gray-400"
+          className="link-primary disabled:text-brand-gray-400"
           onClick={handleClearAllFacets}
           disabled={
             facets?.filter(

@@ -34,10 +34,10 @@ const DirectoryHeroLayout = (props: DirectoryHeroProps) => {
   const { line1, line2 } = props;
 
   return (
-    <div className="DirectoryHero bg-brand-gray-100 py-8 md:py-20 px-4 md:px-0">
+    <div className="bg-brand-gray-100 py-8 md:py-20 px-4 md:px-0">
       <h1 className="mb-6 text-center">
-        {line1 && <div className="Heading Heading--sub mb-6">{line1}</div>}
-        {line2 && <div className="Heading Heading--head">{line2}</div>}
+        {line1 && <div className="heading heading-sub mb-6">{line1}</div>}
+        {line2 && <div className="heading heading-head">{line2}</div>}
       </h1>
       {props.searchPath && (
         <DirectorySearchBar

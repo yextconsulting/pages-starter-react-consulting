@@ -14,7 +14,7 @@ const EventCard: CardComponent<EventProfile> = function EventCard(
           <Image layout="fill" image={profile.photoGallery[0].image} />
         </div>
       )}
-      <div className="Heading Heading--sub mx-8">{profile.name}</div>
+      <div className="heading heading-sub mx-8">{profile.name}</div>
       {profile.time && (
         <div className="mx-8 mt-4">
           {formatEventDate(profile.time.start, profile.time.end)}
@@ -26,7 +26,7 @@ const EventCard: CardComponent<EventProfile> = function EventCard(
       {profile.c_primaryCTA && (
         <div className="flex mx-8 mt-8 mb-4">
           <Link
-            className="self-start Button Button--secondary"
+            className="self-start button button-secondary"
             cta={profile.c_primaryCTA}
           />
         </div>
@@ -42,16 +42,14 @@ function formatEventDate(startTime: string, endTime: string) {
   const startDate = new Date(startTime);
   const endDate = new Date(endTime);
   return (
-    <div className="Event-subheading">
-      <span className="Event-date">
-        {startDate.toLocaleDateString("en-US").replaceAll("/", ".")}
-      </span>
+    <div>
+      <span>{startDate.toLocaleDateString("en-US").replaceAll("/", ".")}</span>
       <span className="mr-4 ml-4">|</span>
-      <span className="Event-start">
+      <span>
         {startDate.toLocaleString("en-US", { hour: "numeric", hour12: true })}
       </span>
       <span className="mr-2 ml-2">-</span>
-      <span className="Event-end">
+      <span>
         {endDate.toLocaleString("en-US", { hour: "numeric", hour12: true })}
       </span>
     </div>

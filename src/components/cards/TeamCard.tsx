@@ -9,7 +9,7 @@ type TeamCardProps = {
 const TeamCard = (props: TeamCardProps) => {
   const { profile } = props;
   return (
-    <div className="TeamCard h-full rounded-lg shadow-lg">
+    <div className="h-full rounded-lg shadow-lg">
       <div className="border-b-2 p-8 flex items-center">
         {profile.headshot && (
           <Image
@@ -21,9 +21,7 @@ const TeamCard = (props: TeamCardProps) => {
           />
         )}
         <div>
-          <h3 className="Heading Heading--sub mb-1 font-bold">
-            {profile.name}
-          </h3>
+          <h3 className="heading heading-sub mb-1 font-bold">{profile.name}</h3>
           {profile.c_occupation && <div>{profile.c_occupation}</div>}
         </div>
       </div>
@@ -35,7 +33,7 @@ const TeamCard = (props: TeamCardProps) => {
             <FaPhone className="text-blue-500 mr-2 flex items-center" />
             <div className="hidden lg:flex">{profile.t_mainPhone.label}</div>
             <Link
-              className="Link--primary Link--underline flex lg:hidden font-bold"
+              className="link-primary link-underline flex lg:hidden font-bold"
               href={profile.t_mainPhone.href}
             >
               {profile.t_mainPhone.label}
@@ -47,7 +45,7 @@ const TeamCard = (props: TeamCardProps) => {
           <div className="font-bold mt-4 flex items-center">
             <FaEnvelope className="text-blue-500 mr-2" />
             <a
-              className="Link--primary Link--underline"
+              className="link-primary link-underline"
               href={`mailto:${profile.emails[0]}`}
             >
               {profile.emails[0]}
@@ -57,7 +55,7 @@ const TeamCard = (props: TeamCardProps) => {
 
         {profile.websiteUrl?.url && (
           <Link
-            className="Link--primary mt-6 flex items-center font-bold"
+            className="link-primary mt-6 flex items-center font-bold"
             href={profile.websiteUrl.url}
           >
             Visit Profile

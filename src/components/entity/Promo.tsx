@@ -40,7 +40,7 @@ type PromoLayoutProps = {
 
 const PromoLayout = (props: PromoLayoutProps) => {
   return (
-    <div className="Promo py-8 sm:py-16">
+    <div className="py-8 sm:py-16">
       <div className="container flex flex-col md:flex-row">
         {props.image && (
           <div className="w-full md:w-1/2">
@@ -49,13 +49,13 @@ const PromoLayout = (props: PromoLayoutProps) => {
         )}
 
         <div className="w-full md:w-1/2 flex flex-col gap-8 mt-8 md:ml-16">
-          <h2 className="Heading Heading--head">{props.title}</h2>
+          <h2 className="heading heading-head">{props.title}</h2>
 
           {props.description && <div>{props.description}</div>}
 
           {props.cta && (
             <Link
-              className="Button Button--primary inline-flex self-start"
+              className="button button-primary inline-flex self-start"
               cta={props.cta}
             />
           )}
