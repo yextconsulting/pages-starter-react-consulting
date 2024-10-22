@@ -1,8 +1,8 @@
 import type { LocationProfile, TemplateRenderProps } from "src/types/entities";
 import type { TransformProps } from "@yext/pages";
 import { formatPhone } from "src/common/helpers";
-import "src/index.css";
 import { getTranslations } from "../../i18n";
+import { getPhoneParts } from "@yext/phonenumber-util";
 
 /**
  * Required only when data needs to be retrieved from an external (non-Knowledge Graph) source.
@@ -16,12 +16,7 @@ export const transformProps: TransformProps<
 > = async (data) => {
   const {
     mainPhone,
-    fax,
     tollFreePhone,
-    mobilePhone,
-    ttyPhone,
-    localPhone,
-    alternatePhone,
     address,
     dm_directoryParents_defaultdirectory,
     name,
@@ -38,16 +33,18 @@ export const transformProps: TransformProps<
       t_mainPhone: mainPhone
         ? {
             label: formatPhone(mainPhone, address.countryCode) || mainPhone,
-            href: `tel:${mainPhone}`,
+            href: getPhoneParts(mainPhone).href ?? `tel:${mainPhone}`,
             raw: mainPhone,
           }
         : undefined,
-      fax: formatPhone(fax, address.countryCode),
-      tollFreePhone: formatPhone(tollFreePhone, address.countryCode),
-      mobilePhone: formatPhone(mobilePhone, address.countryCode),
-      ttyPhone: formatPhone(ttyPhone, address.countryCode),
-      localPhone: formatPhone(localPhone, address.countryCode),
-      alternatePhone: formatPhone(alternatePhone, address.countryCode),
+      t_tollFreePhone: tollFreePhone
+        ? {
+            label:
+              formatPhone(tollFreePhone, address.countryCode) || tollFreePhone,
+            href: getPhoneParts(tollFreePhone).href ?? `tel:${tollFreePhone}`,
+            raw: tollFreePhone,
+          }
+        : undefined,
       dm_directoryParents_defaultdirectory:
         dm_directoryParents_defaultdirectory,
     },

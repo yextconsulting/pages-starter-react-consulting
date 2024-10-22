@@ -1,8 +1,4 @@
-import {
-  parsePhoneNumberWithError,
-  CountryCode,
-  ParseError,
-} from "libphonenumber-js";
+import { formatPhoneNumber, isValidPhoneNumber } from "@yext/phonenumber-util";
 
 function dedupeStreamFields(allFields: string[]): string[] {
   return [...new Set(allFields)];
@@ -18,21 +14,26 @@ function formatPhone(
   s: string | undefined,
   countryCode: string
 ): string | undefined {
-  if (s) {
-    try {
-      const phone = parsePhoneNumberWithError(s, countryCode as CountryCode);
+  if (s && isValidPhoneNumber(s)) {
+    let phone: string | null;
 
-      if (countryCode === "US") {
-        return phone.formatNational(); // (123) 555-6789
-      } else {
-        return phone.formatInternational(); // +1 123 555 6789
-      }
-    } catch (error) {
-      if (error instanceof ParseError) {
-        // Not a phone number, non-existent country, etc.
-        console.error(error.message);
-      }
+    switch (countryCode) {
+      case "US":
+        // (123) 555-6789
+        phone = formatPhoneNumber({
+          e164: s,
+          format: "(xxx) xxx-xxxx",
+        });
+        break;
+      default:
+        // +1 123 555 6789
+        phone = formatPhoneNumber({
+          e164: s,
+          format: "+x xxx xxx xxxx",
+        });
     }
+
+    return phone || s;
   }
 
   return s;

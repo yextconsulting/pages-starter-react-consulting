@@ -120,12 +120,8 @@ export interface LocationProfile extends BaseProfile {
   readonly additionalHoursText?: string;
   readonly mainPhone?: string;
   readonly t_mainPhone?: PhoneData;
-  readonly fax?: string;
   readonly tollFreePhone?: string;
-  readonly mobilePhone?: string;
-  readonly ttyPhone?: string;
-  readonly localPhone?: string;
-  readonly alternatePhone?: string;
+  readonly t_tollFreePhone?: PhoneData;
   readonly description?: string;
   readonly emails?: string[];
   readonly services: string[];
