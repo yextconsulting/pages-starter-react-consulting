@@ -17,18 +17,20 @@ function formatPhone(
   if (s && isValidPhoneNumber(s)) {
     let phone: string | null;
 
-    if (countryCode === "US") {
-      // (123) 555-6789
-      phone = formatPhoneNumber({
-        e164: s,
-        format: "(xxx) xxx-xxxx",
-      });
-    } else {
-      // +1 123 555 6789
-      phone = formatPhoneNumber({
-        e164: s,
-        format: "+x xxx xxx xxxx",
-      });
+    switch (countryCode) {
+      case "US":
+        // (123) 555-6789
+        phone = formatPhoneNumber({
+          e164: s,
+          format: "(xxx) xxx-xxxx",
+        });
+        break;
+      default:
+        // +1 123 555 6789
+        phone = formatPhoneNumber({
+          e164: s,
+          format: "+x xxx xxx xxxx",
+        });
     }
 
     return phone || s;
