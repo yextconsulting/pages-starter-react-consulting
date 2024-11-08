@@ -1,0 +1,14 @@
+{
+  "$id": "internalToExternalID",
+  "$schema": "https://schema.yext.com/config/streams/streams-endpoint/v2",
+  "name": "Internal To External ID",
+  "stream": {
+    "source": "content",
+    "fields": ["uid", "id"]
+  },
+  "fieldIndexes": [
+    {
+      "field": "uid"
+    }
+  ]
+}
