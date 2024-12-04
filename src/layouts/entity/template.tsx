@@ -28,10 +28,6 @@ import Team from "src/components/entity/Team";
 import type { Template } from "@yext/pages";
 import { Main } from "src/layouts/main";
 import "src/index.css";
-import BrandingPreviewWidget, {
-  BrandingProvider,
-} from "src/components/entity/BrandingPreviewWidget";
-import { useState } from "react";
 
 interface EntityLayoutProps {
   data: TemplateRenderProps<LocationProfile>;
@@ -79,20 +75,10 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
  * them in the src/templates folder as this is specific for true template files).
  */
 const Entity: Template<TemplateRenderProps<LocationProfile>> = (data) => {
-  const [logo, setLogo] = useState("");
-
   return (
-    <BrandingProvider
-      value={{
-        logo,
-        setLogo,
-      }}
-    >
-      <Main data={data}>
-        <EntityLayout data={data} />
-      </Main>
-      <BrandingPreviewWidget />
-    </BrandingProvider>
+    <Main data={data}>
+      <EntityLayout data={data} />
+    </Main>
   );
 };
 

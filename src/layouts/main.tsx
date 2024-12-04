@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import type { TemplateRenderProps, BaseProfile } from "src/types/entities";
 import { AnalyticsProvider } from "@yext/pages-components";
 import { TemplateDataProvider } from "src/common/useTemplateData";
@@ -7,6 +7,9 @@ import { Footer } from "src/components/common/Footer";
 import { useExposeEnableYAFunction } from "src/common/useExposeEnableYAFunction";
 import { initi18n } from "src/i18n";
 import "@yext/pages-components/style.css";
+import BrandingPreviewWidget, {
+  BrandingProvider,
+} from "src/components/entity/BrandingPreviewWidget";
 
 interface MainProps {
   data: TemplateRenderProps<BaseProfile>;
@@ -36,17 +39,26 @@ const Main = (props: MainProps) => {
 
 const MainInternal = (props: MainProps) => {
   const { children } = props;
+  const [logo, setLogo] = useState("");
 
   // Create the global window.enableYextAnalytics function for clients that need to get user consent
   // If consent is not required, set requireOptIn on AnalyticsProvider above to false.
   useExposeEnableYAFunction();
 
   return (
-    <TemplateDataProvider value={props.data}>
-      <Header />
-      {children}
-      <Footer />
-    </TemplateDataProvider>
+    <BrandingProvider
+      value={{
+        logo,
+        setLogo,
+      }}
+    >
+      <TemplateDataProvider value={props.data}>
+        <Header />
+        {children}
+        <Footer />
+      </TemplateDataProvider>
+      <BrandingPreviewWidget />
+    </BrandingProvider>
   );
 };
 
