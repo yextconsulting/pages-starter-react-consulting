@@ -7,6 +7,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --brand-primary: #0f70f0;
+  --brand-secondary: #0c5ecb;
+}
+
 html,
 body {
   height: 100%;

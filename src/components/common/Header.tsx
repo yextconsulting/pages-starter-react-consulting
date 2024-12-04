@@ -6,6 +6,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { MaybeLink } from "src/components/common/MaybeLink";
 import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 import { useTemplateData } from "src/common/useTemplateData";
+import { useBrandingProvider } from "../entity/BrandingPreviewWidget";
 
 const Header = () => {
   const templateData = useTemplateData();
@@ -30,11 +31,18 @@ type HeaderLayoutProps = {
 const HeaderLayout = (props: HeaderLayoutProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { logo, logoLink, links } = props;
+  const { logo: brandingLogo } = useBrandingProvider();
 
   return (
     <header className="relative">
       <div className="container py-5 flex justify-start md:justify-between">
-        {logo && <HeaderLogo logo={logo} logoLink={logoLink} />}
+        {brandingLogo ? (
+          <HeaderLogo logo={brandingLogo} logoLink={logoLink} />
+        ) : logo ? (
+          <HeaderLogo logo={logo.url} logoLink={logoLink} />
+        ) : (
+          <></>
+        )}
 
         <HeaderLinks links={links} />
 
@@ -52,11 +60,11 @@ const HeaderLayout = (props: HeaderLayoutProps) => {
   );
 };
 
-const HeaderLogo = (props: { logo: ImageType; logoLink?: string }) => {
+const HeaderLogo = (props: { logo: string; logoLink?: string }) => {
   return (
     <MaybeLink href={props.logoLink}>
-      <div className="flex w-[144px] mr-2">
-        <Image image={props.logo} layout="fill" />
+      <div className="flex mr-2">
+        <img src={props.logo} alt="" />
       </div>
     </MaybeLink>
   );

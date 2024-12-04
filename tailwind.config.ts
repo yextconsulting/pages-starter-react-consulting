@@ -18,8 +18,8 @@ export default {
         lg: ["18px", "24px"],
       },
       colors: {
-        "brand-primary": "#0F70F0",
-        "brand-secondary": "#0C5ECB",
+        "brand-primary": "var(--brand-primary)",
+        "brand-secondary": "var(--brand-secondary)",
         "brand-gray": {
           100: "#F7F7F7",
           200: "#EDEDED",
