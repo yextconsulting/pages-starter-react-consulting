@@ -35,7 +35,7 @@ const HeaderLayout = (props: HeaderLayoutProps) => {
 
   return (
     <header className="relative">
-      <div className="container py-5 flex justify-start md:justify-between">
+      <div className="container py-5 flex items-baseline justify-start md:justify-between">
         {brandingLogo ? (
           <HeaderLogo logo={brandingLogo} logoLink={logoLink} />
         ) : logo ? (
@@ -64,7 +64,11 @@ const HeaderLogo = (props: { logo: string; logoLink?: string }) => {
   return (
     <MaybeLink href={props.logoLink}>
       <div className="flex mr-2">
-        <img src={props.logo} alt="" />
+        <img
+          className="max-h-[150px] min-w-[100px] max-w-[250px]"
+          src={props.logo}
+          alt=""
+        />
       </div>
     </MaybeLink>
   );

@@ -49,10 +49,11 @@ const CoreLayout = (props: CoreLayoutProps) => {
       viewBox="0 0 56 58"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="text-brand-primary"
     >
       <path
         d="M28.0951 1C33.1149 1 37.6595 3.03469 40.9491 6.32432C44.2388 9.61396 46.2734 14.1586 46.2734 19.1784C46.2734 25.9554 40.1704 38.558 28.0941 57C16.019 38.5565 9.91669 25.955 9.91669 19.1784C9.91669 14.1586 11.9514 9.61396 15.241 6.32432C18.5307 3.03469 23.0752 1 28.0951 1Z"
-        fill="#0F70F0"
+        fill="currentColor"
         stroke="black"
         strokeOpacity="0.5"
       />
@@ -83,7 +84,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
             </Link>
             {profile.t_mainPhone && (
               <div className="flex items-center mt-4">
-                <FaPhone className="text-blue-500 mr-2" />
+                <FaPhone className="text-brand-primary mr-2" />
                 <span className="mr-2 font-bold">Phone</span>
                 <Link
                   href={profile.t_mainPhone.href}
@@ -95,7 +96,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
             )}
             {profile.t_tollFreePhone && (
               <div className="flex items-center mt-4">
-                <FaPhone className="text-blue-500 mr-2" />
+                <FaPhone className="text-brand-primary mr-2" />
                 <span className="mr-2 font-bold">Toll-free</span>
                 <Link
                   href={profile.t_tollFreePhone.href}
@@ -107,7 +108,7 @@ const CoreLayout = (props: CoreLayoutProps) => {
             )}
             {profile.emails && (
               <div className="flex items-center mt-4">
-                <FaEnvelope className="text-blue-500 mr-2" />
+                <FaEnvelope className="text-brand-primary mr-2" />
                 <Link
                   className="link-primary link-underline font-bold"
                   cta={{ link: profile.emails[0], linkType: "Email" }}

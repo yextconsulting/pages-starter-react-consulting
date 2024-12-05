@@ -30,7 +30,7 @@ const TeamCard = (props: TeamCardProps) => {
         {/* TODO (GENERATOR): use Phone component when available */}
         {profile.t_mainPhone && (
           <div className="flex items-center">
-            <FaPhone className="text-blue-500 mr-2 flex items-center" />
+            <FaPhone className="text-brand-primary mr-2 flex items-center" />
             <div className="hidden lg:flex">{profile.t_mainPhone.label}</div>
             <Link
               className="link-primary link-underline flex lg:hidden font-bold"
@@ -43,7 +43,7 @@ const TeamCard = (props: TeamCardProps) => {
 
         {profile.emails && (
           <div className="font-bold mt-4 flex items-center">
-            <FaEnvelope className="text-blue-500 mr-2" />
+            <FaEnvelope className="text-brand-primary mr-2" />
             <a
               className="link-primary link-underline"
               href={`mailto:${profile.emails[0]}`}
@@ -59,7 +59,7 @@ const TeamCard = (props: TeamCardProps) => {
             href={profile.websiteUrl.url}
           >
             Visit Profile
-            <FaChevronRight className="text-blue-500 ml-2" />
+            <FaChevronRight className="text-brand-primary ml-2" />
           </Link>
         )}
       </div>

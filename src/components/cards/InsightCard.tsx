@@ -33,7 +33,7 @@ export function InsightCard(props: InsightCardProps) {
         <div className="flex mt-8 mb-6">
           <Link className="link-primary flex items-center" href={cta.link}>
             {cta.label}
-            <FaChevronRight className="text-blue-500 ml-2" />
+            <FaChevronRight className="brand-primary ml-2" />
           </Link>
         </div>
       )}
