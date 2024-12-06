@@ -38,6 +38,16 @@ export default async function resolveCollision(
     };
   }
 
+  try {
+    requestBody = JSON.parse(requestBody.body);
+  } catch (e) {
+    return {
+      body: "Invalid request.",
+      headers: {},
+      statusCode: 400,
+    };
+  }
+
   //webhook should only execute for path conflict errors
   const isPathConflict = requestBody?.deploy?.error?.includes("path conflict");
   if (!isPathConflict) {
@@ -51,7 +61,7 @@ export default async function resolveCollision(
   const entityId = requestBody.deploy?.entityId;
 
   //get external ID from internal ID
-  const getExternalIdEndpoint = `https://cdn.yextapis.com/v2/accounts/me/content/internalToExternalID?v=20241111&api_key=${YEXT_PUBLIC_COLLISIONS_API_KEY}&uid=${entityId}`;
+  const getExternalIdEndpoint = `https://cdn.yextapis.com/v2/accounts/me/content/internalToExternalID?v=20241111&api_key=${YEXT_PUBLIC_COLLISIONS_LOOKUP_API_KEY}&uid=${entityId}`;
   const result = await fetch(getExternalIdEndpoint);
   if (!result.ok) {
     return {
@@ -67,7 +77,7 @@ export default async function resolveCollision(
 
   //use external ID to set c_isCollision to true
   if (externalId) {
-    const updateEntityEndpoint = `https://api.yext.com/v2/accounts/me/entities/${externalId}?api_key=${YEXT_PUBLIC_COLLISIONS_API_KEY}&v=20241111`;
+    const updateEntityEndpoint = `https://api.yext.com/v2/accounts/me/entities/${externalId}?api_key=${YEXT_PUBLIC_COLLISIONS_WRITE_API_KEY}&v=20241111`;
     const headers = { "Content-Type": "application/json; charset=utf-8" };
     const req = new Request(updateEntityEndpoint, {
       method: "PUT",

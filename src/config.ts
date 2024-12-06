@@ -8,7 +8,8 @@ declare global {
   const YEXT_PUBLIC_NEARBY_SECTION_API_KEY: string;
   const YEXT_PUBLIC_REVIEWS_API_KEY: string;
   const YEXT_PUBLIC_ANALYTICS_API_KEY: string;
-  const YEXT_PUBLIC_COLLISIONS_API_KEY: string;
+  const YEXT_PUBLIC_COLLISIONS_LOOKUP_API_KEY: string;
+  const YEXT_PUBLIC_COLLISIONS_WRITE_API_KEY: string;
 }
 
 // Key for Maps provider.
