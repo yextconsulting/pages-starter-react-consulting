@@ -1,0 +1,11 @@
+{
+  "$id": "c_isCollision",
+  "$schema": "https://schema.yext.com/config/km/field/v1",
+  "displayName": "Is Collision",
+  "group": "NONE",
+  "localization": "OVERRIDABLE",
+  "type": {
+    "booleanType": {}
+  },
+  "typeId": "boolean"
+}
