@@ -213,7 +213,6 @@ export interface FAQProfile extends BaseProfile {
 }
 
 export interface ReviewProfile {
-  apiIdentifier: string;
   authorName: string;
   comments?: {
     authorName: string;
