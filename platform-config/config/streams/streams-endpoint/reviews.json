@@ -10,8 +10,7 @@
       "reviewDate",
       "authorName",
       "comments",
-      "entity.id",
-      "apiIdentifier"
+      "entity.id"
     ],
     "filter": {
       "publishers": ["FIRSTPARTY", "EXTERNALFIRSTPARTY"]
@@ -20,9 +19,6 @@
   "fieldIndexes": [
     {
       "field": "entity.id"
-    },
-    {
-      "field": "apiIdentifier"
     }
   ]
 }
