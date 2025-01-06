@@ -1,4 +1,4 @@
-import { SchemaWrapper, LocalBusiness, FAQPage } from "@yext/schema-wrapper";
+import { SchemaWrapper, LocalBusiness, FAQPage } from "@yext/pages-components";
 import type { TemplateRenderProps } from "src/types/entities";
 
 export function SchemaBuilder(

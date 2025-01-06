@@ -26,10 +26,9 @@
   "dependencies": {
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
     "@yext/components-404": "2.1.0",
-    "@yext/pages": "1.1.1",
-    "@yext/pages-components": "1.0.2",
+    "@yext/pages": "^1.1.6",
+    "@yext/pages-components": "^1.0.4",
     "@yext/phonenumber-util": "^0.1.0",
-    "@yext/schema-wrapper": "1.0.4",
     "@yext/search-headless-react": "2.4.0",
     "@yext/search-ui-react": "1.6.0",
     "@yext/types": "0.1.10-alpha",
