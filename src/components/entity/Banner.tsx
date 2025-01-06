@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Image } from "@yext/pages-components";
-import type { Image as ImageType } from "@yext/types";
+import { Image, type ImageType } from "@yext/pages-components";
 import { FaTimes } from "react-icons/fa";
 import { useTemplateData } from "src/common/useTemplateData";
 import { LocationProfile } from "src/types/entities";

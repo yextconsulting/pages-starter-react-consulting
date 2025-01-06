@@ -4,19 +4,21 @@ import {
 } from "@yext/pages/*";
 import type { ListingType } from "@yext/pages-components";
 import type {
-  Address,
+  AddressType,
   Coordinate,
   CTA,
-  Hours,
-  Image,
-  ComplexImage,
-  WebsiteUrl,
-} from "@yext/types";
+  HoursType,
+  ImageType,
+} from "@yext/pages-components";
 import type { Resource } from "i18next";
 
-// TODO: potentially move this to @yext/types
-// Also we should probably move @yext/types into @yext/pages
-// since they're specific to pages streams, not generic kg types
+export interface ComplexImageType {
+  image?: ImageType;
+  clickthroughUrl?: string;
+  description?: string;
+  details?: string;
+}
+
 interface BaseProfile {
   readonly id: string;
   readonly businessId: number;
@@ -46,7 +48,7 @@ export interface SiteProfile extends BaseProfile {
   readonly c_linkedIn?: string;
   readonly c_footerLinks?: CTA[];
   readonly c_header?: {
-    readonly logo?: Image;
+    readonly logo?: ImageType;
     readonly logoLink?: string;
     readonly links?: CTA[];
   };
@@ -57,7 +59,7 @@ export interface SiteProfile extends BaseProfile {
 
 export interface ProductProfile extends BaseProfile {
   readonly name: string;
-  readonly primaryPhoto: ComplexImage;
+  readonly primaryPhoto: ComplexImageType;
   readonly richTextDescription: string;
   readonly c_primaryCTA: CTA;
 }
@@ -79,24 +81,28 @@ export interface EventProfile extends BaseProfile {
   readonly time: EventDate;
   readonly description?: string;
   readonly c_primaryCTA?: CTA;
-  readonly photoGallery?: ComplexImage[];
+  readonly photoGallery?: ComplexImageType[];
 }
 
 export interface FinancialProfessionalProfile extends BaseProfile {
   readonly id: string;
   readonly name: string;
-  readonly headshot?: Image;
+  readonly headshot?: ImageType;
   readonly mainPhone?: string;
   readonly t_mainPhone?: PhoneData;
   readonly c_occupation?: string;
   readonly emails?: string[];
-  readonly websiteUrl?: WebsiteUrl;
+  readonly websiteUrl?: {
+    displayUrl: string;
+    url: string;
+    preferDisplayUrl: boolean;
+  };
 }
 
 interface Insight {
   readonly title: string;
   readonly category?: string;
-  readonly photo?: Image;
+  readonly photo?: ImageType;
   readonly date?: string;
   readonly descriptionLong: string;
   readonly descriptionShort?: string;
@@ -112,10 +118,10 @@ interface PhoneData {
 // TODO: generate these automatically from stream definitions
 export interface LocationProfile extends BaseProfile {
   readonly name: string;
-  readonly address: Address;
+  readonly address: AddressType;
   readonly yextDisplayCoordinate: Coordinate;
   readonly slug: string;
-  readonly hours?: Hours;
+  readonly hours?: HoursType;
   readonly timezone: string;
   readonly additionalHoursText?: string;
   readonly mainPhone?: string;
@@ -125,10 +131,10 @@ export interface LocationProfile extends BaseProfile {
   readonly description?: string;
   readonly emails?: string[];
   readonly services: string[];
-  readonly photoGallery: ComplexImage[];
+  readonly photoGallery: ComplexImageType[];
   readonly googlePlaceId?: string;
   readonly ref_listings?: ListingType[];
-  readonly logo?: Image;
+  readonly logo?: ImageType;
   readonly paymentOptions?: string;
 
   // Add custom fields here
@@ -139,10 +145,10 @@ export interface LocationProfile extends BaseProfile {
   };
   readonly c_bannerSection?: {
     readonly text?: string;
-    readonly image?: Image;
+    readonly image?: ImageType;
   };
   readonly c_heroSection?: {
-    readonly background?: Image;
+    readonly background?: ImageType;
     readonly cta1?: CTA;
     readonly cta2?: CTA;
   };
@@ -153,19 +159,19 @@ export interface LocationProfile extends BaseProfile {
   readonly c_promoSection?: {
     readonly title?: string;
     readonly description?: string;
-    readonly image?: Image;
+    readonly image?: ImageType;
     readonly cta?: CTA;
     readonly googlePlayUrl?: string;
     readonly appStoreUrl?: string;
   };
   readonly c_gallerySection?: {
     readonly title?: string;
-    readonly images?: Image[];
+    readonly images?: ImageType[];
   };
   readonly c_aboutSection?: {
     readonly title?: string;
     readonly description?: string;
-    readonly image?: Image;
+    readonly image?: ImageType;
     readonly cta?: CTA;
   };
   readonly c_teamSection?: {

@@ -1,5 +1,4 @@
-import type { Image as ImageType, CTA as CTAType } from "@yext/types";
-import { Link, Image } from "@yext/pages-components";
+import { Link, Image, type CTA, type ImageType } from "@yext/pages-components";
 import { useTemplateData } from "src/common/useTemplateData";
 import { LocationProfile } from "src/types/entities";
 import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
@@ -29,7 +28,7 @@ type AboutLayoutProps = {
   image?: ImageType;
   title: string;
   description?: string;
-  cta?: CTAType;
+  cta?: CTA;
 };
 
 const AboutLayout = (props: AboutLayoutProps) => {

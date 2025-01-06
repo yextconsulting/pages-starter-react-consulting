@@ -31,7 +31,6 @@
     "@yext/phonenumber-util": "^0.1.0",
     "@yext/search-headless-react": "2.4.0",
     "@yext/search-ui-react": "1.6.0",
-    "@yext/types": "0.1.10-alpha",
     "classnames": "2.3.1",
     "i18next": "23.4.4",
     "lodash": "4.17.21",

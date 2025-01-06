@@ -25,7 +25,7 @@ const FeaturedProduct = (props: FeaturedProductProps) => {
         <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {products?.map((item, i) => (
             <div key={i} className="bg-white">
-              {item.primaryPhoto && (
+              {item.primaryPhoto?.image && (
                 <div className="flex justify-center h-[187px] mb-8">
                   <Image layout="fill" image={item.primaryPhoto.image} />
                 </div>

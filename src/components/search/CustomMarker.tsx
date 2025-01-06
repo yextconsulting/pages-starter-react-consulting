@@ -1,6 +1,10 @@
 import { useEffect } from "react";
-import type { Coordinate } from "@yext/types";
-import { Marker, useMapContext, CoordinateClass } from "@yext/pages-components";
+import {
+  Marker,
+  useMapContext,
+  CoordinateClass,
+  type Coordinate,
+} from "@yext/pages-components";
 import { useLocator } from "src/components/search/utils/useLocator";
 
 type CustomMarkerProps = {

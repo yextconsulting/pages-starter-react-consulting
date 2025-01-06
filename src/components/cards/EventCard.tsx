@@ -9,7 +9,7 @@ const EventCard: CardComponent<EventProfile> = function EventCard(
 
   return (
     <>
-      {profile.photoGallery?.[0] && (
+      {profile.photoGallery?.[0].image && (
         <div className="flex justify-center h-[187px] mb-8">
           <Image layout="fill" image={profile.photoGallery[0].image} />
         </div>

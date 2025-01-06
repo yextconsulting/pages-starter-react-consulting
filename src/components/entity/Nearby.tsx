@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import type { Coordinate } from "@yext/types";
+import { ReactNode, useEffect, useState } from "react";
 import { FALLBACK_SEARCH_PATH } from "src/config";
-import { Link } from "@yext/pages-components";
+import { Link, type Coordinate } from "@yext/pages-components";
 import { useTemplateData } from "src/common/useTemplateData";
 import type { LiveAPIProfile, LocationProfile } from "src/types/entities";
 import classNames from "classnames";
@@ -48,7 +47,7 @@ const Nearby = () => {
 type NearbyLayoutProps = {
   title?: string;
   linkToLocator?: boolean;
-  buttonText?: string;
+  buttonText?: ReactNode;
   buttonLink?: string;
   coordinate: Coordinate;
   id: string;

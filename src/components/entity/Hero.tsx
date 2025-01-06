@@ -1,5 +1,12 @@
-import { Link, Image, HoursStatus } from "@yext/pages-components";
-import type { Address, Hours, CTA, Image as ImageType } from "@yext/types";
+import {
+  Link,
+  Image,
+  HoursStatus,
+  type AddressType,
+  type HoursType,
+  type CTA,
+  type ImageType,
+} from "@yext/pages-components";
 import { useTemplateData } from "src/common/useTemplateData";
 import type { LocationProfile } from "src/types/entities";
 import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
@@ -28,11 +35,11 @@ const Hero = () => {
 
 type HeroLayoutProps = {
   name: string;
-  address: Address;
+  address: AddressType;
   background?: ImageType;
   cta1?: CTA;
   cta2?: CTA;
-  hours?: Hours;
+  hours?: HoursType;
   timezone?: string;
   numReviews?: number;
   rating?: number;

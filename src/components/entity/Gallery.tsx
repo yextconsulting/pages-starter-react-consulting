@@ -1,8 +1,4 @@
-import { Image } from "@yext/pages-components";
-import type {
-  Image as ImageType,
-  ComplexImage as ComplexImageType,
-} from "@yext/types";
+import { Image, type ImageType } from "@yext/pages-components";
 import {
   CarouselProvider,
   Slider,
@@ -27,12 +23,12 @@ const Gallery = (props: GalleryProps) => {
   const profile = templateData.document as LocationProfile;
   const gallery = profile.c_gallerySection;
 
-  if (gallery?.images || profile.photoGallery) {
+  if (gallery?.images) {
     return (
       <ErrorBoundaryWithAnalytics name="gallery">
         <GalleryLayout
           title={gallery?.title}
-          images={gallery?.images || profile.photoGallery}
+          images={gallery?.images}
           hideArrows={props.hideArrows}
           hideNav={props.hideNav}
         />
@@ -44,7 +40,7 @@ const Gallery = (props: GalleryProps) => {
 };
 
 type GalleryLayoutProps = GalleryProps & {
-  images: (ImageType | ComplexImageType)[];
+  images: ImageType[];
   title?: string;
 };
 
