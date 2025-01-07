@@ -13,7 +13,7 @@ jobs:
       - name: Build and Check Types Tests
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "20"
       - run: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
       - run: npm ci
       - run: npm run check-types
