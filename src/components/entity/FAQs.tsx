@@ -36,7 +36,7 @@ const FAQsLayout = (props: FAQsLayoutProps) => {
             <FAQ
               key={faq.question}
               question={faq.question}
-              answer={faq.answer}
+              answer={faq.answerV2}
             />
           ))}
         </div>

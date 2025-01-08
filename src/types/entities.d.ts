@@ -215,7 +215,9 @@ export type DirectoryProfile<T> = BaseProfile & {
 
 export interface FAQProfile extends BaseProfile {
   readonly question: string;
-  readonly answer: string;
+  readonly answerV2: {
+    json: any;
+  };
 }
 
 export interface ReviewProfile {

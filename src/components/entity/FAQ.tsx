@@ -2,10 +2,11 @@ import { useState, useRef } from "react";
 import { GoChevronDown } from "react-icons/go";
 import c from "classnames";
 import classNames from "classnames";
+import { LexicalRichText } from "@yext/pages-components";
 
 interface FAQItem {
   question: string;
-  answer: string;
+  answer: any;
 }
 
 const FAQ = (props: FAQItem) => {
@@ -49,7 +50,9 @@ const FAQ = (props: FAQItem) => {
           { invisible: !isOpen }
         )}
       >
-        <div className="mb-4">{answer}</div>
+        <div className="mb-4">
+          <LexicalRichText serializedAST={JSON.stringify(answer?.json ?? "")} />
+        </div>
       </div>
     </div>
   );

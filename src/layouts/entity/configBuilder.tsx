@@ -58,9 +58,9 @@ export const configBuilder: (
       // "c_eventsSection.events.c_primaryCTA",
       // "c_eventsSection.events.photoGallery",
       // FAQ Fields
-      // "c_faqSection.title",
-      // "c_faqSection.faqs.question",
-      // "c_faqSection.faqs.answerV2",
+      "c_faqSection.title",
+      "c_faqSection.faqs.question",
+      "c_faqSection.faqs.answerV2",
       // Gallery Fields
       "c_gallerySection",
       "photoGallery",
