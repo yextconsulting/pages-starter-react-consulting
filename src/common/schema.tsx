@@ -6,7 +6,7 @@ export function SchemaBuilder(
 ): string {
   const localBusiness = data.document.address
     ? {
-        ...LocalBusiness(data),
+        ...LocalBusiness(data.document),
         paymentAccepted: data.document.paymentOptions,
         makesOffer: data.document.services,
       }
