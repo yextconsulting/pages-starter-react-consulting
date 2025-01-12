@@ -66,7 +66,7 @@ const HeaderLinks = (props: { links: CTA[] }) => {
     <div className="hidden md:flex items-center">
       <ul className="flex">
         {props.links.map((item: CTA, idx) => (
-          <li key={idx}>
+          <li key={item.link}>
             <Link
               className="link-primary mx-2 lg:mx-5"
               cta={item}
@@ -90,7 +90,7 @@ const HeaderMobileMenu = (props: { isOpen?: boolean; links: CTA[] }) => {
       <div className="container">
         <ul className="flex flex-col">
           {props.links.map((item: CTA, idx) => (
-            <li key={idx}>
+            <li key={item.link}>
               <Link
                 className="link-primary py-3 block"
                 cta={item}
