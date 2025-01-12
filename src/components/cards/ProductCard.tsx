@@ -9,7 +9,7 @@ const ProductCard: CardComponent<ProductProfile> = function productCard(
 
   return (
     <>
-      {profile.primaryPhoto && (
+      {profile.primaryPhoto?.image && (
         <div className="flex justify-center h-[187px] mb-8">
           <Image layout="fill" image={profile.primaryPhoto.image} />
         </div>

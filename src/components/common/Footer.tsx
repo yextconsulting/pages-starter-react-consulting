@@ -1,5 +1,4 @@
-import type { CTA } from "@yext/types";
-import { Link } from "@yext/pages-components";
+import { Link, type CTA } from "@yext/pages-components";
 import {
   FaFacebook,
   FaInstagram,

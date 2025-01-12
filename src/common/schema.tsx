@@ -1,4 +1,4 @@
-import { SchemaWrapper, LocalBusiness, FAQPage } from "@yext/schema-wrapper";
+import { SchemaWrapper, LocalBusiness, FAQPage } from "@yext/pages-components";
 import type { TemplateRenderProps } from "src/types/entities";
 
 export function SchemaBuilder(
@@ -6,7 +6,7 @@ export function SchemaBuilder(
 ): string {
   const localBusiness = data.document.address
     ? {
-        ...LocalBusiness(data),
+        ...LocalBusiness(data.document),
         paymentAccepted: data.document.paymentOptions,
         makesOffer: data.document.services,
       }

@@ -16,7 +16,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           react: ["react", "react-router-dom", "react-dom"],
-          yext: ["@yext/pages", "@yext/schema-wrapper", "@yext/types"],
+          yext: ["@yext/pages"],
           yextSearch: ["@yext/search-headless-react", "@yext/search-ui-react"],
         },
       },

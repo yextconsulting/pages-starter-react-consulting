@@ -1,10 +1,9 @@
-import type { CTA } from "@yext/types";
 import type { Insight, LocationProfile } from "src/types/entities";
 import {
   InsightCard,
   InsightCardFeatured,
 } from "src/components/cards/InsightCard";
-import { Link } from "@yext/pages-components";
+import { Link, type CTA } from "@yext/pages-components";
 import { useTemplateData } from "src/common/useTemplateData";
 import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 

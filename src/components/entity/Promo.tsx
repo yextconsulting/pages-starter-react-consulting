@@ -1,5 +1,4 @@
-import type { Image as ImageType, CTA as CTAType } from "@yext/types";
-import { Link, Image } from "@yext/pages-components";
+import { Link, Image, type ImageType, type CTA } from "@yext/pages-components";
 import appStoreIcon from "src/assets/images/appstore.svg";
 import playStoreIcon from "src/assets/images/playstore.svg";
 import { useTemplateData } from "src/common/useTemplateData";
@@ -33,7 +32,7 @@ type PromoLayoutProps = {
   image?: ImageType;
   title: string;
   description?: string;
-  cta?: CTAType;
+  cta?: CTA;
   appStoreUrl?: string;
   googlePlayUrl?: string;
 };
