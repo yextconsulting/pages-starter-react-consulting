@@ -46,21 +46,42 @@ export default async function dataUpdateFailure(
   }
 
   const entityId = requestBody.deploy?.entityId;
+  let externalId: string = "";
 
-  //get external ID from internal ID
-  const getExternalIdEndpoint = `https://cdn.yextapis.com/v2/accounts/me/content/faDCollisionWebhook?v=20250101&api_key=${CONTENT_API_KEY}&uid=${entityId}`;
-  const result = await fetch(getExternalIdEndpoint);
-  if (!result.ok) {
-    return {
-      body: `Failed to find entity with internal id ${entityId}.`,
-      headers: {},
-      statusCode: 500,
-    };
+  if (entityId) {
+    //get external ID from internal ID
+    const getExternalIdEndpoint = `https://cdn.yextapis.com/v2/accounts/me/content/faDCollisionWebhook?v=20250101&api_key=${CONTENT_API_KEY}&uid=${entityId}`;
+    const result = await fetch(getExternalIdEndpoint);
+    if (!result.ok) {
+      return {
+        body: `Failed to find entity with internal id ${entityId}.`,
+        headers: {},
+        statusCode: 500,
+      };
+    }
+    const resultJson: ContentEndpointResponse = await result.json();
+    const entity =
+      resultJson?.response?.count > 0 ? resultJson.response.docs[0] : null;
+    externalId = entity ? entity.id : "";
+  } else {
+    const regex = /knowledgeGraph:(\d+):.*?knowledgeGraph:(\d+)/;
+    const matches = requestBody?.deploy?.error?.match(regex);
+    const id1 = matches[1];
+
+    const getExternalIdEndpoint = `https://cdn.yextapis.com/v2/accounts/me/content/faDCollisionWebhook?v=20250101&api_key=${CONTENT_API_KEY}&uid=${id1}`;
+    const result = await fetch(getExternalIdEndpoint);
+    if (!result.ok) {
+      return {
+        body: `Failed to find entity with internal id ${entityId}.`,
+        headers: {},
+        statusCode: 500,
+      };
+    }
+    const resultJson: ContentEndpointResponse = await result.json();
+    const entity =
+      resultJson?.response?.count > 0 ? resultJson.response.docs[0] : null;
+    externalId = entity ? entity.id : "";
   }
-  const resultJson: ContentEndpointResponse = await result.json();
-  const entity =
-    resultJson?.response?.count > 0 ? resultJson.response.docs[0] : null;
-  const externalId = entity ? entity.id : "";
 
   //use external ID to set c_isCollision to true
   if (externalId) {
