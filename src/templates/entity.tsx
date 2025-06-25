@@ -20,8 +20,12 @@ import { LocationProfile, TemplateRenderProps } from "src/types/entities";
 // to customize the stream id or filter
 export const config = configBuilder();
 
-const Entity: Template<TemplateRenderProps<LocationProfile>> = (data) => (
-  <EntityLayout {...data} />
-);
+const Entity: Template<TemplateRenderProps<LocationProfile>> = (data) => {
+  if (data.document.id === "test-location") {
+    throw new Error("Test throwing error for field");
+  }
+
+  return <EntityLayout {...data} />;
+};
 
 export default Entity;
