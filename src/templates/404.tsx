@@ -8,6 +8,7 @@ import { getRuntime } from "@yext/pages/util";
 import * as fourOhFour from "@yext/components-404";
 import { isProduction } from "@yext/pages/util";
 import { Link } from "@yext/pages-components";
+import { YEXT_404_PIXEL_PROD, YEXT_404_PIXEL_STAGING } from "src/config";
 
 export const config: TemplateConfig = {
   // The name of the feature. If not set the name of this file will be used (without extension).
@@ -37,6 +38,7 @@ const FourOhFourTemplate = (data: TemplateRenderProps) => {
         destinationUrl,
         isStaging: !isProd,
         siteDomain: data.document.siteDomain,
+        pixelUrl: isProd ? YEXT_404_PIXEL_PROD : YEXT_404_PIXEL_STAGING,
       }
     );
     laf.installBasicHooks();
