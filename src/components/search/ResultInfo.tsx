@@ -5,8 +5,17 @@ import { MdFilterList } from "react-icons/md";
 import ResultSummary from "src/components/search/ResultSummary";
 import FacetsModal from "src/components/search/FacetsModal";
 import ActiveFacets from "src/components/search/ActiveFacets";
+import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 
 const ResultInfo = () => {
+  return (
+    <ErrorBoundaryWithAnalytics name="resultinfo" noAnalyticsScope={true}>
+      <ResultInfoInternal />
+    </ErrorBoundaryWithAnalytics>
+  );
+};
+
+const ResultInfoInternal = () => {
   const isDesktop = useBreakpoint("sm");
   const [filtersOpen, setFiltersOpen] = useState(false);
 

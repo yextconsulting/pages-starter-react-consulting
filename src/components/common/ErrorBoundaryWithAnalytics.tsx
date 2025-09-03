@@ -6,6 +6,7 @@ import * as Sentry from "@sentry/browser";
 type ErrorBoundaryWithAnalyticsProps = {
   name: string;
   children: ReactNode;
+  noAnalyticsScope?: boolean;
 };
 
 Sentry.init({
@@ -21,6 +22,14 @@ const ErrorBoundaryWithAnalytics = (props: ErrorBoundaryWithAnalyticsProps) => {
     console.error(`Error occured in "${props.name}" scope.`);
     Sentry.captureException(err);
   };
+
+  if (!props.noAnalyticsScope) {
+    return (
+      <ErrorBoundary onError={handleError} fallback={<></>}>
+        {props.children}
+      </ErrorBoundary>
+    );
+  }
 
   return (
     <ErrorBoundary onError={handleError} fallback={<></>}>

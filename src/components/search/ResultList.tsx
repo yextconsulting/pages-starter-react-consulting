@@ -6,26 +6,37 @@ import { useLocator } from "src/components/search/utils/useLocator";
 import type { LocatorCardProps } from "src/components/cards/LocatorCard";
 import "src/components/search/ResultList.css";
 import { LocationProfile } from "src/types/entities";
+import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 
 interface ResultListProps extends LocatorCardProps {
   CardComponent: CardComponent<LocationProfile>;
 }
 
 const ResultList = (props: ResultListProps) => {
+  return (
+    <ErrorBoundaryWithAnalytics name="resultlist" noAnalyticsScope={true}>
+      <ResultListInternal {...props} />
+    </ErrorBoundaryWithAnalytics>
+  );
+};
+
+const ResultListInternal = (props: ResultListProps) => {
   const { CardComponent } = props;
 
   const { results } = useLocator();
 
   return (
-    <div className="ResultList">
-      {results?.map((result) => (
-        <ResultListItem
-          key={result.id || result.index}
-          CardComponent={CardComponent}
-          result={result}
-        />
-      ))}
-    </div>
+    <ErrorBoundaryWithAnalytics name="resultlist" noAnalyticsScope={true}>
+      <div className="ResultList">
+        {results?.map((result) => (
+          <ResultListItem
+            key={result.id || result.index}
+            CardComponent={CardComponent}
+            result={result}
+          />
+        ))}
+      </div>
+    </ErrorBoundaryWithAnalytics>
   );
 };
 

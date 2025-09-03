@@ -2,6 +2,7 @@ import { FilterSearch, SearchBar, executeSearch } from "@yext/search-ui-react";
 import { useSearchActions } from "@yext/search-headless-react";
 import { LOCATOR_STATIC_FILTER_FIELD, LOCATOR_ENTITY_TYPE } from "src/config";
 import GeolocateButton from "src/components/search/GeolocateButton";
+import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 
 const searchFields = [
   {
@@ -17,6 +18,14 @@ type SearchBoxProps = {
 };
 
 const SearchBox = (props: SearchBoxProps) => {
+  return (
+    <ErrorBoundaryWithAnalytics name="searchbox" noAnalyticsScope={true}>
+      <SearchBoxInternal {...props} />
+    </ErrorBoundaryWithAnalytics>
+  );
+};
+
+const SearchBoxInternal = (props: SearchBoxProps) => {
   const { title, subTitle, placeholderText } = props;
 
   const searchActions = useSearchActions();
