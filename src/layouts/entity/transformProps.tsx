@@ -1,6 +1,5 @@
 import type { LocationProfile, TemplateRenderProps } from "src/types/entities";
 import type { TransformProps } from "@yext/pages";
-import { formatPhone } from "src/common/helpers";
 import { getTranslations } from "../../i18n";
 import { getPhoneParts } from "@yext/phonenumber-util";
 
@@ -17,7 +16,6 @@ export const transformProps: TransformProps<
   const {
     mainPhone,
     tollFreePhone,
-    address,
     dm_directoryParents_defaultdirectory,
     name,
   } = data.document;
@@ -32,15 +30,14 @@ export const transformProps: TransformProps<
       ...data.document,
       t_mainPhone: mainPhone
         ? {
-            label: formatPhone(mainPhone, address.countryCode) || mainPhone,
+            label: getPhoneParts(mainPhone).formattedNumber ?? mainPhone,
             href: getPhoneParts(mainPhone).href ?? `tel:${mainPhone}`,
             raw: mainPhone,
           }
         : undefined,
       t_tollFreePhone: tollFreePhone
         ? {
-            label:
-              formatPhone(tollFreePhone, address.countryCode) || tollFreePhone,
+            label: getPhoneParts(mainPhone).formattedNumber ?? tollFreePhone,
             href: getPhoneParts(tollFreePhone).href ?? `tel:${tollFreePhone}`,
             raw: tollFreePhone,
           }
