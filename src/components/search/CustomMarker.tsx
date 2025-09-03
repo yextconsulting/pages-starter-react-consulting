@@ -6,6 +6,7 @@ import {
   type Coordinate,
 } from "@yext/pages-components";
 import { useLocator } from "src/components/search/utils/useLocator";
+import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 
 type CustomMarkerProps = {
   coordinate: Coordinate;
@@ -14,6 +15,14 @@ type CustomMarkerProps = {
 };
 
 const CustomMarker = (props: CustomMarkerProps) => {
+  return (
+    <ErrorBoundaryWithAnalytics name="custommarker" noAnalyticsScope={true}>
+      <CustomMarkerInternal {...props} />
+    </ErrorBoundaryWithAnalytics>
+  );
+};
+
+const CustomMarkerInternal = (props: CustomMarkerProps) => {
   const {
     selectedId,
     setSelectedId,

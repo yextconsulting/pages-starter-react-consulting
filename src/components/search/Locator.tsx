@@ -19,6 +19,7 @@ import ResultList from "src/components/search/ResultList";
 import CustomMarker from "src/components/search/CustomMarker";
 import LoadingSpinner from "src/components/common/LoadingSpinner";
 import { getMapKey } from "src/common/getMapKey";
+import ErrorBoundaryWithAnalytics from "src/components/common/ErrorBoundaryWithAnalytics";
 
 type LocatorProps = {
   // Will display results up to the verticalLimit (default 20, change with searchActions.setVerticalLimit(num))
@@ -101,23 +102,27 @@ const Locator = (props: LocatorProps) => {
         </div>
         {isDesktopBreakpoint && (
           <div className="Locator-map">
-            <Map
-              provider={GoogleMaps}
-              providerOptions={{ styles: mapStyles }}
-              bounds={results.map((data) => data.rawData.yextDisplayCoordinate)}
-              padding={{ top: 100, bottom: 200, left: 50, right: 50 }}
-              className="h-full"
-              {...mapKey}
-            >
-              {results.map((data, index) => (
-                <CustomMarker
-                  key={data.rawData.id}
-                  coordinate={data.rawData.yextDisplayCoordinate}
-                  id={data.rawData.id}
-                  index={index + 1}
-                />
-              ))}
-            </Map>
+            <ErrorBoundaryWithAnalytics name="map" noAnalyticsScope={true}>
+              <Map
+                provider={GoogleMaps}
+                providerOptions={{ styles: mapStyles }}
+                bounds={results.map(
+                  (data) => data.rawData.yextDisplayCoordinate
+                )}
+                padding={{ top: 100, bottom: 200, left: 50, right: 50 }}
+                className="h-full"
+                {...mapKey}
+              >
+                {results.map((data, index) => (
+                  <CustomMarker
+                    key={data.rawData.id}
+                    coordinate={data.rawData.yextDisplayCoordinate}
+                    id={data.rawData.id}
+                    index={index + 1}
+                  />
+                ))}
+              </Map>
+            </ErrorBoundaryWithAnalytics>
           </div>
         )}
       </div>
