@@ -13,12 +13,6 @@ declare global {
 // Key for Maps provider.
 export const MAPS_API_KEY = YEXT_PUBLIC_MAPS_API_KEY || "<REPLACE-ME>";
 
-// Yext404Pixel Endpoints
-export const YEXT_404_PIXEL_PROD =
-  "https://0kug74ckj8.execute-api.us-east-1.amazonaws.com/prod/v1/404.gif";
-export const YEXT_404_PIXEL_STAGING =
-  "https://ve5o9iwzrl.execute-api.us-east-1.amazonaws.com/dev/v1/404.gif";
-
 // Path for the search page.
 // Exported here since it's required across multiple pages such as the nearby section and directory search bar.
 export const FALLBACK_SEARCH_PATH = "search";
