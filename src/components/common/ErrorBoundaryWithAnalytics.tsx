@@ -1,7 +1,6 @@
 import { AnalyticsScopeProvider } from "@yext/pages-components";
 import { ReactNode } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import * as Sentry from "@sentry/browser";
 
 type ErrorBoundaryWithAnalyticsProps = {
   name: string;
@@ -9,9 +8,11 @@ type ErrorBoundaryWithAnalyticsProps = {
   noAnalyticsScope?: boolean;
 };
 
-Sentry.init({
-  dsn: "https://c5880be0d3351c04bfdcee4623fa68c8@o4509159123058688.ingest.us.sentry.io/4509447365132289",
-});
+// TODO: Comment this in and add Sentry DSN to enable Sentry alerting
+// import * as Sentry from "@sentry/browser";
+// Sentry.init({
+//   dsn: "<ADD SENTRY DSN HERE>",
+// });
 
 /**
  * Setup an error boundary around a child component to prevent the entire React app from
@@ -20,7 +21,9 @@ Sentry.init({
 const ErrorBoundaryWithAnalytics = (props: ErrorBoundaryWithAnalyticsProps) => {
   const handleError = (err: Error) => {
     console.error(`Error occured in "${props.name}" scope.`);
-    Sentry.captureException(err);
+
+    // TODO: Uncomment this in to enable Sentry alerting
+    // Sentry.captureException(err);
   };
 
   if (!props.noAnalyticsScope) {
