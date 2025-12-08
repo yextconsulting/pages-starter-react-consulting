@@ -26,7 +26,7 @@ const ErrorBoundaryWithAnalytics = (props: ErrorBoundaryWithAnalyticsProps) => {
     // Sentry.captureException(err);
   };
 
-  if (!props.noAnalyticsScope) {
+  if (props.noAnalyticsScope) {
     return (
       <ErrorBoundary onError={handleError} fallback={<></>}>
         {props.children}
