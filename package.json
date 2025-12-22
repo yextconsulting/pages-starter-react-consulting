@@ -64,7 +64,7 @@
     "generate-license-file": "2.0.0",
     "husky": "8.0.0",
     "i18next-conv": "14.0.0",
-    "i18next-parser": "8.6.0",
+    "i18next-parser": "9.1.0",
     "postcss": "^8.4.12",
     "postcss-mixins": "^9.0.3",
     "prettier": "2.6.2",
