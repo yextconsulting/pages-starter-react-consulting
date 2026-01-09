@@ -2,7 +2,10 @@
   "$id": "directoryRoot",
   "$schema": "https://schema.yext.com/config/km/entity-template/v2",
   "content": {
-    "c_meta": null
+    "c_meta": {
+      "description": "Browse all locations.",
+      "title": "Locations"
+    }
   },
   "entityTypes": ["ce_root"],
   "name": "Directory Root"
