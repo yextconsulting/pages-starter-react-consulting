@@ -188,7 +188,7 @@ function metaTitle(data: TemplateRenderProps): string {
   //   return `${profile.name} at ${profile.address.line1}`;
   // }
 
-  return "";
+  return data.document.name;
 }
 
 function metaDescription(data: TemplateRenderProps): string {
