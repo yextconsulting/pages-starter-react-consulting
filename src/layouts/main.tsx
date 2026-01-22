@@ -41,8 +41,6 @@ const MainInternal = (props: MainProps) => {
   // If consent is not required, set requireOptIn on AnalyticsProvider above to false.
   useExposeEnableYAFunction();
 
-  console.log(props.data.document.__certified_facts);
-
   return (
     <TemplateDataProvider value={props.data}>
       <Header />
