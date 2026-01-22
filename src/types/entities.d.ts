@@ -200,6 +200,8 @@ export interface LocationProfile extends BaseProfile {
     slug: string;
     name: string;
   }>;
+
+  readonly __certified_facts?: Record<string, any>;
 }
 
 export type DirectoryProfile<T> = BaseProfile & {

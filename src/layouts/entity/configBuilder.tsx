@@ -114,4 +114,6 @@ export const configBuilder: (
   slugField: "slug",
   // Specifies the field to be used as the custom writeback URL.
   pageUrlField: "c_pagesURL",
+  // Include brand certified facts in the stream response.
+  includeCertifiedFacts: true,
 });
