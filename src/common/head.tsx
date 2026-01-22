@@ -164,8 +164,23 @@ export function defaultHeadConfig(
       ...addressTags,
       ...(additionalTags || []),
     ],
-    other: [yaScript(), SchemaBuilder(data), yextEntityData(data)].join("\n"),
+    other: [
+      brandCertifiedFacts(data),
+      yaScript(),
+      SchemaBuilder(data),
+      yextEntityData(data),
+    ].join("\n"),
   };
+}
+
+function brandCertifiedFacts(data: TemplateRenderProps): string {
+  if (data.document.__certified_facts) {
+    return `<script type="application/ld+json">${JSON.stringify(
+      data.document.__certified_facts
+    )}</script>`;
+  }
+
+  return "";
 }
 
 function yaScript(): string {

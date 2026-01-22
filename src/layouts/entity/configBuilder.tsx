@@ -109,6 +109,7 @@ export const configBuilder: (
     localization: {
       locales: ["en"],
     },
+    includeCertifiedFacts: true,
   },
   // Specifies the field to use for URL paths when serving locally.
   slugField: "slug",
