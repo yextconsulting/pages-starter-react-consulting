@@ -1,5 +1,9 @@
 import { getRuntime } from "@yext/pages/util";
-import { SearchHeadlessProvider } from "@yext/search-headless-react";
+import {
+  CloudRegion,
+  Environment,
+  SearchHeadlessProvider,
+} from "@yext/search-headless-react";
 import { BrowserRouter } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
 import Locator from "src/components/search/Locator";
@@ -8,6 +12,7 @@ import { SearchPageProfile, TemplateRenderProps } from "src/types/entities";
 import { Template } from "@yext/pages";
 import "src/index.css";
 import { Main } from "src/layouts/main";
+import { AnalyticsProvider as SearchAnalyticsProvider } from "@yext/search-ui-react";
 
 interface SearchLayoutProps {
   data: TemplateRenderProps<SearchPageProfile>;
@@ -31,17 +36,15 @@ const SearchLayout = ({ data }: SearchLayoutProps) => {
   }
 
   return (
-    <>
-      <SearchHeadlessProvider searcher={searcher}>
-        <Locator
-          title={c_searchTitle || "Find a Location"}
-          subTitle={c_searchSubTitle || "Search by city and state or ZIP code"}
-          placeholderText={
-            c_searchPlaceholderText || "Search by city and state or ZIP code"
-          }
-        />
-      </SearchHeadlessProvider>
-    </>
+    <SearchHeadlessProvider searcher={searcher}>
+      <Locator
+        title={c_searchTitle || "Find a Location"}
+        subTitle={c_searchSubTitle || "Search by city and state or ZIP code"}
+        placeholderText={
+          c_searchPlaceholderText || "Search by city and state or ZIP code"
+        }
+      />
+    </SearchHeadlessProvider>
   );
 };
 
@@ -54,15 +57,22 @@ const Search: Template<TemplateRenderProps<SearchPageProfile>> = (data) => {
 
   return (
     <Main data={data}>
-      {runtime.name === "browser" ? (
-        <BrowserRouter>
-          <SearchLayout data={data} />
-        </BrowserRouter>
-      ) : (
-        <StaticRouter location="">
-          <SearchLayout data={data} />
-        </StaticRouter>
-      )}
+      <SearchAnalyticsProvider
+        apiKey={YEXT_PUBLIC_ANALYTICS_API_KEY}
+        requireOptIn={false}
+        cloudRegion={CloudRegion.US}
+        environment={Environment.PROD}
+      >
+        {runtime.name === "browser" ? (
+          <BrowserRouter>
+            <SearchLayout data={data} />
+          </BrowserRouter>
+        ) : (
+          <StaticRouter location="">
+            <SearchLayout data={data} />
+          </StaticRouter>
+        )}
+      </SearchAnalyticsProvider>
     </Main>
   );
 };

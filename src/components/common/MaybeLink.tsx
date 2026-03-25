@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 import { Link } from "@yext/pages-components";
 
 type maybeLinkProps = {
@@ -6,6 +6,7 @@ type maybeLinkProps = {
   children?: ReactNode;
   className?: string;
   eventName?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 };
 
 const MaybeLink = (props: maybeLinkProps) => {

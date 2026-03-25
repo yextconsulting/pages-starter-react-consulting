@@ -4,6 +4,9 @@ import classNames from "classnames";
 import { LocationProfile } from "src/types/entities";
 import { useTemplateData } from "src/common/useTemplateData";
 import { MaybeLink } from "src/components/common/MaybeLink";
+import { useAnalytics } from "@yext/search-ui-react";
+import { useSearchState } from "@yext/search-headless-react";
+import { EXPERIENCE_KEY } from "src/config";
 
 export interface LocatorCardProps {
   useKilometers?: boolean;
@@ -15,12 +18,27 @@ const LocatorCard = (props: LocatorCardProps & CardProps<LocationProfile>) => {
   const { address, hours, slug, timezone } = rawData;
   const { relativePrefixToRoot } = useTemplateData();
 
+  const queryId = useSearchState((s) => s.query.queryId);
+  const verticalKey = useSearchState((s) => s.vertical?.verticalKey);
+  const analytics = useAnalytics();
+  const searchId = useSearchState((s) => s.meta.uuid);
+
   return (
     <div>
       <div className="flex justify-between">
         <MaybeLink
           className="link-primary hover:underline"
           href={slug ? relativePrefixToRoot + slug : ""}
+          onClick={() => {
+            analytics?.report({
+              experienceKey: EXPERIENCE_KEY,
+              action: "TITLE",
+              entity: result.id,
+              queryId,
+              verticalKey,
+              searchId,
+            });
+          }}
         >
           <h3 className="heading heading-sub pb-2 sm:pb-4">
             {address.line1 ? address.line1 : address.city}
