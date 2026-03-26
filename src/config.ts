@@ -13,6 +13,8 @@ declare global {
 // Key for Maps provider.
 export const MAPS_API_KEY = YEXT_PUBLIC_MAPS_API_KEY || "<REPLACE-ME>";
 
+// Locator Experience Key
+export const EXPERIENCE_KEY = "locator";
 // Path for the search page.
 // Exported here since it's required across multiple pages such as the nearby section and directory search bar.
 export const FALLBACK_SEARCH_PATH = "search";
@@ -32,7 +34,7 @@ export const getSearchProvider = (
 
   return provideHeadless({
     apiKey,
-    experienceKey: "locator",
+    experienceKey: EXPERIENCE_KEY,
     locale,
     verticalKey: "locations",
     experienceVersion,

@@ -30,7 +30,7 @@
     "@yext/pages-components": "^1.1.12",
     "@yext/phonenumber-util": "^0.4.1",
     "@yext/search-headless-react": "^2.7.1",
-    "@yext/search-ui-react": "^2.0.2",
+    "@yext/search-ui-react": "^2.2.0",
     "classnames": "2.3.1",
     "i18next": "23.4.4",
     "lodash": "^4.17.23",
