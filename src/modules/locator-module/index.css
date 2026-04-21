@@ -1,0 +1,35 @@
+@import "src/styles/variables.css";
+@import "src/styles/utils.css";
+@import "src/styles/fonts.css";
+@import "src/styles/theme.css";
+
+/* @tailwind base; */
+/* - Do not enable Tailwind preflight in a module stylesheet.
+ * - Preflight resets global elements like `html`, `body`, headings, buttons,
+ *   and forms, so importing it here would leak base styles onto the parent page.
+ * - Imported files can still leak global CSS, so audit `src/styles/*.css`
+ *   before adding new shared imports here.
+ */
+
+/*
+ * - For future module implementations, scope any Tailwind utilities with
+ *   an important selector in `tailwind.config.ts`, such as
+ *   `important: ".yext-tw"`.
+ * - Wrap the module root in `.yext-tw` so utility styling stays inside
+ *   the module boundary instead of affecting the host page.
+ * - Keep broad global selectors like `html`, `body`, `#reactele`, and element
+ *   resets out of this stylesheet.
+ * - Imported files can still leak global CSS, so audit `src/styles/*.css`
+ *   before adding new shared imports here.
+ */
+@tailwind components;
+@tailwind utilities;
+
+.yext-tw {
+  height: 100%;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  display: grid;
+  grid-template-rows: 1fr;
+  font-family: theme(fontFamily.primary);
+}
