@@ -1,6 +1,8 @@
 import { SchemaWrapper, LocalBusiness, FAQPage } from "@yext/pages-components";
 import type { TemplateRenderProps } from "src/types/entities";
 
+const SCHEMA_CONTEXT = "https://schema.org";
+
 export function SchemaBuilder(
   data: TemplateRenderProps<Record<string, any>>
 ): string {
@@ -34,15 +36,15 @@ export function SchemaBuilder(
     : null;
 
   const json = {
+    "@context": SCHEMA_CONTEXT,
     "@graph": [
-      localBusiness && localBusiness,
-      faqs && faqs,
+      localBusiness,
+      faqs,
       breadcrumbs && {
-        "@context": "http://www.schema.org",
         "@type": "BreadcrumbList",
         itemListElement: breadcrumbs,
       },
-    ],
+    ].filter(Boolean),
   };
 
   return SchemaWrapper(json);
