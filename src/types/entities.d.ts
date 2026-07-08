@@ -122,6 +122,7 @@ export interface LocationProfile extends BaseProfile {
   readonly yextDisplayCoordinate: Coordinate;
   readonly slug: string;
   readonly hours?: HoursType;
+  readonly driveThroughHours?: HoursType;
   readonly timezone: string;
   readonly additionalHoursText?: string;
   readonly mainPhone?: string;

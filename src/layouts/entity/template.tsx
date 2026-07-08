@@ -12,14 +12,13 @@ import type { LocationProfile, TemplateRenderProps } from "src/types/entities";
 
 import Breadcrumbs from "src/components/common/Breadcrumbs";
 import About from "src/components/entity/About";
-import Banner from "src/components/entity/Banner";
 import Core from "src/components/entity/Core";
 import Events from "src/components/entity/Events";
 import FAQs from "src/components/entity/FAQs";
 import Gallery from "src/components/entity/Gallery";
 import Hero from "src/components/entity/Hero";
 import Insights from "src/components/entity/Insights";
-import Nearby from "src/components/entity/Nearby";
+import NotificationBanner from "src/components/common/NotificationBanner";
 import Products from "src/components/entity/Products";
 import Promo from "src/components/entity/Promo";
 import Reviews from "src/components/entity/Reviews";
@@ -39,28 +38,27 @@ const EntityLayout = ({ data }: EntityLayoutProps) => {
 
   return (
     <>
-      <Banner hasCloseBtn={true} />
-      <Breadcrumbs
-        breadcrumbs={directoryParents || []}
-        separator="/"
-        className="container"
-      />
-      <Hero />
-      <Core />
-      <Promo />
-      <Products itemsToShow={3} />
-      <Events showPastEvents={false} />
-      <About />
-      <Insights />
-      <Gallery />
-      <Team initialSize={3} />
-      <FAQs />
-      <LazyLoadWrapper>
-        <Reviews maxReviews={12} numReviewsPerPage={3} />
-      </LazyLoadWrapper>
-      <LazyLoadWrapper>
-        <Nearby />
-      </LazyLoadWrapper>
+      <div className="min-h-0">
+        <Breadcrumbs
+          breadcrumbs={directoryParents || []}
+          separator="/"
+          className="mx-auto"
+        />
+        <NotificationBanner />
+        <Hero />
+        <Core />
+        <Promo />
+        <Products itemsToShow={3} />
+        <Events showPastEvents={false} />
+        <About />
+        <Insights />
+        <Gallery />
+        <Team initialSize={3} />
+        <FAQs />
+        <LazyLoadWrapper>
+          <Reviews maxReviews={12} numReviewsPerPage={3} />
+        </LazyLoadWrapper>
+      </div>
     </>
   );
 };

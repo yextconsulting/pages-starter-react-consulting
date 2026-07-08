@@ -11,15 +11,23 @@ export default {
       fontFamily: {
         primary: "'Arial','Helvetica','sans-serif','system'",
         secondary: "'Arial','Helvetica','sans-serif','system'",
+        gotham: ["Gotham Medium"],
+        legend: ["Legend Sans Serif"],
+        oldStandard: ["Old Standard"],
       },
       fontSize: {
         sm: ["14px", "22px"],
         base: ["16px", "24px"],
-        lg: ["18px", "24px"],
+        lg: ["18px", "18px"],
+        "2xl": ["24px", "32px"],
+        "3xl": ["29px", "29px"],
+        "4xl": ["40px", "40px"],
+        "5xl": ["50px", "56px"],
       },
       colors: {
-        "brand-primary": "#0F70F0",
-        "brand-secondary": "#0C5ECB",
+        "brand-primary": "#095587",
+        "brand-secondary": "#F4D34C",
+        "brand-white": "#FFFFFF",
         "brand-gray": {
           100: "#F7F7F7",
           200: "#EDEDED",

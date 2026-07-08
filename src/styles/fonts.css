@@ -14,3 +14,27 @@ For example:
   font-display: swap;
 }
 */
+
+@font-face {
+  font-family: "Gotham Medium";
+  src: url("/src/assets/fonts/Gotham-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Legend Sans Serif";
+  src: url("/src/assets/fonts/LegendSansSerif-Regular.ttf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Old Standard";
+  src: url("/src/assets/fonts/OldStandard-Regular.ttf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

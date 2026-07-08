@@ -12,7 +12,8 @@ import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 
 const getConfig = (api_key: string) => {
   return {
-    endpoint: "https://liveapi.yext.com/v2/accounts/me/entities/geosearch",
+    endpoint:
+      "https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch",
     params: {
       api_key,
       entityTypes: "location",

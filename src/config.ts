@@ -1,6 +1,6 @@
 import { isProduction } from "@yext/pages/util";
 import { provideHeadless } from "@yext/search-headless-react";
-// import { SandboxEndpoints } from "@yext/search-headless-react"; // Add if using a sandbox account
+import { SandboxEndpoints } from "@yext/search-headless-react"; // Add if using a sandbox account
 
 declare global {
   const YEXT_PUBLIC_MAPS_API_KEY: string;
@@ -38,6 +38,6 @@ export const getSearchProvider = (
     locale,
     verticalKey: "locations",
     experienceVersion,
-    // endpoints: SandboxEndpoints // Add if using a sandbox account
+    endpoints: SandboxEndpoints, // Add if using a sandbox account
   });
 };

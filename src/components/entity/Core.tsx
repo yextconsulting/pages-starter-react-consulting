@@ -1,19 +1,18 @@
 import { ReactNode } from "react";
 import {
   Link,
-  Address,
-  getDirections,
   LocationMap,
   GoogleMaps,
   HoursTable,
 } from "@yext/pages-components";
 import type { LocationProfile } from "src/types/entities";
-import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { useBreakpoint } from "src/common/useBreakpoints";
 import { LazyLoadWrapper } from "src/components/common/LazyLoadWrapper";
 import { getMapKey } from "src/common/getMapKey";
 import { useTemplateData } from "src/common/useTemplateData";
 import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
+
+import RopeContainer from "../common/RopeContainer";
 
 const Core = () => {
   const templateData = useTemplateData();
@@ -31,11 +30,21 @@ type CoreLayoutProps = {
 };
 
 const CoreSection = (props: { children: ReactNode }) => {
-  return <div className="w-full sm:w-1/2 lg:w-1/3 mb-8">{props.children}</div>;
+  return (
+    <div
+      className={`w-full mx-auto flex-1 flex flex-col text-brand-primary font-gotham font-base font-[500]`}
+    >
+      {props.children}
+    </div>
+  );
 };
 
 const CoreHeading = (props: { children: ReactNode }) => {
-  return <h2 className="heading heading-sub mb-4">{props.children}</h2>;
+  return (
+    <h2 className="font-legend text-brand-primary text-2xl lg:text-[35px] lg:leading-[52px]">
+      {props.children}
+    </h2>
+  );
 };
 
 const CoreLayout = (props: CoreLayoutProps) => {
@@ -64,96 +73,105 @@ const CoreLayout = (props: CoreLayoutProps) => {
   );
 
   return (
-    <div className="py-8 sm:py-16 bg-brand-gray-100">
-      <div className="container">
-        <div className="flex flex-row flex-wrap">
-          <CoreSection>
-            <CoreHeading>Information</CoreHeading>
-            <Address address={profile.address} />
-            <Link
-              className="link-primary link-underline font-bold mt-2"
-              href={`${getDirections(
-                profile.address,
-                profile.ref_listings,
-                profile.googlePlaceId
-              )}`}
-              eventName="getdirections"
-            >
-              Get Directions
-            </Link>
-            {profile.t_mainPhone && (
-              <div className="flex items-center mt-4">
-                <FaPhone className="text-blue-500 mr-2" />
-                <span className="mr-2 font-bold">Phone</span>
-                <Link
-                  href={profile.t_mainPhone.href}
-                  className="link-underline"
-                >
-                  {profile.t_mainPhone.label}
-                </Link>
-              </div>
-            )}
-            {profile.t_tollFreePhone && (
-              <div className="flex items-center mt-4">
-                <FaPhone className="text-blue-500 mr-2" />
-                <span className="mr-2 font-bold">Toll-free</span>
-                <Link
-                  href={profile.t_tollFreePhone.href}
-                  className="link-underline"
-                >
-                  {profile.t_tollFreePhone.label}
-                </Link>
-              </div>
-            )}
-            {profile.emails && (
-              <div className="flex items-center mt-4">
-                <FaEnvelope className="text-blue-500 mr-2" />
-                <Link
-                  className="link-primary link-underline font-bold"
-                  cta={{ link: profile.emails[0], linkType: "Email" }}
-                  eventName="email"
-                >
-                  {profile.emails[0]}
-                </Link>
-              </div>
-            )}
-          </CoreSection>
-          {(profile.hours || profile.additionalHoursText) && (
-            <CoreSection>
-              <CoreHeading>Hours</CoreHeading>
-              {profile.hours && (
-                <HoursTable hours={profile.hours} startOfWeek="monday" />
-              )}
-              {profile.additionalHoursText && (
-                <div className="mt-4">{profile.additionalHoursText}</div>
-              )}
-            </CoreSection>
+    <div className="bg-brand-white mx-auto">
+      <div className="container mx-auto flex flex-col gap-[32px] mb-[64px]">
+        <div className="flex flex-col lg:flex-row gap-[16px]">
+          {profile.t_mainPhone && (
+            <RopeContainer isPadded={true}>
+              <CoreSection>
+                <div className="flex flex-col gap-[24px]">
+                  <CoreHeading>Information</CoreHeading>
+                  <Link
+                    href={profile.t_mainPhone.href}
+                    className="link-underline font-[500] font-gotham text-lg leading-[24px]"
+                  >
+                    {profile.t_mainPhone.label}
+                  </Link>
+                  <div className="flex flex-col">
+                    <div className="font-[500] font-gotham text-lg leading-[29px]">
+                      {profile.address.line1}
+                    </div>
+                    <div className="font-[500] font-gotham text-lg leading-[29px]">
+                      <span>{profile.address.city},</span>{" "}
+                      {profile.address.region}
+                    </div>
+                  </div>
+                  <Link
+                    href={"/"}
+                    className="underline underline-offset-0 decoration-0 font-[500] font-gotham text-base"
+                  >
+                    Get Directions
+                  </Link>
+                </div>
+              </CoreSection>
+            </RopeContainer>
           )}
-          {profile.services && (
-            <CoreSection>
-              <CoreHeading>Services</CoreHeading>
-              <ul className="list-inside">
-                {profile.services.map((service) => (
-                  <li className="mb-2" key={service}>
-                    {service}
-                  </li>
-                ))}
-              </ul>
-            </CoreSection>
+          {(profile.hours || profile.additionalHoursText) && (
+            <RopeContainer isPadded={true}>
+              <CoreSection>
+                <div className="flex flex-col gap-[16px]">
+                  <CoreHeading>Hours</CoreHeading>
+                  {profile.hours && (
+                    <HoursTable hours={profile.hours} startOfWeek="monday" />
+                  )}
+                  {profile.additionalHoursText && (
+                    <div className="mt-4 font-gotham text-sm font-[500]">
+                      {profile.additionalHoursText}
+                    </div>
+                  )}
+                </div>
+              </CoreSection>
+            </RopeContainer>
+          )}
+          {(profile.driveThroughHours || profile.additionalHoursText) && (
+            <RopeContainer isPadded={true}>
+              <CoreSection>
+                <div className="flex-col gap-[16px]">
+                  <CoreHeading>Drive-Thru Hours</CoreHeading>
+                  {profile.driveThroughHours && (
+                    <HoursTable
+                      hours={profile.driveThroughHours}
+                      startOfWeek="monday"
+                    />
+                  )}
+                  {profile.additionalHoursText && (
+                    <div className="mt-4 font-gotham text-sm font-[500]">
+                      {profile.additionalHoursText}
+                    </div>
+                  )}
+                </div>
+              </CoreSection>
+            </RopeContainer>
           )}
         </div>
-        {isDesktopBreakpoint && profile.yextDisplayCoordinate && (
-          <LazyLoadWrapper>
-            <LocationMap
-              className="h-[300px] mt-6"
-              coordinate={profile.yextDisplayCoordinate}
-              provider={GoogleMaps}
-              {...mapKey}
-            >
-              {mappinSVG}
-            </LocationMap>
-          </LazyLoadWrapper>
-        )}
+        <div className="flex flex-row gap-[32px]">
+          {isDesktopBreakpoint && profile.yextDisplayCoordinate && (
+            <div className="w-1/2">
+              <RopeContainer>
+                <LazyLoadWrapper>
+                  <LocationMap
+                    className="h-[292px]"
+                    coordinate={profile.yextDisplayCoordinate}
+                    provider={GoogleMaps}
+                    {...mapKey}
+                  >
+                    {mappinSVG}
+                  </LocationMap>
+                </LazyLoadWrapper>
+              </RopeContainer>
+            </div>
+          )}
+          {
+            // placeholder for location image
+            <div className="w-full lg:w-1/2">
+              <RopeContainer>
+                <LazyLoadWrapper>
+                  <div className="bg-brand-gray-200 h-[146px] lg:h-[292px]" />
+                </LazyLoadWrapper>
+              </RopeContainer>
+            </div>
+          }
+        </div>
       </div>
     </div>
   );

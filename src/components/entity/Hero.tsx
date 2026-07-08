@@ -11,10 +11,18 @@ import { useTemplateData } from "src/common/useTemplateData";
 import type { LocationProfile } from "src/types/entities";
 import ErrorBoundaryWithAnalytics from "../common/ErrorBoundaryWithAnalytics";
 
+import waveImg from "src/assets/images/wave.png";
+
+import CTAButton from "../common/CTAButton";
+
 const Hero = () => {
   const templateData = useTemplateData();
   const profile = templateData.document as LocationProfile;
   const hero = profile.c_heroSection;
+
+  console.log("cta1: ", hero?.cta1);
+  console.log("cta2: ", hero?.cta2);
+  console.log("banner section: ", profile.c_bannerSection);
 
   return (
     <ErrorBoundaryWithAnalytics name="hero">
@@ -47,13 +55,23 @@ type HeroLayoutProps = {
 
 const HeroLayout = (props: HeroLayoutProps) => {
   return (
-    <div className="Hero py-8 sm:py-16">
-      <div className="container flex flex-col lg:flex-row">
-        <div className="w-full lg:w-1/2 lg:mt-8 mb-6 lg:mb-0 lg:mr-8">
-          <h1 className="heading heading-sub mb-4 sm:mb-0">{props.name}</h1>
-          <div className="heading heading-lead mb-4">{props.address.line1}</div>
+    <div className="Hero pt-[24px] pb-[40px] px-[16px] lg:py-[64px]">
+      <div className="container flex flex-col">
+        <div className="w-full lg:w-1/2 mb-6 flex flex-col gap-[24px] mx-auto">
+          <div>
+            <h1 className="sm:mb-0 text-center text-brand-primary text-3xl font-legend">
+              {props.name}
+            </h1>
+            <div className="text-center text-brand-primary text-5xl font-oldStandard">
+              {props.address.city}
+            </div>
+          </div>
+          <img src={waveImg} alt="" className="w-[160px] h-[10px] mx-auto" />
           {props.hours && props.timezone && (
-            <div className="mb-4 h-6">
+            <div className="h-6 text-brand-primary font-lg font-legend mx-auto flex flex-row gap-[8px]">
+              <div
+                className={`my-auto w-[8px] h-[8px] rounded-full bg-[#279700]`}
+              ></div>
               <HoursStatus
                 hours={props.hours}
                 timezone={props.timezone}
@@ -64,12 +82,12 @@ const HeroLayout = (props: HeroLayoutProps) => {
             </div>
           )}
           {/* TODO(aganesh) : use Reviews component when available */}
-          {props.rating && (
+          {/* {props.rating && (
             <div className="mb-6 lg:mb-8">
               <span> {props.rating} out of 5 </span>
               <span>({props.numReviews} reviews)</span>
             </div>
-          )}
+          )} */}
           {(props.cta1 || props.cta2) && (
             <div className="flex flex-col lg:flex-row mb-4 gap-4">
               {props.cta1 && (
@@ -80,6 +98,19 @@ const HeroLayout = (props: HeroLayoutProps) => {
               )}
             </div>
           )}
+        </div>
+        <div className="flex flex-col lg:flex-row mx-auto gap-[16px]">
+          <CTAButton
+            text={"Order Online for Pickup"}
+            link={""}
+            isPrimary={true}
+          />
+          <CTAButton text={"Order with Doordash"} link={""} isPrimary={false} />
+          <CTAButton
+            text={"Order with Postmates"}
+            link={""}
+            isPrimary={false}
+          />
         </div>
         {props.background && (
           <div className="w-full lg:w-1/2">

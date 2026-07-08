@@ -30,13 +30,19 @@ const Breadcrumbs = (props: BreadcrumbsPropsDefault) => {
   return (
     <ErrorBoundaryWithAnalytics name="breadcrumbs">
       {breadcrumbs?.length && (
-        <nav className={classNames("my-4", className)} aria-label="Breadcrumb">
-          <ol className="flex flex-wrap">
+        <nav
+          className={classNames("my-4 flex justify-center", className)}
+          aria-label="Breadcrumb"
+        >
+          <ol className="flex flex-wrap gap-[8px] underline underline-offset-0">
             {breadcrumbs.map(({ name, slug }, idx) => {
               const isLast = idx === breadcrumbs.length - 1;
 
               return (
-                <li key={idx}>
+                <li
+                  key={idx}
+                  className="flex gap-[8px] font-gotham font-[500] text-sm text-brand-primary"
+                >
                   <Breadcrumb
                     name={name}
                     slug={isLast ? "" : relativePrefixToRoot + slug}
@@ -44,9 +50,7 @@ const Breadcrumbs = (props: BreadcrumbsPropsDefault) => {
                     {...props}
                   />
                   {!isLast && (
-                    <span className="mx-2 text-brand-gray-400">
-                      {separator}
-                    </span>
+                    <span className="text-brand-gray-400">{separator}</span>
                   )}
                 </li>
               );
@@ -68,11 +72,7 @@ const Breadcrumb = (props: BreadcrumbProps) => {
   const { name, slug } = props;
 
   return (
-    <MaybeLink
-      className="link-breadcrumbs link-underline"
-      href={slug}
-      eventName={`link${props.index}`}
-    >
+    <MaybeLink className="" href={slug} eventName={`link${props.index}`}>
       <span>{name}</span>
     </MaybeLink>
   );

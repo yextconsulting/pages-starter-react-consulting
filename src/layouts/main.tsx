@@ -42,11 +42,7 @@ const MainInternal = (props: MainProps) => {
   useExposeEnableYAFunction();
 
   return (
-    <TemplateDataProvider value={props.data}>
-      <Header />
-      {children}
-      <Footer />
-    </TemplateDataProvider>
+    <TemplateDataProvider value={props.data}>{children}</TemplateDataProvider>
   );
 };
 

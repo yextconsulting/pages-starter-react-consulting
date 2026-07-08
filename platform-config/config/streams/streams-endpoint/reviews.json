@@ -1,6 +1,6 @@
 {
   "$id": "reviewsStreamsEndpoints_reviews",
-  "$schema": "https://schema.yext.com/config/streams/streams-endpoint/v2",
+  "$schema": "https://schema.yext.com/config/streams/streams-endpoint/v3",
   "name": "Streams Endpoint - Individual Reviews",
   "stream": {
     "source": "reviews",
