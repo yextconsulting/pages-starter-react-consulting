@@ -41,3 +41,15 @@ export const getSearchProvider = (
     // endpoints: SandboxEndpoints // Add if using a sandbox account
   });
 };
+
+export const getModuleSearchProvider = (apiKey: string, locale: string) => {
+  const experienceVersion = "PRODUCTION";
+
+  return provideHeadless({
+    apiKey,
+    experienceKey: EXPERIENCE_KEY,
+    locale,
+    verticalKey: "locations",
+    experienceVersion,
+  });
+};

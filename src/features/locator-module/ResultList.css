@@ -1,0 +1,31 @@
+.ResultList {
+  &-item {
+    counter-increment: resultCount;
+    position: relative;
+    box-shadow: theme(boxShadow.brand-shadow);
+    padding: theme(spacing.6);
+    padding-left: theme(spacing.16);
+
+    &::before {
+      content: counter(resultCount, decimal);
+      position: absolute;
+      left: theme(spacing.6);
+      color: white;
+      background-color: theme(colors.brand-primary);
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      border-radius: 50%;
+    }
+
+    @screen sm {
+      &.is-hovered {
+        background-color: theme(colors.brand-gray.200);
+      }
+
+      &.is-selected {
+        background-color: theme(colors.brand-gray.300);
+      }
+    }
+  }
+}
