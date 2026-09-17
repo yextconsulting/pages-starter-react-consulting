@@ -12,6 +12,22 @@ type ErrorBoundaryWithAnalyticsProps = {
 // import * as Sentry from "@sentry/browser";
 // Sentry.init({
 //   dsn: "<ADD SENTRY DSN HERE>",
+//   integrations: [
+//     Sentry.captureConsoleIntegration({ levels: ["error"] }),
+//   ],
+//   beforeSend(event) {
+//     const errorMessage =
+//       event.exception?.values?.[0]?.value ??
+//       event.logentry?.message ??
+//       event.message ??
+//       "";
+//
+//     if (errorMessage.includes("chrome-extension://")) {
+//       return null;
+//     }
+//
+//     return event;
+//   },
 // });
 
 /**
@@ -20,7 +36,7 @@ type ErrorBoundaryWithAnalyticsProps = {
  */
 const ErrorBoundaryWithAnalytics = (props: ErrorBoundaryWithAnalyticsProps) => {
   const handleError = (err: Error) => {
-    console.error(`Error occured in "${props.name}" scope.`);
+    console.error(`Error occured in "${props.name}" scope.`, err);
 
     // TODO: Uncomment this in to enable Sentry alerting
     // Sentry.captureException(err);
